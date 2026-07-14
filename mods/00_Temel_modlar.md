@@ -1,200 +1,240 @@
 ---
 Belge: 00_Temel_Modlar.md
-Sürüm: 1.0
+Sürüm: 2.0
 Durum: Taslak
 Son Güncelleme: 14.07.2026
 ---
 
 # 🧩 00 - Temel Modlar
 
-Bu belge, New World mod paketinin temelini oluşturan modları ve bu modların projedeki rollerini açıklamaktadır.
+> **"Modlar oyunu oluşturmaz.
+> Oyunun kurallarını biz oluştururuz."**
 
-Buradaki modlar yalnızca özelliklerine göre değil, projenin vizyonuna uygunluklarına göre seçilmektedir.
+Bu belge New World projesinin temel modlarını, bu modların projedeki görevlerini ve mod seçim kriterlerini açıklamaktadır.
 
-Yeni mod önerileri yapılırken bu belge dikkate alınmalıdır.
+Bir mod yalnızca popüler olduğu için değil, projenin vizyonuna hizmet ettiği sürece kullanılacaktır.
 
 ---
 
 # Mod Seçim Felsefesi
 
-New World'e bir mod eklenirken şu sorular sorulur.
+Her mod aşağıdaki sorulara göre değerlendirilir.
 
-- Bu mod oyunun keşif hissini artırıyor mu?
+- Oyuncuya yeni bir oynanış kazandırıyor mu?
+- Keşif hissini güçlendiriyor mu?
 - Hikâyeye katkı sağlıyor mu?
-- Mevcut sistemlerle uyumlu mu?
 - Başka bir modun yaptığı işi tekrar ediyor mu?
-- Oyuncuya gerçekten yeni bir oynanış sunuyor mu?
+- Production Chamber sistemiyle çakışıyor mu?
+- Gereksiz makine kalabalığı oluşturuyor mu?
 
-Bu soruların çoğuna "Hayır" cevabı veriliyorsa mod pakete eklenmez.
-
----
-
-# Ana Teknoloji Modları
-
-## 🏭 Modern Industrialization
-
-Projenin temel endüstri modudur.
-
-Üretim zincirleri, makineler ve otomasyon sistemleri bu mod üzerine kurulacaktır.
+Bu soruların çoğuna "Hayır" cevabı veriliyorsa mod projeye eklenmez.
 
 ---
 
-## ⚡ Mekanism
+# 🟢 Temel Modlar
 
-Geç oyun teknolojileri için kullanılacaktır.
-
-Özellikle;
-
-- gelişmiş enerji üretimi,
-- füzyon reaktörü,
-- fisyon reaktörü,
-- gaz sistemleri
-
-oyunun ileri safhalarında önemli rol oynayacaktır.
-
----
-
-## 📦 Applied Energistics 2
-
-Merkezi veri ağı ve depolama sistemi.
-
-Production Chamber sistemleri ve otomasyon ağlarının temelini oluşturacaktır.
-
----
-
-## 🚀 Ad Astra
-
-Uzay keşfi ve gezegenler.
-
-Oyuncunun farklı dünyalara ulaşmasını sağlayan temel modlardan biridir.
+Bu modlar New World'ün temelini oluşturur.
 
 ---
 
 ## ⚙️ Create
 
-Mekanik sistemler ve erken oyun otomasyonu.
+### Görevi
 
-Production Chamber sistemlerinin ilk seviyelerinde önemli rol oynayacaktır.
+Erken oyun mekanik sistemleri.
+
+Oyuncu;
+
+- dişliler,
+- miller,
+- kayışlar,
+- mekanik güç
+
+ile tanışır.
+
+Production Chamber'ın ilk seviyelerinde kullanılacak mekanik parçaların büyük bölümü Create tabanlı olacaktır.
+
+---
+
+## 📦 Applied Energistics 2
+
+### Görevi
+
+Merkezi veri ağı.
+
+Depolama sistemi.
+
+Otomasyon ağı.
+
+Production Chamber sistemleri ve Replikatör doğrudan AE2 ile entegre çalışacaktır.
+
+---
+
+## 🚀 Ad Astra
+
+### Görevi
+
+Uzay yolculuğu.
+
+Gezegenler.
+
+Uzay araçları.
+
+Ancak Ad Astra'nın ilerleme sistemi büyük ölçüde yeniden düzenlenecek ve New World hikâyesine uyarlanacaktır.
+
+---
+
+## ⚡ Mekanism
+
+### Görevi
+
+İleri enerji teknolojileri.
+
+Özellikle;
+
+- Fisyon
+- Füzyon
+- Antimadde
+- Gelişmiş gaz sistemleri
+
+oyunun ileri safhalarında kullanılacaktır.
+
+Mekanism erken oyunun değil, oyun sonunun teknoloji modudur.
 
 ---
 
 ## 📜 KubeJS
 
-New World'ün en önemli altyapılarından biridir.
+### Görevi
 
-Araştırma sistemi,
+New World'ün beyni.
 
-özel tarifler,
+Neredeyse bütün özel sistemler KubeJS ile geliştirilecektir.
 
-görevler,
+Örneğin;
 
-oyun mekanikleri
-
-ve birçok özel sistem KubeJS ile geliştirilecektir.
-
----
-
-# Yardımcı Modlar
-
-Bu modlar ana oynanışı destekler.
-
-Henüz kesinleşmemiştir.
-
-Topluluk önerilerine göre değişebilir.
-
----
-
-# Performans Modları
-
-Oyunun daha akıcı çalışmasını sağlayan modlardır.
-
-Performans artırıcı modlar mümkün olduğunca tercih edilecektir.
-
----
-
-# Kütüphane Modları
-
-Diğer modların çalışması için gerekli olan API ve kütüphane modlarıdır.
-
----
-
-# Planlanan Sistemler
-
-Aşağıdaki sistemler mevcut modların üzerine inşa edilecektir.
-
-- Production Chamber
 - Araştırma Sistemi
+- Production Chamber
 - Replikatör
-- Genetik Gelişim
-- Warp Teknolojisi
-- Gemi Geliştirme
-- Veri Tabanı
-- Yapay Zekâ Asistanı
+- Warp
+- Görevler
+- Özel tarifler
+- Hikâye ilerleyişi
 
-Bu sistemlerin büyük bölümü KubeJS ve özel geliştirmeler ile oluşturulacaktır.
-
----
-
-# Mod Öneri Kuralları
-
-Yeni mod önerirken aşağıdaki bilgiler paylaşılmalıdır.
-
-## Mod Adı
-
-Modun tam adı.
-
-## Ne Kazandırıyor?
-
-Bu mod oyuna hangi yeni oynanışı getiriyor?
-
-## Neden Gerekli?
-
-Mevcut sistemlerden farkı nedir?
-
-## Çakışma Durumu
-
-Başka bir modun yaptığı işi tekrar ediyor mu?
-
-## Performans
-
-Oyuna ek yük getiriyor mu?
-
-## Hikâyeye Katkısı
-
-Bu mod New World'ün bilim kurgu ve keşif temasına uyuyor mu?
+tamamen özel olarak geliştirilecektir.
 
 ---
 
-# Eklenmeyecek Mod Türleri
+# 🟡 Sınırlandırılmış Modlar
 
-Aşağıdaki mod türleri genel olarak projeye uygun görülmemektedir.
+Bu modlar projede kullanılacaktır.
 
-❌ Aynı işi yapan alternatif teknoloji modları
-
-❌ Gereksiz makine çeşitliliği oluşturan modlar
-
-❌ Yalnızca daha güçlü ekipman ekleyen modlar
-
-❌ Hikâyeye katkısı olmayan içerik modları
-
-❌ Dengeyi bozan aşırı güçlü eşyalar
-
-❌ Tekrar eden oynanış oluşturan sistemler
+Ancak varsayılan oynanışları büyük ölçüde değiştirilecektir.
 
 ---
 
-# Son Söz
+## 🏭 Modern Industrialization
 
-New World'de amaç mümkün olduğunca fazla mod kullanmak değildir.
+Modern Industrialization bu projede klasik anlamıyla kullanılmayacaktır.
+
+Tek bloklu makinelerin büyük bölümü kaldırılacak veya tarifleri devre dışı bırakılacaktır.
+
+Moddan temel olarak;
+
+- endüstriyel parçalar,
+- çok bloklu yapılar,
+- motorlar,
+- pompalar,
+- kablolar,
+- tanklar,
+- ağır sanayi altyapısı
+
+için faydalanılması planlanmaktadır.
+
+Production Chamber sistemi nedeniyle aynı işi yapan hazır makineler kullanılmayacaktır.
+
+---
+
+# 🔵 Yardımcı Modlar
+
+Bu modlar oynanışı desteklemek amacıyla kullanılacaktır.
+
+Kesin liste geliştirme sürecinde belirlenecektir.
+
+Örneğin;
+
+- JEI
+- Jade
+- EMI yerine JEI
+- Mouse Tweaks
+- Inventory düzenleme modları
+- Performans modları
+
+---
+
+# 🔴 Kullanılmayacak Mod Türleri
+
+New World'ün tasarımına uymayan modlar projeye eklenmeyecektir.
+
+Örneğin;
+
+- Aynı işi yapan ikinci teknoloji modları
+- Gereksiz makine çeşitliliği oluşturan modlar
+- Sadece daha güçlü ekipman ekleyen modlar
+- Hikâyeye katkısı olmayan içerik modları
+- Üretimi kolaylaştırıp keşfi önemsizleştiren sistemler
+
+---
+
+# Production Chamber Kuralı
+
+Bu proje için en önemli kurallardan biri şudur.
+
+> Bir modun hazır makinesi, Production Chamber içerisinde kurulması planlanan bir üretim sürecinin yerini alıyorsa, o makine sınırlandırılır veya tamamen devre dışı bırakılır.
+
+Oyuncunun amacı makine craft etmek değildir.
 
 Amaç;
 
-birbirini tamamlayan,
+üretim sistemini tasarlamak,
+
+geliştirmek
+
+ve optimize etmektir.
+
+---
+
+# Gelecekte Eklenebilecek Modlar
+
+Topluluk önerileri doğrultusunda aşağıdaki alanlarda yeni modlar değerlendirilebilir.
+
+- Yeni biyolojik sistemler
+- Yeni yapı oluşturma araçları
+- Yeni gezegen içerikleri
+- Yeni yaratıklar
+- Atmosferi güçlendiren modlar
+- Performans iyileştirmeleri
+
+Her mod yukarıdaki seçim kurallarına göre değerlendirilecektir.
+
+---
+
+# Sonuç
+
+New World mümkün olduğunca fazla mod kullanmayı hedeflemez.
+
+Amacımız;
+
+birbiriyle uyumlu,
 
 hikâyeye hizmet eden,
 
-oyuncuya yeni deneyimler sunan
+oyuncuya keşif hissi veren,
 
-bir ekosistem oluşturmaktır.
+tekrar eden işleri azaltan
 
-Her yeni mod, bu vizyona katkı sağladığı sürece projeye değer katacaktır.
+ve özgün mekanikler oluşturmamıza imkân sağlayan bir mod ekosistemi oluşturmaktır.
+
+Bu projede modlar oyunu belirlemez.
+
+Oyunun kuralları modların nasıl kullanılacağını belirler.
