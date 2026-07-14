@@ -1,0 +1,19 @@
+{
+  "formatVersion": 1,
+  "game": "minecraft",
+  "versionId": "0.1.0-alpha",
+  "name": "New World",
+  "summary": "Keşif, araştırma ve hikâye odaklı Minecraft modpack - NeoForge 1.21.1",
+  "description": "New World, oyunculara gerçek bir bilim insanı deneyimi yaşatan, keşif-tabanlı, araştırma-odaklı bir Minecraft modpack'idir. Uzaylı teknolojisini öğrenen ve kaçan bir karakterin hikâyesiyle başlar.",
+  "files": [
+    {
+      "path": "mods/",
+      "hash": "0",
+      "fileSize": 0
+    }
+  ],
+  "dependencies": {
+    "minecraft": "1.21.1",
+    "neoforge": "21.1.235"
+  }
+}

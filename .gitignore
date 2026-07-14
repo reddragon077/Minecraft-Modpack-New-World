@@ -1,0 +1,41 @@
+# Minecraft / Modpack
+crash-reports/
+logs/
+*.log
+
+# Mods ve Config
+mods/*.jar
+config/*.nbt
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+.directory
+
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build artifacts
+dist/
+build/
+*.jar
+*.zip
+
+# Gradle
+.gradle/
+build/
+out/
+
+# Environment
+.env
+.env.local
