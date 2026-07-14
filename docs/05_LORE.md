@@ -1,328 +1,215 @@
-# 05_LORE.md - Dünya Efsanesi ve Lore
+---
+Belge: 05_Lore.md
+Sürüm: 1.0
+Durum: Taslak
+Son Güncelleme: 14.07.2026
+---
 
-## 🌌 Kozmoloji
+# 🌌 05 - Evren (Lore)
 
-### The Multiverse
-- Sonsuz paralel boyutlar
-- Bazı erişilebilir (Warp ile)
-- Bazı yasaklı (tehlikeli)
-- Warp teknolojisi nadir ve tehlikeli
-
-### Known Dimensions
-1. **Home Universe** - Oyuncunun evrensi (başlangış)
-2. **Current Universe** - Oyuncunun şu anki yeri (New World)
-3. **Alien Dimension** - Uzaylılar kökenli (ulaşılamaz)
-4. **Nether** - Magma boyutu (geçiş)
-5. **End** - Sonuç boyutu (son)
+> "Evren sandığımızdan çok daha yaşlıdır.
+>
+> Ve insanlık...
+>
+> Bu hikâyenin yalnızca son satırıdır."
 
 ---
 
-## 👽 Uzaylı Medeniyeti
+# Lore Nedir?
 
-### Başlangıç
+Bu belge New World evreninin geçmişini anlatmaktadır.
 
-#### Türü: The Luminarch
-- **Kaynak:** Kristal-tabanlı yaşamlar
-- **Cilt:** Bioluminescent (kendinden ışık)
-- **Zeka:** İnsan zekasından ileri
-- **Duygular:** Merakçı, Deneyci
+Buradaki bilgiler oyunun başında oyuncuya verilmez.
 
-#### Fiziksel Tanım
-```
-Başları: Kristal yapısında
-Gövde: Yarı-eriyik, yarı-solid
-Boyut: İnsan boyundan daha küçük (1.2m)
-Özellik: Tam ışık sendromu
-```
+Oyuncu;
 
-#### Kültür
-- **Amaç:** Bilim ve keşif
-- **Değer:** Bilgi > Güç
-- **Savaş:** Kalıt teknoloji ile
-- **Dil:** Harmonikal frekans
+- araştırmalar,
+- veri kayıtları,
+- eski laboratuvarlar,
+- gemi günlükleri,
+- yapay zekâ kayıtları
 
-### Teknoloji Seviyesi
-- **Warp:** Teknoloji Tier 5
-- **Genetik:** Tier 5 Masters
-- **Enerji:** Fusion + Beyond
-- **AI:** Semi-sentient sistemler
+aracılığıyla bu bilgileri zamanla öğrenir.
 
 ---
 
-## 🚀 Uzaylı Keşfi Programı
+# İnsanlık
 
-### Görev: "Yeni Dünyalar"
-Uzaylılar sistemli olarak diğer boyutları keşfetmek için görevlendiriliyor.
+İnsanlık uzun yıllar boyunca evrende yalnız olduğunu düşündü.
 
-### Oyuncunun Evreni'ndeki Araştırma
-- Bilim insanı tesadüfi olarak keşfedildi
-- Alınan ve incelenen
-- Teknoloji öğretmelerine karar verildi
-- Araştırma projesi olarak
+Bilim ilerledi.
 
-### Kaçış Planı Gizli
-- Oyuncu direnci gösterdi
-- Kaçış teknikleri öğrendi
-- Roket hazır yardı
-- Ani kaçış planlı
+Uzay keşfedildi.
 
-### Kaçış Başarısı Ama...
-- Warp motor hatalı
-- Koordinatlar değişti
-- Yanlış boyuta varıldı
-- İlişki koptu
+Ancak hiçbir zaman başka bir uygarlıkla doğrudan temas kurulamadı.
+
+Gökyüzünde görülen açıklanamayan olaylar yalnızca komplo teorisi olarak kabul edildi.
+
+Fakat gerçek çok farklıydı.
+
+İnsanlık...
+
+İzleniyordu.
 
 ---
 
-## 🌍 Yeni Dünyanın (Current Universe) Tarihi
+# Gözlemciler
 
-### Antik Çağ: İlk Medeniyetler
-Uzaylılar geçmişte bu boyuta da geldi.
+Dünya, gelişmiş uygarlıklar tarafından binlerce yıldır gözlem altında tutulmaktadır.
 
-#### İlk Kolonisasyon
-- **Zaman:** 10,000+ yıl önce
-- **Amaç:** Kaynak çıkarma
-- **Sonuç:** Başarılı
-- **Etki:** Teknoloji bırakıldı
+İnsanlık henüz bunun farkında değildir.
 
-#### Antik Yapıları
-- Research Centers
-- Mining Stations
-- Observation Towers
-- Power Plants
+Bazı uygarlıklar insanlığı ilkel bir tür olarak görmektedir.
 
-### Orta Çağ: Terk Edilme
-Başarı sonrası boyut terk edildi.
+Bazıları ise gelecekte önemli bir rol üstleneceğine inanmaktadır.
 
-#### Neden Gittiler
-- Kaynaklar tükenmiş
-- Yeni boyutlar keşfedildi
-- Diğer medeniyetler ilginç bulundu
-- Uzaylılar ilerledi
-
-#### Bıraktıkları
-- Enerji kaynakları
-- Teknoloji kalıntıları
-- Veri diskleri (gizli)
-- AI sentineller (off)
-
-### Son Çağ: İnsani Yaşam
-
-#### Doğal Gelişim
-- İnsan/Hayvan yaşamı bağımsız
-- Doğal evrimi
-- Teknoloji bilinmiyordu
-- Uzaylılar efsane
-
-#### Oyuncu Varışı
-- İlk Warp varışı (500 yıl önce mi?)
-- Sistemleri otomatik açtı
-- Teknoloji yeniden aktif
-- New World başlangıcı
+Oyuncunun kaçırılması da bu gözlemlerin bir parçasıdır.
 
 ---
 
-## 🏛️ Antik Yapılar
+# Warp Teknolojisi
 
-### Tür 1: Araştırma Merkezleri
-**Bulunacak:** Yüzey, Yer Altı  
-**Oluştur:** Veri diskleri, Teknoloji ipuçları  
-**Güvenlik:** Düşük (Off sistemler)
+Işık hızını aşmak mümkün değildir.
 
-### Tür 2: Madencilik İstasyonları
-**Bulunacak:** Derin katmanlar  
-**Oluştur:** Nadir mineraller, Kristaller  
-**Güvenlik:** Orta (Golem sentineller)
+En azından klasik fizik bunu söyler.
 
-### Tür 3: Güç İstasyonları
-**Bulunacak:** Stratejik noktalar  
-**Oluştur:** Enerji kristalleri, Yazılım  
-**Güvenlik:** Yüksek (Aktif sistemler)
+İleri uygarlıklar ise uzayda hareket etmez.
 
-### Tür 4: Gözlem Kuleleri
-**Bulunacak:** Yüksek noktalar  
-**Oluştur:** Bilgi diskler, İnciler  
-**Güvenlik:** Minimal (Bilgi paylaşımı)
+Uzayı hareket ettirir.
+
+Warp motorları bulunduğun noktayı değil,
+
+uzayın kendisini büker.
+
+Bu teknoloji hâlâ tam olarak anlaşılamamıştır.
 
 ---
 
-## 🔮 Teknoloji Kökeni
+# Yanlış Evren
 
-### Warp Teknolojisi
-```
-Seçim: 50 bin yıl evvel keşfedildi
-Malzeme: Kristal-Enerji Sentez
-Prensip: Boyut analizi + Yeniden koordinatlandırma
-Riski: Çok yüksek (hata oranı %5)
-```
+Oyuncunun yaptığı Warp sıçraması yalnızca başarısız olmamıştır.
 
-### Genetik Teknolojisi
-```
-Seçim: 15 bin yıl evvel geliştirilen
-Yöntem: DNA okuma ve Modifikasyon
-Amaç: Adaptasyon + Geliştirme
-Risk: Kalıcı değişiklikler
-```
+Normal şartlarda ulaşılması mümkün olmayan bir evrene geçiş yapılmıştır.
 
-### Replicator Teknolojisi
-```
-Seçim: 8 bin yıl evvel icat
-Temeli: Bilgiye dayalı tekrar oluşturma
-Sıradışı: Bilim-kurgu öğesi
-Sınırlama: Karmaşık + Sınırlı
-```
+Bu evren;
+
+bildiğimiz fizik kurallarının tamamına uymamaktadır.
+
+Burada;
+
+- zaman farklı davranabilir,
+- enerji farklı şekillerde aktarılabilir,
+- madde farklı özellikler gösterebilir.
+
+Oyuncunun "büyü" olarak gördüğü birçok olay aslında henüz açıklayamadığı fizik kurallarından ibarettir.
 
 ---
 
-## 📊 Kristal Enerji Sistemi
+# Büyü
 
-### Kristal Türleri
+Bu evrende büyü diye adlandırılan güç doğaüstü değildir.
 
-#### Tier 1: Temel Kristal
-- İçerik: Basit enerji lattice
-- Üretim: Doğal büyüme
-- Güç: Düşük
-- Örn: Kuvars
+Her büyü;
 
-#### Tier 2: İleri Kristal
-- İçerik: Yapılandırılmış enerjharbor
-- Üretim: Laborli sentez
-- Güç: Orta
-- Örn: Amethyst
+henüz çözülememiş bir bilimsel prensibe dayanır.
 
-#### Tier 3: Master Kristal
-- İçerik: Yüksek densiteli enerji
-- Üretim: Nadir + Güç gerekli
-- Güç: Yüksek
-- Örn: Diyamant-benzeri
+Yeterli bilgiye sahip olan biri için büyü ile teknoloji arasında hiçbir fark yoktur.
 
-#### Tier 4: Singular Kristal
-- İçerik: Tekil enerji-boyut arabirimi
-- Üretim: Yapay (Warp motoru gerekli)
-- Güç: Masif
-- Örn: Warp Core
+Bu nedenle New World evreninde;
+
+büyü,
+
+bilimin henüz açıklayamadığı teknolojidir.
 
 ---
 
-## 🌐 Gezegenlerin Lore'u
+# Kayıp Medeniyetler
 
-### Dünya
-- **Özellikleri:** Dengeli biyoloji
-- **Kaynakları:** Çok sayıda
-- **Hayat:** Yoğun
-- **Görevi:** Başlangıç
+Bu evrende oyuncudan çok daha gelişmiş uygarlıklar yaşamıştır.
 
-### Ay
-- **Özellikleri:** Ölü, Hafif gravitesi
-- **Kaynakları:** Mineral-yoğun
-- **Hayat:** Hiçbiri
-- **Görevi:** İlk uzay adım
+Bazıları tamamen yok olmuştur.
 
-### Mars
-- **Özellikleri:** Kuru, Oksijen yok
-- **Kaynakları:** Metallurgik
-- **Hayat:** Bakteri (tehlikeli)
-- **Görevi:** Keşif + Teknoloji
+Bazıları ise geride yalnızca kalıntılar bırakmıştır.
 
-### Venus
-- **Özellikleri:** Sıcak (480C), Yoğun atmosfer
-- **Kaynakları:** Nadir alaşımlar
-- **Hayat:** Ekstremofil
-- **Görevi:** Endüstri kaynakları
+Oyuncu keşif yaptıkça;
 
-### Merkür
-- **Özellikleri:** Yanardöner, Güneş yakını
-- **Kaynakları:** Benzersiz metalleri
-- **Hayat:** Hiçbiri
-- **Görevi:** Son teknoloji materyalleri
+- eski araştırma merkezleri,
+- terk edilmiş şehirler,
+- deney laboratuvarları,
+- enerji tesisleri
+
+bulacaktır.
+
+Bu yapılar yalnızca ganimet değil,
+
+bilgi de içerir.
 
 ---
 
-## 🧬 Genetik Sistem Felsefesi
+# Bilginin Değeri
 
-### Doktrin: Evrimde Seçim
-Uzaylılar genetik değişikliğin doğal evrimin hızlanması olduğuna inanır.
+Bu evrende en değerli şey enerji değildir.
 
-### Modifikasyon Türleri
+En değerli şey bilgidir.
 
-#### Tür 1: Adaptif
-- Amaç: Ortama uyum
-- Süresi: Kalıcı
-- Yan etki: Minimum
-- Örn: Heat resistance
+Bilgi;
 
-#### Tür 2: Geliştirme
-- Amaç: Kapasite artışı
-- Süresi: Kalıcı
-- Yan etki: Değişim hissiyatı
-- Örn: Strength boost
+enerji üretir.
 
-#### Tür 3: Deneysel
-- Amaç: Bilinmeyen sonuçlar
-- Süresi: Kalıcı
-- Yan etki: Yüksek
-- Örn: Varyasyon modifikasyonları
+Teknoloji üretir.
+
+Gelişim sağlar.
+
+Yeni uygarlıklar oluşturur.
+
+Bu yüzden birçok eski uygarlık savaşlarını kaynaklar için değil,
+
+bilgi için vermiştir.
 
 ---
 
-## ⚠️ Tehlikeler ve Şeytanlar
+# Oyuncunun Rolü
 
-### Zararlı Tipller
+Oyuncu bu evreni kurtarmaya gelmemiştir.
 
-#### Kristal Monstreler
-- **Kaynak:** Başsız kristal yaşamlar
-- **Tehlike:** Enerji absorb
-- **Kontrolü:** Kristal üretim
-- **Hikâye:** Uzaylı deney hatası
+Bir kahraman değildir.
 
-#### Ender Varlıklar
-- **Kaynak:** Boyut geçidi dammars
-- **Tehlike:** Teleport saldırısı
-- **Kontrolü:** Enderpearl
-- **Hikâye:** Doğal boyut savunması
+Bir seçilmiş kişi değildir.
 
-#### İnsan-Benzerleri
-- **Kaynak:** Mutatoid insanlar
-- **Tehlike:** Hazır akılları
-- **Kontrolü:** Biyoloji
-- **Hikâye:** İllegal deney sonucu
+Oyuncu yalnızca eve dönmeye çalışan bir bilim insanıdır.
+
+Ancak araştırmaları sırasında öğrendiği gerçekler,
+
+onu beklediğinden çok daha büyük olayların içine sürükleyecektir.
 
 ---
 
-## 🔑 Gizli Öğeler
+# Bilinmeyenler
 
-### Easter Eggs
+Bu evren hakkında hâlâ cevaplanmamış birçok soru bulunmaktadır.
 
-#### Gizli Yapılar
-- Mesajlar bırakılı (Uzaylı)
-- Koordinatlar (iş!)
-- İnsan kalıntıları (geçmiş keşifçiler?)
+- Bu evren neden farklıdır?
+- Warp neden buraya ulaşmıştır?
+- Kayıp medeniyetlere ne olmuştur?
+- Oyuncu gerçekten yanlışlıkla mı buraya gelmiştir?
+- Yoksa biri onu özellikle mi buraya yönlendirmiştir?
 
-#### Gizli Teknoloji
-- Shadow teknolojiler
-- Yasak araştırmalar
-- Kara kutu kayıtları
-
-#### Alternatif Epiloglar
-- Uzaylılarla işbirliği
-- Yeni evren kurma
-- Çok seçenek sistem
+Bu soruların cevapları oyunun ilerleyen bölümlerinde ortaya çıkacaktır.
 
 ---
 
-## 📚 Hikâyeler ve Efsaneler
+# Son Söz
 
-### Yerel Efsane: "Gökyüzü Tanrıları"
-İlk insanlar uzaylıları tanrı sandı.
+New World evreninde her keşif yeni bir cevap getirirken,
 
-### Bilimsel Gerçek: "İlk Kontakt"
-Uzaylılar 500 yıl önce Bu boyuta geldi (Oyuncudan önce).
+aynı zamanda yeni sorular da doğuracaktır.
 
-### Mistik Hakikat: "Boyut Tutsakları"
-Bazı varлıklar boyutlar arasında sıkışmış kalabilir.
+Çünkü gerçek bilim,
+
+cevap bulmaktan çok,
+
+doğru soruları sorabilmektir.
 
 ---
 
-**Lore Hedefi:** Gerçekçi bilim-kurgu ortamı ile Minecraft fantazisini birleştirmek.
-
-**Oyuncu İçin:** Merak ve araştırma oyuncuyu hikâyesi keşifedecektir.
+> **"Bilinmeyen, keşfedilmeyi bekleyen bilgiden başka bir şey değildir."**

@@ -1,152 +1,242 @@
-# Minecraft-Modpack-New-World
+# 🌌 New World
 
-## 🚀 New World - Keşif Tabanlı Minecraft Modpack
+> **"Bilgi, bu evrendeki en değerli kaynaktır."**
 
-![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen?logo=minecraft)
-![NeoForge](https://img.shields.io/badge/NeoForge-21.1.235-blue)
-![Status](https://img.shields.io/badge/Status-Alpha--0.1-yellow)
-
-### 🎯 Vizyon
-
-New World, oyunculara **gerçek bir bilim insanı deneyimi** yaşatmak üzere tasarlanmış, tamamen benzersiz bir Minecraft modpack'idir.
-
-**Temel Felsefe:** Keşif → Araştırma → Bilgi → Teknoloji → Gelişim
+[![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen?logo=minecraft)]()
+[![NeoForge](https://img.shields.io/badge/NeoForge-21.1.235-blue)]()
+[![Durum](https://img.shields.io/badge/Durum-Alpha--0.1-yellow)]()
 
 ---
 
-## 📖 Hikâye
+# 🚀 New World Nedir?
 
-Oyuncu, uzaylılar tarafından kaçırılmış bir bilim insanı olarak başlar. Uzaylı teknolojisini öğrendikten sonra bir keşif gemisini çalarak kaçar, fakat hatalı bir Warp sıçraması sonucunda tamamen farklı bir evrene düşer.
+New World, keşif, araştırma ve hikâye odaklı olarak geliştirilen bir Minecraft mod paketidir.
 
-**Oyuncunun hedefleri:**
-- Gemisini onarmak
-- Kaybettiği bilgileri yeniden öğrenmek
-- Bu yeni evreni keşfetmek
-- Kendi evrenine dönebilecek Warp teknolojisini geliştirmek
+Oyuncu bu dünyada yalnızca yeni makineler üretmez.
 
----
+Bilinmeyen teknolojileri araştırır.
 
-## 🎮 Temel Mekanikler
+Kayıp bilgileri yeniden keşfeder.
 
-### 1. **Araştırma Sistemi**
-Oyuncu hiçbir teknolojiyi başlangıçta bilmez. Teknolojiler araştırma laboratuvarları, veri diskleri ve keşif görevleri sayesinde açılır.
+Uzay gemisini onarır.
 
-### 2. **Bilgi Merkezli Kaynaklar**
-- **Geleneksel:** Demir → Depo → Kullan
-- **Yeni World:** Keşfet → Analiz → Veritabanı → Replikate
+Kendi biyolojisini geliştirir.
 
-### 3. **Modüler Fabrika Sistemi**
-Oyuncu hazır makine craft etmez. Boş bir "Production Chamber" oluşturur ve içeride istediği üretim hattını tasarlar.
+Ve sonunda...
 
-### 4. **Gemi Geliştirmesi**
-Ana üs uzay gemisidir. İlerledikçe yeni laboratuvarlar, reaktör, portal odaları vb. açılır.
-
-### 5. **Genetik Sistem**
-İksir yerine DNA geliştirmesi. Night Vision yerine göz geliştirmesi yapabilir.
+Kendi evrenine geri dönebilmek için gereken teknolojiyi geliştirir.
 
 ---
 
-## 🛠️ Teknoloji Altyapısı
+# 📖 Hikâye
 
-| Mod | Amaç |
-|-----|------|
-| **Modern Industrialization** | Endüstri sistemi temeli |
-| **Applied Energistics 2** | Veri ağı ve depolaması |
-| **Ad Astra** | Uzay keşfi ve gezegenler |
-| **Create** | Mekanik sistemler |
-| **Mekanism** | İleri teknoloji ve oyun sonu |
-| **KubeJS** | Özel mekanikler ve sistem |
+İnsanlık yıllardır yalnız olmadığını düşünüyordu.
+
+Sen ise bunu kanıtlamaya çalışan bilim insanlarından biriydin.
+
+Bir gün...
+
+Onlar seni buldu.
+
+Uzun süre boyunca gözlem altında tutuldun.
+
+Teknolojilerini öğrendin.
+
+Ve sonunda...
+
+Bir keşif gemisini çalarak kaçmayı başardın.
+
+Ancak yaptığın hatalı Warp hesaplaması seni tamamen farklı bir evrene savurdu.
+
+Gemin ağır hasar aldı.
+
+Ana reaktör parçalandı.
+
+Sistemlerin büyük bölümü devre dışı kaldı.
+
+Üstelik yaşanan kazadan dolayı hafızanın önemli bir kısmını kaybettin.
+
+Şimdi önünde tek bir hedef var.
+
+Gemini yeniden çalıştırmak.
+
+Bu evreni anlamak.
+
+Ve eve dönebilecek teknolojiyi geliştirmek.
 
 ---
 
-## 📚 Belgeler
+# 🎮 New World'ü Farklı Yapan Nedir?
 
-| Belge | Açıklama |
-|-------|----------|
-| [FIRST_SETUP.md](docs/FIRST_SETUP.md) | Adım adım ilk kurulum |
-| [CONTRIBUTING.md](docs/CONTRIBUTING.md) | Katkı rehberi |
-| [MODS.md](docs/MODS.md) | Mod listesi ve açıklamaları |
-| [PROJECT_DESIGN.md](docs/PROJECT_DESIGN.md) | Tasarım felsefesi |
-| [KUBEJS_SETUP.md](docs/KUBEJS_SETUP.md) | KubeJS kurulum rehberi |
-| [TECH_TREE.md](docs/TECH_TREE.md) | Teknoloji ağacı taslağı |
-| [PERFORMANCE.md](docs/PERFORMANCE.md) | Performans optimizasyonu |
-| [PROJECT_STATUS.md](docs/PROJECT_STATUS.md) | Proje durum raporu |
+## 🔬 Araştırma Odaklı İlerleme
+
+Teknolojiler başlangıçta açık değildir.
+
+Yeni bilgiler;
+
+- araştırılarak,
+- keşfedilerek,
+- analiz edilerek
+- ve deneyler yapılarak açılır.
 
 ---
 
-## 🚀 Hızlı Başlangıç
+## 🧪 Bilgi En Değerli Kaynaktır
 
-### Gereksinimler
-- Java 21+
-- Minecraft 1.21.1
-- 6GB+ RAM (8GB+ önerilen)
+Klasik sistem:
 
-### Kurulum
-```bash
-# Repository klonla
-git clone https://github.com/reddragon077/Minecraft-Modpack-New-World.git
-
-# Launcher'da örnek oluştur (Prism Launcher önerilen)
-# NeoForge 21.1.235 seçip folder'ı göster
-
-# Modları yükle (manuel veya Modrinth üzerinden)
-# Oyunu başlatıp test et
+```
+Demir
+↓
+Makine
+↓
+Daha fazla Demir
 ```
 
-**Detaylı rehber:** [FIRST_SETUP.md](docs/FIRST_SETUP.md)
+New World:
+
+```
+Keşif
+↓
+Analiz
+↓
+Bilgi
+↓
+Yeni Teknoloji
+↓
+Gelişim
+```
 
 ---
 
-## 👥 Geliştiriciler Aranıyor
+## 🏭 Modüler Üretim Sistemi
 
-Bu projede katkı vermek istiyorsanız, özellikle aşağıdaki alanlarda yardım gerekli:
+Hazır makineler üretmek yerine;
 
-- **KubeJS Geliştiricileri** - Özel mekanikler
-- **Data Pack Tasarımcıları** - Loot tablolar ve advancement
-- **Java Mod Geliştiricileri** - Özel modlar (opsiyonel)
-- **Yapı Tasarımcıları** - Gemi ve struktur tasarımı
-- **Hikâye Yazarları** - Quest ve diyalog yazısı
-- **Test Oyuncuları** - Gameplay test ve feedback
-- **Texture/UI Sanatçıları** - Görsel tasarım
+oyuncu boş bir **Production Chamber** oluşturur.
 
-**Başlamak için:** [CONTRIBUTING.md](docs/CONTRIBUTING.md)
+Makinenin iç tasarımını tamamen kendisi yapar.
+
+Her fabrika oyuncuya özeldir.
 
 ---
 
-## 📊 Proje Durumu
+## 🚀 Uzay Gemisi
 
-**Versiyon:** 0.1.0-alpha  
-**Durum:** Aktif Geliştirme  
-**Son Güncelleme:** 2026-07-14
+Oyuncunun ana üssü bir ev değildir.
 
-- ✅ Proje altyapısı kuruldu
-- ✅ Belgeleme tamamlandı
-- ⏳ Core modlar entegrasyonu
-- ⏳ KubeJS sistem geliştirme
+Bir uzay gemisidir.
 
-**Detaylı durum:** [PROJECT_STATUS.md](docs/PROJECT_STATUS.md)
+Yeni laboratuvarlar,
 
----
+yeni üretim odaları,
 
-## 💡 Felsefemiz
+portal sistemleri,
 
-> "Amacım sadece yeni bir modpack çıkarmak değil. Minecraft içerisinde hikâyesi olan, keşif hissi veren, araştırmayı ödüllendiren, oyuncunun gerçekten geliştiğini hissettiren, teknoloji ile bilim kurguyu birleştiren, uzun yıllar hatırlanabilecek özgün bir deneyim oluşturmak."
+reaktörler
 
----
+ve araştırma merkezleri
 
-## 📄 Lisans
-
-Bu proje MIT lisansı altında yayınlanmıştır.
+oyun ilerledikçe aktif hale gelir.
 
 ---
 
-## 🤝 İletişim
+## 🧬 Genetik Gelişim
 
-- **GitHub Issues:** Hata raporlaması ve özellik talepleri
-- **Discussions:** Fikirler ve tartışmalar
+Klasik iksir sistemi yerine;
+
+oyuncu kendi DNA'sını geliştirir.
+
+Night Vision,
+
+Haste,
+
+Speed
+
+gibi özellikler biyolojik geliştirmelerle kalıcı olarak kazanılabilir.
 
 ---
 
-**Eğer bu vizyon sana da heyecan veriyorsa ve katkı sağlamak istersen, birlikte bu projeyi hayata geçirmekten büyük mutluluk duyarız!**
+# 🎯 Tasarım İlkelerimiz
 
-Made with ❤️ by reddragon077 and Contributors
+- Bilgi ham maddeden daha değerlidir.
+- Keşif her zaman ödüllendirilir.
+- Otomasyon amaç değil araçtır.
+- Her teknoloji yeni bir oynanış sunmalıdır.
+- Her büyük mekanik hikâyeye hizmet etmelidir.
+- Oyuncu yalnızca ekipmanını değil kendisini de geliştirebilmelidir.
+
+---
+
+# 📚 Dokümantasyon
+
+| Belge | Açıklama |
+|--------|----------|
+| 00_Vizyon.md | Projenin temel amacı ve felsefesi |
+| 01_Oyun_Döngüsü.md | Oyuncunun temel ilerleme döngüsü |
+| 02_Temel_Mekanikler.md | Oyunu farklı yapan sistemler |
+| 03_İlerleme_Sistemi.md | Teknoloji ilerleyişi |
+| 04_Hikâye.md | Ana hikâye |
+| 05_Lore.md | Evren ve geçmiş |
+| MODS.md | Kullanılan modlar |
+| CONTRIBUTING.md | Katkı rehberi |
+
+---
+
+# 👥 Katkıda Bulunmak İster misin?
+
+New World açık kaynak olarak geliştirilmektedir.
+
+Katkı sağlayabilecek alanlar:
+
+- KubeJS
+- Data Pack
+- Yapı Tasarımı
+- Hikâye Yazımı
+- Texture
+- UI Tasarımı
+- Java Mod Geliştirme
+- Oynanış Testleri
+
+Katkı rehberi için:
+
+**CONTRIBUTING.md**
+
+---
+
+# 📌 Proje Durumu
+
+**Sürüm**
+
+Alpha 0.1
+
+**Minecraft**
+
+1.21.1 NeoForge
+
+**Durum**
+
+🟢 Aktif Geliştirme
+
+---
+
+# 💙 Son Söz
+
+New World yalnızca yeni modlar ekleyen bir Minecraft mod paketi değildir.
+
+New World;
+
+keşfetmenin,
+
+öğrenmenin,
+
+araştırmanın,
+
+ve bilinmeyeni anlamaya çalışmanın oyunudur.
+
+Minecraft yalnızca bu hikâyeyi anlatmak için kullandığımız platformdur.
+
+---
+
+> **"Bilgi, her yolculuğun başlangıcıdır."**
+Modpakedi ile ilgili detaylı bilgileri docs içinde bulabilirsiniz
