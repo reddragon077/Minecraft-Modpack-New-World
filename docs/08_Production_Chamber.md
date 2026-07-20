@@ -1,19 +1,19 @@
 ---
 Belge: 08_Production_Chamber.md
-Sürüm: 2.0
-Durum: Taslak
-Son Güncelleme: 14.07.2026
+Sürüm: 2.1
+Durum: 🚧 Taslak
+Son Güncelleme: 20.07.2026
 ---
 
-# 🏭 08 - Production Chamber
+# 🏭 Production Chamber
 
 > **"Hazır makineler üretme. Kendi fabrikanı tasarla."**
 
 ---
 
-# Production Chamber Nedir?
+# 📖 Production Chamber Nedir?
 
-Production Chamber, New World'ün en temel mekaniklerinden biridir.
+Production Chamber, **New World**'ün en özgün ve en önemli mekaniklerinden biridir.
 
 Klasik teknoloji modlarında oyuncu her işlem için ayrı bir makine üretir.
 
@@ -25,149 +25,184 @@ Klasik teknoloji modlarında oyuncu her işlem için ayrı bir makine üretir.
 - Alloy Smelter
 - Chemical Reactor
 
-gibi onlarca farklı blok kullanılır.
+gibi onlarca farklı makine zamanla büyük ve karmaşık fabrikalar oluşturur.
 
-New World bu sistemi tamamen değiştirir.
+New World bu anlayışı tamamen değiştirir.
 
-Oyuncu yalnızca bir **Production Chamber** üretir.
+Oyuncu yalnızca bir **Production Chamber** oluşturur.
 
-Bütün üretim tesislerini bu odaların içerisine kendisi inşa eder.
+Bütün üretim tesislerini bu odaların içerisine kendisi tasarlar.
 
-Her Production Chamber küçük, bağımsız ve tamamen özelleştirilebilir bir fabrika alanıdır.
+Her Production Chamber;
+
+- bağımsız,
+- özelleştirilebilir,
+- modüler,
+- tamamen oyuncuya ait
+
+bir üretim alanıdır.
 
 ---
 
-# Temel Mantık
+# 🌌 Temel Mantık
 
-Production Chamber dışarıdan yalnızca tek blok görünür.
+Production Chamber dış dünyada yalnızca tek bir blok olarak görünür.
 
-Oyuncu bu bloğun arayüzünü açtığında;
+Bu blok aslında oyuncunun kişisel üretim alanına açılan bir geçittir.
+
+Kontrol paneli üzerinden oyuncu;
 
 - Odaya isim verebilir.
-- Giriş ve çıkış bağlantılarını ayarlayabilir.
-- Enerji bağlantılarını yapılandırabilir.
-- İç tasarım alanına ışınlanabilir.
+- Bağlantıları yapılandırabilir.
+- Durumu görüntüleyebilir.
+- İçeri ışınlanabilir.
 
-Işınlanma düğmesine basıldığında oyuncu Production Chamber'ın iç dünyasına geçer.
+İçeri girildiğinde oyuncu tamamen boş bir üretim odasına ulaşır.
 
-Burada tamamen boş bir oda bulunur.
+Bu oda başka bir **Dimension** içerisinde bulunur ve yalnızca o Production Chamber'a aittir.
 
-Bu oda oyuncunun kişisel üretim alanıdır.
-
----
-
-# Oyuncu Ne Yapar?
-
-Production Chamber'ın içerisinde;
-
-- makineleri yerleştirir,
-- enerji kablolarını döşer,
-- boru sistemlerini kurar,
-- AE2 ağını bağlar,
-- depolar oluşturur,
-- otomasyonu tasarlar.
-
-Artık makine değil,
-
-küçük bir fabrika tasarlamaktadır.
+Oyuncunun görevi bu boş alanı tam teşekküllü bir fabrikaya dönüştürmektir.
 
 ---
 
-# Her Oda Bir Göreve Sahiptir
+# 🔧 Oyuncu Ne Yapar?
+
+Production Chamber içerisinde oyuncu;
+
+- ⚙️ Makineleri yerleştirir.
+- ⚡ Enerji ağını kurar.
+- 🚰 Boru sistemlerini döşer.
+- ☁️ Gaz altyapısını oluşturur.
+- 📦 Depolama alanlarını planlar.
+- 💾 AE2 ağını bağlar.
+- 🤖 Otomasyonu tasarlar.
+
+Oyuncu artık tek bir makine üretmez.
+
+Bir üretim sistemi tasarlar.
+
+---
+
+# 🏭 Her Oda Tek Bir Göreve Sahiptir
 
 Oyuncu istediği kadar Production Chamber oluşturabilir.
 
-Örneğin;
+Örnek kullanım alanları;
 
-📦 Demir İşleme Tesisi
+- 📦 Demir İşleme Tesisi
+- ⚗️ Kimya Laboratuvarı
+- 🧪 Genetik Laboratuvarı
+- ⚡ Enerji Üretim Merkezi
+- 🔩 Çelik Üretim Hattı
+- ☢️ Yakıt İşleme Ünitesi
+- 🌌 Warp Bileşen Fabrikası
 
-⚗ Kimya Laboratuvarı
-
-🧪 Genetik Laboratuvarı
-
-⚡ Enerji Modülü
-
-🔩 Çelik Üretim Hattı
-
-☢ Yakıt İşleme Ünitesi
-
-🌌 Warp Bileşen Fabrikası
-
-Her oda tek bir amaca hizmet eder.
+Her oda belirli bir üretim alanına odaklanır.
 
 ---
 
-# Kontrol Paneli
+# 🎛️ Kontrol Paneli
 
-Production Chamber'ın dış bloğunda gelişmiş bir kontrol paneli bulunur.
+Production Chamber'ın dış bloğu gelişmiş bir kontrol paneline sahiptir.
 
-Oyuncu;
+Buradan;
 
-- Odaya isim verebilir.
-- Oda rengini değiştirebilir.
-- Giriş ve çıkış yönlerini belirleyebilir.
-- Enerji bağlantısını seçebilir.
-- Gaz bağlantısını seçebilir.
-- Sıvı bağlantısını seçebilir.
-- Veri bağlantısını ayarlayabilir.
+- Oda adı
+- Oda rengi
+- Bağlantı durumu
+- Güç tüketimi
+- Durum bilgisi
+- Giriş ve çıkış noktaları
 
-Bu ayarlar daha sonra AE2 ağı tarafından da kullanılabilir.
+yönetilebilir.
+
+İlerleyen aşamalarda bu panel uzaktan da erişilebilir olacaktır.
 
 ---
 
-# Bağlantı Sistemi
+# 🔌 Bağlantı Sistemi
 
-Her yüzey farklı görev üstlenebilir.
+Production Chamber fiziksel bağlantılar yerine bağlantı noktaları kullanır.
 
-Örneğin;
+Varsayılan örnek yapı;
 
-```
-Üst      → Enerji
+```text
+Üst   → Enerji
 
-Alt      → Gaz
+Alt   → Gaz
 
-Sağ      → Eşya Girişi
+Sağ   → Eşya Girişi
 
-Sol      → Eşya Çıkışı
+Sol   → Eşya Çıkışı
 
-Ön       → Sıvı Girişi
+Ön    → Sıvı
 
-Arka     → Veri / Ağ
+Arka  → Veri / Ağ
 ```
 
-Bu yapı tamamen oyuncu tarafından değiştirilebilir.
+Bu düzen tamamen oyuncu tarafından değiştirilebilir.
 
 ---
 
-# Araştırma Gerektirir
+# 🆔 Connection ID Sistemi
 
-Production Chamber yalnızca boş bir odadır.
+Her giriş ve çıkış noktası benzersiz bir **Connection ID** kullanır.
 
-Yeni makineler kurabilmek için;
+Örneğin;
 
-- gerekli araştırmalar yapılmalı,
-- ilgili teknoloji açılmalı,
-- gerekli parçalar üretilmelidir.
+```text
+Iron Input       → A101
 
-Oyuncu araştırmadan hiçbir sistemi kullanamaz.
+Dust Output      → A102
+
+Power Input      → P001
+
+Hydrogen Gas     → G014
+
+AE2 Network      → D008
+```
+
+Production Chamber içerisindeki bağlantı blokları ile dış dünyadaki bağlantı blokları aynı kimliği kullandığında otomatik olarak birbirine bağlanır.
+
+Bu sayede;
+
+- Gereksiz kablolama azalır.
+- Fabrikalar daha düzenli olur.
+- Modüler üretim hatları oluşturulabilir.
+- Aynı Chamber birden fazla giriş ve çıkış kullanabilir.
 
 ---
 
-# Üretim Mantığı
+# 🔬 Araştırma Gerektirir
 
-Örneğin oyuncu "Macerator" yapmak istemektedir.
+Production Chamber başlangıçta yalnızca boş bir odadır.
 
-Klasik mod paketlerinde;
+Yeni sistemler kurabilmek için;
 
+- Gerekli araştırmalar tamamlanmalı,
+- İlgili teknoloji açılmalı,
+- Üretim bileşenleri hazırlanmalıdır.
+
+Araştırılmamış hiçbir sistem kullanılamaz.
+
+---
+
+# 🔄 Üretim Mantığı
+
+Klasik teknoloji modlarında;
+
+```text
 Craft
 
 ↓
 
-Makine hazır.
+Makine Hazır
+```
 
-New World'de ise;
+New World'de ise süreç tamamen farklıdır.
 
-Araştırma
+```text
+Araştır
 
 ↓
 
@@ -175,116 +210,100 @@ Production Chamber
 
 ↓
 
-Parçalama hattını kur
+Üretim Hattını Tasarla
 
 ↓
 
-Enerjiyi bağla
+Enerji Sistemini Kur
 
 ↓
 
-Üretime başla
+Otomasyonu Yap
 
-Oyuncu aslında makine değil,
+↓
 
-üretim sürecini inşa eder.
+Üretime Başla
+```
+
+Oyuncu makine üretmez.
+
+Üretim sürecini tasarlar.
 
 ---
 
-# Gelişim Sistemi
+# 📈 Gelişim Sistemi
 
-Production Chamber zamanla gelişebilir.
-
----
+Production Chamber zamanla geliştirilebilir.
 
 ## Mk-I
 
-İlk üretim odası.
-
-Küçük alan.
-
-Temel makineler.
-
-Düşük enerji kapasitesi.
-
-Erken oyun.
+- Küçük üretim alanı
+- Temel makineler
+- Düşük enerji kapasitesi
+- Erken oyun
 
 ---
 
 ## Mk-II
 
-Orta seviye üretim tesisi.
-
-Daha büyük alan.
-
-Kimya sistemleri.
-
-Gaz işleme.
-
-Daha fazla giriş çıkış.
+- Daha geniş alan
+- Kimya sistemleri
+- Gaz işleme
+- Daha fazla bağlantı noktası
 
 ---
 
 ## Mk-III
 
-Gelişmiş üretim merkezi.
-
-Büyük alan.
-
-Tam otomasyon.
-
-AE2 entegrasyonu.
-
-Uzaktan kontrol.
-
-Yapay zekâ desteği.
-
-Alt üretim odaları oluşturabilme.
+- Büyük üretim merkezi
+- Tam otomasyon
+- AE2 entegrasyonu
+- Uzaktan kontrol
+- Yapay zekâ desteği
+- Gelişmiş üretim hatları
 
 ---
 
-# Avantajları
+# ✅ Avantajları
 
 Production Chamber sistemi;
 
-✔ Gereksiz makine kalabalığını azaltır.
-
-✔ Fabrikaların daha düzenli olmasını sağlar.
-
-✔ Oyuncuya tamamen özgür tasarım imkânı verir.
-
-✔ Aynı teknolojiyi kullanan oyuncuların bile farklı fabrikalar kurmasını sağlar.
-
-✔ Gerçek bir mühendislik hissi oluşturur.
+- ✔ Gereksiz makine kalabalığını azaltır.
+- ✔ Fabrikaları daha düzenli hâle getirir.
+- ✔ Oyuncuya tam tasarım özgürlüğü sunar.
+- ✔ Aynı teknolojiyi kullanan oyuncuların tamamen farklı fabrikalar kurmasını sağlar.
+- ✔ Gerçek bir mühendislik hissi oluşturur.
+- ✔ Üretimi blok odaklı değil, süreç odaklı hâle getirir.
 
 ---
 
-# Gelecek Planları
+# 🚀 Gelecek Planları
 
 İlerleyen sürümlerde;
 
-- uzaktan erişim,
-- oda yükseltmeleri,
-- otomatik bakım,
-- yapay zekâ yönetimi,
-- modül sistemi,
-- çok katlı üretim odaları
+- Uzaktan erişim
+- Yapay zekâ yönetimi
+- Oda yükseltmeleri
+- Modül sistemi
+- Otomatik bakım
+- Çok katlı üretim odaları
+- Gelişmiş durum raporları
 
 eklenmesi planlanmaktadır.
 
 ---
 
-# Sonuç
+# 📌 Sonuç
 
 Production Chamber yalnızca yeni bir makine değildir.
 
 Oyuncunun mühendislik becerisini yansıtan kişisel üretim alanıdır.
 
-New World'de oyuncular aynı makineleri kullanabilir.
+New World'de herkes aynı teknolojilere sahip olabilir.
 
-Ancak hiçbir oyuncunun fabrikası diğerininkiyle aynı olmayacaktır.
+Ancak hiçbir oyuncunun üretim tesisi diğerininkiyle aynı olmayacaktır.
 
-Production Chamber sistemi New World'ün en özgün mekaniklerinden biridir.
+Production Chamber, New World'ü klasik teknoloji mod paketlerinden ayıran en özgün mekaniklerden biridir.
 
 ---
 

@@ -1,268 +1,394 @@
 ---
 Belge: 10_Genetik.md
-Sürüm: 1.0
-Durum: Taslak
-Son Güncelleme: 14.07.2026
+Sürüm: 1.1
+Durum: 🚧 Taslak
+Son Güncelleme: 20.07.2026
 ---
 
-# 🧬 10 - Genetik Gelişim Sistemi
+# 🧬 Genetik Gelişim Sistemi
 
 > **"Teknolojinin ulaşabileceği son nokta, insanın kendisini geliştirmesidir."**
 
 ---
 
-# Giriş
+# 📖 Giriş
 
-New World'de oyuncu yalnızca makinelerini geliştirmez.
+New World'de oyuncu yalnızca makinelerini, üretim sistemlerini ve uzay gemisini geliştirmez.
 
 Zamanla kendi bedenini de geliştirir.
 
-Minecraft'ta bulunan geçici iksir sistemi yerine;
+Klasik Minecraft'taki geçici güçlendirmelerin yanında;
 
-kalıcı biyolojik geliştirmeler,
+- Kalıcı biyolojik geliştirmeler,
+- Genetik modifikasyonlar,
+- Sinir sistemi yükseltmeleri,
+- Teknolojik implantlar
 
-genetik modifikasyonlar
+oyuncunun ilerleyişinin önemli bir parçasını oluşturur.
 
-ve teknolojik implantlar kullanılır.
+Oyuncunun bedeni de tıpkı uzay gemisi gibi;
 
-Oyuncunun bedeni de tıpkı uzay gemisi gibi zamanla gelişir.
-
----
-
-# Temel Felsefe
-
-Klasik Minecraft'ta oyuncu sürekli aynı iksirleri üretir.
-
-```
-Night Vision
-
-↓
-
-İç
-
-↓
-
-Bitince tekrar üret
-```
-
-New World'de ise;
-
-```
-Araştır
-
-↓
-
-DNA Analizi
-
-↓
-
-Genetik Modifikasyon
-
-↓
-
-Kalıcı Gelişim
-```
-
-Oyuncu artık geçici güçler değil,
-
-kalıcı biyolojik yetenekler kazanır.
+başlangıçta sınırlıdır, araştırmalarla gelişir ve yeni koşullara uyum sağlar.
 
 ---
 
-# Genetik Araştırmalar
+# 🧠 Temel Felsefe
 
-Her geliştirme önce araştırılmalıdır.
+Klasik Minecraft'ta birçok güçlendirme geçici olarak elde edilir.
+
+```text
+İksiri Üret
+
+↓
+
+Kullan
+
+↓
+
+Etki Sona Erer
+
+↓
+
+Tekrar Üret
+```
+
+New World'de ise kalıcı gelişimin temel döngüsü şöyledir:
+
+```text
+Yeni Canlı Keşfet
+
+↓
+
+Biyolojik Örnek Topla
+
+↓
+
+DNA Analizi Yap
+
+↓
+
+Uygun Gen Dizilimini Çöz
+
+↓
+
+Modifikasyonu Uygula
+
+↓
+
+Kalıcı Gelişim Kazan
+```
+
+Oyuncu yalnızca geçici güçler elde etmez.
+
+Kendi biyolojik yapısını farklı dünyaların koşullarına uyum sağlayacak şekilde değiştirir.
+
+---
+
+# 🔬 Genetik Araştırmalar
+
+Her biyolojik geliştirme öncelikle araştırılmalıdır.
 
 Oyuncu;
 
-- yeni canlıları inceler,
-- DNA örnekleri toplar,
-- laboratuvarda analiz yapar,
-- deneyler gerçekleştirir.
+- Yeni canlı türlerini inceler.
+- DNA ve doku örnekleri toplar.
+- Örnekleri laboratuvarda analiz eder.
+- Genetik özellikleri karşılaştırır.
+- Güvenli gen dizilimleri oluşturur.
+- Kontrollü biyolojik deneyler gerçekleştirir.
 
-Yeterli araştırma tamamlandığında yeni genetik geliştirmeler açılır.
+Yeterli araştırma tamamlandığında yeni geliştirmeler açılır.
 
----
+Bir canlıdan örnek toplamak, o canlının bütün özelliklerini doğrudan kazanmak anlamına gelmez.
 
-# Gelişim Kategorileri
-
-## 👁 Görme
-
-Oyuncu göz yapısını geliştirebilir.
-
-Örnek geliştirmeler;
-
-- Gece Görüşü
-- Termal Görüş
-- Gelişmiş Yakınlaştırma
-- Hareket Algılama
+Öncelikle ilgili biyolojik mekanizmanın anlaşılması gerekir.
 
 ---
 
-## 💪 Kas Sistemi
+# 🧬 Biyolojik Gelişim ve Teknolojik İmplantlar
 
-Kas yapısı güçlendirilebilir.
+Oyuncunun gelişimi iki temel yöntemle gerçekleşebilir.
 
-Örnek geliştirmeler;
+## Biyolojik Geliştirmeler
+
+Oyuncunun DNA'sına ve doğal vücut sistemlerine uygulanır.
+
+Genellikle;
+
+- Kalıcıdır.
+- Enerji tüketmeden çalışır.
+- Biyolojik uyumluluk gerektirir.
+- Aynı anda sınırlı sayıda uygulanabilir.
+
+---
+
+## Teknolojik İmplantlar
+
+Oyuncunun bedenine yerleştirilen gelişmiş teknolojik sistemlerdir.
+
+Genellikle;
+
+- Enerji gerektirir.
+- Daha sonra değiştirilebilir.
+- Gemi sistemleriyle bağlantı kurabilir.
+- Bakım veya kalibrasyon gerektirebilir.
+
+Biyolojik geliştirmeler ile teknolojik implantlar birbirinin alternatifi olmak zorunda değildir.
+
+Bazı ileri geliştirmeler her iki sistemin birlikte kullanılmasını gerektirebilir.
+
+---
+
+# 📊 Gelişim Kategorileri
+
+## 👁️ Görme Sistemi
+
+Oyuncunun göz yapısı ve görsel algısı geliştirilebilir.
+
+Örnek geliştirmeler:
+
+- Gece görüşü
+- Termal görüş
+- Gelişmiş yakınlaştırma
+- Hareket algılama
+- Düşük ışıkta daha net görme
+- Enerji veya yaşam izi algılama
+
+---
+
+## 💪 Kas ve İskelet Sistemi
+
+Kas dokusu, kemik yapısı ve fiziksel dayanıklılık geliştirilebilir.
+
+Örnek geliştirmeler:
 
 - Daha hızlı kazma
-- Daha güçlü saldırılar
+- Daha güçlü fiziksel saldırılar
 - Daha yüksek taşıma kapasitesi
 - Daha hızlı koşma
+- Daha yüksek sıçrama
+- Düşme hasarına karşı dayanıklılık
 
 ---
 
-## 🫀 Dolaşım Sistemi
+## 🫀 Dolaşım ve Metabolizma Sistemi
 
-Vücudun enerji verimliliği artırılabilir.
+Vücudun enerji kullanımı ve kendini yenileme kapasitesi geliştirilebilir.
 
-Örnek geliştirmeler;
+Örnek geliştirmeler:
 
 - Daha hızlı iyileşme
-- Daha uzun sprint
-- Açlığa dayanıklılık
+- Daha uzun süre koşabilme
+- Açlığa karşı dayanıklılık
 - Zehir direnci
+- Radyasyon toleransı
+- Daha verimli besin kullanımı
 
 ---
 
 ## 🫁 Solunum Sistemi
 
-Oyuncu farklı atmosferlere uyum sağlayabilir.
+Oyuncu farklı atmosfer ve çevre koşullarına uyum sağlayabilir.
 
-Örnek geliştirmeler;
+Örnek geliştirmeler:
 
-- Su altında daha uzun kalma
-- Zehirli gazlara direnç
-- Düşük oksijen ortamlarında yaşama
-- Basınç dayanımı
+- Su altında daha uzun süre kalma
+- Zehirli gazlara karşı direnç
+- Düşük oksijen ortamlarında hayatta kalma
+- Yüksek basınca dayanıklılık
+- Aşırı sıcaklık koşullarına uyum
+- Havadaki zararlı parçacıkları filtreleme
 
 ---
 
 ## 🧠 Sinir Sistemi
 
-Beyin ve refleksler geliştirilebilir.
+Beyin, refleksler ve sinir iletimi geliştirilebilir.
 
-Örnek geliştirmeler;
+Örnek geliştirmeler:
 
-- Daha hızlı işlem yapma
-- Gelişmiş araştırma verimi
-- Daha yüksek deney başarısı
-- Teknoloji kullanımında verimlilik
+- Daha hızlı refleksler
+- Gelişmiş hareket kontrolü
+- Araştırma süreçlerinde daha yüksek verim
+- Deneylerde hata payının azalması
+- Gelişmiş teknolojilerle daha hızlı etkileşim
+- Yapay zekâ sistemleriyle doğrudan bağlantı
 
 ---
 
-# Genetik Laboratuvarı
+## 🧫 Bağışıklık Sistemi
 
-Bütün geliştirmeler Genetik Laboratuvarında yapılır.
+Oyuncunun yabancı organizmalara ve biyolojik tehditlere karşı direnci geliştirilebilir.
+
+Örnek geliştirmeler:
+
+- Hastalıklara karşı direnç
+- Parazitlere karşı savunma
+- Yabancı biyolojik maddelere uyum
+- Enfeksiyonların daha hızlı iyileşmesi
+- Bilinmeyen atmosferlerde daha güvenli hareket
+
+---
+
+# 🧪 Genetik Laboratuvarı
+
+Bütün biyolojik geliştirmeler **Genetik Laboratuvarı** içerisinde gerçekleştirilir.
 
 Oyuncu burada;
 
-- DNA analiz eder,
-- örnek saklar,
-- yeni gen dizilimleri oluşturur,
-- biyolojik deneyler gerçekleştirir.
+- DNA analiz eder.
+- Biyolojik örnekleri saklar.
+- Gen dizilimlerini karşılaştırır.
+- Yeni genetik kombinasyonlar oluşturur.
+- Uyumluluk testleri gerçekleştirir.
+- Modifikasyonları hazırlar.
 
-Laboratuvar oyun ilerledikçe gelişebilir.
+Genetik Laboratuvarı başlangıçta hasarlı veya kullanılamaz durumda olabilir.
+
+Oyuncu gerekli araştırmaları ve onarımları tamamladıktan sonra laboratuvarın yeni bölümlerini aşamalı olarak etkinleştirir.
 
 ---
 
-# DNA Kaynakları
+# 🌍 DNA Kaynakları
 
-Oyuncu geliştirmeleri yalnızca kendi DNA'sıyla yapamaz.
+Oyuncu bütün geliştirmeleri yalnızca kendi DNA'sını kullanarak oluşturamaz.
 
-Farklı canlılar;
-
-farklı biyolojik özellikler taşır.
+Farklı dünyalarda yaşayan canlılar kendilerine özgü biyolojik özellikler taşır.
 
 Örneğin;
 
-- hızlı bir canlıdan çeviklik,
-- güçlü bir canlıdan kas gelişimi,
-- gece yaşayan bir canlıdan gece görüşü
+- Hızlı bir canlıdan gelişmiş kas tepkileri,
+- Güçlü bir canlıdan yoğun kas dokusu,
+- Gece yaşayan bir canlıdan düşük ışık görüşü,
+- Zehirli bir ortamda yaşayan canlıdan toksin direnci,
+- Su altında yaşayan bir canlıdan gelişmiş oksijen kullanımı
 
-gibi özellikler araştırılabilir.
+araştırılabilir.
 
-Bu süreç doğrudan kopyalama değil,
+Bu süreç doğrudan özellik kopyalama mantığıyla çalışmaz.
 
-biyolojik analiz ve sentez mantığıyla çalışır.
-
----
-
-# Genetik Denge
-
-Her geliştirme ücretsiz değildir.
-
-Bazı güçlü modifikasyonlar;
-
-- yüksek enerji,
-- nadir biyolojik örnekler,
-- uzun araştırmalar
-
-gerektirir.
-
-Oyuncu her özelliği aynı anda açamaz.
-
-Stratejik seçimler yapmak zorundadır.
+Toplanan örnekler analiz edilir, insan biyolojisiyle karşılaştırılır ve güvenli bir genetik sentez oluşturulur.
 
 ---
 
-# Teknoloji ile İlişkisi
+# ⚖️ Genetik Denge
 
-Genetik geliştirmeler tek başına çalışmaz.
+Her geliştirme güvenli veya sınırsız değildir.
+
+Güçlü modifikasyonlar;
+
+- Nadir biyolojik örnekler,
+- Uzun araştırma süreçleri,
+- Yüksek enerji,
+- Gelişmiş laboratuvar ekipmanları,
+- Uyumlu genetik materyaller
+
+gerektirebilir.
+
+Oyuncunun bedeni aynı anda yalnızca belirli miktarda modifikasyonu destekleyebilir.
+
+Bu nedenle oyuncu bütün geliştirmeleri aynı anda kullanamaz.
+
+Kendi oyun tarzına uygun seçimler yapmak zorundadır.
+
+---
+
+# 🧩 Genetik Uyumluluk
+
+Her canlıdan elde edilen özellik insan biyolojisiyle doğrudan uyumlu değildir.
+
+Bazı geliştirmeler;
+
+- Ek araştırma,
+- Dengeleyici genler,
+- Biyolojik taşıyıcılar,
+- Teknolojik implant desteği
+
+gerektirebilir.
+
+Başarısız veya tamamlanmamış araştırmalar doğrudan oyuncuya uygulanamaz.
+
+Bu sistem, genetik gelişimin yalnızca örnek toplamakla değil;
+
+örneği doğru şekilde anlamakla mümkün olmasını sağlar.
+
+---
+
+# ⚙️ Teknolojiyle İlişkisi
+
+Genetik gelişim, teknoloji ilerleyişinden bağımsız değildir.
 
 Yeni biyolojik geliştirmeler için;
 
-- ileri laboratuvarlar,
-- gelişmiş enerji sistemleri,
-- yeni araştırmalar
+- Gelişmiş laboratuvarlar,
+- Yüksek kapasiteli enerji sistemleri,
+- Hassas analiz cihazları,
+- Güvenli biyolojik üretim hatları,
+- Yeni araştırma verileri
 
-gereklidir.
+gerekir.
 
-Teknoloji ilerledikçe biyoloji de gelişir.
+Genetik bileşenlerin ve implant parçalarının üretimi için özel bir **Production Chamber** kurulabilir.
 
----
-
-# Hikâyedeki Yeri
-
-Oyuncu farklı bir evrende hayatta kalmaktadır.
-
-Her gezegen farklı yaşam formlarına sahiptir.
-
-Bu canlıların biyolojik yapısı;
-
-oyuncunun gelişimi için yeni fırsatlar sunar.
-
-Keşif yalnızca teknoloji değil,
-
-biyoloji açısından da önemlidir.
+Teknoloji geliştikçe biyolojik araştırmalar da derinleşir.
 
 ---
 
-# Tasarım İlkeleri
+# 📖 Hikâyedeki Yeri
 
-Genetik sistemi;
+Oyuncu bilinmeyen bir evrende hayatta kalmaya çalışmaktadır.
 
-✔ İksir sisteminin yerini alır.
+Karşılaştığı dünyalar ve boyutlar;
 
-✔ Kalıcı gelişim sağlar.
+- Farklı atmosferlere,
+- Bilinmeyen hastalıklara,
+- Aşırı sıcaklıklara,
+- Zehirli ortamlara,
+- Yabancı yaşam formlarına
 
-✔ Keşfi ödüllendirir.
+sahip olabilir.
 
-✔ Araştırma gerektirir.
+Oyuncunun insan bedeni bu koşulların tamamına doğal olarak uyum sağlayamaz.
 
-✔ Hikâyeyle bağlantılıdır.
+Bu nedenle genetik gelişim yalnızca güçlenme yöntemi değildir.
+
+Oyuncunun bilinmeyen evrene uyum sağlama sürecidir.
+
+---
+
+# 📜 Tasarım İlkeleri
+
+Genetik gelişim sistemi;
+
+✔ Kalıcı ilerleme sağlar.
+
+✔ Geçici güçlendirmelere alternatif oluşturur.
+
+✔ Keşfi ve canlı incelemeyi ödüllendirir.
+
+✔ Bilimsel araştırma gerektirir.
+
+✔ Hikâyeyle doğrudan bağlantılıdır.
 
 ✔ Oyuncunun oyun tarzını kişiselleştirir.
 
+✔ Teknolojik ilerlemeyi destekler.
+
+✔ Stratejik seçimler gerektirir.
+
+Genetik geliştirmeler yalnızca oyuncuyu daha güçlü yapmak için kullanılmaz.
+
+Yeni çevrelerde hayatta kalmayı ve daha önce erişilemeyen bölgeleri keşfetmeyi mümkün hâle getirir.
+
 ---
 
-# Sonuç
+# 📌 Sonuç
 
-New World'de oyuncu yalnızca daha iyi ekipmanlar üretmez.
+New World'de oyuncu yalnızca daha gelişmiş ekipmanlar üretmez.
 
-Kendi bedenini de geliştirir.
+Kendi bedenini de araştırır, değiştirir ve geliştirir.
 
-Her yeni genetik geliştirme,
+Her genetik geliştirme;
 
 oyuncunun bilinmeyen bir evrene uyum sağlama sürecinin bir parçasıdır.
 

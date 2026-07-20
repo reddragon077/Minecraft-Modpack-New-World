@@ -1,40 +1,49 @@
 ---
 Belge: 06_Teknolojiler.md
-Sürüm: 1.0
-Durum: Taslak
-Son Güncelleme: 14.07.2026
+Sürüm: 1.1
+Durum: 🚧 Taslak
+Son Güncelleme: 20.07.2026
 ---
 
-# ⚛️ 06 - Teknolojiler
+# ⚛️ Teknolojiler
 
-> "Teknoloji, öğrenmenin fiziksel hâlidir."
+> **"Teknoloji, öğrenmenin fiziksel hâlidir."**
 
 ---
 
-# Giriş
+# 📖 Giriş
 
-New World'de teknolojiler oyuncuya hazır olarak sunulmaz.
+New World'de hiçbir teknoloji oyuncuya hazır olarak sunulmaz.
 
-Oyuncu hiçbir teknolojiyi başlangıçta bilmez.
+Oyuncu oyuna gelişmiş teknolojiler hakkında neredeyse hiçbir bilgiye sahip olmadan başlar.
 
 Her yeni teknoloji;
 
-- araştırılarak,
-- keşfedilerek,
-- analiz edilerek
-- ve deneyler yapılarak açılır.
+- 🌍 Keşif yapılarak,
+- 🔬 Analiz edilerek,
+- 📖 Araştırılarak,
+- 🧪 Deneyler gerçekleştirilerek
+
+öğrenilir.
 
 Teknoloji bu oyunda yalnızca daha güçlü makineler üretmek anlamına gelmez.
 
-Her teknoloji oyuncuya yeni bir bakış açısı kazandırır.
+Her yeni teknoloji oyuncuya yeni bir bakış açısı ve yeni oynanış imkânları kazandırır.
 
 ---
 
-# Teknoloji Seviyeleri
+# 📈 Teknoloji Seviyeleri
 
 Oyuncunun gelişimi belirli teknoloji seviyelerine ayrılmıştır.
 
-Her seviye yeni sistemler ve yeni oynanış mekanikleri açar.
+Her seviye;
+
+- Yeni araştırmalar,
+- Yeni üretim yöntemleri,
+- Yeni gemi sistemleri,
+- Yeni keşif fırsatları
+
+sunarak oyunun ilerleyişini şekillendirir.
 
 ---
 
@@ -44,63 +53,64 @@ Oyuncunun bildiği tek şey temel yaşam becerileridir.
 
 Bu seviyede;
 
-- temel aletler,
-- basit üretim,
-- ilkel işleme yöntemleri
+- Basit aletler,
+- İlkel üretim,
+- Temel işleme yöntemleri
 
 kullanılır.
 
-Oyuncu henüz uzay gemisinin sistemlerini kullanamaz.
+Uzay gemisinin gelişmiş sistemleri henüz çalışmamaktadır.
 
 ---
 
 # 🔬 Seviye 2 — Bilimsel Araştırma
 
-Oyuncu ilk laboratuvarını kurar.
+Oyuncu ilk araştırma laboratuvarını yeniden çalıştırır.
 
 Artık;
 
-- analiz,
-- araştırma,
-- veri toplama
+- Numune analizi,
+- Veri toplama,
+- Araştırma projeleri
 
-mümkün hale gelir.
+mümkün hâle gelir.
 
 Teknolojik gelişimin gerçek başlangıcı bu aşamadır.
 
 ---
 
-# 🏭 Seviye 3 — Endüstriyel Üretim
+# 🏭 Seviye 3 — Üretim Teknolojileri
 
-Yeni araştırmalar sayesinde ilk otomasyon sistemleri kurulabilir.
+Oyuncu ilk **Production Chamber** sistemlerini kurmaya başlar.
 
-Oyuncu;
+Bu seviyede;
 
-- üretim hatları,
-- enerji sistemleri,
-- işleme tesisleri
+- Üretim odaları,
+- İşleme makineleri,
+- Temel otomasyon,
+- Üretim altyapısı
 
-oluşturmaya başlar.
+oluşturulur.
 
-Bu aşamada amaç üretim miktarını artırmak değil,
+Amaç daha fazla üretmek değil;
 
-araştırmaları sürdürebilmektir.
+araştırmaları sürdürebilecek bir altyapı kurmaktır.
 
 ---
 
 # ⚡ Seviye 4 — Enerji Teknolojileri
 
-Gelişmiş makineler artık yüksek miktarda enerji ister.
+Artık daha gelişmiş sistemler yüksek miktarda enerji istemektedir.
 
 Oyuncu;
 
-- gelişmiş jeneratörler,
-- enerji depolama,
-- enerji aktarımı
+- Gelişmiş jeneratörler,
+- Enerji depolama sistemleri,
+- Enerji iletim ağları
 
-konularında yeni teknolojiler geliştirir.
+geliştirir.
 
-Enerji artık oyunun en önemli altyapılarından biridir.
+Enerji artık geminin yeniden çalışmasının temelidir.
 
 ---
 
@@ -110,95 +120,100 @@ Oyuncu yeni elementler keşfeder.
 
 Yeni alaşımlar üretir.
 
-Yeni materyaller geliştirir.
+Farklı materyaller geliştirir.
 
-Artık teknoloji yalnızca makine üretmekten çıkıp,
+Bu aşamada araştırmalar yalnızca makinelere değil;
 
-maddeyi anlamaya dönüşür.
+maddenin temel özelliklerini anlamaya odaklanır.
 
 ---
 
-# 📡 Seviye 6 — Dijital Teknolojiler
+# 💾 Seviye 6 — Dijital Teknolojiler
 
-Bu seviyede oyuncu;
+Bilgi artık oyunun merkezine yerleşir.
 
-- gelişmiş veri depolama,
-- otomatik üretim,
-- bilgi ağları
+Oyuncu;
+
+- AE2 veri depolama sistemleri,
+- Bilgi ağları,
+- Otomatik lojistik,
+- Dijital üretim altyapısı
 
 oluşturabilir.
 
-Bilgi artık yalnızca araştırma değil,
-
-üretimin de merkezindedir.
+Bilginin yönetimi en az üretim kadar önemlidir.
 
 ---
 
-# 🧬 Seviye 7 — Genetik Teknolojiler
+# 🧬 Seviye 7 — Biyoteknoloji
 
-Oyuncu kendi biyolojisini değiştirebilecek seviyeye ulaşır.
+Oyuncu artık kendi biyolojisini geliştirebilecek seviyeye ulaşmıştır.
 
-Yeni araştırmalar sayesinde;
+Araştırmalar sayesinde;
 
-- biyolojik geliştirmeler,
-- genetik modifikasyonlar,
-- kalıcı yetenekler
+- Genetik geliştirmeler,
+- Kalıcı biyolojik yükseltmeler,
+- Yeni yetenekler
 
 elde edilebilir.
 
-Teknoloji artık yalnızca makineleri değil,
+Teknoloji artık yalnızca makineleri değil;
 
 oyuncunun kendisini de geliştirmektedir.
 
 ---
 
-# 🌌 Seviye 8 — Uzay Teknolojileri
+# 🚀 Seviye 8 — Gemi Teknolojileri
 
-Bu seviyede;
+Oyuncu geminin birçok kritik sistemini yeniden çalıştırmaya başlar.
 
-- gelişmiş portal sistemleri,
-- yıldızlar arası iletişim,
-- uzun mesafeli enerji aktarımı
+Bunlar;
 
-gibi teknolojiler kullanılabilir.
+- Araştırma istasyonları,
+- Teleport ağı,
+- Yapay zekâ sistemleri,
+- Gemi bilgisayarı,
+- İleri üretim merkezleri
 
-Geminin birçok bölümü tekrar aktif hale gelir.
+olabilir.
+
+Geminin onarılması oyuncunun teknolojik seviyesini doğrudan yansıtır.
 
 ---
 
 # ⚛️ Seviye 9 — Kuantum Teknolojileri
 
-Oyuncu artık klasik fiziğin sınırlarını aşan sistemlerle tanışır.
+Oyuncu artık klasik fiziğin sınırlarını aşan sistemlerle çalışmaktadır.
 
-Bu aşamada;
+Bu seviyede;
 
-- madde dönüşümü,
-- yüksek boyutlu enerji,
-- gelişmiş üretim sistemleri
+- Madde dönüşümü,
+- Replikasyon teknolojileri,
+- Kuantum enerji sistemleri,
+- Çok boyutlu üretim
 
-mümkün hale gelir.
+mümkün hâle gelir.
 
-İnsanlığın bugünkü bilgisi artık yetersiz kalmaktadır.
+İnsanlığın mevcut bilgisi artık yeterli değildir.
 
 ---
 
-# 🚀 Seviye 10 — Warp Teknolojisi
+# 🌌 Seviye 10 — Warp Teknolojisi
 
 Teknolojik gelişimin son aşamasıdır.
 
 Oyuncu artık;
 
-- uzay-zaman bükülmesi,
-- evrenler arası geçiş,
-- gelişmiş Warp motorları
+- Warp Çekirdeğini yeniden çalıştırabilir.
+- Uzay-zamanı bükebilir.
+- Evrenler arası geçiş yapabilir.
+- Eve dönüş yolunu yeniden açabilir.
 
-üzerinde çalışabilir.
-
-Bu teknoloji oyuncunun eve dönüş umududur.
+Bu teknoloji oyunun nihai hedeflerinden biridir.
 
 ---
 
-# Teknolojinin Temel Kuralları
+# 📜 Teknolojinin Temel İlkeleri
 
 New World'de teknoloji;
 
@@ -206,55 +221,56 @@ New World'de teknoloji;
 
 ✔ Bilgi gerektirir.
 
-✔ Hikâye ile bağlantılıdır.
+✔ Hikâyeyle bağlantılıdır.
 
 ✔ Yeni oynanış sunar.
 
-✔ Oyuncunun gelişimini temsil eder.
+✔ Geminin gelişimini temsil eder.
 
-Teknoloji hiçbir zaman yalnızca daha güçlü makine anlamına gelmez.
+✔ Oyuncunun merakını ödüllendirir.
 
----
-
-# Teknoloji ve Keşif
-
-Teknoloji ile keşif birbirinden ayrı değildir.
-
-Yeni keşifler;
-
-↓
-
-Yeni bilgiler oluşturur.
-
-↓
-
-Yeni araştırmalar açılır.
-
-↓
-
-Yeni teknolojiler geliştirilir.
-
-↓
-
-Yeni keşifler mümkün olur.
-
-Bu döngü oyun boyunca devam eder.
+Teknoloji hiçbir zaman yalnızca daha güçlü makineler anlamına gelmez.
 
 ---
 
-# Sonuç
+# 🔄 Teknoloji ve Keşif
+
+```text
+Keşif
+      ↓
+Yeni Bilgi
+      ↓
+Analiz
+      ↓
+Araştırma
+      ↓
+Yeni Teknoloji
+      ↓
+Yeni Üretim
+      ↓
+Geminin Gelişimi
+      ↓
+Yeni Keşif
+```
+
+Bu döngü oyun boyunca sürekli devam eder.
+
+---
+
+# 📌 Sonuç
 
 New World'de teknoloji;
 
-araştırmanın,
+- Merakın,
+- Araştırmanın,
+- Keşfetme isteğinin,
+- Bilgiyi anlamanın
 
-merakın,
-
-ve keşfetme isteğinin ödülüdür.
+doğal sonucudur.
 
 Oyuncu yalnızca daha gelişmiş makineler üretmez.
 
-Daha önce mümkün olmayan şeyleri mümkün hale getirir.
+Daha önce imkânsız görünen şeyleri mümkün hâle getirir.
 
 ---
 

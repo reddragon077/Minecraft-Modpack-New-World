@@ -1,72 +1,62 @@
 ---
 Belge: 03_İlerleme_Sistemi.md
-Sürüm: 1.0
-Durum: Taslak
-Son Güncelleme: 14.07.2026
+Sürüm: 1.1
+Durum: 🚧 Taslak
+Son Güncelleme: 20.07.2026
 ---
 
-# 📈 03 - İlerleme Sistemi
+# 📈 İlerleme Sistemi
 
-> "Her yeni bilgi, oyuncuyu eve dönüşe bir adım daha yaklaştırır."
+> **"Her yeni bilgi, oyuncuyu eve dönüşe bir adım daha yaklaştırır."**
 
 ---
 
-# İlerleme Sisteminin Amacı
+# 🎯 İlerleme Sisteminin Amacı
 
 New World'de ilerleme yalnızca daha güçlü makineler üretmek anlamına gelmez.
 
 Oyuncunun gelişimi;
 
-- bilgi birikimini,
-- teknolojik seviyesini,
-- uzay gemisinin durumunu,
-- araştırmalarını,
-- keşiflerini
-- ve kendi biyolojik gelişimini kapsar.
+- 📖 Bilgi birikimini,
+- ⚙️ Teknolojik seviyesini,
+- 🚀 Uzay gemisinin durumunu,
+- 🔬 Araştırmalarını,
+- 🌍 Keşiflerini,
+- 🧬 Kendi biyolojik gelişimini
 
-Oyunun her aşaması oyuncuyu yeni bir hedefe yönlendirir.
+aynı anda kapsar.
+
+Oyunun her aşaması oyuncuyu yeni bir hedefe yönlendirir ve keşif duygusunu canlı tutar.
 
 ---
 
-# İlerleme Döngüsü
+# 🔄 İlerleme Döngüsü
 
-```
+```text
 Keşif
-
-↓
-
+      ↓
 Yeni Bilgi
-
-↓
-
+      ↓
 Araştırma
-
-↓
-
+      ↓
 Yeni Teknoloji
-
-↓
-
+      ↓
 Üretim
-
-↓
-
+      ↓
 Gemiyi Geliştirme
-
-↓
-
+      ↓
 Yeni Bölgelere Ulaşma
-
-↓
-
+      ↓
 Yeni Keşif
 ```
 
-Bu döngü oyun boyunca sürekli tekrar eder.
+Bu döngü oyunun başından sonuna kadar sürekli tekrar eder.
+
+Her tamamlanan döngü oyuncuya yeni fırsatlar sunar.
 
 ---
 
-# İlerleme Aşamaları
+# 🚀 İlerleme Aşamaları
 
 ## 🚨 Aşama 1 — Hayatta Kal
 
@@ -74,14 +64,17 @@ Oyuncu ağır hasarlı bir uzay gemisinde uyanır.
 
 Geminin yalnızca temel yaşam destek sistemleri çalışmaktadır.
 
+Ana reaktör tamamen devre dışıdır.
+
 İlk hedefler;
 
-- Acil enerjiyi yeniden sağlamak
-- Gemiyi tanımak
-- İlk araştırma terminalini çalıştırmak
-- Temel üretim sistemlerini kurmaktır.
+- ⚡ Geçici enerji sistemini kurmak,
+- 🛰️ Gemiyi tanımak,
+- 📦 AE2 depolama sistemini yeniden çalıştırmak,
+- 🔬 İlk araştırma terminalini aktif etmek,
+- 🏭 Temel üretim altyapısını hazırlamaktır.
 
-Bu aşamada oyuncu hayatta kalmayı öğrenir.
+Bu aşamada oyuncu hayatta kalmayı ve gemiyi anlamayı öğrenir.
 
 ---
 
@@ -91,9 +84,9 @@ Oyuncu artık çevresini keşfetmeye başlar.
 
 Bulduğu materyaller;
 
-- analiz edilir,
-- kayıt altına alınır,
-- araştırmalarda kullanılır.
+- Analiz edilir,
+- Kayıt altına alınır,
+- Araştırmalarda kullanılır.
 
 İlk teknolojiler bu aşamada açılır.
 
@@ -103,50 +96,52 @@ Oyuncu artık bilinmeyeni anlamaya başlamıştır.
 
 ## 🏭 Aşama 3 — Üret
 
-Yeni araştırmalar sayesinde gelişmiş üretim sistemleri kurulabilir.
+Yeni araştırmalar sayesinde ilk **Production Chamber** sistemleri kurulabilir.
 
 Oyuncu;
 
-- ilk otomasyonlarını kurar,
-- fabrikasını tasarlar,
-- enerji üretimini geliştirir.
+- İlk otomasyonlarını kurar.
+- Üretim odalarını tasarlar.
+- Enerji altyapısını geliştirir.
+- Ham maddeleri işlemeye başlar.
 
-Üretimin amacı daha fazla eşya değil;
+Üretimin amacı daha fazla eşya üretmek değil;
 
-araştırmaları sürdürebilmektir.
+araştırmaların devamını sağlayacak altyapıyı oluşturmaktır.
 
 ---
 
-## 🚀 Aşama 4 — Gemiyi Yeniden İnşa Et
+## 🚀 Aşama 4 — Gemiyi Onar
 
-Geminin yeni bölümleri kullanılabilir hale gelir.
+Geminin birçok bölümü başlangıçtan itibaren erişilebilir olsa da sistemleri çalışmaz durumdadır.
 
-Örneğin;
+Oyuncu araştırmalar ilerledikçe;
 
-- Laboratuvar
-- Reaktör Odası
-- Portal Merkezi
-- Veri Merkezi
-- Üretim Alanları
+- 🔧 Laboratuvarları,
+- ⚛️ Reaktör sistemlerini,
+- 📡 İletişim ağını,
+- 🛰️ Gemi bilgisayarını,
+- 🔬 Araştırma istasyonlarını
 
-aktif edilir.
+yeniden çalıştırmaya başlar.
 
-Oyuncunun ana üssü zamanla büyür ve gelişir.
+Geminin onarılması oyuncunun gelişimini doğrudan temsil eder.
 
 ---
 
 ## 🌍 Aşama 5 — Keşif Çağı
 
-Oyuncu artık yeni bölgelere ulaşabilecek seviyeye gelmiştir.
+Oyuncu artık daha gelişmiş ekipmanlara ve üretim altyapısına sahiptir.
 
 Yeni bölgelerde;
 
-- farklı yaşam formları,
-- yeni elementler,
-- eski uygarlık kalıntıları,
-- kayıp teknolojiler
+- Eski uygarlık kalıntıları,
+- Bilinmeyen yaşam formları,
+- Yeni elementler,
+- Araştırma verileri,
+- Hikâyeye ait ipuçları
 
-bulunabilir.
+bulabilir.
 
 Keşif yeniden oyunun merkezine yerleşir.
 
@@ -160,23 +155,25 @@ Kendi bedenini de geliştirir.
 
 Genetik araştırmalar sayesinde;
 
-- yeni yetenekler,
-- biyolojik geliştirmeler,
-- kalıcı özellikler
+- Güç,
+- Dayanıklılık,
+- Hareket kabiliyeti,
+- Algılama yetenekleri
 
-kazanabilir.
+kalıcı olarak geliştirilebilir.
 
-Bu gelişmeler oyunun ilerleyen bölümlerinde önemli avantajlar sağlar.
+Bu gelişmeler ilerleyen aşamalarda önemli avantajlar sağlar.
 
 ---
 
 ## ⚛️ Aşama 7 — İleri Teknoloji
 
-Bu aşamada oyuncu;
+Oyuncu artık;
 
-- gelişmiş enerji sistemleri,
-- kuantum teknolojileri,
-- yüksek seviyeli üretim sistemleri
+- Gelişmiş enerji sistemleri,
+- Kuantum teknolojileri,
+- İleri otomasyon,
+- Replikasyon teknolojisi
 
 ile tanışır.
 
@@ -188,17 +185,18 @@ Ancak eve dönüş hâlâ mümkün değildir.
 
 ## 🌌 Aşama 8 — Warp Teknolojisi
 
-Oyuncunun son hedeflerinden biri Warp sistemini yeniden oluşturabilmektir.
+Oyuncunun en büyük hedeflerinden biri Warp çekirdeğini yeniden çalıştırmaktır.
 
 Bunun için;
 
-- gelişmiş enerji,
-- yeni materyaller,
-- yüksek seviyeli araştırmalar
+- Yüksek seviyeli enerji,
+- Nadir materyaller,
+- İleri araştırmalar,
+- Gemi sistemlerinin büyük ölçüde onarılmış olması
 
 gereklidir.
 
-Warp teknolojisi tamamlandığında oyuncu yeni evrenlere ulaşabilir.
+Warp sistemi tamamlandığında oyuncu yeni evrenlere ulaşabilecek seviyeye gelir.
 
 ---
 
@@ -208,73 +206,75 @@ Oyuncunun bütün yolculuğu tek bir amaç içindir.
 
 Kendi evrenine geri dönebilmek.
 
-Ancak bu yolculuk sırasında oyuncu yalnızca eve dönmenin değil,
+Ancak bu yolculuk boyunca oyuncu yalnızca eve dönmenin değil;
 
-öğrenmenin,
+- Öğrenmenin,
+- Keşfetmenin,
+- Araştırmanın,
+- Gelişmenin
 
-keşfetmenin
-
-ve gelişmenin de ne kadar değerli olduğunu fark eder.
+de ne kadar değerli olduğunu fark eder.
 
 ---
 
-# Oyuncunun Gelişim Alanları
+# 📈 Oyuncunun Gelişim Alanları
 
 Oyuncu yalnızca tek bir alanda ilerlemez.
 
 Aynı anda;
 
-- Teknolojisini
-- Gemisini
-- Fabrikasını
-- Bilgi Arşivini
-- Araştırmalarını
-- Bedenini
+- 📖 Bilgi Arşivini,
+- ⚙️ Teknolojisini,
+- 🚀 Uzay Gemisini,
+- 🏭 Üretim Sistemlerini,
+- 🔬 Araştırmalarını,
+- 🧬 Kendi Bedenini
 
 geliştirir.
 
-Bu sistemler birbirini destekler.
+Bu sistemlerin tamamı birbirini destekler.
 
 ---
 
-# İlerleme İlkeleri
+# 📜 İlerleme İlkeleri
 
 New World'de ilerleme;
 
-✔ Daha fazla kaynak toplamak değildir.
+❌ Daha fazla kaynak toplamak değildir.
 
-✔ Daha büyük makineler yapmak değildir.
+❌ Daha büyük makineler yapmak değildir.
 
-✔ Sürekli aynı işi tekrar etmek değildir.
+❌ Sürekli aynı işi tekrar etmek değildir.
 
 İlerleme;
 
-- yeni şeyler öğrenmek,
-- yeni sistemler keşfetmek,
-- daha önce yapılamayan şeyleri yapabilmek
+- 🌍 Yeni şeyler keşfetmek,
+- 📖 Yeni bilgiler öğrenmek,
+- 🔬 Yeni sistemler araştırmak,
+- 🚀 Daha önce yapılamayan şeyleri yapabilmek
 
 anlamına gelir.
 
 ---
 
-# Sonuç
+# 💙 Sonuç
 
 Oyuncu oyun boyunca yalnızca teknolojik olarak değil;
 
-zihinsel,
+- Zihinsel,
+- Bilimsel,
+- Biyolojik
 
-biyolojik
+olarak da gelişir.
 
-ve bilimsel olarak da gelişir.
+Her yeni aşama;
 
-Her yeni aşama oyuncuya yeni bir hedef,
+- Yeni bir hedef,
+- Yeni bir merak,
+- Yeni bir keşif
 
-yeni bir merak
-
-ve yeni bir keşif sunar.
+sunmalıdır.
 
 İlerleme hiçbir zaman yalnızca sayılardan ibaret değildir.
 
-İlerleme,
-
-oyuncunun bilinmeyeni anlamaya biraz daha yaklaşmasıdır.
+> **İlerleme, oyuncunun bilinmeyeni anlamaya her adımda biraz daha yaklaşmasıdır.**

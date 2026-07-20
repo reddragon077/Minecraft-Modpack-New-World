@@ -1,85 +1,92 @@
 ---
 Belge: 02_Temel_Mekanikler.md
-Sürüm: 1.0
-Durum: Taslak
-Son Güncelleme: 14.07.2026
+Sürüm: 1.1
+Durum: 🚧 Taslak
+Son Güncelleme: 20.07.2026
 ---
 
-# ⚙️ 02 - Temel Mekanikler
+# ⚙️ Temel Mekanikler
 
-Bu belge, New World mod paketini diğer Minecraft mod paketlerinden ayıran temel oynanış mekaniklerini özetlemektedir.
+> **"Her sistem tek başına değil, diğer tüm sistemlerle birlikte çalışacak şekilde tasarlanmıştır."**
 
-Her mekanik daha sonra kendi dokümanında ayrıntılı olarak açıklanacaktır.
+Bu belge, **New World** mod paketini klasik Minecraft mod paketlerinden ayıran temel oynanış mekaniklerini özetlemektedir.
+
+Burada anlatılan her sistem ilerleyen süreçte kendi dokümanında ayrıntılı olarak açıklanacaktır.
 
 ---
 
 # 🔬 Araştırma Sistemi
 
-Oyuncu oyuna hiçbir teknolojiyi bilmeden başlar.
+Oyuncu oyuna hiçbir gelişmiş teknolojiyi bilmeden başlar.
 
 Yeni teknolojilere ulaşabilmek için;
 
-- keşif yapmalı,
-- veri toplamalı,
-- analiz gerçekleştirmeli,
-- araştırmalar tamamlamalıdır.
+- 🌍 Keşif yapmalı,
+- 📖 Veri toplamalı,
+- 🔬 Analiz gerçekleştirmeli,
+- 🧪 Araştırmalar tamamlamalıdır.
 
-Yeni makineler doğrudan üretilemez.
+Hiçbir ileri teknoloji başlangıçta doğrudan üretilemez.
 
-Önce nasıl üretilecekleri öğrenilmelidir.
+Önce nasıl çalıştığı anlaşılmalıdır.
+
+Bilgi, üretimin ön koşuludur.
 
 ---
 
 # 📡 Replikatör Sistemi
 
-New World'de temel amaç sürekli kaynak toplamak değildir.
+New World'de amaç sonsuza kadar maden kazmak değildir.
 
-Oyuncu önce bir maddeyi keşfeder.
+Oyuncu önce yeni bir madde keşfeder.
 
 Ardından bu maddeyi analiz ederek dijital verisini oluşturur.
 
-Gerekli elementler ve enerji bulunduğu sürece Replikatör bu maddeyi yeniden üretebilir.
+Yeterli enerji ve gerekli temel elementler bulunduğu sürece Replikatör yalnızca **ham maddeleri** yeniden üretebilir.
 
-Böylece oyun ilerledikçe tekrar eden madencilik ihtiyacı azalır ve oyuncu keşfe odaklanabilir.
+İşlenmiş parçalar ve karmaşık bileşenler yine oyuncunun üretim sistemlerinde hazırlanmalıdır.
+
+Bu sayede gereksiz madencilik azalırken üretim ve otomasyon önemini korur.
 
 ---
 
 # 🏭 Production Chamber
 
-Klasik teknoloji modlarında oyuncu hazır makineler üretir.
+New World'ün en önemli mekaniklerinden biridir.
 
-New World'de ise oyuncu boş bir Production Chamber oluşturur.
+Klasik teknoloji modlarında oyuncu hazır makineler kurar.
 
-Makinenin iç tasarımı tamamen oyuncuya aittir.
+New World'de ise oyuncu önce boş bir **Production Chamber** oluşturur.
+
+Bu odanın tüm tasarımı oyuncuya aittir.
 
 Oyuncu;
 
-- makineleri yerleştirir,
-- enerji sistemini kurar,
-- üretim hattını tasarlar,
-- giriş ve çıkışları belirler.
+- ⚙️ Makineleri yerleştirir.
+- ⚡ Enerji altyapısını kurar.
+- 📦 Giriş ve çıkış sistemlerini belirler.
+- 🔀 Üretim hattını tamamen kendisi tasarlar.
 
-Her oyuncunun fabrikası kendine özgü olur.
+Her oyuncunun üretim tesisi kendine özgü olur.
 
 ---
 
 # 🚀 Uzay Gemisi
 
-Oyuncunun ana üssü bir ev değildir.
+Oyuncunun ana üssü sıradan bir ev değildir.
 
 Bir uzay gemisidir.
 
-Oyun ilerledikçe;
+Oyunun başlangıcında geminin büyük bölümü fiziksel olarak erişilebilir olsa da birçok sistem hasarlıdır.
 
-- yeni odalar,
-- laboratuvarlar,
-- üretim merkezleri,
-- portal sistemleri,
-- reaktörler
+Oyuncu ilerledikçe;
 
-aktif hale gelir.
+- 🔧 Hasarlı sistemleri onarır.
+- 🧪 Araştırma laboratuvarlarını yeniden çalıştırır.
+- ⚛️ Reaktör sistemlerini aktif hâle getirir.
+- 🛰️ Yeni gemi fonksiyonlarının kilidini açar.
 
-Geminin gelişimi oyuncunun ilerlemesini doğrudan yansıtır.
+Geminin gelişimi, oyuncunun ilerleyişini doğrudan temsil eder.
 
 ---
 
@@ -87,16 +94,17 @@ Geminin gelişimi oyuncunun ilerlemesini doğrudan yansıtır.
 
 Her yeni bölge yalnızca yeni kaynaklar içermez.
 
-Oyuncu;
+Oyuncu keşif sırasında;
 
-- yeni bilgiler,
-- kayıp teknolojiler,
-- araştırma verileri,
-- eski medeniyet kalıntıları
+- 📖 Araştırma verileri,
+- 🛰️ Kayıp teknolojiler,
+- 🏛️ Eski medeniyet kalıntıları,
+- 💾 Veri kayıtları,
+- 🧩 Hikâyeye ait ipuçları
 
 bulabilir.
 
-Keşif oyunun en önemli ilerleme yöntemlerinden biridir.
+Keşif, oyundaki en önemli ilerleme yöntemlerinden biridir.
 
 ---
 
@@ -104,44 +112,49 @@ Keşif oyunun en önemli ilerleme yöntemlerinden biridir.
 
 New World'de klasik iksir sistemi yerine biyolojik geliştirmeler bulunur.
 
-Oyuncu kendi genetik yapısını değiştirerek;
+Oyuncu zamanla;
 
-- daha güçlü,
-- daha hızlı,
-- daha dayanıklı,
-- daha gelişmiş
+- Gücünü,
+- Dayanıklılığını,
+- Hareket kabiliyetini,
+- Algılama yeteneklerini
 
-bir karakter oluşturabilir.
+kalıcı olarak geliştirebilir.
+
+Oyuncunun gelişimi yalnızca ekipmanına değil, doğrudan karakterine de yansır.
 
 ---
 
 # ⚛️ Enerji ve İleri Teknoloji
 
-Enerji yalnızca makine çalıştırmak için kullanılmaz.
+Enerji yalnızca makineleri çalıştırmak için kullanılmaz.
 
-Araştırmalar,
+Yüksek teknoloji sistemleri;
 
-portal sistemleri,
+- Araştırma laboratuvarları,
+- Replikatör,
+- Production Chamber,
+- Teleport sistemleri,
+- Warp çekirdeği
 
-ileri üretim tesisleri,
+yüksek miktarda enerji gerektirir.
 
-ve Warp teknolojisi yüksek miktarda enerji gerektirir.
-
-Oyuncu enerji altyapısını sürekli geliştirmek zorundadır.
+Oyuncu ilerledikçe enerji altyapısını sürekli geliştirmek zorundadır.
 
 ---
 
 # 🌌 Warp Teknolojisi
 
-Oyunun nihai amacı yeni makineler üretmek değildir.
+Warp teknolojisi oyunun nihai hedeflerinden biridir.
 
-Oyuncu;
+Oyuncunun amacı;
 
-- gemisini onarmalı,
-- Warp teknolojisini yeniden geliştirmeli,
-- farklı evrenlere ulaşabilecek seviyeye gelmelidir.
+- Gemiyi tamamen onarmak,
+- Warp çekirdeğini yeniden çalıştırmak,
+- Uzay-zaman yolculuğunu tekrar mümkün hâle getirmek,
+- Ve sonunda kendi evrenine dönebilmektir.
 
-Warp sistemi oyunun son hedeflerinden biridir.
+Warp sistemi yalnızca ulaşım aracı değil, hikâyenin merkezindeki mekaniklerden biridir.
 
 ---
 
@@ -151,22 +164,42 @@ Oyuncu oyuna hafızasının büyük bölümünü kaybetmiş olarak başlar.
 
 Bazı teknolojiler yalnızca araştırılarak değil;
 
-eski kayıtlar,
+- 📀 Eski veri kayıtları,
+- 📓 Kişisel notlar,
+- 🛰️ Gemi kayıtları,
+- 🧩 Hafıza parçaları
 
-kişisel notlar,
-
-ve hafıza parçaları bulunarak yeniden hatırlanabilir.
+bulunarak yeniden hatırlanabilir.
 
 Oyuncunun gelişimi aynı zamanda geçmişini yeniden kazanmasını temsil eder.
 
 ---
 
+# 🤖 Yapay Zekâ Yardımcısı
+
+Oyuncuya gemide bulunan yapay zekâ sistemi eşlik eder.
+
+Başlangıçta sistem ağır hasarlıdır.
+
+İlerledikçe;
+
+- Yeni özellikler açılır.
+- Daha fazla bilgi sunar.
+- Gemi sistemlerini kontrol etmeye başlar.
+- Oyuncuya araştırmalarda yardımcı olur.
+
+Yapay zekâ yalnızca bir rehber değil, hikâyenin önemli karakterlerinden biridir.
+
+---
+
 # 🔄 Mekaniklerin Birbiriyle İlişkisi
 
-```
+```text
 Keşif
       ↓
 Yeni Bilgi
+      ↓
+Analiz
       ↓
 Araştırma
       ↓
@@ -176,29 +209,29 @@ Production Chamber
       ↓
 Yeni Üretim
       ↓
-Geminin Gelişmesi
+Geminin Gelişimi
       ↓
 Yeni Bölgeler
       ↓
 Yeni Keşif
 ```
 
-Her mekanik bu döngünün bir parçasıdır.
+Her mekanik bu döngünün ayrılmaz bir parçasıdır.
 
 Hiçbir sistem bağımsız olarak tasarlanmamıştır.
 
 ---
 
-# Sonuç
+# 📌 Sonuç
 
 New World'de amaç daha büyük fabrikalar kurmak değildir.
 
 Amaç;
 
-- öğrenmek,
-- keşfetmek,
-- araştırmak,
-- gelişmek
-- ve eve dönüş yolunu bulmaktır.
+- 🌍 Keşfetmek,
+- 📖 Öğrenmek,
+- 🔬 Araştırmak,
+- 🚀 Gelişmek,
+- 🌌 Ve eve dönüş yolunu bulmaktır.
 
 Tüm mekanikler bu hedef doğrultusunda tasarlanmıştır.

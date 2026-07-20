@@ -1,39 +1,42 @@
 ---
 Belge: 05_Lore.md
-Sürüm: 1.0
-Durum: Taslak
-Son Güncelleme: 14.07.2026
+Sürüm: 1.1
+Durum: 🚧 Taslak
+Son Güncelleme: 20.07.2026
 ---
 
-# 🌌 05 - Evren (Lore)
+# 🌌 Evren (Lore)
 
-> "Evren sandığımızdan çok daha yaşlıdır.
+> **"Evren sandığımızdan çok daha yaşlıdır.
 >
 > Ve insanlık...
 >
-> Bu hikâyenin yalnızca son satırıdır."
+> Bu hikâyenin yalnızca son satırıdır."**
 
 ---
 
-# Lore Nedir?
+# 📖 Lore Nedir?
 
-Bu belge New World evreninin geçmişini anlatmaktadır.
+Bu belge, **New World** evreninin geçmişini, temel kurallarını ve oyuncunun zamanla keşfedeceği büyük gizemleri açıklamaktadır.
 
 Buradaki bilgiler oyunun başında oyuncuya verilmez.
 
 Oyuncu;
 
-- araştırmalar,
-- veri kayıtları,
-- eski laboratuvarlar,
-- gemi günlükleri,
-- yapay zekâ kayıtları
+- 📀 Veri kayıtları,
+- 📖 Araştırmalar,
+- 🏛️ Eski laboratuvarlar,
+- 💾 Gemi günlükleri,
+- 🤖 Yapay zekâ kayıtları,
+- 🛰️ Kayıp veri arşivleri
 
-aracılığıyla bu bilgileri zamanla öğrenir.
+aracılığıyla bu bilgileri parça parça öğrenir.
+
+Oyuncu hiçbir zaman gerçeği tek seferde öğrenmez.
 
 ---
 
-# İnsanlık
+# 🌍 İnsanlık
 
 İnsanlık uzun yıllar boyunca evrende yalnız olduğunu düşündü.
 
@@ -41,134 +44,137 @@ Bilim ilerledi.
 
 Uzay keşfedildi.
 
+Yeni teleskoplar geliştirildi.
+
 Ancak hiçbir zaman başka bir uygarlıkla doğrudan temas kurulamadı.
 
-Gökyüzünde görülen açıklanamayan olaylar yalnızca komplo teorisi olarak kabul edildi.
+Gökyüzünde görülen açıklanamayan olaylar çoğu insan tarafından komplo teorisi olarak değerlendirildi.
 
-Fakat gerçek çok farklıydı.
+Gerçek ise çok farklıydı.
 
 İnsanlık...
 
-İzleniyordu.
+Çok uzun zamandır izleniyordu.
 
 ---
 
-# Gözlemciler
+# 👁️ Gözlemciler
 
-Dünya, gelişmiş uygarlıklar tarafından binlerce yıldır gözlem altında tutulmaktadır.
+İnsanlık, gelişmiş uygarlıklar tarafından binlerce yıldır gözlem altındadır.
 
-İnsanlık henüz bunun farkında değildir.
+Ancak bunun farkında değildir.
 
 Bazı uygarlıklar insanlığı ilkel bir tür olarak görmektedir.
 
 Bazıları ise gelecekte önemli bir rol üstleneceğine inanmaktadır.
 
-Oyuncunun kaçırılması da bu gözlemlerin bir parçasıdır.
+Oyuncunun kaçırılması da bu uzun gözlem sürecinin bir parçasıdır.
+
+Fakat bunun nedeni henüz bilinmemektedir.
 
 ---
 
-# Warp Teknolojisi
+# ⚛️ Warp Teknolojisi
 
-Işık hızını aşmak mümkün değildir.
-
-En azından klasik fizik bunu söyler.
+Klasik fizik ışık hızının aşılmasının mümkün olmadığını söyler.
 
 İleri uygarlıklar ise uzayda hareket etmez.
 
-Uzayı hareket ettirir.
+Onlar...
 
-Warp motorları bulunduğun noktayı değil,
+Uzayın kendisini hareket ettirir.
 
-uzayın kendisini büker.
+Warp Çekirdeği;
 
-Bu teknoloji hâlâ tam olarak anlaşılamamıştır.
+bulunduğu noktayı değil,
 
----
+uzay-zaman dokusunu bükerek yolculuk yapılmasını sağlar.
 
-# Yanlış Evren
-
-Oyuncunun yaptığı Warp sıçraması yalnızca başarısız olmamıştır.
-
-Normal şartlarda ulaşılması mümkün olmayan bir evrene geçiş yapılmıştır.
-
-Bu evren;
-
-bildiğimiz fizik kurallarının tamamına uymamaktadır.
-
-Burada;
-
-- zaman farklı davranabilir,
-- enerji farklı şekillerde aktarılabilir,
-- madde farklı özellikler gösterebilir.
-
-Oyuncunun "büyü" olarak gördüğü birçok olay aslında henüz açıklayamadığı fizik kurallarından ibarettir.
+İnsanlık bu teknolojinin yalnızca küçük bir bölümünü anlayabilmiştir.
 
 ---
 
-# Büyü
+# 🌌 Yanlış Evren
 
-Bu evrende büyü diye adlandırılan güç doğaüstü değildir.
+Oyuncunun gerçekleştirdiği Warp sıçraması yalnızca başarısız olmamıştır.
+
+Warp Çekirdeği hesaplamaları tamamlanmadan etkinleştirildiği için gemi, normal yollarla ulaşılması mümkün olmayan farklı bir evrene sürüklenmiştir.
+
+Bu evrende;
+
+- ⏳ Zaman farklı akabilir.
+- ⚛️ Enerji farklı davranabilir.
+- 🧪 Madde farklı özellikler gösterebilir.
+- 🌌 Gerçeklik bildiğimiz fizik kurallarından sapabilir.
+
+Buradaki birçok olay ilk bakışta doğaüstü görünmektedir.
+
+---
+
+# ✨ Büyü
+
+Bu evrende "büyü" olarak adlandırılan güç doğaüstü değildir.
 
 Her büyü;
 
-henüz çözülememiş bir bilimsel prensibe dayanır.
+henüz açıklanamamış fiziksel prensiplere dayanır.
 
-Yeterli bilgiye sahip olan biri için büyü ile teknoloji arasında hiçbir fark yoktur.
+Yeterli bilgiye sahip biri için;
+
+büyü ile teknoloji arasında hiçbir fark yoktur.
 
 Bu nedenle New World evreninde;
 
-büyü,
-
-bilimin henüz açıklayamadığı teknolojidir.
+> **Büyü, bilimin henüz açıklayamadığı teknolojidir.**
 
 ---
 
-# Kayıp Medeniyetler
+# 🏛️ Kayıp Medeniyetler
 
-Bu evrende oyuncudan çok daha gelişmiş uygarlıklar yaşamıştır.
+Oyuncudan çok daha gelişmiş uygarlıklar bu evrende yaşamıştır.
 
 Bazıları tamamen yok olmuştur.
 
-Bazıları ise geride yalnızca kalıntılar bırakmıştır.
+Bazıları ise geride yalnızca sessiz kalıntılar bırakmıştır.
 
 Oyuncu keşif yaptıkça;
 
-- eski araştırma merkezleri,
-- terk edilmiş şehirler,
-- deney laboratuvarları,
-- enerji tesisleri
+- Araştırma merkezleri,
+- Deney laboratuvarları,
+- Enerji tesisleri,
+- Terk edilmiş şehirler,
+- Bilinmeyen teknolojiler
 
 bulacaktır.
 
-Bu yapılar yalnızca ganimet değil,
+Bu yapılar yalnızca ganimet değil;
 
-bilgi de içerir.
+aynı zamanda bilgi de içerir.
 
 ---
 
-# Bilginin Değeri
+# 📖 Bilginin Değeri
 
-Bu evrende en değerli şey enerji değildir.
+Bu evrende en değerli kaynak enerji değildir.
 
-En değerli şey bilgidir.
+En değerli kaynak bilgidir.
 
 Bilgi;
 
-enerji üretir.
+- Yeni enerji üretir.
+- Yeni teknolojiler geliştirir.
+- Medeniyetleri değiştirir.
+- Uygarlıkların kaderini belirler.
 
-Teknoloji üretir.
+Bu nedenle eski uygarlıkların en büyük savaşları;
 
-Gelişim sağlar.
+kaynaklar için değil,
 
-Yeni uygarlıklar oluşturur.
-
-Bu yüzden birçok eski uygarlık savaşlarını kaynaklar için değil,
-
-bilgi için vermiştir.
+bilgi için verilmiştir.
 
 ---
 
-# Oyuncunun Rolü
+# 👨‍🔬 Oyuncunun Rolü
 
 Oyuncu bu evreni kurtarmaya gelmemiştir.
 
@@ -176,37 +182,38 @@ Bir kahraman değildir.
 
 Bir seçilmiş kişi değildir.
 
-Oyuncu yalnızca eve dönmeye çalışan bir bilim insanıdır.
+Yalnızca eve dönmeye çalışan bir bilim insanıdır.
 
-Ancak araştırmaları sırasında öğrendiği gerçekler,
+Ancak araştırmaları sırasında öğrendiği gerçekler;
 
 onu beklediğinden çok daha büyük olayların içine sürükleyecektir.
 
 ---
 
-# Bilinmeyenler
+# ❓ Bilinmeyenler
 
-Bu evren hakkında hâlâ cevaplanmamış birçok soru bulunmaktadır.
+Oyunun ilerleyen bölümlerinde cevaplanacak birçok soru vardır.
 
-- Bu evren neden farklıdır?
-- Warp neden buraya ulaşmıştır?
-- Kayıp medeniyetlere ne olmuştur?
-- Oyuncu gerçekten yanlışlıkla mı buraya gelmiştir?
-- Yoksa biri onu özellikle mi buraya yönlendirmiştir?
+- Bu evren neden farklı?
+- Warp neden tam olarak buraya ulaştı?
+- Kayıp medeniyetlere ne oldu?
+- Oyuncu gerçekten yanlışlıkla mı buraya geldi?
+- Onlar kim?
+- Yoksa biri oyuncunun buraya gelmesini özellikle mi sağladı?
 
-Bu soruların cevapları oyunun ilerleyen bölümlerinde ortaya çıkacaktır.
+Bu soruların cevapları hikâyenin ilerleyen aşamalarında ortaya çıkacaktır.
 
 ---
 
-# Son Söz
+# 🌠 Son Söz
 
-New World evreninde her keşif yeni bir cevap getirirken,
+New World evreninde her keşif yeni cevaplar getirirken;
 
 aynı zamanda yeni sorular da doğuracaktır.
 
-Çünkü gerçek bilim,
+Çünkü gerçek bilim;
 
-cevap bulmaktan çok,
+yalnızca cevap bulmak değil,
 
 doğru soruları sorabilmektir.
 

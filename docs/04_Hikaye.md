@@ -1,21 +1,21 @@
 ---
-Belge: 04_Hikâye.md
-Sürüm: 1.0
-Durum: Taslak
-Son Güncelleme: 14.07.2026
+Belge: 04_Hikaye.md
+Sürüm: 1.1
+Durum: 🚧 Taslak
+Son Güncelleme: 20.07.2026
 ---
 
-# 📖 04 - Hikâye
+# 📖 Hikâye
 
-> "Bazen eve dönüş yolu, hiç gitmemen gereken bir yerden geçer."
+> **"Bazen eve dönüş yolu, hiç gitmemen gereken bir yerden geçer."**
 
 ---
 
-# Giriş
+# 🌍 Giriş
 
 Yakın gelecekte insanlık büyük teknolojik gelişmeler yaşamış olsa da hâlâ evrende yalnız olup olmadığını bilmiyordu.
 
-Dünya'nın birçok noktasında gökyüzünde açıklanamayan olaylar yaşanıyor, çeşitli sinyaller alınıyor ve bilim insanları bunların kaynağını bulmaya çalışıyordu.
+Dünya'nın birçok noktasında açıklanamayan sinyaller alınıyor, gökyüzünde tanımlanamayan olaylar yaşanıyor ve bilim insanları bunların kaynağını bulmaya çalışıyordu.
 
 Sen de bu araştırmaların içinde yer alan genç fakat oldukça başarılı bir bilim insanıydın.
 
@@ -23,43 +23,45 @@ Hayatını bilinmeyen yaşam formlarını araştırmaya adamıştın.
 
 Çoğu insan seni hayalperest olarak görüyordu.
 
-Fakat sen...
+Ama sen...
 
 Yanılmadığını biliyordun.
 
 ---
 
-# Temas
+# 👽 İlk Temas
 
-Bir gece araştırma istasyonunda çalışırken daha önce hiç görülmemiş bir enerji sinyali tespit ettin.
+Bir gece araştırma istasyonunda çalışırken daha önce hiç kaydedilmemiş bir enerji sinyali tespit ettin.
 
-Sinyali incelemek için laboratuvardan ayrıldığında etrafındaki her şey birkaç saniyeliğine tamamen sessizleşti.
+Sinyali incelemek için laboratuvardan ayrıldığında...
 
-Ardından...
+Etrafındaki her şey birkaç saniyeliğine tamamen sessizleşti.
+
+Sonra...
 
 Hiçbir şey hatırlamıyorsun.
 
 ---
 
-# Kaçırılış
+# 🛸 Kaçırılış
 
-Uyandığında artık Dünya'da değildin.
+Gözlerini açtığında artık Dünya'da değildin.
 
-Seni kaçıranlar düşündüğünden çok daha gelişmişti.
+Seni kaçıran uygarlık, insanlığın hayal bile edemeyeceği kadar gelişmişti.
 
-Ne konuştuklarını anlayamıyordun.
+Ne konuştuklarını anlayabiliyordun.
 
-Ne kullandıkları cihazları.
+Ne kullandıkları teknolojiyi.
 
-Ne de bulundukları teknolojiyi.
+Ne de bulunduğun gemiyi.
 
-Başlangıçta yalnızca bir denek olarak kullanıldın.
+İlk zamanlarda yalnızca bir denektin.
 
-Seni izlediler.
+Seni gözlemlediler.
 
 Davranışlarını analiz ettiler.
 
-Fakat zamanla onların sistemlerini anlamaya başladın.
+Ancak zaman geçtikçe onların sistemlerini anlamaya başladın.
 
 Merakın...
 
@@ -67,11 +69,11 @@ Korkundan daha büyüktü.
 
 ---
 
-# Öğrenme
+# 📚 Öğrenme
 
 Aylar...
 
-Belki yıllar boyunca onların teknolojisini gözlemledin.
+Belki de yıllar boyunca onların teknolojisini gözlemledin.
 
 Dillerini çözmeye başladın.
 
@@ -79,23 +81,23 @@ Enerji sistemlerini öğrendin.
 
 Üretim yöntemlerini inceledin.
 
+Bilgisayar kayıtlarını gizlice kopyaladın.
+
 Her fırsatta yeni bilgiler topladın.
 
-Seni bir mahkûm olarak görüyorlardı.
+Onlar seni yalnızca bir mahkûm olarak görüyorlardı.
 
 Fakat sen...
 
-Onların fark etmediği tek şeyi yapıyordun.
-
-Öğreniyordun.
+Sessizce öğreniyordun.
 
 ---
 
-# Kaçış
+# 🚀 Kaçış
 
 Bir gün beklediğin fırsat geldi.
 
-Bakım hangarındaki küçük bir keşif gemisini ele geçirmeyi başardın.
+Bakım hangarında bulunan küçük bir keşif gemisini ele geçirmeyi başardın.
 
 Gemiyi çalıştırdın.
 
@@ -105,19 +107,19 @@ Ancak bildiklerin kaçmak için yeterliydi.
 
 Alarm sistemleri devreye girdi.
 
-Takip başladığında tek şansın Warp motorunu çalıştırmaktı.
+Takip başladığında tek şansın Warp Çekirdeğini çalıştırmaktı.
 
-Normal şartlarda bu sistemin hazırlanması saatler sürmeliydi.
+Normal şartlarda bu sistemin hazırlanması uzun zaman almalıydı.
 
 Senin ise yalnızca birkaç dakikan vardı.
 
 ---
 
-# Hata
+# ⚛️ Hata
 
-Warp hesaplamalarını tamamlayamadan sistemi çalıştırdın.
+Warp hesaplamaları tamamlanmadan sistemi etkinleştirdin.
 
-Motor kararsız hale geldi.
+Warp Çekirdeği kararsız hâle geldi.
 
 Enerji alanı çökmeye başladı.
 
@@ -131,27 +133,33 @@ Her şey beyaza döndü.
 
 ---
 
-# Çarpışma
+# 💥 Çarpışma
 
 Uyandığında gemin ağır hasar almıştı.
 
-Ana reaktör parçalanmıştı.
+Ana reaktör tamamen devre dışıydı.
 
-Portal sistemi çalışmıyordu.
+Warp Çekirdeği durmuştu.
 
-Laboratuvarlar devre dışıydı.
+Teleport ağı çalışmıyordu.
 
-Geminin büyük bölümü kilitlenmişti.
+Araştırma sistemleri cevap vermiyordu.
 
-Üstelik yaşanan enerji patlaması hafızanın önemli bir kısmını silmişti.
+Geminin neredeyse bütün sistemleri bozulmuştu.
 
-Hayatta kalmanı sağlayacak kadar şeyi hatırlıyordun.
+Fiziksel olarak birçok bölüme ulaşabiliyordun.
 
-Fakat eve dönecek kadarını değil.
+Fakat neredeyse hiçbir sistemi kullanamıyordun.
+
+Yaşanan enerji patlaması hafızanın büyük bölümünü silmişti.
+
+Hayatta kalmanı sağlayacak kadarını hatırlıyordun.
+
+Ama eve dönebilecek kadarını değil.
 
 ---
 
-# Yeni Evren
+# 🌌 Yeni Evren
 
 İlk başta bulunduğun yerin yalnızca bilinmeyen bir gezegen olduğunu düşündün.
 
@@ -163,72 +171,96 @@ Senin evrenin değildi.
 
 Buradaki fizik kuralları farklıydı.
 
-Bazı bölgelerde zaman normal akarken,
+Bazı bölgelerde zaman normal akarken...
 
-bazılarında durmuş gibiydi.
+Bazılarında durmuş gibiydi.
 
-Teknoloji ile açıklanamayacak görünen olaylar yaşanıyordu.
+İnsanların "büyü" olarak adlandırdığı olaylar aslında henüz açıklayamadığın farklı fizik yasalarının sonucuydu.
 
-İnsanların "büyü" dediği şeyler aslında anlamını henüz çözemediğin farklı fizik kurallarından ibaretti.
+Bu evrende;
 
-Bu evrende geçmiş,
+bilim,
 
-gelecek
+enerji,
 
-ve teknoloji
+zaman
 
-birbirine karışmıştı.
+ve gerçeklik
+
+birbirine geçmişti.
 
 ---
 
-# Amaç
+# 🤖 Yapay Zekâ
+
+Gemide yalnız değildin.
+
+Geminin yapay zekâ sistemi hâlâ çalışıyordu.
+
+Ancak o da ağır hasar almıştı.
+
+İlk zamanlarda yalnızca kısa ve bozuk mesajlar verebiliyordu.
+
+Birçok veritabanı kaybolmuştu.
+
+Sistemlerini onardıkça;
+
+- daha fazla bilgi hatırlayacak,
+- sana yeni araştırmalar önerecek,
+- gemiyi birlikte yeniden çalıştıracaksınız.
+
+Zamanla yapay zekâ yalnızca bir bilgisayar değil...
+
+Yolculuğunun en önemli yol arkadaşlarından biri hâline gelecektir.
+
+---
+
+# 🎯 Amaç
 
 Artık tek hedefin vardı.
 
-Hayatta kalmak.
+- Hayatta kalmak.
+- Gemiyi onarmak.
+- Kaybettiğin bilgileri yeniden kazanmak.
+- Bu evreni anlamak.
+- Warp Çekirdeğini yeniden çalıştırmak.
+- Ve bir gün eve dönebilmek.
 
-Gemini onarmak.
-
-Kaybettiğin bilgileri yeniden kazanmak.
-
-Bu evreni anlamak.
-
-Ve...
-
-Bir gün eve dönebilecek Warp teknolojisini yeniden geliştirmek.
-
-Fakat zamanla fark edeceğin bir gerçek vardı.
+Ancak zamanla öğreneceğin bir gerçek vardı.
 
 Belki de...
 
-Eve dönüş sandığından çok daha büyük bir sırrın yalnızca başlangıcıydı.
+Bu yolculuk yalnızca eve dönüş hikâyesi değildi.
+
+Belki de seni buraya getiren şey bir hata değildi.
 
 ---
 
-# Oyuncunun Yolculuğu
+# 📖 Oyuncunun Yolculuğu
 
-Oyuncu oyunun başında hiçbir şeyi bilmez.
+Oyuncu oyuna hiçbir şeyi bilmeden başlar.
 
 Hikâye;
 
-- araştırmalar,
-- görevler,
-- günlük kayıtları,
-- eski veri diskleri,
-- gemi kayıtları,
-- yapay zekâ konuşmaları
+- Araştırmalar,
+- Görevler,
+- Veri diskleri,
+- Gemi günlükleri,
+- Eski kayıtlar,
+- Yapay zekâ konuşmaları,
+- Hafıza parçaları
 
 aracılığıyla yavaş yavaş ortaya çıkar.
 
-Hiçbir zaman tek seferde anlatılmaz.
+Hiçbir gerçek tek seferde anlatılmaz.
 
-Oyuncu her keşif yaptığında geçmişine dair yeni parçalar öğrenir.
+Her keşif geçmişin yeni bir parçasını açığa çıkarır.
 
-Hikâyenin tamamı ancak oyunun sonlarına doğru anlaşılır.
+Oyuncu hikâyenin tamamını ancak oyunun sonlarına doğru anlayabilir.
 
 ---
 
-# Hikâyenin Teması
+# 🌠 Hikâyenin Teması
 
 New World;
 
@@ -238,12 +270,18 @@ Ancak bu yolculuk boyunca oyuncu yalnızca yeni teknolojiler keşfetmez.
 
 Kendisini,
 
-geçmişini
+geçmişini,
 
-ve evreni de yeniden keşfeder.
+gemisini
+
+ve içinde bulunduğu evreni de yeniden keşfeder.
 
 Belki de yolculuğun sonunda değişen tek şey bulunduğu evren olmayacaktır.
 
 Belki...
 
 En çok değişen kişi kendisi olacaktır.
+
+---
+
+> **"Bazen en uzun yolculuk, eve dönüş yolculuğudur."**

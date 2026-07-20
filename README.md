@@ -2,43 +2,48 @@
 
 > **"Bilgi, bu evrendeki en değerli kaynaktır."**
 
-[![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen?logo=minecraft)]()
-[![NeoForge](https://img.shields.io/badge/NeoForge-21.1.235-blue)]()
-[![Durum](https://img.shields.io/badge/Durum-Alpha--0.1-yellow)]()
+<div align="center">
+
+![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen?logo=minecraft)
+![NeoForge](https://img.shields.io/badge/NeoForge-21.1.235-blue)
+![Sürüm](https://img.shields.io/badge/Sürüm-Alpha%200.1-yellow)
+![Tür](https://img.shields.io/badge/Tür-Hikâye%20Odaklı-purple)
+![Tema](https://img.shields.io/badge/Tema-Bilim%20Kurgu-5b8cff)
+![İlerleme](https://img.shields.io/badge/İlerleme-Araştırma-success)
+
+</div>
 
 ---
 
 # 🚀 New World Nedir?
 
-New World, keşif, araştırma ve hikâye odaklı olarak geliştirilen bir Minecraft mod paketidir.
+**New World**, klasik teknoloji mod paketlerinden farklı olarak **keşif, araştırma, hikâye ve bilgi üzerine kurulu** bir Minecraft deneyimidir.
 
-Oyuncu bu dünyada yalnızca yeni makineler üretmez.
+Bu dünyada amaç yalnızca daha büyük makineler yapmak değildir.
 
-Bilinmeyen teknolojileri araştırır.
+Amaç;
 
-Kayıp bilgileri yeniden keşfeder.
+- 🌍 Bilinmeyen dünyaları keşfetmek,
+- 🔬 Kaybolmuş teknolojileri yeniden öğrenmek,
+- 🚀 Hasarlı uzay gemini onarmak,
+- 🧬 Kendini biyolojik olarak geliştirmek,
+- 📖 Ve sonunda kendi evrenine geri dönebilmektir.
 
-Uzay gemisini onarır.
-
-Kendi biyolojisini geliştirir.
-
-Ve sonunda...
-
-Kendi evrenine geri dönebilmek için gereken teknolojiyi geliştirir.
+Bilgi, bu oyundaki en değerli kaynaktır.
 
 ---
 
 # 📖 Hikâye
 
-İnsanlık yıllardır yalnız olmadığını düşünüyordu.
+İnsanlık yüzyıllardır evrende yalnız olmadığını düşünüyordu.
 
-Sen ise bunu kanıtlamaya çalışan bilim insanlarından biriydin.
+Sen ise bunun kanıtını arayan bilim insanlarından biriydin.
 
 Bir gün...
 
 Onlar seni buldu.
 
-Uzun süre boyunca gözlem altında tutuldun.
+Yıllarca gözlem altında tutuldun.
 
 Teknolojilerini öğrendin.
 
@@ -46,27 +51,46 @@ Ve sonunda...
 
 Bir keşif gemisini çalarak kaçmayı başardın.
 
-Ancak yaptığın hatalı Warp hesaplaması seni tamamen farklı bir evrene savurdu.
+Ancak yaptığın hatalı Warp sıçraması seni tamamen bilinmeyen bir evrene savurdu.
 
 Gemin ağır hasar aldı.
 
 Ana reaktör parçalandı.
 
-Sistemlerin büyük bölümü devre dışı kaldı.
+Çoğu sistem devre dışı kaldı.
 
-Üstelik yaşanan kazadan dolayı hafızanın önemli bir kısmını kaybettin.
+Üstelik yaşanan kazanın ardından hafızanın büyük bir kısmını kaybettin.
 
 Şimdi önünde tek bir hedef var.
 
-Gemini yeniden çalıştırmak.
-
-Bu evreni anlamak.
-
-Ve eve dönebilecek teknolojiyi geliştirmek.
+> 🚀 Gemiyi yeniden çalıştır.
+>
+> 🔬 Bu evreni anlamaya çalış.
+>
+> 🌌 Eve dönecek teknolojiyi geliştir.
 
 ---
 
-# 🎮 New World'ü Farklı Yapan Nedir?
+# ✨ New World'ü Farklı Yapan Nedir?
+
+## 🚀 Yaşayan Bir Uzay Gemisi
+
+Ana üssün sıradan bir ev değildir.
+
+Tamamen sana ait dev bir uzay gemisidir.
+
+İlerledikçe;
+
+- Araştırma Laboratuvarları
+- Üretim Tesisleri
+- Reaktör Odaları
+- Mühendislik Bölümü
+- Teleport Sistemi
+- Yeni Gemi Bölümleri
+
+birer birer tekrar aktif hale gelir.
+
+---
 
 ## 🔬 Araştırma Odaklı İlerleme
 
@@ -74,149 +98,153 @@ Teknolojiler başlangıçta açık değildir.
 
 Yeni bilgiler;
 
-- araştırılarak,
-- keşfedilerek,
-- analiz edilerek
-- ve deneyler yapılarak açılır.
+- Araştırılarak
+- Analiz edilerek
+- Keşfedilerek
+- Deneyler yapılarak
 
----
+öğrenilir.
 
-## 🧪 Bilgi En Değerli Kaynaktır
+Tarifler değil...
 
-Klasik sistem:
-
-```
-Demir
-↓
-Makine
-↓
-Daha fazla Demir
-```
-
-New World:
-
-```
-Keşif
-↓
-Analiz
-↓
-Bilgi
-↓
-Yeni Teknoloji
-↓
-Gelişim
-```
+Bilgi ilerlemeyi sağlar.
 
 ---
 
 ## 🏭 Modüler Üretim Sistemi
 
-Hazır makineler üretmek yerine;
+Hazır makineler kurmak yerine;
 
-oyuncu boş bir **Production Chamber** oluşturur.
+Oyuncu kendi **Production Chamber** sistemlerini tasarlar.
 
-Makinenin iç tasarımını tamamen kendisi yapar.
+Her üretim odası farklıdır.
 
-Her fabrika oyuncuya özeldir.
-
----
-
-## 🚀 Uzay Gemisi
-
-Oyuncunun ana üssü bir ev değildir.
-
-Bir uzay gemisidir.
-
-Yeni laboratuvarlar,
-
-yeni üretim odaları,
-
-portal sistemleri,
-
-reaktörler
-
-ve araştırma merkezleri
-
-oyun ilerledikçe aktif hale gelir.
+Her oyuncunun uzay gemisi benzersiz olur.
 
 ---
 
 ## 🧬 Genetik Gelişim
 
-Klasik iksir sistemi yerine;
+Geçici iksirler yerine...
 
-oyuncu kendi DNA'sını geliştirir.
+Karakterini biyolojik olarak geliştirirsin.
 
-Night Vision,
+Kalıcı olarak kazanabileceğin geliştirmelerden bazıları:
 
-Haste,
-
-Speed
-
-gibi özellikler biyolojik geliştirmelerle kalıcı olarak kazanılabilir.
+- Gece Görüşü
+- Hızlı Kazma
+- Güç Artışı
+- Hareket Kabiliyeti
+- Radyasyon Direnci
+- Uzay Adaptasyonu
 
 ---
 
-# 🎯 Tasarım İlkelerimiz
+## 🌍 Keşif Gerçekten Önemlidir
 
-- Bilgi ham maddeden daha değerlidir.
-- Keşif her zaman ödüllendirilir.
-- Otomasyon amaç değil araçtır.
-- Her teknoloji yeni bir oynanış sunmalıdır.
-- Her büyük mekanik hikâyeye hizmet etmelidir.
-- Oyuncu yalnızca ekipmanını değil kendisini de geliştirebilmelidir.
+Her yapı...
+
+Her gezegen...
+
+Her terk edilmiş tesis...
+
+İlerlemeni değiştirecek yeni bilgiler saklıyor olabilir.
+
+---
+
+# 🎮 Oynanış Döngüsü
+
+```text
+Keşfet
+     ↓
+Analiz Et
+     ↓
+Araştır
+     ↓
+Yeni Teknolojileri Aç
+     ↓
+Üret
+     ↓
+Kendini Geliştir
+     ↓
+Gemini Onar
+     ↓
+Eve Dön
+```
+
+---
+
+# 🎯 Tasarım Felsefemiz
+
+New World birkaç temel ilke üzerine inşa edilmektedir.
+
+- 📖 Bilgi, ham maddeden daha değerlidir.
+- 🌍 Keşif her zaman ödüllendirilmelidir.
+- ⚙️ Otomasyon amaç değil, araçtır.
+- 🚀 Her büyük sistem hikâyeye hizmet etmelidir.
+- 🧬 Oyuncu yalnızca ekipmanını değil, kendisini de geliştirmelidir.
+- 🔬 Merak duygusu her zaman ödüllendirilmelidir.
 
 ---
 
 # 📚 Dokümantasyon
 
+Proje ile ilgili tüm ayrıntılı dokümanlara **docs/** klasöründen ulaşabilirsiniz.
+
 | Belge | Açıklama |
 |--------|----------|
-| 00_Vizyon.md | Projenin temel amacı ve felsefesi |
-| 01_Oyun_Döngüsü.md | Oyuncunun temel ilerleme döngüsü |
-| 02_Temel_Mekanikler.md | Oyunu farklı yapan sistemler |
-| 03_İlerleme_Sistemi.md | Teknoloji ilerleyişi |
-| 04_Hikâye.md | Ana hikâye |
-| 05_Lore.md | Evren ve geçmiş |
-| MODS.md | Kullanılan modlar |
-| CONTRIBUTING.md | Katkı rehberi |
+| 📖 Vizyon | Projenin temel amacı |
+| 🚀 Hikâye | Ana senaryo |
+| 🌌 Lore | Evren bilgileri |
+| ⚙️ Mekanikler | Oyun sistemleri |
+| 🏭 Production Chamber | Fabrika sistemi |
+| 🧩 Mod Listesi | Kullanılan modlar |
+| 🛠️ Geliştirici Notları | Teknik dokümanlar |
 
 ---
 
-# 👥 Katkıda Bulunmak İster misin?
+# 🗺️ Yol Haritası
+
+| Özellik | Durum |
+|----------|:----:|
+| Hikâye Temeli | ✅ |
+| Uzay Gemisi | 🚧 |
+| Araştırma Sistemi | 🚧 |
+| Production Chamber | 🚧 |
+| Genetik Gelişim | 🚧 |
+| Yapay Zekâ Yardımcısı | 🚧 |
+| Warp Sistemi | 🚧 |
+| Tam Hikâye | ⏳ |
+
+---
+
+# 🤝 Katkıda Bulun
 
 New World açık kaynak olarak geliştirilmektedir.
 
-Katkı sağlayabilecek alanlar:
+Katkı sağlayabileceğin alanlar:
 
+- Java Mod Geliştirme
 - KubeJS
 - Data Pack
 - Yapı Tasarımı
-- Hikâye Yazımı
-- Texture
 - UI Tasarımı
-- Java Mod Geliştirme
-- Oynanış Testleri
+- Texture
+- Hikâye Yazımı
+- Oyun Testleri
 
-Katkı rehberi için:
-
-**CONTRIBUTING.md**
+Detaylı bilgi için **CONTRIBUTING.md** dosyasını inceleyebilirsin.
 
 ---
 
-# 📌 Proje Durumu
+# 📌 Güncel Durum
 
-**Sürüm**
-
-Alpha 0.1
-
-**Minecraft**
-
-1.21.1 NeoForge
-
-**Durum**
-
-🟢 Aktif Geliştirme
+| | |
+|---|---|
+| Minecraft | 1.21.1 |
+| Mod Yükleyici | NeoForge |
+| Sürüm | Alpha 0.1 |
+| Durum | 🟢 Aktif Geliştirme |
 
 ---
 
@@ -224,19 +252,22 @@ Alpha 0.1
 
 New World yalnızca yeni modlar ekleyen bir Minecraft mod paketi değildir.
 
-New World;
+Bu proje;
 
-keşfetmenin,
+Keşfetmenin,
 
-öğrenmenin,
+Öğrenmenin,
 
-araştırmanın,
+Araştırmanın,
 
-ve bilinmeyeni anlamaya çalışmanın oyunudur.
+Ve bilinmeyeni anlamaya çalışmanın oyunudur.
 
-Minecraft yalnızca bu hikâyeyi anlatmak için kullandığımız platformdur.
+Minecraft ise bu hikâyeyi anlatmak için kullandığımız platformdur.
+
+> **"Bilgi, her yolculuğun başlangıcıdır."**
 
 ---
 
-> **"Bilgi, her yolculuğun başlangıcıdır."**
-Modpakedi ile ilgili detaylı bilgileri docs içinde bulabilirsiniz
+## 📂 Daha Fazla Bilgi
+
+Proje ile ilgili tüm teknik dokümanlara **docs/** klasöründen ulaşabilirsiniz.
