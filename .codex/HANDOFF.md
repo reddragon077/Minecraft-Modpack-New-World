@@ -6,7 +6,7 @@ Branch: `main`
 
 ## Current objective
 
-Close Radar v2's modded family test with `CAMPSITE` and `ARCHEOLOGIST CAMP`; `ABANDONED CAMP` already passed.
+Confirm the newly unlocked `CAMPSITE` radar filter, then complete the remaining `ARCHEOLOGIST CAMP` family test.
 
 ## Exact state
 
@@ -24,6 +24,7 @@ Close Radar v2's modded family test with `CAMPSITE` and `ARCHEOLOGIST CAMP`; `AB
 - `0.5.59.6` uses the required empty-string sentinel when clearing that selection. The prior `0.5.59.5` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260901-221120`.
 - `0.5.59.6` runtime acceptance passed: the UI showed `NO TARGET SELECTED`; over 20 minutes of `latest.log` contained zero `0471g arrival check` and zero `InvocationTargetException` entries.
 - The Deposits view still showed 28 genuine geology records, including two visible `COPPER-RICH DEPOSIT` rows. False-structure cleanup did not remove the real `GEOLOGY` data.
+- `/locate structure explorify:campsite` resolved a real campsite at `[-2512, ~, -992]`; after travel, Structure Field Survey identified `CAMPSITE` alongside nearby families. Family recognition passed with zero arrival-check exceptions; the dynamic `CAMPSITE` filter still needs a visual confirmation.
 
 ## Test status
 
@@ -36,10 +37,10 @@ Close Radar v2's modded family test with `CAMPSITE` and `ARCHEOLOGIST CAMP`; `AB
 
 ## Next executable test
 
-1. Use Radar to locate an unknown candidate for `explorify:campsite` or `betterarcheology:archeologist_camp_grassy`.
-2. Travel to the candidate and run Structure Field Survey in range.
-3. Confirm the record upgrades from `UNKNOWN STRUCTURE` to `CAMPSITE` or `ARCHEOLOGIST CAMP` and unlocks the dynamic family filter.
-4. Repeat for the remaining family; then begin Discovery Database analysis-level/last-seen/event work.
+1. Open the Structure Radar filter list and confirm `CAMPSITE` is now available.
+2. Locate `betterarcheology:archeologist_camp_grassy`, travel there, and run Structure Field Survey in range.
+3. Confirm `ARCHEOLOGIST CAMP` is recorded and its dynamic filter appears.
+4. Then begin Discovery Database analysis-level/last-seen/event work.
 
 ## Do not assume
 
@@ -51,5 +52,5 @@ Close Radar v2's modded family test with `CAMPSITE` and `ARCHEOLOGIST CAMP`; `AB
 1. `.codex/project-memory.md`
 2. This file
 3. `.codex/conversations/INDEX.md`
-4. `.codex/conversations/2026-09-01_desktop_field_survey_acceptance_route_cleanup.md`
+4. `.codex/conversations/2026-09-01_desktop_campsite_family_acceptance.md`
 5. `docs/Known Issues.md`

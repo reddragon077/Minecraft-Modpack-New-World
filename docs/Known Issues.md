@@ -25,6 +25,7 @@ Son güncelleme: 1 Eylül 2026
 - Field Survey gerçek `ABANDONED CAMP` yapısını tanıdı; ancak iki ardışık testte aynı sonuç listesine `COPPER SULFIDE DEPOSIT` de eklendi. Bu, `GEOLOGY` kaydının structure sonucu olarak sızdığını doğrular.
 - `0.5.59.5`, NewWorldCore `*_deposit` jigsaw kayıtlarını radar/Field Survey’den dışladı; Field Survey beş gerçek yapı buldu ve jeoloji sızıntısı görülmedi. `0.5.59.6` kabulünde Deposits görünümünde 28 gerçek kayıt ve iki görünür `COPPER-RICH DEPOSIT` satırı korunmuştu.
 - `0.5.59.5` temizlik sırasında silinen seçili hedefi `null` yaparak rota varış kontrolünde sürekli `InvocationTargetException` üretti. `0.5.59.6` boş metin sentinelini kullanır; 20 dakikadan uzun oyun oturumunda her iki ilgili hata sayısı da sıfır kaldı.
+- `explorify:campsite` gerçek yapısı bulunup yerinde `CAMPSITE` olarak tanındı. Dinamik `CAMPSITE` filtre görünürlüğü ve `ARCHEOLOGIST CAMP` zinciri Radar v2'nin kalan kabul maddeleridir.
 
 ## Senkronizasyon sınırları
 

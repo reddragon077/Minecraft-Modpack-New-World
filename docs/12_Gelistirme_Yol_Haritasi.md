@@ -14,7 +14,7 @@ Durum işaretleri:
 
 ## Aşama 1 — Radar v2
 
-Durum: dinamik registry taraması, ortak-placement/geology ayrımı ve `0.5.59.6` eski seçili rota temizliği oyun içinde geçti. Son kapanış işi `CAMPSITE` ve `ARCHEOLOGIST CAMP` family zincirleridir.
+Durum: dinamik registry taraması, ortak-placement/geology ayrımı ve `0.5.59.6` eski seçili rota temizliği oyun içinde geçti. `CAMPSITE` Field Survey tarafından tanındı; dinamik filtre görseli ve `ARCHEOLOGIST CAMP` zinciri son kapanış işleridir.
 
 - [x] Sabit 13 öğelik kullanıcı filtresi kaldırıldı.
 - [x] Filtreler Discovery Database içeriğine göre dinamik üretiliyor.
@@ -26,7 +26,7 @@ Durum: dinamik registry taraması, ortak-placement/geology ayrımı ve `0.5.59.6
 - [x] Structure ve Geology sonuçları birbirinden ayrıldı.
 - [x] Range, Speed ve Accuracy yükseltmeleri iki tarama yoluna bağlandı.
 
-Kapanış testi: `CAMPSITE`, `ABANDONED CAMP` ve `ARCHEOLOGIST CAMP` aileleriyle UNKNOWN → yerinde tanımlama → dinamik filtre davranışı.
+Kapanış testi: `ABANDONED CAMP` ve `CAMPSITE` yerinde tanıma geçti. `CAMPSITE` dinamik filtre görünürlüğü ile `ARCHEOLOGIST CAMP` için UNKNOWN → yerinde tanımlama → dinamik filtre davranışı bekliyor.
 
 ## Aşama 2 — Ortak Discovery Database
 
