@@ -1,8 +1,8 @@
 # New World — Aktif geliştirme yol haritası
 
-Son doğrulama: 1 Eylül 2026
+Son doğrulama: 2 Eylül 2026
 
-Aktif temel: NewWorldCore `0.5.59.6-alpha-radar-route-cleanup`
+Aktif temel: NewWorldCore `0.5.59.7-alpha-radar-filter-layer`
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -14,7 +14,7 @@ Durum işaretleri:
 
 ## Aşama 1 — Radar v2
 
-Durum: dinamik registry taraması, ortak-placement/geology ayrımı ve `0.5.59.6` eski seçili rota temizliği oyun içinde geçti. `CAMPSITE` Field Survey tarafından tanındı; dinamik filtre görseli ve `ARCHEOLOGIST CAMP` zinciri son kapanış işleridir.
+Durum: dinamik registry taraması, ortak-placement/geology ayrımı ve eski seçili rota temizliği oyun içinde geçti. `CAMPSITE` Field Survey tarafından tanındı ve dinamik filtresi doğrulandı. `0.5.59.7` filtre ön-plan katmanı için görsel kabul ile `ARCHEOLOGIST CAMP` zinciri son kapanış işleridir.
 
 - [x] Sabit 13 öğelik kullanıcı filtresi kaldırıldı.
 - [x] Filtreler Discovery Database içeriğine göre dinamik üretiliyor.
@@ -26,7 +26,7 @@ Durum: dinamik registry taraması, ortak-placement/geology ayrımı ve `0.5.59.6
 - [x] Structure ve Geology sonuçları birbirinden ayrıldı.
 - [x] Range, Speed ve Accuracy yükseltmeleri iki tarama yoluna bağlandı.
 
-Kapanış testi: `ABANDONED CAMP` ve `CAMPSITE` yerinde tanıma geçti. `CAMPSITE` dinamik filtre görünürlüğü ile `ARCHEOLOGIST CAMP` için UNKNOWN → yerinde tanımlama → dinamik filtre davranışı bekliyor.
+Kapanış testi: `ABANDONED CAMP` ve `CAMPSITE` yerinde tanıma geçti; `CAMPSITE` dinamik filtresi göründü. `0.5.59.7` filtre katmanı görsel kabulü ile `ARCHEOLOGIST CAMP` için UNKNOWN → yerinde tanımlama → dinamik filtre davranışı bekliyor.
 
 ## Aşama 2 — Ortak Discovery Database
 

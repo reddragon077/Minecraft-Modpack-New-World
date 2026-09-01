@@ -1,6 +1,6 @@
 # New World project memory
 
-Last synchronized: 2026-09-01
+Last synchronized: 2026-09-02
 
 ## Canonical workflow
 
@@ -20,7 +20,7 @@ Last synchronized: 2026-09-01
 
 ## NewWorldCore continuation point
 
-- Active synchronized test build: `NewWorldCore-1.21.1-NeoForge-0.5.59.6-alpha-radar-route-cleanup.jar` (SHA-256 `4b97a91af5d7c45aabb19c0f1fe4223141a4ffa0800878e21bca24ce2aefa8d0`). It is installed and accepted on the desktop instance; the laptop installation state remains to be verified.
+- Active synchronized test build: `NewWorldCore-1.21.1-NeoForge-0.5.59.7-alpha-radar-filter-layer.jar` (SHA-256 `6f1fcec6139c55c2bf92145f31d3d5e5913fd0cc0333bc27d6f3a313a67ae9f6`). It is installed on the desktop instance; filter-overlay runtime acceptance and the laptop installation remain pending.
 - Desktop acceptance evidence shows more than four reachable results and modded classes including Explorify, Better Dungeons, and Structory. The old four-record limit is fixed, shared placement sets now remain `UNKNOWN STRUCTURE`, and the false `MODDED STRUCTURE` selection was removed safely.
 - The verified `0.5.57.0` baseline is backed up under the laptop instance's `backups/custom-mods/known-good-0.5.57.0/` directory.
 - The complete historical source tree is still missing. The reproducible compatibility delta is stored under `src-patches/newworldcore/` and built with `tools/build-newworldcore-geology-patch.ps1`.
@@ -31,7 +31,7 @@ Last synchronized: 2026-09-01
 ## Geology resource rules
 
 - One deposit family per real resource, not one duplicate per mod.
-- Current `0.5.59.6` definitions: vanilla families plus Osmium, Tin, Lead, Uranium, Fluorite, Aluminum, Nickel, Silver, Zinc, Platinum, Uraninite, and Certus Quartz.
+- Current `0.5.59.7` definitions: vanilla families plus Osmium, Tin, Lead, Uranium, Fluorite, Aluminum, Nickel, Silver, Zinc, Platinum, Uraninite, and Certus Quartz.
 - Immersive Engineering supplies Aluminum and Silver; Nickel is shared with Oritech, while Lead and Uranium reuse their existing families.
 - Create supplies Zinc; Oritech supplies Platinum; Powah Uraninite remains separate from Uranium.
 - Applied Energistics 2 uses normal Certus Quartz only; Charged Certus is explicitly excluded.
@@ -43,7 +43,9 @@ Last synchronized: 2026-09-01
 - Confirmed `0.5.59.4` label defect: a placement shared by multiple structure families falls back to `MODDED STRUCTURE` in `Navigation0581DynamicStructureScanner.PlacementTask.family()`. That is not a registry structure or a discoverable place. Multi-family candidates must remain `UNKNOWN STRUCTURE` (or otherwise explicitly possible/unconfirmed) until Field Survey identifies an actual generated structure.
 - Player Structure Field Survey reads actual nearby structure starts. Desktop `0.5.59.5` acceptance identified exactly five real structures (`VILLAGE`, `ABANDONED CAMP`, `SMALL DUNGEON`, `METEORITE`, `SPIDER DUNGEON`) and no geology deposit; structure/geology isolation passed.
 - `0.5.59.5` removed 17 invalid persisted structure records and eliminated `MODDED STRUCTURE` from the discovery list. Its cleanup wrote a null selected-key sentinel, causing `Navigation0471gFix.checkArrivals` to emit `InvocationTargetException` every tick when the removed record had been selected. `0.5.59.6` resets it to the required empty-string sentinel; the world remained active for over 20 minutes with zero arrival-check/InvocationTargetException entries, the UI showed `NO TARGET SELECTED`, and 28 genuine geology records including `COPPER-RICH DEPOSIT` remained visible.
-- `explorify:campsite` family recognition passed on desktop: locate found `[-2512, ~, -992]`, and Field Survey reported `CAMPSITE` after travel. The dynamic `CAMPSITE` filter still needs visual confirmation; `ARCHEOLOGIST CAMP` remains the last untested family in the Radar v2 closure set.
+- `explorify:campsite` family recognition passed on desktop: locate found `[-2512, ~, -992]`, Field Survey reported `CAMPSITE`, and the dynamic filter list visibly exposed `CAMPSITE` among 13 discovered types.
+- Opening the two-page dynamic filter over live results exposed a GUI layering defect: result and telemetry text rendered above the otherwise opaque filter panel. `0.5.59.7` wraps the legacy overlay in a dedicated `Z=1000` pose layer; compile, bytecode, pose-stack smoke, archive, install, and repo/instance hash checks passed. In-game visual acceptance is pending.
+- `ARCHEOLOGIST CAMP` remains the last untested family in the Radar v2 closure set.
 - FE Matrix registration now deterministically selects Architectury's `register(ResourceLocation, Supplier)` overload, removing the nondeterministic startup `argument type mismatch` path.
 - The Uraninite path passed an initial in-game acceptance test: Geological Radar -> Discovery -> Navigation target -> TARDIS route -> matching physical deposit. Full family, Mining and balance regression remains open.
 - `docs/12_Gelistirme_Yol_Haritasi.md` is the active implementation order. Finish its Radar/Discovery/Player Interface/Deposit stages before Research and Production Chamber progression.

@@ -1,8 +1,8 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.59.6-alpha-radar-route-cleanup",
-  "marker": "NewWorldDynamicStructureRadarV7",
+  "version": "0.5.59.7-alpha-radar-filter-layer",
+  "marker": "NewWorldDynamicStructureRadarV8",
   "fixes": [
     "Dynamic structure-registry classification for vanilla and modded structures",
     "Placement-only modded structure coordinates without chunk generation or locate calls",
@@ -14,7 +14,8 @@
     "Shared multi-family placements remain UNKNOWN until field confirmation",
     "Geology worldgen structures excluded from Structure Radar and Field Survey",
     "Persisted false MODDED STRUCTURE and geology-as-structure records are removed",
-    "Legacy selected targets are cleared with the non-null navigation sentinel"
+    "Legacy selected targets are cleared with the non-null navigation sentinel",
+    "Structure filter overlay renders on a dedicated foreground layer"
   ],
   "newDeposits": [
     {
