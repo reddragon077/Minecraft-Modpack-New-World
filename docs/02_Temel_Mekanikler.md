@@ -1,6 +1,6 @@
 # Temel mekanikler
 
-Aktif statik test temeli: NewWorldCore `0.5.58.0-alpha-expanded-geology-deposits` (oyun içi kabul testi bekliyor)
+Aktif test temeli: NewWorldCore `0.5.58.0-alpha-expanded-geology-deposits` (Uraninite radar → rota → fiziksel yatak zinciri oyun içinde doğrulandı; tam aile/balance testi sürüyor)
 
 | Mekanik | Durum | Uygulama |
 |---|---|---|

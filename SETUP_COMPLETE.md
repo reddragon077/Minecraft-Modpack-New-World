@@ -30,4 +30,4 @@ Teknik komutlar ve güvenlik sınırları [`docs/WORKSPACE_SYNC.md`](docs/WORKSP
 
 ## Mevcut geliştirme kapısı
 
-Altyapı hazırdır. `0.5.58.0-alpha-expanded-geology-deposits` statik doğrulamadan geçmiş ve laptop test instance'ına kurulmuştur. Sıradaki kapı yeni/mevcut dünya açılışı, radar-fiziksel yatak eşleşmesi, Mining M1 ve kalıcılık regresyon testidir.
+Altyapı hazırdır. `0.5.58.0-alpha-expanded-geology-deposits` laptopta açılmış; Uraninite radar → rota → fiziksel yatak zinciri doğrulanmıştır. Aktif geliştirme ve kalan kabul sırası [`docs/12_Gelistirme_Yol_Haritasi.md`](docs/12_Gelistirme_Yol_Haritasi.md) belgesindedir.

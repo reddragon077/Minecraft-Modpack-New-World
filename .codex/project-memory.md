@@ -36,7 +36,9 @@ Last synchronized: 2026-09-01
 - Lead is shared by Mekanism and Immersive Engineering.
 - Nickel is shared by Immersive Engineering and Oritech.
 - Uranium is shared where mods represent the same resource.
-- The 0.5.58.0 JAR passed compile, archive, definition/template, SHA-256, and installed-registry validation. In-game acceptance testing is still required.
+- The 0.5.58.0 JAR passed compile, archive, definition/template, SHA-256, and installed-registry validation.
+- The Uraninite path passed an initial in-game acceptance test: Geological Radar -> Discovery -> Navigation target -> TARDIS route -> matching physical deposit. Full family, Mining and balance regression remains open.
+- `docs/12_Gelistirme_Yol_Haritasi.md` is the active implementation order. Finish its Radar/Discovery/Player Interface/Deposit stages before Research and Production Chamber progression.
 
 ## Ship and progression decisions
 

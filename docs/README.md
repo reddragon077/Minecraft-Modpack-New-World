@@ -16,6 +16,7 @@ Bu klasör ürün vizyonu ile uygulama durumunu birbirinden ayırır. Eski konu�
 | [09_Replikatör.md](09_Replikat%C3%B6r.md) | Matter ve bilgi tabanlı üretim | Alpha |
 | [10_Genetik.md](10_Genetik.md) | Biyolojik gelişim | Gelecek tasarımı |
 | [11_Warp.md](11_Warp.md) | Seyahat, motor ve rota sistemi | Deneysel alpha |
+| [12_Gelistirme_Yol_Haritasi.md](12_Gelistirme_Yol_Haritasi.md) | Radar, discovery, Player Ship Interface ve deposit geliştirme sırası | Aktif roadmap |
 | [Known Issues.md](Known%20Issues.md) | Bilinen riskler ve doğrulama ihtiyaçları | Aktif |
 | [WORKSPACE_SYNC.md](WORKSPACE_SYNC.md) | GitHub ve iki bilgisayar iş akışı | Aktif |
 

@@ -101,7 +101,7 @@ Vanilla yatak aileleri için en az bir örnek doğrulanmalıdır:
 
 Lead ve Uranium yataklarında negatif Y seviyelerindeki deepslate varyantları ayrıca kontrol edilmelidir.
 
-> Bu aileler JAR, template ve kurulu registry kimlikleri düzeyinde doğrulanmıştır. Oyun içi kabul tamamlanana kadar build test sürümü olarak kalır.
+> Bu aileler JAR, template ve kurulu registry kimlikleri düzeyinde doğrulanmıştır. `uraninite_pocket` için radar → Navigation → TARDIS rota → fiziksel yatak zinciri 1 Eylül 2026'da oyun içinde doğrulandı. Diğer ailelerin toplu kabulü, Mining/depletion ve denge testleri tamamlanana kadar build test sürümü olarak kalır.
 
 Her yatak için:
 

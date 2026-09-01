@@ -19,6 +19,8 @@ Son güncelleme: 1 Eylül 2026
 
 ## Bir sonraki test kapısı
 
+`uraninite_pocket` için Radar → Navigation → TARDIS rota → fiziksel yatak zinciri 1 Eylül 2026'da doğrulandı. Aşağıdaki maddeler tam regresyon kapısı olarak devam eder:
+
 1. Oyun açılışı ve mod çakışması kontrolü.
 2. Mevcut dünya yükleme ve gemi verisi kalıcılığı.
 3. Geological Radar ile fiziksel deposit eşleşmesi.

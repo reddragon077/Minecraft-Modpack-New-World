@@ -68,10 +68,13 @@ Belge haritası ve durumları için [`docs/README.md`](docs/README.md) dosyasın
 
 ## Sıradaki geliştirme odağı
 
-1. NewWorldCore `0.5.58.0` genişletilmiş jeoloji buildini yeni ve mevcut test dünyalarında doğrulamak.
-2. Radar koordinatı, fiziksel yatak, Mining M1 ailesi ve Replication bilgisinin aynı deposit kimliğini kullandığını sınamak.
-3. Yeni yatakların spacing, reserve, yoğunluk ve rarity dengesini oyun içinde ayarlamak.
-4. Doğrulanmış buildden sonra araştırma ve Production Chamber ilerlemesini genişletmek.
+Ana sıra [`docs/12_Gelistirme_Yol_Haritasi.md`](docs/12_Gelistirme_Yol_Haritasi.md) belgesidir.
+
+1. Radar v2 modlu structure family/adlandırma kabulünü kapatmak.
+2. Ortak Discovery Database'e analysis level, last-seen ve discovery event altyapısını eklemek.
+3. Geological Field Survey'i ve Player Ship Interface sekmelerini tamamlamak.
+4. Deposit extraction, remaining, depletion ve `DEPLETED` entegrasyonunu bitirmek.
+5. Bu 14 aşamadan sonra Research ve Production Chamber progression'ına geçmek.
 
 ## Proje durumu
 
