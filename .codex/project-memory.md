@@ -7,8 +7,9 @@ Last synchronized: 2026-09-01
 - GitHub repository: `https://github.com/reddragon077/Minecraft-Modpack-New-World`
 - GitHub `main` is the canonical shared source for development across computers.
 - CurseForge instance directories are local runtime and test endpoints.
-- Current registered machine: `laptop`; paths are stored in `machines/laptop.json`.
-- The desktop machine must receive its own record when it is configured.
+- Registered machines: `laptop` and `desktop`; paths are stored under `machines/`.
+- Desktop repository root: `E:\projects\Minecraft-Modpack-New-World`.
+- Desktop CurseForge instance: `C:\Users\suley\curseforge\minecraft\Instances\New World`.
 
 ## Platform
 
@@ -19,7 +20,8 @@ Last synchronized: 2026-09-01
 
 ## NewWorldCore continuation point
 
-- Pending synchronized test build: `NewWorldCore-1.21.1-NeoForge-0.5.59.4-alpha-full-placement-radar.jar` (SHA-256 `2530037eb38b25670a5d3d8019a04d7fc87e6ac106dc31b1a0ce90cecccee6de`). Install after the running game exits.
+- Active synchronized test build: `NewWorldCore-1.21.1-NeoForge-0.5.59.4-alpha-full-placement-radar.jar` (SHA-256 `2530037eb38b25670a5d3d8019a04d7fc87e6ac106dc31b1a0ce90cecccee6de`). It is installed on the desktop instance; desktop in-game acceptance and the laptop installation state remain to be verified.
+- The earlier Structure Radar GUI exposed only four records at once. The result-list/scroll handling was changed so more records can be reached, but the user switched computers before testing that fix. Treat `>4 results are reachable and scrollable` as unverified, not solved, until the desktop acceptance test passes.
 - The verified `0.5.57.0` baseline is backed up under the laptop instance's `backups/custom-mods/known-good-0.5.57.0/` directory.
 - The complete historical source tree is still missing. The reproducible compatibility delta is stored under `src-patches/newworldcore/` and built with `tools/build-newworldcore-geology-patch.ps1`.
 - `0.5.56.0-alpha-radar-navigation-mining-recovery` was previously described as a known-good recovery baseline.
@@ -59,3 +61,4 @@ Last synchronized: 2026-09-01
 - Never load multiple NewWorldCore or DoctorWhoMod versions in one instance.
 - Do not commit worlds, saves, backups, logs, crash reports, user caches, accounts, launcher metadata, or personal options.
 - After substantial verified work, update this memory and `pack-lock.json`, then commit and push.
+- Cross-computer conversation continuity lives in `.codex/HANDOFF.md` and `.codex/conversations/`. Read them after every pull and update them before switching computers.

@@ -26,12 +26,34 @@ foreach ($folder in @('config', 'defaultconfigs', 'kubejs')) {
 
 $modsDestination = Join-Path $instanceRootResolved 'mods'
 New-Item -ItemType Directory -Path $modsDestination -Force | Out-Null
+$repositoryMods = @{}
 foreach ($pattern in @('NewWorldCore-*.jar', 'DoctorWhoMod-*.jar')) {
     $matches = @(Get-ChildItem -Path (Join-Path (Join-Path $repoRoot 'mods') $pattern) -File)
     if ($matches.Count -ne 1) {
         throw "Expected exactly one repository mod matching $pattern, found $($matches.Count)."
     }
-    Copy-Item -LiteralPath $matches[0].FullName -Destination $modsDestination -Force
+    $repositoryMods[$pattern] = $matches[0]
+}
+
+$staleMods = @(foreach ($pattern in $repositoryMods.Keys) {
+    $expectedName = $repositoryMods[$pattern].Name
+    Get-ChildItem -Path (Join-Path $modsDestination $pattern) -File |
+        Where-Object { $_.Name -ne $expectedName }
+})
+
+if ($staleMods.Count -gt 0) {
+    $backupRoot = Join-Path $instanceRootResolved (
+        'backups\custom-mods\pre-apply-' + (Get-Date -Format 'yyyyMMdd-HHmmss')
+    )
+    New-Item -ItemType Directory -Path $backupRoot -Force | Out-Null
+    foreach ($staleMod in $staleMods) {
+        Move-Item -LiteralPath $staleMod.FullName -Destination $backupRoot
+        Write-Host "Backed up stale custom mod: $($staleMod.Name)"
+    }
+}
+
+foreach ($repositoryMod in $repositoryMods.Values) {
+    Copy-Item -LiteralPath $repositoryMod.FullName -Destination $modsDestination -Force
 }
 
 Write-Host "Shared files and custom mods applied to $instanceRootResolved"

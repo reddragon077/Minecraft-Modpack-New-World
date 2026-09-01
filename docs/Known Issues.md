@@ -5,6 +5,7 @@ Son güncelleme: 1 Eylül 2026
 ## Aktif riskler
 
 - NewWorldCore `0.5.59.4-alpha-full-placement-radar` aktif test buildidir; placement tabanlı vanilla/modlu structure taraması, gerçek-yapı Field Survey izolasyonu ve deposit regresyonu birlikte oyun içinde doğrulanmalıdır.
+- Structure Radar sonuç ekranının yalnızca dört kaydı göstermesi için liste/scroll düzeltmesi yapıldı; bilgisayar değişimi nedeniyle bu düzeltme henüz oyun içinde test edilmedi. Beşinci ve sonraki sonuçların gerçekten erişilebilir olduğu görülmeden madde kapatılmamalıdır.
 - İlk `0.5.59.0` denemesinde namespace toplu sorgusu 40 saniyeyi aşan server tick'e yol açtı. `0.5.59.1` sorguları tick'lere yaydı fakat tekil locate çağrıları yine 2–8 saniyelik takılmalar üretti. `0.5.59.2`, modlu yapılar için chunk/worldgen yükleyen locate yolunu kaldırıp yalnızca placement koordinat matematiğini kullanır.
 - Placement tabanlı radar koordinatı bir yapı için olası üretim noktasıdır; biyom/structure-set seçimi nedeniyle yanlış pozitif ihtimali vardır. Gerçek keşif, oyuncunun yerinde kullandığı Structure Field Survey ile doğrulanır.
 - `0.5.59.2` taraması 128 sonuç korumasına ulaştığında ilerleme indeksini artırmadığı için tarama tamamlanmıyordu. `0.5.59.3`, taramayı sonuna kadar ilerletirken yalnızca mesafe olarak en yakın 128 sonucu tutar.
@@ -19,7 +20,7 @@ Son güncelleme: 1 Eylül 2026
 - `manifest.json` üçüncü taraf eklentileri sabitler; iki custom fork `mods/` altında tutulur.
 - KubeJS web server auth anahtarı, WorldEdit oturumları, cache, log, dünya ve kişisel seçenekler GitHub’a alınmaz.
 - Her CurseForge örneğinde yalnızca bir NewWorldCore ve bir DoctorWhoMod fork JAR’ı bulunmalıdır.
-- Masaüstü bilgisayar henüz `machines/desktop.json` ile kaydedilmemiştir.
+- Masaüstü bilgisayar `machines/desktop.json` ile kaydedildi ve güncel repo durumu CurseForge örneğine uygulandı; oyun içi kabul testi bekliyor.
 
 ## Bir sonraki test kapısı
 
@@ -33,5 +34,6 @@ Son güncelleme: 1 Eylül 2026
 6. Lead/Uranium/Nickel için tek aile ve çoklu mod palette kuralları.
 7. Navigation `DEPOSITS`, geçmiş ve yeniden başlatma kalıcılığı.
 8. Replication tarama bilgisi ve duplicate mineral kuralları.
-9. `explorify:campsite`, `structory:abandoned_camp` ve `betterarcheology:archeologist_camp_grassy` için Radar → UNKNOWN → yerinde Field Survey → family adı zinciri.
-10. Structure Field Survey sonucunun hiçbir `GEOLOGY` kaydını structure olarak işaretlemediği kontrolü.
+9. Structure Radar taramasının donmadan tamamlanması, toplam sonuç sayısının dördü aşması ve beşinci/sonraki kayıtların kaydırılarak seçilebilmesi.
+10. `explorify:campsite`, `structory:abandoned_camp` ve `betterarcheology:archeologist_camp_grassy` için Radar → UNKNOWN → yerinde Field Survey → family adı zinciri.
+11. Structure Field Survey sonucunun hiçbir `GEOLOGY` kaydını structure olarak işaretlemediği kontrolü.

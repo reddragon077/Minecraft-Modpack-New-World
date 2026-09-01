@@ -1,0 +1,33 @@
+# New World conversation index
+
+Newest records are listed first. `HANDOFF.md` remains the canonical current baton.
+
+## Git-tracked session records
+
+- [2026-09-01 — desktop sync and Structure Radar handoff](2026-09-01_desktop_sync_and_radar_handoff.md) — repo/instance synchronization completed; the four-record UI fix and modded structure discovery still require in-game acceptance.
+
+## Imported legacy conversation map
+
+These entries are navigation aids derived from earlier account conversations. They are not test evidence and may describe superseded versions.
+
+- `Modlu Depositleri Ekleme` — geology family ownership: Aluminum, Zinc, Nickel, Silver, Platinum, Uraninite, Certus Quartz, Fluorite; shared Lead/Uranium/Nickel rules.
+- `New World Geology Devam` — planned `0.5.57` geology continuation; attachment/source access repeatedly blocked.
+- `Teleporter Room Düzenlemesi` — mining vein lock and “only truly observed resources become known” decision.
+- `Radar ve Navigasyon Entegrasyonu` — preserve the user's ARS-containing DoctorWhoMod NBT structures; remove legacy DWM structure families.
+- `Buffer İkonu ve SMART Auto` — staged/background radar scan; the original 32-result GUI showed four visible rows and received scrolling/list work.
+- `New World Replication Sistemi` — continuous SMART AUTO backlog distribution, dimension routing, and buffer presentation decisions.
+- `Raw madenler matter değeri` — replication produces raw/natural resources; machines handle processed products.
+- `Tardis motor bloğu entegrasyonu` — mining blocks and long-backed buffer/routing direction.
+- `Gemi blokları dokuları sorunu` — old `0.5.36.4` texture/power-backbone context.
+- `Sıradaki işlem detayları` — early ship-block Phase 1, Universal Drive, and warp-class context.
+- `NewWorldCore Geliştirme Durumu` — old physical warp button and FE/WE context.
+- `TARDIS GUI Tasarımı` — FE/item/fluid/gas node system and matrix upgrade direction.
+- `New World Araştırma Sistemi` — research, engine/warp restrictions, and old progression context.
+- `Dünya Tasarımı ve Keşif` — controlled structures, scanner, multi-hop routes, and custom NBT structures.
+- `New World Yol Haritası` — early GitHub documentation and research-script work.
+- `Sci-fi Dekorasyon Modları` — dynamic room system and New World-only structure family direction.
+- `New World Gemi Tasarımı` — three-level ship layout and room placement decisions.
+- `Modpack Tasarımı ve Eklemeler` — permanent mobile base, modular rooms, ShipOS, and player-block preservation.
+- `Uzaylı Kaçırılma RPG` — earliest story/modpack and GitHub setup context.
+
+When a legacy decision still matters, copy it into `project-memory.md` or a new dated record with its current verification status.
