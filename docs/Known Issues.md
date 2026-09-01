@@ -4,10 +4,10 @@ Son güncelleme: 1 Eylül 2026
 
 ## Aktif riskler
 
-- NewWorldCore `0.5.59.5-alpha-radar-survey-isolation` aktif test buildidir. Derleme/JAR/statik testleri ve masaüstü kurulumu geçti; oyun içi temizleme, radar etiketi ve Field Survey izolasyon kabulü bekliyor.
+- NewWorldCore `0.5.59.6-alpha-radar-route-cleanup` aktif test buildidir. `0.5.59.5` yapı/jeoloji izolasyon kabulünü geçti; `0.5.59.6` eski seçili hedefin güvenli temizlenmesi için kuruldu ve oyun kabulü bekliyor.
 - İlk `0.5.59.0` denemesinde namespace toplu sorgusu 40 saniyeyi aşan server tick'e yol açtı. `0.5.59.1` sorguları tick'lere yaydı fakat tekil locate çağrıları yine 2–8 saniyelik takılmalar üretti. `0.5.59.2`, modlu yapılar için chunk/worldgen yükleyen locate yolunu kaldırıp yalnızca placement koordinat matematiğini kullanır.
 - Placement tabanlı radar koordinatı bir yapı için olası üretim noktasıdır; biyom/structure-set seçimi nedeniyle yanlış pozitif ihtimali vardır. Gerçek keşif, oyuncunun yerinde kullandığı Structure Field Survey ile doğrulanır.
-- `0.5.59.4`te birden fazla structure ailesinin aynı placement kaydını paylaşması gerçek olmayan `MODDED STRUCTURE` etiketi üretiyordu. `0.5.59.5` bunu `UNKNOWN STRUCTURE` yapar; oyun kabulü bekliyor.
+- `0.5.59.4`te birden fazla structure ailesinin aynı placement kaydını paylaşması gerçek olmayan `MODDED STRUCTURE` etiketi üretiyordu. `0.5.59.5` kabulünde bu kayıt listeden kalktı ve ortak adaylar `UNKNOWN STRUCTURE` olarak göründü.
 - `0.5.59.2` taraması 128 sonuç korumasına ulaştığında ilerleme indeksini artırmadığı için tarama tamamlanmıyordu. `0.5.59.3`, taramayı sonuna kadar ilerletirken yalnızca mesafe olarak en yakın 128 sonucu tutar.
 - `0.5.59.3` bitiş filtresi eski 13 vanilla etiketi dışında kalan modlu aileleri sildi ve legacy vanilla locate döngüsü bazı tick'lerde 8–13 saniyelik gecikme üretti. `0.5.59.4`, modlu aileleri bitişte korur ve vanilla yapıları da random-spread/concentric-rings placement verisinden hesaplar.
 - `0.5.56.0-alpha-radar-navigation-mining-recovery` konuşma geçmişinde bilinen iyi geri dönüş noktası olarak geçer; yerel binary/source bulunmadan otomatik geri dönüş yapılmamalıdır.
@@ -23,7 +23,8 @@ Son güncelleme: 1 Eylül 2026
 - Birçok `UNKNOWN STRUCTURE` satırı beklenen placement-adayı durumudur; gerçek üretim ve aile adı Field Survey ile ayrıca doğrulanmalıdır.
 - `MODDED STRUCTURE` satırları doğrulanmış yapı değildir ve mevcut buildde gerçek hedef gibi kullanılmamalıdır.
 - Field Survey gerçek `ABANDONED CAMP` yapısını tanıdı; ancak iki ardışık testte aynı sonuç listesine `COPPER SULFIDE DEPOSIT` de eklendi. Bu, `GEOLOGY` kaydının structure sonucu olarak sızdığını doğrular.
-- `0.5.59.5`, NewWorldCore `*_deposit` jigsaw kayıtlarını radar/Field Survey’den dışlar ve yalnız yanlış `STRUCTURE` kopyalarını temizler; gerçek `GEOLOGY` kaydının korunduğu oyun içinde doğrulanmalıdır.
+- `0.5.59.5`, NewWorldCore `*_deposit` jigsaw kayıtlarını radar/Field Survey’den dışladı; Field Survey beş gerçek yapı buldu ve jeoloji sızıntısı görülmedi. Gerçek `GEOLOGY` kaydının Deposits görünümünde korunduğu ayrıca doğrulanmalıdır.
+- `0.5.59.5` temizlik sırasında silinen seçili hedefi `null` yaparak rota varış kontrolünde sürekli `InvocationTargetException` üretti. `0.5.59.6` boş metin sentinelini kullanır; oyun regresyonu bekliyor.
 
 ## Senkronizasyon sınırları
 

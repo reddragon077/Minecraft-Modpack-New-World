@@ -4,6 +4,7 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-01 — desktop Field Survey acceptance and route cleanup](2026-09-01_desktop_field_survey_acceptance_route_cleanup.md) — five real structures verified with no geology leak; `0.5.59.6` built to fix the stale selected-target exception.
 - [2026-09-01 — desktop radar/survey isolation fix build](2026-09-01_desktop_radar_survey_fix_build.md) — `0.5.59.5` built and installed; static tests passed, in-game cleanup and isolation acceptance pending.
 - [2026-09-01 — desktop Structure Radar acceptance](2026-09-01_desktop_structure_radar_acceptance.md) — 101 discoveries and modded classes verified; shared placements expose a false `MODDED STRUCTURE` label, and Field Survey confirmation remains open.
 - [2026-09-01 — desktop sync and Structure Radar handoff](2026-09-01_desktop_sync_and_radar_handoff.md) — repo/instance synchronization completed; pre-test handoff record, superseded by the acceptance record above.

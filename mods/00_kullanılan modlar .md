@@ -22,7 +22,7 @@ Bu iki dosya CurseForge üzerinden indirilemez; New World için değiştirilmiş
 
 | Dosya | Boyut | SHA-256 | Belge |
 |---|---:|---|---|
-| `NewWorldCore-1.21.1-NeoForge-0.5.59.5-alpha-radar-survey-isolation.jar` | 3,39 MiB | `8c85c3569f9926addd68978c2bca617c57c2a699bec1deac9dcf8a9e4d4b652b` | [Alpha test rehberi](New_World_Room_Controller_Alpha_Test_Rehberi.md) |
+| `NewWorldCore-1.21.1-NeoForge-0.5.59.6-alpha-radar-route-cleanup.jar` | 3,39 MiB | `4b97a91af5d7c45aabb19c0f1fe4223141a4ffa0800878e21bca24ce2aefa8d0` | [Alpha test rehberi](New_World_Room_Controller_Alpha_Test_Rehberi.md) |
 | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | 4,56 MiB | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` | [JAR analizi](New_World_DoctorWhoMod_JAR_Analizi.md) |
 
 ## Durum açıklaması

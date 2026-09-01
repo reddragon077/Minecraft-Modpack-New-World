@@ -2,7 +2,7 @@
 
 Son doğrulama: 1 Eylül 2026
 
-Aktif temel: NewWorldCore `0.5.59.5-alpha-radar-survey-isolation`
+Aktif temel: NewWorldCore `0.5.59.6-alpha-radar-route-cleanup`
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -14,14 +14,14 @@ Durum işaretleri:
 
 ## Aşama 1 — Radar v2
 
-Durum: dinamik registry taraması uygulandı; `0.5.59.5` ortak-placement/geology ayrımı ve üç modlu yapı ailesiyle oyun kabulü kapanmalı.
+Durum: dinamik registry taraması uygulandı; ortak-placement/geology ayrımı oyun içinde geçti. `0.5.59.6` eski seçili rota temizliği kabulünden sonra bu regresyon kapanmalı.
 
 - [x] Sabit 13 öğelik kullanıcı filtresi kaldırıldı.
 - [x] Filtreler Discovery Database içeriğine göre dinamik üretiliyor.
 - [x] Yeni gemi yalnızca `ALL` filtresiyle başlıyor.
 - [x] Ziyaret edilip tanımlanan yapı family’si ilgili filtreyi açıyor.
 - [x] Aynı yapı ailesinin varyasyonları tek family altında gruplanıyor.
-- [~] Bilinmeyen/modlu yapılar canlı structure registry üzerinden otomatik sınıflandırılıyor; `0.5.59.5` çok-aileli placementları `UNKNOWN STRUCTURE` bırakıyor ve jeoloji jigsaw’larını dışlıyor, oyun regresyonu bekliyor.
+- [x] Bilinmeyen/modlu yapılar canlı structure registry üzerinden otomatik sınıflandırılıyor; çok-aileli placementlar `UNKNOWN STRUCTURE` kalıyor ve jeoloji jigsaw’ları dışlanıyor. `0.5.59.5` oyun kabulü beş gerçek yapıyla geçti.
 - [x] Radar GUI’de `STRUCTURES` ve `GEOLOGY` modları bulunuyor.
 - [x] Structure ve Geology sonuçları birbirinden ayrıldı.
 - [x] Range, Speed ve Accuracy yükseltmeleri iki tarama yoluna bağlandı.
@@ -84,7 +84,7 @@ Durum: Structure Survey çalışıyor; Geological Survey eksik.
 - [x] Player GUI’de kısa menzilli Structure Scan mevcut.
 - [ ] Player GUI’de Geological Scan etkinleştirilmeli; mevcut ekranda `OFFLINE // next phase` durumunda.
 - [x] TARDIS Radar uzun menzilli, Field Survey yakın çevre odaklıdır.
-- [~] Yürüyerek bulunan gerçek structure start kayıtları `FIELD` kaynağıyla kaydedilebiliyor; `0.5.59.4`te görülen `COPPER SULFIDE DEPOSIT` sızıntısı `0.5.59.5`te filtrelendi, oyun regresyonu bekliyor.
+- [x] Yürüyerek bulunan gerçek structure start kayıtları `FIELD` kaynağıyla kaydedilebiliyor; `0.5.59.5` kabulünde beş gerçek yapı bulundu ve `COPPER SULFIDE DEPOSIT` sızıntısı görülmedi.
 - [ ] Yürüyerek bulunan fiziksel deposit tanımlanıp kaydedilebilmeli.
 - [x] Field discovery ortak database üzerinden dinamik structure filtresini açabiliyor.
 - [x] Field discovery ortak database üzerinden Navigation’a aktarılabiliyor.

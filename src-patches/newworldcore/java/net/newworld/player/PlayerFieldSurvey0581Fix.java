@@ -133,7 +133,10 @@ public final class PlayerFieldSurvey0581Fix {
 
         Object selectedKey = getField(state, "selectedKey");
         if (selectedKey != null && !discoveries.containsKey(selectedKey)) {
-            setField(state, "selectedKey", null);
+            // NavigationDiscoverySavedData.selected() calls isBlank() directly.
+            // Keep the persisted/runtime sentinel non-null when cleanup removes
+            // the active legacy discovery, otherwise arrival checks fail every tick.
+            setField(state, "selectedKey", "");
         }
         call(data, "setDirty");
         System.out.println("[NewWorldCore] Removed " + (before - discoveries.size())

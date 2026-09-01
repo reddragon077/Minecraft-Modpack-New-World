@@ -6,38 +6,38 @@ Branch: `main`
 
 ## Current objective
 
-Run the first in-game acceptance test for `NewWorldCore-1.21.1-NeoForge-0.5.59.5-alpha-radar-survey-isolation.jar`.
+Run the startup and stale-route acceptance test for `NewWorldCore-1.21.1-NeoForge-0.5.59.6-alpha-radar-route-cleanup.jar`.
 
 ## Exact state
 
 - The GitHub repository was cloned to `E:\projects\Minecraft-Modpack-New-World`.
 - The desktop CurseForge instance was registered at `C:\Users\suley\curseforge\minecraft\Instances\New World`.
 - Repository config, defaultconfigs, KubeJS files, and the two current project-owned mod JARs were applied to that instance.
-- The desktop NewWorldCore JAR matches the repository SHA-256: `8c85c3569f9926addd68978c2bca617c57c2a699bec1deac9dcf8a9e4d4b652b`.
+- The desktop NewWorldCore JAR matches the repository SHA-256: `4b97a91af5d7c45aabb19c0f1fe4223141a4ffa0800878e21bca24ce2aefa8d0`.
 - The desktop DoctorWhoMod JAR matches the repository SHA-256: `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356`.
 - The older desktop custom build and previous applied directories were preserved under `backups\desktop-sync-pre-20260901-201500`.
 - `tools/apply-to-instance.ps1` now moves stale NewWorldCore/DoctorWhoMod versions into a timestamped backup before installing the current pair.
 - The desktop game and existing world load successfully. Structure Radar is actively finding vanilla and modded candidates.
 - User-provided screenshot evidence shows `Discoveries 101`, `Favorites 0`, `Visited 6`, and many result rows. Visible modded classes include Explorify, Better Dungeons, and Structory.
-- `0.5.59.5` excludes NewWorldCore `*_deposit` jigsaw structures from Structure Radar and Field Survey, changes shared multi-family placement labels to `UNKNOWN STRUCTURE`, and removes persisted false `MODDED STRUCTURE` or geology-as-`STRUCTURE` records without deleting real `GEOLOGY` records.
-- The prior `0.5.59.4` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260901-211819`.
+- `0.5.59.5` runtime acceptance removed 17 invalid records and Field Survey identified five real structures without any geology deposit. The visible discovery list no longer contained `MODDED STRUCTURE`.
+- The removed discovery was still selected, and cleanup set `selectedKey` to null; `NavigationDiscoverySavedData.selected()` calls `isBlank()` directly, producing repeated arrival-check exceptions.
+- `0.5.59.6` uses the required empty-string sentinel when clearing that selection. The prior `0.5.59.5` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260901-221120`.
 
 ## Test status
 
 - `0.5.59.4` desktop launch, >4 result list, modded-class retention, 101-result scan completion in about 5.2 seconds, and real `ABANDONED CAMP` recognition: **passed previously**.
 - `0.5.59.4` shared-placement label and Field Survey isolation: **failed previously** (`MODDED STRUCTURE` and `COPPER SULFIDE DEPOSIT` appeared as structures).
-- `0.5.59.5` compilation, JAR validation, metadata/version, helper behavior smoke test, ASM entry-point verification, and SHA-256: **passed**.
-- Exactly one `0.5.59.5` JAR in both repository and desktop instance with matching hashes: **passed**.
-- `0.5.59.5` game launch, cleanup migration, scan result labels, and Field Survey isolation: **not tested yet**.
+- `0.5.59.5` game launch, invalid-record cleanup, absence of `MODDED STRUCTURE` from the list, and Field Survey structure/geology isolation: **passed**.
+- `0.5.59.5` stale selected-target cleanup: **failed** (`InvocationTargetException` repeated every tick after cleanup).
+- `0.5.59.6` compilation, JAR validation, metadata/version, non-null empty sentinel bytecode, SHA-256, install, and single-JAR/hash checks: **passed**.
+- `0.5.59.6` game startup and stale-route cleanup: **not tested yet**.
 
 ## Next executable test
 
-1. Launch the desktop instance and confirm the existing world loads without registry or patch errors.
-2. Run one Structure Radar scan. Confirm there is no selectable `MODDED STRUCTURE`, no `... DEPOSIT` in Structures, and shared placement groups remain `UNKNOWN STRUCTURE`.
-3. Check the log for a successful invalid-record cleanup message and completed placement scan; record task count, result count, and duration.
-4. Return to or locate `structory:abandoned_camp`, then run Field Survey.
-5. Confirm the survey result contains `ABANDONED CAMP` but not `COPPER SULFIDE DEPOSIT` or any other geology family.
-6. Open the Deposits/Geology view and confirm the genuine Copper Sulfide geology record still exists; cleanup must remove only the false `STRUCTURE` copy.
+1. Launch the desktop instance and confirm the existing world loads on `0.5.59.6`.
+2. Open the Navigation terminal/monitor and confirm the removed `MODDED STRUCTURE` target is no longer active.
+3. Leave the world running for at least 20 seconds, then confirm `latest.log` contains no new `0471g arrival check` exception.
+4. Open the Deposits/Geology view and confirm the genuine Copper Sulfide geology record still exists; this separate preservation check remains open.
 
 ## Do not assume
 

@@ -1,6 +1,6 @@
 # Temel mekanikler
 
-Aktif test temeli: NewWorldCore `0.5.59.5-alpha-radar-survey-isolation` (Uraninite radar → rota → fiziksel yatak zinciri doğrulandı; 101 sonuçlu placement taraması geçti; sahte ortak-placement etiketi ve Field Survey jeoloji sızıntısı için düzeltmenin oyun kabulü bekliyor)
+Aktif test temeli: NewWorldCore `0.5.59.6-alpha-radar-route-cleanup` (Uraninite radar → rota → fiziksel yatak zinciri doğrulandı; yapı taraması ve Field Survey jeoloji izolasyonu geçti; eski seçili rota temizliği için oyun kabulü bekliyor)
 
 | Mekanik | Durum | Uygulama |
 |---|---|---|
