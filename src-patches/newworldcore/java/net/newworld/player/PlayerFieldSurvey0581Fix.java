@@ -40,6 +40,7 @@ public final class PlayerFieldSurvey0581Fix {
                 return;
             }
             String shipId = String.valueOf(call(ship, "id"));
+            purgeInvalidStructureDiscoveries(level, shipId);
             Map<String, FoundStructure> found = findLoadedStructures(level, playerPos);
             if (found.isEmpty()) {
                 message(player, "FIELD SURVEY // No structures detected within 96 blocks.");
@@ -91,6 +92,7 @@ public final class PlayerFieldSurvey0581Fix {
                     if (location == null) continue;
                     String namespace = String.valueOf(call(location, "getNamespace"));
                     String path = String.valueOf(call(location, "getPath"));
+                    if (Navigation0581DynamicStructureScanner.isGeologyStructure(namespace, path)) continue;
                     Object box = call(start, "getBoundingBox");
                     int minX = intCall(box, "minX");
                     int maxX = intCall(box, "maxX");
@@ -116,6 +118,45 @@ public final class PlayerFieldSurvey0581Fix {
             }
         }
         return found;
+    }
+
+    public static void purgeInvalidStructureDiscoveries(Object level, String shipId) throws Exception {
+        if (level == null || shipId == null || shipId.isBlank() || "null".equalsIgnoreCase(shipId)) return;
+        Object data = invokeStatic("net.newworld.navigation.NavigationDiscoverySavedData", "get", level);
+        Object state = call(data, "state", shipId);
+        Object discoveriesValue = getField(state, "discoveries");
+        if (!(discoveriesValue instanceof Map<?, ?> discoveries)) return;
+
+        int before = discoveries.size();
+        discoveries.entrySet().removeIf(entry -> invalidStructureDiscovery(entry.getValue()));
+        if (discoveries.size() == before) return;
+
+        Object selectedKey = getField(state, "selectedKey");
+        if (selectedKey != null && !discoveries.containsKey(selectedKey)) {
+            setField(state, "selectedKey", null);
+        }
+        call(data, "setDirty");
+        System.out.println("[NewWorldCore] Removed " + (before - discoveries.size())
+                + " invalid structure discovery record(s) for ship " + shipId + '.');
+    }
+
+    private static boolean invalidStructureDiscovery(Object discovery) {
+        if (discovery == null) return false;
+        try {
+            String kind = String.valueOf(getField(discovery, "kind"));
+            String label = String.valueOf(getField(discovery, "label")).trim().toUpperCase(Locale.ROOT);
+            String clazz = String.valueOf(getField(discovery, "clazz")).trim().toUpperCase(Locale.ROOT);
+            return "STRUCTURE".equalsIgnoreCase(kind)
+                    && ("MODDED STRUCTURE".equals(label)
+                    || ("NEWWORLDCORE".equals(clazz) && isGeologyFamilyLabel(label)));
+        } catch (Throwable ignored) {
+            return false;
+        }
+    }
+
+    public static boolean isGeologyFamilyLabel(String rawLabel) {
+        if (rawLabel == null) return false;
+        return rawLabel.trim().toUpperCase(Locale.ROOT).endsWith(" DEPOSIT");
     }
 
     private static void record(Object level, String shipId, FoundStructure structure) throws Exception {
@@ -232,6 +273,10 @@ public final class PlayerFieldSurvey0581Fix {
     private static void setField(Object target, String name, Object value) throws Exception {
         Field field = findField(target.getClass(), name);
         field.set(target, value);
+    }
+
+    private static Object getField(Object target, String name) throws Exception {
+        return findField(target.getClass(), name).get(target);
     }
 
     private static Field findField(Class<?> type, String name) throws NoSuchFieldException {

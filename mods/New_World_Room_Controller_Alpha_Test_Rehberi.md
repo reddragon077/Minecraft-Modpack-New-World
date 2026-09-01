@@ -6,7 +6,7 @@ Bu belge, eski `0.1.0-alpha` Room Controller denemesinin yerine güncel New Worl
 
 | Bileşen | Dosya | SHA-256 |
 |---|---|---|
-| NewWorldCore | `NewWorldCore-1.21.1-NeoForge-0.5.59.4-alpha-full-placement-radar.jar` | `2530037eb38b25670a5d3d8019a04d7fc87e6ac106dc31b1a0ce90cecccee6de` |
+| NewWorldCore | `NewWorldCore-1.21.1-NeoForge-0.5.59.5-alpha-radar-survey-isolation.jar` | `8c85c3569f9926addd68978c2bca617c57c2a699bec1deac9dcf8a9e4d4b652b` |
 | DoctorWhoMod fork | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` |
 
 ## Testten önce
@@ -71,8 +71,10 @@ Kontrol listesi:
 - `explorify:campsite`, `structory:abandoned_camp` ve `betterarcheology:archeologist_camp_grassy` radar sonucuna giriyor.
 - Radar taraması sırasında oyun/server tick'i saniyeler boyunca durmuyor; logda placement-only görev kuyruğu görülüyor.
 - Radarın modlu yapı koordinatı olası yerleşim noktasıdır; yerinde Structure Field Survey gerçek structure start kaydıyla sonucu doğruluyor.
+- Çok-aileli placement adayı `MODDED STRUCTURE` adlı sahte hedef üretmiyor; doğrulanana kadar `UNKNOWN STRUCTURE` kalıyor.
 - Aynı family'nin mod/biome varyantları ortak filtre adı altında gruplanıyor.
 - Yerinde Structure Field Survey yalnızca gerçek structure start kayıtlarını tanımlıyor; deposit kayıtlarını structure olarak işaretlemiyor.
+- Önceki yanlış `MODDED STRUCTURE` ve `... DEPOSIT`/`STRUCTURE` kayıtları temizlenirken gerçek `GEOLOGY` kayıtları korunuyor.
 - Görülmüş yapılar veritabanına kaydoluyor.
 - Geçmiş ve favoriler yeniden açılışta korunuyor.
 - Tek rota ve çok duraklı rota hesaplaması sonuç üretiyor.
@@ -87,7 +89,7 @@ Vanilla yatak aileleri için en az bir örnek doğrulanmalıdır:
 - Overworld: demir, bakır, karbon, altın, redstone, lapis, elmas, zümrüt
 - Nether: quartz
 
-`0.5.59.4-alpha-full-placement-radar` test buildinde şu modlu yatak aileleri tanımlıdır:
+`0.5.59.5-alpha-radar-survey-isolation` test buildinde şu modlu yatak aileleri tanımlıdır:
 
 | Yatak | Dahili aile | Kaynak/palette kuralı |
 |---|---|---|

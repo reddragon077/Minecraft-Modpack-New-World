@@ -2482,9 +2482,9 @@
   ],
   "customMods": [
     {
-      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.59.4-alpha-full-placement-radar.jar",
-      "sha256": "2530037eb38b25670a5d3d8019a04d7fc87e6ac106dc31b1a0ce90cecccee6de",
-      "size": 3550558
+      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.59.5-alpha-radar-survey-isolation.jar",
+      "sha256": "8c85c3569f9926addd68978c2bca617c57c2a699bec1deac9dcf8a9e4d4b652b",
+      "size": 3552092
     },
     {
       "fileName": "DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar",

@@ -1,6 +1,6 @@
 # 2026-09-01 — desktop — Structure Radar acceptance
 
-Status: `in progress`
+Status: `superseded`
 Branch/starting commit: `main` / `2631582`
 Build: `NewWorldCore-1.21.1-NeoForge-0.5.59.4-alpha-full-placement-radar.jar` (`2530037eb38b25670a5d3d8019a04d7fc87e6ac106dc31b1a0ce90cecccee6de`)
 
@@ -30,24 +30,24 @@ Verify that the corrected Structure Radar can expose more than four results, ret
 - More than four Structure Radar records are reachable; 101 discoveries are reported.
 - Dynamic modded candidates are retained and displayed for multiple mod namespaces/classes.
 - Navigation can route the user among radar candidates; six entries are reported visited.
+- The log records 106 placement tasks queued at `20:28:13.869` and 101 results completed at `20:28:19.032`, about 5.2 seconds later, without a scanner exception.
+- Field Survey identified a real `ABANDONED CAMP` plus Village, Small Dungeon, Meteorite, and Spider Dungeon.
 
 ### Failed
 
 - Shared placement sets appear as the selectable target `MODDED STRUCTURE`, although no registry structure or real place has that name.
 - The selected example routed to placement candidate `X 256, Y -64, Z 256`; this is not proof that a structure generated there.
 - Root cause is the multi-family fallback in `Navigation0581DynamicStructureScanner.PlacementTask.family()`: when `families.size()` is not one, it returns the literal `MODDED STRUCTURE`.
+- Field Survey identified `COPPER SULFIDE DEPOSIT` as one of six structures in two consecutive log entries (`21:08:14.607` and `21:08:16.885`). This proves the runtime geology/structure isolation is still broken.
 
 ### Not tested
 
-- Whether the current scan reaches its terminal completed state without a late stall or long tick spike.
 - Whether each placement candidate corresponds to a structure that actually generated in its biome.
-- `UNKNOWN STRUCTURE` to exact family-name conversion through Structure Field Survey.
-- Structure Field Survey isolation from all `GEOLOGY` discovery entries.
 - Direct family checks for Campsite, Abandoned Camp, and Archeologist Camp.
 
 ## Next executable step
 
-Ignore `MODDED STRUCTURE` as a real destination. Use an exact `/locate structure <namespace:id>` command to reach a confirmed modded structure, perform Field Survey, and record the before/after discovery label and geology isolation. After Minecraft is closed, change the multi-family placement fallback to an explicitly unconfirmed label and build the next test JAR.
+The two failures in this record were patched in `0.5.59.5-alpha-radar-survey-isolation`. Continue with `2026-09-01_desktop_radar_survey_fix_build.md` and run its in-game acceptance steps.
 
 ## References
 

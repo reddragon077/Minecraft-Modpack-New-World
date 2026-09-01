@@ -96,6 +96,7 @@ public final class Navigation0581DynamicStructureScanner {
                         + " results (" + before + " before active filters).");
             }
             invokeStatic("net.newworld.navigation.Navigation0491RadarVisitGate", "refineUndergroundY", container);
+            purgeInvalidDiscoveries(container);
             invokeStatic("net.newworld.navigation.NavigationDiscoveryBridge", "finishScan", container);
         } catch (Throwable failure) {
             System.err.println("[NewWorldCore] Dynamic structure radar finish failed: " + failure);
@@ -120,6 +121,7 @@ public final class Navigation0581DynamicStructureScanner {
                     try {
                         StructureId id = structureId(registry, holder);
                         if (id == null) return;
+                        if (isGeologyStructure(id.namespace, id.path)) return;
                         Object placementsValue = call(structureState, "getPlacementsForStructure", holder);
                         if (!(placementsValue instanceof List<?> placements)) return;
                         for (Object placement : placements) {
@@ -298,6 +300,17 @@ public final class Navigation0581DynamicStructureScanner {
         }
     }
 
+    private static void purgeInvalidDiscoveries(Object container) {
+        try {
+            Object level = field(container, "scanExterior");
+            Object shipId = invokeStatic("net.newworld.navigation.NavigationDiscoveryBridge", "shipId", container);
+            invokeStatic("net.newworld.player.PlayerFieldSurvey0581Fix", "purgeInvalidStructureDiscoveries",
+                    level, String.valueOf(shipId));
+        } catch (Throwable failure) {
+            System.err.println("[NewWorldCore] Could not purge invalid structure discoveries: " + failure);
+        }
+    }
+
     public static String family(String rawPath) {
         String path = rawPath == null ? "structure" : rawPath.toLowerCase(Locale.ROOT);
         int slash = path.lastIndexOf('/');
@@ -330,6 +343,13 @@ public final class Navigation0581DynamicStructureScanner {
             path = path.replaceFirst("_(variant_?)?\\d+$", "");
         } while (!previous.equals(path));
         return path.replace('_', ' ').replace('-', ' ').replaceAll("\\s+", " ").trim().toUpperCase(Locale.ROOT);
+    }
+
+    public static boolean isGeologyStructure(String namespace, String rawPath) {
+        String ns = namespace == null ? "" : namespace.toLowerCase(Locale.ROOT);
+        String path = rawPath == null ? "" : rawPath.toLowerCase(Locale.ROOT);
+        return "newworldcore".equals(ns)
+                && (path.endsWith("_deposit") || path.startsWith("geology/"));
     }
 
     private static String clazz(String namespace) {
@@ -457,7 +477,7 @@ public final class Navigation0581DynamicStructureScanner {
         }
 
         String family() {
-            return families.size() == 1 ? families.iterator().next() : "MODDED STRUCTURE";
+            return families.size() == 1 ? families.iterator().next() : "UNKNOWN STRUCTURE";
         }
 
         String clazz() {

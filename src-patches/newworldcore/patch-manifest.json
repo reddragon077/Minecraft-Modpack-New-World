@@ -1,8 +1,8 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.59.4-alpha-full-placement-radar",
-  "marker": "NewWorldDynamicStructureRadarV5",
+  "version": "0.5.59.5-alpha-radar-survey-isolation",
+  "marker": "NewWorldDynamicStructureRadarV6",
   "fixes": [
     "Dynamic structure-registry classification for vanilla and modded structures",
     "Placement-only modded structure coordinates without chunk generation or locate calls",
@@ -10,7 +10,10 @@
     "Modded-family preserving final classification and placement-only vanilla scanning",
     "Structure family normalization for radar and discovery filters",
     "Field Survey isolation from GEOLOGY discoveries",
-    "Deterministic FE Matrix DeferredRegister overload selection"
+    "Deterministic FE Matrix DeferredRegister overload selection",
+    "Shared multi-family placements remain UNKNOWN until field confirmation",
+    "Geology worldgen structures excluded from Structure Radar and Field Survey",
+    "Persisted false MODDED STRUCTURE and geology-as-structure records are removed"
   ],
   "newDeposits": [
     {
