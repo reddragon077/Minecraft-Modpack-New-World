@@ -4,7 +4,8 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
-- [2026-09-01 — desktop sync and Structure Radar handoff](2026-09-01_desktop_sync_and_radar_handoff.md) — repo/instance synchronization completed; the four-record UI fix and modded structure discovery still require in-game acceptance.
+- [2026-09-01 — desktop Structure Radar acceptance](2026-09-01_desktop_structure_radar_acceptance.md) — 101 discoveries, more than four reachable rows, and modded candidate classes verified; Field Survey confirmation remains open.
+- [2026-09-01 — desktop sync and Structure Radar handoff](2026-09-01_desktop_sync_and_radar_handoff.md) — repo/instance synchronization completed; pre-test handoff record, superseded by the acceptance record above.
 
 ## Imported legacy conversation map
 

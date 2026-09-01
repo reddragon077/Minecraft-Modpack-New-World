@@ -20,8 +20,8 @@ Last synchronized: 2026-09-01
 
 ## NewWorldCore continuation point
 
-- Active synchronized test build: `NewWorldCore-1.21.1-NeoForge-0.5.59.4-alpha-full-placement-radar.jar` (SHA-256 `2530037eb38b25670a5d3d8019a04d7fc87e6ac106dc31b1a0ce90cecccee6de`). It is installed on the desktop instance; desktop in-game acceptance and the laptop installation state remain to be verified.
-- The earlier Structure Radar GUI exposed only four records at once. The result-list/scroll handling was changed so more records can be reached, but the user switched computers before testing that fix. Treat `>4 results are reachable and scrollable` as unverified, not solved, until the desktop acceptance test passes.
+- Active synchronized test build: `NewWorldCore-1.21.1-NeoForge-0.5.59.4-alpha-full-placement-radar.jar` (SHA-256 `2530037eb38b25670a5d3d8019a04d7fc87e6ac106dc31b1a0ce90cecccee6de`). It is installed and running on the desktop instance; the laptop installation state remains to be verified.
+- Desktop acceptance evidence now shows `Discoveries 101`, `Visited 6`, more than four reachable result rows, and modded result classes including Explorify, Better Dungeons, and Structory. The old four-record display limitation and dynamic modded-candidate retention are verified fixed for this run.
 - The verified `0.5.57.0` baseline is backed up under the laptop instance's `backups/custom-mods/known-good-0.5.57.0/` directory.
 - The complete historical source tree is still missing. The reproducible compatibility delta is stored under `src-patches/newworldcore/` and built with `tools/build-newworldcore-geology-patch.ps1`.
 - `0.5.56.0-alpha-radar-navigation-mining-recovery` was previously described as a known-good recovery baseline.
@@ -38,7 +38,7 @@ Last synchronized: 2026-09-01
 - Lead is shared by Mekanism and Immersive Engineering.
 - Nickel is shared by Immersive Engineering and Oritech.
 - Uranium is shared where mods represent the same resource.
-- The 0.5.59.4 JAR passed compile, archive, binary entry-point, definition/template and SHA-256 validation. Installation and in-game acceptance remain open.
+- The 0.5.59.4 JAR passed compile, archive, binary entry-point, definition/template, SHA-256, desktop launch/world-load, result-list, and modded-candidate acceptance. Full scan completion/performance, Field Survey confirmation, geology isolation, and broader regression remain open.
 - Structure Radar evolution: `0.5.59.0` namespace batches caused 40+ second ticks; `0.5.59.1` exact locate calls still caused 2–8 second spikes; `0.5.59.2` stalled at 128 results; `0.5.59.3` completed but its legacy fixed-label finish filter removed modded families and its vanilla locate tiles caused 8–13 second spikes. `0.5.59.4` uses placement math for both vanilla and modded structures, preserves dynamic family labels, completes every task, and retains the nearest 128 results. Placement candidates may be false positives until Field Survey confirms a generated structure.
 - Player Structure Field Survey now reads actual nearby structure starts and records only `STRUCTURE` discoveries; it must not reuse or mutate `GEOLOGY` discoveries.
 - FE Matrix registration now deterministically selects Architectury's `register(ResourceLocation, Supplier)` overload, removing the nondeterministic startup `argument type mismatch` path.

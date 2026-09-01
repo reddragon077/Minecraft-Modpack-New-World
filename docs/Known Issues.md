@@ -4,8 +4,7 @@ Son güncelleme: 1 Eylül 2026
 
 ## Aktif riskler
 
-- NewWorldCore `0.5.59.4-alpha-full-placement-radar` aktif test buildidir; placement tabanlı vanilla/modlu structure taraması, gerçek-yapı Field Survey izolasyonu ve deposit regresyonu birlikte oyun içinde doğrulanmalıdır.
-- Structure Radar sonuç ekranının yalnızca dört kaydı göstermesi için liste/scroll düzeltmesi yapıldı; bilgisayar değişimi nedeniyle bu düzeltme henüz oyun içinde test edilmedi. Beşinci ve sonraki sonuçların gerçekten erişilebilir olduğu görülmeden madde kapatılmamalıdır.
+- NewWorldCore `0.5.59.4-alpha-full-placement-radar` aktif test buildidir; tam tarama süresi/performansı, gerçek-yapı Field Survey izolasyonu ve deposit regresyonu birlikte oyun içinde doğrulanmalıdır.
 - İlk `0.5.59.0` denemesinde namespace toplu sorgusu 40 saniyeyi aşan server tick'e yol açtı. `0.5.59.1` sorguları tick'lere yaydı fakat tekil locate çağrıları yine 2–8 saniyelik takılmalar üretti. `0.5.59.2`, modlu yapılar için chunk/worldgen yükleyen locate yolunu kaldırıp yalnızca placement koordinat matematiğini kullanır.
 - Placement tabanlı radar koordinatı bir yapı için olası üretim noktasıdır; biyom/structure-set seçimi nedeniyle yanlış pozitif ihtimali vardır. Gerçek keşif, oyuncunun yerinde kullandığı Structure Field Survey ile doğrulanır.
 - `0.5.59.2` taraması 128 sonuç korumasına ulaştığında ilerleme indeksini artırmadığı için tarama tamamlanmıyordu. `0.5.59.3`, taramayı sonuna kadar ilerletirken yalnızca mesafe olarak en yakın 128 sonucu tutar.
@@ -14,6 +13,13 @@ Son güncelleme: 1 Eylül 2026
 - Reliable EMI (`emixx-neoforge-1.21.1-3.1.2.jar.disabled`) bilinçli olarak devre dışıdır.
 - Araştırma, Production Chamber, genetik ve tam hikâye progression’ı henüz tamamlanmış oynanış sistemi değildir.
 - NewWorldCore'un tam tarihsel kaynak ağacı henüz bulunamadı. `src-patches/newworldcore/` genişletilmiş jeoloji değişikliğini yeniden üretilebilir tutar; ileride tam kaynak projeye katlanmalıdır.
+
+## Doğrulanan radar düzeltmeleri
+
+- Masaüstü oyun ve mevcut dünya `0.5.59.4` ile açıldı.
+- Kullanıcı ekranında `Discoveries 101`, `Visited 6` ve dörtten çok erişilebilir satır görüldü; eski dört-kayıt ekran sınırı bu testte doğrulandı.
+- Explorify, Better Dungeons ve Structory sınıfları sonuç listesinde görüldü; dinamik modlu adayların bitiş filtresinde kaybolması düzeltildi.
+- Birçok `UNKNOWN STRUCTURE` satırı beklenen placement-adayı durumudur; gerçek üretim ve aile adı Field Survey ile ayrıca doğrulanmalıdır.
 
 ## Senkronizasyon sınırları
 
@@ -26,14 +32,14 @@ Son güncelleme: 1 Eylül 2026
 
 `uraninite_pocket` için Radar → Navigation → TARDIS rota → fiziksel yatak zinciri 1 Eylül 2026'da doğrulandı. Aşağıdaki maddeler tam regresyon kapısı olarak devam eder:
 
-1. Oyun açılışı, FE Matrix kayıt kararlılığı ve mod çakışması kontrolü.
-2. Mevcut dünya yükleme ve gemi verisi kalıcılığı.
+1. FE Matrix kayıt kararlılığı ve mod çakışması için tekrar açılış kontrolü.
+2. Gemi verisinin yeniden başlatma sonrası kalıcılığı.
 3. Geological Radar ile fiziksel deposit eşleşmesi.
 4. Osmium, Tin, Lead, Uranium ve Fluorite depositleri.
 5. Aluminum, ortak Nickel, Silver, Zinc, Platinum, ayrı Uraninite ve Certus Quartz depositleri.
 6. Lead/Uranium/Nickel için tek aile ve çoklu mod palette kuralları.
 7. Navigation `DEPOSITS`, geçmiş ve yeniden başlatma kalıcılığı.
 8. Replication tarama bilgisi ve duplicate mineral kuralları.
-9. Structure Radar taramasının donmadan tamamlanması, toplam sonuç sayısının dördü aşması ve beşinci/sonraki kayıtların kaydırılarak seçilebilmesi.
+9. Structure Radar taramasının donmadan tamamlanması ve tamamlanma süresinin kaydedilmesi.
 10. `explorify:campsite`, `structory:abandoned_camp` ve `betterarcheology:archeologist_camp_grassy` için Radar → UNKNOWN → yerinde Field Survey → family adı zinciri.
 11. Structure Field Survey sonucunun hiçbir `GEOLOGY` kaydını structure olarak işaretlemediği kontrolü.
