@@ -1,6 +1,6 @@
 # Temel mekanikler
 
-Aktif test temeli: NewWorldCore `0.5.59.7-alpha-radar-filter-layer` (Uraninite radar → rota → fiziksel yatak zinciri, yapı/jeoloji ayrımı, eski rota temizliği ve `CAMPSITE` dinamik filtresi doğrulandı; filtre katmanı için oyun içi görsel kabul bekliyor)
+Aktif test temeli: NewWorldCore `0.5.59.8-alpha-radar-dynamic-filter` (Uraninite radar → rota → fiziksel yatak zinciri, yapı/jeoloji ayrımı, eski rota temizliği, `CAMPSITE` dinamik filtresi ve filtre GUI katmanı doğrulandı; seçili aile sonuç elemesi için oyun testi bekliyor)
 
 | Mekanik | Durum | Uygulama |
 |---|---|---|

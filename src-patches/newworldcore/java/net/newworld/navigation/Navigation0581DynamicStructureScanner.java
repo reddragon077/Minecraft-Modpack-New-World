@@ -89,11 +89,14 @@ public final class Navigation0581DynamicStructureScanner {
                 int before = results.size();
                 int mask = ((Number) invokeStatic("net.newworld.navigation.Navigation0475RadarFilteX",
                         "mask", container)).intValue();
-                results.removeIf(result -> !passesFilter(result, mask));
+                Set<String> selected = selectedLabels(container);
+                results.removeIf(result -> !passesFilter(result, mask)
+                        || !passesDynamicFilter(result, selected));
                 results.sort(Comparator.comparingInt(Navigation0581DynamicStructureScanner::resultDistance));
                 trimToLimit(results);
                 System.out.println("[NewWorldCore] Placement radar finished with " + results.size()
-                        + " results (" + before + " before active filters).");
+                        + " results (" + before + " before active filters; selected="
+                        + (selected.isEmpty() ? "ALL" : String.join(",", selected)) + ").");
             }
             invokeStatic("net.newworld.navigation.Navigation0491RadarVisitGate", "refineUndergroundY", container);
             purgeInvalidDiscoveries(container);
@@ -298,6 +301,39 @@ public final class Navigation0581DynamicStructureScanner {
         } catch (Throwable ignored) {
             return Integer.MAX_VALUE;
         }
+    }
+
+    private static Set<String> selectedLabels(Object container) {
+        try {
+            Object value = invokeStatic("net.newworld.navigation.Navigation0475RadarFilter",
+                    "selected", container);
+            if (!(value instanceof Set<?> raw)) return Set.of();
+            Set<String> selected = new LinkedHashSet<>();
+            for (Object label : raw) {
+                String normalized = normalizeLabel(String.valueOf(label));
+                if (!normalized.isBlank()) selected.add(normalized);
+            }
+            return selected;
+        } catch (Throwable failure) {
+            System.err.println("[NewWorldCore] Could not read dynamic structure filters: " + failure);
+            return Set.of();
+        }
+    }
+
+    private static boolean passesDynamicFilter(Object result, Set<String> selected) {
+        if (selected == null || selected.isEmpty()) return true;
+        try {
+            return selected.contains(normalizeLabel(String.valueOf(call(result, "label"))));
+        } catch (Throwable ignored) {
+            return false;
+        }
+    }
+
+    private static String normalizeLabel(String label) {
+        return label == null ? "" : label.trim()
+                .replace('_', ' ')
+                .replaceAll("\\s+", " ")
+                .toUpperCase(Locale.ROOT);
     }
 
     private static void purgeInvalidDiscoveries(Object container) {

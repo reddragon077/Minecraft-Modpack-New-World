@@ -1,6 +1,6 @@
 # 2026-09-02 — desktop — Radar filter overlay repair
 
-Status: `installed; runtime acceptance pending`
+Status: `passed`
 Branch: `main`
 Build: `NewWorldCore-1.21.1-NeoForge-0.5.59.7-alpha-radar-filter-layer.jar`
 
@@ -26,4 +26,4 @@ Build: `NewWorldCore-1.21.1-NeoForge-0.5.59.7-alpha-radar-filter-layer.jar`
 
 ## Next test
 
-Launch the game, open Structure Radar with populated results, open the filter popup, and confirm no result or telemetry text overlaps it. Then finish the `ARCHEOLOGIST CAMP` family chain.
+Follow-up screenshots showed the popup content unobstructed, so the foreground layer repair passed. A separate exact-selection defect found during the `CAMPSITE` scan is tracked in `2026-09-02_desktop_dynamic_filter_repair.md`.

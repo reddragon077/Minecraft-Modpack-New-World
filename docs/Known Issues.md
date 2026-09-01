@@ -4,7 +4,7 @@ Son güncelleme: 2 Eylül 2026
 
 ## Aktif riskler
 
-- NewWorldCore `0.5.59.7-alpha-radar-filter-layer` masaüstüne kurulu aktif test buildidir. Yapı/jeoloji izolasyonu, eski seçili hedef temizliği, gerçek jeoloji kayıtlarının korunması ve `CAMPSITE` dinamik filtresi geçti; yeni filtre katmanının oyun içi görsel kabulü bekliyor.
+- NewWorldCore `0.5.59.8-alpha-radar-dynamic-filter` masaüstüne kurulu aktif test buildidir. Yapı/jeoloji izolasyonu, eski seçili hedef temizliği, gerçek jeoloji kayıtlarının korunması, `CAMPSITE` dinamik filtresi ve GUI ön-plan katmanı geçti; seçili aile sonuç elemesi için oyun içi kabul bekliyor.
 - İlk `0.5.59.0` denemesinde namespace toplu sorgusu 40 saniyeyi aşan server tick'e yol açtı. `0.5.59.1` sorguları tick'lere yaydı fakat tekil locate çağrıları yine 2–8 saniyelik takılmalar üretti. `0.5.59.2`, modlu yapılar için chunk/worldgen yükleyen locate yolunu kaldırıp yalnızca placement koordinat matematiğini kullanır.
 - Placement tabanlı radar koordinatı bir yapı için olası üretim noktasıdır; biyom/structure-set seçimi nedeniyle yanlış pozitif ihtimali vardır. Gerçek keşif, oyuncunun yerinde kullandığı Structure Field Survey ile doğrulanır.
 - `0.5.59.4`te birden fazla structure ailesinin aynı placement kaydını paylaşması gerçek olmayan `MODDED STRUCTURE` etiketi üretiyordu. `0.5.59.5` kabulünde bu kayıt listeden kalktı ve ortak adaylar `UNKNOWN STRUCTURE` olarak göründü.
@@ -26,7 +26,8 @@ Son güncelleme: 2 Eylül 2026
 - `0.5.59.5`, NewWorldCore `*_deposit` jigsaw kayıtlarını radar/Field Survey’den dışladı; Field Survey beş gerçek yapı buldu ve jeoloji sızıntısı görülmedi. `0.5.59.6` kabulünde Deposits görünümünde 28 gerçek kayıt ve iki görünür `COPPER-RICH DEPOSIT` satırı korunmuştu.
 - `0.5.59.5` temizlik sırasında silinen seçili hedefi `null` yaparak rota varış kontrolünde sürekli `InvocationTargetException` üretti. `0.5.59.6` boş metin sentinelini kullanır; 20 dakikadan uzun oyun oturumunda her iki ilgili hata sayısı da sıfır kaldı.
 - `explorify:campsite` gerçek yapısı bulunup yerinde `CAMPSITE` olarak tanındı; dinamik `CAMPSITE` filtresi de ekranda doğrulandı.
-- Filtre penceresi açıkken radar sonuçları ve telemetri metinleri panelin üzerine çiziliyordu. `0.5.59.7` paneli ayrı bir ön plan pose katmanında çizer; statik test geçti, oyun içi görsel kabul bekliyor.
+- Filtre penceresi açıkken radar sonuçları ve telemetri metinleri panelin üzerine çiziliyordu. `0.5.59.7` paneli ayrı bir ön plan pose katmanında çizdi; takip ekran görüntüleri panel içeriğinin temiz kaldığını doğruladı.
+- Yalnız `CAMPSITE` seçiliyken tarama 96 karışık sonuç döndürdü. Placement-only bitiş yolu dinamik seçim kümesini uygulamıyordu. `0.5.59.8` legacy maskeden sonra kesin aile etiketi eşleşmesi uygular; statik include/exclude testi geçti, oyun testi bekliyor.
 - `ARCHEOLOGIST CAMP` zinciri Radar v2'nin kalan aile kabul maddesidir.
 
 ## Senkronizasyon sınırları
@@ -34,7 +35,7 @@ Son güncelleme: 2 Eylül 2026
 - `manifest.json` üçüncü taraf eklentileri sabitler; iki custom fork `mods/` altında tutulur.
 - KubeJS web server auth anahtarı, WorldEdit oturumları, cache, log, dünya ve kişisel seçenekler GitHub’a alınmaz.
 - Her CurseForge örneğinde yalnızca bir NewWorldCore ve bir DoctorWhoMod fork JAR’ı bulunmalıdır.
-- Masaüstü bilgisayar `machines/desktop.json` ile kaydedildi; `0.5.59.7` repo/instance tek-JAR ve hash eşleşmesi geçti.
+- Masaüstü bilgisayar `machines/desktop.json` ile kaydedildi; `0.5.59.8` repo/instance tek-JAR ve hash eşleşmesi geçti.
 
 ## Bir sonraki test kapısı
 

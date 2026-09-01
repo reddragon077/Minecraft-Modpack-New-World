@@ -1,4 +1,4 @@
-NewWorldCore 0.5.59.7 radar, Field Survey isolation, route cleanup, and filter-layer compatibility patch
+NewWorldCore 0.5.59.8 radar, Field Survey isolation, route cleanup, and dynamic-filter compatibility patch
 
 - Structure Radar reads the live structure registry, including modded namespaces.
 - Modded structures are queried individually with at most one dynamic locate per server tick.
@@ -8,4 +8,5 @@ NewWorldCore 0.5.59.7 radar, Field Survey isolation, route cleanup, and filter-l
 - Persisted false MODDED STRUCTURE and geology-as-structure records are removed safely.
 - Removed legacy selected targets are reset without breaking arrival checks.
 - Structure filter overlays render above radar results and telemetry text.
+- Selected dynamic structure families remove every non-selected placement result.
 - FE Matrix registration selects the ResourceLocation overload deterministically.
