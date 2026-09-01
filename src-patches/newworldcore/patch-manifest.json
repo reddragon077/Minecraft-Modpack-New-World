@@ -1,0 +1,76 @@
+{
+  "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
+  "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
+  "version": "0.5.58.0-alpha-expanded-geology-deposits",
+  "marker": "NewWorldGeologyExpandedV1",
+  "newDeposits": [
+    {
+      "id": "fluorite_crystal",
+      "definition": "fluorite_crystal.json",
+      "seedTemplate": "lapis_basin",
+      "expectedReserve": 1926,
+      "palette": ["mekanism:deepslate_fluorite_ore", "mekanism:fluorite_ore", "minecraft:calcite"]
+    },
+    {
+      "id": "bauxite_strata",
+      "definition": "bauxite_strata.json",
+      "seedTemplate": "carboniferous",
+      "expectedReserve": 3163,
+      "palette": ["immersiveengineering:ore_aluminum", "immersiveengineering:deepslate_ore_aluminum", "minecraft:iron_ore"]
+    },
+    {
+      "id": "nickel_sulfide",
+      "definition": "nickel_sulfide.json",
+      "seedTemplate": "lead_galena",
+      "expectedReserve": 1900,
+      "palette": ["immersiveengineering:deepslate_ore_nickel", "oritech:deepslate_nickel_ore", "minecraft:deepslate_iron_ore"]
+    },
+    {
+      "id": "silver_vein",
+      "definition": "silver_vein.json",
+      "seedTemplate": "uranium_pitchblende",
+      "expectedReserve": 820,
+      "palette": ["immersiveengineering:deepslate_ore_silver", "immersiveengineering:deepslate_ore_lead", "minecraft:deepslate_gold_ore"]
+    },
+    {
+      "id": "zinc_lode",
+      "definition": "zinc_lode.json",
+      "seedTemplate": "copper_sulfide",
+      "expectedReserve": 1819,
+      "palette": ["create:zinc_ore", "create:deepslate_zinc_ore", "minecraft:copper_ore"]
+    },
+    {
+      "id": "platinum_intrusion",
+      "definition": "platinum_intrusion.json",
+      "seedTemplate": "emerald_shear",
+      "expectedReserve": 439,
+      "palette": ["oritech:deepslate_platinum_ore", "oritech:deepslate_nickel_ore", "minecraft:deepslate_diamond_ore"]
+    },
+    {
+      "id": "uraninite_pocket",
+      "definition": "uraninite_pocket.json",
+      "seedTemplate": "uranium_pitchblende",
+      "expectedReserve": 820,
+      "palette": ["powah:deepslate_uraninite_ore_poor", "powah:deepslate_uraninite_ore", "powah:deepslate_uraninite_ore_dense"]
+    },
+    {
+      "id": "certus_quartz_matrix",
+      "definition": "certus_quartz_matrix.json",
+      "seedTemplate": "quartz_vein",
+      "expectedReserve": 1719,
+      "palette": ["ae2:quartz_block", "ae2:flawed_budding_quartz", "ae2:flawless_budding_quartz"]
+    }
+  ],
+  "templateOverrides": [
+    {
+      "id": "lead_galena",
+      "seedTemplate": "lead_galena",
+      "palette": ["mekanism:deepslate_lead_ore", "immersiveengineering:deepslate_ore_lead", "minecraft:deepslate_iron_ore"]
+    },
+    {
+      "id": "uranium_pitchblende",
+      "seedTemplate": "uranium_pitchblende",
+      "palette": ["mekanism:deepslate_uranium_ore", "immersiveengineering:deepslate_ore_uranium", "oritech:deepslate_uranium_ore"]
+    }
+  ]
+}

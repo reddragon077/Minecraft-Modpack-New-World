@@ -1,0 +1,20 @@
+{
+  "id": "newworldcore:nickel_sulfide",
+  "label": "NICKEL-RICH DEPOSIT",
+  "dimension": "minecraft:overworld",
+  "spacing": 2160,
+  "chance_permille": 1000,
+  "salt": 321779,
+  "min_y": -28,
+  "max_y": -28,
+  "min_radius": 12,
+  "max_radius": 12,
+  "min_reserve": 1900,
+  "max_reserve": 1900,
+  "min_density": 73,
+  "max_density": 73,
+  "rarity": "UNCOMMON",
+  "primary": "immersiveengineering:raw_nickel",
+  "secondary": ["oritech:raw_nickel"],
+  "byproducts": ["minecraft:raw_iron"]
+}

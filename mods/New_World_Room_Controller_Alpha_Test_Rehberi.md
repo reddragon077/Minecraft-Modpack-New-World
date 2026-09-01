@@ -6,7 +6,7 @@ Bu belge, eski `0.1.0-alpha` Room Controller denemesinin yerine güncel New Worl
 
 | Bileşen | Dosya | SHA-256 |
 |---|---|---|
-| NewWorldCore | `NewWorldCore-1.21.1-NeoForge-0.5.57.0-alpha-mekanism-geology-deposits.jar` | `09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc` |
+| NewWorldCore | `NewWorldCore-1.21.1-NeoForge-0.5.58.0-alpha-expanded-geology-deposits.jar` | `a5dc61ce9ee555b6bcfc7838a7ebdb564424dd9854ed10ae7f44e56a79783229` |
 | DoctorWhoMod fork | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` |
 
 ## Testten önce
@@ -82,18 +82,26 @@ Vanilla yatak aileleri için en az bir örnek doğrulanmalıdır:
 - Overworld: demir, bakır, karbon, altın, redstone, lapis, elmas, zümrüt
 - Nether: quartz
 
-`0.5.57.0-alpha-mekanism-geology-deposits` build'inde ayrıca şu Mekanism yatakları aktiftir:
+`0.5.58.0-alpha-expanded-geology-deposits` test buildinde şu modlu yatak aileleri tanımlıdır:
 
-| Yatak | Dahili aile |
-|---|---|
-| Osmium-rich | `osmium_strata` |
-| Tin-rich | `tin_lode` |
-| Lead-rich | `lead_galena` |
-| Uranium-rich | `uranium_pitchblende` |
+| Yatak | Dahili aile | Kaynak/palette kuralı |
+|---|---|---|
+| Osmium-rich | `osmium_strata` | Mekanism |
+| Tin-rich | `tin_lode` | Mekanism |
+| Lead-rich | `lead_galena` | Mekanism + Immersive Engineering, tek aile |
+| Uranium-rich | `uranium_pitchblende` | Mekanism + IE + Oritech, tek aile |
+| Fluorite-rich | `fluorite_crystal` | Mekanism |
+| Aluminum-rich | `bauxite_strata` | Immersive Engineering |
+| Nickel-rich | `nickel_sulfide` | IE + Oritech, tek aile |
+| Silver-rich | `silver_vein` | Immersive Engineering |
+| Zinc-rich | `zinc_lode` | Create |
+| Platinum-rich | `platinum_intrusion` | Oritech |
+| Uraninite-rich | `uraninite_pocket` | Powah; Uranium'dan ayrı |
+| Certus Quartz | `certus_quartz_matrix` | AE2; Charged Certus hariç |
 
 Lead ve Uranium yataklarında negatif Y seviyelerindeki deepslate varyantları ayrıca kontrol edilmelidir.
 
-> Fluorite bu build'in gömülü `0.5.57.0` yatak listesinde yoktur. Planlanan genişleme olarak kalır; aktif özellik gibi raporlanmamalıdır.
+> Bu aileler JAR, template ve kurulu registry kimlikleri düzeyinde doğrulanmıştır. Oyun içi kabul tamamlanana kadar build test sürümü olarak kalır.
 
 Her yatak için:
 
@@ -147,7 +155,7 @@ Ayrıca Converter'ın temel üretiminin saniyede `1 WE` olduğu, stabilizasyon v
 - Engine Matrix, gemi ağı ve öncelikli enerji çıkışları
 - Mining M1 tarama / çıkarım döngüsü
 - Structure Radar ve navigasyon
-- Vanilla ile dört Mekanism jeoloji yatak ailesi
+- Vanilla ile on iki modlu jeoloji yatak ailesi
 - CC:Tweaked terminal ve telemetri bağlantıları
 - Replication bilgi ve kaynak akışı entegrasyonu
 - DoctorWhoMod başlangıç TARDIS'i, özel köprü ve oda yapıları
@@ -155,7 +163,7 @@ Ayrıca Converter'ın temel üretiminin saniyede `1 WE` olduğu, stabilizasyon v
 
 ### Hâlâ genişletilecek veya tam doğrulanacak alanlar
 
-- Fluorite ve diğer modlara ait yeni jeoloji yatakları
+- Deposit sıklığı, reserve, yoğunluk ve rarity değerlerinin oyun içi dengelemesi
 - Tam araştırma / teknoloji ağacı
 - Production Chamber'ın nihai üretim tarifleri
 - Genetik sisteminin son oynanış döngüsü

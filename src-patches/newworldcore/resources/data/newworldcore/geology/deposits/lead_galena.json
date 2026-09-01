@@ -1,0 +1,20 @@
+{
+  "id": "newworldcore:lead_galena",
+  "label": "LEAD-RICH DEPOSIT",
+  "dimension": "minecraft:overworld",
+  "spacing": 1984,
+  "chance_permille": 1000,
+  "salt": 319337,
+  "min_y": -24,
+  "max_y": -24,
+  "min_radius": 12,
+  "max_radius": 12,
+  "min_reserve": 1900,
+  "max_reserve": 1900,
+  "min_density": 75,
+  "max_density": 75,
+  "rarity": "UNCOMMON",
+  "primary": "mekanism:raw_lead",
+  "secondary": ["immersiveengineering:raw_lead", "minecraft:raw_iron"],
+  "byproducts": ["mekanism:raw_uranium"]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "newworldcore:silver_vein",
+  "label": "SILVER-RICH DEPOSIT",
+  "dimension": "minecraft:overworld",
+  "spacing": 2640,
+  "chance_permille": 1000,
+  "salt": 322403,
+  "min_y": -44,
+  "max_y": -44,
+  "min_radius": 9,
+  "max_radius": 9,
+  "min_reserve": 820,
+  "max_reserve": 820,
+  "min_density": 64,
+  "max_density": 64,
+  "rarity": "RARE",
+  "primary": "immersiveengineering:raw_silver",
+  "secondary": ["mekanism:raw_lead"],
+  "byproducts": ["minecraft:raw_gold"]
+}

@@ -19,7 +19,9 @@ Last synchronized: 2026-09-01
 
 ## NewWorldCore continuation point
 
-- Active synchronized build: `NewWorldCore-1.21.1-NeoForge-0.5.57.0-alpha-mekanism-geology-deposits.jar`.
+- Active synchronized test build: `NewWorldCore-1.21.1-NeoForge-0.5.58.0-alpha-expanded-geology-deposits.jar`.
+- The verified `0.5.57.0` baseline is backed up under the laptop instance's `backups/custom-mods/known-good-0.5.57.0/` directory.
+- The complete historical source tree is still missing. The reproducible expanded-geology delta is stored under `src-patches/newworldcore/` and built with `tools/build-newworldcore-geology-patch.ps1`.
 - `0.5.56.0-alpha-radar-navigation-mining-recovery` was previously described as a known-good recovery baseline.
 - Verify binaries and local source before selecting a development baseline; old chat labels are context, not proof.
 - Preserve physical geology world generation, radar coordinates, deposit persistence, and navigation `DEPOSITS` integration.
@@ -27,15 +29,14 @@ Last synchronized: 2026-09-01
 ## Geology resource rules
 
 - One deposit family per real resource, not one duplicate per mod.
-- Current `0.5.57.0` Mekanism deposits: Osmium, Tin, Lead, Uranium. Fluorite is planned, not active in this build.
-- Immersive Engineering: Aluminum, Nickel, Silver; share Lead and Uranium families.
-- Create: Zinc.
-- Oritech: Nickel and Platinum.
-- Powah: Uraninite is separate from Uranium.
-- Applied Energistics 2: normal Certus Quartz; Charged Certus is not automatically included.
+- Current `0.5.58.0` definitions: vanilla families plus Osmium, Tin, Lead, Uranium, Fluorite, Aluminum, Nickel, Silver, Zinc, Platinum, Uraninite, and Certus Quartz.
+- Immersive Engineering supplies Aluminum and Silver; Nickel is shared with Oritech, while Lead and Uranium reuse their existing families.
+- Create supplies Zinc; Oritech supplies Platinum; Powah Uraninite remains separate from Uranium.
+- Applied Energistics 2 uses normal Certus Quartz only; Charged Certus is explicitly excluded.
 - Lead is shared by Mekanism and Immersive Engineering.
 - Nickel is shared by Immersive Engineering and Oritech.
 - Uranium is shared where mods represent the same resource.
+- The 0.5.58.0 JAR passed compile, archive, definition/template, SHA-256, and installed-registry validation. In-game acceptance testing is still required.
 
 ## Ship and progression decisions
 

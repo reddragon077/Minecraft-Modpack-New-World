@@ -1,0 +1,20 @@
+{
+  "id": "newworldcore:certus_quartz_matrix",
+  "label": "CERTUS QUARTZ DEPOSIT",
+  "dimension": "minecraft:overworld",
+  "spacing": 2880,
+  "chance_permille": 1000,
+  "salt": 325063,
+  "min_y": -8,
+  "max_y": -8,
+  "min_radius": 11,
+  "max_radius": 11,
+  "min_reserve": 1719,
+  "max_reserve": 1719,
+  "min_density": 66,
+  "max_density": 66,
+  "rarity": "RARE",
+  "primary": "ae2:certus_quartz_crystal",
+  "secondary": ["ae2:certus_quartz_dust"],
+  "byproducts": ["minecraft:amethyst_shard"]
+}

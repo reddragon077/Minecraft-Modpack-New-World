@@ -1,0 +1,20 @@
+{
+  "id": "newworldcore:bauxite_strata",
+  "label": "ALUMINUM-RICH DEPOSIT",
+  "dimension": "minecraft:overworld",
+  "spacing": 1424,
+  "chance_permille": 1000,
+  "salt": 321101,
+  "min_y": 40,
+  "max_y": 40,
+  "min_radius": 14,
+  "max_radius": 14,
+  "min_reserve": 3163,
+  "max_reserve": 3163,
+  "min_density": 78,
+  "max_density": 78,
+  "rarity": "COMMON",
+  "primary": "immersiveengineering:raw_aluminum",
+  "secondary": ["minecraft:raw_iron"],
+  "byproducts": ["immersiveengineering:raw_nickel"]
+}

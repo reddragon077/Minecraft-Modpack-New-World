@@ -1,0 +1,20 @@
+New World 0.5.58.0 - Expanded Geological Deposits
+
+Added data-driven Overworld deposit families:
+- FLUORITE-RICH DEPOSIT (fluorite_crystal)
+- ALUMINUM-RICH DEPOSIT (bauxite_strata)
+- NICKEL-RICH DEPOSIT (nickel_sulfide; shared IE + Oritech family)
+- SILVER-RICH DEPOSIT (silver_vein)
+- ZINC-RICH DEPOSIT (zinc_lode)
+- PLATINUM-RICH DEPOSIT (platinum_intrusion)
+- URANINITE-RICH DEPOSIT (uraninite_pocket; separate from Uranium)
+- CERTUS QUARTZ DEPOSIT (certus_quartz_matrix; no Charged Certus output)
+
+Existing Lead and Uranium definitions remain single shared families. Their new-chunk physical palettes now include compatible installed-mod ore blocks rather than creating duplicate family IDs.
+
+Old-chunk compatibility:
+- NewWorldGeologyPhysicalV3 remains untouched.
+- NewWorldGeologyMekanismV1 remains untouched.
+- NewWorldGeologyExpandedV1 processes the expanded set once per existing chunk.
+
+The compatibility class keeps its original Navigation0570 name because the existing NeoForge event subscriber already invokes it.

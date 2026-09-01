@@ -30,4 +30,4 @@ Teknik komutlar ve güvenlik sınırları [`docs/WORKSPACE_SYNC.md`](docs/WORKSP
 
 ## Mevcut geliştirme kapısı
 
-Altyapı hazırdır. Bir sonraki iş altyapı kurmak değil, aktif `0.5.57.0-alpha-mekanism-geology-deposits` buildini doğrulayıp jeoloji/deposit geliştirmesine devam etmektir.
+Altyapı hazırdır. `0.5.58.0-alpha-expanded-geology-deposits` statik doğrulamadan geçmiş ve laptop test instance'ına kurulmuştur. Sıradaki kapı yeni/mevcut dünya açılışı, radar-fiziksel yatak eşleşmesi, Mining M1 ve kalıcılık regresyon testidir.

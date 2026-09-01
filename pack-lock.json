@@ -2482,9 +2482,9 @@
   ],
   "customMods": [
     {
-      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.57.0-alpha-mekanism-geology-deposits.jar",
-      "sha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-      "size": 3482250
+      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.58.0-alpha-expanded-geology-deposits.jar",
+      "sha256": "a5dc61ce9ee555b6bcfc7838a7ebdb564424dd9854ed10ae7f44e56a79783229",
+      "size": 3531388
     },
     {
       "fileName": "DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar",

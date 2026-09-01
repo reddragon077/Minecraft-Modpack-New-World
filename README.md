@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Aktif NewWorldCore buildi: `0.5.57.0-alpha-mekanism-geology-deposits`
+- Aktif NewWorldCore test buildi: `0.5.58.0-alpha-expanded-geology-deposits`
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 
 Kesin eklenti sürümleri [`manifest.json`](manifest.json) ve [`pack-lock.json`](pack-lock.json) içinde tutulur. Üçüncü taraf JAR dosyaları GitHub’a eklenmez; yalnızca projeye ait iki fork JAR’ı repoda saklanır.
@@ -57,6 +57,7 @@ mods/            İki özel fork JAR’ı ve teknik analizler
 docs/            Vizyon, mekanikler, hikâye ve teknik tasarım
 machines/        Geliştirme bilgisayarlarının bağlantı kayıtları
 tools/           CurseForge ↔ GitHub senkronizasyon araçları
+src-patches/     Özel JAR’lar için yeniden üretilebilir kaynak yamaları
 manifest.json    CurseForge içe aktarma manifesti
 pack-lock.json   Kesin eklenti/sürüm/hash kaydı
 ```
@@ -67,9 +68,9 @@ Belge haritası ve durumları için [`docs/README.md`](docs/README.md) dosyasın
 
 ## Sıradaki geliştirme odağı
 
-1. NewWorldCore `0.5.57.0` jeoloji ve Mekanism deposit buildini oyun içinde doğrulamak.
-2. Tek mineral/tek deposit ailesi kuralıyla IE, Create, Oritech, Powah ve AE2 kaynaklarını tamamlamak.
-3. Radar, navigasyon, kalıcılık ve replikasyon bilgisini aynı deposit kimliği üzerinde birleştirmek.
+1. NewWorldCore `0.5.58.0` genişletilmiş jeoloji buildini yeni ve mevcut test dünyalarında doğrulamak.
+2. Radar koordinatı, fiziksel yatak, Mining M1 ailesi ve Replication bilgisinin aynı deposit kimliğini kullandığını sınamak.
+3. Yeni yatakların spacing, reserve, yoğunluk ve rarity dengesini oyun içinde ayarlamak.
 4. Doğrulanmış buildden sonra araştırma ve Production Chamber ilerlemesini genişletmek.
 
 ## Proje durumu

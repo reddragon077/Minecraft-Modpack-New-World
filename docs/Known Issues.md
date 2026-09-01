@@ -4,11 +4,11 @@ Son güncelleme: 1 Eylül 2026
 
 ## Aktif riskler
 
-- NewWorldCore `0.5.57.0-alpha-mekanism-geology-deposits` aktif builddir; Mekanism depositleri ve eski radar/navigation davranışları birlikte oyun içinde regresyon testinden geçirilmelidir.
+- NewWorldCore `0.5.58.0-alpha-expanded-geology-deposits` aktif test buildidir; yeni depositler ve eski radar/navigation davranışları birlikte oyun içinde regresyon testinden geçirilmelidir.
 - `0.5.56.0-alpha-radar-navigation-mining-recovery` konuşma geçmişinde bilinen iyi geri dönüş noktası olarak geçer; yerel binary/source bulunmadan otomatik geri dönüş yapılmamalıdır.
 - Reliable EMI (`emixx-neoforge-1.21.1-3.1.2.jar.disabled`) bilinçli olarak devre dışıdır.
 - Araştırma, Production Chamber, genetik ve tam hikâye progression’ı henüz tamamlanmış oynanış sistemi değildir.
-- Repo custom forkların kaynak kodunu değil mevcut JAR buildlerini içeriyor olabilir; geliştirmeden önce kaynak deposu/çalışma ağacı ayrıca doğrulanmalıdır.
+- NewWorldCore'un tam tarihsel kaynak ağacı henüz bulunamadı. `src-patches/newworldcore/` genişletilmiş jeoloji değişikliğini yeniden üretilebilir tutar; ileride tam kaynak projeye katlanmalıdır.
 
 ## Senkronizasyon sınırları
 
@@ -22,7 +22,8 @@ Son güncelleme: 1 Eylül 2026
 1. Oyun açılışı ve mod çakışması kontrolü.
 2. Mevcut dünya yükleme ve gemi verisi kalıcılığı.
 3. Geological Radar ile fiziksel deposit eşleşmesi.
-4. Mekanism Osmium/Tin/Lead/Uranium depositleri.
-5. Fluorite yatağı bu build'de aktif değildir; sonraki jeoloji genişlemesi olarak planlanmaktadır.
-5. Navigation `DEPOSITS`, geçmiş ve yeniden başlatma kalıcılığı.
-6. Replication tarama bilgisi ve duplicate mineral kuralları.
+4. Osmium, Tin, Lead, Uranium ve Fluorite depositleri.
+5. Aluminum, ortak Nickel, Silver, Zinc, Platinum, ayrı Uraninite ve Certus Quartz depositleri.
+6. Lead/Uranium/Nickel için tek aile ve çoklu mod palette kuralları.
+7. Navigation `DEPOSITS`, geçmiş ve yeniden başlatma kalıcılığı.
+8. Replication tarama bilgisi ve duplicate mineral kuralları.

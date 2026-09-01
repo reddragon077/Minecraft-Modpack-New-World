@@ -1,0 +1,20 @@
+{
+  "id": "newworldcore:uranium_pitchblende",
+  "label": "URANIUM-RICH DEPOSIT",
+  "dimension": "minecraft:overworld",
+  "spacing": 2752,
+  "chance_permille": 1000,
+  "salt": 319901,
+  "min_y": -40,
+  "max_y": -40,
+  "min_radius": 10,
+  "max_radius": 10,
+  "min_reserve": 820,
+  "max_reserve": 820,
+  "min_density": 68,
+  "max_density": 68,
+  "rarity": "RARE",
+  "primary": "mekanism:raw_uranium",
+  "secondary": ["immersiveengineering:raw_uranium", "oritech:raw_uranium", "mekanism:raw_lead"],
+  "byproducts": ["minecraft:redstone"]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "newworldcore:zinc_lode",
+  "label": "ZINC-RICH DEPOSIT",
+  "dimension": "minecraft:overworld",
+  "spacing": 1488,
+  "chance_permille": 1000,
+  "salt": 323087,
+  "min_y": 20,
+  "max_y": 20,
+  "min_radius": 13,
+  "max_radius": 13,
+  "min_reserve": 1819,
+  "max_reserve": 1819,
+  "min_density": 76,
+  "max_density": 76,
+  "rarity": "COMMON",
+  "primary": "create:raw_zinc",
+  "secondary": ["minecraft:raw_copper"],
+  "byproducts": ["minecraft:raw_iron"]
+}

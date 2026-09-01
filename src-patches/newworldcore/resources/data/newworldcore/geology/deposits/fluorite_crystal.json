@@ -1,0 +1,20 @@
+{
+  "id": "newworldcore:fluorite_crystal",
+  "label": "FLUORITE-RICH DEPOSIT",
+  "dimension": "minecraft:overworld",
+  "spacing": 1840,
+  "chance_permille": 1000,
+  "salt": 320417,
+  "min_y": -12,
+  "max_y": -12,
+  "min_radius": 12,
+  "max_radius": 12,
+  "min_reserve": 1926,
+  "max_reserve": 1926,
+  "min_density": 71,
+  "max_density": 71,
+  "rarity": "UNCOMMON",
+  "primary": "mekanism:fluorite_gem",
+  "secondary": [],
+  "byproducts": ["minecraft:calcite"]
+}

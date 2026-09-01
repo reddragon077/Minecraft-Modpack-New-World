@@ -1,6 +1,6 @@
 # Temel mekanikler
 
-Son doğrulama temeli: NewWorldCore `0.5.57.0-alpha-mekanism-geology-deposits`
+Aktif statik test temeli: NewWorldCore `0.5.58.0-alpha-expanded-geology-deposits` (oyun içi kabul testi bekliyor)
 
 | Mekanik | Durum | Uygulama |
 |---|---|---|

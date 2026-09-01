@@ -1,0 +1,20 @@
+{
+  "id": "newworldcore:uraninite_pocket",
+  "label": "URANINITE-RICH DEPOSIT",
+  "dimension": "minecraft:overworld",
+  "spacing": 3040,
+  "chance_permille": 1000,
+  "salt": 324419,
+  "min_y": -48,
+  "max_y": -48,
+  "min_radius": 9,
+  "max_radius": 9,
+  "min_reserve": 820,
+  "max_reserve": 820,
+  "min_density": 62,
+  "max_density": 62,
+  "rarity": "RARE",
+  "primary": "powah:uraninite_raw",
+  "secondary": [],
+  "byproducts": ["minecraft:redstone"]
+}
