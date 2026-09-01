@@ -1,0 +1,7 @@
+NewWorldCore 0.5.59.4 full placement-only structure radar compatibility patch
+
+- Structure Radar reads the live structure registry, including modded namespaces.
+- Modded structures are queried individually with at most one dynamic locate per server tick.
+- Registry variants are normalized into shared discovery families.
+- Player Field Survey records only actual nearby structures, never geology deposits.
+- FE Matrix registration selects the ResourceLocation overload deterministically.

@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Aktif NewWorldCore test buildi: `0.5.58.0-alpha-expanded-geology-deposits`
+- Aktif NewWorldCore test buildi: `0.5.59.4-alpha-full-placement-radar`
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 
 Kesin eklenti sürümleri [`manifest.json`](manifest.json) ve [`pack-lock.json`](pack-lock.json) içinde tutulur. Üçüncü taraf JAR dosyaları GitHub’a eklenmez; yalnızca projeye ait iki fork JAR’ı repoda saklanır.
@@ -29,7 +29,7 @@ Kesin eklenti sürümleri [`manifest.json`](manifest.json) ve [`pack-lock.json`]
 | Gemi ağı | Alpha | FE, eşya, sıvı ve gaz modülleri; oda bağlantıları, öncelik ve telemetri |
 | Mining M1 | Alpha | İki aşamalı tarama/çıkarma, kalkan ve el freni koşulları, yükseltmeler ve derin depolama |
 | Jeoloji | Alpha | Fiziksel deposit worldgen, radar eşleşmesi, kalıcılık ve modlu maden genişletmesi |
-| Navigasyon | Alpha | Yapı radarı, keşif veritabanı, geçmiş/favoriler, rota hesaplama ve çok duraklı seyahat |
+| Navigasyon | Alpha | Dinamik vanilla/modlu yapı radarı, keşif veritabanı, geçmiş/favoriler, rota hesaplama ve çok duraklı seyahat |
 | Replikasyon | Alpha | Doğal kaynak tarama bilgisi, ham madde Matter değerleri ve üretim kısıtları |
 | TARDIS/gemi seyahati | Deneysel | DoctorWhoMod fork’u ile fiziksel seyahat ve NewWorldCore rota/engine bağlantıları |
 | Araştırma ve görev ilerlemesi | Tasarım/prototip | AStages, Pufferfish Skills ve FTB Quests tabanı mevcut; bütün içerik zinciri tamamlanmadı |

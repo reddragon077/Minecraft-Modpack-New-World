@@ -3,6 +3,10 @@ param(
     [string]$BaselineJar,
     [Parameter(Mandatory = $true)]
     [string]$JdkHome,
+    [Parameter(Mandatory = $true)]
+    [string]$AsmJar,
+    [Parameter(Mandatory = $true)]
+    [string]$AsmTreeJar,
     [string]$OutputJar
 )
 
@@ -10,16 +14,20 @@ $ErrorActionPreference = 'Stop'
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $patchRoot = Join-Path $repoRoot 'src-patches\newworldcore'
 $manifestPath = Join-Path $patchRoot 'patch-manifest.json'
-$sourcePath = Join-Path $patchRoot 'java\net\newworld\navigation\Navigation0570MekanismDepositMaterializer.java'
+$sourceRoot = Join-Path $patchRoot 'java'
+$patcherSource = Join-Path $patchRoot 'tools\NewWorldClassPatcher.java'
 $resourcesRoot = Join-Path $patchRoot 'resources'
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 $baseline = (Resolve-Path -LiteralPath $BaselineJar).Path
 $jdk = (Resolve-Path -LiteralPath $JdkHome).Path
 $javac = Join-Path $jdk 'bin\javac.exe'
+$java = Join-Path $jdk 'bin\java.exe'
 $jarTool = Join-Path $jdk 'bin\jar.exe'
+$asm = (Resolve-Path -LiteralPath $AsmJar).Path
+$asmTree = (Resolve-Path -LiteralPath $AsmTreeJar).Path
 $utf8 = [Text.UTF8Encoding]::new($false)
 
-if (-not (Test-Path -LiteralPath $javac) -or -not (Test-Path -LiteralPath $jarTool)) {
+if (-not (Test-Path -LiteralPath $javac) -or -not (Test-Path -LiteralPath $java) -or -not (Test-Path -LiteralPath $jarTool)) {
     throw "JDK 21 tools were not found under: $jdk"
 }
 $actualBaselineHash = (Get-FileHash -LiteralPath $baseline -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -39,7 +47,8 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 $workRoot = Join-Path ([IO.Path]::GetTempPath()) ("newworldcore-geology-{0}" -f [guid]::NewGuid().ToString('N'))
 $payloadRoot = Join-Path $workRoot 'payload'
 $classesRoot = Join-Path $workRoot 'classes'
-New-Item -ItemType Directory -Path $payloadRoot, $classesRoot -Force | Out-Null
+$patcherClassesRoot = Join-Path $workRoot 'patcher-classes'
+New-Item -ItemType Directory -Path $payloadRoot, $classesRoot, $patcherClassesRoot -Force | Out-Null
 
 function Read-ZipText([IO.Compression.ZipArchive]$Zip, [string]$Name) {
     $entry = $Zip.GetEntry($Name)
@@ -99,12 +108,18 @@ try {
         Copy-Item -LiteralPath $manifestPath -Destination (Join-Path $payloadRoot 'META-INF\newworld-geology-patch.json') -Force
     } finally { $baselineZip.Dispose() }
 
-    & $javac --release 21 -encoding UTF-8 -classpath $baseline -d $classesRoot $sourcePath
+    $sourceFiles = @(Get-ChildItem -LiteralPath $sourceRoot -Recurse -Filter '*.java' -File | Select-Object -ExpandProperty FullName)
+    if ($sourceFiles.Count -eq 0) { throw "No Java patch sources found under: $sourceRoot" }
+    & $javac --release 21 -encoding UTF-8 -classpath $baseline -d $classesRoot $sourceFiles
     if ($LASTEXITCODE -ne 0) { throw "javac failed with exit code $LASTEXITCODE" }
-    $compiledClass = Join-Path $classesRoot 'net\newworld\navigation\Navigation0570MekanismDepositMaterializer.class'
-    $classDestination = Join-Path $payloadRoot 'net\newworld\navigation\Navigation0570MekanismDepositMaterializer.class'
-    New-Item -ItemType Directory -Path ([IO.Path]::GetDirectoryName($classDestination)) -Force | Out-Null
-    Copy-Item -LiteralPath $compiledClass -Destination $classDestination -Force
+    Copy-Item -Path (Join-Path $classesRoot '*') -Destination $payloadRoot -Recurse -Force
+
+    $asmClasspath = $asm + [IO.Path]::PathSeparator + $asmTree
+    & $javac --release 21 -encoding UTF-8 -classpath $asmClasspath -d $patcherClassesRoot $patcherSource
+    if ($LASTEXITCODE -ne 0) { throw "class patcher javac failed with exit code $LASTEXITCODE" }
+    $patcherClasspath = $patcherClassesRoot + [IO.Path]::PathSeparator + $asmClasspath
+    & $java -classpath $patcherClasspath NewWorldClassPatcher $baseline $payloadRoot
+    if ($LASTEXITCODE -ne 0) { throw "class patcher failed with exit code $LASTEXITCODE" }
     Copy-Item -LiteralPath $baseline -Destination $output -Force
     & $jarTool --update --file $output -C $payloadRoot .
     if ($LASTEXITCODE -ne 0) { throw "jar update failed with exit code $LASTEXITCODE" }

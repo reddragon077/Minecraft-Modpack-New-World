@@ -6,7 +6,7 @@ Bu belge, eski `0.1.0-alpha` Room Controller denemesinin yerine güncel New Worl
 
 | Bileşen | Dosya | SHA-256 |
 |---|---|---|
-| NewWorldCore | `NewWorldCore-1.21.1-NeoForge-0.5.58.0-alpha-expanded-geology-deposits.jar` | `a5dc61ce9ee555b6bcfc7838a7ebdb564424dd9854ed10ae7f44e56a79783229` |
+| NewWorldCore | `NewWorldCore-1.21.1-NeoForge-0.5.59.4-alpha-full-placement-radar.jar` | `2530037eb38b25670a5d3d8019a04d7fc87e6ac106dc31b1a0ce90cecccee6de` |
 | DoctorWhoMod fork | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` |
 
 ## Testten önce
@@ -67,7 +67,12 @@ Kontrol listesi:
 
 ### 5. Yapı radarı ve navigasyon
 
-- Structure Radar yakın yapıları buluyor.
+- Structure Radar canlı registry üzerinden vanilla ve modlu yakın yapıları buluyor.
+- `explorify:campsite`, `structory:abandoned_camp` ve `betterarcheology:archeologist_camp_grassy` radar sonucuna giriyor.
+- Radar taraması sırasında oyun/server tick'i saniyeler boyunca durmuyor; logda placement-only görev kuyruğu görülüyor.
+- Radarın modlu yapı koordinatı olası yerleşim noktasıdır; yerinde Structure Field Survey gerçek structure start kaydıyla sonucu doğruluyor.
+- Aynı family'nin mod/biome varyantları ortak filtre adı altında gruplanıyor.
+- Yerinde Structure Field Survey yalnızca gerçek structure start kayıtlarını tanımlıyor; deposit kayıtlarını structure olarak işaretlemiyor.
 - Görülmüş yapılar veritabanına kaydoluyor.
 - Geçmiş ve favoriler yeniden açılışta korunuyor.
 - Tek rota ve çok duraklı rota hesaplaması sonuç üretiyor.
@@ -82,7 +87,7 @@ Vanilla yatak aileleri için en az bir örnek doğrulanmalıdır:
 - Overworld: demir, bakır, karbon, altın, redstone, lapis, elmas, zümrüt
 - Nether: quartz
 
-`0.5.58.0-alpha-expanded-geology-deposits` test buildinde şu modlu yatak aileleri tanımlıdır:
+`0.5.59.4-alpha-full-placement-radar` test buildinde şu modlu yatak aileleri tanımlıdır:
 
 | Yatak | Dahili aile | Kaynak/palette kuralı |
 |---|---|---|

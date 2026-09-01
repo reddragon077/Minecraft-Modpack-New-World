@@ -1,8 +1,17 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.58.0-alpha-expanded-geology-deposits",
-  "marker": "NewWorldGeologyExpandedV1",
+  "version": "0.5.59.4-alpha-full-placement-radar",
+  "marker": "NewWorldDynamicStructureRadarV5",
+  "fixes": [
+    "Dynamic structure-registry classification for vanilla and modded structures",
+    "Placement-only modded structure coordinates without chunk generation or locate calls",
+    "Bounded nearest-128 radar results without scan-progress starvation",
+    "Modded-family preserving final classification and placement-only vanilla scanning",
+    "Structure family normalization for radar and discovery filters",
+    "Field Survey isolation from GEOLOGY discoveries",
+    "Deterministic FE Matrix DeferredRegister overload selection"
+  ],
   "newDeposits": [
     {
       "id": "fluorite_crystal",

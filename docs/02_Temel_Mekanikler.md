@@ -1,6 +1,6 @@
 # Temel mekanikler
 
-Aktif test temeli: NewWorldCore `0.5.58.0-alpha-expanded-geology-deposits` (Uraninite radar → rota → fiziksel yatak zinciri oyun içinde doğrulandı; tam aile/balance testi sürüyor)
+Aktif test temeli: NewWorldCore `0.5.59.4-alpha-full-placement-radar` (Uraninite radar → rota → fiziksel yatak zinciri oyun içinde doğrulandı; vanilla/modlu aileleri koruyan ve en yakın 128 sonucu seçen placement tabanlı yapı taraması oyun kabulü bekliyor)
 
 | Mekanik | Durum | Uygulama |
 |---|---|---|
@@ -8,7 +8,7 @@ Aktif test temeli: NewWorldCore `0.5.58.0-alpha-expanded-geology-deposits` (Uran
 | Gemi ağı | Alpha | FE/eşya/sıvı/gaz taşıma, oda bağlantıları, öncelik ve telemetri |
 | Mining M1 | Alpha | Scan → Extraction, FE tüketimi, yükseltmeler, derin depolama ve güvenlik koşulları |
 | Geological deposits | Alpha | Deterministik worldgen, radar sonuçları ve kalıcı deposit verisi |
-| Structure Radar | Alpha | Dış konumda yapı taraması, filtreler ve keşif veritabanı |
+| Structure Radar | Alpha | Canlı structure registry üzerinden vanilla/modlu yapı taraması, family filtreleri ve keşif veritabanı |
 | Navigasyon | Alpha | Hedef seçimi, geçmiş/favoriler, rota hesabı ve çok duraklı ilerleme |
 | Replikasyon | Alpha | Doğal kaynak bilgisi, Matter değerleri ve tarama kısıtları |
 | Warp/engine | Deneysel | Oda bileşenleri, Engine Matrix ve DoctorWhoMod seyahat bağlantıları |
