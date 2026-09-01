@@ -1,8 +1,8 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.59.8-alpha-radar-dynamic-filter",
-  "marker": "NewWorldDynamicStructureRadarV9",
+  "version": "0.5.59.9-alpha-radar-range-filter",
+  "marker": "NewWorldDynamicStructureRadarV10",
   "fixes": [
     "Dynamic structure-registry classification for vanilla and modded structures",
     "Placement-only modded structure coordinates without chunk generation or locate calls",
@@ -16,7 +16,8 @@
     "Persisted false MODDED STRUCTURE and geology-as-structure records are removed",
     "Legacy selected targets are cleared with the non-null navigation sentinel",
     "Structure filter overlay renders on a dedicated foreground layer",
-    "Dynamic structure-family selections filter placement scan results exactly"
+    "Dynamic structure-family selections filter placement scan results exactly",
+    "Placement scans use the displayed upgrade range and prune tasks to selected families"
   ],
   "newDeposits": [
     {

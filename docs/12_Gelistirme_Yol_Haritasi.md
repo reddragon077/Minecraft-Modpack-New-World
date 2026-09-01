@@ -2,7 +2,7 @@
 
 Son doğrulama: 2 Eylül 2026
 
-Aktif temel: NewWorldCore `0.5.59.8-alpha-radar-dynamic-filter`
+Aktif temel: NewWorldCore `0.5.59.9-alpha-radar-range-filter`
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -14,7 +14,7 @@ Durum işaretleri:
 
 ## Aşama 1 — Radar v2
 
-Durum: dinamik registry taraması, ortak-placement/geology ayrımı, eski seçili rota temizliği ve filtre ön-plan katmanı oyun içinde geçti. `CAMPSITE` Field Survey tarafından tanındı ve dinamik filtresi doğrulandı. `0.5.59.8` seçili aile sonuç elemesi için oyun kabulü ile `ARCHEOLOGIST CAMP` zinciri son kapanış işleridir.
+Durum: dinamik registry taraması, ortak-placement/geology ayrımı, eski seçili rota temizliği, filtre ön-plan katmanı ve seçilmeyen ailelerin elenmesi oyun içinde geçti. `CAMPSITE` Field Survey tarafından tanındı ve dinamik filtresi doğrulandı. `0.5.59.9` gerçek 5000 blok menzilinde pozitif aile sonucu ile `ARCHEOLOGIST CAMP` zinciri son kapanış işleridir.
 
 - [x] Sabit 13 öğelik kullanıcı filtresi kaldırıldı.
 - [x] Filtreler Discovery Database içeriğine göre dinamik üretiliyor.
@@ -26,7 +26,7 @@ Durum: dinamik registry taraması, ortak-placement/geology ayrımı, eski seçil
 - [x] Structure ve Geology sonuçları birbirinden ayrıldı.
 - [x] Range, Speed ve Accuracy yükseltmeleri iki tarama yoluna bağlandı.
 
-Kapanış testi: `ABANDONED CAMP` ve `CAMPSITE` yerinde tanıma geçti; `CAMPSITE` dinamik filtresi ve GUI katmanı görsel kabulü geçti. `0.5.59.8` ile yalnız seçili ailenin sonuçlarda kalması ve `ARCHEOLOGIST CAMP` için UNKNOWN → yerinde tanımlama → dinamik filtre davranışı bekliyor.
+Kapanış testi: `ABANDONED CAMP` ve `CAMPSITE` yerinde tanıma geçti; `CAMPSITE` dinamik filtresi, GUI katmanı ve seçilmeyen ailelerin elenmesi geçti. `0.5.59.9` ile ekrandaki gerçek menzilde `CAMPSITE` pozitif sonucu ve `ARCHEOLOGIST CAMP` için UNKNOWN → yerinde tanımlama → dinamik filtre davranışı bekliyor.
 
 ## Aşama 2 — Ortak Discovery Database
 

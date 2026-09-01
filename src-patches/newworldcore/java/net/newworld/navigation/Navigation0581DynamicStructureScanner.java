@@ -18,7 +18,6 @@ import java.util.stream.Stream;
 
 /** Placement-only structure registry scanner used by the binary compatibility patch. */
 public final class Navigation0581DynamicStructureScanner {
-    private static final int MAX_DYNAMIC_SEARCH_RADIUS_CHUNKS = 100;
     private static final int MAX_RESULTS = 128;
     private static final List<String> VANILLA_FILTER_LABELS = List.of(
             "VILLAGE", "MINESHAFT", "SHIPWRECK", "BURIED TREASURE", "RUINED PORTAL",
@@ -45,7 +44,7 @@ public final class Navigation0581DynamicStructureScanner {
             synchronized (CONTEXTS) {
                 context = CONTEXTS.get(container);
                 if (context == null || context.level != level) {
-                    context = createContext(level, origin, tiles);
+                    context = createContext(container, level, origin, tiles);
                     CONTEXTS.put(container, context);
                 }
             }
@@ -59,7 +58,7 @@ public final class Navigation0581DynamicStructureScanner {
             setIntField(container, "scanTileIndex", index + 1);
 
             PlacementTask task = context.dynamicTasks.get(taskIndex);
-            Object foundPos = nearestPotential(context.structureState, task.placement, origin);
+            Object foundPos = nearestPotential(context, task.placement, origin);
             if (foundPos == null) return;
             int x = intCall(foundPos, "getX");
             int y = intCall(foundPos, "getY");
@@ -107,7 +106,8 @@ public final class Navigation0581DynamicStructureScanner {
         }
     }
 
-    private static ScanContext createContext(Object level, Object origin, List<Object> tiles) throws Exception {
+    private static ScanContext createContext(Object container, Object level, Object origin, List<Object> tiles)
+            throws Exception {
         Object access = call(level, "registryAccess");
         Class<?> registries = Class.forName("net.minecraft.core.registries.Registries");
         Field structureField = registries.getField("STRUCTURE");
@@ -143,14 +143,24 @@ public final class Navigation0581DynamicStructureScanner {
             }
         }
         List<PlacementTask> tasks = new ArrayList<>(tasksByPlacement.values());
+        Set<String> selected = selectedLabels(container);
+        if (!selected.isEmpty()) {
+            tasks.removeIf(task -> !selected.contains(normalizeLabel(task.family())));
+        }
         tasks.sort(Comparator.comparingInt(Navigation0581DynamicStructureScanner::priority)
                 .thenComparing(PlacementTask::sortKey));
+        int rangeBlocks = Math.max(16, ((Number) invokeStatic(
+                "net.newworld.navigation.NavigationUpgradeRuntime", "scanRange", container)).intValue());
+        int rangeChunks = Math.max(1, (int) Math.ceil((double) rangeBlocks / 16.0D));
+        long rangeSq = (long) rangeBlocks * rangeBlocks;
         List<Object> originalTiles = new ArrayList<>(tiles);
         tiles.clear();
         for (int i = 0; i < tasks.size(); i++) tiles.add(origin);
         System.out.println("[NewWorldCore] Dynamic radar queued " + tasks.size()
-                + " placement-only structure tasks; replaced " + originalTiles.size() + " legacy locate tiles.");
-        return new ScanContext(level, registry, structureState, tasks);
+                + " placement-only structure tasks at range " + rangeBlocks + " blocks; replaced "
+                + originalTiles.size() + " legacy locate tiles; selected="
+                + (selected.isEmpty() ? "ALL" : String.join(",", selected)) + '.');
+        return new ScanContext(level, registry, structureState, tasks, rangeChunks, rangeSq);
     }
 
     private static int priority(PlacementTask task) {
@@ -163,9 +173,9 @@ public final class Navigation0581DynamicStructureScanner {
         return 100;
     }
 
-    private static Object nearestPotential(Object structureState, Object placement, Object origin) throws Exception {
+    private static Object nearestPotential(ScanContext context, Object placement, Object origin) throws Exception {
         if (placement.getClass().getSimpleName().contains("ConcentricRings")) {
-            return nearestRingPotential(structureState, placement, origin);
+            return nearestRingPotential(context, placement, origin);
         }
         int spacing = intCall(placement, "spacing");
         if (spacing <= 0) return null;
@@ -173,8 +183,8 @@ public final class Navigation0581DynamicStructureScanner {
         int originChunkZ = Math.floorDiv(intCall(origin, "getZ"), 16);
         int originRegionX = Math.floorDiv(originChunkX, spacing);
         int originRegionZ = Math.floorDiv(originChunkZ, spacing);
-        int regionRadius = Math.max(1, (int) Math.ceil((double) MAX_DYNAMIC_SEARCH_RADIUS_CHUNKS / spacing) + 1);
-        long seed = ((Number) call(structureState, "getLevelSeed")).longValue();
+        int regionRadius = Math.max(1, (int) Math.ceil((double) context.rangeChunks / spacing) + 1);
+        long seed = ((Number) call(context.structureState, "getLevelSeed")).longValue();
         Constructor<?> chunkPosCtor = Class.forName("net.minecraft.world.level.ChunkPos")
                 .getConstructor(int.class, int.class);
         Object best = null;
@@ -187,13 +197,14 @@ public final class Navigation0581DynamicStructureScanner {
                 Object chunkPos = call(placement, "getPotentialStructureChunk", seed, rx, rz);
                 int cx = intField(chunkPos, "x");
                 int cz = intField(chunkPos, "z");
-                if (Math.abs(cx - originChunkX) > MAX_DYNAMIC_SEARCH_RADIUS_CHUNKS
-                        || Math.abs(cz - originChunkZ) > MAX_DYNAMIC_SEARCH_RADIUS_CHUNKS) continue;
-                if (!Boolean.TRUE.equals(call(placement, "isStructureChunk", structureState, cx, cz))) continue;
+                if (Math.abs(cx - originChunkX) > context.rangeChunks
+                        || Math.abs(cz - originChunkZ) > context.rangeChunks) continue;
+                if (!Boolean.TRUE.equals(call(placement, "isStructureChunk", context.structureState, cx, cz))) continue;
                 Object locatePos = call(placement, "getLocatePos", chunkPosCtor.newInstance(cx, cz));
                 int x = intCall(locatePos, "getX");
                 int z = intCall(locatePos, "getZ");
                 double distanceSq = ((double) x - ox) * ((double) x - ox) + ((double) z - oz) * ((double) z - oz);
+                if (distanceSq > context.rangeSq) continue;
                 if (distanceSq < bestSq) {
                     bestSq = distanceSq;
                     best = locatePos;
@@ -203,8 +214,8 @@ public final class Navigation0581DynamicStructureScanner {
         return best;
     }
 
-    private static Object nearestRingPotential(Object structureState, Object placement, Object origin) throws Exception {
-        Object positionsValue = call(structureState, "getRingPositionsFor", placement);
+    private static Object nearestRingPotential(ScanContext context, Object placement, Object origin) throws Exception {
+        Object positionsValue = call(context.structureState, "getRingPositionsFor", placement);
         if (!(positionsValue instanceof List<?> positions)) return null;
         int originChunkX = Math.floorDiv(intCall(origin, "getX"), 16);
         int originChunkZ = Math.floorDiv(intCall(origin, "getZ"), 16);
@@ -215,12 +226,13 @@ public final class Navigation0581DynamicStructureScanner {
         for (Object chunkPos : positions) {
             int cx = intField(chunkPos, "x");
             int cz = intField(chunkPos, "z");
-            if (Math.abs(cx - originChunkX) > MAX_DYNAMIC_SEARCH_RADIUS_CHUNKS
-                    || Math.abs(cz - originChunkZ) > MAX_DYNAMIC_SEARCH_RADIUS_CHUNKS) continue;
+            if (Math.abs(cx - originChunkX) > context.rangeChunks
+                    || Math.abs(cz - originChunkZ) > context.rangeChunks) continue;
             Object locatePos = call(placement, "getLocatePos", chunkPos);
             int x = intCall(locatePos, "getX");
             int z = intCall(locatePos, "getZ");
             double distanceSq = ((double) x - ox) * ((double) x - ox) + ((double) z - oz) * ((double) z - oz);
+            if (distanceSq > context.rangeSq) continue;
             if (distanceSq < bestSq) {
                 bestSq = distanceSq;
                 best = locatePos;
@@ -489,12 +501,17 @@ public final class Navigation0581DynamicStructureScanner {
         final Object registry;
         final Object structureState;
         final List<PlacementTask> dynamicTasks;
+        final int rangeChunks;
+        final long rangeSq;
 
-        ScanContext(Object level, Object registry, Object structureState, List<PlacementTask> dynamicTasks) {
+        ScanContext(Object level, Object registry, Object structureState, List<PlacementTask> dynamicTasks,
+                    int rangeChunks, long rangeSq) {
             this.level = level;
             this.registry = registry;
             this.structureState = structureState;
             this.dynamicTasks = dynamicTasks;
+            this.rangeChunks = rangeChunks;
+            this.rangeSq = rangeSq;
         }
     }
 

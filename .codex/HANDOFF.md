@@ -6,14 +6,14 @@ Branch: `main`
 
 ## Current objective
 
-Accept the `0.5.59.8` exact dynamic-family result filter, then complete the remaining `ARCHEOLOGIST CAMP` family test.
+Accept the `0.5.59.9` displayed-range and selected-family task pruning, then complete the remaining `ARCHEOLOGIST CAMP` family test.
 
 ## Exact state
 
 - The GitHub repository was cloned to `E:\projects\Minecraft-Modpack-New-World`.
 - The desktop CurseForge instance was registered at `C:\Users\suley\curseforge\minecraft\Instances\New World`.
 - Repository config, defaultconfigs, KubeJS files, and the two current project-owned mod JARs were applied to that instance.
-- The desktop NewWorldCore JAR is `NewWorldCore-1.21.1-NeoForge-0.5.59.8-alpha-radar-dynamic-filter.jar` and matches the repository SHA-256: `26f1ef3c761ebc8672ea4414f1f2939a1159e2f8608088ac19248fb863068e44`.
+- The desktop NewWorldCore JAR is `NewWorldCore-1.21.1-NeoForge-0.5.59.9-alpha-radar-range-filter.jar` and matches the repository SHA-256: `2e571f7c66c9d54ca89f030080480f1bd4c9e6d89546a4712e2a371a731695cd`.
 - The desktop DoctorWhoMod JAR matches the repository SHA-256: `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356`.
 - The older desktop custom build and previous applied directories were preserved under `backups\desktop-sync-pre-20260901-201500`.
 - `tools/apply-to-instance.ps1` now moves stale NewWorldCore/DoctorWhoMod versions into a timestamped backup before installing the current pair.
@@ -29,6 +29,10 @@ Accept the `0.5.59.8` exact dynamic-family result filter, then complete the rema
 - The same screenshot exposed result-list and telemetry text drawing over the filter panel. `0.5.59.7` moved that panel to a dedicated foreground pose layer; follow-up screenshots showed the popup contents unobstructed, so visual acceptance passed.
 - With only `CAMPSITE` selected, a new scan still displayed 96 mixed-family results. `latest.log` confirmed `96 results (96 before active filters)`. The placement-only finish path bypassed the dynamic selected-family set and treated non-vanilla labels as always allowed.
 - `0.5.59.8` reads the server-side dynamic selection and requires exact normalized family-label membership after the legacy mask. A smoke test proved `CAMPSITE` passes, `UNKNOWN STRUCTURE` / `BURIED TREASURE` / `SMALL DUNGEON` fail, and empty selection (`ALL`) preserves every label.
+- `0.5.59.8` runtime log showed `0 results (96 before active filters; selected=CAMPSITE)`, proving non-selected rows were removed. However, the GUI displayed 5000 blocks while the placement scanner searched only 100 chunks (~1600 blocks), excluding the known campsite about 3037 blocks away.
+- Explorify's `campsites.json` confirms the family has a dedicated single-entry random-spread placement, so a matching candidate should be calculable inside the displayed range.
+- `0.5.59.9` obtains the actual range from `NavigationUpgradeRuntime.scanRange`, enforces its circular bound, and reduces selected `CAMPSITE` scans from all 102 placement tasks to the single matching task.
+- The prior `0.5.59.8` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-014959`.
 - The prior `0.5.59.7` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-011708`.
 - The prior `0.5.59.6` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-002429`.
 
@@ -45,15 +49,19 @@ Accept the `0.5.59.8` exact dynamic-family result filter, then complete the rema
 - `0.5.59.7` in-game filter-overlay visual acceptance: **passed**.
 - `0.5.59.7` exact dynamic-family scan filtering: **failed** (selected `CAMPSITE`, received 96 mixed results).
 - `0.5.59.8` compile, archive, selected-set recovery, exact include/exclude smoke, install, and single-JAR/hash checks: **passed**.
-- `0.5.59.8` in-game exact dynamic-family scan filtering: **pending**.
+- `0.5.59.8` in-game non-selected-family exclusion: **passed** (96 raw candidates reduced to zero with `selected=CAMPSITE`).
+- `0.5.59.8` displayed 5000-block range: **failed** (hidden 100-chunk/~1600-block calculation cap).
+- `0.5.59.9` compile, archive, dynamic-filter smoke, actual-range bytecode, selected-task pruning bytecode, install, and single-JAR/hash checks: **passed**.
+- `0.5.59.9` in-game positive `CAMPSITE` range/filter result: **pending**.
 
 ## Next executable test
 
-1. Launch `0.5.59.8`, select only `CAMPSITE`, run Structure Radar, and confirm every returned row is `CAMPSITE` (or the list is empty when no candidate is in range).
-2. Select `ALL`, scan again, and confirm mixed-family results return.
-3. Locate `betterarcheology:archeologist_camp_grassy`, travel there, and run Structure Field Survey in range.
-4. Confirm `ARCHEOLOGIST CAMP` is recorded and its dynamic filter appears.
-5. Then begin Discovery Database analysis-level/last-seen/event work.
+1. Launch `0.5.59.9`, select only `CAMPSITE`, and run Structure Radar from the current 5000-block ship origin.
+2. Confirm the log queues one selected placement task at range 5000 and the result list contains only `CAMPSITE`.
+3. Select `ALL`, scan again, and confirm mixed-family results return without unacceptable tick spikes.
+4. Locate `betterarcheology:archeologist_camp_grassy`, travel there, and run Structure Field Survey in range.
+5. Confirm `ARCHEOLOGIST CAMP` is recorded and its dynamic filter appears.
+6. Then begin Discovery Database analysis-level/last-seen/event work.
 
 ## Do not assume
 
@@ -65,5 +73,5 @@ Accept the `0.5.59.8` exact dynamic-family result filter, then complete the rema
 1. `.codex/project-memory.md`
 2. This file
 3. `.codex/conversations/INDEX.md`
-4. `.codex/conversations/2026-09-02_desktop_dynamic_filter_repair.md`
+4. `.codex/conversations/2026-09-02_desktop_radar_range_repair.md`
 5. `docs/Known Issues.md`

@@ -1,6 +1,6 @@
 # 2026-09-02 — desktop — Dynamic structure filter repair
 
-Status: `installed; runtime acceptance pending`
+Status: `exclusion passed; displayed-range defect found`
 Branch: `main`
 Build: `NewWorldCore-1.21.1-NeoForge-0.5.59.8-alpha-radar-dynamic-filter.jar`
 
@@ -29,4 +29,4 @@ Build: `NewWorldCore-1.21.1-NeoForge-0.5.59.8-alpha-radar-dynamic-filter.jar`
 
 ## Next test
 
-Select only `CAMPSITE` and scan. Every returned row must be `CAMPSITE`; zero rows is valid if no candidate is in range. Then select `ALL` and confirm mixed-family results return.
+Runtime log showed `0 results (96 before active filters; selected=CAMPSITE)`, proving exact exclusion works. Zero was not accepted as the final positive test because the GUI advertised 5000 blocks while the placement scanner silently capped itself near 1600 blocks. The range repair continues in `2026-09-02_desktop_radar_range_repair.md`.

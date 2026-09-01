@@ -20,7 +20,7 @@ Last synchronized: 2026-09-02
 
 ## NewWorldCore continuation point
 
-- Active synchronized test build: `NewWorldCore-1.21.1-NeoForge-0.5.59.8-alpha-radar-dynamic-filter.jar` (SHA-256 `26f1ef3c761ebc8672ea4414f1f2939a1159e2f8608088ac19248fb863068e44`). It is installed on the desktop instance; exact dynamic-filter runtime acceptance and the laptop installation remain pending.
+- Active synchronized test build: `NewWorldCore-1.21.1-NeoForge-0.5.59.9-alpha-radar-range-filter.jar` (SHA-256 `2e571f7c66c9d54ca89f030080480f1bd4c9e6d89546a4712e2a371a731695cd`). It is installed on the desktop instance; displayed-range/positive-filter runtime acceptance and the laptop installation remain pending.
 - Desktop acceptance evidence shows more than four reachable results and modded classes including Explorify, Better Dungeons, and Structory. The old four-record limit is fixed, shared placement sets now remain `UNKNOWN STRUCTURE`, and the false `MODDED STRUCTURE` selection was removed safely.
 - The verified `0.5.57.0` baseline is backed up under the laptop instance's `backups/custom-mods/known-good-0.5.57.0/` directory.
 - The complete historical source tree is still missing. The reproducible compatibility delta is stored under `src-patches/newworldcore/` and built with `tools/build-newworldcore-geology-patch.ps1`.
@@ -31,7 +31,7 @@ Last synchronized: 2026-09-02
 ## Geology resource rules
 
 - One deposit family per real resource, not one duplicate per mod.
-- Current `0.5.59.8` definitions: vanilla families plus Osmium, Tin, Lead, Uranium, Fluorite, Aluminum, Nickel, Silver, Zinc, Platinum, Uraninite, and Certus Quartz.
+- Current `0.5.59.9` definitions: vanilla families plus Osmium, Tin, Lead, Uranium, Fluorite, Aluminum, Nickel, Silver, Zinc, Platinum, Uraninite, and Certus Quartz.
 - Immersive Engineering supplies Aluminum and Silver; Nickel is shared with Oritech, while Lead and Uranium reuse their existing families.
 - Create supplies Zinc; Oritech supplies Platinum; Powah Uraninite remains separate from Uranium.
 - Applied Energistics 2 uses normal Certus Quartz only; Charged Certus is explicitly excluded.
@@ -45,7 +45,8 @@ Last synchronized: 2026-09-02
 - `0.5.59.5` removed 17 invalid persisted structure records and eliminated `MODDED STRUCTURE` from the discovery list. Its cleanup wrote a null selected-key sentinel, causing `Navigation0471gFix.checkArrivals` to emit `InvocationTargetException` every tick when the removed record had been selected. `0.5.59.6` resets it to the required empty-string sentinel; the world remained active for over 20 minutes with zero arrival-check/InvocationTargetException entries, the UI showed `NO TARGET SELECTED`, and 28 genuine geology records including `COPPER-RICH DEPOSIT` remained visible.
 - `explorify:campsite` family recognition passed on desktop: locate found `[-2512, ~, -992]`, Field Survey reported `CAMPSITE`, and the dynamic filter list visibly exposed `CAMPSITE` among 13 discovered types.
 - Opening the two-page dynamic filter over live results exposed a GUI layering defect: result and telemetry text rendered above the otherwise opaque filter panel. `0.5.59.7` wrapped the legacy overlay in a dedicated `Z=1000` pose layer; follow-up screenshot acceptance showed the popup contents unobstructed, so the layer repair passed.
-- A scan with only `CAMPSITE` selected still returned 96 mixed candidates (`UNKNOWN STRUCTURE`, `BURIED TREASURE`, `SMALL DUNGEON`, etc.). Log evidence showed 96 results both before and after active filters. The placement-only finish path applied only the legacy vanilla bitmask and skipped `Navigation0475RadarFilter`'s dynamic selected-family set. `0.5.59.8` applies an exact normalized label filter after the legacy mask. Selection recovery and include/exclude smoke tests passed; in-game scan acceptance is pending.
+- A scan with only `CAMPSITE` selected initially returned 96 mixed candidates (`UNKNOWN STRUCTURE`, `BURIED TREASURE`, `SMALL DUNGEON`, etc.). The placement-only finish path applied only the legacy vanilla bitmask and skipped `Navigation0475RadarFilter`'s dynamic selected-family set. `0.5.59.8` applied an exact normalized label filter and runtime log then showed `0 results (96 before active filters; selected=CAMPSITE)`, proving exclusion worked.
+- That zero exposed a second defect: the GUI advertised 5000 blocks while placement math used a hidden 100-chunk (~1600-block) cap. The known Explorify campsite at about 3037 blocks was therefore outside the actual calculation despite being inside the displayed range. Explorify data confirms `campsite` has its own single-family random-spread placement. `0.5.59.9` reads `NavigationUpgradeRuntime.scanRange`, applies an exact circular range bound, and prunes placement tasks to selected families before scanning. Compile, bytecode, filter smoke, install, and hash checks passed; positive in-game range acceptance is pending.
 - `ARCHEOLOGIST CAMP` remains the last untested family in the Radar v2 closure set.
 - FE Matrix registration now deterministically selects Architectury's `register(ResourceLocation, Supplier)` overload, removing the nondeterministic startup `argument type mismatch` path.
 - The Uraninite path passed an initial in-game acceptance test: Geological Radar -> Discovery -> Navigation target -> TARDIS route -> matching physical deposit. Full family, Mining and balance regression remains open.
