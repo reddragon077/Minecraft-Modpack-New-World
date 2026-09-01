@@ -5,6 +5,8 @@ logs/
 
 # Mods ve Config
 mods/*.jar
+!mods/NewWorldCore-*.jar
+!mods/DoctorWhoMod-*.jar
 config/*.nbt
 
 # IDE
@@ -30,6 +32,9 @@ dist/
 build/
 *.jar
 *.zip
+!mods/NewWorldCore-*.jar
+!mods/DoctorWhoMod-*.jar
+!kubejs/data/*.zip
 
 # Gradle
 .gradle/
@@ -39,3 +44,22 @@ out/
 # Environment
 .env
 .env.local
+
+# Machine-local overrides
+machines/*.local.json
+
+# Generated release packages
+dist/
+
+# Generated client caches and automatic backups
+config/**/.archive-unpack/
+config/**/stack-cache.*
+config/**/*fingerprint*.json
+config/**/*_backup*
+config/**/*.bak
+config/buildinggadgets2gui-history.dat
+config/ars_nouveau/search_index/
+config/emi-accelerator/reload-timings.json
+config/spark/tmp*/
+config/worldedit/sessions/
+kubejs/config/web_server.json

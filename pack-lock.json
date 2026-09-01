@@ -1,0 +1,2495 @@
+{
+  "schemaVersion": 1,
+  "sourceMachine": "laptop",
+  "minecraftVersion": "1.21.1",
+  "modLoader": "neoforge-21.1.235",
+  "addons": [
+    {
+      "name": "JourneyMap",
+      "category": "mods",
+      "fileName": "journeymap-neoforge-1.21.1-6.0.0.jar",
+      "projectID": 32274,
+      "fileID": 8325591,
+      "enabled": true,
+      "sha1": "40f8124b68c778b53d4037e604e9a29b8fe1be6d"
+    },
+    {
+      "name": "Mouse Tweaks",
+      "category": "mods",
+      "fileName": "MouseTweaks-neoforge-mc1.21-2.26.1.jar",
+      "projectID": 60089,
+      "fileID": 5637846,
+      "enabled": true,
+      "sha1": "6dae57f4f50f7808d2ed9a18f6cd1c0d4640c6bc"
+    },
+    {
+      "name": "Ender IO",
+      "category": "mods",
+      "fileName": "enderio-8.2.11-beta.jar",
+      "projectID": 64578,
+      "fileID": 8192838,
+      "enabled": true,
+      "sha1": "87b7218eed2e2f325ddcb8d3ce94a67aabaa17ca"
+    },
+    {
+      "name": "Security Craft",
+      "category": "mods",
+      "fileName": "[1.21.1] SecurityCraft v1.10.2.1.jar",
+      "projectID": 64760,
+      "fileID": 8336498,
+      "enabled": true,
+      "sha1": "8760079e80039f982f1a92d3ee9d60a2bcab3251"
+    },
+    {
+      "name": "Applied Energistics 2",
+      "category": "mods",
+      "fileName": "appliedenergistics2-19.2.17.jar",
+      "projectID": 223794,
+      "fileID": 7027323,
+      "enabled": true,
+      "sha1": "49c18d6a4af487957d7e5a6ad5dcbf71090b8e14"
+    },
+    {
+      "name": "WorldEdit",
+      "category": "mods",
+      "fileName": "worldedit-mod-7.3.8.jar",
+      "projectID": 225608,
+      "fileID": 5830452,
+      "enabled": true,
+      "sha1": "924fe181a29bd66be6783f6d589968ab0ee02250"
+    },
+    {
+      "name": "Immersive Engineering",
+      "category": "mods",
+      "fileName": "ImmersiveEngineering-1.21.1-12.4.2-194.jar",
+      "projectID": 231951,
+      "fileID": 6733669,
+      "enabled": true,
+      "sha1": "a4e90c2df8009040f6d022433c5d76635944dd59"
+    },
+    {
+      "name": "AI Improvements",
+      "category": "mods",
+      "fileName": "AI-Improvements-1.21-0.5.3.jar",
+      "projectID": 233019,
+      "fileID": 5426792,
+      "enabled": true,
+      "sha1": "b4a8e11384454bcc341043b251db7fb5afdfdf45"
+    },
+    {
+      "name": "McJtyLib",
+      "category": "mods",
+      "fileName": "mcjtylib-1.21-9.0.21.jar",
+      "projectID": 233105,
+      "fileID": 8256201,
+      "enabled": true,
+      "sha1": "ae0cadbb2c3f4fabc955e627f8bbefa281aa5d3f"
+    },
+    {
+      "name": "TrashSlot",
+      "category": "mods",
+      "fileName": "trashslot-neoforge-1.21.1-21.1.11.jar",
+      "projectID": 235577,
+      "fileID": 8163135,
+      "enabled": true,
+      "sha1": "7343e4b563feb79122c8373a0d5416182ca436a8"
+    },
+    {
+      "name": "KubeJS",
+      "category": "mods",
+      "fileName": "kubejs-neoforge-2101.7.2-build.368.jar",
+      "projectID": 238086,
+      "fileID": 8083208,
+      "enabled": true,
+      "sha1": "cd8e1e392d642e4d0f1fbc099d93da105c263d0d"
+    },
+    {
+      "name": "Just Enough Items (JEI)",
+      "category": "mods",
+      "fileName": "jei-1.21.1-neoforge-19.39.0.368.jar",
+      "projectID": 238222,
+      "fileID": 8438425,
+      "enabled": true,
+      "sha1": "82a8ee647d81c40f149c444c5d37088f035cb773"
+    },
+    {
+      "name": "Just Enough Resources (JER)",
+      "category": "mods",
+      "fileName": "JustEnoughResources-NeoForge-1.21.1-1.6.0.17.jar",
+      "projectID": 240630,
+      "fileID": 6506298,
+      "enabled": true,
+      "sha1": "e739d69b2de31ca8c0cb4691ab08e823f153bc44"
+    },
+    {
+      "name": "Quark",
+      "category": "mods",
+      "fileName": "Quark-4.1-482.jar",
+      "projectID": 243121,
+      "fileID": 8420966,
+      "enabled": true,
+      "sha1": "f73c3008321a9fb2da1151be9b49f0dfd006b6b5"
+    },
+    {
+      "name": "Flux Networks",
+      "category": "mods",
+      "fileName": "FluxNetworks-1.21.1-8.0.0.jar",
+      "projectID": 248020,
+      "fileID": 6089446,
+      "enabled": true,
+      "sha1": "183342f454428084748f2784c8efd748664a9f9c"
+    },
+    {
+      "name": "AppleSkin",
+      "category": "mods",
+      "fileName": "appleskin-neoforge-mc1.21-3.0.9.jar",
+      "projectID": 248787,
+      "fileID": 7854442,
+      "enabled": true,
+      "sha1": "81cf0e668f991f83ac8820c386fbd6c9c3602246"
+    },
+    {
+      "name": "Modular Routers",
+      "category": "mods",
+      "fileName": "modular-routers-13.2.6+mc1.21.1.jar",
+      "projectID": 250294,
+      "fileID": 8429333,
+      "enabled": true,
+      "sha1": "67411990dbcd26da53d4845bceb3f16b730c0ad8"
+    },
+    {
+      "name": "Controlling",
+      "category": "mods",
+      "fileName": "Controlling-neoforge-1.21.1-19.0.5.jar",
+      "projectID": 250398,
+      "fileID": 6368976,
+      "enabled": true,
+      "sha1": "8a34424fc1428778be2fdbfa4da67b21b70bcbfe"
+    },
+    {
+      "name": "OpenBlocks Elevator",
+      "category": "mods",
+      "fileName": "elevatorid-neoforge-1.21.1-1.11.4.jar",
+      "projectID": 250832,
+      "fileID": 6199696,
+      "enabled": true,
+      "sha1": "87a5504efcd51de55cd4215a103cbfcf717fa022"
+    },
+    {
+      "name": "Torchmaster",
+      "category": "mods",
+      "fileName": "torchmaster-neoforge-1.21.1-21.1.9.jar",
+      "projectID": 254268,
+      "fileID": 7197218,
+      "enabled": true,
+      "sha1": "3f565ecc8560eba3ae3e15ff6542a3025d7377a2"
+    },
+    {
+      "name": "AmbientSounds 6",
+      "category": "mods",
+      "fileName": "AmbientSounds_NEOFORGE_v6.3.8_mc1.21.1.jar",
+      "projectID": 254284,
+      "fileID": 8043019,
+      "enabled": true,
+      "sha1": "c79ab328b2c46068effebdcb3f26e98dc4404cb0"
+    },
+    {
+      "name": "Clumps",
+      "category": "mods",
+      "fileName": "Clumps-neoforge-1.21.1-19.0.0.1.jar",
+      "projectID": 256717,
+      "fileID": 5623731,
+      "enabled": true,
+      "sha1": "fa2576297c7bd12b28aa7070e8141792bd66da4c"
+    },
+    {
+      "name": "CreativeCore",
+      "category": "mods",
+      "fileName": "CreativeCore_NEOFORGE_v2.13.41_mc1.21.1.jar",
+      "projectID": 257814,
+      "fileID": 8190065,
+      "enabled": true,
+      "sha1": "4b666b4668b77fdc1ac34a183aae58a432999970"
+    },
+    {
+      "name": "Industrial Foregoing",
+      "category": "mods",
+      "fileName": "industrialforegoing-1.21-3.6.38.jar",
+      "projectID": 266515,
+      "fileID": 7600395,
+      "enabled": true,
+      "sha1": "79019a59c8023f5883d7a6c2f2308c995f828aa3"
+    },
+    {
+      "name": "ConnectedTexturesMod",
+      "category": "mods",
+      "fileName": "CTM-1.21-1.2.1+3.jar",
+      "projectID": 267602,
+      "fileID": 5587515,
+      "enabled": true,
+      "sha1": "284232c08d3b999f05417761a3efba9b08ba20a7"
+    },
+    {
+      "name": "Mekanism",
+      "category": "mods",
+      "fileName": "Mekanism-1.21.1-10.7.19.85.jar",
+      "projectID": 268560,
+      "fileID": 7904058,
+      "enabled": true,
+      "sha1": "b78945c40cfe7640408f3fd1e44da385a8c8b805"
+    },
+    {
+      "name": "Mekanism Generators",
+      "category": "mods",
+      "fileName": "MekanismGenerators-1.21.1-10.7.19.85.jar",
+      "projectID": 268566,
+      "fileID": 7904061,
+      "enabled": true,
+      "sha1": "44c4d8006597580ff7e4101b5a22f7b426cdcaf6"
+    },
+    {
+      "name": "Mekanism Tools",
+      "category": "mods",
+      "fileName": "MekanismTools-1.21.1-10.7.19.85.jar",
+      "projectID": 268567,
+      "fileID": 7904062,
+      "enabled": true,
+      "sha1": "4433b3eec0a5a0bf415d873e710a1cecea5850bc"
+    },
+    {
+      "name": "Better Advancements",
+      "category": "mods",
+      "fileName": "BetterAdvancements-NeoForge-1.21.1-0.4.3.21.jar",
+      "projectID": 272515,
+      "fileID": 5850587,
+      "enabled": true,
+      "sha1": "870521cfaa1a4cb6c830e2409e8b9e4cf179aff2"
+    },
+    {
+      "name": "PneumaticCraft: Repressurized",
+      "category": "mods",
+      "fileName": "pneumaticcraft-repressurized-8.2.20+mc1.21.1.jar",
+      "projectID": 281849,
+      "fileID": 8062194,
+      "enabled": true,
+      "sha1": "19b3bdb7f2aa135b1d638ba2195968c443889ce5"
+    },
+    {
+      "name": "Placebo",
+      "category": "mods",
+      "fileName": "Placebo-1.21.1-9.9.1.jar",
+      "projectID": 283644,
+      "fileID": 6926281,
+      "enabled": true,
+      "sha1": "1c2b8c38066d6f36209c5dadee25c184ef65202e"
+    },
+    {
+      "name": "Clear Glass with Connected Textures! [16x]",
+      "category": "resourcepacks",
+      "fileName": "Clear Glass Pack 1.21.zip",
+      "projectID": 286633,
+      "fileID": 5431060,
+      "enabled": true,
+      "sha1": "68685f16f2b504122223d62561d6ded9224d7c0a"
+    },
+    {
+      "name": "Titanium",
+      "category": "mods",
+      "fileName": "titanium-1.21-4.0.43.jar",
+      "projectID": 287342,
+      "fileID": 7951516,
+      "enabled": true,
+      "sha1": "e2f62d1bcdd38dd91679a2114e9946d9415746ee"
+    },
+    {
+      "name": "FTB Quests (NeoForge)",
+      "category": "mods",
+      "fileName": "ftb-quests-neoforge-2101.1.27.jar",
+      "projectID": 289412,
+      "fileID": 8253474,
+      "enabled": true,
+      "sha1": "baf3a7f173d09c2b9800626109cf6ca5a52a6c19"
+    },
+    {
+      "name": "Building Gadgets",
+      "category": "mods",
+      "fileName": "buildinggadgets2-1.3.9.jar",
+      "projectID": 298187,
+      "fileID": 6850515,
+      "enabled": true,
+      "sha1": "666a155981e3cd231f67809b9e2a0238377bbbfc"
+    },
+    {
+      "name": "Simply Light",
+      "category": "mods",
+      "fileName": "simplylight-1.5.3+1.21.1-b4.jar",
+      "projectID": 300331,
+      "fileID": 6219029,
+      "enabled": true,
+      "sha1": "d85bfed3824cb66d258acf11c73edaf11d583223"
+    },
+    {
+      "name": "Kiwi 🥝 (Neo/Forge)",
+      "category": "mods",
+      "fileName": "Kiwi-1.21.1-NeoForge-15.8.7.jar",
+      "projectID": 303657,
+      "fileID": 8423062,
+      "enabled": true,
+      "sha1": "d5c1d9f814bf146459f6e5e169c744c3e5bc184e"
+    },
+    {
+      "name": "Super Factory Manager ( SFM )",
+      "category": "mods",
+      "fileName": "Super Factory Manager (SFM)-MC1.21.1-4.34.0.jar",
+      "projectID": 306935,
+      "fileID": 8370241,
+      "enabled": true,
+      "sha1": "1c170062c486bd25a1161571b6c3cf9e6371611b"
+    },
+    {
+      "name": "Curios API",
+      "category": "mods",
+      "fileName": "curios-neoforge-9.5.1+1.21.1.jar",
+      "projectID": 309927,
+      "fileID": 6529130,
+      "enabled": true,
+      "sha1": "418fcd42e3a7844c9bdc71c9b6401fdb3894e0c4"
+    },
+    {
+      "name": "Artifacts",
+      "category": "mods",
+      "fileName": "artifacts-neoforge-13.2.1.jar",
+      "projectID": 312353,
+      "fileID": 7875426,
+      "enabled": true,
+      "sha1": "3fe4d52cc0b11d91c75005030e83e3f675e62383"
+    },
+    {
+      "name": "FTB Chunks (NeoForge)",
+      "category": "mods",
+      "fileName": "ftb-chunks-neoforge-2101.1.20.jar",
+      "projectID": 314906,
+      "fileID": 8317865,
+      "enabled": true,
+      "sha1": "f8fd8b158379015302f7aa234785f29a1353803d"
+    },
+    {
+      "name": "Shulker Box Tooltip [Fabric/Forge/NeoForge]",
+      "category": "mods",
+      "fileName": "shulkerboxtooltip-neoforge-5.1.9+1.21.1.jar",
+      "projectID": 315811,
+      "fileID": 7768285,
+      "enabled": true,
+      "sha1": "bddbccd689529f7f7ab04479e62c5e09b0be6be5"
+    },
+    {
+      "name": "Jade 🔍",
+      "category": "mods",
+      "fileName": "Jade-1.21.1-NeoForge-15.10.5.jar",
+      "projectID": 324717,
+      "fileID": 7545219,
+      "enabled": true,
+      "sha1": "d5bf134b3dbde9f5258666823900e21341dc0a50"
+    },
+    {
+      "name": "RFTools Base",
+      "category": "mods",
+      "fileName": "rftoolsbase-1.21-6.0.11.jar",
+      "projectID": 326041,
+      "fileID": 8256204,
+      "enabled": true,
+      "sha1": "9614bdc12d6c633801b254a983d30dd4cbeb5aee"
+    },
+    {
+      "name": "Cupboard",
+      "category": "mods",
+      "fileName": "cupboard-1.21.1-3.8.jar",
+      "projectID": 326652,
+      "fileID": 8260590,
+      "enabled": true,
+      "sha1": "39df849e5a338dfe9ccb7632b1849c20357e597b"
+    },
+    {
+      "name": "Create",
+      "category": "mods",
+      "fileName": "create-1.21.1-6.0.10.jar",
+      "projectID": 328085,
+      "fileID": 7963363,
+      "enabled": true,
+      "sha1": "0e97e49837bed766e6f28a4c95b04885d6acc353"
+    },
+    {
+      "name": "YUNG's Better Caves (Forge/NeoForge)",
+      "category": "mods",
+      "fileName": "YungsBetterCaves-1.21.1-NeoForge-3.1.4.jar",
+      "projectID": 340583,
+      "fileID": 6939522,
+      "enabled": true,
+      "sha1": "c7eaa25a8734525d7085e730728344242a177990"
+    },
+    {
+      "name": "RFTools Utility",
+      "category": "mods",
+      "fileName": "rftoolsutility-1.21-7.0.12.jar",
+      "projectID": 342466,
+      "fileID": 8256212,
+      "enabled": true,
+      "sha1": "d82b4c55d7754176a59003098a0fe90667f0e52a"
+    },
+    {
+      "name": "Cloth Config API (Fabric/Forge/NeoForge)",
+      "category": "mods",
+      "fileName": "cloth-config-15.0.140-neoforge.jar",
+      "projectID": 348521,
+      "fileID": 5729127,
+      "enabled": true,
+      "sha1": "c3e5733ba4503b102589a026000fd5ce0212f6f2"
+    },
+    {
+      "name": "Kotlin for Forge",
+      "category": "mods",
+      "fileName": "kotlinforforge-5.12.0-all.jar",
+      "projectID": 351264,
+      "fileID": 8335665,
+      "enabled": true,
+      "sha1": "a2032c921e93a0ccb0db5d742167e3139c2de01b"
+    },
+    {
+      "name": "Inventory HUD+",
+      "category": "mods",
+      "fileName": "inventoryhud.neoforged.1.21.1-3.4.28.jar",
+      "projectID": 357540,
+      "fileID": 6369797,
+      "enabled": true,
+      "sha1": "1bfd8bbb862a8cf55fd83947ded2b0eeda8c6bc8"
+    },
+    {
+      "name": "Lootr (Forge & NeoForge)",
+      "category": "mods",
+      "fileName": "lootr-neoforge-1.21.1-1.11.37.122.jar",
+      "projectID": 361276,
+      "fileID": 8428025,
+      "enabled": true,
+      "sha1": "a5dae941acc991df3f0de56bd8367f719824f131"
+    },
+    {
+      "name": "spark",
+      "category": "mods",
+      "fileName": "spark-1.10.124-neoforge.jar",
+      "projectID": 361579,
+      "fileID": 6225208,
+      "enabled": true,
+      "sha1": "9430cc2ab64ff89d698be593769fb9f9ee4efae6"
+    },
+    {
+      "name": "Complementary Shaders - Unbound",
+      "category": "shaderpacks",
+      "fileName": "ComplementaryUnbound_r5.8.1.zip",
+      "projectID": 385587,
+      "fileID": 8123288,
+      "enabled": true,
+      "sha1": "af656a33be2cbd217ea08986ad2cdd76f6bbfe1c"
+    },
+    {
+      "name": "FTB Ultimine (NeoForge)",
+      "category": "mods",
+      "fileName": "ftb-ultimine-neoforge-2101.1.15.jar",
+      "projectID": 386134,
+      "fileID": 8231400,
+      "enabled": true,
+      "sha1": "c96a7cc0b52bf919660ea61c1536cebd9d5773b3"
+    },
+    {
+      "name": "GeckoLib",
+      "category": "mods",
+      "fileName": "geckolib-neoforge-1.21.1-4.9.2.jar",
+      "projectID": 388172,
+      "fileID": 8350073,
+      "enabled": true,
+      "sha1": "14c64013cadee7d28f3685f94350f9a4d2ec6d86"
+    },
+    {
+      "name": "Polymorph (Fabric/Forge/Quilt)",
+      "category": "mods",
+      "fileName": "polymorph-neoforge-1.1.0+1.21.1.jar",
+      "projectID": 388800,
+      "fileID": 6794589,
+      "enabled": true,
+      "sha1": "84f8c539fa326dc723ae62b7a6916d6b01982d07"
+    },
+    {
+      "name": "More Overlays Updated",
+      "category": "mods",
+      "fileName": "moreoverlays-1.24.2-mc1.21.1-neoforge.jar",
+      "projectID": 391382,
+      "fileID": 6981252,
+      "enabled": true,
+      "sha1": "21e8bd61c5e146a9574266015d3f64621c2d9e18"
+    },
+    {
+      "name": "Sodium",
+      "category": "mods",
+      "fileName": "sodium-neoforge-0.8.12+mc1.21.1.jar",
+      "projectID": 394468,
+      "fileID": 8382328,
+      "enabled": true,
+      "sha1": "762251ab3d6825d5accfd89c3f02f1145376105e"
+    },
+    {
+      "name": "Ars Nouveau",
+      "category": "mods",
+      "fileName": "ars_nouveau-1.21.1-5.12.1.jar",
+      "projectID": 401955,
+      "fileID": 8346406,
+      "enabled": true,
+      "sha1": "ca5800c6fa315bbf8fd8d833564f98a5f27b81bc"
+    },
+    {
+      "name": "FTB Library (NeoForge)",
+      "category": "mods",
+      "fileName": "ftb-library-neoforge-2101.1.33.jar",
+      "projectID": 404465,
+      "fileID": 8438216,
+      "enabled": true,
+      "sha1": "a653118630fa17ed37d67b0beddc5984c760fc72"
+    },
+    {
+      "name": "FTB Teams (NeoForge)",
+      "category": "mods",
+      "fileName": "ftb-teams-neoforge-2101.1.10.jar",
+      "projectID": 404468,
+      "fileID": 7878281,
+      "enabled": true,
+      "sha1": "363376ae0fb22cb0527170fdf6a066d1da9b0225"
+    },
+    {
+      "name": "AstraLex Shaders",
+      "category": "shaderpacks",
+      "fileName": "§r§lAstra§4§lLex§r§l_By_LexBoosT_§4§lV93.0§r§l.zip",
+      "projectID": 406081,
+      "fileID": 5434888,
+      "enabled": true,
+      "sha1": "1041c11b811ee3546bca75cbb14c8c1916a2e9c3"
+    },
+    {
+      "name": "Konkrete",
+      "category": "mods",
+      "fileName": "konkrete_neoforge_1.9.9_MC_1.21.jar",
+      "projectID": 410295,
+      "fileID": 5453385,
+      "enabled": true,
+      "sha1": "97771eb287d5ac7fe667d1df9493d5e54c8ca1fa"
+    },
+    {
+      "name": "FTB Essentials (Forge & Fabric)",
+      "category": "mods",
+      "fileName": "ftb-essentials-neoforge-2101.1.10.jar",
+      "projectID": 410811,
+      "fileID": 8442866,
+      "enabled": true,
+      "sha1": "fa7b3d1b06c0285dcbe8e53a27d44cd7f8d15726"
+    },
+    {
+      "name": "Supplementaries",
+      "category": "mods",
+      "fileName": "supplementaries-neoforge-1.21.1-3.8.0.jar",
+      "projectID": 412082,
+      "fileID": 8419225,
+      "enabled": true,
+      "sha1": "6b84a1cdef90e5ac0b0e8487ce8fe84a47950216"
+    },
+    {
+      "name": "Rhino",
+      "category": "mods",
+      "fileName": "rhino-2101.2.7-build.85.jar",
+      "projectID": 416294,
+      "fileID": 8218748,
+      "enabled": true,
+      "sha1": "370598a1d2321c8a705ce539eb970375f20150c3"
+    },
+    {
+      "name": "Just Enough Professions (JEP)",
+      "category": "mods",
+      "fileName": "JustEnoughProfessions-neoforge-1.21.1-4.0.5.jar",
+      "projectID": 417645,
+      "fileID": 7966681,
+      "enabled": true,
+      "sha1": "439ea1baa5e3065e36e0e57422f22403918bb59f"
+    },
+    {
+      "name": "Gateways to Eternity",
+      "category": "mods",
+      "fileName": "GatewaysToEternity-1.21.1-5.1.0.jar",
+      "projectID": 417802,
+      "fileID": 6926284,
+      "enabled": true,
+      "sha1": "f91a593378209f527fe81e731ca60fe8f8da2319"
+    },
+    {
+      "name": "KubeJS Mekanism",
+      "category": "mods",
+      "fileName": "kubejs-mekanism-neoforge-2101.1.7-build.18.jar",
+      "projectID": 418651,
+      "fileID": 7213666,
+      "enabled": true,
+      "sha1": "4b3bcc7989251d56b9d855068f3a46ff8b172dde"
+    },
+    {
+      "name": "Architectury API",
+      "category": "mods",
+      "fileName": "architectury-13.0.11-neoforge.jar",
+      "projectID": 419699,
+      "fileID": 8492726,
+      "enabled": true,
+      "sha1": "008656a0702801174b8ec245ed7aad1921d6e9f1"
+    },
+    {
+      "name": "Sophisticated Backpacks",
+      "category": "mods",
+      "fileName": "sophisticatedbackpacks-1.21.1-3.25.70.1985.jar",
+      "projectID": 422301,
+      "fileID": 8434183,
+      "enabled": true,
+      "sha1": "e0a91194f3cf8c7c96b85a052a0580db42f00e5a"
+    },
+    {
+      "name": "FerriteCore ((Neo)Forge)",
+      "category": "mods",
+      "fileName": "ferritecore-7.0.3-neoforge.jar",
+      "projectID": 429235,
+      "fileID": 7524151,
+      "enabled": true,
+      "sha1": "9563692efb708b6b568df27a01ec52f6311928ef"
+    },
+    {
+      "name": "Advanced Peripherals",
+      "category": "mods",
+      "fileName": "AdvancedPeripherals-1.21.1-0.7.57b.jar",
+      "projectID": 431725,
+      "fileID": 7043026,
+      "enabled": true,
+      "sha1": "0eedc456d3bc8dc472c022f3989bc92c5b583bc6"
+    },
+    {
+      "name": "MC Connected CTM",
+      "category": "resourcepacks",
+      "fileName": "MC Connected CTM v1.6-1.21.1.zip",
+      "projectID": 435198,
+      "fileID": 6021419,
+      "enabled": true,
+      "sha1": "2d166baa4bb489ff5f435599cb3942d79815133a"
+    },
+    {
+      "name": "FramedBlocks",
+      "category": "mods",
+      "fileName": "FramedBlocks-10.6.1.jar",
+      "projectID": 441647,
+      "fileID": 8349218,
+      "enabled": true,
+      "sha1": "3007be0007d09c0225ca33b647461f342eac0503"
+    },
+    {
+      "name": "Pipez",
+      "category": "mods",
+      "fileName": "pipez-neoforge-1.21.1-1.2.31.jar",
+      "projectID": 443900,
+      "fileID": 8351631,
+      "enabled": true,
+      "sha1": "a5671f7e8d38dfc092ace4091250e8f9e1245e1e"
+    },
+    {
+      "name": "Relics",
+      "category": "mods",
+      "fileName": "relics-1.21.1-0.10.7.8.jar",
+      "projectID": 445274,
+      "fileID": 7586568,
+      "enabled": true,
+      "sha1": "7f7fd59273ac5ef6511a811518bc9af01705a528"
+    },
+    {
+      "name": "Entity Culling Fabric/Forge",
+      "category": "mods",
+      "fileName": "entityculling-neoforge-1.10.5-mc1.21.1.jar",
+      "projectID": 448233,
+      "fileID": 8287097,
+      "enabled": true,
+      "sha1": "420d0006dbc0a20b1c2dd0b3c7c20ddb5cc51fcf"
+    },
+    {
+      "name": "SuperMartijn642's Core Lib",
+      "category": "mods",
+      "fileName": "supermartijn642corelib-1.1.21-neoforge-mc1.21.jar",
+      "projectID": 454372,
+      "fileID": 7783425,
+      "enabled": true,
+      "sha1": "84802fbe1645de8caf61ccb07db6cf451e614f68"
+    },
+    {
+      "name": "Chipped",
+      "category": "mods",
+      "fileName": "chipped-neoforge-1.21.1-4.0.2.jar",
+      "projectID": 456956,
+      "fileID": 5813117,
+      "enabled": true,
+      "sha1": "6f5395f58139802edfde7cb9170279f92f291971"
+    },
+    {
+      "name": "Custom Machinery",
+      "category": "mods",
+      "fileName": "CustomMachinery-neoforge-1.21.1-0.10.69.jar",
+      "projectID": 457017,
+      "fileID": 8266133,
+      "enabled": true,
+      "sha1": "386c3f6ec0fe6db80fe70a4218dd446717f600b2"
+    },
+    {
+      "name": "Configured",
+      "category": "mods",
+      "fileName": "configured-neoforge-1.21.1-2.6.3.jar",
+      "projectID": 457570,
+      "fileID": 7276577,
+      "enabled": true,
+      "sha1": "e977d86eec39d49295df4e2c4265d6710ae065e8"
+    },
+    {
+      "name": "Applied Energistics 2 Wireless Terminals",
+      "category": "mods",
+      "fileName": "ae2wtlib-19.5.0.jar",
+      "projectID": 459929,
+      "fileID": 8048692,
+      "enabled": true,
+      "sha1": "de72e7f4d8d9d29dbe7f8790644b32f6c5b9655f"
+    },
+    {
+      "name": "Puzzles Lib",
+      "category": "mods",
+      "fileName": "PuzzlesLib-v21.1.52-1.21.1-NeoForge.jar",
+      "projectID": 495476,
+      "fileID": 8251525,
+      "enabled": true,
+      "sha1": "66182c3affb9f99624d1d770ca168d2a63af83f6"
+    },
+    {
+      "name": "Moonlight Lib",
+      "category": "mods",
+      "fileName": "moonlight-neoforge-1.21.1-3.1.1.jar",
+      "projectID": 499980,
+      "fileID": 8426304,
+      "enabled": true,
+      "sha1": "05242edd767cd4b5a11c52f43dccd8013c8dbb68"
+    },
+    {
+      "name": "Visual Workbench",
+      "category": "mods",
+      "fileName": "VisualWorkbench-v21.1.1-1.21.1-NeoForge.jar",
+      "projectID": 500273,
+      "fileID": 6798196,
+      "enabled": true,
+      "sha1": "74941456944461f39b10504ec9aed8c1e0fb7276"
+    },
+    {
+      "name": "GeOre",
+      "category": "mods",
+      "fileName": "GeOre-1.21.1-6.2.2.jar",
+      "projectID": 530544,
+      "fileID": 7563411,
+      "enabled": true,
+      "sha1": "b69a23cd4ffb1bce2697fec358ca913ff085da36"
+    },
+    {
+      "name": "Balm",
+      "category": "mods",
+      "fileName": "balm-neoforge-1.21.1-21.0.63.jar",
+      "projectID": 531761,
+      "fileID": 8424824,
+      "enabled": true,
+      "sha1": "d452e71d4ff81a047f6e22f9a3ddb3c72632751e"
+    },
+    {
+      "name": "Sound Physics Remastered",
+      "category": "mods",
+      "fileName": "sound-physics-remastered-neoforge-1.21.1-1.5.1.jar",
+      "projectID": 535489,
+      "fileID": 7032247,
+      "enabled": true,
+      "sha1": "31cf754f9e5f62d1ca257f297e5dce394024696c"
+    },
+    {
+      "name": "Forge Config API Port",
+      "category": "mods",
+      "fileName": "ForgeConfigAPIPort-v21.1.6-1.21.1-NeoForge.jar",
+      "projectID": 547434,
+      "fileID": 7213611,
+      "enabled": true,
+      "sha1": "14f2dd9f43254b8c06af04b6f0c8ae5192f658b5"
+    },
+    {
+      "name": "Alternate Current",
+      "category": "mods",
+      "fileName": "alternate_current-mc1.21-1.9.0.jar",
+      "projectID": 548115,
+      "fileID": 5665477,
+      "enabled": true,
+      "sha1": "1201c14362f2bad7062d315f8a9b26afbabd2c9c"
+    },
+    {
+      "name": "Framework",
+      "category": "mods",
+      "fileName": "framework-neoforge-1.21.1-0.13.11.jar",
+      "projectID": 549225,
+      "fileID": 7530361,
+      "enabled": true,
+      "sha1": "e46eb138fbb13a12f37154fb4ec407d64b326475"
+    },
+    {
+      "name": "L_Ender 's Cataclysm",
+      "category": "mods",
+      "fileName": "L_Ender's Cataclysm 1.21.1-3.32.jar",
+      "projectID": 551586,
+      "fileID": 8364209,
+      "enabled": true,
+      "sha1": "f16c6bf69232ebdf85cc861450a8dd5def310e5b"
+    },
+    {
+      "name": "Hostile Neural Networks",
+      "category": "mods",
+      "fileName": "HostileNeuralNetworks-1.21.1-6.4.2.jar",
+      "projectID": 552574,
+      "fileID": 8321864,
+      "enabled": true,
+      "sha1": "4bb0067c3a7bf3126da8b235cf607b69ad059c0d"
+    },
+    {
+      "name": "Modern Dynamics",
+      "category": "mods",
+      "fileName": "Modern-Dynamics-0.9.6.jar",
+      "projectID": 552758,
+      "fileID": 6787236,
+      "enabled": true,
+      "sha1": "3f206d55dc002f217a2a4e5b1cce9327fd67bfa6"
+    },
+    {
+      "name": "Functional Storage",
+      "category": "mods",
+      "fileName": "functionalstorage-1.21.1-1.5.4.jar",
+      "projectID": 556861,
+      "fileID": 6930104,
+      "enabled": true,
+      "sha1": "d7b07de2388c94dc756e5d1f4b3551045bb0611e"
+    },
+    {
+      "name": "AEInfinityBooster",
+      "category": "mods",
+      "fileName": "aeinfinitybooster-neoforge-1.21.1-1.0.0.58.jar",
+      "projectID": 559313,
+      "fileID": 8377914,
+      "enabled": true,
+      "sha1": "61756becbab62dd376378ceb74a3daa45b70562a"
+    },
+    {
+      "name": "Resourceful Lib",
+      "category": "mods",
+      "fileName": "resourcefullib-neoforge-1.21-3.0.12.jar",
+      "projectID": 570073,
+      "fileID": 5973188,
+      "enabled": true,
+      "sha1": "24389c8e48ff0e8594e4686b750c494c66a5f8df"
+    },
+    {
+      "name": "Ecologics",
+      "category": "mods",
+      "fileName": "ecologics-1.21.1-2.3.7.jar",
+      "projectID": 570463,
+      "fileID": 8415537,
+      "enabled": true,
+      "sha1": "3cf395ba5facd56917accc6563f7819f4e39c941"
+    },
+    {
+      "name": "LootJS: KubeJS Addon",
+      "category": "mods",
+      "fileName": "lootjs-neoforge-1.21.1-3.7.0.jar",
+      "projectID": 570630,
+      "fileID": 8009262,
+      "enabled": true,
+      "sha1": "54ffddd1763ae4af84e9bbcb22e4081a1e7f3556"
+    },
+    {
+      "name": "Applied Mekanistics",
+      "category": "mods",
+      "fileName": "Applied-Mekanistics-1.6.3.jar",
+      "projectID": 574300,
+      "fileID": 7096962,
+      "enabled": true,
+      "sha1": "bec4a47269ec23bca2329742e13409bfde69c5c3"
+    },
+    {
+      "name": "PolyLib",
+      "category": "mods",
+      "fileName": "polylib-2100.1.0-build.183-neoforge.jar",
+      "projectID": 576589,
+      "fileID": 7140477,
+      "enabled": true,
+      "sha1": "2e77cd8a795c3171d8327e6b1f1b6413565c8da1"
+    },
+    {
+      "name": "EMI",
+      "category": "mods",
+      "fileName": "emi-1.1.24+1.21.1+neoforge.jar",
+      "projectID": 580555,
+      "fileID": 8081408,
+      "enabled": true,
+      "sha1": "3fd494b37027dfbc7f78414d7cbf251c9eb6738a"
+    },
+    {
+      "name": "Loot Integrations",
+      "category": "mods",
+      "fileName": "lootintegrations-1.21.1-4.7.jar",
+      "projectID": 580689,
+      "fileID": 6640970,
+      "enabled": true,
+      "sha1": "ba601fe630f444d974838bfd80a185a0e3e0309c"
+    },
+    {
+      "name": "Jade Addons (Neo/Forge)",
+      "category": "mods",
+      "fileName": "JadeAddons-1.21.1-NeoForge-6.1.0.jar",
+      "projectID": 583345,
+      "fileID": 6315149,
+      "enabled": true,
+      "sha1": "d0aef07e67f9e2dd7ae68f9f27d845511d8eaff3"
+    },
+    {
+      "name": "AE2 Things [Forge]",
+      "category": "mods",
+      "fileName": "AE2-Things-1.4.2-beta.jar",
+      "projectID": 609977,
+      "fileID": 5637783,
+      "enabled": true,
+      "sha1": "593ad26ae4143f529a63cc63b96c6430ebba67c3"
+    },
+    {
+      "name": "Bliss Shaders",
+      "category": "shaderpacks",
+      "fileName": "Bliss_v2.1.2_(Chocapic13_Shaders_edit).zip",
+      "projectID": 610844,
+      "fileID": 7251787,
+      "enabled": true,
+      "sha1": "ded6c8a98305f8aff90ef781e7585b33b8452cfd"
+    },
+    {
+      "name": "Sophisticated Core",
+      "category": "mods",
+      "fileName": "sophisticatedcore-1.21.1-1.4.73.2151.jar",
+      "projectID": 618298,
+      "fileID": 8434146,
+      "enabled": true,
+      "sha1": "0ec40901471e109332e352d636925b8c79811c59"
+    },
+    {
+      "name": "Sophisticated Storage",
+      "category": "mods",
+      "fileName": "sophisticatedstorage-1.21.1-1.5.76.1972.jar",
+      "projectID": 619320,
+      "fileID": 8434224,
+      "enabled": true,
+      "sha1": "fadc59b0e9655878cb4910d7ac5ff72534757ce3"
+    },
+    {
+      "name": "MEGA Cells",
+      "category": "mods",
+      "fileName": "megacells-4.11.0.jar",
+      "projectID": 622112,
+      "fileID": 7952621,
+      "enabled": true,
+      "sha1": "f0b1a44bf30c8a9e14e2fa7fce37360191aa55e8"
+    },
+    {
+      "name": "FTB Backups 2",
+      "category": "mods",
+      "fileName": "ftbbackups2-neoforge-1.21-1.0.28.jar",
+      "projectID": 622737,
+      "fileID": 5501351,
+      "enabled": true,
+      "sha1": "878753a228d620c51b2f7a521867cab78fa259fc"
+    },
+    {
+      "name": "ChoiceTheorem's Overhauled Village",
+      "category": "mods",
+      "fileName": "[Neoforge]ctov-3.6.3.jar",
+      "projectID": 623908,
+      "fileID": 7788733,
+      "enabled": true,
+      "sha1": "c5fe733d743af20f84eb87dd75b5bb57684f3e05"
+    },
+    {
+      "name": "Towns and Towers",
+      "category": "mods",
+      "fileName": "t_and_t-neoforge-fabric-1.13.9+1.21.1.jar",
+      "projectID": 626761,
+      "fileID": 8130049,
+      "enabled": true,
+      "sha1": "2390523f45dc5204e82cfb23ecf4f34dfcc25d1e"
+    },
+    {
+      "name": "LaserIO",
+      "category": "mods",
+      "fileName": "laserio-1.9.11.jar",
+      "projectID": 626839,
+      "fileID": 5730007,
+      "enabled": true,
+      "sha1": "0545bff65926346c9663fe3c397029561a87400f"
+    },
+    {
+      "name": "Naturalist",
+      "category": "mods",
+      "fileName": "naturalist-1.0.2-neoforge-1.21.1.jar",
+      "projectID": 627986,
+      "fileID": 8007879,
+      "enabled": true,
+      "sha1": "d026c2c4ac66a9bc656e9b894683d1131054a80a"
+    },
+    {
+      "name": "Powah! (Rearchitected)",
+      "category": "mods",
+      "fileName": "Powah-6.2.10.jar",
+      "projectID": 633483,
+      "fileID": 8011715,
+      "enabled": true,
+      "sha1": "f134ab3e0ace3793abf93129e318eb817898a4e1"
+    },
+    {
+      "name": "Just Enough Immersive Multiblocks",
+      "category": "mods",
+      "fileName": "jeimultiblocks-1.21.1-1.0.6.jar",
+      "projectID": 634571,
+      "fileID": 7131196,
+      "enabled": true,
+      "sha1": "3c0a8b4823083151572656c702e5a2b45720ab4f"
+    },
+    {
+      "name": "Structory",
+      "category": "mods",
+      "fileName": "Structory_26.2_v1.3.7.jar",
+      "projectID": 636540,
+      "fileID": 8396883,
+      "enabled": true,
+      "sha1": "8a9a1a1b3f74398310420b6fbe2c26ef142bed42"
+    },
+    {
+      "name": "Replication",
+      "category": "mods",
+      "fileName": "Replication-1.21.1-1.2.7.jar",
+      "projectID": 638351,
+      "fileID": 7662870,
+      "enabled": true,
+      "sha1": "bb433ec94394e960ba26fc2e7fd5537fcb7fbe50"
+    },
+    {
+      "name": "playerAnimator",
+      "category": "mods",
+      "fileName": "player-animation-lib-forge-2.0.4+1.21.1.jar",
+      "projectID": 658587,
+      "fileID": 7389814,
+      "enabled": true,
+      "sha1": "05be8ddcc78532b9a5520c718edc6c971cd0057c"
+    },
+    {
+      "name": "Regions Unexplored",
+      "category": "mods",
+      "fileName": "regions-unexplored-0.6.2-neoforge-21.1.jar",
+      "projectID": 659110,
+      "fileID": 8419667,
+      "enabled": true,
+      "sha1": "122586c147f0aa1efdc655792b6ef24aebbbba84"
+    },
+    {
+      "name": "GeOre Nouveau",
+      "category": "mods",
+      "fileName": "GeOre_Nouveau-1.21.1-0.5.9.jar",
+      "projectID": 667803,
+      "fileID": 7966736,
+      "enabled": true,
+      "sha1": "4a0162e9673060535176f83778f42212c2ff10b1"
+    },
+    {
+      "name": "libIPN",
+      "category": "mods",
+      "fileName": "libIPN-neoforge-1.21.1-6.6.3.jar",
+      "projectID": 679177,
+      "fileID": 7810552,
+      "enabled": true,
+      "sha1": "baab9e8cae3d2b77b5e172b5694e465ee9f30d4a"
+    },
+    {
+      "name": "EMI Loot",
+      "category": "mods",
+      "fileName": "emi_loot-0.7.9+1.21+neoforge.jar",
+      "projectID": 681783,
+      "fileID": 7417271,
+      "enabled": true,
+      "sha1": "bd0326eeda721c87a29efd78f9a52f46d572392c"
+    },
+    {
+      "name": "Born in Chaos",
+      "category": "mods",
+      "fileName": "born_in_chaos_[Neoforge]_1.21.1_1.7.6.jar",
+      "projectID": 686437,
+      "fileID": 8268280,
+      "enabled": true,
+      "sha1": "73704f38ac368c03716f9cc8f537470d3b352fa2"
+    },
+    {
+      "name": "ImmediatelyFast",
+      "category": "mods",
+      "fileName": "ImmediatelyFast-NeoForge-1.6.11+1.21.1.jar",
+      "projectID": 686911,
+      "fileID": 8348515,
+      "enabled": true,
+      "sha1": "6594ea2759455f4e135b9479f807bacf4b4b0b43"
+    },
+    {
+      "name": "ME Requester",
+      "category": "mods",
+      "fileName": "merequester-neoforge-1.21.1-1.4.3.jar",
+      "projectID": 688367,
+      "fileID": 8285803,
+      "enabled": true,
+      "sha1": "b0a801e9b7af930da5f58176156d58c26f6232b1"
+    },
+    {
+      "name": "Explorify – Dungeons & Structures",
+      "category": "mods",
+      "fileName": "Explorify v1.6.5.mod.jar",
+      "projectID": 698309,
+      "fileID": 8082824,
+      "enabled": true,
+      "sha1": "5fb28be29200a41b034e423d87823eb19ad651cd"
+    },
+    {
+      "name": "Resourceful Config",
+      "category": "mods",
+      "fileName": "resourcefulconfig-neoforge-1.21-3.0.11.jar",
+      "projectID": 714059,
+      "fileID": 6467772,
+      "enabled": true,
+      "sha1": "6bf2b6ea9c071c00a2abcdc552667fb6f7d21031"
+    },
+    {
+      "name": "Custom Machinery Mekanism",
+      "category": "mods",
+      "fileName": "CustomMachineryMekanism-1.21.1-1.4.16.jar",
+      "projectID": 721079,
+      "fileID": 8232476,
+      "enabled": true,
+      "sha1": "d1f8b6cf1845d3197542ad267750ed1c47c05809"
+    },
+    {
+      "name": "ModernFix",
+      "category": "mods",
+      "fileName": "modernfix-neoforge-5.27.20+mc1.21.1.jar",
+      "projectID": 790626,
+      "fileID": 8459650,
+      "enabled": true,
+      "sha1": "bc1a70e72e7dba8a3ff41404765fdd03a7ac6575"
+    },
+    {
+      "name": "Pufferfish's Skills [Fabric & Forge & NeoForge]",
+      "category": "mods",
+      "fileName": "puffish_skills-0.18.1-1.21-neoforge.jar",
+      "projectID": 835091,
+      "fileID": 8408176,
+      "enabled": true,
+      "sha1": "5873a4805c76f877ed40bcb20c5eedef67a6ccd2"
+    },
+    {
+      "name": "Better Archeology",
+      "category": "mods",
+      "fileName": "betterarcheology-neoforge-1.21.1-1.3.4.jar",
+      "projectID": 835687,
+      "fileID": 7756575,
+      "enabled": true,
+      "sha1": "7bc67495d5d5ae9410189d94a5235c0ddc9a12f6"
+    },
+    {
+      "name": "Supplementaries Squared",
+      "category": "mods",
+      "fileName": "suppsquared-neoforge-1.21-1.2.18.jar",
+      "projectID": 838411,
+      "fileID": 8268988,
+      "enabled": true,
+      "sha1": "0b6845d2afd22f91275a69ad270a0f0ecbfaebe3"
+    },
+    {
+      "name": "Athena",
+      "category": "mods",
+      "fileName": "athena-neoforge-1.21.1-4.0.6.jar",
+      "projectID": 841890,
+      "fileID": 8061947,
+      "enabled": true,
+      "sha1": "4bcbdf388bd5e387beca7c627224aac33584b55b"
+    },
+    {
+      "name": "Fusion (Connected Textures)",
+      "category": "mods",
+      "fileName": "fusion-1.3.5-neoforge-mc1.21.1.jar",
+      "projectID": 854949,
+      "fileID": 8355160,
+      "enabled": true,
+      "sha1": "7f352d351a1189cba2a7f8441006b7171574194e"
+    },
+    {
+      "name": "Iron's Spells 'n Spellbooks",
+      "category": "mods",
+      "fileName": "irons_spellbooks-1.21.1-3.16.2.jar",
+      "projectID": 855414,
+      "fileID": 8364935,
+      "enabled": true,
+      "sha1": "09907e3b4bfdabd7f1f44bfd25aa6432183f39bb"
+    },
+    {
+      "name": "Cristel Lib",
+      "category": "mods",
+      "fileName": "cristellib-neoforge-1.21.1-3.1.7.jar",
+      "projectID": 856996,
+      "fileID": 8241767,
+      "enabled": true,
+      "sha1": "d250804b7ecea365bc736ec36ec6fc3f933917f1"
+    },
+    {
+      "name": "Searchables",
+      "category": "mods",
+      "fileName": "Searchables-neoforge-1.21.1-1.0.2.jar",
+      "projectID": 858542,
+      "fileID": 5831692,
+      "enabled": true,
+      "sha1": "5b8a0b43a474c066371b2e16f9bfb88622552a74"
+    },
+    {
+      "name": "Custom Machinery Create",
+      "category": "mods",
+      "fileName": "CustomMachineryCreate-1.21.1-1.2.7.jar",
+      "projectID": 860747,
+      "fileID": 8236695,
+      "enabled": true,
+      "sha1": "f198aa27b817ced0030aeaf5661ca16d2935a619"
+    },
+    {
+      "name": "Forgified Fabric API",
+      "category": "mods",
+      "fileName": "forgified-fabric-api-0.116.14+2.3.0+1.21.1.jar",
+      "projectID": 889079,
+      "fileID": 8445798,
+      "enabled": true,
+      "sha1": "95d2a221fec6e03f13273b8ffb2d606d576530cf"
+    },
+    {
+      "name": "FTB XMod Compat",
+      "category": "mods",
+      "fileName": "ftb-xmod-compat-neoforge-21.1.9.jar",
+      "projectID": 889915,
+      "fileID": 8438602,
+      "enabled": true,
+      "sha1": "0c8caa1d5e6954d71aa114f377bbc79ba83e1faf"
+    },
+    {
+      "name": "Just Enough Archaeology",
+      "category": "mods",
+      "fileName": "jearchaeology-1.21.1-1.2.0.jar",
+      "projectID": 890755,
+      "fileID": 7768445,
+      "enabled": true,
+      "sha1": "385e4937144b20c6cbf103945a73066f8dc1bc74"
+    },
+    {
+      "name": "ExtendedAE",
+      "category": "mods",
+      "fileName": "ExtendedAE-1.21-2.2.35-neoforge.jar",
+      "projectID": 892005,
+      "fileID": 8511901,
+      "enabled": true,
+      "sha1": "e3521ca2567fabe0f0131cc923ec94dd99d6fa7b"
+    },
+    {
+      "name": "Just Enough Mekanism Multiblocks",
+      "category": "mods",
+      "fileName": "JustEnoughMekanismMultiblocks-1.21.1-7.15.jar",
+      "projectID": 898746,
+      "fileID": 7921149,
+      "enabled": true,
+      "sha1": "160c5d10059c5f98bac91f46ef9cc287fa12a964"
+    },
+    {
+      "name": "Apothic Attributes",
+      "category": "mods",
+      "fileName": "ApothicAttributes-1.21.1-2.9.1.jar",
+      "projectID": 898963,
+      "fileID": 7445079,
+      "enabled": true,
+      "sha1": "e7f669e1b45d75076200436f37c40a6dd3b6a6ff"
+    },
+    {
+      "name": "Just Enough Breeding (JEBr)",
+      "category": "mods",
+      "fileName": "justenoughbreeding-neoforge-1.21.1-3.1.0.jar",
+      "projectID": 899386,
+      "fileID": 8138627,
+      "enabled": true,
+      "sha1": "e8d4564ea93a3d6c2004e7bf1501b754af377f87"
+    },
+    {
+      "name": "Industrial Foregoing Souls",
+      "category": "mods",
+      "fileName": "industrial-foregoing-souls-1.21.1-1.10.4.jar",
+      "projectID": 904394,
+      "fileID": 6235883,
+      "enabled": true,
+      "sha1": "d612f61f05d0645deee3ac66ce8555e1091e3062"
+    },
+    {
+      "name": "Ars Énergistique",
+      "category": "mods",
+      "fileName": "arseng-2.1.1-beta.jar",
+      "projectID": 905641,
+      "fileID": 6203425,
+      "enabled": true,
+      "sha1": "e46e7cf5c4fc5f48d1b1ea025eb59c484811b2c6"
+    },
+    {
+      "name": "FTB Quests Optimizer",
+      "category": "mods",
+      "fileName": "FTBQuestsOptimizer-neoforge-3.2.0-1.21.1.jar",
+      "projectID": 912469,
+      "fileID": 7576461,
+      "enabled": true,
+      "sha1": "28e4926c62f9f010aea43a091f7fc113200175be"
+    },
+    {
+      "name": "ShatterLib | OctoLib",
+      "category": "mods",
+      "fileName": "OctoLib-NEOFORGE-0.6.2+1.21.jar",
+      "projectID": 916747,
+      "fileID": 8040848,
+      "enabled": true,
+      "sha1": "f4f66d677b104c6af7f5c0f7e3c08d8e4370ecad"
+    },
+    {
+      "name": "(Sodium) Chloride",
+      "category": "mods",
+      "fileName": "chloride-NEOFORGE-mc1.21.1-v1.8.1.jar",
+      "projectID": 931925,
+      "fileID": 8462029,
+      "enabled": true,
+      "sha1": "50454011525e2862678b15d94484fd32a5a54dfb"
+    },
+    {
+      "name": "Lithostitched",
+      "category": "mods",
+      "fileName": "lithostitched-1.7.13-neoforge-21.1.jar",
+      "projectID": 936015,
+      "fileID": 8378498,
+      "enabled": true,
+      "sha1": "771a104dde071e16e67c7cd3149f7c3015375483"
+    },
+    {
+      "name": "EMI Enchanting",
+      "category": "mods",
+      "fileName": "emi_enchanting-0.1.2+1.21+neoforge.jar",
+      "projectID": 936713,
+      "fileID": 5733125,
+      "enabled": true,
+      "sha1": "02ad74769ffcec259fd9bb14a1760593f6182b5c"
+    },
+    {
+      "name": "TerraBlender (NeoForge)",
+      "category": "mods",
+      "fileName": "TerraBlender-neoforge-1.21.1-4.1.0.8.jar",
+      "projectID": 940057,
+      "fileID": 6054947,
+      "enabled": true,
+      "sha1": "2016eed89eac0eb0510d2190c3b0b80bf4346191"
+    },
+    {
+      "name": "Polymorphic Energistics",
+      "category": "mods",
+      "fileName": "polyeng-0.4.1.jar",
+      "projectID": 941096,
+      "fileID": 5545923,
+      "enabled": true,
+      "sha1": "4add4d9e854807ed2b10c0cabf972244f862b21f"
+    },
+    {
+      "name": "FTB Filter System",
+      "category": "mods",
+      "fileName": "ftb-filter-system-neoforge-21.1.4.jar",
+      "projectID": 943925,
+      "fileID": 7429011,
+      "enabled": true,
+      "sha1": "a48e54edeacc59aaba29a1b627799c052112ee0b"
+    },
+    {
+      "name": "BadOptimizations",
+      "category": "mods",
+      "fileName": "BadOptimizations-2.4.1-1.21.1.jar",
+      "projectID": 949555,
+      "fileID": 7338300,
+      "enabled": true,
+      "sha1": "1461d8e46391efd32a3085150e86094c9f6f5c9d"
+    },
+    {
+      "name": "Glodium",
+      "category": "mods",
+      "fileName": "Glodium-1.21-2.2-neoforge.jar",
+      "projectID": 957920,
+      "fileID": 5821676,
+      "enabled": true,
+      "sha1": "9f61a3162665ad0b37f6f268339ac98097af1a87"
+    },
+    {
+      "name": "ExtraQuests [FTB Quests]",
+      "category": "mods",
+      "fileName": "ExtraQuests-1.7.0-1.21.1-NeoForge.jar",
+      "projectID": 964194,
+      "fileID": 8004488,
+      "enabled": true,
+      "sha1": "f8e0c0b83010430216428052b6bf436d92f3d1a3"
+    },
+    {
+      "name": "Applied Flux",
+      "category": "mods",
+      "fileName": "AppliedFlux-1.21-2.1.5-neoforge.jar",
+      "projectID": 965012,
+      "fileID": 8204513,
+      "enabled": true,
+      "sha1": "a98eeadf414e6b3f6878324a3fbdee3fa5fcdadf"
+    },
+    {
+      "name": "Zeta",
+      "category": "mods",
+      "fileName": "Zeta-1.1-40.jar",
+      "projectID": 968868,
+      "fileID": 7980010,
+      "enabled": true,
+      "sha1": "72f6efe421cfc0547c774ae8241d727b7d996754"
+    },
+    {
+      "name": "Custom Machinery Ars Nouveau",
+      "category": "mods",
+      "fileName": "custom_machinery_ars-1.2.5.jar",
+      "projectID": 969074,
+      "fileID": 7723811,
+      "enabled": true,
+      "sha1": "22aeb38ab2459acc4f63d87b888637887b045eea"
+    },
+    {
+      "name": "Chisel Chipped Integration",
+      "category": "mods",
+      "fileName": "chisel_chipped_integration-v1.3.9-1.21.1.jar",
+      "projectID": 971089,
+      "fileID": 6693853,
+      "enabled": true,
+      "sha1": "8a7b23797cf5ecd9db0cc1cced108d5fbdb876b9"
+    },
+    {
+      "name": "EMI Ores",
+      "category": "mods",
+      "fileName": "emi_ores-1.3+1.21.1+neoforge.jar",
+      "projectID": 974009,
+      "fileID": 8254306,
+      "enabled": true,
+      "sha1": "26e3f998295bae5178530d4bb217e824a2637121"
+    },
+    {
+      "name": "Pufferfish's Attributes [Fabric & Forge & NeoForge]",
+      "category": "mods",
+      "fileName": "puffish_attributes-0.8.2-1.21-neoforge.jar",
+      "projectID": 991341,
+      "fileID": 7551339,
+      "enabled": true,
+      "sha1": "f4b67aa8da294203203bc8e6cd4b0cbf0a99d9dc"
+    },
+    {
+      "name": "BBL Rooms",
+      "category": "mods",
+      "fileName": "roomopolis-1.21.1-2.8.3.jar",
+      "projectID": 1000075,
+      "fileID": 7709555,
+      "enabled": true,
+      "sha1": "9eae719622dd23f1718e0c16a5aea12db650ac4f"
+    },
+    {
+      "name": "Lionfish API",
+      "category": "mods",
+      "fileName": "lionfishapi-3.1.jar",
+      "projectID": 1001614,
+      "fileID": 8345326,
+      "enabled": true,
+      "sha1": "353ca00ed118eb67cf11085abbbd699884722326"
+    },
+    {
+      "name": "Just Dire Things",
+      "category": "mods",
+      "fileName": "justdirethings-1.5.7.jar",
+      "projectID": 1002348,
+      "fileID": 7463040,
+      "enabled": true,
+      "sha1": "f0327d7d2f389020063849200a4128ac9dcb52da"
+    },
+    {
+      "name": "Fzzy Config",
+      "category": "mods",
+      "fileName": "fzzy_config-0.7.6+1.21+neoforge.jar",
+      "projectID": 1005914,
+      "fileID": 7568897,
+      "enabled": true,
+      "sha1": "c0910f9b975aaab8545ce950539748fb33d704d1"
+    },
+    {
+      "name": "YUNG's Better Mineshafts (NeoForge) [1.20.4 - 1.21.1 ONLY]",
+      "category": "mods",
+      "fileName": "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
+      "projectID": 1015096,
+      "fileID": 5812193,
+      "enabled": true,
+      "sha1": "6a14e1d8201f068ca87ef8333e471c5378955906"
+    },
+    {
+      "name": "YUNG's API (NeoForge) [1.20.4-1.21.1 ONLY]",
+      "category": "mods",
+      "fileName": "YungsApi-1.21.1-NeoForge-5.1.6.jar",
+      "projectID": 1015100,
+      "fileID": 6715463,
+      "enabled": true,
+      "sha1": "e1c394779fb9e038e4f7a1b4558d0432607d263b"
+    },
+    {
+      "name": "YUNG's Better Strongholds (NeoForge) [1.20.4 - 1.21.1 ONLY]",
+      "category": "mods",
+      "fileName": "YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar",
+      "projectID": 1015105,
+      "fileID": 6272264,
+      "enabled": true,
+      "sha1": "5d06a5850af7c577612d4592706a8e156bbe1cbf"
+    },
+    {
+      "name": "YUNG's Better Dungeons (NeoForge) [1.20.4 - 1.21.1 ONLY]",
+      "category": "mods",
+      "fileName": "YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
+      "projectID": 1015112,
+      "fileID": 5954804,
+      "enabled": true,
+      "sha1": "73a660c13063450e555e5e2c015ae24d606b32b4"
+    },
+    {
+      "name": "YUNG's Better Desert Temples (NeoForge) [1.20.4 - 1.21.1 ONLY]",
+      "category": "mods",
+      "fileName": "YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar",
+      "projectID": 1015114,
+      "fileID": 6276955,
+      "enabled": true,
+      "sha1": "90529257dbd92558998c65178294bc7b2fd16a64"
+    },
+    {
+      "name": "YUNG's Better Ocean Monuments (NeoForge) [1.20.4 - 1.21.1 ONLY]",
+      "category": "mods",
+      "fileName": "YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar",
+      "projectID": 1015115,
+      "fileID": 5924487,
+      "enabled": true,
+      "sha1": "fba629defdb92ad99ec4f411895afb6e19555a18"
+    },
+    {
+      "name": "YUNG's Better Nether Fortresses (NeoForge) [1.20.4 - 1.21.1 ONLY]",
+      "category": "mods",
+      "fileName": "YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
+      "projectID": 1015118,
+      "fileID": 6606621,
+      "enabled": true,
+      "sha1": "4061ece2141475227646649046fc14c2da505922"
+    },
+    {
+      "name": "YUNG's Better Jungle Temples (NeoForge) [1.20.4 - 1.21.1 ONLY]",
+      "category": "mods",
+      "fileName": "YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar",
+      "projectID": 1015123,
+      "fileID": 5924482,
+      "enabled": true,
+      "sha1": "d6b7ce6cf351b09cbd23147ff166c35cfdc572e8"
+    },
+    {
+      "name": "YUNG's Better End Island (NeoForge) [1.20.4 - 1.21.1 ONLY]",
+      "category": "mods",
+      "fileName": "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
+      "projectID": 1015127,
+      "fileID": 6300968,
+      "enabled": true,
+      "sha1": "832f2c17425debe74a9f267f4136f1a0f0221d19"
+    },
+    {
+      "name": "YUNG's Better Witch Huts (NeoForge) [1.20.4 - 1.21.1 ONLY]",
+      "category": "mods",
+      "fileName": "YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
+      "projectID": 1015144,
+      "fileID": 5812532,
+      "enabled": true,
+      "sha1": "bbf6c91f4a2829c58bc024eaaab821986bc93de6"
+    },
+    {
+      "name": "YUNG's Extras (NeoForge) [1.20.4 - 1.21.1 ONLY]",
+      "category": "mods",
+      "fileName": "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
+      "projectID": 1015146,
+      "fileID": 5812546,
+      "enabled": true,
+      "sha1": "62833733aaf407f36bdacf648ed4b2ef9940662b"
+    },
+    {
+      "name": "FastBoot",
+      "category": "mods",
+      "fileName": "fastboot-1.21.x-v1.3neo.jar",
+      "projectID": 1030285,
+      "fileID": 6998687,
+      "enabled": true,
+      "sha1": "1c9101baf7e4b111fc55e0b5a8687e67be2f626c"
+    },
+    {
+      "name": "Oritech",
+      "category": "mods",
+      "fileName": "oritech-neoforge-1.21.1-1.2.9.jar",
+      "projectID": 1030830,
+      "fileID": 8426648,
+      "enabled": true,
+      "sha1": "3aa2fdd7c165f08a5efcb374ed45a9fe26409158"
+    },
+    {
+      "name": "Nature's Spirit",
+      "category": "mods",
+      "fileName": "natures_spirit-2.2.5-1.21.1.jar",
+      "projectID": 1044992,
+      "fileID": 6962784,
+      "enabled": true,
+      "sha1": "153679dc2dd4601b40beed834799ba1d7c05b08a"
+    },
+    {
+      "name": "Tesseract API (NeoForge)",
+      "category": "mods",
+      "fileName": "tesseract-api-neoforge-1.12.8-1.21.1.jar",
+      "projectID": 1067672,
+      "fileID": 8421703,
+      "enabled": true,
+      "sha1": "bcd46fbddc8d8648d7c3762f798eed766018eb3d"
+    },
+    {
+      "name": "AE2 JEI Integration",
+      "category": "mods",
+      "fileName": "ae2jeiintegration-1.2.1.jar",
+      "projectID": 1074338,
+      "fileID": 7727898,
+      "enabled": true,
+      "sha1": "e99898b3e9c32bf6ac757e7ad50247746622cdfc"
+    },
+    {
+      "name": "ExtraLib",
+      "category": "mods",
+      "fileName": "ExtraLib-3.0.11-1.21.1-NeoForge.jar",
+      "projectID": 1083780,
+      "fileID": 8322611,
+      "enabled": true,
+      "sha1": "1d9ff168bc22b6022ca12f7bca4bca465bbb5018"
+    },
+    {
+      "name": "AdvancedAE",
+      "category": "mods",
+      "fileName": "AdvancedAE-1.6.11-1.21.1.jar",
+      "projectID": 1084104,
+      "fileID": 7849217,
+      "enabled": true,
+      "sha1": "0af8033f7291b9f5062b229053e16b439a906db9"
+    },
+    {
+      "name": "More Industrial Foregoing Addons (MIFA)",
+      "category": "mods",
+      "fileName": "mifa-neoforge-1.21.x-2.1.0.jar",
+      "projectID": 1086142,
+      "fileID": 6288756,
+      "enabled": true,
+      "sha1": "b59f8679cae16ee38254cd30c2fa4977e4830661"
+    },
+    {
+      "name": "AllTheLeaks (Memory Leak Fix)",
+      "category": "mods",
+      "fileName": "alltheleaks-1.1.10+1.21.1-neoforge.jar",
+      "projectID": 1091339,
+      "fileID": 8409394,
+      "enabled": true,
+      "sha1": "00bf99e3a09204a555dc219a9648423c93f529d4"
+    },
+    {
+      "name": "Custom Machinery PneumaticCraft",
+      "category": "mods",
+      "fileName": "CustomMachineryPneumaticCraft-1.21.1-1.0.7.jar",
+      "projectID": 1093049,
+      "fileID": 8232332,
+      "enabled": true,
+      "sha1": "fc16faf4c99c24bfde18651ec965a5709036a372"
+    },
+    {
+      "name": "FTB JEI Extras",
+      "category": "mods",
+      "fileName": "ftb-jei-extras-21.1.7.jar",
+      "projectID": 1103259,
+      "fileID": 6695679,
+      "enabled": true,
+      "sha1": "ef01126201a805991bbfe5351cff7d0a9e3a077b"
+    },
+    {
+      "name": "TxniLib",
+      "category": "mods",
+      "fileName": "txnilib-neoforge-1.0.24-1.21.1.jar",
+      "projectID": 1104882,
+      "fileID": 6533725,
+      "enabled": true,
+      "sha1": "17b1bbb96e922e683a1807a2e7bece603fdc491d"
+    },
+    {
+      "name": "YUNG's Cave Biomes (Forge/NeoForge)",
+      "category": "mods",
+      "fileName": "YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar",
+      "projectID": 1111586,
+      "fileID": 6913179,
+      "enabled": true,
+      "sha1": "bcab81f578b3cb31e599ae327c6634b9fa8d0f04"
+    },
+    {
+      "name": "Graveyards",
+      "category": "mods",
+      "fileName": "graveyards-1.0.0.jar",
+      "projectID": 1117740,
+      "fileID": 5797861,
+      "enabled": true,
+      "sha1": "8eccbe79a46c206b69dd5f41f165c434758c8291"
+    },
+    {
+      "name": "AStages",
+      "category": "mods",
+      "fileName": "astages-2.4.1-1.21.1.jar",
+      "projectID": 1120180,
+      "fileID": 8473386,
+      "enabled": true,
+      "sha1": "be30dfaf2a8a695bb8910a8dd2a8e93e4524cd90"
+    },
+    {
+      "name": "Loot Integrations: Better Archeology",
+      "category": "mods",
+      "fileName": "lootintegrations_betterarcheology-1.2.jar",
+      "projectID": 1130800,
+      "fileID": 6168609,
+      "enabled": true,
+      "sha1": "3f4b21264d80964e94d58c5d39133b4381792d89"
+    },
+    {
+      "name": "Smithing Template Viewer for JEI/EMI",
+      "category": "mods",
+      "fileName": "smithingtemplateviewer-1.0.4.jar",
+      "projectID": 1133580,
+      "fileID": 7452053,
+      "enabled": true,
+      "sha1": "4fea33926fafbd59f7434d1e4e64938ddee5d5db"
+    },
+    {
+      "name": "BBL Core",
+      "category": "mods",
+      "fileName": "bblcore-1.21-1.3.20.jar",
+      "projectID": 1135181,
+      "fileID": 7048684,
+      "enabled": true,
+      "sha1": "426bb6a9724ac6b6ef4d45f7c089946e7fd11602"
+    },
+    {
+      "name": "Loot Integrations: ChoiceTheorem's Overhauled Village & Immersive Structures",
+      "category": "mods",
+      "fileName": "lootintegrations_ctov-1.4.jar",
+      "projectID": 1135500,
+      "fileID": 6510009,
+      "enabled": true,
+      "sha1": "4d24044f3757946ded3cf507e2fc5733635c5dba"
+    },
+    {
+      "name": "Loot Integrations: When Dungeons Arise & Co",
+      "category": "mods",
+      "fileName": "lootintegration_wda-1.8.jar",
+      "projectID": 1142880,
+      "fileID": 7925521,
+      "enabled": true,
+      "sha1": "d5b8cd7712e9c6db2202b77e3ce3c115640b8395"
+    },
+    {
+      "name": "Soulplied Energistics",
+      "category": "mods",
+      "fileName": "soulplied_energistics-1.0.3.jar",
+      "projectID": 1143614,
+      "fileID": 8333758,
+      "enabled": true,
+      "sha1": "07f60de4a84fea4f5c37f956016e46ac13a0bf66"
+    },
+    {
+      "name": "Mekanistic Routers",
+      "category": "mods",
+      "fileName": "mekanisticrouters-1.2.0.jar",
+      "projectID": 1148201,
+      "fileID": 7511369,
+      "enabled": true,
+      "sha1": "a3506c0c37f92a390f021affa752cf55cc0a0b12"
+    },
+    {
+      "name": "AE2 MEGA Things",
+      "category": "mods",
+      "fileName": "AE2MEGAThings-1.21.1-2.0.4.jar",
+      "projectID": 1150075,
+      "fileID": 6203833,
+      "enabled": true,
+      "sha1": "5df271ee7c41abe2fa753842b778a4c7ac1290b9"
+    },
+    {
+      "name": "KubeJS Oritech",
+      "category": "mods",
+      "fileName": "kubejs_oritech-neoforge-1.21.1-0.4.4.jar",
+      "projectID": 1153301,
+      "fileID": 8056459,
+      "enabled": true,
+      "sha1": "1c3ebb5409e11be575dc018ac9799bdf6ac54535"
+    },
+    {
+      "name": "Construction Sticks",
+      "category": "mods",
+      "fileName": "ConstructionSticks-1.21.1-1.4.1.jar",
+      "projectID": 1156098,
+      "fileID": 8287281,
+      "enabled": true,
+      "sha1": "05286f794c9b14d43259c41aaa0aa544a70dd7d7"
+    },
+    {
+      "name": "ExperienceLib",
+      "category": "mods",
+      "fileName": "experiencelib-1.21.1-1.2.1.jar",
+      "projectID": 1156551,
+      "fileID": 7705470,
+      "enabled": true,
+      "sha1": "82a964a6a68519ade986760e964bb3309933671a"
+    },
+    {
+      "name": "Applied Experienced",
+      "category": "mods",
+      "fileName": "applied-experienced-1.21.1-1.3.2.jar",
+      "projectID": 1157608,
+      "fileID": 7705498,
+      "enabled": true,
+      "sha1": "751aceaca3309b5618e7ee435a133ec245180ea3"
+    },
+    {
+      "name": "Distraction Free Recipes (EMI / REI / JEI)",
+      "category": "mods",
+      "fileName": "distraction_free_recipes-neoforge-1.2.2-1.21.1.jar",
+      "projectID": 1167848,
+      "fileID": 7411492,
+      "enabled": true,
+      "sha1": "b36e8e58018aae4b79bf86aaac452ec11170cb11"
+    },
+    {
+      "name": "GuideME",
+      "category": "mods",
+      "fileName": "guideme-21.1.17.jar",
+      "projectID": 1173950,
+      "fileID": 8420861,
+      "enabled": true,
+      "sha1": "060e374f578db694a0b8f3ad409bd424cae86359"
+    },
+    {
+      "name": "Little Big Redstone",
+      "category": "mods",
+      "fileName": "little-big-redstone-1.9.4-1.21.1.jar",
+      "projectID": 1180560,
+      "fileID": 8397033,
+      "enabled": true,
+      "sha1": "a444ce296275b674b3a3a722a64b4afd5ff6cab4"
+    },
+    {
+      "name": "Productive Metalworks",
+      "category": "mods",
+      "fileName": "productivemetalworks-1.21.1-1.15.0.jar",
+      "projectID": 1184570,
+      "fileID": 7884786,
+      "enabled": true,
+      "sha1": "994781120d75e17c21851d1d3c5a2789a006eb49"
+    },
+    {
+      "name": "GTBC's SpellLib/API",
+      "category": "mods",
+      "fileName": "gtbcs_spell_lib-1.5.0-1.21.1.jar",
+      "projectID": 1194714,
+      "fileID": 7584985,
+      "enabled": true,
+      "sha1": "6cd001c4142d51bf455bf1af029a3755779b8c85"
+    },
+    {
+      "name": "FTB Stuff & Things",
+      "category": "mods",
+      "fileName": "ftb-stuff-things-21.1.18.jar",
+      "projectID": 1197860,
+      "fileID": 8265322,
+      "enabled": true,
+      "sha1": "b434b704696f4bc8ea706dbd0005f107e4bc845d"
+    },
+    {
+      "name": "BBL Colors",
+      "category": "mods",
+      "fileName": "colors-1.21.1-1.4.0.jar",
+      "projectID": 1218206,
+      "fileID": 7128771,
+      "enabled": true,
+      "sha1": "d526d9e626ae3f9680c0a9df55453ef0d1b87c9a"
+    },
+    {
+      "name": "KubeJS Curios",
+      "category": "mods",
+      "fileName": "kubejs_curios_neoforge_1.21.1-1.0.4.jar",
+      "projectID": 1255211,
+      "fileID": 6825089,
+      "enabled": true,
+      "sha1": "d76c4181e1436bc85f108c7191f1ed7ee374d318"
+    },
+    {
+      "name": "Placers - Immersive Engineering",
+      "category": "mods",
+      "fileName": "placers-1.21.1-1.3.1.jar",
+      "projectID": 1262089,
+      "fileID": 7883778,
+      "enabled": true,
+      "sha1": "1f02f47d5a6a556ee80263c13285d7a22b2d498b"
+    },
+    {
+      "name": "Replication AE2 Bridge",
+      "category": "mods",
+      "fileName": "rep_ae2_bridge-1.8.0.0.0-neoforge-1.21.1.jar",
+      "projectID": 1264781,
+      "fileID": 7742278,
+      "enabled": true,
+      "sha1": "1e283931ab2401d09a9f114f791d63b684e14e8f"
+    },
+    {
+      "name": "Krypton Reno",
+      "category": "mods",
+      "fileName": "krypton_fnp-neoforge-1.21.1-0.2.28.1-1.21.1.jar",
+      "projectID": 1269169,
+      "fileID": 7461802,
+      "enabled": true,
+      "sha1": "3b9253fcfaa11586ce528fbc0a26175991c9408f"
+    },
+    {
+      "name": "BBL Colors - Connected Textures",
+      "category": "resourcepacks",
+      "fileName": "BBL-Colors-Connected-Textures_2.0.zip",
+      "projectID": 1271095,
+      "fileID": 7441335,
+      "enabled": true,
+      "sha1": "1999078a57f7d4e584aecd2235ccf4c60a4d33f0"
+    },
+    {
+      "name": "Industrial Hellscape",
+      "category": "mods",
+      "fileName": "industrialhellscape-1.0.3.jar",
+      "projectID": 1302110,
+      "fileID": 8175736,
+      "enabled": true,
+      "sha1": "8c776a466c49c8a37335e2e3aad72c8830aca65f"
+    },
+    {
+      "name": "AStages Curios",
+      "category": "mods",
+      "fileName": "astages_curios-2.0.0-1.21.1.jar",
+      "projectID": 1303904,
+      "fileID": 8216481,
+      "enabled": true,
+      "sha1": "1ec573dd9b35161f22344ad2cf6a54bddd8d76a1"
+    },
+    {
+      "name": "AStages Pufferfish's Skills",
+      "category": "mods",
+      "fileName": "astages_pufferfish-2.1.0-1.21.1.jar",
+      "projectID": 1303921,
+      "fileID": 8401880,
+      "enabled": true,
+      "sha1": "92030a560e27d27269ba34081484cac958d8db49"
+    },
+    {
+      "name": "Photon Shader",
+      "category": "shaderpacks",
+      "fileName": "photon_v1.3b.zip",
+      "projectID": 1312687,
+      "fileID": 7927503,
+      "enabled": true,
+      "sha1": "d975d25c9686de5f10e8b86c8518613cdf3f040a"
+    },
+    {
+      "name": "Growth Accelerator Tiers",
+      "category": "mods",
+      "fileName": "growthacceleratortiers-1.0.4_neoforge_1.21.1.jar",
+      "projectID": 1316818,
+      "fileID": 7092792,
+      "enabled": true,
+      "sha1": "c1b449c50b755204b120cce44e885868da85d80d"
+    },
+    {
+      "name": "Create:  Chipped",
+      "category": "mods",
+      "fileName": "create_chipped-1.2.0-neoforge-1.21.1.jar",
+      "projectID": 1321045,
+      "fileID": 7985040,
+      "enabled": true,
+      "sha1": "37e4d3ed2f9e291d6cd688ffc40b8b404672cf72"
+    },
+    {
+      "name": "Applied Soul",
+      "category": "mods",
+      "fileName": "appliedsoul-1.21.1-2.0.3.jar",
+      "projectID": 1337114,
+      "fileID": 7653184,
+      "enabled": true,
+      "sha1": "e8de7576611f6885a0d45dce41ca15bb6645a3f5"
+    },
+    {
+      "name": "Angel Extra Utilities",
+      "category": "mods",
+      "fileName": "angel_utilities-1.0.9-neoforge-1.21.1.jar",
+      "projectID": 1338772,
+      "fileID": 6976437,
+      "enabled": true,
+      "sha1": "91a35988dcb991ac544a6a6afd6babefb613d02f"
+    },
+    {
+      "name": "MekaGenJei (Mekanism Generator addon)",
+      "category": "mods",
+      "fileName": "mekagenjei-1.2.jar",
+      "projectID": 1347827,
+      "fileID": 7224975,
+      "enabled": true,
+      "sha1": "922aff2f71b69d76163728dfa5bf6c664268ff9d"
+    },
+    {
+      "name": "GeodeJei",
+      "category": "mods",
+      "fileName": "geodejei-1.1.jar",
+      "projectID": 1351234,
+      "fileID": 7239636,
+      "enabled": true,
+      "sha1": "f7371926de847e3cf7d344741b967d73a62d4183"
+    },
+    {
+      "name": "Applied Pneumatics",
+      "category": "mods",
+      "fileName": "appliedpneumatics-1.21.1-neoforge-1.0.8.jar",
+      "projectID": 1355087,
+      "fileID": 7723695,
+      "enabled": true,
+      "sha1": "e80ccfc7a14f8aa16a61bb37d0aa38d49a0e2f28"
+    },
+    {
+      "name": "Falling Leaves",
+      "category": "mods",
+      "fileName": "Falling Leaves-1.0.jar",
+      "projectID": 1359282,
+      "fileID": 7068613,
+      "enabled": true,
+      "sha1": "44900fc3f297669ddc432037b4e401aeb4409d23"
+    },
+    {
+      "name": "Custom Machinery EMI",
+      "category": "mods",
+      "fileName": "custom_machinery_emi-1.0.0.jar",
+      "projectID": 1376990,
+      "fileID": 7176525,
+      "enabled": true,
+      "sha1": "4ab4b3cfcab47f38b882bb8e38b20dad7b7b9574"
+    },
+    {
+      "name": "Replication: Matter Overflow Tank",
+      "category": "mods",
+      "fileName": "replication_matter_overflow-1.21.1-NeoForge-1.2.1.jar",
+      "projectID": 1377863,
+      "fileID": 7239566,
+      "enabled": true,
+      "sha1": "74ee1a063830084ef147ac2bced1775b896276bd"
+    },
+    {
+      "name": "Presence Footsteps (NeoForge)",
+      "category": "mods",
+      "fileName": "PresenceFootsteps-1.21.1-1.12.0-beta.1-1.21NeoForge.jar",
+      "projectID": 1390302,
+      "fileID": 7252696,
+      "enabled": true,
+      "sha1": "71bd6de2b01441d92be1e109879b76b7750bd787"
+    },
+    {
+      "name": "Adventurer Skills [Pufferfish's Skills]",
+      "category": "mods",
+      "fileName": "adventurerskills-EN-1.3-1.21.1-neoforge.jar",
+      "projectID": 1397003,
+      "fileID": 8010921,
+      "enabled": true,
+      "sha1": "cab679ae516f2b79d736690c12e8d67d09e2aadb"
+    },
+    {
+      "name": "MekaJadeUpgrades (Mekanism addon)",
+      "category": "mods",
+      "fileName": "mekajadeupgrade-1.3.jar",
+      "projectID": 1400118,
+      "fileID": 7588752,
+      "enabled": true,
+      "sha1": "5ae42c638c56fd0f29437c26a1be5faa76f3b172"
+    },
+    {
+      "name": "Reliable EMI (REMI)",
+      "category": "mods",
+      "fileName": "emixx-neoforge-1.21.1-3.1.2.jar.disabled",
+      "projectID": 1411826,
+      "fileID": 8384469,
+      "enabled": false,
+      "sha1": "d8f820f70cdfe93a2817ae5975916a74be4d9d1c"
+    },
+    {
+      "name": "Immersive Engineering JS",
+      "category": "mods",
+      "fileName": "immersive_engineering_js-2101.1.1.jar",
+      "projectID": 1412446,
+      "fileID": 8417023,
+      "enabled": true,
+      "sha1": "ab0988cfb0df9235d15726b0d3a65068aab6bea7"
+    },
+    {
+      "name": "Alex's Mobs (Unofficial Port)",
+      "category": "mods",
+      "fileName": "alexsmobs-1.22.17.jar",
+      "projectID": 1415721,
+      "fileID": 7528193,
+      "enabled": true,
+      "sha1": "5070e8070f60650d773bfd9f1d031496f8f50259"
+    },
+    {
+      "name": "Citadel (Unofficial Port)",
+      "category": "mods",
+      "fileName": "citadel-1.21.1-2.7.6.jar",
+      "projectID": 1415723,
+      "fileID": 7982052,
+      "enabled": true,
+      "sha1": "e0392370117ec16a721f8d65728944398de77607"
+    },
+    {
+      "name": "BuildingGadgets2GUI",
+      "category": "mods",
+      "fileName": "buildinggadgets2gui-0.2.0-beta.1.jar",
+      "projectID": 1418443,
+      "fileID": 7548215,
+      "enabled": true,
+      "sha1": "9d0ff2756a1afaade1d0e30bcb51817e367d39a4"
+    },
+    {
+      "name": "Loot Integrations: Born in Chaos",
+      "category": "mods",
+      "fileName": "lootintegrations_borninchaos-1.0.jar",
+      "projectID": 1420691,
+      "fileID": 7417334,
+      "enabled": true,
+      "sha1": "79c2c4098a69c0b0d3ec0208fd1bfa169cc21371"
+    },
+    {
+      "name": "Replication Matter Editor",
+      "category": "mods",
+      "fileName": "replication_matter_editor-1.0.3.jar",
+      "projectID": 1421629,
+      "fileID": 7426981,
+      "enabled": true,
+      "sha1": "633f39af8cb7d55e09c4534682130628d881f979"
+    },
+    {
+      "name": "Create JEI Compat",
+      "category": "mods",
+      "fileName": "createjeicompat-1.0.2.jar",
+      "projectID": 1422344,
+      "fileID": 7431839,
+      "enabled": true,
+      "sha1": "a9465e87a603f2c7d356197b797411ececd4f71a"
+    },
+    {
+      "name": "Applied Replicatics",
+      "category": "mods",
+      "fileName": "Applied-Replicatics-21.1-1.1.0.jar",
+      "projectID": 1440118,
+      "fileID": 8467737,
+      "enabled": true,
+      "sha1": "b5f10e633ac403d1c1e007d6927ce004e2e57ac4"
+    },
+    {
+      "name": "Replication Tanks",
+      "category": "mods",
+      "fileName": "replication_tanks-1.21.1-NeoForge-1.0.0.jar",
+      "projectID": 1440999,
+      "fileID": 7508447,
+      "enabled": true,
+      "sha1": "5db4245e8fff906e7ce43836c1d0e50d3b27f691"
+    },
+    {
+      "name": "ME Soul Card",
+      "category": "mods",
+      "fileName": "mesoulcard-1.1.1.jar",
+      "projectID": 1445271,
+      "fileID": 8046217,
+      "enabled": true,
+      "sha1": "5eb6cc86e48a7ece169d9e5d1ce00f6c8871e099"
+    },
+    {
+      "name": "Logistics Network",
+      "category": "mods",
+      "fileName": "logisticsnetworks-1.21.1-1.10.1.jar",
+      "projectID": 1448257,
+      "fileID": 8381956,
+      "enabled": true,
+      "sha1": "57f685c27f64042be1d18e42bbecae5dc12477d3"
+    },
+    {
+      "name": "Tardis Remote",
+      "category": "mods",
+      "fileName": "tardis-remote-addon-1.0.0.jar",
+      "projectID": 1463582,
+      "fileID": 7662958,
+      "enabled": true,
+      "sha1": "2a557b254f461ae006da55c9953751adf5086f55"
+    },
+    {
+      "name": "Replication Upgrade",
+      "category": "mods",
+      "fileName": "rep_up-1.0.0.0.1-neoforge-1.21.1.jar",
+      "projectID": 1476058,
+      "fileID": 8214061,
+      "enabled": true,
+      "sha1": "f1ddbdfd330c76ffc5560238a98af3aceff8fedf"
+    },
+    {
+      "name": "KubeJS JEI",
+      "category": "mods",
+      "fileName": "kubejei-1.0.0.jar",
+      "projectID": 1476466,
+      "fileID": 7704322,
+      "enabled": true,
+      "sha1": "9b8e0f55b46bf252f6cd79507e08592ca8eb33de"
+    },
+    {
+      "name": "Sophisticated JEI Index",
+      "category": "mods",
+      "fileName": "sophisticated_jei_index-1.1.0-neoforge-1.21.1.jar",
+      "projectID": 1482785,
+      "fileID": 8406786,
+      "enabled": true,
+      "sha1": "8ce6cb13a29aecf46d925c93a9cfcccda467dab6"
+    },
+    {
+      "name": "Iron's Lib",
+      "category": "mods",
+      "fileName": "irons_lib-1.21.1-2.1.0.jar",
+      "projectID": 1492763,
+      "fileID": 8364894,
+      "enabled": true,
+      "sha1": "70fba64d12b6ff9553580e52101d989c89297797"
+    },
+    {
+      "name": "KubeJS In Game Recipe Maker",
+      "category": "mods",
+      "fileName": "kjsigrm-1.4.1.jar",
+      "projectID": 1500621,
+      "fileID": 7983220,
+      "enabled": true,
+      "sha1": "aed09662015c8ce6ac7bf33316bde8d24536c1f5"
+    },
+    {
+      "name": "JEI / REI / EMI WorldGen",
+      "category": "mods",
+      "fileName": "jeiworldgen-neoforge-1.21.1-1.4.0.jar",
+      "projectID": 1509527,
+      "fileID": 8440581,
+      "enabled": true,
+      "sha1": "78a7f2f7ade1f32ab471238a22136429a93b23c2"
+    },
+    {
+      "name": "JEI QuickCraft",
+      "category": "mods",
+      "fileName": "jei-quickcraft-1.21.1-neoforge-1.0.jar",
+      "projectID": 1520978,
+      "fileID": 8429819,
+      "enabled": true,
+      "sha1": "1fc9dd416be78b868636ee119b89816525b1c746"
+    },
+    {
+      "name": "NeoSync",
+      "category": "mods",
+      "fileName": "NeoSync-1.21.1-1.2.1.jar",
+      "projectID": 1521718,
+      "fileID": 8233799,
+      "enabled": true,
+      "sha1": "0cfd2c004f4789db18b0d29b0af39aa14994908a"
+    },
+    {
+      "name": "JEMI",
+      "category": "mods",
+      "fileName": "emijeicompat-1.0.4.jar",
+      "projectID": 1535330,
+      "fileID": 8051717,
+      "enabled": true,
+      "sha1": "cb5a25ff4121dee1a4a09de8c5d450d9b1a02668"
+    },
+    {
+      "name": "Scorched Guns Neoforged",
+      "category": "mods",
+      "fileName": "ScorchedGuns-1.5.jar",
+      "projectID": 1538807,
+      "fileID": 8299074,
+      "enabled": true,
+      "sha1": "d9b2678b014c3ee4ad2599877dbb3e017675dd6b"
+    },
+    {
+      "name": "EMILink",
+      "category": "mods",
+      "fileName": "emilink-1.1.13.jar",
+      "projectID": 1542052,
+      "fileID": 8443320,
+      "enabled": true,
+      "sha1": "576c90729ad35a67f07d57f48eb7b4f920d47a3d"
+    },
+    {
+      "name": "EMIAccelerator",
+      "category": "mods",
+      "fileName": "emi_accelerator-1.1.4.jar",
+      "projectID": 1542062,
+      "fileID": 8443308,
+      "enabled": true,
+      "sha1": "1bf4bb0f591cb93e7e5610a622151f956a21349a"
+    },
+    {
+      "name": "JEI Gateways",
+      "category": "mods",
+      "fileName": "jei_gateways-1.1.2+mc1.21.1.jar",
+      "projectID": 1556744,
+      "fileID": 8245265,
+      "enabled": true,
+      "sha1": "5c86101938e7bb5cef5dd6d1a7b4e24472b87cef"
+    },
+    {
+      "name": "AppliedJS",
+      "category": "mods",
+      "fileName": "appliedjs-1.21.1-1.0.0.jar",
+      "projectID": 1560749,
+      "fileID": 8180130,
+      "enabled": true,
+      "sha1": "f464da42ff34b67f9c808f9bd4b6cefe4e020f5e"
+    },
+    {
+      "name": "ReplicateMekanism",
+      "category": "mods",
+      "fileName": "replicatemekanism-1.0.7 - release.jar",
+      "projectID": 1562720,
+      "fileID": 8322354,
+      "enabled": true,
+      "sha1": "18352e24026cdde11c901f209ce0cea43def69d3"
+    },
+    {
+      "name": "Framed Block + Building Gadgets Implementation",
+      "category": "mods",
+      "fileName": "framedbg2support-0.1.0.jar",
+      "projectID": 1564206,
+      "fileID": 8193819,
+      "enabled": true,
+      "sha1": "174ffc25ad997fc5a85f6a19d92755c933349e2c"
+    },
+    {
+      "name": "AStages FTB Quests",
+      "category": "mods",
+      "fileName": "astages_ftbquests-2.1.0-1.21.1.jar",
+      "projectID": 1565842,
+      "fileID": 8388831,
+      "enabled": true,
+      "sha1": "7e6d73b734cca3a8f27c06d56dc2c3b73439dfc9"
+    },
+    {
+      "name": "JEI Structures(EMI/JEI)",
+      "category": "mods",
+      "fileName": "jei_structures-1.21.1-1.4.jar",
+      "projectID": 1568462,
+      "fileID": 8410238,
+      "enabled": true,
+      "sha1": "79ac8ffb6853004adebab26c70e17ca423af9731"
+    },
+    {
+      "name": "Connected Textures By Blond",
+      "category": "resourcepacks",
+      "fileName": "Connected Textures By Blond 26.2 - 1.14 - 1.0.0.zip",
+      "projectID": 1572682,
+      "fileID": 8238804,
+      "enabled": true,
+      "sha1": "82d06ab39f3826f2bc8460c53354c8782d5bb8f2"
+    },
+    {
+      "name": "AE2 Useful Utilities",
+      "category": "mods",
+      "fileName": "AE2 Useful Utilities-1.21.1-1.0.1-NeoForge.jar",
+      "projectID": 1577237,
+      "fileID": 8308764,
+      "enabled": true,
+      "sha1": "a58e9d063efdd17431c74ed123b94b0ba7b6d7f3"
+    },
+    {
+      "name": "KubeJS Metalworks (KubeJS Addon for Productive Metalworks)",
+      "category": "mods",
+      "fileName": "productive-metalworks-kubejs-addon-1.0.0.jar",
+      "projectID": 1589907,
+      "fileID": 8329295,
+      "enabled": true,
+      "sha1": "51d26c16460baa42fc72400ecc3fbc23d3ad2f86"
+    },
+    {
+      "name": "AE2 Jade Tooltip Fix",
+      "category": "mods",
+      "fileName": "ae2tooltipfix-neoforge-1.0.0+1.21.1.jar",
+      "projectID": 1595044,
+      "fileID": 8355546,
+      "enabled": true,
+      "sha1": "22046d09a3bab9563929a6c52cedb3cfca90b586"
+    },
+    {
+      "name": "JDT KubeJS",
+      "category": "mods",
+      "fileName": "jdtkubejs-1.0.0.jar",
+      "projectID": 1595276,
+      "fileID": 8356728,
+      "enabled": true,
+      "sha1": "6ce2930b003a40935f40828d53c4f82a93eb7b92"
+    },
+    {
+      "name": "Ender IO: Pressure Conduits",
+      "category": "mods",
+      "fileName": "eio_pressure_conduits-1.0.2-1.21.1.jar",
+      "projectID": 1598070,
+      "fileID": 8425634,
+      "enabled": true,
+      "sha1": "12065c7bd7b0a091750207b0dd8dbe3f278ee160"
+    }
+  ],
+  "customMods": [
+    {
+      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.57.0-alpha-mekanism-geology-deposits.jar",
+      "sha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
+      "size": 3482250
+    },
+    {
+      "fileName": "DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar",
+      "sha256": "66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356",
+      "size": 4782531
+    }
+  ]
+}

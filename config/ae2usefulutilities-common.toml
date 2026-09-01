@@ -1,0 +1,5 @@
+	[compat.aeinfinitybooster]
+		#If true and AEInfinityBooster is installed, inserting a Dimension Card or
+		#Infinity Card into a Wireless Access Point will keep the chunk loaded.
+		#Requires AEInfinityBooster to be present, otherwise has no effect.
+		chunkLoadingEnabled = true

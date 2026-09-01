@@ -1,0 +1,4 @@
+[PressureConduit]
+	#Whether pressure conduits will explode when connected to machines with pressure exceeding their max limit.
+	#Explosion destroys the specific conduit element.
+	enablePressureConduitExplosion = true

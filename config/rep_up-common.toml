@@ -1,0 +1,37 @@
+#Improved Replicator settings
+[improved_replicator]
+	#Rep Imp replicator max progress (duration). In-game progress bar shows double. Default 50 = half of classic replicator.
+	# Default: 50
+	# Range: > 1
+	maxProgress = 50
+	#Energy consumed per tick while replicating. Same as Replication default.
+	# Default: 80
+	# Range: > 1
+	powerTick = 80
+
+#Matter tank capacity multipliers (relative to base Replication matter tank).
+[matter_tanks]
+	#Deep Matter Tank capacity multiplier. Capacity = Replication base capacity × this. Default 2.
+	# Default: 2
+	# Range: 1 ~ 100
+	deepMultiplier = 2
+	#Abyssal Matter Tank capacity multiplier. Capacity = Replication base capacity × this. Default 4.
+	# Default: 4
+	# Range: 1 ~ 100
+	abyssalMultiplier = 4
+
+#Dev / external scripts. Base path for rep_up external data (e.g. energy_mat.json).
+[dev]
+	#Directory for rep_up external scripts. Energy Materializer: <this>/energy_mat.json. Default: kubejs/external_scripts/rep_up
+	externalScriptsPath = "kubejs/external_scripts/rep_up"
+
+#Energy Materializer (energy_mat): RF to matter conversion.
+[energy_materializer]
+	#Energy storage capacity (RF) for the Energy Materializer. Default: 100000000.
+	# Default: 100000000
+	# Range: > 1
+	energyCapacity = 100000000
+	#Maximum production multiplier for the Energy Materializer (1–100). Production multiplies both energy cost and matter output per tick.
+	# Default: 100
+	# Range: 1 ~ 100
+	maxProduction = 100

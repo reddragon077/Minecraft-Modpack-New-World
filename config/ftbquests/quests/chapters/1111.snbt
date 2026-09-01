@@ -1,0 +1,47 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "1111"
+	group: ""
+	id: "35C5874A991CFFF9"
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			id: "78C97061393F971F"
+			rewards: [{
+				id: "1470D9F54D278DB6"
+				item: {
+					count: 1
+					id: "minecraft:birch_wood"
+				}
+				type: "item"
+			}]
+			tasks: [{
+				id: "427FC06F9A632E0E"
+				item: { count: 1, id: "minecraft:oak_log" }
+				type: "item"
+			}]
+			x: -3.0d
+			y: -3.5d
+		}
+		{
+			id: "557008448FFF9B6F"
+			rewards: [{
+				id: "5EF5D272F2624450"
+				item: {
+					count: 1
+					id: "minecraft:diamond_block"
+				}
+				type: "item"
+			}]
+			tasks: [{
+				id: "49CF02D80E6CEC47"
+				item: { count: 1, id: "scguns:macerator" }
+				type: "item"
+			}]
+			x: -3.0d
+			y: -2.0d
+		}
+	]
+}

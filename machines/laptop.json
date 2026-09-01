@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "machine": "laptop",
+  "role": "development-and-testing",
+  "operatingSystem": "Windows",
+  "repositoryRoot": "D:\\Projects\\Minecraft-Modpack-New-World",
+  "curseForgeInstanceRoot": "C:\\Users\\suley\\curseforge\\minecraft\\Instances\\New World",
+  "minecraftVersion": "1.21.1",
+  "modLoader": "neoforge-21.1.235",
+  "registeredAt": "2026-09-01"
+}
+

@@ -1,0 +1,14 @@
+#Whether to show the Debug tab in the Copy/Paste GUI (for development)
+showDebugTab = false
+#Maximum number of history entries to keep (older entries will be removed)
+# Default: 30
+# Range: 0 ~ 500
+maxHistoryEntries = 30
+#Maximum number of items to keep in trash (0 = unlimited)
+# Default: 50
+# Range: 0 ~ 500
+maxTrashItems = 50
+#Days to keep items in trash before auto-delete (0 = never auto-delete)
+# Default: 30
+# Range: 0 ~ 365
+trashRetentionDays = 30

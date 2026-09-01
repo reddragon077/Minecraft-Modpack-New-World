@@ -1,0 +1,8 @@
+{
+  "enabledIntegrations": {
+    "irons_spellbooks": true,
+    "pneumaticcraft": true,
+    "rechiseled": true,
+    "chipped": true
+  }
+}
