@@ -4,7 +4,7 @@ Son güncelleme: 1 Eylül 2026
 
 ## Aktif riskler
 
-- NewWorldCore `0.5.59.6-alpha-radar-route-cleanup` aktif test buildidir. `0.5.59.5` yapı/jeoloji izolasyon kabulünü geçti; `0.5.59.6` eski seçili hedefin güvenli temizlenmesi için kuruldu ve oyun kabulü bekliyor.
+- NewWorldCore `0.5.59.6-alpha-radar-route-cleanup` aktif ve masaüstünde kabul edilmiş builddir. Yapı/jeoloji izolasyonu, eski seçili hedef temizliği ve gerçek jeoloji kayıtlarının korunması geçti.
 - İlk `0.5.59.0` denemesinde namespace toplu sorgusu 40 saniyeyi aşan server tick'e yol açtı. `0.5.59.1` sorguları tick'lere yaydı fakat tekil locate çağrıları yine 2–8 saniyelik takılmalar üretti. `0.5.59.2`, modlu yapılar için chunk/worldgen yükleyen locate yolunu kaldırıp yalnızca placement koordinat matematiğini kullanır.
 - Placement tabanlı radar koordinatı bir yapı için olası üretim noktasıdır; biyom/structure-set seçimi nedeniyle yanlış pozitif ihtimali vardır. Gerçek keşif, oyuncunun yerinde kullandığı Structure Field Survey ile doğrulanır.
 - `0.5.59.4`te birden fazla structure ailesinin aynı placement kaydını paylaşması gerçek olmayan `MODDED STRUCTURE` etiketi üretiyordu. `0.5.59.5` kabulünde bu kayıt listeden kalktı ve ortak adaylar `UNKNOWN STRUCTURE` olarak göründü.
@@ -23,15 +23,15 @@ Son güncelleme: 1 Eylül 2026
 - Birçok `UNKNOWN STRUCTURE` satırı beklenen placement-adayı durumudur; gerçek üretim ve aile adı Field Survey ile ayrıca doğrulanmalıdır.
 - `MODDED STRUCTURE` satırları doğrulanmış yapı değildir ve mevcut buildde gerçek hedef gibi kullanılmamalıdır.
 - Field Survey gerçek `ABANDONED CAMP` yapısını tanıdı; ancak iki ardışık testte aynı sonuç listesine `COPPER SULFIDE DEPOSIT` de eklendi. Bu, `GEOLOGY` kaydının structure sonucu olarak sızdığını doğrular.
-- `0.5.59.5`, NewWorldCore `*_deposit` jigsaw kayıtlarını radar/Field Survey’den dışladı; Field Survey beş gerçek yapı buldu ve jeoloji sızıntısı görülmedi. Gerçek `GEOLOGY` kaydının Deposits görünümünde korunduğu ayrıca doğrulanmalıdır.
-- `0.5.59.5` temizlik sırasında silinen seçili hedefi `null` yaparak rota varış kontrolünde sürekli `InvocationTargetException` üretti. `0.5.59.6` boş metin sentinelini kullanır; oyun regresyonu bekliyor.
+- `0.5.59.5`, NewWorldCore `*_deposit` jigsaw kayıtlarını radar/Field Survey’den dışladı; Field Survey beş gerçek yapı buldu ve jeoloji sızıntısı görülmedi. `0.5.59.6` kabulünde Deposits görünümünde 28 gerçek kayıt ve iki görünür `COPPER-RICH DEPOSIT` satırı korunmuştu.
+- `0.5.59.5` temizlik sırasında silinen seçili hedefi `null` yaparak rota varış kontrolünde sürekli `InvocationTargetException` üretti. `0.5.59.6` boş metin sentinelini kullanır; 20 dakikadan uzun oyun oturumunda her iki ilgili hata sayısı da sıfır kaldı.
 
 ## Senkronizasyon sınırları
 
 - `manifest.json` üçüncü taraf eklentileri sabitler; iki custom fork `mods/` altında tutulur.
 - KubeJS web server auth anahtarı, WorldEdit oturumları, cache, log, dünya ve kişisel seçenekler GitHub’a alınmaz.
 - Her CurseForge örneğinde yalnızca bir NewWorldCore ve bir DoctorWhoMod fork JAR’ı bulunmalıdır.
-- Masaüstü bilgisayar `machines/desktop.json` ile kaydedildi ve güncel repo durumu CurseForge örneğine uygulandı; oyun içi kabul testi bekliyor.
+- Masaüstü bilgisayar `machines/desktop.json` ile kaydedildi; `0.5.59.6` repo/instance hash eşleşmesi ve oyun içi kabulü geçti.
 
 ## Bir sonraki test kapısı
 

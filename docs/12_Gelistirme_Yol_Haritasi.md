@@ -14,7 +14,7 @@ Durum işaretleri:
 
 ## Aşama 1 — Radar v2
 
-Durum: dinamik registry taraması uygulandı; ortak-placement/geology ayrımı oyun içinde geçti. `0.5.59.6` eski seçili rota temizliği kabulünden sonra bu regresyon kapanmalı.
+Durum: dinamik registry taraması, ortak-placement/geology ayrımı ve `0.5.59.6` eski seçili rota temizliği oyun içinde geçti. Son kapanış işi `CAMPSITE` ve `ARCHEOLOGIST CAMP` family zincirleridir.
 
 - [x] Sabit 13 öğelik kullanıcı filtresi kaldırıldı.
 - [x] Filtreler Discovery Database içeriğine göre dinamik üretiliyor.

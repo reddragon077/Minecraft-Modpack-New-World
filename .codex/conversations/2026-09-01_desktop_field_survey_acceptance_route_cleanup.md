@@ -1,6 +1,6 @@
 # 2026-09-01 — desktop — Field Survey acceptance and route cleanup
 
-Status: `in progress`
+Status: `complete`
 Branch: `main`
 Build: `NewWorldCore-1.21.1-NeoForge-0.5.59.6-alpha-radar-route-cleanup.jar`
 SHA-256: `4b97a91af5d7c45aabb19c0f1fe4223141a4ffa0800878e21bca24ce2aefa8d0`
@@ -27,8 +27,11 @@ The cleanup cleared `ShipState.selectedKey` with `null`, while `NavigationDiscov
 - Java compilation, JAR entries, metadata version, patch manifest, and bytecode use of the empty-string sentinel passed.
 - Repository and desktop instance each contain exactly one matching `0.5.59.6` JAR.
 - Prior `0.5.59.5` is preserved at `backups/custom-mods/pre-apply-20260901-221120` in the desktop instance.
-- Game startup, stale target disappearance, and absence of new arrival-check errors on `0.5.59.6` remain to be tested.
+- Game startup and existing-world migration to `0.5.59.6` passed.
+- Navigation displayed `NO TARGET SELECTED`; the removed `MODDED STRUCTURE` target did not remain active.
+- More than 20 minutes of the current log contained zero `0471g arrival check` and zero `InvocationTargetException` entries.
+- The Deposits view retained 28 genuine geology records, with two visible `COPPER-RICH DEPOSIT` rows. The narrow cleanup therefore removed only false `STRUCTURE` copies and preserved real `GEOLOGY` records.
 
 ## Next executable step
 
-Launch the desktop instance, open the Navigation display, and leave the world running for at least 20 seconds. Verify the stale `MODDED STRUCTURE` target is gone and `latest.log` has no new `0471g arrival check` exception. Then verify the genuine geology record still exists under Deposits.
+Complete Radar v2's remaining family-chain acceptance for `CAMPSITE` and `ARCHEOLOGIST CAMP`; `ABANDONED CAMP` has already passed. Then implement Discovery Database analysis level, last-seen time, and common discovery events.
