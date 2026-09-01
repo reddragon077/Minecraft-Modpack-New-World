@@ -4,7 +4,7 @@ Son güncelleme: 2 Eylül 2026
 
 ## Aktif riskler
 
-- NewWorldCore `0.5.59.9-alpha-radar-range-filter` masaüstüne kurulu aktif test buildidir. Yapı/jeoloji izolasyonu, eski seçili hedef temizliği, gerçek jeoloji kayıtlarının korunması, `CAMPSITE` dinamik filtresi, GUI ön-plan katmanı ve seçilmeyen ailelerin elenmesi geçti; gerçek 5000 blok menzilinde pozitif aile sonucu bekliyor.
+- NewWorldCore `0.5.59.10-alpha-radar-random-spread` masaüstüne kurulu aktif test buildidir. Yapı/jeoloji izolasyonu, eski seçili hedef temizliği, gerçek jeoloji kayıtlarının korunması, `CAMPSITE` dinamik filtresi, GUI ön-plan katmanı ve seçilmeyen ailelerin elenmesi geçti; düzeltilmiş 5000 blok random-spread taramasında pozitif aile sonucu bekliyor.
 - İlk `0.5.59.0` denemesinde namespace toplu sorgusu 40 saniyeyi aşan server tick'e yol açtı. `0.5.59.1` sorguları tick'lere yaydı fakat tekil locate çağrıları yine 2–8 saniyelik takılmalar üretti. `0.5.59.2`, modlu yapılar için chunk/worldgen yükleyen locate yolunu kaldırıp yalnızca placement koordinat matematiğini kullanır.
 - Placement tabanlı radar koordinatı bir yapı için olası üretim noktasıdır; biyom/structure-set seçimi nedeniyle yanlış pozitif ihtimali vardır. Gerçek keşif, oyuncunun yerinde kullandığı Structure Field Survey ile doğrulanır.
 - `0.5.59.4`te birden fazla structure ailesinin aynı placement kaydını paylaşması gerçek olmayan `MODDED STRUCTURE` etiketi üretiyordu. `0.5.59.5` kabulünde bu kayıt listeden kalktı ve ortak adaylar `UNKNOWN STRUCTURE` olarak göründü.
@@ -28,7 +28,7 @@ Son güncelleme: 2 Eylül 2026
 - `explorify:campsite` gerçek yapısı bulunup yerinde `CAMPSITE` olarak tanındı; dinamik `CAMPSITE` filtresi de ekranda doğrulandı.
 - Filtre penceresi açıkken radar sonuçları ve telemetri metinleri panelin üzerine çiziliyordu. `0.5.59.7` paneli ayrı bir ön plan pose katmanında çizdi; takip ekran görüntüleri panel içeriğinin temiz kaldığını doğruladı.
 - Yalnız `CAMPSITE` seçiliyken ilk tarama 96 karışık sonuç döndürdü. `0.5.59.8` kesin aile eşleşmesiyle bunu 96 ham adaydan sıfır sonuca indirdi ve seçilmeyen ailelerin elendiğini doğruladı.
-- Sıfır sonuç, GUI'nin 5000 blok göstermesine rağmen placement hesabının 100 chunk (~1600 blok) ile sınırlı olduğunu açığa çıkardı; bilinen kamp yaklaşık 3037 blok uzaktaydı. `0.5.59.9` gerçek yükseltme menzilini kullanır, dairesel sınır uygular ve seçili aile dışındaki placement görevlerini tarama başlamadan budar. Oyun kabulü bekliyor.
+- Sıfır sonuç, GUI'nin 5000 blok göstermesine rağmen placement hesabının 100 chunk (~1600 blok) ile sınırlı olduğunu açığa çıkardı; bilinen kamp yaklaşık 3037 blok uzaktaydı. `0.5.59.9` gerçek menzili bağladı ancak random-spread bölge koordinatını Minecraft metoduna zaten bölünmüş halde vererek spacing'i iki kez böldü. `0.5.59.10` her bölgeyi `regionIndex * spacing` chunk koordinatıyla örnekler; oyun kabulü bekliyor.
 - `ARCHEOLOGIST CAMP` zinciri Radar v2'nin kalan aile kabul maddesidir.
 
 ## Senkronizasyon sınırları
@@ -36,7 +36,7 @@ Son güncelleme: 2 Eylül 2026
 - `manifest.json` üçüncü taraf eklentileri sabitler; iki custom fork `mods/` altında tutulur.
 - KubeJS web server auth anahtarı, WorldEdit oturumları, cache, log, dünya ve kişisel seçenekler GitHub’a alınmaz.
 - Her CurseForge örneğinde yalnızca bir NewWorldCore ve bir DoctorWhoMod fork JAR’ı bulunmalıdır.
-- Masaüstü bilgisayar `machines/desktop.json` ile kaydedildi; `0.5.59.9` repo/instance tek-JAR ve hash eşleşmesi geçti.
+- Masaüstü bilgisayar `machines/desktop.json` ile kaydedildi; `0.5.59.10` repo/instance tek-JAR ve hash eşleşmesi geçti.
 
 ## Bir sonraki test kapısı
 

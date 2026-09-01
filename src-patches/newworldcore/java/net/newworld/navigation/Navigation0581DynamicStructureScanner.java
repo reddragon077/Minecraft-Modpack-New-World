@@ -194,7 +194,13 @@ public final class Navigation0581DynamicStructureScanner {
 
         for (int rz = originRegionZ - regionRadius; rz <= originRegionZ + regionRadius; rz++) {
             for (int rx = originRegionX - regionRadius; rx <= originRegionX + regionRadius; rx++) {
-                Object chunkPos = call(placement, "getPotentialStructureChunk", seed, rx, rz);
+                // RandomSpreadStructurePlacement divides its chunk-space inputs by spacing.
+                // Feed one chunk from each region; passing the region indexes directly would
+                // divide them a second time and repeatedly inspect the wrong regions.
+                int regionChunkX = regionSampleChunk(rx, spacing);
+                int regionChunkZ = regionSampleChunk(rz, spacing);
+                Object chunkPos = call(placement, "getPotentialStructureChunk",
+                        seed, regionChunkX, regionChunkZ);
                 int cx = intField(chunkPos, "x");
                 int cz = intField(chunkPos, "z");
                 if (Math.abs(cx - originChunkX) > context.rangeChunks
@@ -212,6 +218,10 @@ public final class Navigation0581DynamicStructureScanner {
             }
         }
         return best;
+    }
+
+    private static int regionSampleChunk(int region, int spacing) {
+        return Math.multiplyExact(region, spacing);
     }
 
     private static Object nearestRingPotential(ScanContext context, Object placement, Object origin) throws Exception {

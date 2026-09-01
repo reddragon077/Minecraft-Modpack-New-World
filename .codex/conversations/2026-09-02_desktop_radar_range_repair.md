@@ -1,6 +1,6 @@
 # 2026-09-02 — desktop — Structure Radar displayed-range repair
 
-Status: `installed; runtime acceptance pending`
+Status: `superseded after runtime failure by 0.5.59.10`
 Branch: `main`
 Build: `NewWorldCore-1.21.1-NeoForge-0.5.59.9-alpha-radar-range-filter.jar`
 
@@ -29,3 +29,9 @@ Build: `NewWorldCore-1.21.1-NeoForge-0.5.59.9-alpha-radar-range-filter.jar`
 ## Next test
 
 Select only `CAMPSITE` and scan from the current ship position. Confirm one placement task is queued at 5000 blocks and that the only result family is `CAMPSITE`. Then run `ALL` once to check mixed results and tick stability.
+
+## Runtime result
+
+- `0.5.59.9` did queue one Campsite task at 5000 blocks, proving the displayed range was bound.
+- It returned zero raw candidates because random-spread region indexes were passed to a method that expects chunk coordinates, causing spacing to be divided twice.
+- The coordinate repair continues in `2026-09-02_desktop_random_spread_coordinate_repair.md`.

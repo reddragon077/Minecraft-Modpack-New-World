@@ -6,14 +6,14 @@ Branch: `main`
 
 ## Current objective
 
-Accept the `0.5.59.9` displayed-range and selected-family task pruning, then complete the remaining `ARCHEOLOGIST CAMP` family test.
+Accept the `0.5.59.10` random-spread coordinate repair, then complete the remaining `ARCHEOLOGIST CAMP` family test.
 
 ## Exact state
 
 - The GitHub repository was cloned to `E:\projects\Minecraft-Modpack-New-World`.
 - The desktop CurseForge instance was registered at `C:\Users\suley\curseforge\minecraft\Instances\New World`.
 - Repository config, defaultconfigs, KubeJS files, and the two current project-owned mod JARs were applied to that instance.
-- The desktop NewWorldCore JAR is `NewWorldCore-1.21.1-NeoForge-0.5.59.9-alpha-radar-range-filter.jar` and matches the repository SHA-256: `2e571f7c66c9d54ca89f030080480f1bd4c9e6d89546a4712e2a371a731695cd`.
+- The desktop NewWorldCore JAR is `NewWorldCore-1.21.1-NeoForge-0.5.59.10-alpha-radar-random-spread.jar` and matches the repository SHA-256: `876bc247597c0186bced715b05e843e9a85b00f32d3a9c81c990d6134fd63687`.
 - The desktop DoctorWhoMod JAR matches the repository SHA-256: `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356`.
 - The older desktop custom build and previous applied directories were preserved under `backups\desktop-sync-pre-20260901-201500`.
 - `tools/apply-to-instance.ps1` now moves stale NewWorldCore/DoctorWhoMod versions into a timestamped backup before installing the current pair.
@@ -32,6 +32,8 @@ Accept the `0.5.59.9` displayed-range and selected-family task pruning, then com
 - `0.5.59.8` runtime log showed `0 results (96 before active filters; selected=CAMPSITE)`, proving non-selected rows were removed. However, the GUI displayed 5000 blocks while the placement scanner searched only 100 chunks (~1600 blocks), excluding the known campsite about 3037 blocks away.
 - Explorify's `campsites.json` confirms the family has a dedicated single-entry random-spread placement, so a matching candidate should be calculable inside the displayed range.
 - `0.5.59.9` obtains the actual range from `NavigationUpgradeRuntime.scanRange`, enforces its circular bound, and reduces selected `CAMPSITE` scans from all 102 placement tasks to the single matching task.
+- Runtime logged one Campsite task at 5000 blocks but zero raw candidates. The scanner passed already-divided region indexes into Minecraft's chunk-space random-spread method, causing a second spacing division.
+- `0.5.59.10` passes `regionIndex * spacing`; coordinate smoke and bytecode verification passed. Prior `0.5.59.9` is preserved under `backups\custom-mods\pre-apply-20260902-021047`.
 - The prior `0.5.59.8` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-014959`.
 - The prior `0.5.59.7` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-011708`.
 - The prior `0.5.59.6` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-002429`.
@@ -52,11 +54,13 @@ Accept the `0.5.59.9` displayed-range and selected-family task pruning, then com
 - `0.5.59.8` in-game non-selected-family exclusion: **passed** (96 raw candidates reduced to zero with `selected=CAMPSITE`).
 - `0.5.59.8` displayed 5000-block range: **failed** (hidden 100-chunk/~1600-block calculation cap).
 - `0.5.59.9` compile, archive, dynamic-filter smoke, actual-range bytecode, selected-task pruning bytecode, install, and single-JAR/hash checks: **passed**.
-- `0.5.59.9` in-game positive `CAMPSITE` range/filter result: **pending**.
+- `0.5.59.9` in-game positive `CAMPSITE` range/filter result: **failed** (5000 bound correctly, but random-spread region coordinates were divided twice).
+- `0.5.59.10` compile, coordinate smoke, bytecode, install, and single-JAR/hash checks: **passed**.
+- `0.5.59.10` in-game positive `CAMPSITE` result: **pending**.
 
 ## Next executable test
 
-1. Launch `0.5.59.9`, select only `CAMPSITE`, and run Structure Radar from the current 5000-block ship origin.
+1. Launch `0.5.59.10`, select only `CAMPSITE`, and run Structure Radar from the current 5000-block ship origin.
 2. Confirm the log queues one selected placement task at range 5000 and the result list contains only `CAMPSITE`.
 3. Select `ALL`, scan again, and confirm mixed-family results return without unacceptable tick spikes.
 4. Locate `betterarcheology:archeologist_camp_grassy`, travel there, and run Structure Field Survey in range.
@@ -73,5 +77,5 @@ Accept the `0.5.59.9` displayed-range and selected-family task pruning, then com
 1. `.codex/project-memory.md`
 2. This file
 3. `.codex/conversations/INDEX.md`
-4. `.codex/conversations/2026-09-02_desktop_radar_range_repair.md`
+4. `.codex/conversations/2026-09-02_desktop_random_spread_coordinate_repair.md`
 5. `docs/Known Issues.md`
