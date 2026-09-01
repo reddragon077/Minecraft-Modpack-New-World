@@ -61,17 +61,6 @@ manifest.json    CurseForge içe aktarma manifesti
 pack-lock.json   Kesin eklenti/sürüm/hash kaydı
 ```
 
-## İki bilgisayarlı çalışma düzeni
-
-GitHub `main` ana kaynaktır. Laptop ve masaüstü CurseForge klasörleri çalışma/test uçlarıdır.
-
-- Çalışmaya başlamadan önce repoyu güncelleyin ve `tools/apply-to-instance.ps1` ile yerel CurseForge örneğine uygulayın.
-- Başarılı testten sonra `tools/refresh-from-instance.ps1` ile değişiklikleri repoya alın.
-- `tools/update-mod-list.ps1` ile kullanılan modlar belgesini güncel kilit dosyasından yeniden üretin.
-- Diff’i inceleyin, commit edin ve `main` dalına gönderin.
-
-Ayrıntılı talimat: [`docs/WORKSPACE_SYNC.md`](docs/WORKSPACE_SYNC.md).
-
 ## Belgeler
 
 Belge haritası ve durumları için [`docs/README.md`](docs/README.md) dosyasını kullanın. Güncel mod listesi [`mods/00_kullanılan modlar .md`](mods/00_kullan%C4%B1lan%20modlar%20.md) içinde manifestten üretilir.
