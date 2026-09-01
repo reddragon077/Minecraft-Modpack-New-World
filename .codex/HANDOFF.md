@@ -27,17 +27,18 @@ Finish the Structure Field Survey acceptance test for `NewWorldCore-1.21.1-NeoFo
 - Desktop game launch and existing-world load: **passed**.
 - More than four Structure Radar results being visible/reachable: **passed** (`101` discoveries observed).
 - Dynamic modded candidate classes being retained in the list: **passed** (Explorify, Better Dungeons, and Structory observed).
+- Accurate labels for shared modded placement sets: **failed**; the UI exposes the non-existent placeholder `MODDED STRUCTURE` as a selectable target.
 - Full scan completion and long-run performance: **in progress**; no completed-scan timing was reported yet.
 - `UNKNOWN` candidate to confirmed family conversion through Field Survey: **not tested conclusively**.
 - Field Survey isolation from `GEOLOGY`: **not tested**.
 
 ## Next executable test
 
-1. Continue visiting radar candidates and note whether each coordinate contains a real generated structure or is a placement false positive.
-2. At one `UNKNOWN STRUCTURE` candidate that contains a real structure, use Structure Field Survey.
-3. Verify that the entry changes from `UNKNOWN` to the actual structure/family name and becomes visited only after confirmation.
-4. Prefer direct checks for `Campsite`, `Abandoned Camp`, and `Archeologist Camp` when they appear.
-5. Confirm that the survey changes only `STRUCTURE` discovery data and does not mutate any `GEOLOGY` entry.
+1. Do not treat `MODDED STRUCTURE` as a real place; it is a confirmed shared-placement fallback defect.
+2. For the current acceptance test, use `/locate structure explorify:campsite`, `/locate structure structory:abandoned_camp`, or `/locate structure betterarcheology:archeologist_camp_grassy` to reach an actual generated modded structure.
+3. At the real structure, use Structure Field Survey and verify that an entry becomes the actual structure/family name and visited.
+4. Confirm that the survey changes only `STRUCTURE` discovery data and does not mutate any `GEOLOGY` entry.
+5. Development fix: change multi-family placement fallback from `MODDED STRUCTURE` to an explicitly unconfirmed label, then build/test the next NewWorldCore version after Minecraft is closed.
 6. Let the radar scan finish and record completion time plus any freezes or tick spikes.
 
 ## Do not assume

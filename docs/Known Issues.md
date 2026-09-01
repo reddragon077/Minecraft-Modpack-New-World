@@ -7,6 +7,7 @@ Son güncelleme: 1 Eylül 2026
 - NewWorldCore `0.5.59.4-alpha-full-placement-radar` aktif test buildidir; tam tarama süresi/performansı, gerçek-yapı Field Survey izolasyonu ve deposit regresyonu birlikte oyun içinde doğrulanmalıdır.
 - İlk `0.5.59.0` denemesinde namespace toplu sorgusu 40 saniyeyi aşan server tick'e yol açtı. `0.5.59.1` sorguları tick'lere yaydı fakat tekil locate çağrıları yine 2–8 saniyelik takılmalar üretti. `0.5.59.2`, modlu yapılar için chunk/worldgen yükleyen locate yolunu kaldırıp yalnızca placement koordinat matematiğini kullanır.
 - Placement tabanlı radar koordinatı bir yapı için olası üretim noktasıdır; biyom/structure-set seçimi nedeniyle yanlış pozitif ihtimali vardır. Gerçek keşif, oyuncunun yerinde kullandığı Structure Field Survey ile doğrulanır.
+- Birden fazla structure ailesinin aynı placement kaydını paylaşması halinde `0.5.59.4` sonucu gerçek olmayan `MODDED STRUCTURE` etiketiyle gösteriyor. Bu bir yapı/registry kimliği değildir. Ortak placement adayları Field Survey doğrulamasına kadar `UNKNOWN STRUCTURE` veya açıkça doğrulanmamış bir etiket olarak kalmalıdır.
 - `0.5.59.2` taraması 128 sonuç korumasına ulaştığında ilerleme indeksini artırmadığı için tarama tamamlanmıyordu. `0.5.59.3`, taramayı sonuna kadar ilerletirken yalnızca mesafe olarak en yakın 128 sonucu tutar.
 - `0.5.59.3` bitiş filtresi eski 13 vanilla etiketi dışında kalan modlu aileleri sildi ve legacy vanilla locate döngüsü bazı tick'lerde 8–13 saniyelik gecikme üretti. `0.5.59.4`, modlu aileleri bitişte korur ve vanilla yapıları da random-spread/concentric-rings placement verisinden hesaplar.
 - `0.5.56.0-alpha-radar-navigation-mining-recovery` konuşma geçmişinde bilinen iyi geri dönüş noktası olarak geçer; yerel binary/source bulunmadan otomatik geri dönüş yapılmamalıdır.
@@ -20,6 +21,7 @@ Son güncelleme: 1 Eylül 2026
 - Kullanıcı ekranında `Discoveries 101`, `Visited 6` ve dörtten çok erişilebilir satır görüldü; eski dört-kayıt ekran sınırı bu testte doğrulandı.
 - Explorify, Better Dungeons ve Structory sınıfları sonuç listesinde görüldü; dinamik modlu adayların bitiş filtresinde kaybolması düzeltildi.
 - Birçok `UNKNOWN STRUCTURE` satırı beklenen placement-adayı durumudur; gerçek üretim ve aile adı Field Survey ile ayrıca doğrulanmalıdır.
+- `MODDED STRUCTURE` satırları doğrulanmış yapı değildir ve mevcut buildde gerçek hedef gibi kullanılmamalıdır.
 
 ## Senkronizasyon sınırları
 
@@ -41,5 +43,6 @@ Son güncelleme: 1 Eylül 2026
 7. Navigation `DEPOSITS`, geçmiş ve yeniden başlatma kalıcılığı.
 8. Replication tarama bilgisi ve duplicate mineral kuralları.
 9. Structure Radar taramasının donmadan tamamlanması ve tamamlanma süresinin kaydedilmesi.
-10. `explorify:campsite`, `structory:abandoned_camp` ve `betterarcheology:archeologist_camp_grassy` için Radar → UNKNOWN → yerinde Field Survey → family adı zinciri.
-11. Structure Field Survey sonucunun hiçbir `GEOLOGY` kaydını structure olarak işaretlemediği kontrolü.
+10. Çok-aileli placement sonucunun `MODDED STRUCTURE` adlı sahte hedef yerine doğrulanmamış aday olarak gösterilmesi.
+11. `explorify:campsite`, `structory:abandoned_camp` ve `betterarcheology:archeologist_camp_grassy` için Radar → UNKNOWN → yerinde Field Survey → family adı zinciri.
+12. Structure Field Survey sonucunun hiçbir `GEOLOGY` kaydını structure olarak işaretlemediği kontrolü.

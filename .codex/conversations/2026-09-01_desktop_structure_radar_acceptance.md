@@ -33,7 +33,9 @@ Verify that the corrected Structure Radar can expose more than four results, ret
 
 ### Failed
 
-- No new failure was reported in this acceptance step.
+- Shared placement sets appear as the selectable target `MODDED STRUCTURE`, although no registry structure or real place has that name.
+- The selected example routed to placement candidate `X 256, Y -64, Z 256`; this is not proof that a structure generated there.
+- Root cause is the multi-family fallback in `Navigation0581DynamicStructureScanner.PlacementTask.family()`: when `families.size()` is not one, it returns the literal `MODDED STRUCTURE`.
 
 ### Not tested
 
@@ -45,7 +47,7 @@ Verify that the corrected Structure Radar can expose more than four results, ret
 
 ## Next executable step
 
-At the next real generated structure reached from an `UNKNOWN STRUCTURE` entry, use Structure Field Survey and record the before/after label, visited state, and whether any geology entry changed. Also note when the radar scan finishes and whether it caused any freeze.
+Ignore `MODDED STRUCTURE` as a real destination. Use an exact `/locate structure <namespace:id>` command to reach a confirmed modded structure, perform Field Survey, and record the before/after discovery label and geology isolation. After Minecraft is closed, change the multi-family placement fallback to an explicitly unconfirmed label and build the next test JAR.
 
 ## References
 
