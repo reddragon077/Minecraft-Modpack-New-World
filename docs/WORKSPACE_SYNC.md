@@ -26,8 +26,9 @@ Before work:
 After a successful change:
 
 1. Refresh the repository from the tested instance with `tools/refresh-from-instance.ps1`, passing the registered machine name (currently `laptop`).
-2. Review `git status` and the diff.
-3. Commit and push to `main`.
+2. Regenerate the readable inventory with `tools/update-mod-list.ps1` so it stays aligned with `pack-lock.json`.
+3. Review `git status` and the diff.
+4. Commit and push to `main`.
 
 Do not sync worlds, saves, JourneyMap data, options, accounts, logs, crash reports, caches, or backups through GitHub.
 

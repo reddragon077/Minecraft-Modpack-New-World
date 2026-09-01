@@ -1,527 +1,330 @@
----
-Belge: 00_Kullanılan_Modlar.md
-Sürüm: 1.0
-Durum: 🚧 Taslak
-Son Güncelleme: 20.07.2026
-Minecraft Sürümü: 1.21.1
-Mod Yükleyici: NeoForge
-Toplam Mod: 274
----
+# New World — Kullanılan Modlar ve Paket İçeriği
 
-# 🧩 Kullanılan Modlar
+> Bu dosya `pack-lock.json` üzerinden otomatik üretilir. Elle düzenlemek yerine `tools/update-mod-list.ps1` çalıştırılmalıdır.
 
-> **"Modlar oyunu oluşturmaz. Oyunun kurallarını biz oluştururuz."**
+## Paket özeti
 
----
-
-# 📖 Belgenin Amacı
-
-Bu belge, **New World** mod paketinde kurulu olan modları kategorilere ayırır ve her modun projedeki kullanım amacını kısa biçimde açıklar.
-
-`00_Temel_Modlar.md`, mod seçim felsefesini ve tasarım kurallarını açıklar.
-
-`00_Kullanılan_Modlar.md` ise pakette gerçekten bulunan modların güncel envanteridir.
-
-Bir modun bu listede bulunması, bütün varsayılan içeriklerinin serbest biçimde kullanılacağı anlamına gelmez. Tarifler, makineler, ekipmanlar ve üretim yöntemleri; araştırma sistemi, hikâye ilerleyişi ve Production Chamber kurallarına göre sınırlandırılabilir.
-
----
-
-# 🏷️ Durum İşaretleri
-
-| İşaret | Anlamı |
-|---|---|
-| ✅ | Mod aktif olarak kullanılıyor. |
-| 🔗 | Ana modlar arasında entegrasyon sağlıyor. |
-| 🧩 | Başka modların çalışması için gereken teknik bağımlılık. |
-| 🧪 | Beta sürüm veya geliştirme sırasında ayrıca test edilmesi gereken mod. |
-| ⚠️ | Kaldırılması, değiştirilmesi veya uyumluluk testi yapılması gereken mod. |
-
----
-
-# 📊 Kategori Özeti
-
-| Kategori | Mod Sayısı |
+| Alan | Değer |
 |---|---:|
-| Ana Proje Sistemleri | 8 |
-| Teknoloji, Enerji ve Üretim | 16 |
-| AE2, Depolama ve Dijital Ağlar | 21 |
-| Otomasyon, Lojistik ve Programlama | 12 |
-| Entegrasyonlar ve Proje Eklentileri | 24 |
-| Keşif, Yapılar ve Dünya Üretimi | 31 |
-| Savaş, Yaratıklar, Büyü ve Oyuncu Gelişimi | 10 |
-| Dekorasyon, İnşaat ve Aydınlatma | 28 |
-| Görevler, Takımlar ve Sunucu Yönetimi | 10 |
-| Arayüz, Tarif Görüntüleme ve Yaşam Kalitesi | 49 |
-| Performans ve Optimizasyon | 14 |
-| Atmosfer, Ses ve Görsel | 4 |
-| Kütüphaneler ve Teknik Bağımlılıklar | 47 |
-| **Toplam** | **274** |
-
----
-
-# ⚠️ Güncel Kontrol Notları
-
-## CC:Tweaked Sürüm Kuralı
-
-Pakette `CC:Tweaked 1.116.1` kuruludur.
-
-```text
-CC:Tweaked 1.113.1  → Create 6 ile uyumsuz
-CC:Tweaked 1.116.1+ → Kullanılabilir
-```
-
-CC:Tweaked, güncelleme veya yeniden kurulum sırasında `1.116.1` sürümünün altına düşürülmemelidir.
-
-## EMI Temizliği
-
-Projenin güncel tarif görüntüleme kararı **JEI** yönündedir. Buna rağmen mod klasöründe EMI ve EMI eklentileri hâlâ bulunmaktadır.
-
-Kaldırılması veya bağımlılık kontrolü yapılması gereken dosyalar:
-
-- `emi`
-- `emi_accelerator`
-- `emi_enchanting`
-- `emi_loot`
-- `emi_ores`
-- `emijeicompat`
-- `emilink`
-- `emixx`
-- `custom_machinery_emi`
-
-Bu modlar kaldırılmadan önce başka bir modun zorunlu bağımlılığı olup olmadığı test edilmelidir.
-
-## Önceki Kararlarla Uyumlu Durumlar
-
-- **Ad Astra** mevcut listede bulunmuyor.
-- **Modern Industrialization** mevcut listede bulunmuyor.
-- **Macaw modları** mevcut listede bulunmuyor.
-- **More Culling** mevcut listede bulunmuyor. Sodium uyumsuzluğu nedeniyle yeniden eklenmemelidir.
-- **Regions Unexplored**, daha önce yaşanan çökme ihtimali nedeniyle yeni dünya testlerinde ayrıca kontrol edilmelidir.
-
----
-
-# Ana Proje Sistemleri
-
-New World’ün hikâye, gemi, oda, araştırma ve özel ilerleme sistemlerini doğrudan taşıyan ana modlar.
-
-| Mod / Dosya | Kısa Kullanım Amacı | Durum |
-|---|---|---|
-| `[1.21.1] SecurityCraft v1.10.2.1` | Reaktör ve Warp Core gibi kritik gemi alanlarında güvenlik, şifreli kapı ve erişim kontrolü sağlar. | ✅ Kullanılıyor |
-| `CustomMachinery-neoforge-1.21.1-0.10.69` | Research Station ve projeye özel makinelerin tanımlanmasını sağlar. | ✅ Kullanılıyor |
-| `DoctorWhoMod-1.21.1-neoforge-1.0.16` | TARDIS benzeri boyutsal iç mekân ve gemi oda sistemi için temel altyapı sağlar. | ✅ Kullanılıyor |
-| `kubejs-neoforge-2101.7.2-build.368` | Tarifler, araştırma, ilerleme, görev tetikleri ve özel oyun kurallarının ana script altyapısıdır. | ✅ Kullanılıyor |
-| `NeoSync-1.21.1-1.2.1` | Klonlama, yeniden doğma ve yaşam kabini temasını destekleyen Sync benzeri sistemi sağlar. | ✅ Kullanılıyor |
-| `Replication-1.21.1-1.2.7` | Analiz edilen ham maddelerin enerji ve veri karşılığında yeniden üretilmesini sağlayan temel Replikatör modudur. | ✅ Kullanılıyor |
-| `roomopolis-1.21.1-2.8.3` | Boyutsal oda oluşturma ve özelleştirilebilir iç alan sistemini destekler. | ✅ Kullanılıyor |
-| `tardis-remote-addon-1.0.0` | TARDIS/gemi sistemlerine uzaktan erişim ve kontrol desteği ekler. | ✅ Kullanılıyor |
-
----
-
-# Teknoloji, Enerji ve Üretim
-
-Üretim zincirleri, enerji altyapısı, malzeme işleme ve ileri teknoloji aşamalarında kullanılan içerik modları.
-
-| Mod / Dosya | Kısa Kullanım Amacı | Durum |
-|---|---|---|
-| `create-1.21.1-6.0.10` | Erken oyun mekanik gücü, hareketli sistemler ve fiziksel üretim hatları sağlar. | ✅ Kullanılıyor |
-| `growthacceleratortiers-1.0.4_neoforge_1.21.1` | Tarım üretimini aşamalı hızlandıran gelişim katmanları ekler. | ✅ Kullanılıyor |
-| `HostileNeuralNetworks-1.21.1-6.4.2` | Canlı verilerini simülasyona dönüştüren, keşif sonrası otomatik kaynak üretimi sistemi sağlar. | ✅ Kullanılıyor |
-| `ImmersiveEngineering-1.21.1-12.4.2-194` | Ağır sanayi, kablo, enerji, çok bloklu makine ve endüstriyel dekor altyapısı sağlar. | ✅ Kullanılıyor |
-| `industrial-foregoing-souls-1.21.1-1.10.4` | Industrial Foregoing için ruh tabanlı hızlandırma ve ileri otomasyon desteği sağlar. | ✅ Kullanılıyor |
-| `industrialforegoing-1.21-3.6.38` | Kaynak işleme, tarım ve fabrika otomasyonu sağlar; hazır makineleri ilerlemeye göre sınırlandırılacaktır. | ✅ Kullanılıyor |
-| `justdirethings-1.5.7` | Başlangıç aletleri ve zamanla geliştirilebilen teknoloji ekipmanları sağlar. | ✅ Kullanılıyor |
-| `Mekanism-1.21.1-10.7.19.85` | Gaz, kimya, ileri malzeme işleme ve oyun sonu teknoloji altyapısını sağlar. | ✅ Kullanılıyor |
-| `MekanismGenerators-1.21.1-10.7.19.85` | Mekanism için gelişmiş jeneratör, fisyon ve füzyon enerji üretimini sağlar. | ✅ Kullanılıyor |
-| `MekanismTools-1.21.1-10.7.19.85` | Mekanism malzemelerinden araç ve ekipmanlar ekler; tarifleri proje dengesine göre sınırlandırılabilir. | ✅ Kullanılıyor |
-| `oritech-neoforge-1.21.1-1.2.9` | İleri üretim, enerji ve çok bloklu teknoloji sistemleri ekler. | ✅ Kullanılıyor |
-| `pneumaticcraft-repressurized-8.2.20+mc1.21.1` | Basınçlı hava, lojistik, drone ve programlanabilir otomasyon sistemleri sağlar. | ✅ Kullanılıyor |
-| `productivemetalworks-1.21.1-1.15.0` | Metal eritme, döküm ve alaşım üretimi için endüstriyel süreçler sağlar. | ✅ Kullanılıyor |
-| `rftoolsbase-1.21-6.0.11` | RFTools modlarının ortak enerji ve teknik altyapısını sağlar. | ✅ Kullanılıyor |
-| `rftoolsutility-1.21-7.0.12` | Makine kontrolü, ekranlar ve çeşitli teknolojik yardımcı sistemler sağlar. | ✅ Kullanılıyor |
-| `torchmaster-neoforge-1.21.1-21.1.9` | Üretim, enerji veya malzeme işleme altyapısına ek özellikler sağlar. | ✅ Kullanılıyor |
-
----
-
-# AE2, Depolama ve Dijital Ağlar
-
-Merkezi depolama, dijital lojistik, kablosuz erişim ve AE2 tabanlı veri ağı eklentileri.
-
-| Mod / Dosya | Kısa Kullanım Amacı | Durum |
-|---|---|---|
-| `AdvancedAE-1.6.11-1.21.1` | AE2 için ileri seviye ağ bileşenleri ve gelişmiş otomasyon seçenekleri ekler. | ✅ Kullanılıyor |
-| `AE2 Useful Utilities-1.21.1-1.0.1-NeoForge` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | ✅ Kullanılıyor |
-| `AE2-Things-1.4.2-beta` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | 🧪 Beta / test |
-| `AE2MEGAThings-1.21.1-2.0.4` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | ✅ Kullanılıyor |
-| `ae2tooltipfix-neoforge-1.0.0+1.21.1` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | ✅ Kullanılıyor |
-| `ae2wtlib-19.5.0` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | ✅ Kullanılıyor |
-| `aeinfinitybooster-neoforge-1.21.1-1.0.0.58` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | ✅ Kullanılıyor |
-| `applied-experienced-1.21.1-1.3.2` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | ✅ Kullanılıyor |
-| `appliedenergistics2-19.2.17` | Geminin merkezi dijital depolama, otomasyon ve veri ağıdır. | ✅ Kullanılıyor |
-| `AppliedFlux-1.21-2.1.5-neoforge` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | ✅ Kullanılıyor |
-| `appliedsoul-1.21.1-2.0.3` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | ✅ Kullanılıyor |
-| `ExtendedAE-1.21-2.2.33-neoforge` | AE2 sistemine genişletilmiş cihazlar, ağ araçları ve otomasyon özellikleri ekler. | ✅ Kullanılıyor |
-| `functionalstorage-1.21.1-1.5.4` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | ✅ Kullanılıyor |
-| `megacells-4.11.0` | AE2 depolama kapasitesini büyük hücreler ve ileri bileşenlerle genişletir. | ✅ Kullanılıyor |
-| `merequester-neoforge-1.21.1-1.4.3` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | ✅ Kullanılıyor |
-| `mesoulcard-1.1.1` | AE2 makinelerinde ruh hızlandırma mekaniklerini kullanmaya yardımcı olan yükseltme desteği sağlar. | ✅ Kullanılıyor |
-| `polyeng-0.4.1` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | ✅ Kullanılıyor |
-| `rep_ae2_bridge-1.8.0.0.0-neoforge-1.21.1` | Replication sistemini AE2 ağına bağlayan köprü görevi görür. | ✅ Kullanılıyor |
-| `sophisticatedbackpacks-1.21.1-3.25.70.1985` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | ✅ Kullanılıyor |
-| `sophisticatedstorage-1.21.1-1.5.76.1972` | AE2 veya depolama sistemine ek kapasite, araç ya da entegrasyon sağlar. | ✅ Kullanılıyor |
-| `soulplied_energistics-1.0.3` | Industrial Foregoing Souls kaynaklarını AE2 ağı üzerinden taşımayı sağlar. | ✅ Kullanılıyor |
-
----
-
-# Otomasyon, Lojistik ve Programlama
-
-Eşya, sıvı, gaz ve enerji taşımayı; programlanabilir fabrika kontrolünü ve otomasyonu sağlayan modlar.
-
-| Mod / Dosya | Kısa Kullanım Amacı | Durum |
-|---|---|---|
-| `AdvancedPeripherals-1.21.1-0.7.57b` | CC:Tweaked bilgisayarlarının makineler ve çevre birimleriyle iletişim kurmasını sağlar. | ✅ Kullanılıyor |
-| `cc-tweaked-1.21.1-forge-1.116.1` | Programlanabilir bilgisayarlar, ağlar ve fabrika kontrol sistemleri sağlar. Minimum sürüm 1.116.1 olmalıdır. | ✅ Kullanılıyor |
-| `eio_pressure_conduits-1.0.2-1.21.1` | Ender IO conduit sistemini PneumaticCraft basınç ağıyla entegre eder. | ✅ Kullanılıyor |
-| `enderio-8.2.11-beta` | Kompakt kablo, conduit, enerji ve makine altyapısı sağlar. | 🧪 Beta / test |
-| `FluxNetworks-1.21.1-8.0.0` | Boyutlar arası kablosuz enerji aktarımı ve merkezi güç ağı sağlar. | ✅ Kullanılıyor |
-| `laserio-1.9.11` | Eşya, sıvı, enerji ve redstone aktarımı için kanal tabanlı lojistik sağlar. | ✅ Kullanılıyor |
-| `little-big-redstone-1.9.4-1.21.1` | Kompakt ve ayrıntılı redstone devreleri kurmayı sağlar. | ✅ Kullanılıyor |
-| `mekanisticrouters-1.2.0` | Mekanism sistemleri için yönlendirme ve lojistik seçenekleri ekler. | ✅ Kullanılıyor |
-| `Modern-Dynamics-0.9.6` | Kablo ve boru tabanlı eşya, sıvı ve enerji taşımacılığı sağlar. | ✅ Kullanılıyor |
-| `modular-routers-13.2.6+mc1.21.1` | Programlanabilir yönlendiricilerle eşya ve blok etkileşimi otomasyonu sağlar. | ✅ Kullanılıyor |
-| `pipez-neoforge-1.21.1-1.2.31` | Basit ve yükseltilebilir borularla eşya, sıvı, gaz ve enerji aktarımı sağlar. | ✅ Kullanılıyor |
-| `Super Factory Manager (SFM)-MC1.21.1-4.34.0` | Production Chamber içindeki karmaşık fabrika lojistiğini kod benzeri kurallarla yönetir. | ✅ Kullanılıyor |
-
----
-
-# Entegrasyonlar ve Proje Eklentileri
-
-Ana modların KubeJS, Custom Machinery, JEI, AE2 veya diğer sistemlerle birlikte çalışmasını sağlayan köprüler.
-
-| Mod / Dosya | Kısa Kullanım Amacı | Durum |
-|---|---|---|
-| `Applied-Mekanistics-1.6.3` | Mekanism kimyasallarını AE2 ağı üzerinden depolama ve taşıma desteği sağlar. | 🔗 Entegrasyon |
-| `Applied-Replicatics-21.1-1.0.4` | Replication sistemini AE2 ağı ve otomasyonuyla birleştirir. | 🔗 Entegrasyon |
-| `appliedjs-1.21.1-1.0.0` | AE2 içeriklerinin KubeJS ile özelleştirilmesini sağlar. | 🔗 Entegrasyon |
-| `appliedpneumatics-1.21.1-neoforge-1.0.8` | PneumaticCraft sistemlerini AE2 ağına bağlayan entegrasyon sağlar. | 🔗 Entegrasyon |
-| `arseng-2.1.1-beta` | İki veya daha fazla mod arasında tarif, veri ya da mekanik uyumluluğu sağlar. | 🧪 Beta / test |
-| `custom_machinery_ars-1.2.5` | Custom Machinery ile Ars Nouveau kaynaklarını birleştirir. | 🔗 Entegrasyon |
-| `CustomMachineryCreate-1.21.1-1.2.7` | Erken oyun mekanik gücü, hareketli sistemler ve fiziksel üretim hatları sağlar. | 🔗 Entegrasyon |
-| `CustomMachineryMekanism-1.21.1-1.4.16` | Gaz, kimya, ileri malzeme işleme ve oyun sonu teknoloji altyapısını sağlar. | 🔗 Entegrasyon |
-| `CustomMachineryPneumaticCraft-1.21.1-1.0.7` | Basınçlı hava, lojistik, drone ve programlanabilir otomasyon sistemleri sağlar. | 🔗 Entegrasyon |
-| `ddfabfm-1.2.0-neoforge-1.21.1` | Mobilya ve dekoratif işlev blokları ekler. | 🔗 Entegrasyon |
-| `extra-mod-integrations-all-neoforge-1.0.3+1.21.1` | İki veya daha fazla mod arasında tarif, veri ya da mekanik uyumluluğu sağlar. | 🔗 Entegrasyon |
-| `ftb-xmod-compat-neoforge-21.1.9` | İki veya daha fazla mod arasında tarif, veri ya da mekanik uyumluluğu sağlar. | 🔗 Entegrasyon |
-| `GeOre_Nouveau-1.21.1-0.5.9` | İki veya daha fazla mod arasında tarif, veri ya da mekanik uyumluluğu sağlar. | 🔗 Entegrasyon |
-| `immersive_engineering_js-2101.1.1` | Immersive Engineering tarif ve sistemlerinin KubeJS ile düzenlenmesini sağlar. | 🔗 Entegrasyon |
-| `jdtkubejs-1.0.0` | Just Dire Things içeriklerinin KubeJS ile özelleştirilmesini sağlar. | 🔗 Entegrasyon |
-| `kjsigrm-1.4.1` | KubeJS ve Custom Machinery tariflerini oyun içinden oluşturup dışa aktarmaya yardımcı olur. | 🔗 Entegrasyon |
-| `kubejs-mekanism-neoforge-2101.1.7-build.18` | Gaz, kimya, ileri malzeme işleme ve oyun sonu teknoloji altyapısını sağlar. | 🔗 Entegrasyon |
-| `kubejs_curios_neoforge_1.21.1-1.0.4` | Curios slot ve eşyalarının KubeJS ile kontrol edilmesini sağlar. | 🔗 Entegrasyon |
-| `kubejs_oritech-neoforge-1.21.1-0.4.4` | İleri üretim, enerji ve çok bloklu teknoloji sistemleri ekler. | 🔗 Entegrasyon |
-| `lootjs-neoforge-1.21.1-3.7.0` | İki veya daha fazla mod arasında tarif, veri ya da mekanik uyumluluğu sağlar. | 🔗 Entegrasyon |
-| `mifa-neoforge-1.21.x-2.1.0` | Industrial Foregoing için ek hız, verimlilik ve işleme yükseltmeleri sağlar. | 🔗 Entegrasyon |
-| `productive-metalworks-kubejs-addon-1.0.0` | Productive Metalworks tariflerini KubeJS üzerinden kontrol etmeyi sağlar. | 🔗 Entegrasyon |
-| `rep_up-1.0.0.0.1-neoforge-1.21.1` | Replication sistemine ek yükseltme veya yardımcı özellikler sağlar. | 🔗 Entegrasyon |
-| `replicatemekanism-1.0.7 - release` | Gaz, kimya, ileri malzeme işleme ve oyun sonu teknoloji altyapısını sağlar. | 🔗 Entegrasyon |
-
----
-
-# Keşif, Yapılar ve Dünya Üretimi
-
-Dünyaları, biyomları, mağaraları, yapıları, arkeolojiyi ve keşif içeriğini çeşitlendiren modlar.
-
-| Mod / Dosya | Kısa Kullanım Amacı | Durum |
-|---|---|---|
-| `[Neoforge]ctov-3.6.3` | Köylerin yapısını ve mimari çeşitliliğini genişletir. | ✅ Kullanılıyor |
-| `betterarcheology-neoforge-1.21.1-1.3.4` | Arkeoloji, kalıntı ve keşif odaklı yapılar ile araştırma içeriği ekler. | ✅ Kullanılıyor |
-| `ecologics-1.21.1-2.3.7` | Mevcut biyomlara yeni canlılar, bitkiler ve çevresel ayrıntılar ekler. | ✅ Kullanılıyor |
-| `Explorify v1.6.5.mod` | Dünyaya keşfedilebilir küçük yapılar ve ilgi noktaları ekler. | ✅ Kullanılıyor |
-| `GeOre-1.21.1-6.2.2` | Jeolojik kaynak üretimi ekler; kaynak çıktıları New World dengesine göre sınırlandırılacaktır. | ✅ Kullanılıyor |
-| `graveyards-1.0.0` | Mezarlık ve karanlık keşif yapıları ekler. | ✅ Kullanılıyor |
-| `industrialhellscape-1.0.3` | Dünya üretimini, keşfi, yapıları veya ganimet çeşitliliğini geliştirir. | ✅ Kullanılıyor |
-| `lithostitched-1.7.13-neoforge-21.1` | Dünya üretimini, keşfi, yapıları veya ganimet çeşitliliğini geliştirir. | ✅ Kullanılıyor |
-| `lootintegration_wda-1.8` | Belirli yapı veya yaratık modlarını ortak ganimet sistemine bağlar. | ✅ Kullanılıyor |
-| `lootintegrations-1.21.1-4.7` | Farklı modların ganimet tablolarını birbiriyle uyumlu hâle getirir. | ✅ Kullanılıyor |
-| `lootintegrations_betterarcheology-1.2` | Arkeoloji, kalıntı ve keşif odaklı yapılar ile araştırma içeriği ekler. | ✅ Kullanılıyor |
-| `lootintegrations_borninchaos-1.0` | Farklı modların ganimet tablolarını birbiriyle uyumlu hâle getirir. | ✅ Kullanılıyor |
-| `lootintegrations_ctov-1.4` | Farklı modların ganimet tablolarını birbiriyle uyumlu hâle getirir. | ✅ Kullanılıyor |
-| `naturalist-1.0.2-neoforge-1.21.1` | Dünyaya daha fazla doğal hayvan ve ekosistem içeriği ekler. | ✅ Kullanılıyor |
-| `natures_spirit-2.2.5-1.21.1` | Doğal biyom ve bitki çeşitliliğini artırır. | ✅ Kullanılıyor |
-| `regions-unexplored-0.6.2-neoforge-21.1` | Yeni biyomlar ve dünya çeşitliliği ekler; mevcut crash geçmişi nedeniyle ayrıca test edilmelidir. | ⚠️ Uyumluluk testi |
-| `Structory_26.2_v1.3.7` | Keşif sırasında karşılaşılabilecek yeni yapılar ekler. | ✅ Kullanılıyor |
-| `t_and_t-neoforge-fabric-1.13.9+1.21.1` | Köy ve kule benzeri yapı çeşitliliğini artırır. | ✅ Kullanılıyor |
-| `TerraBlender-neoforge-1.21.1-4.1.0.8` | Dünya üretimini, keşfi, yapıları veya ganimet çeşitliliğini geliştirir. | ✅ Kullanılıyor |
-| `YungsBetterCaves-1.21.1-NeoForge-3.1.4` | Vanilla yapılarını daha büyük ve keşfe değer hâle getirir. | ✅ Kullanılıyor |
-| `YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5` | Vanilla yapılarını daha büyük ve keşfe değer hâle getirir. | ✅ Kullanılıyor |
-| `YungsBetterDungeons-1.21.1-NeoForge-5.1.4` | Vanilla yapılarını daha büyük ve keşfe değer hâle getirir. | ✅ Kullanılıyor |
-| `YungsBetterEndIsland-1.21.1-NeoForge-3.1.2` | Vanilla yapılarını daha büyük ve keşfe değer hâle getirir. | ✅ Kullanılıyor |
-| `YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2` | Vanilla yapılarını daha büyük ve keşfe değer hâle getirir. | ✅ Kullanılıyor |
-| `YungsBetterMineshafts-1.21.1-NeoForge-5.1.1` | Vanilla yapılarını daha büyük ve keşfe değer hâle getirir. | ✅ Kullanılıyor |
-| `YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5` | Vanilla yapılarını daha büyük ve keşfe değer hâle getirir. | ✅ Kullanılıyor |
-| `YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2` | Vanilla yapılarını daha büyük ve keşfe değer hâle getirir. | ✅ Kullanılıyor |
-| `YungsBetterStrongholds-1.21.1-NeoForge-5.1.3` | Vanilla yapılarını daha büyük ve keşfe değer hâle getirir. | ✅ Kullanılıyor |
-| `YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1` | Vanilla yapılarını daha büyük ve keşfe değer hâle getirir. | ✅ Kullanılıyor |
-| `YungsCaveBiomes-1.21.1-NeoForge-3.1.1` | Mağaralara yeni biyom ve çevre çeşitliliği ekler. | ✅ Kullanılıyor |
-| `YungsExtras-1.21.1-NeoForge-5.1.1` | Dünya üretimine küçük yapılar ve çevresel ayrıntılar ekler. | ✅ Kullanılıyor |
-
----
-
-# Savaş, Yaratıklar, Büyü ve Oyuncu Gelişimi
-
-Yeni düşmanlar, canlılar, büyü sistemleri, boss içerikleri ve oyuncu gelişimi sağlayan modlar.
-
-| Mod / Dosya | Kısa Kullanım Amacı | Durum |
-|---|---|---|
-| `alexsmobs-1.22.17` | Yeni canlılar, ekolojik karşılaşmalar ve biyolojik araştırma örnekleri sağlar. | ✅ Kullanılıyor |
-| `ApothicAttributes-1.21.1-2.9.1` | Oyuncu ve eşya niteliklerini genişleten gelişmiş özellik altyapısı sağlar. | ✅ Kullanılıyor |
-| `ars_nouveau-1.21.1-5.12.1` | Bilimsel olarak açıklanacak büyü sistemleri ve kaynakları sağlar. | ✅ Kullanılıyor |
-| `artifacts-neoforge-13.2.1` | Keşifle bulunan özel aksesuarlar ve oyuncu yetenekleri ekler. | ✅ Kullanılıyor |
-| `born_in_chaos_[Neoforge]_1.21.1_1.7.6` | Daha tehlikeli yaratıklar ve hayatta kalma baskısı ekler. | ✅ Kullanılıyor |
-| `GatewaysToEternity-1.21.1-5.1.0` | Dalga tabanlı düşman karşılaşmaları ve savaş görevleri oluşturur. | ✅ Kullanılıyor |
-| `irons_spellbooks-1.21.1-3.16.2` | Savaş odaklı büyü, büyü kitapları ve yetenekler ekler. | ✅ Kullanılıyor |
-| `L_Ender's Cataclysm 1.21.1-3.32` | Gelişmiş boss savaşları, yapılar ve oyun sonu mücadeleleri ekler. | ✅ Kullanılıyor |
-| `relics-1.21.1-0.10.7.8` | Nadir, geliştirilebilir ve keşif odaklı ekipmanlar ekler. | ✅ Kullanılıyor |
-| `ScorchedGuns-1.5` | Bilim kurgu/ateşli silah içerikleri ekler; denge ve hikâye uyumu ayrıca ayarlanmalıdır. | ✅ Kullanılıyor |
-
----
-
-# Dekorasyon, İnşaat ve Aydınlatma
-
-Uzay gemisi, Production Chamber ve dünya yapılarının görsel tasarımı için kullanılan blok ve inşaat araçları.
-
-| Mod / Dosya | Kısa Kullanım Amacı | Durum |
-|---|---|---|
-| `bf_blockpack-neoforge-1.21.1-1.0.11` | Yapı tasarımı için dekoratif blok, araç veya aydınlatma seçeneği sağlar. | ✅ Kullanılıyor |
-| `buildinggadgets2-1.3.9` | Büyük yapıların hızlı ve kontrollü biçimde inşa edilmesini sağlar. | ✅ Kullanılıyor |
-| `buildinggadgets2gui-0.2.0-beta.1` | Büyük yapıların hızlı ve kontrollü biçimde inşa edilmesini sağlar. | 🧪 Beta / test |
-| `chipped-neoforge-1.21.1-4.0.2` | Yapı bloklarına çok sayıda dekoratif görünüm seçeneği ekler. | ✅ Kullanılıyor |
-| `chisel_chipped_integration-v1.3.9-1.21.1` | Yapı tasarımı için dekoratif blok, araç veya aydınlatma seçeneği sağlar. | ✅ Kullanılıyor |
-| `colors-1.21.1-1.4.0` | Yapı tasarımı için dekoratif blok, araç veya aydınlatma seçeneği sağlar. | ✅ Kullanılıyor |
-| `ConstructionSticks-1.21.1-1.4.1` | Tekrarlayan blok yerleştirmelerini kolaylaştıran inşaat araçları sağlar. | ✅ Kullanılıyor |
-| `create_chipped-1.2.0-neoforge-1.21.1` | Yapı bloklarına çok sayıda dekoratif görünüm seçeneği ekler. | ✅ Kullanılıyor |
-| `DecorativeBlocks-Reborn-neoforge-1.21.1-6.0.2` | Yapılar için dekoratif blok ve mimari parçalar ekler. | ✅ Kullanılıyor |
-| `decorblocks-neo-1.0.1` | Yapı tasarımı için dekoratif blok, araç veya aydınlatma seçeneği sağlar. | ✅ Kullanılıyor |
-| `Design-n-Decor-1.21.1-2.2b` | Endüstriyel ve modern dekorasyon seçenekleri ekler. | ✅ Kullanılıyor |
-| `elevatorid-neoforge-1.21.1-1.11.4` | Gemi katları ve üretim alanları arasında asansör ulaşımı sağlar. | ✅ Kullanılıyor |
-| `framedbg2support-0.1.0` | Yapı tasarımı için dekoratif blok, araç veya aydınlatma seçeneği sağlar. | ✅ Kullanılıyor |
-| `FramedBlocks-10.6.1` | İstenen blok dokusunu alabilen şekilli yapı parçaları sağlar. | ✅ Kullanılıyor |
-| `handcrafted-neoforge-1.21.1-4.0.3` | Mobilya ve iç mekân dekorasyonu ekler. | ✅ Kullanılıyor |
-| `iden_decor-neoforge-1.21.1-2.2.4` | Bilim kurgu ve iç mekân dekorasyonunda kullanılabilecek bloklar ekler. | ✅ Kullanılıyor |
-| `immersive_engineer_decor_controls_tool_reforged-1.1.41-reconstructed` | Yapı tasarımı için dekoratif blok, araç veya aydınlatma seçeneği sağlar. | ✅ Kullanılıyor |
-| `industrially_plated-1.0.0` | Metal plaka ve endüstriyel yüzey dekorları sağlar. | ✅ Kullanılıyor |
-| `neoncraft-1.1.1-neoforge-1.21.1` | Neon ve bilim kurgu temalı aydınlatma/dekor öğeleri ekler. | ✅ Kullanılıyor |
-| `Night Lights NeoForge v1.2.0 [1.21.1]` | Gece ve iç mekân kullanımı için dekoratif ışıklar ekler. | ✅ Kullanılıyor |
-| `placers-1.21.1-1.3.1` | Yapı tasarımı için dekoratif blok, araç veya aydınlatma seçeneği sağlar. | ✅ Kullanılıyor |
-| `rechiseled-1.2.5-neoforge-mc1.21` | Blokların farklı dekoratif varyantlarını üretmeyi sağlar. | ✅ Kullanılıyor |
-| `rechiseledae2-neoforge-1.21-1.21.1-1.0.0` | Yapı tasarımı için dekoratif blok, araç veya aydınlatma seçeneği sağlar. | ✅ Kullanılıyor |
-| `simplylight-1.5.3+1.21.1-b4` | Kompakt ve farklı biçimlerde aydınlatma blokları sağlar. | ✅ Kullanılıyor |
-| `supplementaries-neoforge-1.21.1-3.8.0` | Yapı tasarımı için dekoratif blok, araç veya aydınlatma seçeneği sağlar. | ✅ Kullanılıyor |
-| `suppsquared-neoforge-1.21-1.2.18` | Yapı tasarımı için dekoratif blok, araç veya aydınlatma seçeneği sağlar. | ✅ Kullanılıyor |
-| `worldedit-mod-7.3.8` | Gemi ve yapı tasarımında hızlı harita düzenleme araçları sağlar. | ✅ Kullanılıyor |
-| `XeKr's Decoration-1.21.1-NeoForge-1.1.8` | Yapı tasarımı için dekoratif blok, araç veya aydınlatma seçeneği sağlar. | ✅ Kullanılıyor |
-
----
-
-# Görevler, Takımlar ve Sunucu Yönetimi
-
-Görev kitabı, takım sistemi, chunk yönetimi, yedekleme ve çok oyunculu yardımcı sistemler.
-
-| Mod / Dosya | Kısa Kullanım Amacı | Durum |
-|---|---|---|
-| `ExtraQuests-1.7.0-1.21.1-NeoForge` | FTB Quests sistemine ek görev özellikleri sağlar. | ✅ Kullanılıyor |
-| `ftb-chunks-neoforge-2101.1.20` | Chunk talep etme, koruma ve harita tabanlı bölge yönetimi sağlar. | ✅ Kullanılıyor |
-| `ftb-essentials-neoforge-2101.1.10` | Görev, takım, sunucu veya çok oyunculu yönetim işlevi sağlar. | ✅ Kullanılıyor |
-| `ftb-filter-system-neoforge-21.1.4` | Görev, takım, sunucu veya çok oyunculu yönetim işlevi sağlar. | ✅ Kullanılıyor |
-| `ftb-quests-neoforge-2101.1.27` | Ana görev kitabı, araştırma ilerleyişi ve hikâye görevlerini yönetir. | ✅ Kullanılıyor |
-| `ftb-stuff-things-21.1.18` | Görev, takım, sunucu veya çok oyunculu yönetim işlevi sağlar. | ✅ Kullanılıyor |
-| `ftb-team-bases-21.1.15` | Takımlar için başlangıç üssü veya ayrı üs alanları oluşturmayı destekler. | ✅ Kullanılıyor |
-| `ftb-teams-neoforge-2101.1.10` | Takım ve çok oyunculu ilerleme altyapısını sağlar. | ✅ Kullanılıyor |
-| `ftbbackups2-neoforge-1.21-1.0.28` | Dünyanın otomatik yedeklerini oluşturur. | ✅ Kullanılıyor |
-| `lootr-neoforge-1.21.1-1.11.37.122` | Çok oyunculuda ganimet sandıklarını oyuncuya özel hâle getirir. | ✅ Kullanılıyor |
-
----
-
-# Arayüz, Tarif Görüntüleme ve Yaşam Kalitesi
-
-Tarif görüntüleme, bilgi ekranları, harita, envanter kullanımı ve genel kullanıcı deneyimi iyileştirmeleri.
-
-| Mod / Dosya | Kısa Kullanım Amacı | Durum |
-|---|---|---|
-| `ae2jeiintegration-1.2.1` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `angel_utilities-1.0.9-neoforge-1.21.1` | İnşaat ve boşlukta çalışma için yardımcı araçlar sağlar. | ✅ Kullanılıyor |
-| `appleskin-neoforge-mc1.21-3.0.9` | Açlık, doygunluk ve yiyecek değerlerini arayüzde gösterir. | ✅ Kullanılıyor |
-| `BetterAdvancements-NeoForge-1.21.1-0.4.3.21` | İlerleme ekranını daha okunabilir ve kullanışlı hâle getirir. | ✅ Kullanılıyor |
-| `configured-neoforge-1.21.1-2.6.3` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `Controlling-neoforge-1.21.1-19.0.5` | Tuş atamalarını aramayı ve çakışmaları bulmayı kolaylaştırır. | ✅ Kullanılıyor |
-| `createjeicompat-1.0.2` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `custom_machinery_emi-1.0.0` | Custom Machinery tariflerini EMI üzerinde gösterir; JEI kararı nedeniyle kaldırılma adayıdır. | ⚠️ Kaldırma adayı |
-| `distraction_free_recipes-neoforge-1.2.2-1.21.1` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `emi-1.1.24+1.21.1+neoforge` | Alternatif tarif görüntüleme sistemi; proje JEI tercih ettiği için kaldırılma adayıdır. | ⚠️ Kaldırma adayı |
-| `emi_accelerator-1.1.4` | EMI için ek tarif ve bilgi modülü; JEI kararı nedeniyle kontrol edilmelidir. | ⚠️ Kaldırma adayı |
-| `emi_enchanting-0.1.2+1.21+neoforge` | EMI için ek tarif ve bilgi modülü; JEI kararı nedeniyle kontrol edilmelidir. | ⚠️ Kaldırma adayı |
-| `emi_loot-0.7.9+1.21+neoforge` | EMI için ek tarif ve bilgi modülü; JEI kararı nedeniyle kontrol edilmelidir. | ⚠️ Kaldırma adayı |
-| `emi_ores-1.3+1.21.1+neoforge` | EMI için ek tarif ve bilgi modülü; JEI kararı nedeniyle kontrol edilmelidir. | ⚠️ Kaldırma adayı |
-| `emijeicompat-1.0.4` | EMI ile JEI eklentileri arasında uyumluluk sağlar; EMI kaldırılırsa gereksizdir. | ⚠️ Kaldırma adayı |
-| `emilink-1.1.13` | EMI bağlantı/entegrasyon özelliği sağlar; EMI kaldırılırsa gereksizdir. | ⚠️ Kaldırma adayı |
-| `emixx-neoforge-1.21.1-3.1.2` | EMI için ek arayüz özellikleri sağlar; EMI kaldırılırsa gereksizdir. | ⚠️ Kaldırma adayı |
-| `ftb-jei-extras-21.1.7` | Tarifleri, kullanım alanlarını ve üretim süreçlerini görüntüler. | ✅ Kullanılıyor |
-| `ftb-ultimine-neoforge-2101.1.15` | Bağlantılı blokları toplu kırmayı sağlar; kullanım sınırları proje dengesine göre ayarlanmalıdır. | ✅ Kullanılıyor |
-| `geodejei-1.1` | Tarifleri, kullanım alanlarını ve üretim süreçlerini görüntüler. | ✅ Kullanılıyor |
-| `guideme-21.1.17` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `inventoryhud.neoforged.1.21.1-3.4.28` | Envanter, zırh ve durum bilgilerini oyun ekranında gösterir. | ✅ Kullanılıyor |
-| `Jade-1.21.1-NeoForge-15.10.5` | Bakılan blok, makine ve canlı hakkında ekranda bilgi gösterir. | ✅ Kullanılıyor |
-| `JadeAddons-1.21.1-NeoForge-6.1.0` | Jade bilgi paneline diğer modlar için ek veri sağlar. | ✅ Kullanılıyor |
-| `jearchaeology-1.21.1-1.2.0` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `jei-1.21.1-neoforge-19.39.0.368` | Tarifleri, kullanım alanlarını ve üretim süreçlerini görüntüler. | ✅ Kullanılıyor |
-| `jei-quickcraft-1.21.1-neoforge-1.0` | Tarifleri, kullanım alanlarını ve üretim süreçlerini görüntüler. | ✅ Kullanılıyor |
-| `jei_enhancements-1.0.0` | JEI için ek tarif, yapı veya bilgi görüntüleme desteği sağlar. | ✅ Kullanılıyor |
-| `jei_gateways-1.1.2+mc1.21.1` | Dalga tabanlı düşman karşılaşmaları ve savaş görevleri oluşturur. | ✅ Kullanılıyor |
-| `jei_structures-1.21.1-1.4` | JEI için ek tarif, yapı veya bilgi görüntüleme desteği sağlar. | ✅ Kullanılıyor |
-| `jeimultiblocks-1.21.1-1.0.6` | Çok bloklu makinelerin yapılarını JEI içinde görüntüler. | ✅ Kullanılıyor |
-| `jeiworldgen-neoforge-1.21.1-1.4.0` | Dünya üretimi ve kaynak oluşumu bilgilerini JEI içinde gösterir. | ✅ Kullanılıyor |
-| `journeymap-neoforge-1.21.1-6.0.0` | Harita, işaret noktası ve keşif takibi sağlar. | ✅ Kullanılıyor |
-| `justenoughbreeding-neoforge-1.21.1-3.1.0` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `JustEnoughMekanismMultiblocks-1.21.1-7.15` | Mekanism çok bloklu yapılarını JEI üzerinden gösterir. | ✅ Kullanılıyor |
-| `JustEnoughProfessions-neoforge-1.21.1-4.0.5` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `JustEnoughResources-NeoForge-1.21.1-1.6.0.17` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `kubejei-1.0.0` | Tarifleri, kullanım alanlarını ve üretim süreçlerini görüntüler. | ✅ Kullanılıyor |
-| `mekagenjei-1.2` | Tarifleri, kullanım alanlarını ve üretim süreçlerini görüntüler. | ✅ Kullanılıyor |
-| `mekajadeupgrade-1.3` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `moreoverlays-1.24.2-mc1.21.1-neoforge` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `MouseTweaks-neoforge-mc1.21-2.26.1` | Envanterde fare ile eşya taşıma ve dağıtma işlemlerini geliştirir. | ✅ Kullanılıyor |
-| `polymorph-neoforge-1.1.0+1.21.1` | Birbiriyle çakışan crafting tarifleri arasında seçim yapılmasını sağlar. | ✅ Kullanılıyor |
-| `Quark-4.1-482` | Vanilla oynanışı çok sayıda küçük özellik ve yaşam kalitesi geliştirmesiyle genişletir. | ✅ Kullanılıyor |
-| `shulkerboxtooltip-neoforge-5.1.9+1.21.1` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `smithingtemplateviewer-1.0.4` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `sophisticated_jei_index-1.1.0-neoforge-1.21.1` | JEI için ek tarif, yapı veya bilgi görüntüleme desteği sağlar. | ✅ Kullanılıyor |
-| `trashslot-neoforge-1.21.1-21.1.11` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-| `VisualWorkbench-v21.1.1-1.21.1-NeoForge` | Arayüzü, bilgi erişimini veya günlük oynanış kullanımını kolaylaştırır. | ✅ Kullanılıyor |
-
----
-
-# Performans ve Optimizasyon
-
-İstemci, sunucu, bellek, yapay zekâ, render, redstone ve ağ performansını iyileştiren modlar.
-
-| Mod / Dosya | Kısa Kullanım Amacı | Durum |
-|---|---|---|
-| `AI-Improvements-1.21-0.5.3` | Canlı yapay zekâ hesaplamalarının işlemci yükünü azaltır. | ✅ Kullanılıyor |
-| `alltheleaks-1.1.10+1.21.1-neoforge` | Bellek sızıntılarını ve uzun oturumlarda oluşan performans sorunlarını azaltır. | ✅ Kullanılıyor |
-| `alternate_current-mc1.21-1.9.0` | Redstone ağlarının hesaplama performansını iyileştirir. | ✅ Kullanılıyor |
-| `BadOptimizations-2.4.1-1.21.1` | Çeşitli istemci ve oyun hesaplamalarını optimize eder. | ✅ Kullanılıyor |
-| `chloride-NEOFORGE-mc1.21.1-v1.8.1` | Render ayarları ve grafik performansı için optimizasyon desteği sağlar. | ✅ Kullanılıyor |
-| `Clumps-neoforge-1.21.1-19.0.0.1` | Deneyim kürelerini birleştirerek varlık yükünü azaltır. | ✅ Kullanılıyor |
-| `entityculling-neoforge-1.10.5-mc1.21.1` | Görünmeyen varlık ve blok varlıklarının çizilmesini engeller. | ✅ Kullanılıyor |
-| `fastboot-1.21.x-v1.3neo` | Oyunun açılış ve yeniden yükleme süresini azaltmaya yardımcı olur. | ✅ Kullanılıyor |
-| `ferritecore-7.0.3-neoforge` | Bellek kullanımını azaltır. | ✅ Kullanılıyor |
-| `FTBQuestsOptimizer-neoforge-3.2.0-1.21.1` | FTB Quests kaynaklı görev kontrolü ve veri yükünü azaltır. | ✅ Kullanılıyor |
-| `ImmediatelyFast-NeoForge-1.6.11+1.21.1` | Arayüz ve render işlemlerini hızlandırır. | ✅ Kullanılıyor |
-| `krypton_fnp-neoforge-1.21.1-0.2.28.1-1.21.1` | Ağ iletişimi ve paket işleme performansını iyileştirir. | ✅ Kullanılıyor |
-| `modernfix-neoforge-5.27.20+mc1.21.1` | Bellek, yükleme, veri paketi ve genel oyun performansına yönelik kapsamlı düzeltmeler sağlar. | ✅ Kullanılıyor |
-| `sodium-neoforge-0.8.12+mc1.21.1` | Render motorunu optimize ederek FPS ve görsel performansı artırır. | ✅ Kullanılıyor |
-
----
-
-# Atmosfer, Ses ve Görsel
-
-Ses ortamını, ayak seslerini, çevresel efektleri ve dünyanın atmosferini güçlendiren modlar.
-
-| Mod / Dosya | Kısa Kullanım Amacı | Durum |
-|---|---|---|
-| `AmbientSounds_NEOFORGE_v6.3.8_mc1.21.1` | Biyom ve çevreye göre zengin ortam sesleri ekler. | ✅ Kullanılıyor |
-| `Falling Leaves-1.0` | Ağaçlardan düşen yaprak parçacıklarıyla çevresel atmosferi güçlendirir. | ✅ Kullanılıyor |
-| `PresenceFootsteps-1.21.1-1.12.0-beta.1-1.21NeoForge` | Zemine ve ortama göre ayrıntılı ayak sesleri oluşturur. | 🧪 Beta / test |
-| `sound-physics-remastered-neoforge-1.21.1-1.5.1` | Yankı, duvar arkası ses ve mekânsal ses fiziği ekler. | ✅ Kullanılıyor |
-
----
-
-# Kütüphaneler ve Teknik Bağımlılıklar
-
-Diğer modların çalışması için gereken API, çekirdek, yapılandırma ve kod kütüphaneleri.
-
-| Mod / Dosya | Kısa Kullanım Amacı | Durum |
-|---|---|---|
-| `architectury-13.0.8-neoforge` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `athena-neoforge-1.21.1-4.0.6` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `balm-neoforge-1.21.1-21.0.63` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `bblcore-1.21-1.3.20` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `citadel-1.21.1-2.7.6` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `cloth-config-15.0.140-neoforge` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `CreativeCore_NEOFORGE_v2.13.41_mc1.21.1` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `cristellib-neoforge-1.21.1-3.1.7` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `CTM-1.21-1.2.1+3` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `cupboard-1.21.1-3.8` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `curios-neoforge-9.5.1+1.21.1` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `experiencelib-1.21.1-1.2.1` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `ExtraLib-3.0.11-1.21.1-NeoForge` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `ForgeConfigAPIPort-v21.1.6-1.21.1-NeoForge` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `forgified-fabric-api-0.116.14+2.3.0+1.21.1` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `framework-neoforge-1.21.1-0.13.11` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `ftb-library-neoforge-2101.1.33` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `fusion-1.3.5-neoforge-mc1.21.1` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `fzzy_config-0.7.6+1.21+neoforge` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `geckolib-neoforge-1.21.1-4.9.2` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `Glodium-1.21-2.2-neoforge` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `gtbcs_spell_lib-1.5.0-1.21.1` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `irons_lib-1.21.1-2.1.0` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `Kiwi-1.21.1-NeoForge-15.8.7` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `konkrete_neoforge_1.9.9_MC_1.21` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `kotlinforforge-5.12.0-all` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `libIPN-neoforge-1.21.1-6.6.3` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `lionfishapi-3.1` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `mcjtylib-1.21-9.0.21` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `moonlight-neoforge-1.21.1-3.1.1` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `OctoLib-NEOFORGE-0.6.2+1.21` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `Placebo-1.21.1-9.9.1` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `player-animation-lib-forge-2.0.4+1.21.1` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `polylib-2100.1.0-build.183-neoforge` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `PuzzlesLib-v21.1.52-1.21.1-NeoForge` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `resourcefulconfig-neoforge-1.21-3.0.11` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `resourcefullib-neoforge-1.21-3.0.12` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `rhino-2101.2.7-build.85` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `Searchables-neoforge-1.21.1-1.0.2` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `sophisticatedcore-1.21.1-1.4.73.2151` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `supermartijn642configlib-1.1.8-neoforge-mc1.21` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `supermartijn642corelib-1.1.21-neoforge-mc1.21` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `tesseract-api-neoforge-1.12.8-1.21.1` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `titanium-1.21-4.0.43` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `txnilib-neoforge-1.0.24-1.21.1` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `YungsApi-1.21.1-NeoForge-5.1.6` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-| `Zeta-1.1-40` | Diğer modların çalışması için gereken teknik kütüphane veya API’dir. | 🧩 Bağımlılık |
-
----
-
-# 📜 Genel Kullanım Kuralları
-
-Modların projede kullanımı aşağıdaki temel kurallara bağlıdır:
-
-1. Hazır makineler, Production Chamber içerisinde kurulması planlanan bir üretim sürecinin yerini almamalıdır.
-2. Aynı işi yapan modlar arasında görev ayrımı yapılmalı; gereksiz tekrar engellenmelidir.
-3. Replikatör yalnızca ham materyal üretmeli, hazır parça veya son ürün vermemelidir.
-4. Gelişmiş teknoloji ve ekipmanlar araştırma ilerleyişine bağlanmalıdır.
-5. Büyü sistemleri, lore içerisinde henüz açıklanmamış bilimsel prensipler olarak ele alınmalıdır.
-6. Keşif modları yalnızca ganimet değil; araştırma verisi, hikâye ve yeni mekanik sunmalıdır.
-7. Performans modları her büyük mod güncellemesinden sonra yeniden uyumluluk testine alınmalıdır.
-8. Beta durumundaki modlar, kararlı sürüme geçilmeden önce ayrı test dünyasında denenmelidir.
-
----
-
-# 📌 Sonuç
-
-Bu liste yalnızca kurulu modların envanteri değildir.
-
-Her modun **New World** içerisindeki rolünü, hangi sistemlere hizmet ettiğini ve hangi içeriklerin sınırlandırılması gerektiğini takip etmek için kullanılacak yaşayan bir proje belgesidir.
-
-Mod listesi değiştiğinde;
-
-- Toplam mod sayısı,
-- Kategori tabloları,
-- Uyumluluk notları,
-- Kaldırma adayları,
-- Minimum sürüm kuralları
-
-birlikte güncellenmelidir.
-
----
-
-> **"Bir modun değeri, eklediği içerik miktarıyla değil; oyunun tasarımına ne kadar hizmet ettiğiyle ölçülür."**
+| Minecraft | `1.21.1` |
+| Mod yükleyici | `neoforge-21.1.235` |
+| CurseForge mod girdisi | 267 |
+| Resource pack | 4 |
+| Shader pack | 4 |
+| CurseForge toplamı | 275 |
+| Etkin / devre dışı | 274 / 1 |
+| Projeye özel fork JAR'ı | 2 |
+| Toplam paket girdisi | 277 |
+
+## Projeye özel fork JAR dosyaları
+
+Bu iki dosya CurseForge üzerinden indirilemez; New World için değiştirilmiş build dosyaları oldukları için Git deposunda tutulur.
+
+| Dosya | Boyut | SHA-256 | Belge |
+|---|---:|---|---|
+| `NewWorldCore-1.21.1-NeoForge-0.5.57.0-alpha-mekanism-geology-deposits.jar` | 3,32 MiB | `09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc` | [Alpha test rehberi](New_World_Room_Controller_Alpha_Test_Rehberi.md) |
+| `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | 4,56 MiB | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` | [JAR analizi](New_World_DoctorWhoMod_JAR_Analizi.md) |
+
+## Durum açıklaması
+
+- **Etkin:** CurseForge manifestine dahil edilir ve normal kurulumda yüklenir.
+- **Devre dışı:** Lock dosyasında izlenir fakat manifest kurulumu sırasında etkin olarak yüklenmez.
+- Üçüncü taraf JAR/ZIP dosyaları Git deposuna eklenmez; kesin CurseForge proje ve dosya kimlikleri aşağıdaki tablolarda bulunur.
+
+## Modlar (267)
+
+| Ad | Dosya | CurseForge Project ID | File ID | Durum |
+|---|---|---:|---:|---|
+| (Sodium) Chloride | `chloride-NEOFORGE-mc1.21.1-v1.8.1.jar` | 931925 | 8462029 | Etkin |
+| Advanced Peripherals | `AdvancedPeripherals-1.21.1-0.7.57b.jar` | 431725 | 7043026 | Etkin |
+| AdvancedAE | `AdvancedAE-1.6.11-1.21.1.jar` | 1084104 | 7849217 | Etkin |
+| Adventurer Skills [Pufferfish's Skills] | `adventurerskills-EN-1.3-1.21.1-neoforge.jar` | 1397003 | 8010921 | Etkin |
+| AE2 Jade Tooltip Fix | `ae2tooltipfix-neoforge-1.0.0+1.21.1.jar` | 1595044 | 8355546 | Etkin |
+| AE2 JEI Integration | `ae2jeiintegration-1.2.1.jar` | 1074338 | 7727898 | Etkin |
+| AE2 MEGA Things | `AE2MEGAThings-1.21.1-2.0.4.jar` | 1150075 | 6203833 | Etkin |
+| AE2 Things [Forge] | `AE2-Things-1.4.2-beta.jar` | 609977 | 5637783 | Etkin |
+| AE2 Useful Utilities | `AE2 Useful Utilities-1.21.1-1.0.1-NeoForge.jar` | 1577237 | 8308764 | Etkin |
+| AEInfinityBooster | `aeinfinitybooster-neoforge-1.21.1-1.0.0.58.jar` | 559313 | 8377914 | Etkin |
+| AI Improvements | `AI-Improvements-1.21-0.5.3.jar` | 233019 | 5426792 | Etkin |
+| Alex's Mobs (Unofficial Port) | `alexsmobs-1.22.17.jar` | 1415721 | 7528193 | Etkin |
+| AllTheLeaks (Memory Leak Fix) | `alltheleaks-1.1.10+1.21.1-neoforge.jar` | 1091339 | 8409394 | Etkin |
+| Alternate Current | `alternate_current-mc1.21-1.9.0.jar` | 548115 | 5665477 | Etkin |
+| AmbientSounds 6 | `AmbientSounds_NEOFORGE_v6.3.8_mc1.21.1.jar` | 254284 | 8043019 | Etkin |
+| Angel Extra Utilities | `angel_utilities-1.0.9-neoforge-1.21.1.jar` | 1338772 | 6976437 | Etkin |
+| Apothic Attributes | `ApothicAttributes-1.21.1-2.9.1.jar` | 898963 | 7445079 | Etkin |
+| AppleSkin | `appleskin-neoforge-mc1.21-3.0.9.jar` | 248787 | 7854442 | Etkin |
+| Applied Energistics 2 | `appliedenergistics2-19.2.17.jar` | 223794 | 7027323 | Etkin |
+| Applied Energistics 2 Wireless Terminals | `ae2wtlib-19.5.0.jar` | 459929 | 8048692 | Etkin |
+| Applied Experienced | `applied-experienced-1.21.1-1.3.2.jar` | 1157608 | 7705498 | Etkin |
+| Applied Flux | `AppliedFlux-1.21-2.1.5-neoforge.jar` | 965012 | 8204513 | Etkin |
+| Applied Mekanistics | `Applied-Mekanistics-1.6.3.jar` | 574300 | 7096962 | Etkin |
+| Applied Pneumatics | `appliedpneumatics-1.21.1-neoforge-1.0.8.jar` | 1355087 | 7723695 | Etkin |
+| Applied Replicatics | `Applied-Replicatics-21.1-1.1.0.jar` | 1440118 | 8467737 | Etkin |
+| Applied Soul | `appliedsoul-1.21.1-2.0.3.jar` | 1337114 | 7653184 | Etkin |
+| AppliedJS | `appliedjs-1.21.1-1.0.0.jar` | 1560749 | 8180130 | Etkin |
+| Architectury API | `architectury-13.0.11-neoforge.jar` | 419699 | 8492726 | Etkin |
+| Ars Énergistique | `arseng-2.1.1-beta.jar` | 905641 | 6203425 | Etkin |
+| Ars Nouveau | `ars_nouveau-1.21.1-5.12.1.jar` | 401955 | 8346406 | Etkin |
+| Artifacts | `artifacts-neoforge-13.2.1.jar` | 312353 | 7875426 | Etkin |
+| AStages | `astages-2.4.1-1.21.1.jar` | 1120180 | 8473386 | Etkin |
+| AStages Curios | `astages_curios-2.0.0-1.21.1.jar` | 1303904 | 8216481 | Etkin |
+| AStages FTB Quests | `astages_ftbquests-2.1.0-1.21.1.jar` | 1565842 | 8388831 | Etkin |
+| AStages Pufferfish's Skills | `astages_pufferfish-2.1.0-1.21.1.jar` | 1303921 | 8401880 | Etkin |
+| Athena | `athena-neoforge-1.21.1-4.0.6.jar` | 841890 | 8061947 | Etkin |
+| BadOptimizations | `BadOptimizations-2.4.1-1.21.1.jar` | 949555 | 7338300 | Etkin |
+| Balm | `balm-neoforge-1.21.1-21.0.63.jar` | 531761 | 8424824 | Etkin |
+| BBL Colors | `colors-1.21.1-1.4.0.jar` | 1218206 | 7128771 | Etkin |
+| BBL Core | `bblcore-1.21-1.3.20.jar` | 1135181 | 7048684 | Etkin |
+| BBL Rooms | `roomopolis-1.21.1-2.8.3.jar` | 1000075 | 7709555 | Etkin |
+| Better Advancements | `BetterAdvancements-NeoForge-1.21.1-0.4.3.21.jar` | 272515 | 5850587 | Etkin |
+| Better Archeology | `betterarcheology-neoforge-1.21.1-1.3.4.jar` | 835687 | 7756575 | Etkin |
+| Born in Chaos | `born_in_chaos_[Neoforge]_1.21.1_1.7.6.jar` | 686437 | 8268280 | Etkin |
+| Building Gadgets | `buildinggadgets2-1.3.9.jar` | 298187 | 6850515 | Etkin |
+| BuildingGadgets2GUI | `buildinggadgets2gui-0.2.0-beta.1.jar` | 1418443 | 7548215 | Etkin |
+| Chipped | `chipped-neoforge-1.21.1-4.0.2.jar` | 456956 | 5813117 | Etkin |
+| Chisel Chipped Integration | `chisel_chipped_integration-v1.3.9-1.21.1.jar` | 971089 | 6693853 | Etkin |
+| ChoiceTheorem's Overhauled Village | `[Neoforge]ctov-3.6.3.jar` | 623908 | 7788733 | Etkin |
+| Citadel (Unofficial Port) | `citadel-1.21.1-2.7.6.jar` | 1415723 | 7982052 | Etkin |
+| Cloth Config API (Fabric/Forge/NeoForge) | `cloth-config-15.0.140-neoforge.jar` | 348521 | 5729127 | Etkin |
+| Clumps | `Clumps-neoforge-1.21.1-19.0.0.1.jar` | 256717 | 5623731 | Etkin |
+| Configured | `configured-neoforge-1.21.1-2.6.3.jar` | 457570 | 7276577 | Etkin |
+| ConnectedTexturesMod | `CTM-1.21-1.2.1+3.jar` | 267602 | 5587515 | Etkin |
+| Construction Sticks | `ConstructionSticks-1.21.1-1.4.1.jar` | 1156098 | 8287281 | Etkin |
+| Controlling | `Controlling-neoforge-1.21.1-19.0.5.jar` | 250398 | 6368976 | Etkin |
+| Create | `create-1.21.1-6.0.10.jar` | 328085 | 7963363 | Etkin |
+| Create JEI Compat | `createjeicompat-1.0.2.jar` | 1422344 | 7431839 | Etkin |
+| Create:  Chipped | `create_chipped-1.2.0-neoforge-1.21.1.jar` | 1321045 | 7985040 | Etkin |
+| CreativeCore | `CreativeCore_NEOFORGE_v2.13.41_mc1.21.1.jar` | 257814 | 8190065 | Etkin |
+| Cristel Lib | `cristellib-neoforge-1.21.1-3.1.7.jar` | 856996 | 8241767 | Etkin |
+| Cupboard | `cupboard-1.21.1-3.8.jar` | 326652 | 8260590 | Etkin |
+| Curios API | `curios-neoforge-9.5.1+1.21.1.jar` | 309927 | 6529130 | Etkin |
+| Custom Machinery | `CustomMachinery-neoforge-1.21.1-0.10.69.jar` | 457017 | 8266133 | Etkin |
+| Custom Machinery Ars Nouveau | `custom_machinery_ars-1.2.5.jar` | 969074 | 7723811 | Etkin |
+| Custom Machinery Create | `CustomMachineryCreate-1.21.1-1.2.7.jar` | 860747 | 8236695 | Etkin |
+| Custom Machinery EMI | `custom_machinery_emi-1.0.0.jar` | 1376990 | 7176525 | Etkin |
+| Custom Machinery Mekanism | `CustomMachineryMekanism-1.21.1-1.4.16.jar` | 721079 | 8232476 | Etkin |
+| Custom Machinery PneumaticCraft | `CustomMachineryPneumaticCraft-1.21.1-1.0.7.jar` | 1093049 | 8232332 | Etkin |
+| Distraction Free Recipes (EMI / REI / JEI) | `distraction_free_recipes-neoforge-1.2.2-1.21.1.jar` | 1167848 | 7411492 | Etkin |
+| Ecologics | `ecologics-1.21.1-2.3.7.jar` | 570463 | 8415537 | Etkin |
+| EMI | `emi-1.1.24+1.21.1+neoforge.jar` | 580555 | 8081408 | Etkin |
+| EMI Enchanting | `emi_enchanting-0.1.2+1.21+neoforge.jar` | 936713 | 5733125 | Etkin |
+| EMI Loot | `emi_loot-0.7.9+1.21+neoforge.jar` | 681783 | 7417271 | Etkin |
+| EMI Ores | `emi_ores-1.3+1.21.1+neoforge.jar` | 974009 | 8254306 | Etkin |
+| EMIAccelerator | `emi_accelerator-1.1.4.jar` | 1542062 | 8443308 | Etkin |
+| EMILink | `emilink-1.1.13.jar` | 1542052 | 8443320 | Etkin |
+| Ender IO | `enderio-8.2.11-beta.jar` | 64578 | 8192838 | Etkin |
+| Ender IO: Pressure Conduits | `eio_pressure_conduits-1.0.2-1.21.1.jar` | 1598070 | 8425634 | Etkin |
+| Entity Culling Fabric/Forge | `entityculling-neoforge-1.10.5-mc1.21.1.jar` | 448233 | 8287097 | Etkin |
+| ExperienceLib | `experiencelib-1.21.1-1.2.1.jar` | 1156551 | 7705470 | Etkin |
+| Explorify – Dungeons & Structures | `Explorify v1.6.5.mod.jar` | 698309 | 8082824 | Etkin |
+| ExtendedAE | `ExtendedAE-1.21-2.2.35-neoforge.jar` | 892005 | 8511901 | Etkin |
+| ExtraLib | `ExtraLib-3.0.11-1.21.1-NeoForge.jar` | 1083780 | 8322611 | Etkin |
+| ExtraQuests [FTB Quests] | `ExtraQuests-1.7.0-1.21.1-NeoForge.jar` | 964194 | 8004488 | Etkin |
+| Falling Leaves | `Falling Leaves-1.0.jar` | 1359282 | 7068613 | Etkin |
+| FastBoot | `fastboot-1.21.x-v1.3neo.jar` | 1030285 | 6998687 | Etkin |
+| FerriteCore ((Neo)Forge) | `ferritecore-7.0.3-neoforge.jar` | 429235 | 7524151 | Etkin |
+| Flux Networks | `FluxNetworks-1.21.1-8.0.0.jar` | 248020 | 6089446 | Etkin |
+| Forge Config API Port | `ForgeConfigAPIPort-v21.1.6-1.21.1-NeoForge.jar` | 547434 | 7213611 | Etkin |
+| Forgified Fabric API | `forgified-fabric-api-0.116.14+2.3.0+1.21.1.jar` | 889079 | 8445798 | Etkin |
+| Framed Block + Building Gadgets Implementation | `framedbg2support-0.1.0.jar` | 1564206 | 8193819 | Etkin |
+| FramedBlocks | `FramedBlocks-10.6.1.jar` | 441647 | 8349218 | Etkin |
+| Framework | `framework-neoforge-1.21.1-0.13.11.jar` | 549225 | 7530361 | Etkin |
+| FTB Backups 2 | `ftbbackups2-neoforge-1.21-1.0.28.jar` | 622737 | 5501351 | Etkin |
+| FTB Chunks (NeoForge) | `ftb-chunks-neoforge-2101.1.20.jar` | 314906 | 8317865 | Etkin |
+| FTB Essentials (Forge & Fabric) | `ftb-essentials-neoforge-2101.1.10.jar` | 410811 | 8442866 | Etkin |
+| FTB Filter System | `ftb-filter-system-neoforge-21.1.4.jar` | 943925 | 7429011 | Etkin |
+| FTB JEI Extras | `ftb-jei-extras-21.1.7.jar` | 1103259 | 6695679 | Etkin |
+| FTB Library (NeoForge) | `ftb-library-neoforge-2101.1.33.jar` | 404465 | 8438216 | Etkin |
+| FTB Quests (NeoForge) | `ftb-quests-neoforge-2101.1.27.jar` | 289412 | 8253474 | Etkin |
+| FTB Quests Optimizer | `FTBQuestsOptimizer-neoforge-3.2.0-1.21.1.jar` | 912469 | 7576461 | Etkin |
+| FTB Stuff & Things | `ftb-stuff-things-21.1.18.jar` | 1197860 | 8265322 | Etkin |
+| FTB Teams (NeoForge) | `ftb-teams-neoforge-2101.1.10.jar` | 404468 | 7878281 | Etkin |
+| FTB Ultimine (NeoForge) | `ftb-ultimine-neoforge-2101.1.15.jar` | 386134 | 8231400 | Etkin |
+| FTB XMod Compat | `ftb-xmod-compat-neoforge-21.1.9.jar` | 889915 | 8438602 | Etkin |
+| Functional Storage | `functionalstorage-1.21.1-1.5.4.jar` | 556861 | 6930104 | Etkin |
+| Fusion (Connected Textures) | `fusion-1.3.5-neoforge-mc1.21.1.jar` | 854949 | 8355160 | Etkin |
+| Fzzy Config | `fzzy_config-0.7.6+1.21+neoforge.jar` | 1005914 | 7568897 | Etkin |
+| Gateways to Eternity | `GatewaysToEternity-1.21.1-5.1.0.jar` | 417802 | 6926284 | Etkin |
+| GeckoLib | `geckolib-neoforge-1.21.1-4.9.2.jar` | 388172 | 8350073 | Etkin |
+| GeodeJei | `geodejei-1.1.jar` | 1351234 | 7239636 | Etkin |
+| GeOre | `GeOre-1.21.1-6.2.2.jar` | 530544 | 7563411 | Etkin |
+| GeOre Nouveau | `GeOre_Nouveau-1.21.1-0.5.9.jar` | 667803 | 7966736 | Etkin |
+| Glodium | `Glodium-1.21-2.2-neoforge.jar` | 957920 | 5821676 | Etkin |
+| Graveyards | `graveyards-1.0.0.jar` | 1117740 | 5797861 | Etkin |
+| Growth Accelerator Tiers | `growthacceleratortiers-1.0.4_neoforge_1.21.1.jar` | 1316818 | 7092792 | Etkin |
+| GTBC's SpellLib/API | `gtbcs_spell_lib-1.5.0-1.21.1.jar` | 1194714 | 7584985 | Etkin |
+| GuideME | `guideme-21.1.17.jar` | 1173950 | 8420861 | Etkin |
+| Hostile Neural Networks | `HostileNeuralNetworks-1.21.1-6.4.2.jar` | 552574 | 8321864 | Etkin |
+| ImmediatelyFast | `ImmediatelyFast-NeoForge-1.6.11+1.21.1.jar` | 686911 | 8348515 | Etkin |
+| Immersive Engineering | `ImmersiveEngineering-1.21.1-12.4.2-194.jar` | 231951 | 6733669 | Etkin |
+| Immersive Engineering JS | `immersive_engineering_js-2101.1.1.jar` | 1412446 | 8417023 | Etkin |
+| Industrial Foregoing | `industrialforegoing-1.21-3.6.38.jar` | 266515 | 7600395 | Etkin |
+| Industrial Foregoing Souls | `industrial-foregoing-souls-1.21.1-1.10.4.jar` | 904394 | 6235883 | Etkin |
+| Industrial Hellscape | `industrialhellscape-1.0.3.jar` | 1302110 | 8175736 | Etkin |
+| Inventory HUD+ | `inventoryhud.neoforged.1.21.1-3.4.28.jar` | 357540 | 6369797 | Etkin |
+| Iron's Lib | `irons_lib-1.21.1-2.1.0.jar` | 1492763 | 8364894 | Etkin |
+| Iron's Spells 'n Spellbooks | `irons_spellbooks-1.21.1-3.16.2.jar` | 855414 | 8364935 | Etkin |
+| Jade 🔍 | `Jade-1.21.1-NeoForge-15.10.5.jar` | 324717 | 7545219 | Etkin |
+| Jade Addons (Neo/Forge) | `JadeAddons-1.21.1-NeoForge-6.1.0.jar` | 583345 | 6315149 | Etkin |
+| JDT KubeJS | `jdtkubejs-1.0.0.jar` | 1595276 | 8356728 | Etkin |
+| JEI / REI / EMI WorldGen | `jeiworldgen-neoforge-1.21.1-1.4.0.jar` | 1509527 | 8440581 | Etkin |
+| JEI Gateways | `jei_gateways-1.1.2+mc1.21.1.jar` | 1556744 | 8245265 | Etkin |
+| JEI QuickCraft | `jei-quickcraft-1.21.1-neoforge-1.0.jar` | 1520978 | 8429819 | Etkin |
+| JEI Structures(EMI/JEI) | `jei_structures-1.21.1-1.4.jar` | 1568462 | 8410238 | Etkin |
+| JEMI | `emijeicompat-1.0.4.jar` | 1535330 | 8051717 | Etkin |
+| JourneyMap | `journeymap-neoforge-1.21.1-6.0.0.jar` | 32274 | 8325591 | Etkin |
+| Just Dire Things | `justdirethings-1.5.7.jar` | 1002348 | 7463040 | Etkin |
+| Just Enough Archaeology | `jearchaeology-1.21.1-1.2.0.jar` | 890755 | 7768445 | Etkin |
+| Just Enough Breeding (JEBr) | `justenoughbreeding-neoforge-1.21.1-3.1.0.jar` | 899386 | 8138627 | Etkin |
+| Just Enough Immersive Multiblocks | `jeimultiblocks-1.21.1-1.0.6.jar` | 634571 | 7131196 | Etkin |
+| Just Enough Items (JEI) | `jei-1.21.1-neoforge-19.39.0.368.jar` | 238222 | 8438425 | Etkin |
+| Just Enough Mekanism Multiblocks | `JustEnoughMekanismMultiblocks-1.21.1-7.15.jar` | 898746 | 7921149 | Etkin |
+| Just Enough Professions (JEP) | `JustEnoughProfessions-neoforge-1.21.1-4.0.5.jar` | 417645 | 7966681 | Etkin |
+| Just Enough Resources (JER) | `JustEnoughResources-NeoForge-1.21.1-1.6.0.17.jar` | 240630 | 6506298 | Etkin |
+| Kiwi 🥝 (Neo/Forge) | `Kiwi-1.21.1-NeoForge-15.8.7.jar` | 303657 | 8423062 | Etkin |
+| Konkrete | `konkrete_neoforge_1.9.9_MC_1.21.jar` | 410295 | 5453385 | Etkin |
+| Kotlin for Forge | `kotlinforforge-5.12.0-all.jar` | 351264 | 8335665 | Etkin |
+| Krypton Reno | `krypton_fnp-neoforge-1.21.1-0.2.28.1-1.21.1.jar` | 1269169 | 7461802 | Etkin |
+| KubeJS | `kubejs-neoforge-2101.7.2-build.368.jar` | 238086 | 8083208 | Etkin |
+| KubeJS Curios | `kubejs_curios_neoforge_1.21.1-1.0.4.jar` | 1255211 | 6825089 | Etkin |
+| KubeJS In Game Recipe Maker | `kjsigrm-1.4.1.jar` | 1500621 | 7983220 | Etkin |
+| KubeJS JEI | `kubejei-1.0.0.jar` | 1476466 | 7704322 | Etkin |
+| KubeJS Mekanism | `kubejs-mekanism-neoforge-2101.1.7-build.18.jar` | 418651 | 7213666 | Etkin |
+| KubeJS Metalworks (KubeJS Addon for Productive Metalworks) | `productive-metalworks-kubejs-addon-1.0.0.jar` | 1589907 | 8329295 | Etkin |
+| KubeJS Oritech | `kubejs_oritech-neoforge-1.21.1-0.4.4.jar` | 1153301 | 8056459 | Etkin |
+| L_Ender 's Cataclysm | `L_Ender's Cataclysm 1.21.1-3.32.jar` | 551586 | 8364209 | Etkin |
+| LaserIO | `laserio-1.9.11.jar` | 626839 | 5730007 | Etkin |
+| libIPN | `libIPN-neoforge-1.21.1-6.6.3.jar` | 679177 | 7810552 | Etkin |
+| Lionfish API | `lionfishapi-3.1.jar` | 1001614 | 8345326 | Etkin |
+| Lithostitched | `lithostitched-1.7.13-neoforge-21.1.jar` | 936015 | 8378498 | Etkin |
+| Little Big Redstone | `little-big-redstone-1.9.4-1.21.1.jar` | 1180560 | 8397033 | Etkin |
+| Logistics Network | `logisticsnetworks-1.21.1-1.10.1.jar` | 1448257 | 8381956 | Etkin |
+| Loot Integrations | `lootintegrations-1.21.1-4.7.jar` | 580689 | 6640970 | Etkin |
+| Loot Integrations: Better Archeology | `lootintegrations_betterarcheology-1.2.jar` | 1130800 | 6168609 | Etkin |
+| Loot Integrations: Born in Chaos | `lootintegrations_borninchaos-1.0.jar` | 1420691 | 7417334 | Etkin |
+| Loot Integrations: ChoiceTheorem's Overhauled Village & Immersive Structures | `lootintegrations_ctov-1.4.jar` | 1135500 | 6510009 | Etkin |
+| Loot Integrations: When Dungeons Arise & Co | `lootintegration_wda-1.8.jar` | 1142880 | 7925521 | Etkin |
+| LootJS: KubeJS Addon | `lootjs-neoforge-1.21.1-3.7.0.jar` | 570630 | 8009262 | Etkin |
+| Lootr (Forge & NeoForge) | `lootr-neoforge-1.21.1-1.11.37.122.jar` | 361276 | 8428025 | Etkin |
+| McJtyLib | `mcjtylib-1.21-9.0.21.jar` | 233105 | 8256201 | Etkin |
+| ME Requester | `merequester-neoforge-1.21.1-1.4.3.jar` | 688367 | 8285803 | Etkin |
+| ME Soul Card | `mesoulcard-1.1.1.jar` | 1445271 | 8046217 | Etkin |
+| MEGA Cells | `megacells-4.11.0.jar` | 622112 | 7952621 | Etkin |
+| MekaGenJei (Mekanism Generator addon) | `mekagenjei-1.2.jar` | 1347827 | 7224975 | Etkin |
+| MekaJadeUpgrades (Mekanism addon) | `mekajadeupgrade-1.3.jar` | 1400118 | 7588752 | Etkin |
+| Mekanism | `Mekanism-1.21.1-10.7.19.85.jar` | 268560 | 7904058 | Etkin |
+| Mekanism Generators | `MekanismGenerators-1.21.1-10.7.19.85.jar` | 268566 | 7904061 | Etkin |
+| Mekanism Tools | `MekanismTools-1.21.1-10.7.19.85.jar` | 268567 | 7904062 | Etkin |
+| Mekanistic Routers | `mekanisticrouters-1.2.0.jar` | 1148201 | 7511369 | Etkin |
+| Modern Dynamics | `Modern-Dynamics-0.9.6.jar` | 552758 | 6787236 | Etkin |
+| ModernFix | `modernfix-neoforge-5.27.20+mc1.21.1.jar` | 790626 | 8459650 | Etkin |
+| Modular Routers | `modular-routers-13.2.6+mc1.21.1.jar` | 250294 | 8429333 | Etkin |
+| Moonlight Lib | `moonlight-neoforge-1.21.1-3.1.1.jar` | 499980 | 8426304 | Etkin |
+| More Industrial Foregoing Addons (MIFA) | `mifa-neoforge-1.21.x-2.1.0.jar` | 1086142 | 6288756 | Etkin |
+| More Overlays Updated | `moreoverlays-1.24.2-mc1.21.1-neoforge.jar` | 391382 | 6981252 | Etkin |
+| Mouse Tweaks | `MouseTweaks-neoforge-mc1.21-2.26.1.jar` | 60089 | 5637846 | Etkin |
+| Naturalist | `naturalist-1.0.2-neoforge-1.21.1.jar` | 627986 | 8007879 | Etkin |
+| Nature's Spirit | `natures_spirit-2.2.5-1.21.1.jar` | 1044992 | 6962784 | Etkin |
+| NeoSync | `NeoSync-1.21.1-1.2.1.jar` | 1521718 | 8233799 | Etkin |
+| OpenBlocks Elevator | `elevatorid-neoforge-1.21.1-1.11.4.jar` | 250832 | 6199696 | Etkin |
+| Oritech | `oritech-neoforge-1.21.1-1.2.9.jar` | 1030830 | 8426648 | Etkin |
+| Pipez | `pipez-neoforge-1.21.1-1.2.31.jar` | 443900 | 8351631 | Etkin |
+| Placebo | `Placebo-1.21.1-9.9.1.jar` | 283644 | 6926281 | Etkin |
+| Placers - Immersive Engineering | `placers-1.21.1-1.3.1.jar` | 1262089 | 7883778 | Etkin |
+| playerAnimator | `player-animation-lib-forge-2.0.4+1.21.1.jar` | 658587 | 7389814 | Etkin |
+| PneumaticCraft: Repressurized | `pneumaticcraft-repressurized-8.2.20+mc1.21.1.jar` | 281849 | 8062194 | Etkin |
+| PolyLib | `polylib-2100.1.0-build.183-neoforge.jar` | 576589 | 7140477 | Etkin |
+| Polymorph (Fabric/Forge/Quilt) | `polymorph-neoforge-1.1.0+1.21.1.jar` | 388800 | 6794589 | Etkin |
+| Polymorphic Energistics | `polyeng-0.4.1.jar` | 941096 | 5545923 | Etkin |
+| Powah! (Rearchitected) | `Powah-6.2.10.jar` | 633483 | 8011715 | Etkin |
+| Presence Footsteps (NeoForge) | `PresenceFootsteps-1.21.1-1.12.0-beta.1-1.21NeoForge.jar` | 1390302 | 7252696 | Etkin |
+| Productive Metalworks | `productivemetalworks-1.21.1-1.15.0.jar` | 1184570 | 7884786 | Etkin |
+| Pufferfish's Attributes [Fabric & Forge & NeoForge] | `puffish_attributes-0.8.2-1.21-neoforge.jar` | 991341 | 7551339 | Etkin |
+| Pufferfish's Skills [Fabric & Forge & NeoForge] | `puffish_skills-0.18.1-1.21-neoforge.jar` | 835091 | 8408176 | Etkin |
+| Puzzles Lib | `PuzzlesLib-v21.1.52-1.21.1-NeoForge.jar` | 495476 | 8251525 | Etkin |
+| Quark | `Quark-4.1-482.jar` | 243121 | 8420966 | Etkin |
+| Regions Unexplored | `regions-unexplored-0.6.2-neoforge-21.1.jar` | 659110 | 8419667 | Etkin |
+| Reliable EMI (REMI) | `emixx-neoforge-1.21.1-3.1.2.jar.disabled` | 1411826 | 8384469 | **Devre dışı** |
+| Relics | `relics-1.21.1-0.10.7.8.jar` | 445274 | 7586568 | Etkin |
+| ReplicateMekanism | `replicatemekanism-1.0.7 - release.jar` | 1562720 | 8322354 | Etkin |
+| Replication | `Replication-1.21.1-1.2.7.jar` | 638351 | 7662870 | Etkin |
+| Replication AE2 Bridge | `rep_ae2_bridge-1.8.0.0.0-neoforge-1.21.1.jar` | 1264781 | 7742278 | Etkin |
+| Replication Matter Editor | `replication_matter_editor-1.0.3.jar` | 1421629 | 7426981 | Etkin |
+| Replication Tanks | `replication_tanks-1.21.1-NeoForge-1.0.0.jar` | 1440999 | 7508447 | Etkin |
+| Replication Upgrade | `rep_up-1.0.0.0.1-neoforge-1.21.1.jar` | 1476058 | 8214061 | Etkin |
+| Replication: Matter Overflow Tank | `replication_matter_overflow-1.21.1-NeoForge-1.2.1.jar` | 1377863 | 7239566 | Etkin |
+| Resourceful Config | `resourcefulconfig-neoforge-1.21-3.0.11.jar` | 714059 | 6467772 | Etkin |
+| Resourceful Lib | `resourcefullib-neoforge-1.21-3.0.12.jar` | 570073 | 5973188 | Etkin |
+| RFTools Base | `rftoolsbase-1.21-6.0.11.jar` | 326041 | 8256204 | Etkin |
+| RFTools Utility | `rftoolsutility-1.21-7.0.12.jar` | 342466 | 8256212 | Etkin |
+| Rhino | `rhino-2101.2.7-build.85.jar` | 416294 | 8218748 | Etkin |
+| Scorched Guns Neoforged | `ScorchedGuns-1.5.jar` | 1538807 | 8299074 | Etkin |
+| Searchables | `Searchables-neoforge-1.21.1-1.0.2.jar` | 858542 | 5831692 | Etkin |
+| Security Craft | `[1.21.1] SecurityCraft v1.10.2.1.jar` | 64760 | 8336498 | Etkin |
+| ShatterLib \| OctoLib | `OctoLib-NEOFORGE-0.6.2+1.21.jar` | 916747 | 8040848 | Etkin |
+| Shulker Box Tooltip [Fabric/Forge/NeoForge] | `shulkerboxtooltip-neoforge-5.1.9+1.21.1.jar` | 315811 | 7768285 | Etkin |
+| Simply Light | `simplylight-1.5.3+1.21.1-b4.jar` | 300331 | 6219029 | Etkin |
+| Smithing Template Viewer for JEI/EMI | `smithingtemplateviewer-1.0.4.jar` | 1133580 | 7452053 | Etkin |
+| Sodium | `sodium-neoforge-0.8.12+mc1.21.1.jar` | 394468 | 8382328 | Etkin |
+| Sophisticated Backpacks | `sophisticatedbackpacks-1.21.1-3.25.70.1985.jar` | 422301 | 8434183 | Etkin |
+| Sophisticated Core | `sophisticatedcore-1.21.1-1.4.73.2151.jar` | 618298 | 8434146 | Etkin |
+| Sophisticated JEI Index | `sophisticated_jei_index-1.1.0-neoforge-1.21.1.jar` | 1482785 | 8406786 | Etkin |
+| Sophisticated Storage | `sophisticatedstorage-1.21.1-1.5.76.1972.jar` | 619320 | 8434224 | Etkin |
+| Soulplied Energistics | `soulplied_energistics-1.0.3.jar` | 1143614 | 8333758 | Etkin |
+| Sound Physics Remastered | `sound-physics-remastered-neoforge-1.21.1-1.5.1.jar` | 535489 | 7032247 | Etkin |
+| spark | `spark-1.10.124-neoforge.jar` | 361579 | 6225208 | Etkin |
+| Structory | `Structory_26.2_v1.3.7.jar` | 636540 | 8396883 | Etkin |
+| Super Factory Manager ( SFM ) | `Super Factory Manager (SFM)-MC1.21.1-4.34.0.jar` | 306935 | 8370241 | Etkin |
+| SuperMartijn642's Core Lib | `supermartijn642corelib-1.1.21-neoforge-mc1.21.jar` | 454372 | 7783425 | Etkin |
+| Supplementaries | `supplementaries-neoforge-1.21.1-3.8.0.jar` | 412082 | 8419225 | Etkin |
+| Supplementaries Squared | `suppsquared-neoforge-1.21-1.2.18.jar` | 838411 | 8268988 | Etkin |
+| Tardis Remote | `tardis-remote-addon-1.0.0.jar` | 1463582 | 7662958 | Etkin |
+| TerraBlender (NeoForge) | `TerraBlender-neoforge-1.21.1-4.1.0.8.jar` | 940057 | 6054947 | Etkin |
+| Tesseract API (NeoForge) | `tesseract-api-neoforge-1.12.8-1.21.1.jar` | 1067672 | 8421703 | Etkin |
+| Titanium | `titanium-1.21-4.0.43.jar` | 287342 | 7951516 | Etkin |
+| Torchmaster | `torchmaster-neoforge-1.21.1-21.1.9.jar` | 254268 | 7197218 | Etkin |
+| Towns and Towers | `t_and_t-neoforge-fabric-1.13.9+1.21.1.jar` | 626761 | 8130049 | Etkin |
+| TrashSlot | `trashslot-neoforge-1.21.1-21.1.11.jar` | 235577 | 8163135 | Etkin |
+| TxniLib | `txnilib-neoforge-1.0.24-1.21.1.jar` | 1104882 | 6533725 | Etkin |
+| Visual Workbench | `VisualWorkbench-v21.1.1-1.21.1-NeoForge.jar` | 500273 | 6798196 | Etkin |
+| WorldEdit | `worldedit-mod-7.3.8.jar` | 225608 | 5830452 | Etkin |
+| YUNG's API (NeoForge) [1.20.4-1.21.1 ONLY] | `YungsApi-1.21.1-NeoForge-5.1.6.jar` | 1015100 | 6715463 | Etkin |
+| YUNG's Better Caves (Forge/NeoForge) | `YungsBetterCaves-1.21.1-NeoForge-3.1.4.jar` | 340583 | 6939522 | Etkin |
+| YUNG's Better Desert Temples (NeoForge) [1.20.4 - 1.21.1 ONLY] | `YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar` | 1015114 | 6276955 | Etkin |
+| YUNG's Better Dungeons (NeoForge) [1.20.4 - 1.21.1 ONLY] | `YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar` | 1015112 | 5954804 | Etkin |
+| YUNG's Better End Island (NeoForge) [1.20.4 - 1.21.1 ONLY] | `YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar` | 1015127 | 6300968 | Etkin |
+| YUNG's Better Jungle Temples (NeoForge) [1.20.4 - 1.21.1 ONLY] | `YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar` | 1015123 | 5924482 | Etkin |
+| YUNG's Better Mineshafts (NeoForge) [1.20.4 - 1.21.1 ONLY] | `YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar` | 1015096 | 5812193 | Etkin |
+| YUNG's Better Nether Fortresses (NeoForge) [1.20.4 - 1.21.1 ONLY] | `YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar` | 1015118 | 6606621 | Etkin |
+| YUNG's Better Ocean Monuments (NeoForge) [1.20.4 - 1.21.1 ONLY] | `YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar` | 1015115 | 5924487 | Etkin |
+| YUNG's Better Strongholds (NeoForge) [1.20.4 - 1.21.1 ONLY] | `YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar` | 1015105 | 6272264 | Etkin |
+| YUNG's Better Witch Huts (NeoForge) [1.20.4 - 1.21.1 ONLY] | `YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar` | 1015144 | 5812532 | Etkin |
+| YUNG's Cave Biomes (Forge/NeoForge) | `YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar` | 1111586 | 6913179 | Etkin |
+| YUNG's Extras (NeoForge) [1.20.4 - 1.21.1 ONLY] | `YungsExtras-1.21.1-NeoForge-5.1.1.jar` | 1015146 | 5812546 | Etkin |
+| Zeta | `Zeta-1.1-40.jar` | 968868 | 7980010 | Etkin |
+
+## Resource pack dosyaları (4)
+
+| Ad | Dosya | CurseForge Project ID | File ID | Durum |
+|---|---|---:|---:|---|
+| BBL Colors - Connected Textures | `BBL-Colors-Connected-Textures_2.0.zip` | 1271095 | 7441335 | Etkin |
+| Clear Glass with Connected Textures! [16x] | `Clear Glass Pack 1.21.zip` | 286633 | 5431060 | Etkin |
+| Connected Textures By Blond | `Connected Textures By Blond 26.2 - 1.14 - 1.0.0.zip` | 1572682 | 8238804 | Etkin |
+| MC Connected CTM | `MC Connected CTM v1.6-1.21.1.zip` | 435198 | 6021419 | Etkin |
+
+## Shader pack dosyaları (4)
+
+| Ad | Dosya | CurseForge Project ID | File ID | Durum |
+|---|---|---:|---:|---|
+| AstraLex Shaders | `§r§lAstra§4§lLex§r§l_By_LexBoosT_§4§lV93.0§r§l.zip` | 406081 | 5434888 | Etkin |
+| Bliss Shaders | `Bliss_v2.1.2_(Chocapic13_Shaders_edit).zip` | 610844 | 7251787 | Etkin |
+| Complementary Shaders - Unbound | `ComplementaryUnbound_r5.8.1.zip` | 385587 | 8123288 | Etkin |
+| Photon Shader | `photon_v1.3b.zip` | 1312687 | 7927503 | Etkin |
+
+## Güncelleme kuralı
+
+1. CurseForge instance güncellendikten sonra `tools/refresh-from-instance.ps1` ile kilit ve manifest yenilenir.
+2. `tools/update-mod-list.ps1` çalıştırılarak bu liste yeniden üretilir.
+3. Değişiklikler test edilip GitHub ana deposuna gönderilir.
+
+Paketin makineye uygulanması ve iki bilgisayarlı çalışma düzeni için [Workspace Sync](../docs/WORKSPACE_SYNC.md) belgesine bakın.

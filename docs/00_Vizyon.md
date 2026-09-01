@@ -1,263 +1,33 @@
----
-# 📄 Belge Bilgileri
+# New World vizyonu
 
-| Özellik | Değer |
-|---------|--------|
-| **Belge** | 00_Vizyon.md |
-| **Sürüm** | **1.1** |
-| **Durum** | ✅ Onaylandı |
-| **Son Güncelleme** | **20.07.2026** |
----
+Durum: aktif tasarım ilkesi
 
-# 🌌 New World – Vizyon Belgesi
+## Amaç
 
-> **"Bilgi, bu evrendeki en değerli kaynaktır."**
+New World, teknoloji modlarını tek tek sergileyen bir paket değil; keşif, bilgi ve gemi sistemlerini aynı ilerleme döngüsünde birleştiren bilim kurgu deneyimidir. Oyuncu hazır bir teknoloji ağacını tüketmek yerine bilinmeyen kaynakları tanımlar, araştırır ve gemisinin yeteneklerine dönüştürür.
 
----
+## Temel ilkeler
 
-# 🚀 Neden New World?
+1. **Bilgi ilerlemenin ana para birimidir.** Bir kaynağı görmek onu otomatik olarak üretilebilir yapmaz.
+2. **Keşif somut sonuç verir.** Radar verisi, jeolojik deposit, yapı keşfi ve rota geçmişi başka sistemleri açar.
+3. **Gemi oyunun kalbidir.** Üs; odaları, ağı, depolaması, motoru ve navigasyonu gelişen yaşayan bir sistemdir.
+4. **Otomasyon amaç değil araçtır.** Üretim, araştırılmış bilginin ve kurulmuş altyapının sonucudur.
+5. **Bir gerçek kaynak için tek kimlik kullanılır.** Aynı mineral farklı modlarda bulunuyorsa gereksiz duplicate deposit oluşturulmaz.
+6. **Karmaşık sistemler okunabilir olmalıdır.** GUI, telemetri, CC:Tweaked ve açık durum mesajları oyuncuya neden-sonuç göstermelidir.
+7. **İlerleme geri döndürülebilir ve test edilebilir olmalıdır.** Alpha sistemleri bilinen iyi buildler üzerinden geliştirilir.
 
-Minecraft teknoloji mod paketlerinin büyük çoğunluğu uzun yıllardır benzer bir ilerleme döngüsünü kullanmaktadır.
+## Oyuncuda hedeflenen his
 
-```text
-Daha fazla kaynak topla
-        ↓
-Daha büyük makineler kur
-        ↓
-Daha fazla üret
-        ↓
-Daha büyük fabrikalar kur
-```
+- Bilinmeyeni çözme merakı
+- Hasarlı bir sistemi gerçekten onarma duygusu
+- Yeni bilgiyle açılan somut yetenekler
+- Uzak hedeflere hazırlanmanın ağırlığı
+- Dev bir araştırma gemisinin giderek canlandığını görme
 
-Bu sistem yıllardır oyunculara keyifli bir deneyim sunmaktadır. Ancak zamanla keşif, araştırma ve merak duygusu geri planda kalmış; oyun büyük ölçüde üretim ve kaynak toplama üzerine kurulmuştur.
+## Bugünkü uygulama karşılığı
 
-**New World**, bu döngüyü değiştirmek amacıyla geliştirilmektedir.
+Vizyon artık yalnızca fikir değildir. Oda/matrix, gemi ağı, Mining M1, jeolojik depositler, yapı radarı, navigasyon, rota geçmişi, replikasyon bilgisi ve deneysel TARDIS seyahati alpha buildlerinde bulunur. Araştırma içerik zinciri, Production Chamber’lar, genetik gelişim ve nihai hikâye akışı ise henüz tamamlanmamıştır.
 
-Bu mod paketinin amacı oyuncuya yalnızca daha güçlü makineler yaptırmak değildir.
+## Başarı ölçütü
 
-Amaç;
-
-- 🌍 Bilinmeyeni araştırmak,
-- 🔬 Kayıp teknolojileri yeniden keşfetmek,
-- 🧪 Yeni elementleri analiz etmek,
-- 🚀 Hasarlı uzay gemisini yeniden çalıştırmak,
-- 🧬 Kendi sınırlarını aşmak,
-- 🌌 Ve sonunda kendi evrenine dönebilecek bilgiye ulaşmaktır.
-
-Bu evrende en değerli kaynak;
-
-Demir değildir.
-
-Bakır değildir.
-
-Uranyum değildir.
-
-> **Bilgidir.**
-
----
-
-# 🌌 Vizyonumuz
-
-New World; oyuncuyu yalnızca fabrika kuran bir mühendis değil, bilinmeyen bir evrende mahsur kalmış bir bilim insanı gibi hissettirmeyi amaçlayan; keşif, araştırma, hikâye, otomasyon ve bilim kurgu odaklı bir Minecraft mod paketidir.
-
-Oyuncu yeni teknolojileri **üreterek değil**;
-
-- araştırarak,
-- keşfederek,
-- analiz ederek,
-- deneyler yaparak
-
-elde eder.
-
-Her yeni teknoloji yalnızca yeni bir eşya kazandırmamalı;
-
-oyuncuya yeni bir bakış açısı ve yeni bir oynanış deneyimi sunmalıdır.
-
----
-
-# 🎯 Temel Tasarım İlkeleri
-
-## 📚 Bilgi İlerlemenin Temelidir
-
-Oyuncunun gerçek ilerlemesi sahip olduğu eşyalarla değil, öğrendiği bilgilerle ölçülür.
-
-Araştırma yapılmadan teknoloji gelişmez.
-
-Bilgi olmadan üretim mümkün değildir.
-
----
-
-## 🌍 Keşif Teknolojiyi Doğurur
-
-Yeni teknolojiler görev ödülü değildir.
-
-Keşfin doğal sonucudur.
-
-Oyuncu yeni gezegenlere yalnızca kaynak toplamak için gitmez.
-
-Her yeni bölge;
-
-- yeni bilgiler,
-- yeni sorular,
-- yeni araştırmalar
-
-sunmalıdır.
-
----
-
-## 🏭 Otomasyon Bir Amaç Değildir
-
-New World'de otomasyon oyunun amacı değildir.
-
-Bilimsel ilerlemeyi mümkün kılan araçtır.
-
-Oyuncu daha fazla eşya üretmek için fabrika kurmaz.
-
-Yeni araştırmalar yapabilmek, karmaşık deneyler gerçekleştirebilmek ve uzay gemisini geliştirebilmek için otomasyon sistemleri kurar.
-
----
-
-## 🚀 Uzay Gemisi Oyunun Kalbidir
-
-Oyuncunun ana üssü sıradan bir ev değildir.
-
-Bir uzay gemisidir.
-
-Bu gemi yalnızca depolama alanı değil;
-
-oyuncunun yolculuğunu,
-
-ilerleyişini
-
-ve hikâyesini temsil eder.
-
-Oyuncu geliştikçe yalnızca kendisi değil;
-
-gemisi de gelişir.
-
-Yeni laboratuvarlar,
-
-araştırma merkezleri,
-
-üretim odaları
-
-ve gemi sistemleri zamanla tekrar aktif hâle gelir.
-
----
-
-## 🧬 Oyuncu Evrim Geçirir
-
-Oyuncu yalnızca ekipmanını geliştirmez.
-
-Kendi bedenini de geliştirir.
-
-Minecraft'taki klasik iksir sistemi yerine;
-
-- Genetik geliştirmeler
-- Biyolojik modifikasyonlar
-- Teknolojik implantlar
-
-kullanılır.
-
-Oyuncu zamanla fiziksel olarak değişir ve bu değişim oynanışı doğrudan etkiler.
-
----
-
-# ❌ New World Ne Değildir?
-
-New World;
-
-- ❌ Bir Kitchen Sink mod paketi değildir.
-- ❌ Bir GregTech klonu değildir.
-- ❌ Yalnızca zor tariflerden oluşan klasik bir Expert mod paketi değildir.
-- ❌ Oyuncuyu saatlerce aynı cevheri kazmaya zorlayan bir madencilik oyunu değildir.
-- ❌ Sürekli daha büyük makineler kurmaya dayalı klasik teknoloji mod paketi değildir.
-- ❌ Amaçsız otomasyon üzerine kurulu değildir.
-
-Bu projede;
-
-- Her sistemin bir nedeni,
-- Her teknolojinin bir amacı,
-- Her görevin bir hikâyesi vardır.
-
----
-
-# 💭 Oyuncunun Hissetmesini İstediğimiz Duygular
-
-| Oyun Aşaması | Oyuncunun Hissetmesi Gerekenler |
-|--------------|--------------------------------|
-| 🌑 Başlangıç | Yalnızlık, belirsizlik, merak, çaresizlik |
-| 🌍 Orta Oyun | Keşfetme heyecanı, öğrenme isteği, gelişme hissi, umut |
-| 🚀 Final | Başarma duygusu, kendi emeğiyle gelişmiş olmanın gururu, bilinmeyeni çözmenin tatmini |
-
-Oyuncu oyunu bitirdiğinde;
-
-> "Yeni makineler yaptım."
-
-demek yerine;
-
-> **"Gerçekten bilinmeyen bir evrende kaybolmuş bir bilim insanı gibi hissettim."**
-
-diyebilmelidir.
-
----
-
-# 📜 Tasarım Kuralları
-
-Bu ilkeler proje boyunca değişmeyecektir.
-
-1. 🚀 Her yeni teknoloji yeni bir oynanış sunmalıdır. Daha hızlı çalışan aynı makine kabul edilmez.
-
-2. ⚙️ Oyuncu aynı işi uzun süre tekrar etmeye zorlanmaz. Tekrarlayan işler mümkün olan en erken aşamada otomasyona devredilir.
-
-3. 📚 Bilgi her zaman ham maddeden daha değerlidir.
-
-4. 📖 Her büyük mekanik hikâyeye hizmet etmelidir. Hikâyeden bağımsız sistemler eklenmez.
-
-5. 🌍 Keşif her zaman ödüllendirilmelidir.
-
-6. 🧬 Oyuncu gemisini, teknolojisini, ekipmanını ve kendisini geliştirebilmelidir.
-
-7. 🔬 Hiçbir sistem yalnızca oyun süresini uzatmak amacıyla eklenmez. Her özellik oyuncunun merak duygusunu artırmalıdır.
-
----
-
-# 🏆 Başarı Ölçütümüz
-
-New World'ün başarısı;
-
-oyuncunun kaç saat oynadığıyla değil,
-
-oyun sonunda ne hissettiğiyle ölçülecektir.
-
-Oyuncu oyunu bitirdiğinde;
-
-> **"Ben yalnızca Minecraft oynamadım."**
-
-> **"Gerçekten kayıp bir bilim insanının yolculuğunu yaşadım."**
-
-diyebiliyorsa,
-
-New World amacına ulaşmış demektir.
-
----
-
-# 💙 Son Söz
-
-New World yalnızca yeni modlar ekleyen bir Minecraft mod paketi değildir.
-
-Bu proje;
-
-- keşfetmenin,
-- öğrenmenin,
-- araştırmanın,
-- deney yapmanın,
-- bilinmeyeni anlamaya çalışmanın
-
-oyunudur.
-
-Minecraft ise bu hikâyeyi anlatmak için kullandığımız platformdur.
-
----
-
-> **"Bilgi, her yolculuğun başlangıcıdır."**
+Oyuncu bir özelliği “mod listesindeki makine” olarak değil; keşfettiği, anladığı ve gemisine entegre ettiği bir teknoloji olarak deneyimlemelidir.

@@ -27,7 +27,7 @@ Last synchronized: 2026-09-01
 ## Geology resource rules
 
 - One deposit family per real resource, not one duplicate per mod.
-- Mekanism: Osmium, Tin, Lead, Uranium, Fluorite.
+- Current `0.5.57.0` Mekanism deposits: Osmium, Tin, Lead, Uranium. Fluorite is planned, not active in this build.
 - Immersive Engineering: Aluminum, Nickel, Silver; share Lead and Uranium families.
 - Create: Zinc.
 - Oritech: Nickel and Platinum.

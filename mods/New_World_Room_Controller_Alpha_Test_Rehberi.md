@@ -1,123 +1,178 @@
-# New World Room Controller — Alpha Test Rehberi
+# New World Özel JAR'lar — Alpha Test Rehberi
 
-## Kurulacak JAR dosyaları
+Bu belge, eski `0.1.0-alpha` Room Controller denemesinin yerine güncel New World özel JAR ikilisinin test rehberidir.
 
-1. `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-RoomSystems-v0.1.jar`
-2. `NewWorldCore-1.21.1-NeoForge-0.1.0-alpha.jar`
+## Test edilen build'ler
 
-`mods` klasöründe başka bir DoctorWhoMod JAR'ı bulunmamalıdır. Architectury API kurulu kalmalıdır.
+| Bileşen | Dosya | SHA-256 |
+|---|---|---|
+| NewWorldCore | `NewWorldCore-1.21.1-NeoForge-0.5.57.0-alpha-mekanism-geology-deposits.jar` | `09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc` |
+| DoctorWhoMod fork | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` |
 
-## İlk test
+## Testten önce
 
-Dünyaya girdikten sonra Creative modda aşağıdaki komutları kullanın:
+1. Dünya klasörünü yedekle.
+2. `mods/` içinde her özel JAR'ın yalnızca bir sürümü bulunduğunu doğrula.
+3. Upstream DoctorWhoMod ile New World DoctorWhoMod fork'unun birlikte bulunmadığını kontrol et.
+4. `manifest.json` / `pack-lock.json` kurulumu ile yerel instance'ın aynı sürümde olduğundan emin ol.
+5. İlk testi üretim dünyası yerine ayrı bir test dünyasında yap.
 
-```mcfunction
-/give @s newworldcore:fe_room_controller
-/give @s newworldcore:fe_storage_cell 4
-/give @s newworldcore:fe_io_module 1
-/give @s newworldcore:fe_provider 2
-/give @s newworldcore:fe_emergency_capacitor 1
-```
+## Hızlı açılış testi
 
-Controller'ın tarama alanı sabit olarak controller merkezli **15 × 9 × 15** alandır:
+### 1. Mod yükleme
 
-- X: controller'dan -7 ile +7
-- Y: controller'dan -1 ile +7
-- Z: controller'dan -7 ile +7
+- Oyun ana menüye ulaşıyor.
+- Mod listesinde `dwm`, `newworldcore`, `newworldmatrix`, `newworldshipdecor` ve `newworldnetwork` yükleniyor.
+- Eksik bağımlılık, duplicate mod veya registry hatası oluşmuyor.
+- `latest.log` içinde özel JAR'lara ait fatal hata bulunmuyor.
 
-Modülleri bu alanın içine yerleştirin.
+### 2. DoctorWhoMod yapıları
 
-Controller'a sağ tıklayın:
+- Başlangıç TARDIS'i fiziksel olarak oluşuyor.
+- Ana köprü yaklaşık `43 × 36 × 59` yapısıyla eksiksiz yükleniyor.
+- Alçak, yüksek, büyük ve ekstra büyük oda varyantları doğru yapıyla değiştirilebiliyor.
+- Koridor ve teleporter odası bağlantıları kopuk blok bırakmıyor.
+- AE2 / Replication alanlarında eski veya istenmeyen depolama blokları oluşmuyor.
+- Oyundan çıkıp girince başlangıç motor parçaları ikinci kez eklenmiyor.
 
-1. `TARA`
-2. Yapı geçerliyse `BUTUNLESTIR`
-3. Odadaki bir modülü kırmayı ve yeni blok koymayı deneyin; işlem engellenmelidir.
-4. Controller GUI'sinden `AYIR` seçin.
-5. Modüller tekrar kırılabilir ve yerleştirilebilir olmalıdır.
+### 3. Oda denetleyicisi ve gemi ağı
 
-FE odasının geçerli olması için en az:
+- Room Controller odayı doğru sınırlar içinde tanıyor.
+- Oda koruması yetkisiz kırma / yerleştirme işlemlerini beklenen biçimde engelliyor.
+- Oda değişimi sonrasında eski sınır ve kayıtlar temizleniyor.
+- Engine Matrix gemiye doğru bağlanıyor ve enerji değerleri tutarlı görünüyor.
+- Network ve CC:Tweaked ekranları yeniden başlatma sonrasında aynı gemiyi buluyor.
+- Acil FE rezervini yalnızca `Priority 100` çıkışlar tüketebiliyor.
 
-- 1 × FE Storage Cell
-- 1 × FE I/O Module
+## Sistem testleri
 
-gerekir.
+### 4. Mining M1
 
-FE kapasitesi şu şekilde hesaplanır:
+Madencilik döngüsü iki ayrı aşamada test edilmelidir:
 
-- Temel kapasite: 1.000.000 FE
-- Her Storage Cell: +1.000.000 FE
-- Her Emergency Capacitor: +250.000 FE
+1. **Scan:** Bölge taranır ve hedef aileleri gösterilir.
+2. **Extraction:** Handbrake ve Mining Shield koşulları sağlanınca çıkarım başlar.
 
-Örnek olarak 4 Storage Cell ve 1 Emergency Capacitor ile toplam kapasite **5.250.000 FE** olmalıdır. TARDIS Features ekranındaki enerji kapasitesinden kontrol edin.
+Kontrol listesi:
 
-## Warp Room test komutları
+- [ ] Handbrake kapalıyken extraction başlamıyor.
+- [ ] Mining Shield etkin değilken extraction başlamıyor.
+- [ ] FE maliyeti doğru düşüyor.
+- [ ] Derin depolama tamponları doluyor.
+- [ ] Aynı cevher ailesi içindeki bloklar doğru birlikte işleniyor.
+- [ ] 0.5.56.2 strict-family guard farklı cevher ailesine taşmıyor.
+- [ ] Yükseltmeler hız, maliyet veya kapasiteyi beklenen yönde etkiliyor.
+- [ ] Çıktı AE2 / Replication yönüne aktarılabiliyor.
+- [ ] `newworld_mining` bilgisayarı terminal ve dashboard verilerini gösteriyor.
 
-```mcfunction
-/give @s newworldcore:warp_room_controller
-/give @s newworldcore:warp_capacitor 2
-/give @s newworldcore:warp_converter 1
-/give @s newworldcore:warp_efficiency_coil 2
-/give @s newworldcore:warp_catalyst_chamber 1
-```
+### 5. Yapı radarı ve navigasyon
 
-Geçerlilik için en az:
+- Structure Radar yakın yapıları buluyor.
+- Görülmüş yapılar veritabanına kaydoluyor.
+- Geçmiş ve favoriler yeniden açılışta korunuyor.
+- Tek rota ve çok duraklı rota hesaplaması sonuç üretiyor.
+- `newworld_navigation` istasyonu doğru verileri gösteriyor.
+- `DEPOSITS` sekmesi jeoloji yataklarını listeliyor.
+- Boyut değişiminde eski radar sonuçları yeni konumla karışmıyor.
 
-- 1 × Warp Capacitor
-- 1 × Warp Converter
+### 6. Jeoloji yatakları
 
-gerekir.
+Vanilla yatak aileleri için en az bir örnek doğrulanmalıdır:
 
-Bu alpha sürümünde Warp odası taranır, bütünleştirilir ve korunur; gerçek FE → WE dönüşümü henüz aktif değildir.
+- Overworld: demir, bakır, karbon, altın, redstone, lapis, elmas, zümrüt
+- Nether: quartz
 
-## Engine Room test komutları
+`0.5.57.0-alpha-mekanism-geology-deposits` build'inde ayrıca şu Mekanism yatakları aktiftir:
 
-```mcfunction
-/give @s newworldcore:engine_room_controller
-/give @s newworldcore:engine_range_coil 2
-/give @s newworldcore:engine_efficiency_module 1
-/give @s newworldcore:engine_stabilizer 1
-/give @s newworldcore:engine_dimensional_drive 1
-/give @s newworldcore:engine_universal_drive 1
-```
+| Yatak | Dahili aile |
+|---|---|
+| Osmium-rich | `osmium_strata` |
+| Tin-rich | `tin_lode` |
+| Lead-rich | `lead_galena` |
+| Uranium-rich | `uranium_pitchblende` |
 
-Geçerlilik için en az:
+Lead ve Uranium yataklarında negatif Y seviyelerindeki deepslate varyantları ayrıca kontrol edilmelidir.
 
-- 1 × Engine Range Coil
-- 1 × Engine Efficiency Module
+> Fluorite bu build'in gömülü `0.5.57.0` yatak listesinde yoktur. Planlanan genişleme olarak kalır; aktif özellik gibi raporlanmamalıdır.
 
-gerekir.
+Her yatak için:
 
-Bu alpha sürümünde Engine odası taranır, bütünleştirilir ve korunur; menzil ve dimension uçuş hesapları henüz TARDIS Flight sistemine bağlanmamıştır.
+- [ ] Dünya üretiminde fiziksel bloklar oluşuyor.
+- [ ] Radar aynı yatağı doğru aile adıyla görüyor.
+- [ ] Mining M1 aynı aileyi tarayıp çıkarabiliyor.
+- [ ] Dünya yeniden açıldığında işaretçi ve keşif kaydı korunuyor.
 
-## Bu alpha sürümünde çalışanlar
+### 7. Replication bağlantısı
 
-- Üç farklı Room Controller bloğu
-- ARS Creator tarzında kırmızı, beyaz ve turuncu controller görselleri
-- Controller GUI
-- Tara / Bütünleştir / Ayır işlemleri
-- Sabit oda alanında modül sayımı
-- Bütünleştirilmiş odada oyuncu kırma ve blok koyma koruması
-- Oda durumunun dünya kaydında saklanması
-- FE odasının TARDIS enerji kapasitesini değiştirmesi
-- Önceki DoctorWhoMod worldgen düzeltmesi
-- Gerçek FE miktarı getter/setter düzeltmeleri
-- TARDIS Features ekranındaki enerji göstergesi
+Aktif KubeJS kurallarıyla birlikte test et:
 
-## Henüz eklenmeyenler
+- [ ] Matter değeri olan sıradan eşyalar parçalanabiliyor.
+- [ ] Yalnızca izin verilen doğal kaynaklar taranabiliyor.
+- [ ] Terminal yalnızca öğrenilmiş kaynakları üretiyor.
+- [ ] Raw ore kaynaklarının özel Matter değerleri uygulanıyor.
+- [ ] Normal Certus Quartz çalışıyor, Charged Certus üretim zincirine girmiyor.
+- [ ] Flint taranamıyor, üretilemiyor ve parçalanamıyor.
+- [ ] Ortak mineral etiketleri aynı ailede kopya bilgi oluşturmuyor.
+- [ ] Replication Chip Storage sökülüp takılınca bilgi geri yükleniyor.
 
-- Patlama, piston, sıvı, yangın ve WorldEdit koruması
-- Serbest boyutlu oda sınırı / Room Anchor sistemi
-- Warp Energy deposu ve FE → WE dönüşümü
-- Catalyst envanteri
-- Engine Room menzil ve uçuş maliyeti etkileri
-- Dimension ve evren sürüşünün gerçek Flight bağlantısı
-- Özel Creative Tab
+### 8. Motor ve yolculuk
 
-## Hata durumunda
+| Senaryo | Beklenen sonuç |
+|---|---|
+| Aynı boyutta yerel rota | Standart yolculuk başlar |
+| Aynı namespace'te farklı boyut | Planetary veya Universal Drive gerekir; taban 500 WE |
+| Farklı namespace / evren sınıfı | Universal Drive gerekir; taban 2.500 WE |
 
-Oyun açılmazsa veya controller'a sağ tıklayınca çökerse şu dosyaları gönderin:
+Ayrıca Converter'ın temel üretiminin saniyede `1 WE` olduğu, stabilizasyon ve cooldown değerlerinin panelde güncellendiği doğrulanmalıdır.
+
+### 9. Kalıcılık testi
+
+Önemli her testin ardından oyundan tamamen çık, instance'ı yeniden aç ve şunları kontrol et:
+
+- TARDIS iç/dış konumu
+- Oda sınırları ve sahiplik
+- Engine Matrix bağlantısı ve enerji
+- Radar geçmişi ve favoriler
+- Navigasyon rotaları
+- Jeoloji keşifleri
+- Mining M1 kuyruk ve tamponları
+- Replication öğrenilmiş kaynakları
+- CC:Tweaked bilgisayar rol bağlantıları
+
+## Güncel kapsam
+
+### Bu build'de bulunan sistemler
+
+- Room Controller ve oda koruması
+- Engine Matrix, gemi ağı ve öncelikli enerji çıkışları
+- Mining M1 tarama / çıkarım döngüsü
+- Structure Radar ve navigasyon
+- Vanilla ile dört Mekanism jeoloji yatak ailesi
+- CC:Tweaked terminal ve telemetri bağlantıları
+- Replication bilgi ve kaynak akışı entegrasyonu
+- DoctorWhoMod başlangıç TARDIS'i, özel köprü ve oda yapıları
+- Yerel, gezegenler arası ve evrensel yolculuk sınıfları
+
+### Hâlâ genişletilecek veya tam doğrulanacak alanlar
+
+- Fluorite ve diğer modlara ait yeni jeoloji yatakları
+- Tam araştırma / teknoloji ağacı
+- Production Chamber'ın nihai üretim tarifleri
+- Genetik sisteminin son oynanış döngüsü
+- Uzun süreli sunucu ve çok oyunculu dayanıklılık testleri
+
+## Hata raporu için toplanacaklar
+
+Bir sorun çıktığında şu dosya ve bilgileri birlikte kaydet:
 
 - `logs/latest.log`
-- varsa `crash-reports` klasöründeki en yeni rapor
+- Varsa crash report
+- Kullanılan iki özel JAR'ın tam dosya adları ve SHA-256 değerleri
+- Dünya adı, boyut ve koordinat
+- Hatanın oluşması için gereken kısa adımlar
+- Yeniden başlatma sonrası sürüp sürmediği
+- Mümkünse ekran görüntüsü veya kısa video
 
-Bu sürüm gerçek oyun ortamında henüz çalıştırılmadığı için ilk test özellikle mod yükleme ve NeoForge API bağlantısını doğrulamak içindir.
+## Başarı ölçütü
+
+Build, açılış testinden geçip ana köprü ve oda yapılarını yüklediğinde; Mining M1, radar, navigasyon, jeoloji, Replication ve üç yolculuk sınıfı yeniden başlatma sonrasında veri kaybetmeden çalıştığında alpha kabul testini geçmiş sayılır.

@@ -1,301 +1,42 @@
----
-Belge: 09_Replikatör.md
-Sürüm: 1.0
-Durum: Taslak
-Son Güncelleme: 14.07.2026
----
+# Replikasyon sistemi
 
-# 🧬 09 - Replikatör
+Durum: KubeJS tabanlı alpha uygulama aktif
 
-> **"Bilgi olmadan hiçbir madde üretilemez."**
+## Temel ilke
 
----
+Replikasyon üç koşul ister:
 
-# Replikatör Nedir?
+1. Kaynağın tanımlanmış bilgisi
+2. Uygun Matter türü ve miktarı
+3. Gerekli enerji ve çalışan gemi altyapısı
 
-Replikatör, New World'ün en önemli teknolojilerinden biridir.
+## Aktif paket kuralları
 
-Oyuncunun sürekli aynı kaynakları toplamasını engellemek amacıyla geliştirilmiştir.
+- Normal eşyalar geçerli Matter değeri varsa parçalanabilir.
+- Normal eşyalar Identification Chamber’da doğal kaynak gibi taranamaz.
+- Yalnızca tanımlanan doğal kaynaklar taranabilir.
+- Replication Terminal yalnız öğrenilmiş kaynakları üretir.
+- Varsayılan Replication Matter tarifleri korunur.
+- Ham madenlere New World’e özel Matter değerleri verilir.
+- Ortak raw taglerinde bulunan tanımsız madenler için kontrollü fallback kullanılır.
+- Normal Certus Quartz üretilebilir.
+- Charged Certus Quartz taranamaz ve üretilemez.
+- Flint taranamaz, üretilemez ve Matter’a parçalanamaz.
 
-Bu sistem sayesinde;
+## Mineral aileleri
 
-önceden analiz edilmiş ve veri tabanına kaydedilmiş maddeler,
+KubeJS betiği modlar arası ortak tagleri ve açık item kimliklerini aynı kaynak kategorisinde birleştirir. Lead, Nickel ve Uranium gibi kaynaklarda duplicate bilgi kaydı oluşmaması hedeflenir. Uraninite ayrı kategoridir.
 
-yeterli enerji ve gerekli elementler bulunduğu sürece tekrar üretilebilir.
+## Mining bağlantısı
 
-Replikatör bir "hile makinesi" değildir.
+Mining Terminal, canlı Replication Chip Storage bilgisini ve daha önce öğrenilmiş kalıcı kaynak bilgisini birleştirir. Bir routing kuralı tek başına kaynağı “öğrenilmiş” yapmaz.
 
-Bilimsel bir üretim sistemidir.
+## Güvenlik
 
----
+- Bilinmeyen kaynaklar terminalde maskelenir.
+- Flint ve özel hazard hedefleri normal çıkarma/vein davranışından ayrılır.
+- Kayıp yakınlık bağlantısı nedeniyle öğrenilmiş bilginin UNKNOWN’a dönmemesi için kalıcı recovery yolu bulunur.
 
-# Temel Felsefe
+## Sıradaki doğrulama
 
-Minecraft'ta oyuncular aynı cevheri yüzlerce hatta binlerce kez kazmak zorunda kalırlar.
-
-New World bu döngüyü değiştirmeyi hedefler.
-
-Oyuncunun amacı;
-
-```
-Sürekli Demir Kazmak
-```
-
-değil,
-
-```
-Demiri Anlamak
-```
-
-olmalıdır.
-
-Bir madde bir kez keşfedildikten sonra,
-
-oyuncunun görevi artık onu tekrar tekrar bulmak değil,
-
-onu üretebilecek teknolojiye ulaşmaktır.
-
----
-
-# Çalışma Prensibi
-
-Replikatör hiçbir maddeyi yoktan var etmez.
-
-Her üretim için üç temel gereksinim vardır.
-
-## 1. Bilgi
-
-Oyuncu üretmek istediği maddeyi daha önce keşfetmiş olmalıdır.
-
-Analizi yapılmamış hiçbir madde üretilemez.
-
----
-
-## 2. Ham Elementler
-
-Üretilecek maddeyi oluşturan temel elementler depoda bulunmalıdır.
-
-Örneğin;
-
-Bir demir külçesi üretilecekse;
-
-gerekli demir atomları sistemde mevcut olmalıdır.
-
-Bazı gelişmiş alaşımlar ise birden fazla element gerektirebilir.
-
----
-
-## 3. Enerji
-
-Madde oluşturmak son derece yüksek enerji gerektirir.
-
-Ne kadar karmaşık madde,
-
-o kadar fazla enerji.
-
-Bu nedenle gelişmiş reaktörler oyunun ilerleyen safhalarında büyük önem kazanır.
-
----
-
-# Analiz Süreci
-
-Bir madde ilk kez bulunduğunda doğrudan üretilemez.
-
-Oyuncu;
-
-↓
-
-örneği laboratuvara götürür.
-
-↓
-
-Analiz eder.
-
-↓
-
-Yapısını inceler.
-
-↓
-
-Veri tabanına kaydeder.
-
-↓
-
-Replikatör artık bu maddeyi tanımaya başlar.
-
-Bu işlem yalnızca bir kez yapılır.
-
----
-
-# Veri Tabanı
-
-Her analiz edilen madde geminin merkezi veri tabanına kaydedilir.
-
-Oyuncu istediği zaman;
-
-- analiz edilmiş maddeleri,
-- eksik elementleri,
-- üretim maliyetlerini,
-- enerji gereksinimlerini
-
-inceleyebilir.
-
-Veri tabanı oyunun en önemli ilerleme araçlarından biridir.
-
----
-
-# Üretim Süreci
-
-Bir madde üretmek için;
-
-```
-Veri
-
-↓
-
-Elementler
-
-↓
-
-Enerji
-
-↓
-
-Replikasyon
-
-↓
-
-Hazır Ürün
-```
-
-şeklinde bir süreç gerçekleşir.
-
-Bu süreç tamamen otomatik hâle getirilebilir.
-
----
-
-# Üretim Sınırları
-
-Her madde üretilemez.
-
-Bazı özel maddeler;
-
-- yalnızca doğal olarak bulunabilir,
-- yalnızca görev ödülü olabilir,
-- yalnızca belirli olaylar sonucunda elde edilebilir.
-
-Replikatör yalnızca analiz edilebilen ve kopyalanabilir yapıya sahip maddeleri oluşturabilir.
-
----
-
-# Gelişim Sistemi
-
-Replikatör de zamanla gelişir.
-
----
-
-## Mk-I
-
-Temel maddeler.
-
-Yavaş üretim.
-
-Yüksek enerji tüketimi.
-
----
-
-## Mk-II
-
-Daha karmaşık materyaller.
-
-Daha yüksek hız.
-
-Daha düşük enerji kaybı.
-
----
-
-## Mk-III
-
-Neredeyse tüm analiz edilmiş maddeleri üretebilir.
-
-Çok daha verimlidir.
-
-Gelişmiş enerji sistemleri gerektirir.
-
----
-
-# Replikatör ve Keşif
-
-Replikatör keşfin yerini almaz.
-
-Tam tersine;
-
-keşfetmeyi daha değerli hâle getirir.
-
-Oyuncu yeni dünyalara yalnızca kaynak toplamak için değil;
-
-veri toplamak için gider.
-
-Her yeni keşif,
-
-veri tabanına yeni bilgiler ekler.
-
-Bu bilgiler daha sonra üretime dönüşür.
-
----
-
-# Oyuncuya Kazandırdıkları
-
-Replikatör sistemi sayesinde;
-
-✔ Gereksiz madencilik azalır.
-
-✔ Keşif daha önemli hâle gelir.
-
-✔ Araştırmalar değer kazanır.
-
-✔ Otomasyon anlam kazanır.
-
-✔ Oyuncu tekrar eden işlerle daha az vakit geçirir.
-
----
-
-# Tasarım Kuralları
-
-Replikatör;
-
-❌ Yoktan madde oluşturmaz.
-
-❌ Oyunun dengesini bozmaz.
-
-❌ Keşfin yerini almaz.
-
-✔ Keşfi ödüllendirir.
-
-✔ Bilgiyi ödüllendirir.
-
-✔ Araştırmayı oyunun merkezine yerleştirir.
-
----
-
-# Sonuç
-
-Replikatör yalnızca bir makine değildir.
-
-Oyuncunun öğrendiği bilgiyi fiziksel maddeye dönüştüren bilimsel bir sistemdir.
-
-New World'de gerçek kaynak;
-
-taş,
-
-demir
-
-veya altın değildir.
-
-Gerçek kaynak;
-
-**bilgidir.**
-
----
-
-> **"Bir maddeyi gerçekten anlamadan onu yeniden oluşturamazsın."**
+Jeolojik deposit etiketi, Radar/Navigation `DEPOSITS` kaydı ve Replication kategorisi aynı mineral ailesine bağlanmalıdır. Yeni modlu depositler eklenirken ilk kontrol budur.

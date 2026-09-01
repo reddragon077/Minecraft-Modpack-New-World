@@ -1,213 +1,37 @@
----
-Belge: 11_Warp.md
-Sürüm: 1.0
-Durum: Taslak
-Son Güncelleme: 14.07.2026
----
+# Warp ve gemi seyahati
 
-# 🌌 11 - Warp Teknolojisi
+Durum: DoctorWhoMod fork + NewWorldCore üzerinde deneysel alpha
 
-> **"Işık hızını aşmak mümkün değildir.
-> Bu yüzden uzayı hareket ettirmeyi öğrendik."**
+## Seyahat sınıfları
 
----
+- **Yerel:** aynı dimension içinde mesafeye bağlı seyahat; Range Coil sınırı uygulanır.
+- **Gezegensel:** aynı namespace içindeki farklı dimension geçişi; Planetary veya Universal Drive gerektirir.
+- **Evrensel:** farklı dimension namespace geçişi; Universal Drive gerektirir.
 
-# Giriş
+Fork notlarına göre gezegensel temel maliyet 500 WE, evrensel temel maliyet 2500 WE’dir; verimlilik modülleri maliyeti etkiler. Bu değerler alpha denge değerleridir ve oyun testiyle doğrulanmalıdır.
 
-Warp Teknolojisi, New World evrenindeki en gelişmiş ulaşım teknolojisidir.
+## Aktif bileşenler
 
-Bu sistem sayesinde uzay gemileri yalnızca yıldızlar arasında değil;
+- Engine Room Controller
+- Range Coil, Efficiency Module ve Stabilizer
+- Dimensional/Universal Drive bileşenleri
+- Warp Room Controller
+- Warp Capacitor, Converter, Efficiency Coil ve Catalyst Chamber kademeleri
+- Engine Matrix menzil bağlantısı
+- Route Calculation Computer ve çok duraklı rota planı
 
-- gezegenler,
-- yıldız sistemleri,
-- boyutlar
-- ve hatta farklı evrenler arasında yolculuk yapabilir.
+## Enerji ve stabilizasyon
 
-Oyuncunun nihai amacı bu teknolojiyi yeniden geliştirmektir.
+Warp üretimi saniyelik döngüyle ele alınır; temel Converter 1 WE/sn üretir. Başarılı seyahat sonrası stabilizasyon/cooldown gemi verisinde kalıcı tutulur. Düşük enerji hesap veya taramayı ilerleme kaybetmeden duraklatmalıdır.
 
----
+## Navigasyon bağlantısı
 
-# Hikâyedeki Önemi
+Radar hedefi doğrudan uçuş başlatmaz. Hedef seçilir, Route CPU rota hesaplar, Engine Matrix menzili değerlendirilir ve gerekirse ara duraklar oluşturulur. Gerçek dış gövde varışı bir sonraki hop’a geçişi tetikler.
 
-Oyuncu oyuna başlamadan kısa süre önce çaldığı uzay gemisiyle kaçmayı başarmıştır.
+## DoctorWhoMod fork rolü
 
-Takipten kurtulabilmek için Warp motorunu yeterli hesaplama yapmadan çalıştırmıştır.
+Fork; fiziksel starter davranışı, merkezi engine travel kuralları, başlangıç motor bileşenleri, New World ana köprüsü, koridor/oda yapıları ve TARDIS flight/materialization altyapısını sağlar.
 
-Bu kontrolsüz sıçrama sonucunda;
+## Test kapısı
 
-- gemi ağır hasar almış,
-- ana reaktör parçalanmış,
-- birçok sistem devre dışı kalmış,
-- oyuncu hafızasının büyük bölümünü kaybetmiş,
-- ve bilinmeyen bir evrene sürüklenmiştir.
-
-Oyuncunun yaptığı bu hata bütün oyunun başlangıç noktasıdır.
-
----
-
-# Warp Nasıl Çalışır?
-
-New World evreninde Warp;
-
-ışık hızını aşmak değildir.
-
-Uzay gemisi hareket etmez.
-
-Uzay-zaman dokusu bükülerek iki nokta birbirine yaklaştırılır.
-
-Bu işlem son derece karmaşık hesaplamalar ve büyük miktarda enerji gerektirir.
-
-En küçük hata bile ölümcül sonuçlar doğurabilir.
-
----
-
-# Warp Motoru
-
-Warp sistemi birçok bileşenden oluşur.
-
-- Ana Reaktör
-- Warp Çekirdeği
-- Hesaplama Birimi
-- Navigasyon Sistemi
-- Enerji Düzenleyicileri
-- Koruma Alanı
-
-Bu sistemlerden biri bile eksik olduğunda güvenli sıçrama mümkün değildir.
-
----
-
-# Oyuncunun Hedefi
-
-Oyuncu oyunun başında Warp teknolojisini kullanamaz.
-
-Öncelikle;
-
-- gemisini onarmalı,
-- enerji altyapısını geliştirmeli,
-- yeni materyaller keşfetmeli,
-- gerekli araştırmaları tamamlamalıdır.
-
-Warp teknolojisi oyunun sonlarına doğru yeniden kullanılabilir hâle gelir.
-
----
-
-# Warp ve Araştırma
-
-Warp yalnızca enerjiyle çalışmaz.
-
-Oyuncunun;
-
-- uzay-zaman fiziği,
-- kuantum alanları,
-- egzotik maddeler,
-- yüksek enerji fiziği
-
-üzerinde uzun süre araştırma yapması gerekir.
-
-Her yeni araştırma Warp sisteminin bir parçasını tekrar kullanılabilir hâle getirir.
-
----
-
-# Warp ve Keşif
-
-Başlangıçta oyuncu yalnızca bulunduğu evren içerisinde seyahat edebilir.
-
-İlerleyen aşamalarda;
-
-- yeni yıldız sistemleri,
-- uzak gezegenler,
-- terk edilmiş araştırma istasyonları
-
-keşfedilebilir.
-
-En sonunda ise...
-
-Farklı evrenlere geçiş mümkün olur.
-
----
-
-# Güvenli Warp
-
-Her Warp sıçraması başarıyla sonuçlanmayabilir.
-
-Yetersiz hazırlık;
-
-- enerji kaybına,
-- sistem hasarına,
-- koordinat sapmasına
-
-neden olabilir.
-
-Oyuncu doğru hesaplamalar yapmadan Warp gerçekleştiremez.
-
----
-
-# Warp ve Hikâye
-
-Warp yalnızca ulaşım sistemi değildir.
-
-Oyuncunun geçmişi,
-
-bugünü
-
-ve geleceği
-
-bu teknolojiyle doğrudan bağlantılıdır.
-
-İlk Warp denemesi oyuncunun hayatını değiştirmiştir.
-
-Son Warp denemesi ise...
-
-Oyuncunun kaderini belirleyecektir.
-
----
-
-# Gelecek Planları
-
-İlerleyen sürümlerde;
-
-- otomatik Warp rotaları,
-- koordinat hesaplama,
-- gelişmiş navigasyon,
-- çoklu evren haritası,
-- oyuncunun kendi Warp noktalarını oluşturabilmesi
-
-planlanmaktadır.
-
----
-
-# Tasarım İlkeleri
-
-Warp sistemi;
-
-✔ Oyunun son hedeflerinden biridir.
-
-✔ Araştırma gerektirir.
-
-✔ Büyük enerji altyapısı gerektirir.
-
-✔ Hikâyeyle doğrudan bağlantılıdır.
-
-✔ Yeni keşiflerin kapısını açar.
-
-Warp hiçbir zaman sıradan bir ışınlanma sistemi olmayacaktır.
-
----
-
-# Sonuç
-
-Warp Teknolojisi yalnızca yeni dünyalara ulaşmanın yolu değildir.
-
-Oyuncunun eve dönüş umududur.
-
-Her araştırma,
-
-her keşif
-
-ve her gelişme
-
-oyuncuyu bir gün yeniden yıldızların arasına çıkabilecek seviyeye ulaştıracaktır.
-
----
-
-> **"Eve dönüş yolu, uzayı anlamaktan geçer."**
+Yerel, gezegensel ve evrensel seyahat ayrı ayrı; enerji düşümü, sürücü gereksinimi, cooldown kalıcılığı, güvenli iniş ve sunucu yeniden başlatma senaryolarıyla doğrulanmalıdır.
