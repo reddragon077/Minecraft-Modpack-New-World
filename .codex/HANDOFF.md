@@ -6,7 +6,7 @@ Branch: `main`
 
 ## Current objective
 
-Accept the `0.5.59.10` random-spread coordinate repair, then complete the remaining `ARCHEOLOGIST CAMP` family test.
+Verify one `ALL` mixed-family scan, then complete the remaining `ARCHEOLOGIST CAMP` family test.
 
 ## Exact state
 
@@ -34,6 +34,7 @@ Accept the `0.5.59.10` random-spread coordinate repair, then complete the remain
 - `0.5.59.9` obtains the actual range from `NavigationUpgradeRuntime.scanRange`, enforces its circular bound, and reduces selected `CAMPSITE` scans from all 102 placement tasks to the single matching task.
 - Runtime logged one Campsite task at 5000 blocks but zero raw candidates. The scanner passed already-divided region indexes into Minecraft's chunk-space random-spread method, causing a second spacing division.
 - `0.5.59.10` passes `regionIndex * spacing`; coordinate smoke and bytecode verification passed. Prior `0.5.59.9` is preserved under `backups\custom-mods\pre-apply-20260902-021047`.
+- `0.5.59.10` runtime acceptance passed: at `02:28:35`, the log queued one placement-only task at 5000 blocks with `selected=CAMPSITE` and finished with `1 results (1 before active filters)`. The user visually confirmed Campsite was found.
 - The prior `0.5.59.8` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-014959`.
 - The prior `0.5.59.7` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-011708`.
 - The prior `0.5.59.6` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-002429`.
@@ -56,16 +57,14 @@ Accept the `0.5.59.10` random-spread coordinate repair, then complete the remain
 - `0.5.59.9` compile, archive, dynamic-filter smoke, actual-range bytecode, selected-task pruning bytecode, install, and single-JAR/hash checks: **passed**.
 - `0.5.59.9` in-game positive `CAMPSITE` range/filter result: **failed** (5000 bound correctly, but random-spread region coordinates were divided twice).
 - `0.5.59.10` compile, coordinate smoke, bytecode, install, and single-JAR/hash checks: **passed**.
-- `0.5.59.10` in-game positive `CAMPSITE` result: **pending**.
+- `0.5.59.10` in-game positive `CAMPSITE` result and real 5000-block range: **passed**.
 
 ## Next executable test
 
-1. Launch `0.5.59.10`, select only `CAMPSITE`, and run Structure Radar from the current 5000-block ship origin.
-2. Confirm the log queues one selected placement task at range 5000 and the result list contains only `CAMPSITE`.
-3. Select `ALL`, scan again, and confirm mixed-family results return without unacceptable tick spikes.
-4. Locate `betterarcheology:archeologist_camp_grassy`, travel there, and run Structure Field Survey in range.
-5. Confirm `ARCHEOLOGIST CAMP` is recorded and its dynamic filter appears.
-6. Then begin Discovery Database analysis-level/last-seen/event work.
+1. Select `ALL`, scan again, and confirm mixed-family results return without unacceptable tick spikes.
+2. Locate `betterarcheology:archeologist_camp_grassy`, travel there, and run Structure Field Survey in range.
+3. Confirm `ARCHEOLOGIST CAMP` is recorded and its dynamic filter appears.
+4. Then begin Discovery Database analysis-level/last-seen/event work.
 
 ## Do not assume
 
@@ -78,4 +77,5 @@ Accept the `0.5.59.10` random-spread coordinate repair, then complete the remain
 2. This file
 3. `.codex/conversations/INDEX.md`
 4. `.codex/conversations/2026-09-02_desktop_random_spread_coordinate_repair.md`
+5. `.codex/LAPTOP_RESUME_PROMPT.md` when moving to the laptop
 5. `docs/Known Issues.md`

@@ -4,7 +4,7 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
-- [2026-09-02 — desktop random-spread coordinate repair](2026-09-02_desktop_random_spread_coordinate_repair.md) — `0.5.59.9` received the 5000-block value but double-divided random-spread coordinates; `0.5.59.10` fixes region enumeration and is installed for runtime acceptance.
+- [2026-09-02 — desktop random-spread coordinate repair](2026-09-02_desktop_random_spread_coordinate_repair.md) — `0.5.59.9` double-divided random-spread coordinates; `0.5.59.10` found one selected Campsite at the real 5000-block range and passed runtime acceptance.
 - [2026-09-02 — desktop radar range repair](2026-09-02_desktop_radar_range_repair.md) — exact filter reduced 96 candidates to zero but exposed a 1600/5000 range mismatch; `0.5.59.9` built, verified, and installed.
 - [2026-09-02 — desktop dynamic filter repair](2026-09-02_desktop_dynamic_filter_repair.md) — selected Campsite returned 96 mixed results; `0.5.59.8` exact selected-family filter built, verified, and installed for runtime acceptance.
 - [2026-09-02 — desktop radar filter overlay repair](2026-09-02_desktop_radar_filter_overlay_repair.md) — Campsite filter confirmed; `0.5.59.7` foreground-layer repair passed screenshot acceptance.

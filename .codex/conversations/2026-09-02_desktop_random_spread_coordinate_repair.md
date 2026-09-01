@@ -1,6 +1,6 @@
 # 2026-09-02 — desktop — Random-spread coordinate repair
 
-Status: `installed; runtime acceptance pending`
+Status: `runtime accepted`
 Branch: `main`
 Build: `NewWorldCore-1.21.1-NeoForge-0.5.59.10-alpha-radar-random-spread.jar`
 
@@ -26,6 +26,13 @@ Build: `NewWorldCore-1.21.1-NeoForge-0.5.59.10-alpha-radar-random-spread.jar`
 - Repository and desktop instance each contain exactly one matching NewWorldCore JAR.
 - Prior `0.5.59.9` is preserved under desktop `backups/custom-mods/pre-apply-20260902-021047`.
 
+## Runtime acceptance
+
+- The game loaded `0.5.59.10` successfully.
+- At `02:28:35`, the runtime queued exactly one placement-only task at `range 5000 blocks` with `selected=CAMPSITE`.
+- It finished with `1 results (1 before active filters; selected=CAMPSITE)`.
+- The user visually confirmed that Campsite was found. The displayed-range, random-spread enumeration, and exact-family positive-result chain therefore passed.
+
 ## Next test
 
-Launch the game, select only `CAMPSITE`, and start Structure Radar. The log should queue one task at 5000 blocks and the results should contain a Campsite rather than zero raw candidates. Then run `ALL` once to verify mixed results and scan timing.
+Run `ALL` once to verify mixed results and scan timing, then complete the `ARCHEOLOGIST CAMP` locate → Field Survey → dynamic-filter chain.

@@ -1,6 +1,6 @@
 # Temel mekanikler
 
-Aktif test temeli: NewWorldCore `0.5.59.10-alpha-radar-random-spread` (Uraninite radar → rota → fiziksel yatak zinciri, yapı/jeoloji ayrımı, eski rota temizliği, `CAMPSITE` dinamik filtresi, GUI katmanı ve seçilmeyen ailelerin elenmesi doğrulandı; düzeltilmiş 5000 blok random-spread taramasında pozitif aile sonucu bekliyor)
+Aktif test temeli: NewWorldCore `0.5.59.10-alpha-radar-random-spread` (Uraninite radar → rota → fiziksel yatak zinciri, yapı/jeoloji ayrımı, eski rota temizliği, `CAMPSITE` dinamik filtresi, GUI katmanı, seçilmeyen ailelerin elenmesi ve gerçek 5000 blokta pozitif Campsite sonucu doğrulandı)
 
 | Mekanik | Durum | Uygulama |
 |---|---|---|
