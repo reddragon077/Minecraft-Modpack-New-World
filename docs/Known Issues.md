@@ -4,7 +4,7 @@ Son güncelleme: 2 Eylül 2026
 
 ## Aktif riskler
 
-- NewWorldCore `0.5.59.10-alpha-radar-random-spread` masaüstüne kurulu aktif test buildidir. Yapı/jeoloji izolasyonu, eski seçili hedef temizliği, gerçek jeoloji kayıtlarının korunması, `CAMPSITE` dinamik filtresi, GUI ön-plan katmanı, seçilmeyen ailelerin elenmesi ve gerçek 5000 blokta pozitif Campsite sonucu geçti.
+- NewWorldCore `0.5.59.10-alpha-radar-random-spread` iki bilgisayarda kurulu aktif test buildidir. Masaüstünde yapı/jeoloji izolasyonu, eski seçili hedef temizliği, gerçek jeoloji kayıtlarının korunması, `CAMPSITE` dinamik filtresi, GUI ön-plan katmanı, seçilmeyen ailelerin elenmesi ve gerçek 5000 blokta pozitif Campsite sonucu geçti. Laptopta kurulum/hash doğrulandı; runtime kabulü bekliyor.
 - İlk `0.5.59.0` denemesinde namespace toplu sorgusu 40 saniyeyi aşan server tick'e yol açtı. `0.5.59.1` sorguları tick'lere yaydı fakat tekil locate çağrıları yine 2–8 saniyelik takılmalar üretti. `0.5.59.2`, modlu yapılar için chunk/worldgen yükleyen locate yolunu kaldırıp yalnızca placement koordinat matematiğini kullanır.
 - Placement tabanlı radar koordinatı bir yapı için olası üretim noktasıdır; biyom/structure-set seçimi nedeniyle yanlış pozitif ihtimali vardır. Gerçek keşif, oyuncunun yerinde kullandığı Structure Field Survey ile doğrulanır.
 - `0.5.59.4`te birden fazla structure ailesinin aynı placement kaydını paylaşması gerçek olmayan `MODDED STRUCTURE` etiketi üretiyordu. `0.5.59.5` kabulünde bu kayıt listeden kalktı ve ortak adaylar `UNKNOWN STRUCTURE` olarak göründü.

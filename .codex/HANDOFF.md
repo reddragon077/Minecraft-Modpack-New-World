@@ -1,7 +1,7 @@
 # New World current handoff
 
 Updated: 2026-09-02
-Machine: desktop
+Machine: laptop
 Branch: `main`
 
 ## Current objective
@@ -35,6 +35,9 @@ Verify one `ALL` mixed-family scan, then complete the remaining `ARCHEOLOGIST CA
 - Runtime logged one Campsite task at 5000 blocks but zero raw candidates. The scanner passed already-divided region indexes into Minecraft's chunk-space random-spread method, causing a second spacing division.
 - `0.5.59.10` passes `regionIndex * spacing`; coordinate smoke and bytecode verification passed. Prior `0.5.59.9` is preserved under `backups\custom-mods\pre-apply-20260902-021047`.
 - `0.5.59.10` runtime acceptance passed: at `02:28:35`, the log queued one placement-only task at 5000 blocks with `selected=CAMPSITE` and finished with `1 results (1 before active filters)`. The user visually confirmed Campsite was found.
+- Laptop `main` was clean and fast-forwarded from `63580ce` to desktop handoff commit `3a3f35e`.
+- `tools/apply-to-instance.ps1` applied the repository to the registered laptop instance. It preserved the prior laptop `0.5.59.4` JAR under `backups\custom-mods\pre-apply-20260902-110953`.
+- Repository and laptop instance now each contain exactly one `NewWorldCore-1.21.1-NeoForge-0.5.59.10-alpha-radar-random-spread.jar`; both SHA-256 values are `876bc247597c0186bced715b05e843e9a85b00f32d3a9c81c990d6134fd63687`. The DoctorWhoMod fork is also single and hash-matched.
 - The prior `0.5.59.8` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-014959`.
 - The prior `0.5.59.7` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-011708`.
 - The prior `0.5.59.6` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-002429`.
@@ -58,6 +61,8 @@ Verify one `ALL` mixed-family scan, then complete the remaining `ARCHEOLOGIST CA
 - `0.5.59.9` in-game positive `CAMPSITE` range/filter result: **failed** (5000 bound correctly, but random-spread region coordinates were divided twice).
 - `0.5.59.10` compile, coordinate smoke, bytecode, install, and single-JAR/hash checks: **passed**.
 - `0.5.59.10` in-game positive `CAMPSITE` result and real 5000-block range: **passed**.
+- Laptop fast-forward sync, stale-JAR backup, apply-to-instance, single-JAR counts, and repository/instance SHA-256 checks: **passed**.
+- Laptop `0.5.59.10` launch and runtime Radar acceptance: **not tested yet**.
 
 ## Next executable test
 
