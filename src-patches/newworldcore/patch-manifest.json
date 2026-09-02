@@ -1,8 +1,8 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.59.10-alpha-radar-random-spread",
-  "marker": "NewWorldDynamicStructureRadarV11",
+  "version": "0.5.60.2-alpha-config-geology-flush",
+  "marker": "NewWorldConfigSuiteGeologyFlushV2",
   "fixes": [
     "Dynamic structure-registry classification for vanilla and modded structures",
     "Placement-only modded structure coordinates without chunk generation or locate calls",
@@ -18,7 +18,14 @@
     "Structure filter overlay renders on a dedicated foreground layer",
     "Dynamic structure-family selections filter placement scan results exactly",
     "Placement scans use the displayed upgrade range and prune tasks to selected families",
-    "Random-spread regions are sampled in chunk space without double-dividing by spacing"
+    "Random-spread regions are sampled in chunk space without double-dividing by spacing",
+    "Configurable radar pacing, result bounds, placement task bounds, and duplicate radius",
+    "Config-backed navigation range, workload, CPU, and FE formulas",
+    "Config-backed mining scan, interval, efficiency, and FE formulas",
+    "Config-backed FE/Warp Matrix capacity, transfer, tier weight, conversion, and production formulas",
+    "Config-backed engine travel range and replication feed pacing",
+    "Config-backed geology scan energy, room protection, and emergency network reserve controls",
+    "Geology result buffers are flushed before the foreground popup and the popup is flushed as the final GUI layer"
   ],
   "newDeposits": [
     {

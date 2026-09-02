@@ -1,6 +1,6 @@
 # Temel mekanikler
 
-Aktif test temeli: NewWorldCore `0.5.59.10-alpha-radar-random-spread` (Uraninite radar → rota → fiziksel yatak zinciri, yapı/jeoloji ayrımı, eski rota temizliği, `CAMPSITE` dinamik filtresi, GUI katmanı, seçilmeyen ailelerin elenmesi ve gerçek 5000 blokta pozitif Campsite sonucu doğrulandı)
+Aktif ve runtime-kabul edilen laptop temeli: NewWorldCore `0.5.60.2-alpha-config-geology-flush` (Radar `ALL` 101 karma sonuç/~9,98 sn, Geology 48 deposit/~9,00 sn ve Geology filtre ön-planı doğrulandı)
 
 | Mekanik | Durum | Uygulama |
 |---|---|---|

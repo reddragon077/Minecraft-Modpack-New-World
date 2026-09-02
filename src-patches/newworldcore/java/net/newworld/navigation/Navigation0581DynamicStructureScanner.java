@@ -1,5 +1,8 @@
 package net.newworld.navigation;
 
+import net.newworld.config.NewWorldConfig;
+import net.newworld.config.NewWorldTuning;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -18,7 +21,6 @@ import java.util.stream.Stream;
 
 /** Placement-only structure registry scanner used by the binary compatibility patch. */
 public final class Navigation0581DynamicStructureScanner {
-    private static final int MAX_RESULTS = 128;
     private static final List<String> VANILLA_FILTER_LABELS = List.of(
             "VILLAGE", "MINESHAFT", "SHIPWRECK", "BURIED TREASURE", "RUINED PORTAL",
             "ANCIENT CITY", "TRIAL CHAMBERS", "STRONGHOLD", "OCEAN MONUMENT",
@@ -108,6 +110,7 @@ public final class Navigation0581DynamicStructureScanner {
 
     private static ScanContext createContext(Object container, Object level, Object origin, List<Object> tiles)
             throws Exception {
+        NewWorldConfig.reload();
         Object access = call(level, "registryAccess");
         Class<?> registries = Class.forName("net.minecraft.core.registries.Registries");
         Field structureField = registries.getField("STRUCTURE");
@@ -149,6 +152,8 @@ public final class Navigation0581DynamicStructureScanner {
         }
         tasks.sort(Comparator.comparingInt(Navigation0581DynamicStructureScanner::priority)
                 .thenComparing(PlacementTask::sortKey));
+        int maxPlacementTasks = NewWorldTuning.radarMaxPlacementTasks();
+        if (tasks.size() > maxPlacementTasks) tasks = new ArrayList<>(tasks.subList(0, maxPlacementTasks));
         int rangeBlocks = Math.max(16, ((Number) invokeStatic(
                 "net.newworld.navigation.NavigationUpgradeRuntime", "scanRange", container)).intValue());
         int rangeChunks = Math.max(1, (int) Math.ceil((double) rangeBlocks / 16.0D));
@@ -273,12 +278,14 @@ public final class Navigation0581DynamicStructureScanner {
     }
 
     private static boolean alreadyPresent(List<Object> results, String label, int x, int z) {
+        int duplicateRadius = NewWorldTuning.radarDuplicateRadius();
         for (Object result : results) {
             try {
                 String existingLabel = String.valueOf(call(result, "label"));
                 int existingX = intCall(result, "x");
                 int existingZ = intCall(result, "z");
-                if (label.equals(existingLabel) && Math.abs(existingX - x) <= 8 && Math.abs(existingZ - z) <= 8) return true;
+                if (label.equals(existingLabel) && Math.abs(existingX - x) <= duplicateRadius
+                        && Math.abs(existingZ - z) <= duplicateRadius) return true;
             } catch (Throwable ignored) {}
         }
         return false;
@@ -290,7 +297,8 @@ public final class Navigation0581DynamicStructureScanner {
     }
 
     private static void trimToLimit(List<Object> results) {
-        while (results.size() > MAX_RESULTS) {
+        int maxResults = NewWorldTuning.radarMaxResults();
+        while (results.size() > maxResults) {
             int farthestIndex = -1;
             int farthestDistance = Integer.MIN_VALUE;
             for (int i = 0; i < results.size(); i++) {

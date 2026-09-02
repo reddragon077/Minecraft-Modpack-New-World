@@ -1,4 +1,4 @@
-NewWorldCore 0.5.59.10 radar, Field Survey isolation, route cleanup, range, and dynamic-filter compatibility patch
+NewWorldCore 0.5.60.2 radar, Field Survey isolation, route cleanup, range, dynamic-filter, config-suite, and Geology-flush patch
 
 - Structure Radar reads the live structure registry, including modded namespaces.
 - Modded structures are queried individually with at most one dynamic locate per server tick.
@@ -12,3 +12,7 @@ NewWorldCore 0.5.59.10 radar, Field Survey isolation, route cleanup, range, and 
 - Placement candidates honor the displayed upgrade range; selected families prune unrelated placement tasks.
 - Random-spread placement regions are enumerated once in chunk space without double division.
 - FE Matrix registration selects the ResourceLocation overload deterministically.
+- Reads live balance settings from config/newworldcore/*.properties.
+- Supports deliberate Radar pacing with a configurable placement-batch interval.
+- Exposes Radar, Mining, Matrix, Warp, travel, geology, replication, room, and network controls.
+- Flushes Geology result buffers before the popup, then flushes the popup as the final foreground GUI layer.

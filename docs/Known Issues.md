@@ -4,7 +4,7 @@ Son güncelleme: 2 Eylül 2026
 
 ## Aktif riskler
 
-- NewWorldCore `0.5.59.10-alpha-radar-random-spread` iki bilgisayarda kurulu aktif test buildidir. Masaüstünde yapı/jeoloji izolasyonu, eski seçili hedef temizliği, gerçek jeoloji kayıtlarının korunması, `CAMPSITE` dinamik filtresi, GUI ön-plan katmanı, seçilmeyen ailelerin elenmesi ve gerçek 5000 blokta pozitif Campsite sonucu geçti. Laptopta kurulum/hash doğrulandı; runtime kabulü bekliyor.
+- Laptop `0.5.60.0-alpha-config-suite` tarama kabulünde Radar `ALL` 102 görevi yaklaşık 9,98 saniyede tamamlayıp 101 karışık sonuç, Geology ise yaklaşık 9,00 saniyede 48 deposit verdi. Geology filtre paneli açıldığında sonuç satırları, koordinatlar, scrollbar ve sarı vurgu panelin üstüne çizildi. `0.5.60.1` paneli `Z=1000` katmanına taşıdı fakat ertelenmiş GUI buffer'ları sonradan çizildiği için ekran görüntüsü kabulü başarısız oldu. `0.5.60.2-alpha-config-geology-flush` önce sonuç buffer'larını, sonra son katman popup'ını açıkça flush eder; ekran görüntüsü kabulünde panel tamamen temiz kaldı ve sorun kapandı.
 - İlk `0.5.59.0` denemesinde namespace toplu sorgusu 40 saniyeyi aşan server tick'e yol açtı. `0.5.59.1` sorguları tick'lere yaydı fakat tekil locate çağrıları yine 2–8 saniyelik takılmalar üretti. `0.5.59.2`, modlu yapılar için chunk/worldgen yükleyen locate yolunu kaldırıp yalnızca placement koordinat matematiğini kullanır.
 - Placement tabanlı radar koordinatı bir yapı için olası üretim noktasıdır; biyom/structure-set seçimi nedeniyle yanlış pozitif ihtimali vardır. Gerçek keşif, oyuncunun yerinde kullandığı Structure Field Survey ile doğrulanır.
 - `0.5.59.4`te birden fazla structure ailesinin aynı placement kaydını paylaşması gerçek olmayan `MODDED STRUCTURE` etiketi üretiyordu. `0.5.59.5` kabulünde bu kayıt listeden kalktı ve ortak adaylar `UNKNOWN STRUCTURE` olarak göründü.
@@ -29,6 +29,7 @@ Son güncelleme: 2 Eylül 2026
 - Filtre penceresi açıkken radar sonuçları ve telemetri metinleri panelin üzerine çiziliyordu. `0.5.59.7` paneli ayrı bir ön plan pose katmanında çizdi; takip ekran görüntüleri panel içeriğinin temiz kaldığını doğruladı.
 - Yalnız `CAMPSITE` seçiliyken ilk tarama 96 karışık sonuç döndürdü. `0.5.59.8` kesin aile eşleşmesiyle bunu 96 ham adaydan sıfır sonuca indirdi ve seçilmeyen ailelerin elendiğini doğruladı.
 - Sıfır sonuç, GUI'nin 5000 blok göstermesine rağmen placement hesabının 100 chunk (~1600 blok) ile sınırlı olduğunu açığa çıkardı; bilinen kamp yaklaşık 3037 blok uzaktaydı. `0.5.59.9` gerçek menzili bağladı ancak random-spread bölge koordinatını Minecraft metoduna zaten bölünmüş halde vererek spacing'i iki kez böldü. `0.5.59.10` her bölgeyi `regionIndex * spacing` chunk koordinatıyla örnekler; oyun kabulünde bir Campsite görevi 5000 blokta bir sonuç döndürdü.
+- Laptop `0.5.60.0` `ALL` taraması 102 placement görevini yaklaşık 9,98 saniyede bitirip 101 karışık aile sonucu döndürdü; gönderilen `scan.batch_interval_ticks=8` profilinin yaklaşık yarı-hız hedefi doğrulandı. Geology aynı oturumda 48 depositi yaklaşık 9,00 saniyede tamamladı. `0.5.60.2` yalnız Geology GUI çizim sırasını düzeltir ve scan/config davranışını korur.
 - `ARCHEOLOGIST CAMP` zinciri Radar v2'nin kalan aile kabul maddesidir.
 
 ## Senkronizasyon sınırları

@@ -4,6 +4,8 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-02 — laptop Geology filter layer repair](2026-09-02_laptop_geology_filter_layer_repair.md) — `0.5.60.1` Z-only repair failed; `0.5.60.2` buffer-flush repair passed screenshot acceptance with a clean foreground popup. Config files gained Turkish inline guidance without value changes.
+- [2026-09-02 — laptop config suite build](2026-09-02_laptop_config_suite_build.md) — `ALL` returned 101 mixed results; central live config suite built and installed as `0.5.60.0`, with Radar batch pacing reduced from every four ticks to every eight ticks; runtime scan acceptance passed and the later Geology popup issue is continued above.
 - [2026-09-02 — laptop GitHub/runtime synchronization](2026-09-02_laptop_github_runtime_sync.md) — clean fast-forward to `3a3f35e`; prior laptop JAR backed up; repository and instance synchronized to the accepted `0.5.59.10` hashes.
 - [2026-09-02 — desktop random-spread coordinate repair](2026-09-02_desktop_random_spread_coordinate_repair.md) — `0.5.59.9` double-divided random-spread coordinates; `0.5.59.10` found one selected Campsite at the real 5000-block range and passed runtime acceptance.
 - [2026-09-02 — desktop radar range repair](2026-09-02_desktop_radar_range_repair.md) — exact filter reduced 96 candidates to zero but exposed a 1600/5000 range mismatch; `0.5.59.9` built, verified, and installed.

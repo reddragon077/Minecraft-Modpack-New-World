@@ -2,7 +2,7 @@
 
 Son doğrulama: 2 Eylül 2026
 
-Aktif temel: NewWorldCore `0.5.59.10-alpha-radar-random-spread`
+Aktif ve runtime-kabul edilen repo/laptop temeli: NewWorldCore `0.5.60.2-alpha-config-geology-flush`
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -14,7 +14,7 @@ Durum işaretleri:
 
 ## Aşama 1 — Radar v2
 
-Durum: dinamik registry taraması, ortak-placement/geology ayrımı, eski seçili rota temizliği, filtre ön-plan katmanı, seçilmeyen ailelerin elenmesi ve gerçek 5000 blokta pozitif `CAMPSITE` sonucu oyun içinde geçti. `ALL` karma tarama regresyonu ile `ARCHEOLOGIST CAMP` zinciri son kapanış işleridir.
+Durum: dinamik registry taraması, ortak-placement/geology ayrımı, eski seçili rota temizliği, Structure filtre ön-plan katmanı, seçilmeyen ailelerin elenmesi, gerçek 5000 blokta pozitif `CAMPSITE` ve laptop `ALL` karma taraması oyun içinde geçti. Geology için `0.5.60.1` Z-only düzeltmesi başarısız oldu; ertelenmiş çizim buffer'larını popup öncesi/sonrası flush eden `0.5.60.2` ekran görüntüsü kabulünü geçti. `ARCHEOLOGIST CAMP` zinciri son kapanış işidir.
 
 - [x] Sabit 13 öğelik kullanıcı filtresi kaldırıldı.
 - [x] Filtreler Discovery Database içeriğine göre dinamik üretiliyor.
@@ -26,7 +26,7 @@ Durum: dinamik registry taraması, ortak-placement/geology ayrımı, eski seçil
 - [x] Structure ve Geology sonuçları birbirinden ayrıldı.
 - [x] Range, Speed ve Accuracy yükseltmeleri iki tarama yoluna bağlandı.
 
-Kapanış testi: `ABANDONED CAMP` ve `CAMPSITE` yerinde tanıma geçti; `CAMPSITE` dinamik filtresi, GUI katmanı, seçilmeyen ailelerin elenmesi ve `0.5.59.10` ile gerçek 5000 blokta pozitif sonuç geçti. `ALL` karma tarama regresyonu ve `ARCHEOLOGIST CAMP` için UNKNOWN → yerinde tanımlama → dinamik filtre davranışı bekliyor.
+Kapanış testi: `ABANDONED CAMP` ve `CAMPSITE` yerinde tanıma geçti; `CAMPSITE` dinamik filtresi, GUI katmanı, seçilmeyen ailelerin elenmesi ve gerçek 5000 blokta pozitif sonuç geçti. Laptop `0.5.60.0` `ALL` taraması 102 görevi yaklaşık 9,98 saniyede tamamlayıp 101 karışık sonuç, Geology taraması yaklaşık 9,00 saniyede 48 deposit verdi. `0.5.60.2` Geology filtre paneli görsel kabulü de geçti; yalnız `ARCHEOLOGIST CAMP` için UNKNOWN → yerinde tanımlama → dinamik filtre davranışı bekliyor.
 
 ## Aşama 2 — Ortak Discovery Database
 

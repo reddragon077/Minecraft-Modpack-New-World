@@ -6,7 +6,7 @@ Branch: `main`
 
 ## Current objective
 
-Verify one `ALL` mixed-family scan, then complete the remaining `ARCHEOLOGIST CAMP` family test.
+Commit/push the runtime-accepted `0.5.60.2` config/Geology repair, then complete the remaining `ARCHEOLOGIST CAMP` family test.
 
 ## Exact state
 
@@ -37,7 +37,16 @@ Verify one `ALL` mixed-family scan, then complete the remaining `ARCHEOLOGIST CA
 - `0.5.59.10` runtime acceptance passed: at `02:28:35`, the log queued one placement-only task at 5000 blocks with `selected=CAMPSITE` and finished with `1 results (1 before active filters)`. The user visually confirmed Campsite was found.
 - Laptop `main` was clean and fast-forwarded from `63580ce` to desktop handoff commit `3a3f35e`.
 - `tools/apply-to-instance.ps1` applied the repository to the registered laptop instance. It preserved the prior laptop `0.5.59.4` JAR under `backups\custom-mods\pre-apply-20260902-110953`.
-- Repository and laptop instance now each contain exactly one `NewWorldCore-1.21.1-NeoForge-0.5.59.10-alpha-radar-random-spread.jar`; both SHA-256 values are `876bc247597c0186bced715b05e843e9a85b00f32d3a9c81c990d6134fd63687`. The DoctorWhoMod fork is also single and hash-matched.
+- Laptop `0.5.59.10` runtime acceptance passed: `ALL` queued 102 placement-only tasks at 5000 blocks and returned 101 mixed-family results in about 5.6 seconds.
+- Repository and laptop instance each contain exactly one `NewWorldCore-1.21.1-NeoForge-0.5.60.0-alpha-config-suite.jar`; both SHA-256 values are `8886c622e2ae962e3b7980283b9b5bc2dd796e65394c9d8a30b362b97955fb3b`.
+- The prior laptop `0.5.59.10` JAR is preserved under `backups\custom-mods\pre-apply-20260902-133637`. DoctorWhoMod remained single and hash-matched; all eight NewWorldCore property files reached the live instance and Radar batch interval is `8`.
+- `config/newworldcore/` now exposes live Radar/navigation, Mining, FE/Warp Matrix, engine travel, geology, replication, room-protection, and emergency-network settings. The shipped Radar profile is `scan.batch_interval_ticks=8`, approximately half the previous four-tick batch rate while preserving Speed-upgrade batching and FE accounting.
+- Laptop `0.5.60.0` runtime scan acceptance passed: Radar `ALL` completed 102 tasks with 101 mixed results in about 9.98 seconds; Geology completed with 48 deposits in about 9.00 seconds.
+- The populated Geology filter popup rendered below deposit rows, coordinates, the scrollbar, and yellow accent layer. `0.5.60.1` moved it to a dedicated `Z=1000` pose layer, passed static/install checks, but failed screenshot acceptance because Minecraft flushed deferred result buffers afterward.
+- Installed candidate `NewWorldCore-1.21.1-NeoForge-0.5.60.2-alpha-config-geology-flush.jar` (SHA-256 `423a25739e14c7db644c3389e041ad23508c06af6f2d920b33c7effb5e77c158`) flushes earlier buffers before the popup and flushes the popup immediately as the final GUI layer. Compile, replacement, bytecode flush hooks, config smoke, pack-lock, generated mod-list, and repo/live hash checks passed.
+- After Java stopped, apply-to-instance preserved `0.5.60.1` under `backups\custom-mods\pre-apply-20260902-144912` and installed `0.5.60.2`. Repo/live each contain one matching NewWorldCore JAR; DoctorWhoMod remains single/hash-matched, eight configs are present and identical, and Radar interval remains `8`.
+- All config settings now include Turkish inline explanations for units, formulas, upgrade levels, change direction, and performance impact; numeric values were preserved.
+- `0.5.60.2` runtime visual acceptance passed by screenshot: the full Geology filter popup stays above deposit rows, coordinates, scrollbar, and yellow accent layers. Debug log confirms `.1 -> .2` loaded; no relevant NewWorldCore GUI/config exception was found.
 - The prior `0.5.59.8` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-014959`.
 - The prior `0.5.59.7` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-011708`.
 - The prior `0.5.59.6` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-002429`.
@@ -62,14 +71,20 @@ Verify one `ALL` mixed-family scan, then complete the remaining `ARCHEOLOGIST CA
 - `0.5.59.10` compile, coordinate smoke, bytecode, install, and single-JAR/hash checks: **passed**.
 - `0.5.59.10` in-game positive `CAMPSITE` result and real 5000-block range: **passed**.
 - Laptop fast-forward sync, stale-JAR backup, apply-to-instance, single-JAR counts, and repository/instance SHA-256 checks: **passed**.
-- Laptop `0.5.59.10` launch and runtime Radar acceptance: **not tested yet**.
+- Laptop `0.5.59.10` launch and `ALL` mixed-family Radar acceptance: **passed** (102 tasks, 101 results, about 5.6 seconds).
+- `0.5.60.0` compilation, config formula smoke, replacement counts, bytecode hooks, repository single-JAR/hash, pack-lock, and generated mod-list checks: **passed**.
+- Laptop `0.5.60.0` installation, prior-JAR backup, single-JAR/hash equality, config count, and 8-tick live setting: **passed**.
+- Laptop `0.5.60.0` launch, 8-tick Radar batch-pacing, mixed-family results, and Geology result acceptance: **passed**.
+- `0.5.60.1` Geology Z-only filter visual acceptance: **failed** (deferred rows/accent still rendered above the popup).
+- `0.5.60.2` Geology buffer-flush build, patch replacement, both flush hooks, config smoke, repository single-JAR/hash, pack-lock, and generated mod-list checks: **passed**.
+- Laptop `0.5.60.2` installation, prior-JAR backup, repo/live single-JAR/hash, DoctorWhoMod hash, eight-config equality, and Radar pacing checks: **passed**.
+- Laptop `0.5.60.2` loaded-version, clean-log, and Geology filter screenshot acceptance: **passed**.
 
 ## Next executable test
 
-1. Select `ALL`, scan again, and confirm mixed-family results return without unacceptable tick spikes.
+1. Commit and push the accepted `0.5.60.2` config/Geology work to `main`.
 2. Locate `betterarcheology:archeologist_camp_grassy`, travel there, and run Structure Field Survey in range.
-3. Confirm `ARCHEOLOGIST CAMP` is recorded and its dynamic filter appears.
-4. Then begin Discovery Database analysis-level/last-seen/event work.
+3. Confirm `ARCHEOLOGIST CAMP` is recorded and its dynamic filter appears, then begin Discovery Database analysis-level/last-seen/event work.
 
 ## Do not assume
 
@@ -81,6 +96,7 @@ Verify one `ALL` mixed-family scan, then complete the remaining `ARCHEOLOGIST CA
 1. `.codex/project-memory.md`
 2. This file
 3. `.codex/conversations/INDEX.md`
-4. `.codex/conversations/2026-09-02_desktop_random_spread_coordinate_repair.md`
-5. `.codex/LAPTOP_RESUME_PROMPT.md` when moving to the laptop
-5. `docs/Known Issues.md`
+4. `.codex/conversations/2026-09-02_laptop_geology_filter_layer_repair.md`
+5. `.codex/conversations/2026-09-02_laptop_config_suite_build.md`
+6. `.codex/LAPTOP_RESUME_PROMPT.md` when moving to the laptop
+7. `docs/Known Issues.md`
