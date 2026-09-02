@@ -56,6 +56,7 @@ Last synchronized: 2026-09-02
 - Laptop `0.5.60.2` apply passed after Java stopped: `0.5.60.1` was preserved under `backups/custom-mods/pre-apply-20260902-144912`; repository/live NewWorldCore hashes match, DoctorWhoMod remains single/hash-matched, all eight config files match, and Radar batch interval remains `8`.
 - Every `config/newworldcore/*.properties` setting now has Turkish inline guidance covering units, formulas, upgrade levels, change direction, and performance/safety effects. Numeric defaults did not change; config smoke passed.
 - Laptop `0.5.60.2` Geology filter visual acceptance passed: the complete popup renders cleanly above deposit rows, coordinates, scrollbar, and accent layers. Debug log confirms `.1 -> .2` loaded and no relevant NewWorldCore GUI/config exception was found.
+- The runtime-accepted config-suite, Turkish config guidance, and Geology buffer-flush repair were committed as `344efc4` and pushed to GitHub `main`.
 - `ARCHEOLOGIST CAMP` remains the last untested family in the Radar v2 closure set.
 - FE Matrix registration now deterministically selects Architectury's `register(ResourceLocation, Supplier)` overload, removing the nondeterministic startup `argument type mismatch` path.
 - The Uraninite path passed an initial in-game acceptance test: Geological Radar -> Discovery -> Navigation target -> TARDIS route -> matching physical deposit. Full family, Mining and balance regression remains open.

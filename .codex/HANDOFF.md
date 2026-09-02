@@ -6,7 +6,7 @@ Branch: `main`
 
 ## Current objective
 
-Commit/push the runtime-accepted `0.5.60.2` config/Geology repair, then complete the remaining `ARCHEOLOGIST CAMP` family test.
+Complete the remaining `ARCHEOLOGIST CAMP` family test, then begin Discovery Database analysis-level/last-seen/event work.
 
 ## Exact state
 
@@ -47,6 +47,7 @@ Commit/push the runtime-accepted `0.5.60.2` config/Geology repair, then complete
 - After Java stopped, apply-to-instance preserved `0.5.60.1` under `backups\custom-mods\pre-apply-20260902-144912` and installed `0.5.60.2`. Repo/live each contain one matching NewWorldCore JAR; DoctorWhoMod remains single/hash-matched, eight configs are present and identical, and Radar interval remains `8`.
 - All config settings now include Turkish inline explanations for units, formulas, upgrade levels, change direction, and performance impact; numeric values were preserved.
 - `0.5.60.2` runtime visual acceptance passed by screenshot: the full Geology filter popup stays above deposit rows, coordinates, scrollbar, and yellow accent layers. Debug log confirms `.1 -> .2` loaded; no relevant NewWorldCore GUI/config exception was found.
+- The accepted config-suite, Turkish inline guidance, and Geology buffer-flush repair were committed as `344efc4` and pushed to GitHub `main`.
 - The prior `0.5.59.8` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-014959`.
 - The prior `0.5.59.7` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-011708`.
 - The prior `0.5.59.6` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-002429`.
@@ -82,9 +83,8 @@ Commit/push the runtime-accepted `0.5.60.2` config/Geology repair, then complete
 
 ## Next executable test
 
-1. Commit and push the accepted `0.5.60.2` config/Geology work to `main`.
-2. Locate `betterarcheology:archeologist_camp_grassy`, travel there, and run Structure Field Survey in range.
-3. Confirm `ARCHEOLOGIST CAMP` is recorded and its dynamic filter appears, then begin Discovery Database analysis-level/last-seen/event work.
+1. Locate `betterarcheology:archeologist_camp_grassy`, travel there, and run Structure Field Survey in range.
+2. Confirm `ARCHEOLOGIST CAMP` is recorded and its dynamic filter appears, then begin Discovery Database analysis-level/last-seen/event work.
 
 ## Do not assume
 

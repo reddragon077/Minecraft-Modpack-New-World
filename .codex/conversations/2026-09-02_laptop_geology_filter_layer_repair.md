@@ -38,5 +38,4 @@ SHA-256: `423a25739e14c7db644c3389e041ad23508c06af6f2d920b33c7effb5e77c158`
 
 ## Next executable step
 
-1. Commit and push the accepted config-suite/Geology repair to `main`.
-2. Complete the remaining `ARCHEOLOGIST CAMP` Field Survey/dynamic-filter chain.
+1. Complete the remaining `ARCHEOLOGIST CAMP` Field Survey/dynamic-filter chain; the accepted config-suite/Geology repair is already on `main` at `344efc4`.
