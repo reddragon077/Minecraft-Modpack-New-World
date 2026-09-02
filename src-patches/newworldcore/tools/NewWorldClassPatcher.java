@@ -34,6 +34,7 @@ public final class NewWorldClassPatcher {
     private static final String REPLICATION_OWNER = "net/newworld/mining/ReplicationFeedRuntime";
     private static final String NAVIGATION_UPGRADE_OWNER = "net/newworld/navigation/NavigationUpgradeRuntime";
     private static final String GEOLOGY_UI_OWNER = "net/newworld/navigation/Navigation0559SingleOwnerRadarUi";
+    private static final String PLAYER_GUI_OWNER = "net/newworld/player/PlayerShipScreen";
 
     static {
         add("net/newworld/navigation/Navigation0475RadarFilteX", "scanOneTile(Ljava/lang/Object;)V",
@@ -92,6 +93,10 @@ public final class NewWorldClassPatcher {
                 "net/newworld/config/NewWorldTuning", "geologyEnergyCost", "(IIIII)J", Opcodes.LRETURN);
         add("net/newworld/navigation/Navigation0540GeologyTimedScan", "efficiencyPercent(I)I",
                 "net/newworld/config/NewWorldTuning", "geologyEfficiencyPercent", "(I)I", Opcodes.IRETURN);
+        add("net/newworld/network/UpgradeValues", "transferLimit(II)I",
+                "net/newworld/config/NewWorldTuning", "networkNodeTransferLimit", "(II)I", Opcodes.IRETURN);
+        add("net/newworld/network/UpgradeValues", "capacityLimit(II)I",
+                "net/newworld/config/NewWorldTuning", "networkNodeCapacityLimit", "(II)I", Opcodes.IRETURN);
     }
 
     private NewWorldClassPatcher() {}
@@ -106,6 +111,7 @@ public final class NewWorldClassPatcher {
         classNames.add(EMERGENCY_POLICY_OWNER);
         classNames.add(REPLICATION_OWNER);
         classNames.add(GEOLOGY_UI_OWNER);
+        classNames.add(PLAYER_GUI_OWNER);
         try (JarFile jar = new JarFile(baseline.toFile())) {
             for (String className : classNames) {
                 String entryName = className + ".class";
@@ -176,6 +182,10 @@ public final class NewWorldClassPatcher {
         if (GEOLOGY_UI_OWNER.equals(className)) {
             replacements += wrapGeologyFilterOverlay(node);
             expected++;
+        }
+        if (PLAYER_GUI_OWNER.equals(className)) {
+            replacements += patchPlayerGui(node);
+            expected += 2;
         }
         if (replacements != expected) {
             throw new IllegalStateException("Expected " + expected + " replacements in " + className
@@ -286,6 +296,29 @@ public final class NewWorldClassPatcher {
                 }
             }
             instruction = next;
+        }
+        return replacements;
+    }
+
+    private static int patchPlayerGui(ClassNode node) {
+        int replacements = 0;
+        for (MethodNode method : node.methods) {
+            for (AbstractInsnNode instruction = method.instructions.getFirst(); instruction != null; ) {
+                AbstractInsnNode next = instruction.getNext();
+                if (instruction instanceof LdcInsnNode constant) {
+                    if (constant.cst instanceof String text && "STRUCTURE RANGE: 96 blocks".equals(text)) {
+                        method.instructions.set(instruction, new MethodInsnNode(Opcodes.INVOKESTATIC,
+                                "net/newworld/config/NewWorldTuning", "playerSurveyDetailLine",
+                                "()Ljava/lang/String;", false));
+                        replacements++;
+                    } else if (constant.cst instanceof Integer value && value == -1342177280) {
+                        method.instructions.set(instruction, new MethodInsnNode(Opcodes.INVOKESTATIC,
+                                "net/newworld/config/NewWorldTuning", "guiPlayerBackdropArgb", "()I", false));
+                        replacements++;
+                    }
+                }
+                instruction = next;
+            }
         }
         return replacements;
     }

@@ -6,7 +6,7 @@ Branch: `main`
 
 ## Current objective
 
-Complete the remaining `ARCHEOLOGIST CAMP` family test, then begin Discovery Database analysis-level/last-seen/event work.
+Begin Discovery Database analysis-level, last-seen, and common discovery-event work under the config-first rule. Radar v2 and the `.4` Player Field Survey closure are complete.
 
 ## Exact state
 
@@ -48,6 +48,11 @@ Complete the remaining `ARCHEOLOGIST CAMP` family test, then begin Discovery Dat
 - All config settings now include Turkish inline explanations for units, formulas, upgrade levels, change direction, and performance impact; numeric values were preserved.
 - `0.5.60.2` runtime visual acceptance passed by screenshot: the full Geology filter popup stays above deposit rows, coordinates, scrollbar, and yellow accent layers. Debug log confirms `.1 -> .2` loaded; no relevant NewWorldCore GUI/config exception was found.
 - The accepted config-suite, Turkish inline guidance, and Geology buffer-flush repair were committed as `344efc4` and pushed to GitHub `main`.
+- `/locate structure betterarcheology:archeologist_camp_grassy` resolved `[-2448, ~, 192]`. The player Field Survey identified eight nearby structures including `ARCHEOLOGIST CAMP`, so family recognition passed.
+- The old player survey checked 96 blocks by synchronously visiting 13x13/169 loaded chunk positions and returned in about 38 ms. Installed `0.5.60.4-alpha-config-first-gui-network` (SHA-256 `171b1cb6a0ca78c243ad81584f820d89fc32829e0269459048d549b462f390e9`) ships `48`-block and `80`-tick controls, checks 7x7/49 positions, dispatches the delayed scan back to the server thread, and prevents duplicate pending scans. The Player GUI now shows the live range/delay instead of the old hardcoded 96-block text.
+- `gui.properties` exposes filter layer depth, Player GUI background dimming and Survey detail visibility. Network-node FE/item/fluid/gas transfer/capacity curves now have live multipliers in `network.properties`. The persistent `.cursor/rules/config-first-development.mdc` requires future adjustable features to ship config, Turkish guidance and smoke coverage.
+- Apply-to-instance preserved `.3` under `backups\custom-mods\pre-apply-20260902-164534`. Repository and laptop each contain one matching `.4` JAR and ten `.properties` files.
+- Laptop `.4` runtime acceptance passed: the log queued `range=48 blocks delay=80t`, completed exactly once in `4074ms`, and identified `TRIAL CHAMBERS, ARCHEOLOGIST CAMP` with no relevant NewWorldCore error. User screenshot visibly confirmed `ARCHEOLOGIST CAMP` in the clean foreground Structure Filters panel.
 - The prior `0.5.59.8` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-014959`.
 - The prior `0.5.59.7` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-011708`.
 - The prior `0.5.59.6` desktop JAR is preserved under `backups\custom-mods\pre-apply-20260902-002429`.
@@ -80,11 +85,15 @@ Complete the remaining `ARCHEOLOGIST CAMP` family test, then begin Discovery Dat
 - `0.5.60.2` Geology buffer-flush build, patch replacement, both flush hooks, config smoke, repository single-JAR/hash, pack-lock, and generated mod-list checks: **passed**.
 - Laptop `0.5.60.2` installation, prior-JAR backup, repo/live single-JAR/hash, DoctorWhoMod hash, eight-config equality, and Radar pacing checks: **passed**.
 - Laptop `0.5.60.2` loaded-version, clean-log, and Geology filter screenshot acceptance: **passed**.
+- `ARCHEOLOGIST CAMP` in-place Field Survey family recognition: **passed** (one survey identified it among eight loaded structures).
+- `0.5.60.4` build, config smoke, 48-block/3-chunk/80-tick formulas, live GUI label/dimming/layer hooks, network multiplier hooks, delayed executor, server-thread dispatch, pending lock, repository single-JAR/hash, and install checks: **passed**.
+- Laptop `0.5.60.4` launch, four-second/48-block survey behavior, family recognition, clean log, and `ARCHEOLOGIST CAMP` dynamic-filter visibility: **passed**.
 
 ## Next executable test
 
-1. Locate `betterarcheology:archeologist_camp_grassy`, travel there, and run Structure Field Survey in range.
-2. Confirm `ARCHEOLOGIST CAMP` is recorded and its dynamic filter appears, then begin Discovery Database analysis-level/last-seen/event work.
+1. Inspect the current `NavigationDiscoverySavedData.Discovery` schema and every record/update path.
+2. Add config-backed analysis-level and last-seen behavior with save migration and smoke coverage.
+3. Add one common discovery event emitted by both Structure and Geology record paths for later Research/Exploration XP listeners.
 
 ## Do not assume
 

@@ -2482,9 +2482,9 @@
   ],
   "customMods": [
     {
-      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.60.2-alpha-config-geology-flush.jar",
-      "sha256": "423a25739e14c7db644c3389e041ad23508c06af6f2d920b33c7effb5e77c158",
-      "size": 3558311
+      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.60.4-alpha-config-first-gui-network.jar",
+      "sha256": "171b1cb6a0ca78c243ad81584f820d89fc32829e0269459048d549b462f390e9",
+      "size": 3561110
     },
     {
       "fileName": "DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar",

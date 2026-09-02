@@ -1,6 +1,6 @@
 # Temel mekanikler
 
-Aktif ve runtime-kabul edilen laptop temeli: NewWorldCore `0.5.60.2-alpha-config-geology-flush` (Radar `ALL` 101 karma sonuç/~9,98 sn, Geology 48 deposit/~9,00 sn ve Geology filtre ön-planı doğrulandı)
+Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.60.4-alpha-config-first-gui-network` (Field Survey 48 blok/80 tick, canlı GUI bilgisi, `ARCHEOLOGIST CAMP` dinamik filtresi ve config-first ağ ayarları geçti)
 
 | Mekanik | Durum | Uygulama |
 |---|---|---|

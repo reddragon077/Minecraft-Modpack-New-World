@@ -2,7 +2,7 @@
 
 Son doğrulama: 2 Eylül 2026
 
-Aktif ve runtime-kabul edilen repo/laptop temeli: NewWorldCore `0.5.60.2-alpha-config-geology-flush`
+Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.60.4-alpha-config-first-gui-network`
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -14,7 +14,7 @@ Durum işaretleri:
 
 ## Aşama 1 — Radar v2
 
-Durum: dinamik registry taraması, ortak-placement/geology ayrımı, eski seçili rota temizliği, Structure filtre ön-plan katmanı, seçilmeyen ailelerin elenmesi, gerçek 5000 blokta pozitif `CAMPSITE` ve laptop `ALL` karma taraması oyun içinde geçti. Geology için `0.5.60.1` Z-only düzeltmesi başarısız oldu; ertelenmiş çizim buffer'larını popup öncesi/sonrası flush eden `0.5.60.2` ekran görüntüsü kabulünü geçti. `ARCHEOLOGIST CAMP` zinciri son kapanış işidir.
+Durum: **tamamlandı.** Dinamik registry taraması, ortak-placement/geology ayrımı, eski seçili rota temizliği, Structure/Geology filtre katmanları, seçilmeyen ailelerin elenmesi, gerçek 5000 blokta pozitif `CAMPSITE`, laptop `ALL` karma taraması ve 48 blok/80 tick Player Field Survey oyun içinde geçti. `ARCHEOLOGIST CAMP` tanındı ve discovery-driven dinamik filtrede görsel olarak doğrulandı.
 
 - [x] Sabit 13 öğelik kullanıcı filtresi kaldırıldı.
 - [x] Filtreler Discovery Database içeriğine göre dinamik üretiliyor.
@@ -26,7 +26,7 @@ Durum: dinamik registry taraması, ortak-placement/geology ayrımı, eski seçil
 - [x] Structure ve Geology sonuçları birbirinden ayrıldı.
 - [x] Range, Speed ve Accuracy yükseltmeleri iki tarama yoluna bağlandı.
 
-Kapanış testi: `ABANDONED CAMP` ve `CAMPSITE` yerinde tanıma geçti; `CAMPSITE` dinamik filtresi, GUI katmanı, seçilmeyen ailelerin elenmesi ve gerçek 5000 blokta pozitif sonuç geçti. Laptop `0.5.60.0` `ALL` taraması 102 görevi yaklaşık 9,98 saniyede tamamlayıp 101 karışık sonuç, Geology taraması yaklaşık 9,00 saniyede 48 deposit verdi. `0.5.60.2` Geology filtre paneli görsel kabulü de geçti; yalnız `ARCHEOLOGIST CAMP` için UNKNOWN → yerinde tanımlama → dinamik filtre davranışı bekliyor.
+Kapanış testi: `ABANDONED CAMP`, `CAMPSITE` ve `ARCHEOLOGIST CAMP` yerinde tanıma geçti; `CAMPSITE` ve `ARCHEOLOGIST CAMP` dinamik filtreleri, GUI katmanları, seçilmeyen ailelerin elenmesi, gerçek 5000 blokta pozitif sonuç, Geology filtre paneli ve `.4` Field Survey denge testi geçti. Radar v2 kapandı; sıradaki geliştirme Aşama 2 metadata/event alanlarıdır.
 
 ## Aşama 2 — Ortak Discovery Database
 

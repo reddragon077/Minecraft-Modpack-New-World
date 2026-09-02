@@ -1,0 +1,14 @@
+---
+description: NewWorldCore'da oyuncunun değiştirebileceği değerleri config-first geliştirme standardına bağlar
+alwaysApply: true
+---
+
+# Config-first geliştirme
+
+- Yeni bir özellik menzil, süre, gecikme, hız, enerji, kapasite, oran, limit, performans yükü veya GUI görünümü içeriyorsa güvenli varsayılanını `config/newworldcore/*.properties` altında sun.
+- Ayarı kullanan kod güvenli alt/üst sınır uygulamalı ve dosya yoksa mevcut davranışı koruyan varsayılana dönmelidir.
+- Her ayarın üstüne Türkçe olarak birim, etki, artırma/azaltma sonucu ve varsa performans ya da dünya güvenliği riskini yaz.
+- Basit ayar değişiklikleri JAR yenilemeden algılanmalı; yalnız açılışta okunabilen bir değer varsa bunu config yorumunda açıkça belirt.
+- Yeni config anahtarlarını smoke testine ve `config/newworldcore/README.md` envanterine ekle.
+- Kayıt şeması sürümü, registry kimliği, ağ paket kodu, slot kimliği ve veri bütünlüğü sabitlerini config'e açma.
+- Config eklemek mevcut dünya, bilinen iyi JAR veya iki bilgisayarlı GitHub senkronizasyon güvenliğini zayıflatmamalıdır.

@@ -1,8 +1,8 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.60.2-alpha-config-geology-flush",
-  "marker": "NewWorldConfigSuiteGeologyFlushV2",
+  "version": "0.5.60.4-alpha-config-first-gui-network",
+  "marker": "NewWorldConfigFirstGuiNetworkV1",
   "fixes": [
     "Dynamic structure-registry classification for vanilla and modded structures",
     "Placement-only modded structure coordinates without chunk generation or locate calls",
@@ -25,7 +25,10 @@
     "Config-backed FE/Warp Matrix capacity, transfer, tier weight, conversion, and production formulas",
     "Config-backed engine travel range and replication feed pacing",
     "Config-backed geology scan energy, room protection, and emergency network reserve controls",
-    "Geology result buffers are flushed before the foreground popup and the popup is flushed as the final GUI layer"
+    "Geology result buffers are flushed before the foreground popup and the popup is flushed as the final GUI layer",
+    "Configurable delayed Player Field Survey with reduced loaded-structure range and duplicate-request protection",
+    "Config-backed Player GUI survey detail line, background dimming, and filter overlay depth",
+    "Config-backed FE, item, fluid, and gas network-node transfer/capacity multipliers"
   ],
   "newDeposits": [
     {

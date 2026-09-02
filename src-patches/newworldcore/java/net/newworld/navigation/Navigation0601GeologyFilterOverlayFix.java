@@ -3,10 +3,10 @@ package net.newworld.navigation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import net.newworld.config.NewWorldTuning;
+
 /** Flushes earlier Geology batches, then draws and flushes the filter as the final foreground layer. */
 public final class Navigation0601GeologyFilterOverlayFix {
-    private static final double OVERLAY_Z = 1000.0D;
-
     private Navigation0601GeologyFilterOverlayFix() {}
 
     public static void render(Object screen, Object graphics) throws Exception {
@@ -24,7 +24,7 @@ public final class Navigation0601GeologyFilterOverlayFix {
         try {
             call(pose, "pushPose");
             pushed = true;
-            translate(pose, 0.0D, 0.0D, OVERLAY_Z);
+            translate(pose, 0.0D, 0.0D, NewWorldTuning.guiFilterOverlayZ());
             renderBase(screen, graphics);
             // Commit the popup while it is still the last logical GUI layer.
             call(graphics, "flush");

@@ -3,10 +3,10 @@ package net.newworld.navigation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import net.newworld.config.NewWorldTuning;
+
 /** Draws the legacy structure-filter overlay above every radar text layer. */
 public final class Navigation0592RadarFilterOverlayFix {
-    private static final double OVERLAY_Z = 1000.0D;
-
     private Navigation0592RadarFilterOverlayFix() {}
 
     public static void render(Object screen, Object graphics, int left, int top, Object filterState) throws Exception {
@@ -20,7 +20,7 @@ public final class Navigation0592RadarFilterOverlayFix {
         try {
             call(pose, "pushPose");
             pushed = true;
-            translate(pose, 0.0D, 0.0D, OVERLAY_Z);
+            translate(pose, 0.0D, 0.0D, NewWorldTuning.guiFilterOverlayZ());
             renderBase(screen, graphics, left, top, filterState);
         } finally {
             if (pushed) call(pose, "popPose");

@@ -2,6 +2,7 @@ package net.newworld.config;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Locale;
 import java.util.Map;
 
 import net.newworld.mining.MiningUpgradeRuntime;
@@ -182,6 +183,71 @@ public final class NewWorldTuning {
     public static long replicationIntervalTicks() { return NewWorldConfig.longValue("replication", "feed.interval_ticks", 5L, 1L, 72_000L); }
     public static long replicationBatchSize() { return NewWorldConfig.longValue("replication", "feed.batch_items", 64L, 1L, 1_000_000L); }
 
+    public static int playerFieldSurveyRangeBlocks() {
+        return NewWorldConfig.integer("player", "field_survey.range_blocks", 48, 16, 512);
+    }
+
+    public static int playerFieldSurveyChunkRadius() {
+        return Math.max(1, (playerFieldSurveyRangeBlocks() + 15) / 16);
+    }
+
+    public static int playerFieldSurveyDelayTicks() {
+        return NewWorldConfig.integer("player", "field_survey.delay_ticks", 80, 0, 1200);
+    }
+
+    public static double guiFilterOverlayZ() {
+        return NewWorldConfig.decimal("gui", "filters.overlay_z", 1000.0D, 1.0D, 10_000.0D);
+    }
+
+    public static int guiPlayerBackdropArgb() {
+        int percent = NewWorldConfig.integer("gui", "player.background_dim_percent", 70, 0, 100);
+        int alpha = (int) Math.round(percent * 255.0D / 100.0D);
+        return alpha << 24;
+    }
+
+    public static String playerSurveyDetailLine() {
+        boolean range = NewWorldConfig.bool("gui", "player.show_survey_range", true);
+        boolean delay = NewWorldConfig.bool("gui", "player.show_survey_delay", true);
+        if (!range && !delay) return "STRUCTURE SURVEY PARAMETERS HIDDEN";
+        StringBuilder line = new StringBuilder();
+        if (range) line.append("STRUCTURE RANGE: ").append(playerFieldSurveyRangeBlocks()).append(" blocks");
+        if (delay) {
+            if (!line.isEmpty()) line.append(" // ");
+            line.append("RESPONSE: ~")
+                    .append(String.format(Locale.ROOT, "%.1f", playerFieldSurveyDelayTicks() / 20.0D))
+                    .append('s');
+        }
+        return line.toString();
+    }
+
+    public static int networkNodeTransferLimit(int resourceType, int tier) {
+        int[][] defaults = {
+                {1000, 5000, 25_000, 100_000, 1_000_000, 10_000_000, 100_000_000, 1_000_000_000, Integer.MAX_VALUE},
+                {4, 8, 16, 32, 64, 128, 256, 512, 1024},
+                {250, 1000, 4000, 16_000, 64_000, 256_000, 1_000_000, 4_000_000, 16_000_000},
+                {250, 1000, 4000, 16_000, 64_000, 256_000, 1_000_000, 4_000_000, 16_000_000}
+        };
+        int type = Math.max(0, Math.min(3, resourceType));
+        int level = Math.max(0, Math.min(8, tier));
+        double multiplier = NewWorldConfig.decimal("network", "node.transfer." + resourceName(type) + "_multiplier",
+                1.0D, 0.01D, 1000.0D);
+        return Math.max(1, saturatingInt(Math.round(defaults[type][level] * multiplier)));
+    }
+
+    public static int networkNodeCapacityLimit(int resourceType, int tier) {
+        int[][] defaults = {
+                {10_000, 50_000, 250_000, 1_000_000, 10_000_000, 100_000_000, 500_000_000, 1_000_000_000, 2_000_000_000},
+                {64, 128, 256, 512, 1024, 2048, 4096, 8192, 16_384},
+                {16_000, 64_000, 256_000, 1_000_000, 4_000_000, 16_000_000, 64_000_000, 256_000_000, 1_000_000_000},
+                {16_000, 64_000, 256_000, 1_000_000, 4_000_000, 16_000_000, 64_000_000, 256_000_000, 1_000_000_000}
+        };
+        int type = Math.max(0, Math.min(3, resourceType));
+        int level = Math.max(0, Math.min(8, tier));
+        double multiplier = NewWorldConfig.decimal("network", "node.capacity." + resourceName(type) + "_multiplier",
+                1.0D, 0.01D, 1000.0D);
+        return Math.max(1, saturatingInt(Math.round(defaults[type][level] * multiplier)));
+    }
+
     public static boolean roomProtected(Object level, Object pos) {
         if (!NewWorldConfig.bool("rooms", "protection.enabled", true)) return false;
         return Boolean.TRUE.equals(invokeBase("net.newworld.core.RoomProtectionManager", "isProtectedConfigBase", null, level, pos));
@@ -211,6 +277,15 @@ public final class NewWorldTuning {
             Object value = modules.invoke(record);
             return value instanceof int[] array ? array : null;
         } catch (Throwable ignored) { return null; }
+    }
+
+    private static String resourceName(int resourceType) {
+        return switch (resourceType) {
+            case 1 -> "item";
+            case 2 -> "fluid";
+            case 3 -> "gas";
+            default -> "fe";
+        };
     }
 
     private static Object invokeBase(String owner, String name, Class<?>[] parameterTypes, Object... args) {

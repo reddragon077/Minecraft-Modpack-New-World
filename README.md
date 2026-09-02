@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Aktif ve runtime-kabul edilen laptop NewWorldCore buildi: `0.5.60.2-alpha-config-geology-flush`
+- Aktif runtime-kabul edilen laptop buildi `0.5.60.4-alpha-config-first-gui-network`. Field Survey 48 blok/~4 saniye çalışır, `ARCHEOLOGIST CAMP` tanıma ve dinamik filtre zinciri geçmiştir; GUI bilgisi ve ağ düğümü hız/kapasite çarpanları config'e bağlıdır.
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 
 Kesin eklenti sürümleri [`manifest.json`](manifest.json) ve [`pack-lock.json`](pack-lock.json) içinde tutulur. Üçüncü taraf JAR dosyaları GitHub’a eklenmez; yalnızca projeye ait iki fork JAR’ı repoda saklanır.

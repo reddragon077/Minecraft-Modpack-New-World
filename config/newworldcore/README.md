@@ -31,6 +31,11 @@ Dosyalar:
 - `geology.properties`: jeoloji taramasının FE dengesi.
 - `replication.properties`: replikasyon besleme aralığı ve parti büyüklüğü.
 - `rooms.properties`: oda koruma sistemi anahtarı.
-- `network.properties`: acil enerji rezervi politikası anahtarı.
+- `network.properties`: acil enerji rezervi ile FE/item/fluid/gas düğüm hız ve kapasite çarpanları.
+- `player.properties`: oyuncu Structure Field Survey menzili ve görünür tarama süresi.
+- `gui.properties`: oyuncu arayüzü karartması, canlı Survey bilgi satırı ve filtre katman derinliği.
+
+Güvenli config sınırı: oynanış dengesi, süre, menzil, enerji, kapasite, performans ve görünüm ayarlanabilir;
+kayıt şeması, paket/protokol kimlikleri ve registry anahtarları config değildir. Bunların değişmesi dünyayı veya ağ iletişimini bozabilir.
 
 Değişiklikleri iki bilgisayara taşımak için GitHub `main` ve proje senkronizasyon araçları kullanılmalıdır.

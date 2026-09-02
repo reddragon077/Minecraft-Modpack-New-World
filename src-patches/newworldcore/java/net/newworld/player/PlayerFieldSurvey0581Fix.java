@@ -10,19 +10,73 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 
+import net.newworld.config.NewWorldTuning;
 import net.newworld.navigation.Navigation0581DynamicStructureScanner;
 
 /** Keeps the STRUCTURE survey isolated from geology discoveries. */
 public final class PlayerFieldSurvey0581Fix {
-    private static final int RANGE = 96;
-    private static final int CHUNK_RADIUS = 6;
+    private static final Set<String> PENDING = ConcurrentHashMap.newKeySet();
 
     private PlayerFieldSurvey0581Fix() {}
 
     public static void scanStructures(Object player) {
         if (player == null) return;
+        int delayTicks = NewWorldTuning.playerFieldSurveyDelayTicks();
+        if (delayTicks <= 0) {
+            scanNow(player);
+            return;
+        }
+
+        String playerKey = playerKey(player);
+        if (!PENDING.add(playerKey)) {
+            message(player, "FIELD SURVEY // Scan already in progress.");
+            return;
+        }
+
+        try {
+            Object server = call(player, "getServer");
+            if (server == null) {
+                PENDING.remove(playerKey);
+                scanNow(player);
+                return;
+            }
+            long queuedAt = System.nanoTime();
+            long delayMillis = Math.max(0L, (long) delayTicks * 50L);
+            CompletableFuture.delayedExecutor(delayMillis, TimeUnit.MILLISECONDS).execute(() -> {
+                try {
+                    Runnable scan = () -> {
+                        try {
+                            scanNow(player);
+                            long elapsedMillis = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - queuedAt);
+                            System.out.println("[NewWorld Field Survey] completed range="
+                                    + NewWorldTuning.playerFieldSurveyRangeBlocks() + " blocks elapsed="
+                                    + elapsedMillis + "ms");
+                        } finally {
+                            PENDING.remove(playerKey);
+                        }
+                    };
+                    call(server, "execute", scan);
+                } catch (Throwable failure) {
+                    PENDING.remove(playerKey);
+                    System.err.println("[NewWorldCore] Could not schedule Field Survey: " + failure);
+                    sendResult(player, 104);
+                }
+            });
+            System.out.println("[NewWorld Field Survey] queued range="
+                    + NewWorldTuning.playerFieldSurveyRangeBlocks() + " blocks delay=" + delayTicks + "t");
+        } catch (Throwable failure) {
+            PENDING.remove(playerKey);
+            System.err.println("[NewWorldCore] Field Survey delay fallback: " + failure);
+            scanNow(player);
+        }
+    }
+
+    private static void scanNow(Object player) {
         try {
             Object level = call(player, "serverLevel");
             Object playerPos = call(player, "blockPosition");
@@ -43,7 +97,8 @@ public final class PlayerFieldSurvey0581Fix {
             purgeInvalidStructureDiscoveries(level, shipId);
             Map<String, FoundStructure> found = findLoadedStructures(level, playerPos);
             if (found.isEmpty()) {
-                message(player, "FIELD SURVEY // No structures detected within 96 blocks.");
+                message(player, "FIELD SURVEY // No structures detected within "
+                        + NewWorldTuning.playerFieldSurveyRangeBlocks() + " blocks.");
                 sendResult(player, 102);
                 return;
             }
@@ -75,13 +130,15 @@ public final class PlayerFieldSurvey0581Fix {
         int pz = intCall(playerPos, "getZ");
         int baseChunkX = px >> 4;
         int baseChunkZ = pz >> 4;
+        int range = NewWorldTuning.playerFieldSurveyRangeBlocks();
+        int chunkRadius = NewWorldTuning.playerFieldSurveyChunkRadius();
         Constructor<?> chunkPosCtor = Class.forName("net.minecraft.world.level.ChunkPos")
                 .getConstructor(int.class, int.class);
         Predicate<Object> allStructures = unused -> true;
         Map<String, FoundStructure> found = new LinkedHashMap<>();
 
-        for (int dz = -CHUNK_RADIUS; dz <= CHUNK_RADIUS; dz++) {
-            for (int dx = -CHUNK_RADIUS; dx <= CHUNK_RADIUS; dx++) {
+        for (int dz = -chunkRadius; dz <= chunkRadius; dz++) {
+            for (int dx = -chunkRadius; dx <= chunkRadius; dx++) {
                 Object chunkPos = chunkPosCtor.newInstance(baseChunkX + dx, baseChunkZ + dz);
                 Object startsValue = call(manager, "startsForStructure", chunkPos, allStructures);
                 if (!(startsValue instanceof List<?> starts)) continue;
@@ -101,7 +158,7 @@ public final class PlayerFieldSurvey0581Fix {
                     int nearestX = clamp(px, minX, maxX);
                     int nearestZ = clamp(pz, minZ, maxZ);
                     double edgeDistance = Math.hypot((double) nearestX - px, (double) nearestZ - pz);
-                    if (edgeDistance > RANGE) continue;
+                    if (edgeDistance > range) continue;
 
                     Object center = call(box, "getCenter");
                     int x = intCall(center, "getX");
@@ -209,6 +266,14 @@ public final class PlayerFieldSurvey0581Fix {
 
     private static int clamp(int value, int min, int max) {
         return Math.max(min, Math.min(max, value));
+    }
+
+    private static String playerKey(Object player) {
+        try {
+            return String.valueOf(call(player, "getUUID"));
+        } catch (Throwable ignored) {
+            return player.getClass().getName() + '@' + System.identityHashCode(player);
+        }
     }
 
     private static Object invokeStatic(String className, String method, Object... args) throws Exception {
