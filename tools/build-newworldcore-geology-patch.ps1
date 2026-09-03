@@ -140,6 +140,8 @@ try {
     if ($LASTEXITCODE -ne 0) { throw "geological field-survey smoke test failed with exit code $LASTEXITCODE" }
     & $java ("-Dnewworldcore.configDir={0}" -f $configRoot) -classpath $smokeClasspath Navigation0630GeologyAnalysisSmokeTest
     if ($LASTEXITCODE -ne 0) { throw "geology analysis progression smoke test failed with exit code $LASTEXITCODE" }
+    & $java ("-Dnewworldcore.configDir={0}" -f $configRoot) -classpath $smokeClasspath PlayerDiscoveries0650SmokeTest
+    if ($LASTEXITCODE -ne 0) { throw "player discoveries smoke test failed with exit code $LASTEXITCODE" }
 
     $outputHash = (Get-FileHash -LiteralPath $output -Algorithm SHA256).Hash.ToLowerInvariant()
     Write-Host "Built: $output"

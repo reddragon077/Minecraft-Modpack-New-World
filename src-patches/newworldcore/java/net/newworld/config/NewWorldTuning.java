@@ -309,6 +309,14 @@ public final class NewWorldTuning {
         return alpha << 24;
     }
 
+    public static int playerDiscoveriesSyncLimit() {
+        return NewWorldConfig.integer("gui", "player.discoveries.sync_limit_per_category", 64, 16, 256);
+    }
+
+    public static int playerDiscoveriesRows() {
+        return NewWorldConfig.integer("gui", "player.discoveries.rows_per_page", 6, 5, 6);
+    }
+
     public static String playerSurveyDetailLine() {
         boolean range = NewWorldConfig.bool("gui", "player.show_survey_range", true);
         boolean delay = NewWorldConfig.bool("gui", "player.show_survey_delay", true);

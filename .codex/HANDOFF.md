@@ -6,12 +6,15 @@ Branch: `main`
 
 ## Current objective
 
-Populate the Player GUI Discoveries tab (roadmap Stage 8). Radar v2, Discovery Database metadata/events, Geological Field Survey, and Discovery Analysis Stage 7 are complete.
+Finish Player GUI Discoveries actions and remaining detail fields (roadmap Stage 8). The shared list/filter/detail core is runtime accepted.
 
 ## Current accepted continuation
 
-- Active laptop/repository build: `NewWorldCore-1.21.1-NeoForge-0.5.64.0-alpha-geology-tier-reveal.jar`.
-- SHA-256: `29cff3cce98bbcf762e2aeace7d06109f94eef99c483470bc766c6e0a44bb85b`.
+- Active laptop/repository build: `NewWorldCore-1.21.1-NeoForge-0.5.65.2-alpha-player-discoveries.jar`.
+- SHA-256: `95c9b44d5bbf54de7e8570a1e655de28e81572d057c8b7a55f9499630bce2b76`.
+- Player `DISCOVERIES` now reads the shared database through reserved survey mode 3 and shows ALL/STRUCTURES/GEOLOGY filters, six-row pagination and selected-record source/analysis/resource/coordinates.
+- Snapshot selection keeps the newest 64 Structure and 64 Geology records independently. Laptop runtime repeatedly logged `synced=128 total=464 perCategory=64`; no Discoveries render, snapshot or packet-routing error occurred.
+- The detail panel calculates live 3D distance from the current player instead of displaying the stale ship-relative scan distance; another dimension shows `DIFFERENT DIMENSION`. User visual/functional acceptance passed.
 - Accuracy 0/I/II/III now reveals deposit families cumulatively by config-defined thresholds. All 21 current families have individual `reveal.required_accuracy.*` entries; unknown future families default safely to III.
 - Laptop acceptance completed all four Accuracy scans at 24/32/40/48 result caps in about nine seconds each. The user visually confirmed staged text and a clean foreground filter popup. Save audit found 47 Radar L3 records, one preserved Field L3 TIN, and 66 untouched Radar L0 records; no relevant NewWorldCore error occurred.
 - Geological Field Survey is live through payload mode 1 and verifies actual loaded deposit-template blocks. Its range, delay, result cap, check budget, and match threshold are documented in `player.properties`.
@@ -105,9 +108,9 @@ Populate the Player GUI Discoveries tab (roadmap Stage 8). Radar v2, Discovery D
 
 ## Next executable test
 
-1. Populate the Player GUI Discoveries list from the shared Discovery Database.
-2. Add recent-discovery and detail views showing source, analysis level, last seen, and estimated reserve.
-3. Connect navigation-target, route and favorite actions without duplicating persistence state.
+1. Add last-seen and estimated-reserve presentation to the selected discovery details.
+2. Connect `SET NAVIGATION TARGET` without duplicating persistence state.
+3. Add route and favorite actions, then close roadmap Stage 8.
 
 ## Do not assume
 

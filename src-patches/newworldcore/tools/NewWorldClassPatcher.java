@@ -41,6 +41,7 @@ public final class NewWorldClassPatcher {
     private static final String GEOLOGY_SCAN_OWNER = "net/newworld/navigation/Navigation0520GeologyScanRuntime";
     private static final String GEOLOGY_CLIENT_STATE_OWNER = "net/newworld/navigation/Navigation0520GeologyClientState";
     private static final String PLAYER_GUI_OWNER = "net/newworld/player/PlayerShipScreen";
+    private static final String PLAYER_SURVEY_BRIDGE_OWNER = "net/newworld/player/PlayerFieldSurvey0504Bridge";
     private static final String DISCOVERY_DATA_OWNER = "net/newworld/navigation/NavigationDiscoverySavedData";
     private static final String DISCOVERY_VALUE_OWNER = "net/newworld/navigation/NavigationDiscoverySavedData$Discovery";
     private static final String DISCOVERY_META_OWNER = "net/newworld/navigation/Navigation0510DiscoveryMeta";
@@ -246,10 +247,16 @@ public final class NewWorldClassPatcher {
             replacements += wrapGeologyClientAccept(node);
             expected++;
         }
+        if (PLAYER_SURVEY_BRIDGE_OWNER.equals(className)) {
+            replacements += wrapPlayerSurveyBridgeHandle(node);
+            expected++;
+        }
         if (PLAYER_GUI_OWNER.equals(className)) {
             replacements += patchPlayerGui(node);
+            replacements += enableDiscoveriesTab(node);
             replacements += wrapPlayerMouseClicked(node);
-            expected += 8;
+            replacements += wrapPlayerContent(node);
+            expected += 11;
         }
         if (DISCOVERY_DATA_OWNER.equals(className)) {
             replacements += wrapDiscoveryRecord(node);
@@ -548,6 +555,32 @@ public final class NewWorldClassPatcher {
         return replacements;
     }
 
+    private static int enableDiscoveriesTab(ClassNode node) {
+        int comparisons = 0;
+        int replacements = 0;
+        for (MethodNode method : node.methods) {
+            if (!"render".equals(method.name)
+                    || !"(Lnet/minecraft/client/gui/GuiGraphics;IIF)V".equals(method.desc)) continue;
+            for (AbstractInsnNode instruction = method.instructions.getFirst(); instruction != null; ) {
+                AbstractInsnNode next = instruction.getNext();
+                if (instruction.getOpcode() == Opcodes.ICONST_2) {
+                    AbstractInsnNode cursor = instruction.getNext();
+                    while (cursor != null && cursor.getOpcode() < 0) cursor = cursor.getNext();
+                    if (cursor != null && cursor.getOpcode() == Opcodes.IF_ICMPGE) {
+                        comparisons++;
+                        // The first comparison selects tab width. The next two select enabled colors.
+                        if (comparisons >= 2) {
+                            method.instructions.set(instruction, new InsnNode(Opcodes.ICONST_3));
+                            replacements++;
+                        }
+                    }
+                }
+                instruction = next;
+            }
+        }
+        return replacements;
+    }
+
     private static int wrapPlayerMouseClicked(ClassNode node) {
         String descriptor = "(DDI)Z";
         MethodNode original = null;
@@ -573,6 +606,64 @@ public final class NewWorldClassPatcher {
         wrapper.instructions.add(new InsnNode(Opcodes.IRETURN));
         wrapper.maxStack = 6;
         wrapper.maxLocals = 6;
+        node.methods.add(wrapper);
+        return 1;
+    }
+
+    private static int wrapPlayerContent(ClassNode node) {
+        String descriptor = "(Lnet/minecraft/client/gui/GuiGraphics;IIII)V";
+        MethodNode original = null;
+        for (MethodNode method : node.methods) {
+            if ("survey".equals(method.name) && descriptor.equals(method.desc)) {
+                original = method;
+                break;
+            }
+        }
+        if (original == null) return 0;
+
+        original.name = "survey0650Base";
+        String[] exceptions = original.exceptions == null ? null : original.exceptions.toArray(new String[0]);
+        MethodNode wrapper = new MethodNode(original.access, "survey", descriptor,
+                original.signature, exceptions);
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ILOAD, 2));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ILOAD, 3));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ILOAD, 4));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ILOAD, 5));
+        wrapper.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                "net/newworld/player/PlayerDiscoveries0650", "renderContent",
+                "(Ljava/lang/Object;Ljava/lang/Object;IIII)V", false));
+        wrapper.instructions.add(new InsnNode(Opcodes.RETURN));
+        wrapper.maxStack = 6;
+        wrapper.maxLocals = 6;
+        node.methods.add(wrapper);
+        return 1;
+    }
+
+    private static int wrapPlayerSurveyBridgeHandle(ClassNode node) {
+        String descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)V";
+        MethodNode original = null;
+        for (MethodNode method : node.methods) {
+            if ("handle".equals(method.name) && descriptor.equals(method.desc)) {
+                original = method;
+                break;
+            }
+        }
+        if (original == null) return 0;
+
+        original.name = "handle0650Base";
+        String[] exceptions = original.exceptions == null ? null : original.exceptions.toArray(new String[0]);
+        MethodNode wrapper = new MethodNode(original.access, "handle", descriptor,
+                original.signature, exceptions);
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
+        wrapper.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                "net/newworld/player/PlayerDiscoveries0650", "handlePayload",
+                descriptor, false));
+        wrapper.instructions.add(new InsnNode(Opcodes.RETURN));
+        wrapper.maxStack = 2;
+        wrapper.maxLocals = 2;
         node.methods.add(wrapper);
         return 1;
     }

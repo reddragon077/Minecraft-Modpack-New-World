@@ -2,7 +2,7 @@
 
 Son doğrulama: 3 Eylül 2026
 
-Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.64.0-alpha-geology-tier-reveal`
+Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.65.2-alpha-player-discoveries`
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -115,15 +115,18 @@ Kapanış testi: `0.5.64.0` ile Accuracy `0/1/2/3` taramaları sırasıyla `24/3
 
 ## Aşama 8 — Discoveries sekmesi
 
-Durum: Navigation Terminal V2’de Structures/Deposits listeleri var; kişisel GUI sekmesi tamamlanmadı.
+Durum: Player GUI ortak Discovery Database'e bağlandı; liste/detay çekirdeği kabul edildi, kayıt eylemleri ve kalan detay alanları bekliyor.
 
-- [~] Backend ve gemi terminali Structures/Geology ayrımını destekliyor.
-- [ ] Player GUI Discoveries listesini doldur.
-- [ ] Son keşifler ve detay görünümü
-- [ ] Kaynak, analiz seviyesi ve tahmini rezerv alanları
+- [x] Backend, gemi terminali ve Player GUI Structures/Geology ayrımını destekliyor.
+- [x] Player GUI Discoveries listesini doldur.
+- [x] Son görülmeye göre sıralanan keşifler ve seçili kayıt detay görünümü
+- [x] Kaynak, analiz seviyesi, koordinat, kanıt kaynağı ve canlı oyuncu mesafesi
+- [ ] Son görülme ve tahmini rezerv alanlarını detay paneline ekle
 - [ ] `SET NAVIGATION TARGET`
 - [ ] `ADD TO ROUTE`
 - [ ] Player GUI favorite desteği
+
+Ara kabul: `0.5.65.2`, ortak veritabanındaki 464 kayıttan kategori başına en yeni 64 girdiyi senkronladı (`128/464`). Ayrı Structure/Geology kotaları son jeoloji taramalarının yapı geçmişini gizlemesini engelledi. Kullanıcı sekme stili, üç filtre, sayfalama, ayrıntılar ve canlı oyuncu mesafesini doğruladı; dünya/runtime başladıktan sonra Discoveries render, snapshot veya paket hatası görülmedi. Farklı boyuttaki kayıtlar `DIFFERENT DIMENSION` olarak gösterilir.
 
 ## Aşama 9 — Player Navigation paneli
 

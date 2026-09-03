@@ -40,6 +40,14 @@ Son güncelleme: 3 Eylül 2026
 - Laptop kabulünde dört tarama `24/32/40/48` sonuç kapasitesiyle yaklaşık dokuzar saniyede tamamlandı. Kullanıcı kademeli yazıları ve filtre panelinin sonuç satırlarının üzerinde temiz kaldığını doğruladı.
 - Save denetimi 47 `GEOLOGY/RADAR` L3 ve bir korunmuş `GEOLOGY/FIELD` L3 kaydı gösterdi; 66 taranmamış eski Radar kaydı L0 kaldı. Test sonrasında ilgili NewWorldCore exception görülmedi.
 
+## Doğrulanan Player Discoveries çekirdeği
+
+- `0.5.65.2`, Player Ship Interface içindeki `DISCOVERIES` sekmesini ortak gemi Discovery Database'ine bağlar; `ALL`, `STRUCTURES` ve `GEOLOGY` filtreleri, sayfalama ve seçili kayıt ayrıntıları çalışır.
+- İlk genel 64-kayıt kotası son jeoloji taramaları tarafından doldurularak Structure filtresini boş bırakıyordu. Kota kategori başına 64 olarak ayrıldı; kabul logu `synced=128 total=464 perCategory=64` gösterdi.
+- Detay panelindeki eski gemi-tarama mesafesi kaldırıldı. Aynı boyutta oyuncunun canlı 3B mesafesi, farklı boyutta `DIFFERENT DIMENSION` gösterilir.
+- Kullanıcı görsel/işlevsel kabul verdi. Dünya/runtime başlangıcından sonra Discoveries render, snapshot, paket yönlendirme veya ilgili exception kaydı oluşmadı.
+- Açılıştaki SCGuns tarif şeması ve EMI/JEI ingredient hataları bu değişiklikten önce de bulunan üçüncü taraf uyumluluk kayıtlarıdır; Discoveries kabulünü etkilemedi.
+
 ## Doğrulanan radar düzeltmeleri
 
 - Masaüstü oyun ve mevcut dünya `0.5.59.4` ile açıldı.

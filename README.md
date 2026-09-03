@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Aktif runtime-kabul edilen laptop buildi `0.5.64.0-alpha-geology-tier-reveal`. Geological Radar sonuçları Accuracy 0/I/II/III boyunca anomaly → metallic → resource-rich → exact-family olarak ilerler; 21 deposit ailesinin exact açılma kademesi `discovery.properties` içinden ayrı ayrı ayarlanır. Field Survey ile daha önce doğrulanan exact kayıtlar sonraki düşük seviye Radar taramalarıyla kapanmaz.
+- Aktif runtime-kabul edilen laptop buildi `0.5.65.2-alpha-player-discoveries`. Kademeli Geological Analysis korunurken Player Ship Interface içindeki `DISCOVERIES` sekmesi ortak veritabanından son Structure/Geology kayıtlarını, analiz/kaynak ayrıntılarını ve canlı oyuncu mesafesini gösterir; farklı boyuttaki hedefler açıkça işaretlenir.
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 
 Kesin eklenti sürümleri [`manifest.json`](manifest.json) ve [`pack-lock.json`](pack-lock.json) içinde tutulur. Üçüncü taraf JAR dosyaları GitHub’a eklenmez; yalnızca projeye ait iki fork JAR’ı repoda saklanır.
@@ -72,10 +72,10 @@ Belge haritası ve durumları için [`docs/README.md`](docs/README.md) dosyasın
 
 Ana sıra [`docs/12_Gelistirme_Yol_Haritasi.md`](docs/12_Gelistirme_Yol_Haritasi.md) belgesidir.
 
-1. Analysis level zincirini anomaly → metallic → resource-rich → gerçek family aşamalarına genişletmek.
-2. Player Ship Interface sekmelerini tamamlamak.
-3. Deposit extraction, remaining, depletion ve `DEPLETED` entegrasyonunu bitirmek.
-4. Bu 14 aşamadan sonra Research ve Production Chamber progression'ına geçmek.
+1. Player `DISCOVERIES` detaylarında son görülme/tahmini rezerv alanlarını tamamlamak.
+2. Discovery kaydından navigasyon hedefi, rota ve favori işlemlerini bağlamak.
+3. Player Ship Interface'in Navigation ve Mining panellerini tamamlamak.
+4. Deposit extraction, remaining, depletion ve `DEPLETED` entegrasyonunu bitirmek.
 
 ## Proje durumu
 

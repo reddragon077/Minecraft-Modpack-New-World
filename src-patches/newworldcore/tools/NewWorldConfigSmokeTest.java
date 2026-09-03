@@ -49,6 +49,8 @@ public final class NewWorldConfigSmokeTest {
         expectText("geology exact label", NewWorldTuning.geologyAnalysisLabel(3, "TIN-RICH DEPOSIT"), "TIN-RICH DEPOSIT");
         expect("GUI overlay depth", Math.round(NewWorldTuning.guiFilterOverlayZ()), 1000L);
         expect("GUI background alpha", NewWorldTuning.guiPlayerBackdropArgb(), -1_291_845_632L);
+        expect("discoveries sync limit", NewWorldTuning.playerDiscoveriesSyncLimit(), 64L);
+        expect("discoveries rows", NewWorldTuning.playerDiscoveriesRows(), 6L);
         expect("network FE transfer", NewWorldTuning.networkNodeTransferLimit(0, 3), 100_000L);
         expect("network item capacity", NewWorldTuning.networkNodeCapacityLimit(1, 4), 1024L);
         if (!"SURVEY RANGE S:48 G:48x128 blocks // RESPONSE S:~4.0s G:~4.0s".equals(NewWorldTuning.playerSurveyDetailLine())) {

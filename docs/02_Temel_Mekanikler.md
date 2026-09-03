@@ -1,6 +1,6 @@
 # Temel mekanikler
 
-Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.64.0-alpha-geology-tier-reveal` (Discovery Database şema v3, kalıcı analysis/last-seen, ortak discovery event hattı, fiziksel Geological Field Survey ve config tabanlı kademeli exact-family açılımı geçti)
+Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.65.2-alpha-player-discoveries` (Discovery Database şema v3, kademeli Geological Analysis ve Player GUI'de ortak Structure/Geology keşif listesi, ayrıntı görünümü, kategori dengesi ve canlı oyuncu mesafesi geçti)
 
 | Mekanik | Durum | Uygulama |
 |---|---|---|
