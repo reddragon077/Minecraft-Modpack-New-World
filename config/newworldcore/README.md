@@ -32,7 +32,7 @@ Dosyalar:
 - `replication.properties`: replikasyon besleme aralığı ve parti büyüklüğü.
 - `rooms.properties`: oda koruma sistemi anahtarı.
 - `network.properties`: acil enerji rezervi ile FE/item/fluid/gas düğüm hız ve kapasite çarpanları.
-- `player.properties`: oyuncu Structure Field Survey menzili ve görünür tarama süresi.
+- `player.properties`: oyuncu Structure/Geological Field Survey menzilleri, gecikmeleri ve fiziksel depozit doğrulama sınırları.
 - `gui.properties`: oyuncu arayüzü karartması, canlı Survey bilgi satırı ve filtre katman derinliği.
 - `discovery.properties`: Structure/Geology Radar ve Field Survey kaynaklarının kalıcı başlangıç analiz seviyeleri.
 

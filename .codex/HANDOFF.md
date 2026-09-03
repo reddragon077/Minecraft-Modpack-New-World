@@ -6,12 +6,15 @@ Branch: `main`
 
 ## Current objective
 
-Begin Geological Field Survey, then extend analysis progression from anomaly to exact deposit family. Radar v2 and Discovery Database Stage 2 are complete.
+Extend Geological analysis progression from anomaly to exact deposit family. Radar v2, Discovery Database Stage 2, and Geological Field Survey are complete.
 
 ## Current accepted continuation
 
-- Active laptop/repository build: `NewWorldCore-1.21.1-NeoForge-0.5.61.0-alpha-discovery-metadata-events.jar`.
-- SHA-256: `d8da6f2ae981183b5bcd2cdfcb5759dcb3eda5489c7ab2d08f117fbe3737e695`.
+- Active laptop/repository build: `NewWorldCore-1.21.1-NeoForge-0.5.62.0-alpha-geological-field-survey.jar`.
+- SHA-256: `253ba89166c0a6fc3e2cfb26d5a053e77a2075335702fafb0c714d997fe62bb5`.
+- Geological Field Survey is live through payload mode 1 and verifies actual loaded deposit-template blocks. Its range, delay, result cap, check budget, and match threshold are documented in `player.properties`.
+- Laptop acceptance verified `TIN-RICH DEPOSIT` at `[-2696, 32, -728]` with 3/4 matching blocks in 4016 ms. Persisted NBT is `GEOLOGY/FIELD`, visited 1, analysis level 2, with first discovery preserved and last-seen advanced; no relevant error occurred.
+- Prior `.61.0` is preserved under `backups/custom-mods/pre-apply-20260903-113644/` on the laptop.
 - Schema v3 stores `analysisLevel` and `lastSeenAt`; first discovery, FIELD evidence, visited/favorite and higher analysis are preserved on repeats.
 - The common event bus emits `DISCOVERED`, `SEEN`, and `ANALYSIS_UPGRADED` for future Research/Exploration XP listeners.
 - Laptop runtime/NBT acceptance passed with 449/449 migrated records and no relevant error. Structure Radar returned 102, Geology 48, and Field Survey identified `TRIAL CHAMBERS` plus `ARCHEOLOGIST CAMP` in 4052 ms.
@@ -100,9 +103,9 @@ Begin Geological Field Survey, then extend analysis progression from anomaly to 
 
 ## Next executable test
 
-1. Implement Player GUI Geological Field Survey against nearby physical deposit evidence.
-2. Feed Geological Field results through the accepted shared discovery record/event path.
-3. Extend analysis levels into anomaly → metallic → resource-rich → exact deposit-family progression without exposing save-schema constants as config.
+1. Extend analysis levels into anomaly → metallic → resource-rich → exact deposit-family progression without exposing save-schema constants as config.
+2. Connect Accuracy and Field Survey quality to that staged reveal model.
+3. Continue the Player Ship Interface after the analysis progression is accepted.
 
 ## Do not assume
 

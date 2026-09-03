@@ -17,7 +17,10 @@ The current patch:
 - upgrades the shared Discovery Database to schema v3 with persistent analysis level and last-seen fields;
 - preserves first discovery time and stronger FIELD evidence on repeat observations;
 - exposes one synchronous discovery event bus for later Research and Exploration XP listeners.
+- enables the Player Survey geological card and routes its reserved mode through a short-range physical-evidence scan;
+- verifies loaded deposit-template blocks before recording visited GEOLOGY/FIELD discoveries at the configured analysis level;
+- exposes geological field-survey range, delay, result cap, verification budget, and match threshold in `player.properties`.
 
-Build with `tools/build-newworldcore-geology-patch.ps1`. The script verifies the baseline SHA-256 before producing a new JAR, then runs the config and Discovery schema/event smoke tests. It also needs matching ASM core and ASM tree JAR paths from the local NeoForge runtime.
+Build with `tools/build-newworldcore-geology-patch.ps1`. The script verifies the baseline SHA-256 before producing a new JAR, then runs the config, field-survey, and Discovery schema/event smoke tests. It also needs matching ASM core and ASM tree JAR paths from the local NeoForge runtime.
 
 This patch must eventually be folded back into the full NewWorldCore source project when that source is recovered.

@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Aktif runtime-kabul edilen laptop buildi `0.5.61.0-alpha-discovery-metadata-events`. Discovery Database şema v3; kalıcı analiz seviyesi, ilk/son görülme ayrımı ve Research/Exploration XP için ortak event hattı oyun içinde doğrulanmıştır. Field Survey 48 blok/~4 saniye davranışını korur.
+- Aktif runtime-kabul edilen laptop buildi `0.5.62.0-alpha-geological-field-survey`. Player GUI'deki Structure ve Geological Field Survey yolları 48 blok/~4 saniye profiliyle çalışır; Geological Survey yalnız yüklü dünyadaki gerçek depozit bloklarını doğrular ve sonucu Discovery Database'e `GEOLOGY/FIELD`, ziyaret edilmiş, analiz seviyesi 2 olarak kaydeder.
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 
 Kesin eklenti sürümleri [`manifest.json`](manifest.json) ve [`pack-lock.json`](pack-lock.json) içinde tutulur. Üçüncü taraf JAR dosyaları GitHub’a eklenmez; yalnızca projeye ait iki fork JAR’ı repoda saklanır.
@@ -72,11 +72,10 @@ Belge haritası ve durumları için [`docs/README.md`](docs/README.md) dosyasın
 
 Ana sıra [`docs/12_Gelistirme_Yol_Haritasi.md`](docs/12_Gelistirme_Yol_Haritasi.md) belgesidir.
 
-1. Geological Field Survey'i etkinleştirip fiziksel depositi yerinde tanımak.
-2. Analysis level zincirini anomaly → metallic → resource-rich → gerçek family aşamalarına genişletmek.
-3. Player Ship Interface sekmelerini tamamlamak.
-4. Deposit extraction, remaining, depletion ve `DEPLETED` entegrasyonunu bitirmek.
-5. Bu 14 aşamadan sonra Research ve Production Chamber progression'ına geçmek.
+1. Analysis level zincirini anomaly → metallic → resource-rich → gerçek family aşamalarına genişletmek.
+2. Player Ship Interface sekmelerini tamamlamak.
+3. Deposit extraction, remaining, depletion ve `DEPLETED` entegrasyonunu bitirmek.
+4. Bu 14 aşamadan sonra Research ve Production Chamber progression'ına geçmek.
 
 ## Proje durumu
 

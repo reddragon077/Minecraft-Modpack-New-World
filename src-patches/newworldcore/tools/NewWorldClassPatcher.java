@@ -47,6 +47,10 @@ public final class NewWorldClassPatcher {
                 "net/newworld/navigation/Navigation0581DynamicStructureScanner", "prepareClassification", "(Ljava/lang/Object;)V", Opcodes.RETURN);
         add("net/newworld/player/PlayerFieldSurvey0503Fix", "scanStructures(Ljava/lang/Object;)V",
                 "net/newworld/player/PlayerFieldSurvey0581Fix", "scanStructures", "(Ljava/lang/Object;)V", Opcodes.RETURN);
+        add("net/newworld/player/PlayerFieldSurveyRuntime", "handle(Ljava/lang/Object;I)V",
+                "net/newworld/player/PlayerFieldSurvey0620Dispatcher", "handle", "(Ljava/lang/Object;I)V", Opcodes.RETURN);
+        add("net/newworld/player/PlayerFieldSurvey0504Bridge", "updateClientStatus(I)V",
+                "net/newworld/player/PlayerFieldSurvey0620ClientStatus", "update", "(I)V", Opcodes.RETURN);
         add("net/newworld/core/FETierRegistration", "findRegister(Ljava/lang/Class;)Ljava/lang/reflect/Method;",
                 "net/newworld/core/FETierRegistration0581Fix", "findRegister", "(Ljava/lang/Class;)Ljava/lang/reflect/Method;", Opcodes.ARETURN);
         add("net/newworld/navigation/NavigationUpgradeRuntime", "scanRange(Ljava/lang/Object;)I",
@@ -192,7 +196,8 @@ public final class NewWorldClassPatcher {
         }
         if (PLAYER_GUI_OWNER.equals(className)) {
             replacements += patchPlayerGui(node);
-            expected += 2;
+            replacements += wrapPlayerMouseClicked(node);
+            expected += 8;
         }
         if (DISCOVERY_DATA_OWNER.equals(className)) {
             replacements += wrapDiscoveryRecord(node);
@@ -335,9 +340,24 @@ public final class NewWorldClassPatcher {
                                 "net/newworld/config/NewWorldTuning", "playerSurveyDetailLine",
                                 "()Ljava/lang/String;", false));
                         replacements++;
+                    } else if (constant.cst instanceof String text && "OFFLINE // next phase".equals(text)) {
+                        constant.cst = "Identify physical deposits nearby";
+                        replacements++;
+                    } else if (constant.cst instanceof String text && "Geological survey is not online yet.".equals(text)) {
+                        constant.cst = "SCANNING // Geological survey in progress...";
+                        replacements++;
                     } else if (constant.cst instanceof Integer value && value == -1342177280) {
                         method.instructions.set(instruction, new MethodInsnNode(Opcodes.INVOKESTATIC,
                                 "net/newworld/config/NewWorldTuning", "guiPlayerBackdropArgb", "()I", false));
+                        replacements++;
+                    } else if (constant.cst instanceof Integer value && value == -15065053) {
+                        constant.cst = -15251110;
+                        replacements++;
+                    } else if (constant.cst instanceof Integer value && value == -9735048) {
+                        constant.cst = -1;
+                        replacements++;
+                    } else if (constant.cst instanceof Integer value && value == -11511202) {
+                        constant.cst = -4264969;
                         replacements++;
                     }
                 }
@@ -345,6 +365,35 @@ public final class NewWorldClassPatcher {
             }
         }
         return replacements;
+    }
+
+    private static int wrapPlayerMouseClicked(ClassNode node) {
+        String descriptor = "(DDI)Z";
+        MethodNode original = null;
+        for (MethodNode method : node.methods) {
+            if ("mouseClicked".equals(method.name) && descriptor.equals(method.desc)) {
+                original = method;
+                break;
+            }
+        }
+        if (original == null) return 0;
+
+        original.name = "mouseClicked0620Base";
+        String[] exceptions = original.exceptions == null ? null : original.exceptions.toArray(new String[0]);
+        MethodNode wrapper = new MethodNode(original.access, "mouseClicked", descriptor,
+                original.signature, exceptions);
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.DLOAD, 1));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.DLOAD, 3));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ILOAD, 5));
+        wrapper.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                "net/newworld/player/PlayerGeologicalSurveyGui0620", "mouseClicked",
+                "(Ljava/lang/Object;DDI)Z", false));
+        wrapper.instructions.add(new InsnNode(Opcodes.IRETURN));
+        wrapper.maxStack = 6;
+        wrapper.maxLocals = 6;
+        node.methods.add(wrapper);
+        return 1;
     }
 
     private static int wrapDiscoveryRecord(ClassNode node) {

@@ -195,6 +195,30 @@ public final class NewWorldTuning {
         return NewWorldConfig.integer("player", "field_survey.delay_ticks", 80, 0, 1200);
     }
 
+    public static int playerGeologicalSurveyRangeBlocks() {
+        return NewWorldConfig.integer("player", "geological_survey.horizontal_range_blocks", 48, 16, 512);
+    }
+
+    public static int playerGeologicalSurveyVerticalRangeBlocks() {
+        return NewWorldConfig.integer("player", "geological_survey.vertical_range_blocks", 128, 16, 1024);
+    }
+
+    public static int playerGeologicalSurveyDelayTicks() {
+        return NewWorldConfig.integer("player", "geological_survey.delay_ticks", 80, 0, 1200);
+    }
+
+    public static int playerGeologicalSurveyMaxResults() {
+        return NewWorldConfig.integer("player", "geological_survey.max_results", 8, 1, 32);
+    }
+
+    public static int playerGeologicalSurveyMaxBlockChecks() {
+        return NewWorldConfig.integer("player", "geological_survey.max_block_checks_per_candidate", 4096, 32, 100_000);
+    }
+
+    public static int playerGeologicalSurveyMinimumMatches() {
+        return NewWorldConfig.integer("player", "geological_survey.minimum_matching_blocks", 3, 1, 64);
+    }
+
     public static int discoveryAnalysisLevel(String kind, String source) {
         boolean geology = "GEOLOGY".equalsIgnoreCase(kind);
         boolean field = "FIELD".equalsIgnoreCase(source);
@@ -229,13 +253,19 @@ public final class NewWorldTuning {
     public static String playerSurveyDetailLine() {
         boolean range = NewWorldConfig.bool("gui", "player.show_survey_range", true);
         boolean delay = NewWorldConfig.bool("gui", "player.show_survey_delay", true);
-        if (!range && !delay) return "STRUCTURE SURVEY PARAMETERS HIDDEN";
+        if (!range && !delay) return "FIELD SURVEY PARAMETERS HIDDEN";
         StringBuilder line = new StringBuilder();
-        if (range) line.append("STRUCTURE RANGE: ").append(playerFieldSurveyRangeBlocks()).append(" blocks");
+        if (range) {
+            line.append("SURVEY RANGE S:").append(playerFieldSurveyRangeBlocks())
+                    .append(" G:").append(playerGeologicalSurveyRangeBlocks()).append('x')
+                    .append(playerGeologicalSurveyVerticalRangeBlocks()).append(" blocks");
+        }
         if (delay) {
             if (!line.isEmpty()) line.append(" // ");
-            line.append("RESPONSE: ~")
+            line.append("RESPONSE S:~")
                     .append(String.format(Locale.ROOT, "%.1f", playerFieldSurveyDelayTicks() / 20.0D))
+                    .append("s G:~")
+                    .append(String.format(Locale.ROOT, "%.1f", playerGeologicalSurveyDelayTicks() / 20.0D))
                     .append('s');
         }
         return line.toString();

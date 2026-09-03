@@ -24,6 +24,14 @@ Son güncelleme: 3 Eylül 2026
 - `ARCHEOLOGIST CAMP` tekrar Field Survey kabulünde ilk keşif `307066`, son görülme `397848`, kaynak `FIELD`, analiz seviyesi `1` ve visited `1` olarak doğrulandı.
 - Structure Radar 102, Geology 48 sonuçla tamamlandı; `Navigation0610`, discovery, Field Survey veya NewWorldCore kaynaklı ilgili exception görülmedi.
 
+## Doğrulanan Geological Field Survey
+
+- `0.5.62.0`, Player GUI'deki eski çevrimdışı Geological Scan kartını ayrılmış mode-1 ağ yolu üzerinden etkinleştirir.
+- Tarama uzun menzilli Radar adayını kanıt saymaz; yalnız yüklü chunk'lardaki deterministik depozit şablonunun gerçek bloklarını doğrular.
+- Varsayılan profil `48` yatay, `128` dikey blok, `80` tick gecikme, en fazla `8` sonuç, aday başına `4096` kontrol ve en az `3` eşleşmedir; tamamı `player.properties` içinde Türkçe açıklamalıdır.
+- Laptop kabulünde boş alan taraması 0 sonuçla tamamlandı. TIN merkezindeki tarama `[-2696, 32, -728]` konumunu 3/4 blok eşleşmesiyle 4016 ms'de doğruladı.
+- Kapanan save dosyasında TIN kaydı `GEOLOGY`, `FIELD`, `Visited=1`, `AnalysisLevel=2` ve güncellenmiş `LastSeenAt` ile bulundu; `discoveredAt` korunmuştur. İlgili hata veya exception yoktur.
+
 ## Doğrulanan radar düzeltmeleri
 
 - Masaüstü oyun ve mevcut dünya `0.5.59.4` ile açıldı.

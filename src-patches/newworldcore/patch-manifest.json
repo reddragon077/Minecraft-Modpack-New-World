@@ -1,8 +1,8 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.61.0-alpha-discovery-metadata-events",
-  "marker": "NewWorldDiscoveryMetadataEventsV1",
+  "version": "0.5.62.0-alpha-geological-field-survey",
+  "marker": "NewWorldGeologicalFieldSurveyV1",
   "fixes": [
     "Dynamic structure-registry classification for vanilla and modded structures",
     "Placement-only modded structure coordinates without chunk generation or locate calls",
@@ -32,7 +32,11 @@
     "Persistent discovery analysis level and last-seen timestamp with schema-v2 migration",
     "First-discovery timestamps survive repeat Radar and Field observations",
     "FIELD evidence and visited state cannot be downgraded by later Radar observations",
-    "Common DISCOVERED, SEEN, and ANALYSIS_UPGRADED event bus for future Research and Exploration XP listeners"
+    "Common DISCOVERED, SEEN, and ANALYSIS_UPGRADED event bus for future Research and Exploration XP listeners",
+    "Player Survey Geological Scan card enabled through the reserved mode-1 network path",
+    "Short-range Geological Field Survey verifies physical template blocks in loaded chunks",
+    "Verified geology field evidence records visited analysis-level-2 discoveries through the common database and event path",
+    "Configurable geological field-survey horizontal and vertical range, delay, result cap, block-check budget, and match threshold"
   ],
   "newDeposits": [
     {

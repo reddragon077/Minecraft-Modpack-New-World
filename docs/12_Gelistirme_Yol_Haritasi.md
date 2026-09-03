@@ -2,7 +2,7 @@
 
 Son doğrulama: 3 Eylül 2026
 
-Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.61.0-alpha-discovery-metadata-events`
+Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.62.0-alpha-geological-field-survey`
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -51,7 +51,7 @@ Durum: arayüz kabuğu ve tuş bağlantısı mevcut.
 - [x] Oyuncunun tuşla açabildiği `PlayerShipScreen` mevcut.
 - [x] `OVERVIEW`, `SURVEY`, `DISCOVERIES`, `NAVIGATION`, `MINING`, `EMERGENCY` sekmeleri oluşturuldu.
 - [x] Tasarım, gemideki ayrıntılı terminallerin yerine geçmeyecek şekilde sınırlandı.
-- [~] Yalnız `SURVEY/STRUCTURE` ilk işlevsel modüldür; diğer sekmelerin içeriği sonraki aşamalarda tamamlanacak.
+- [~] `SURVEY/STRUCTURE` ve `SURVEY/GEOLOGICAL` işlevseldir; diğer sekmelerin içeriği sonraki aşamalarda tamamlanacak.
 
 ## Aşama 4 — Overview / Ship Status
 
@@ -81,13 +81,13 @@ Durum: Field Survey sırasında sunucu taraflı gemi çözümleme var; sürekli 
 
 ## Aşama 6 — Field Survey
 
-Durum: Structure Survey çalışıyor; Geological Survey eksik.
+Durum: **tamamlandı.** Structure ve Geological Survey kısa menzilli yerinde doğrulama yolları oyun içinde geçti.
 
 - [x] Player GUI’de kısa menzilli Structure Scan mevcut.
-- [ ] Player GUI’de Geological Scan etkinleştirilmeli; mevcut ekranda `OFFLINE // next phase` durumunda.
+- [x] Player GUI’de Geological Scan etkinleştirildi; ayrılmış mode-1 ağ yolu fiziksel depozit doğrulamasına bağlandı.
 - [x] TARDIS Radar uzun menzilli, Field Survey yakın çevre odaklıdır.
 - [x] Yürüyerek bulunan gerçek structure start kayıtları `FIELD` kaynağıyla kaydedilebiliyor; `0.5.59.5` kabulünde beş gerçek yapı bulundu ve `COPPER SULFIDE DEPOSIT` sızıntısı görülmedi.
-- [ ] Yürüyerek bulunan fiziksel deposit tanımlanıp kaydedilebilmeli.
+- [x] Yürüyerek bulunan fiziksel depozit, yüklü chunk'lardaki gerçek şablon blokları eşleştirilerek `GEOLOGY/FIELD`, visited ve analiz seviyesi 2 olarak kaydediliyor.
 - [x] Field discovery ortak database üzerinden dinamik structure filtresini açabiliyor.
 - [x] Field discovery ortak database üzerinden Navigation’a aktarılabiliyor.
 
@@ -97,6 +97,8 @@ Temel ayrım:
 Radar        = Bir hedef bul.
 Field Survey = Bulunan hedefi yerinde analiz et ve kaydet.
 ```
+
+Kapanış testi: `0.5.62.0` laptop testinde ilk boş alan taraması temiz biçimde 0 sonuç verdi. İkinci tarama `TIN-RICH DEPOSIT` merkezini `[-2696, 32, -728]` konumunda 3/4 fiziksel blok eşleşmesiyle 4016 ms'de doğruladı. Save kapanışından sonra aynı kayıt `Source=FIELD`, `Visited=1`, `AnalysisLevel=2` ve korunmuş ilk keşif zamanı ile doğrulandı; ilgili hata görülmedi.
 
 ## Aşama 7 — Discovery Analysis seviyesi
 

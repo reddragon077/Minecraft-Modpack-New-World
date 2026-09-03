@@ -1,13 +1,13 @@
 # Temel mekanikler
 
-Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.61.0-alpha-discovery-metadata-events` (Discovery Database şema v3, kalıcı analysis/last-seen, ortak discovery event hattı ve önceki Radar/Field Survey davranışı geçti)
+Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.62.0-alpha-geological-field-survey` (Discovery Database şema v3, kalıcı analysis/last-seen, ortak discovery event hattı ve fiziksel kanıta dayalı Geological Field Survey geçti)
 
 | Mekanik | Durum | Uygulama |
 |---|---|---|
 | Oda kontrolü ve matrix | Alpha | Kapalı oda kabukları, modül sayımı, bütünleştirme ve koruma |
 | Gemi ağı | Alpha | FE/eşya/sıvı/gaz taşıma, oda bağlantıları, öncelik ve telemetri |
 | Mining M1 | Alpha | Scan → Extraction, FE tüketimi, yükseltmeler, derin depolama ve güvenlik koşulları |
-| Geological deposits | Alpha | Deterministik worldgen, radar sonuçları ve kalıcı deposit verisi |
+| Geological deposits | Alpha | Deterministik worldgen, radar sonuçları, fiziksel blok doğrulamalı Geological Field Survey ve kalıcı deposit verisi |
 | Structure Radar | Alpha | Canlı structure registry üzerinden vanilla/modlu yapı taraması, family filtreleri ve şema-v3 keşif veritabanı |
 | Navigasyon | Alpha | Hedef seçimi, geçmiş/favoriler, rota hesabı ve çok duraklı ilerleme |
 | Replikasyon | Alpha | Doğal kaynak bilgisi, Matter değerleri ve tarama kısıtları |
