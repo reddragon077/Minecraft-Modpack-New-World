@@ -1,8 +1,8 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.62.0-alpha-geological-field-survey",
-  "marker": "NewWorldGeologicalFieldSurveyV1",
+  "version": "0.5.64.0-alpha-geology-tier-reveal",
+  "marker": "NewWorldGeologyAnalysisProgressionV3",
   "fixes": [
     "Dynamic structure-registry classification for vanilla and modded structures",
     "Placement-only modded structure coordinates without chunk generation or locate calls",
@@ -36,7 +36,14 @@
     "Player Survey Geological Scan card enabled through the reserved mode-1 network path",
     "Short-range Geological Field Survey verifies physical template blocks in loaded chunks",
     "Verified geology field evidence records visited analysis-level-2 discoveries through the common database and event path",
-    "Configurable geological field-survey horizontal and vertical range, delay, result cap, block-check budget, and match threshold"
+    "Configurable geological field-survey horizontal and vertical range, delay, result cap, block-check budget, and match threshold",
+    "Geological Radar Accuracy maps to anomaly, metallic, resource-rich, and exact-family analysis levels",
+    "Geology result names and primary resources remain masked until the configured analysis level is reached",
+    "Exact-family filters remain locked until analysis level 3",
+    "Geological Field Survey quality upgrades records from resource-rich to exact family after the configured physical-match threshold",
+    "Per-result analysis metadata keeps previously mastered deposits exact while lower-level scan results remain masked",
+    "Configurable per-family Radar Accuracy tiers progressively reveal exact deposit names",
+    "The active TrueSingle geology filter popup is flushed and rendered above deferred result layers"
   ],
   "newDeposits": [
     {

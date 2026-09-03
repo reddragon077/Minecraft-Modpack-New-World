@@ -38,6 +38,10 @@ public final class Navigation0610DiscoveryRuntime {
             String effectiveSource = incomingSource;
             int configuredAnalysis = NewWorldTuning.discoveryAnalysisLevel(kind, incomingSource);
             int requestedAnalysis = Math.max(analysisLevel(incoming), configuredAnalysis);
+            if ("GEOLOGY".equalsIgnoreCase(kind) && "RADAR".equalsIgnoreCase(incomingSource)) {
+                requestedAnalysis = Math.max(requestedAnalysis,
+                        Navigation0630GeologyAnalysis.currentRadarAnalysisLevel(incoming));
+            }
 
             if (existing != null) {
                 long existingFirst = longField(existing, "discoveredAt");

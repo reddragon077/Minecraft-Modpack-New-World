@@ -6,7 +6,7 @@ Bu belge, eski `0.1.0-alpha` Room Controller denemesinin yerine güncel New Worl
 
 | Bileşen | Dosya | SHA-256 |
 |---|---|---|
-| NewWorldCore | `NewWorldCore-1.21.1-NeoForge-0.5.59.5-alpha-radar-survey-isolation.jar` | `8c85c3569f9926addd68978c2bca617c57c2a699bec1deac9dcf8a9e4d4b652b` |
+| NewWorldCore | `NewWorldCore-1.21.1-NeoForge-0.5.64.0-alpha-geology-tier-reveal.jar` | `29cff3cce98bbcf762e2aeace7d06109f94eef99c483470bc766c6e0a44bb85b` |
 | DoctorWhoMod fork | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` |
 
 ## Testten önce

@@ -32,6 +32,14 @@ Son güncelleme: 3 Eylül 2026
 - Laptop kabulünde boş alan taraması 0 sonuçla tamamlandı. TIN merkezindeki tarama `[-2696, 32, -728]` konumunu 3/4 blok eşleşmesiyle 4016 ms'de doğruladı.
 - Kapanan save dosyasında TIN kaydı `GEOLOGY`, `FIELD`, `Visited=1`, `AnalysisLevel=2` ve güncellenmiş `LastSeenAt` ile bulundu; `discoveredAt` korunmuştur. İlgili hata veya exception yoktur.
 
+## Doğrulanan kademeli Geological Analysis
+
+- `0.5.64.0`, Radar Accuracy seviyesini her sonuç için ayrı uygular. Henüz açılmayan aileler Accuracy boyunca anomaly, metallic ve resource-rich biçiminde maskelenirken, kendi eşiğine ulaşan aile L3 exact adına yükselir.
+- `config/newworldcore/discovery.properties` içinde 21 deposit ailesinin her biri için `reveal.required_accuracy.*=0..3` anahtarı bulunur. Tanımsız gelecek aileler güvenli biçimde Accuracy III varsayımını kullanır.
+- Varsayılan kümülatif aile dağılımı Accuracy 0/I/II/III için `3/10/18/21`dir. Field Survey bir kaydı erkenden exact açabilir ve kalıcı merge kuralı bu kaydı sonraki Radar gözlemleriyle düşürmez.
+- Laptop kabulünde dört tarama `24/32/40/48` sonuç kapasitesiyle yaklaşık dokuzar saniyede tamamlandı. Kullanıcı kademeli yazıları ve filtre panelinin sonuç satırlarının üzerinde temiz kaldığını doğruladı.
+- Save denetimi 47 `GEOLOGY/RADAR` L3 ve bir korunmuş `GEOLOGY/FIELD` L3 kaydı gösterdi; 66 taranmamış eski Radar kaydı L0 kaldı. Test sonrasında ilgili NewWorldCore exception görülmedi.
+
 ## Doğrulanan radar düzeltmeleri
 
 - Masaüstü oyun ve mevcut dünya `0.5.59.4` ile açıldı.

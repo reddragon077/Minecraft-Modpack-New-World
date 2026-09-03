@@ -219,6 +219,65 @@ public final class NewWorldTuning {
         return NewWorldConfig.integer("player", "geological_survey.minimum_matching_blocks", 3, 1, 64);
     }
 
+    public static int geologyFieldExactMinimumMatches() {
+        return NewWorldConfig.integer("discovery", "analysis.geology_field_exact_minimum_matches", 8,
+                playerGeologicalSurveyMinimumMatches(), 256);
+    }
+
+    public static int geologyRadarAnalysisLevel(int accuracyLevel) {
+        int level = clampLevel(accuracyLevel);
+        return NewWorldConfig.integer("discovery", "analysis.geology_radar_accuracy_" + level + "_level",
+                level, 0, 3);
+    }
+
+    /**
+     * Returns the persistent Radar analysis level for one deposit family. Accuracy still
+     * controls the generic anomaly/metal/resource-rich stages, while each family can be
+     * promoted to exact (L3) at a configurable tier.
+     */
+    public static int geologyRadarAnalysisFor(String depositId, int accuracyLevel) {
+        int accuracy = clampLevel(accuracyLevel);
+        int base = geologyRadarAnalysisLevel(accuracy);
+        return accuracy >= geologyRequiredAccuracy(depositId) ? Math.max(base, 3) : base;
+    }
+
+    public static int geologyRequiredAccuracy(String depositId) {
+        String family = depositFamily(depositId);
+        int fallback = switch (family) {
+            case "iron_oxide", "copper_sulfide", "carboniferous" -> 0;
+            case "quartz_vein", "gold_lode", "redstone_cluster", "lapis_basin",
+                    "tin_lode", "lead_galena", "zinc_lode" -> 1;
+            case "diamond_pipe", "emerald_shear", "osmium_strata", "fluorite_crystal",
+                    "bauxite_strata", "nickel_sulfide", "silver_vein", "certus_quartz_matrix" -> 2;
+            case "uranium_pitchblende", "platinum_intrusion", "uraninite_pocket" -> 3;
+            default -> 3;
+        };
+        return NewWorldConfig.integer("discovery", "reveal.required_accuracy." + family,
+                fallback, 0, 3);
+    }
+
+    public static int geologyFieldAnalysisLevel(int matchingBlocks) {
+        int base = NewWorldConfig.integer("discovery", "analysis.geology_field_level", 2, 0, 3);
+        int exact = NewWorldConfig.integer("discovery", "analysis.geology_field_exact_level", 3, 0, 3);
+        return matchingBlocks >= geologyFieldExactMinimumMatches() ? Math.max(base, exact) : base;
+    }
+
+    public static String geologyAnalysisLabel(int analysisLevel, String exactLabel) {
+        int level = clampLevel(analysisLevel);
+        if (level >= 3 && exactLabel != null && !exactLabel.isBlank()) return exactLabel;
+        String[] defaults = {"GEOLOGICAL ANOMALY", "METALLIC ANOMALY", "RESOURCE-RICH DEPOSIT"};
+        return NewWorldConfig.text("discovery", "display.geology_level_" + level + "_label",
+                defaults[Math.min(level, 2)], 48);
+    }
+
+    public static String geologyAnalysisPrimary(int analysisLevel, String exactPrimary) {
+        int level = clampLevel(analysisLevel);
+        if (level >= 3 && exactPrimary != null && !exactPrimary.isBlank()) return exactPrimary;
+        String[] defaults = {"unknown signal", "metallic signature", "resource-rich signature"};
+        return NewWorldConfig.text("discovery", "display.geology_level_" + level + "_resource",
+                defaults[Math.min(level, 2)], 48);
+    }
+
     public static int discoveryAnalysisLevel(String kind, String source) {
         boolean geology = "GEOLOGY".equalsIgnoreCase(kind);
         boolean field = "FIELD".equalsIgnoreCase(source);
@@ -229,7 +288,7 @@ public final class NewWorldTuning {
             fallback = 2;
         } else if (geology) {
             key = "analysis.geology_radar_level";
-            fallback = 1;
+            fallback = 0;
         } else if (field) {
             key = "analysis.structure_field_level";
             fallback = 1;
@@ -337,6 +396,15 @@ public final class NewWorldTuning {
             case 3 -> "gas";
             default -> "fe";
         };
+    }
+
+    private static String depositFamily(String depositId) {
+        if (depositId == null) return "unknown";
+        String normalized = depositId.trim().toLowerCase(Locale.ROOT);
+        int namespace = normalized.indexOf(':');
+        if (namespace >= 0 && namespace + 1 < normalized.length()) normalized = normalized.substring(namespace + 1);
+        normalized = normalized.replaceAll("[^a-z0-9_.-]", "_");
+        return normalized.isBlank() ? "unknown" : normalized;
     }
 
     private static Object invokeBase(String owner, String name, Class<?>[] parameterTypes, Object... args) {

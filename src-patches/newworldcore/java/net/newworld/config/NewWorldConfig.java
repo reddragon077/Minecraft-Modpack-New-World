@@ -50,6 +50,14 @@ public final class NewWorldConfig {
         };
     }
 
+    public static String text(String file, String key, String fallback, int maxLength) {
+        String value = value(file, key);
+        String selected = value == null ? fallback : value.trim();
+        if (selected == null || selected.isBlank()) selected = fallback == null ? "" : fallback;
+        int limit = Math.max(1, maxLength);
+        return selected.length() <= limit ? selected : selected.substring(0, limit);
+    }
+
     public static void reload() { CACHE.clear(); }
 
     public static Path root() {

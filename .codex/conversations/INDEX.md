@@ -4,6 +4,7 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-03 — laptop Geological Analysis tier reveal](2026-09-03_laptop_geology_analysis_tier_reveal.md) — `.64.0` completed config-driven Accuracy 0/I/II/III family reveals, preserved Field L3 evidence, repaired the active TrueSingle filter layer, and passed four-scan, save, visual and clean-log acceptance.
 - [2026-09-03 — laptop Geological Field Survey acceptance](2026-09-03_laptop_geological_field_survey.md) — `.62.0` enabled the Player Geological Scan, verified a physical TIN deposit, and persisted `GEOLOGY/FIELD`, visited, analysis-level-2 evidence without errors.
 - [2026-09-03 — laptop Discovery Database metadata and events](2026-09-03_laptop_discovery_metadata_events.md) — `.61.0` completed Stage 2 with schema-v3 analysis/last-seen persistence, repeat merge rules, a common event bus, 449/449 migrated save records, and clean Structure/Geology/Field runtime acceptance.
 - [2026-09-02 — laptop config-first GUI and network](2026-09-02_laptop_config_first_gui_network.md) — `.4` passed the 48-block/4074-ms Survey, `ARCHEOLOGIST CAMP` dynamic-filter screenshot, live GUI/config hooks and config-first network controls; Radar v2 closed.

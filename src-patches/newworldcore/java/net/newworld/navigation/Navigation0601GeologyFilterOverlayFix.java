@@ -10,12 +10,21 @@ public final class Navigation0601GeologyFilterOverlayFix {
     private Navigation0601GeologyFilterOverlayFix() {}
 
     public static void render(Object screen, Object graphics) throws Exception {
+        renderLayered(screen, graphics, false);
+    }
+
+    /** Active single-owner UI path introduced after the original overlay repair. */
+    public static void renderTrueSingle(Object screen, Object graphics) throws Exception {
+        renderLayered(screen, graphics, true);
+    }
+
+    private static void renderLayered(Object screen, Object graphics, boolean trueSingle) throws Exception {
         // GuiGraphics can defer text and shape buffers by render type. Z alone is not
         // enough when a lower layer is flushed later, so commit every result batch first.
         call(graphics, "flush");
         Object pose = call(graphics, "pose");
         if (pose == null) {
-            renderBase(screen, graphics);
+            renderBase(screen, graphics, trueSingle);
             call(graphics, "flush");
             return;
         }
@@ -25,7 +34,7 @@ public final class Navigation0601GeologyFilterOverlayFix {
             call(pose, "pushPose");
             pushed = true;
             translate(pose, 0.0D, 0.0D, NewWorldTuning.guiFilterOverlayZ());
-            renderBase(screen, graphics);
+            renderBase(screen, graphics, trueSingle);
             // Commit the popup while it is still the last logical GUI layer.
             call(graphics, "flush");
         } finally {
@@ -33,9 +42,12 @@ public final class Navigation0601GeologyFilterOverlayFix {
         }
     }
 
-    private static void renderBase(Object screen, Object graphics) throws Exception {
-        Class<?> owner = Class.forName("net.newworld.navigation.Navigation0559SingleOwnerRadarUi");
-        Method method = owner.getDeclaredMethod("drawExistingPopup0601Base", Object.class, Object.class);
+    private static void renderBase(Object screen, Object graphics, boolean trueSingle) throws Exception {
+        Class<?> owner = Class.forName(trueSingle
+                ? "net.newworld.navigation.Navigation0561TrueSingleRadarUi"
+                : "net.newworld.navigation.Navigation0559SingleOwnerRadarUi");
+        Method method = owner.getDeclaredMethod(trueSingle
+                ? "drawFilterPopup0632Base" : "drawExistingPopup0601Base", Object.class, Object.class);
         method.setAccessible(true);
         try {
             method.invoke(null, screen, graphics);

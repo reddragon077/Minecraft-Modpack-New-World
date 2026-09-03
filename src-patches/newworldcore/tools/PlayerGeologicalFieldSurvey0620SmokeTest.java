@@ -32,6 +32,9 @@ public final class PlayerGeologicalFieldSurvey0620SmokeTest {
         expect("geology max results", NewWorldTuning.playerGeologicalSurveyMaxResults(), 8);
         expect("geology max checks", NewWorldTuning.playerGeologicalSurveyMaxBlockChecks(), 4096);
         expect("geology minimum matches", NewWorldTuning.playerGeologicalSurveyMinimumMatches(), 3);
+        expect("geology exact matches", NewWorldTuning.geologyFieldExactMinimumMatches(), 8);
+        expect("geology base field analysis", NewWorldTuning.geologyFieldAnalysisLevel(3), 2);
+        expect("geology exact field analysis", NewWorldTuning.geologyFieldAnalysisLevel(8), 3);
         System.out.println("NewWorldCore Geological Field Survey smoke test passed");
     }
 

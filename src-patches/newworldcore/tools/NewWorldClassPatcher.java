@@ -35,6 +35,11 @@ public final class NewWorldClassPatcher {
     private static final String REPLICATION_OWNER = "net/newworld/mining/ReplicationFeedRuntime";
     private static final String NAVIGATION_UPGRADE_OWNER = "net/newworld/navigation/NavigationUpgradeRuntime";
     private static final String GEOLOGY_UI_OWNER = "net/newworld/navigation/Navigation0559SingleOwnerRadarUi";
+    private static final String TRUE_SINGLE_GEOLOGY_UI_OWNER = "net/newworld/navigation/Navigation0561TrueSingleRadarUi";
+    private static final String GEOLOGY_ANALYSIS_UI_OWNER = "net/newworld/navigation/Navigation0558UnifiedRadarUi";
+    private static final String GEOLOGY_TIMED_OWNER = "net/newworld/navigation/Navigation0540GeologyTimedScan";
+    private static final String GEOLOGY_SCAN_OWNER = "net/newworld/navigation/Navigation0520GeologyScanRuntime";
+    private static final String GEOLOGY_CLIENT_STATE_OWNER = "net/newworld/navigation/Navigation0520GeologyClientState";
     private static final String PLAYER_GUI_OWNER = "net/newworld/player/PlayerShipScreen";
     private static final String DISCOVERY_DATA_OWNER = "net/newworld/navigation/NavigationDiscoverySavedData";
     private static final String DISCOVERY_VALUE_OWNER = "net/newworld/navigation/NavigationDiscoverySavedData$Discovery";
@@ -101,6 +106,30 @@ public final class NewWorldClassPatcher {
                 "net/newworld/config/NewWorldTuning", "geologyEnergyCost", "(IIIII)J", Opcodes.LRETURN);
         add("net/newworld/navigation/Navigation0540GeologyTimedScan", "efficiencyPercent(I)I",
                 "net/newworld/config/NewWorldTuning", "geologyEfficiencyPercent", "(I)I", Opcodes.IRETURN);
+        add("net/newworld/navigation/Navigation0520GeologyClientState",
+                "label(Lnet/newworld/navigation/Navigation0520GeologyClientState$Result;)Ljava/lang/String;",
+                "net/newworld/navigation/Navigation0630GeologyAnalysis", "clientLabel",
+                "(Ljava/lang/Object;)Ljava/lang/String;", Opcodes.ARETURN);
+        add("net/newworld/navigation/Navigation0520GeologyClientState",
+                "primary(Lnet/newworld/navigation/Navigation0520GeologyClientState$Result;)Ljava/lang/String;",
+                "net/newworld/navigation/Navigation0630GeologyAnalysis", "clientPrimary",
+                "(Ljava/lang/Object;)Ljava/lang/String;", Opcodes.ARETURN);
+        add(GEOLOGY_ANALYSIS_UI_OWNER, "filtered(Ljava/lang/Object;Ljava/util/List;)Ljava/util/List;",
+                "net/newworld/navigation/Navigation0630GeologyAnalysis", "clientFiltered",
+                "(Ljava/lang/Object;Ljava/util/List;)Ljava/util/List;", Opcodes.ARETURN);
+        add(GEOLOGY_ANALYSIS_UI_OWNER, "availableTypes()Ljava/util/List;",
+                "net/newworld/navigation/Navigation0630GeologyAnalysis", "clientAvailableTypes",
+                "()Ljava/util/List;", Opcodes.ARETURN);
+        add(GEOLOGY_ANALYSIS_UI_OWNER, "filterSummary(Ljava/lang/Object;)Ljava/lang/String;",
+                "net/newworld/navigation/Navigation0630GeologyAnalysis", "clientFilterSummary",
+                "(Ljava/lang/Object;)Ljava/lang/String;", Opcodes.ARETURN);
+        add(GEOLOGY_ANALYSIS_UI_OWNER, "labelForType(I)Ljava/lang/String;",
+                "net/newworld/navigation/Navigation0630GeologyAnalysis", "clientLabelForType",
+                "(I)Ljava/lang/String;", Opcodes.ARETURN);
+        add("net/newworld/navigation/Navigation0553GeologySnapshot",
+                "sendSnapshot(Ljava/lang/Object;Ljava/util/List;)V",
+                "net/newworld/navigation/Navigation0630GeologyAnalysis", "sendSnapshot",
+                "(Ljava/lang/Object;Ljava/util/List;)V", Opcodes.RETURN);
         add("net/newworld/network/UpgradeValues", "transferLimit(II)I",
                 "net/newworld/config/NewWorldTuning", "networkNodeTransferLimit", "(II)I", Opcodes.IRETURN);
         add("net/newworld/network/UpgradeValues", "capacityLimit(II)I",
@@ -119,10 +148,12 @@ public final class NewWorldClassPatcher {
         classNames.add(EMERGENCY_POLICY_OWNER);
         classNames.add(REPLICATION_OWNER);
         classNames.add(GEOLOGY_UI_OWNER);
+        classNames.add(TRUE_SINGLE_GEOLOGY_UI_OWNER);
         classNames.add(PLAYER_GUI_OWNER);
         classNames.add(DISCOVERY_DATA_OWNER);
         classNames.add(DISCOVERY_VALUE_OWNER);
         classNames.add(DISCOVERY_META_OWNER);
+        classNames.add(GEOLOGY_SCAN_OWNER);
         try (JarFile jar = new JarFile(baseline.toFile())) {
             for (String className : classNames) {
                 String entryName = className + ".class";
@@ -192,6 +223,27 @@ public final class NewWorldClassPatcher {
         }
         if (GEOLOGY_UI_OWNER.equals(className)) {
             replacements += wrapGeologyFilterOverlay(node);
+            expected++;
+        }
+        if (TRUE_SINGLE_GEOLOGY_UI_OWNER.equals(className)) {
+            replacements += wrapTrueSingleGeologyFilterOverlay(node);
+            expected++;
+        }
+        if (GEOLOGY_ANALYSIS_UI_OWNER.equals(className)) {
+            replacements += patchGeologyLockedFilterMessage(node);
+            expected++;
+        }
+        if (GEOLOGY_TIMED_OWNER.equals(className)) {
+            replacements += wrapGeologyTimedRun(node);
+            expected++;
+        }
+        if (GEOLOGY_SCAN_OWNER.equals(className)) {
+            replacements += wrapGeologyScanRecord(node);
+            replacements += wrapGeologyScanSend(node);
+            expected += 2;
+        }
+        if (GEOLOGY_CLIENT_STATE_OWNER.equals(className)) {
+            replacements += wrapGeologyClientAccept(node);
             expected++;
         }
         if (PLAYER_GUI_OWNER.equals(className)) {
@@ -278,6 +330,135 @@ public final class NewWorldClassPatcher {
         wrapper.maxLocals = 2;
         node.methods.add(wrapper);
         return 1;
+    }
+
+    private static int wrapTrueSingleGeologyFilterOverlay(ClassNode node) {
+        String descriptor = "(Ljava/lang/Object;Ljava/lang/Object;)V";
+        MethodNode original = find(node, "drawFilterPopup", descriptor);
+        if (original == null) return 0;
+        original.name = "drawFilterPopup0632Base";
+        MethodNode wrapper = wrapper(original, "drawFilterPopup");
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
+        wrapper.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                "net/newworld/navigation/Navigation0601GeologyFilterOverlayFix", "renderTrueSingle",
+                descriptor, false));
+        wrapper.instructions.add(new InsnNode(Opcodes.RETURN));
+        wrapper.maxStack = 2;
+        wrapper.maxLocals = 2;
+        node.methods.add(wrapper);
+        return 1;
+    }
+
+    private static int wrapGeologyTimedRun(ClassNode node) {
+        String descriptor = "(Lnet/newworld/navigation/Navigation0540GeologyTimedScan$Job;)V";
+        MethodNode original = null;
+        for (MethodNode method : node.methods) {
+            if ("runImmediate".equals(method.name) && descriptor.equals(method.desc)) {
+                original = method;
+                break;
+            }
+        }
+        if (original == null) return 0;
+
+        original.name = "runImmediate0630Base";
+        String[] exceptions = original.exceptions == null ? null : original.exceptions.toArray(new String[0]);
+        MethodNode wrapper = new MethodNode(original.access, "runImmediate", descriptor,
+                original.signature, exceptions);
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        wrapper.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                "net/newworld/navigation/Navigation0630GeologyAnalysis", "runImmediate",
+                "(Ljava/lang/Object;)V", false));
+        wrapper.instructions.add(new InsnNode(Opcodes.RETURN));
+        wrapper.maxStack = 1;
+        wrapper.maxLocals = 1;
+        node.methods.add(wrapper);
+        return 1;
+    }
+
+    private static int patchGeologyLockedFilterMessage(ClassNode node) {
+        int replacements = 0;
+        for (MethodNode method : node.methods) {
+            for (AbstractInsnNode instruction = method.instructions.getFirst(); instruction != null; ) {
+                AbstractInsnNode next = instruction.getNext();
+                if (instruction instanceof LdcInsnNode constant
+                        && "NO DEPOSIT FAMILIES IN CURRENT SCAN".equals(constant.cst)) {
+                    method.instructions.set(instruction, new MethodInsnNode(Opcodes.INVOKESTATIC,
+                            "net/newworld/navigation/Navigation0630GeologyAnalysis", "lockedFilterMessage",
+                            "()Ljava/lang/String;", false));
+                    replacements++;
+                }
+                instruction = next;
+            }
+        }
+        return replacements;
+    }
+
+    private static int wrapGeologyScanRecord(ClassNode node) {
+        String descriptor = "(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Lnet/newworld/navigation/Navigation0520GeologyScanRuntime$Hit;)V";
+        MethodNode original = find(node, "record", descriptor);
+        if (original == null) return 0;
+        original.name = "record0631Base";
+        MethodNode wrapper = wrapper(original, "record");
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 2));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 3));
+        wrapper.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                "net/newworld/navigation/Navigation0630GeologyAnalysis", "captureScanRecord",
+                "(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V", false));
+        wrapper.instructions.add(new InsnNode(Opcodes.RETURN));
+        wrapper.maxStack = 4;
+        wrapper.maxLocals = 4;
+        node.methods.add(wrapper);
+        return 1;
+    }
+
+    private static int wrapGeologyScanSend(ClassNode node) {
+        String descriptor = "(Ljava/lang/Object;I)V";
+        MethodNode original = find(node, "send", descriptor);
+        if (original == null) return 0;
+        original.name = "send0631Base";
+        MethodNode wrapper = wrapper(original, "send");
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ILOAD, 1));
+        wrapper.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                "net/newworld/navigation/Navigation0630GeologyAnalysis", "sendScanPacket",
+                descriptor, false));
+        wrapper.instructions.add(new InsnNode(Opcodes.RETURN));
+        wrapper.maxStack = 2;
+        wrapper.maxLocals = 2;
+        node.methods.add(wrapper);
+        return 1;
+    }
+
+    private static int wrapGeologyClientAccept(ClassNode node) {
+        String descriptor = "(I)V";
+        MethodNode original = find(node, "acceptLegacy", descriptor);
+        if (original == null) return 0;
+        original.name = "acceptLegacy0631Base";
+        MethodNode wrapper = wrapper(original, "acceptLegacy");
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ILOAD, 0));
+        wrapper.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                "net/newworld/navigation/Navigation0630GeologyAnalysis", "acceptLegacy",
+                descriptor, false));
+        wrapper.instructions.add(new InsnNode(Opcodes.RETURN));
+        wrapper.maxStack = 1;
+        wrapper.maxLocals = 1;
+        node.methods.add(wrapper);
+        return 1;
+    }
+
+    private static MethodNode find(ClassNode node, String name, String descriptor) {
+        for (MethodNode method : node.methods) {
+            if (name.equals(method.name) && descriptor.equals(method.desc)) return method;
+        }
+        return null;
+    }
+
+    private static MethodNode wrapper(MethodNode original, String name) {
+        String[] exceptions = original.exceptions == null ? null : original.exceptions.toArray(new String[0]);
+        return new MethodNode(original.access, name, original.desc, original.signature, exceptions);
     }
 
     private static int wrapConfigMethod(ClassNode node, String methodName, String descriptor, String baseName,

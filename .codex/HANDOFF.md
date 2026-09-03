@@ -6,12 +6,14 @@ Branch: `main`
 
 ## Current objective
 
-Extend Geological analysis progression from anomaly to exact deposit family. Radar v2, Discovery Database Stage 2, and Geological Field Survey are complete.
+Populate the Player GUI Discoveries tab (roadmap Stage 8). Radar v2, Discovery Database metadata/events, Geological Field Survey, and Discovery Analysis Stage 7 are complete.
 
 ## Current accepted continuation
 
-- Active laptop/repository build: `NewWorldCore-1.21.1-NeoForge-0.5.62.0-alpha-geological-field-survey.jar`.
-- SHA-256: `253ba89166c0a6fc3e2cfb26d5a053e77a2075335702fafb0c714d997fe62bb5`.
+- Active laptop/repository build: `NewWorldCore-1.21.1-NeoForge-0.5.64.0-alpha-geology-tier-reveal.jar`.
+- SHA-256: `29cff3cce98bbcf762e2aeace7d06109f94eef99c483470bc766c6e0a44bb85b`.
+- Accuracy 0/I/II/III now reveals deposit families cumulatively by config-defined thresholds. All 21 current families have individual `reveal.required_accuracy.*` entries; unknown future families default safely to III.
+- Laptop acceptance completed all four Accuracy scans at 24/32/40/48 result caps in about nine seconds each. The user visually confirmed staged text and a clean foreground filter popup. Save audit found 47 Radar L3 records, one preserved Field L3 TIN, and 66 untouched Radar L0 records; no relevant NewWorldCore error occurred.
 - Geological Field Survey is live through payload mode 1 and verifies actual loaded deposit-template blocks. Its range, delay, result cap, check budget, and match threshold are documented in `player.properties`.
 - Laptop acceptance verified `TIN-RICH DEPOSIT` at `[-2696, 32, -728]` with 3/4 matching blocks in 4016 ms. Persisted NBT is `GEOLOGY/FIELD`, visited 1, analysis level 2, with first discovery preserved and last-seen advanced; no relevant error occurred.
 - Prior `.61.0` is preserved under `backups/custom-mods/pre-apply-20260903-113644/` on the laptop.
@@ -103,9 +105,9 @@ Extend Geological analysis progression from anomaly to exact deposit family. Rad
 
 ## Next executable test
 
-1. Extend analysis levels into anomaly → metallic → resource-rich → exact deposit-family progression without exposing save-schema constants as config.
-2. Connect Accuracy and Field Survey quality to that staged reveal model.
-3. Continue the Player Ship Interface after the analysis progression is accepted.
+1. Populate the Player GUI Discoveries list from the shared Discovery Database.
+2. Add recent-discovery and detail views showing source, analysis level, last seen, and estimated reserve.
+3. Connect navigation-target, route and favorite actions without duplicating persistence state.
 
 ## Do not assume
 

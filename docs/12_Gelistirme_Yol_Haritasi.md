@@ -2,7 +2,7 @@
 
 Son doğrulama: 3 Eylül 2026
 
-Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.62.0-alpha-geological-field-survey`
+Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.64.0-alpha-geology-tier-reveal`
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -102,14 +102,16 @@ Kapanış testi: `0.5.62.0` laptop testinde ilk boş alan taraması temiz biçim
 
 ## Aşama 7 — Discovery Analysis seviyesi
 
-Durum: kalıcı 0-3 taban modeli ve yükseltme/event yolu mevcut; aşamalı jeolojik çözümleme ve oynanış ilerlemesi tamamlanmalı.
+Durum: **tamamlandı.** Kalıcı 0-3 model, yükseltme/event yolu, Accuracy tabanlı jeolojik çözümleme, aile bazlı config eşikleri ve Field kanıtının düşürülememesi oyun içinde geçti.
 
 - [~] Ziyaret edilmemiş structure sonuçları `UNKNOWN STRUCTURE` olarak maskeleniyor.
 - [x] Kalıcı analysis level modeli
-- [ ] Geological tanımlama zinciri: anomaly → metallic → resource-rich → gerçek deposit family
-- [ ] Accuracy ve Field Survey kalitesinin analysis level’a etkisi
+- [x] Geological tanımlama zinciri: anomaly → metallic → resource-rich → gerçek deposit family
+- [x] Accuracy ve Field Survey kalitesinin analysis level’a etkisi
 - [~] Structure analysis seviyesi: Radar adayı 0, Field doğrulaması 1 olarak çalışıyor; ileri Research seviyeleri bekliyor.
 - [x] Eski kaydın daha iyi analizle upgrade edilmesi; seviye, FIELD kanıtı ve visited durumu sonraki düşük seviye Radar kaydıyla düşürülemiyor.
+
+Kapanış testi: `0.5.64.0` ile Accuracy `0/1/2/3` taramaları sırasıyla `24/32/40/48` sonuç kapasitesinde ve yaklaşık dokuzar saniyede tamamlandı. Kullanıcı her kademedeki maskeli/exact yazıları ve temiz foreground filtre panelini görsel olarak doğruladı. Son save denetiminde 47 Radar sonucu L3 exact, daha önce Field Survey ile doğrulanan bir TIN kaydı da `FIELD/L3` olarak korundu; kalan 66 eski/taranmamış Radar kaydı L0 kaldı. İlgili NewWorldCore hatası görülmedi.
 
 ## Aşama 8 — Discoveries sekmesi
 

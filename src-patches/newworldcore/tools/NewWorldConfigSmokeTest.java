@@ -25,8 +25,28 @@ public final class NewWorldConfigSmokeTest {
         expect("geological survey minimum matches", NewWorldTuning.playerGeologicalSurveyMinimumMatches(), 3L);
         expect("structure radar analysis", NewWorldTuning.discoveryAnalysisLevel("STRUCTURE", "RADAR"), 0L);
         expect("structure field analysis", NewWorldTuning.discoveryAnalysisLevel("STRUCTURE", "FIELD"), 1L);
-        expect("geology radar analysis", NewWorldTuning.discoveryAnalysisLevel("GEOLOGY", "RADAR"), 1L);
+        expect("geology radar analysis fallback", NewWorldTuning.discoveryAnalysisLevel("GEOLOGY", "RADAR"), 0L);
         expect("geology field analysis", NewWorldTuning.discoveryAnalysisLevel("GEOLOGY", "FIELD"), 2L);
+        expect("geology radar accuracy 0", NewWorldTuning.geologyRadarAnalysisLevel(0), 0L);
+        expect("geology radar accuracy 1", NewWorldTuning.geologyRadarAnalysisLevel(1), 1L);
+        expect("geology radar accuracy 2", NewWorldTuning.geologyRadarAnalysisLevel(2), 2L);
+        expect("geology radar accuracy 3", NewWorldTuning.geologyRadarAnalysisLevel(3), 2L);
+        expect("iron reveal tier", NewWorldTuning.geologyRequiredAccuracy("newworldcore:iron_oxide"), 0L);
+        expect("tin reveal tier", NewWorldTuning.geologyRequiredAccuracy("tin_lode"), 1L);
+        expect("diamond reveal tier", NewWorldTuning.geologyRequiredAccuracy("newworldcore:diamond_pipe"), 2L);
+        expect("uraninite reveal tier", NewWorldTuning.geologyRequiredAccuracy("newworldcore:uraninite_pocket"), 3L);
+        expect("basic family exact at accuracy 0", NewWorldTuning.geologyRadarAnalysisFor("iron_oxide", 0), 3L);
+        expect("advanced family masked at accuracy 1", NewWorldTuning.geologyRadarAnalysisFor("diamond_pipe", 1), 1L);
+        expect("advanced family exact at accuracy 2", NewWorldTuning.geologyRadarAnalysisFor("diamond_pipe", 2), 3L);
+        expect("rare family masked at accuracy 2", NewWorldTuning.geologyRadarAnalysisFor("uraninite_pocket", 2), 2L);
+        expect("rare family exact at accuracy 3", NewWorldTuning.geologyRadarAnalysisFor("uraninite_pocket", 3), 3L);
+        expect("geology field exact matches", NewWorldTuning.geologyFieldExactMinimumMatches(), 8L);
+        expect("geology field base quality", NewWorldTuning.geologyFieldAnalysisLevel(3), 2L);
+        expect("geology field exact quality", NewWorldTuning.geologyFieldAnalysisLevel(8), 3L);
+        expectText("geology anomaly label", NewWorldTuning.geologyAnalysisLabel(0, "TIN-RICH DEPOSIT"), "GEOLOGICAL ANOMALY");
+        expectText("geology metallic label", NewWorldTuning.geologyAnalysisLabel(1, "TIN-RICH DEPOSIT"), "METALLIC ANOMALY");
+        expectText("geology rich label", NewWorldTuning.geologyAnalysisLabel(2, "TIN-RICH DEPOSIT"), "RESOURCE-RICH DEPOSIT");
+        expectText("geology exact label", NewWorldTuning.geologyAnalysisLabel(3, "TIN-RICH DEPOSIT"), "TIN-RICH DEPOSIT");
         expect("GUI overlay depth", Math.round(NewWorldTuning.guiFilterOverlayZ()), 1000L);
         expect("GUI background alpha", NewWorldTuning.guiPlayerBackdropArgb(), -1_291_845_632L);
         expect("network FE transfer", NewWorldTuning.networkNodeTransferLimit(0, 3), 100_000L);
@@ -39,5 +59,9 @@ public final class NewWorldConfigSmokeTest {
 
     private static void expect(String label, long actual, long expected) {
         if (actual != expected) throw new AssertionError(label + ": expected " + expected + ", got " + actual);
+    }
+
+    private static void expectText(String label, String actual, String expected) {
+        if (!expected.equals(actual)) throw new AssertionError(label + ": expected " + expected + ", got " + actual);
     }
 }

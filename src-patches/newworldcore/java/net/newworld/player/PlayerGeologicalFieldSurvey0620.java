@@ -110,11 +110,13 @@ public final class PlayerGeologicalFieldSurvey0620 {
 
             Set<String> families = new LinkedHashSet<>();
             for (VerifiedDeposit deposit : deposits) {
-                record(level, shipId, deposit);
-                families.add(deposit.definition.label());
+                int analysisLevel = NewWorldTuning.geologyFieldAnalysisLevel(deposit.matches);
+                record(level, shipId, deposit, analysisLevel);
+                families.add(NewWorldTuning.geologyAnalysisLabel(analysisLevel, deposit.definition.label()));
                 System.out.println("[NewWorld Geological Field Survey] verified " + deposit.definition.label()
                         + " center=" + deposit.x + ',' + deposit.y + ',' + deposit.z
-                        + " matches=" + deposit.matches + '/' + deposit.checks);
+                        + " matches=" + deposit.matches + '/' + deposit.checks
+                        + " analysis=L" + analysisLevel);
             }
             message(player, "GEOLOGICAL FIELD SURVEY // Identified " + deposits.size()
                     + (deposits.size() == 1 ? " physical deposit: " : " physical deposits: ")
@@ -203,7 +205,8 @@ public final class PlayerGeologicalFieldSurvey0620 {
         int originY = centerY - template.sy() / 2;
         int originZ = centerZ - template.sz() / 2;
         int maxChecks = NewWorldTuning.playerGeologicalSurveyMaxBlockChecks();
-        int minimum = NewWorldTuning.playerGeologicalSurveyMinimumMatches();
+        int target = Math.max(NewWorldTuning.playerGeologicalSurveyMinimumMatches(),
+                NewWorldTuning.geologyFieldExactMinimumMatches());
         int checks = 0;
         int matches = 0;
         for (Navigation0533DepositTemplates.Block block : template.blocks()) {
@@ -220,13 +223,13 @@ public final class PlayerGeologicalFieldSurvey0620 {
             String actual = stateId(call(level, "getBlockState", pos));
             if (expected != null && expected.equals(actual)) {
                 matches++;
-                if (matches >= minimum) break;
+                if (matches >= target) break;
             }
         }
         return new Match(matches, checks);
     }
 
-    private static void record(Object level, String shipId, VerifiedDeposit deposit) throws Exception {
+    private static void record(Object level, String shipId, VerifiedDeposit deposit, int analysisLevel) throws Exception {
         Class<?> discoveryType = Class.forName("net.newworld.navigation.NavigationDiscoverySavedData$Discovery");
         Object discovery = discoveryType.getConstructor().newInstance();
         Navigation0520GeologyDefinitions.Def definition = deposit.definition;
@@ -242,6 +245,7 @@ public final class PlayerGeologicalFieldSurvey0620 {
         setField(discovery, "visited", true);
         setField(discovery, "kind", "GEOLOGY");
         setField(discovery, "source", "FIELD");
+        setField(discovery, "analysisLevel", analysisLevel);
         setField(discovery, "depositId", definition.id());
         setField(discovery, "primaryResource", definition.primary());
         setField(discovery, "secondaryResources", definition.secondary());

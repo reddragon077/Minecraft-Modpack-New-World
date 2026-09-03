@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Aktif runtime-kabul edilen laptop buildi `0.5.62.0-alpha-geological-field-survey`. Player GUI'deki Structure ve Geological Field Survey yolları 48 blok/~4 saniye profiliyle çalışır; Geological Survey yalnız yüklü dünyadaki gerçek depozit bloklarını doğrular ve sonucu Discovery Database'e `GEOLOGY/FIELD`, ziyaret edilmiş, analiz seviyesi 2 olarak kaydeder.
+- Aktif runtime-kabul edilen laptop buildi `0.5.64.0-alpha-geology-tier-reveal`. Geological Radar sonuçları Accuracy 0/I/II/III boyunca anomaly → metallic → resource-rich → exact-family olarak ilerler; 21 deposit ailesinin exact açılma kademesi `discovery.properties` içinden ayrı ayrı ayarlanır. Field Survey ile daha önce doğrulanan exact kayıtlar sonraki düşük seviye Radar taramalarıyla kapanmaz.
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 
 Kesin eklenti sürümleri [`manifest.json`](manifest.json) ve [`pack-lock.json`](pack-lock.json) içinde tutulur. Üçüncü taraf JAR dosyaları GitHub’a eklenmez; yalnızca projeye ait iki fork JAR’ı repoda saklanır.

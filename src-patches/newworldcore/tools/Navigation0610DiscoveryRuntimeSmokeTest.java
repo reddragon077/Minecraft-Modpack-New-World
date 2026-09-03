@@ -39,14 +39,14 @@ public final class Navigation0610DiscoveryRuntimeSmokeTest {
             oldTag.putInt("NWDiscoverySchema", 2);
             FakeDiscovery migrated = discovery("GEOLOGY", "RADAR", 75L, false);
             Navigation0610DiscoveryRuntime.afterLoad(oldTag, "S0_D0_", migrated);
-            expect("migration analysis", migrated.analysisLevel, 1);
+            expect("migration analysis", migrated.analysisLevel, 0);
             expect("migration last seen", migrated.lastSeenAt, 75L);
 
             FakeTag saved = new FakeTag();
             Navigation0610DiscoveryRuntime.afterSaveSchema(saved);
             Navigation0610DiscoveryRuntime.afterSave(saved, "S0_D0_", migrated);
             expect("saved schema", saved.getInt("NWDiscoverySchema"), 3);
-            expect("saved analysis", saved.getInt("S0_D0_AnalysisLevel"), 1);
+            expect("saved analysis", saved.getInt("S0_D0_AnalysisLevel"), 0);
             expect("saved last seen", saved.getLong("S0_D0_LastSeenAt"), 75L);
             if (!data.dirty) throw new AssertionError("record did not retain SavedData dirty behavior");
         } finally {
