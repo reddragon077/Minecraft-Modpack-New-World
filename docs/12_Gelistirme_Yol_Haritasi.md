@@ -1,8 +1,8 @@
 # New World — Aktif geliştirme yol haritası
 
-Son doğrulama: 2 Eylül 2026
+Son doğrulama: 3 Eylül 2026
 
-Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.60.4-alpha-config-first-gui-network`
+Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.61.0-alpha-discovery-metadata-events`
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -30,17 +30,19 @@ Kapanış testi: `ABANDONED CAMP`, `CAMPSITE` ve `ARCHEOLOGIST CAMP` yerinde tan
 
 ## Aşama 2 — Ortak Discovery Database
 
-Durum: ortak kalıcı veritabanı aktif; metadata şeması tamamlanmalı.
+Durum: **tamamlandı.** Ortak kalıcı veritabanı şema v3'e yükseltildi; eski kayıtlar kayıpsız taşındı ve bütün kayıt yolları ortak event hattına bağlandı.
 
 - [x] Gemi kapsamlı ortak `NavigationDiscoverySavedData` mevcut.
 - [x] `STRUCTURE` ve `GEOLOGY` kategorileri mevcut.
 - [x] Family/tip, dimension, koordinat, ilk keşif zamanı ve `RADAR`/`FIELD` kaynağı saklanıyor.
-- [ ] Analiz seviyesi kalıcı discovery alanı olarak eklenmeli.
-- [ ] Son görülme zamanı eklenmeli ve tekrar keşifte güncellenmeli.
+- [x] Analiz seviyesi 0-3 aralığında kalıcı discovery alanı olarak eklendi; kaynak başlangıç seviyeleri `discovery.properties` ile ayarlanabilir.
+- [x] `lastSeenAt` eklendi ve tekrar keşifte güncellenirken `discoveredAt` ilk keşif zamanı olarak korunuyor.
 - [x] Structure Radar filtreleri bu veritabanından üretiliyor.
 - [x] Navigation Discoveries aynı veritabanına bağlı.
 - [x] Geological deposit kayıtları aynı discovery modeline bağlı.
-- [ ] Research/Exploration XP tarafından dinlenebilecek ortak discovery event altyapısı eklenmeli.
+- [x] Research/Exploration XP tarafından dinlenebilecek ortak `DISCOVERED`, `SEEN` ve `ANALYSIS_UPGRADED` event altyapısı eklendi.
+
+Kapanış testi: mevcut dünya şema `2`den `3`e taşındı. Save dosyasında 449/449 kayıtta `analysisLevel` ve `lastSeenAt` bulundu; eksik alan yoktu. Dağılım 342 seviye-0 ve 107 seviye-1 kayıttır. `ARCHEOLOGIST CAMP` kaydında ilk keşif `307066` korunup son görülme `397848`e ilerledi; `FIELD`, analiz seviye 1 ve visited durumu korundu. Structure Radar 102, Geology 48 sonuçla tamamlandı ve ilgili hata görülmedi.
 
 ## Aşama 3 — Player Ship Interface
 
@@ -98,14 +100,14 @@ Field Survey = Bulunan hedefi yerinde analiz et ve kaydet.
 
 ## Aşama 7 — Discovery Analysis seviyesi
 
-Durum: Structure için `UNKNOWN`/ziyaret edilmiş maskelemesi var; genel analiz seviyesi sistemi yok.
+Durum: kalıcı 0-3 taban modeli ve yükseltme/event yolu mevcut; aşamalı jeolojik çözümleme ve oynanış ilerlemesi tamamlanmalı.
 
 - [~] Ziyaret edilmemiş structure sonuçları `UNKNOWN STRUCTURE` olarak maskeleniyor.
-- [ ] Kalıcı analysis level modeli
+- [x] Kalıcı analysis level modeli
 - [ ] Geological tanımlama zinciri: anomaly → metallic → resource-rich → gerçek deposit family
 - [ ] Accuracy ve Field Survey kalitesinin analysis level’a etkisi
-- [ ] Structure analysis seviyesi
-- [ ] Eski kaydın daha iyi analizle upgrade edilmesi
+- [~] Structure analysis seviyesi: Radar adayı 0, Field doğrulaması 1 olarak çalışıyor; ileri Research seviyeleri bekliyor.
+- [x] Eski kaydın daha iyi analizle upgrade edilmesi; seviye, FIELD kanıtı ve visited durumu sonraki düşük seviye Radar kaydıyla düşürülemiyor.
 
 ## Aşama 8 — Discoveries sekmesi
 
@@ -224,7 +226,6 @@ Aşağıdaki işler Aşama 14 kapanmadan ana geliştirme odağı yapılmayacakt�
 
 ## Şu anki çalışma kapısı
 
-1. Aşama 1 modlu structure family/ad testini kapat.
-2. Aşama 2’ye analysis level, last-seen ve discovery event alanlarını ekle.
-3. Geological Field Survey’i etkinleştir.
-4. Sonra Player Ship Interface sekmelerini sırayla tamamla.
+1. Geological Field Survey’i etkinleştir.
+2. Analysis level'ın jeolojik anomaly → family çözümleme zincirini tamamla.
+3. Sonra Player Ship Interface sekmelerini sırayla tamamla.

@@ -17,6 +17,10 @@ public final class NewWorldConfigSmokeTest {
         expect("player survey range", NewWorldTuning.playerFieldSurveyRangeBlocks(), 48L);
         expect("player survey chunks", NewWorldTuning.playerFieldSurveyChunkRadius(), 3L);
         expect("player survey delay", NewWorldTuning.playerFieldSurveyDelayTicks(), 80L);
+        expect("structure radar analysis", NewWorldTuning.discoveryAnalysisLevel("STRUCTURE", "RADAR"), 0L);
+        expect("structure field analysis", NewWorldTuning.discoveryAnalysisLevel("STRUCTURE", "FIELD"), 1L);
+        expect("geology radar analysis", NewWorldTuning.discoveryAnalysisLevel("GEOLOGY", "RADAR"), 1L);
+        expect("geology field analysis", NewWorldTuning.discoveryAnalysisLevel("GEOLOGY", "FIELD"), 2L);
         expect("GUI overlay depth", Math.round(NewWorldTuning.guiFilterOverlayZ()), 1000L);
         expect("GUI background alpha", NewWorldTuning.guiPlayerBackdropArgb(), -1_291_845_632L);
         expect("network FE transfer", NewWorldTuning.networkNodeTransferLimit(0, 3), 100_000L);

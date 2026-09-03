@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Aktif runtime-kabul edilen laptop buildi `0.5.60.4-alpha-config-first-gui-network`. Field Survey 48 blok/~4 saniye çalışır, `ARCHEOLOGIST CAMP` tanıma ve dinamik filtre zinciri geçmiştir; GUI bilgisi ve ağ düğümü hız/kapasite çarpanları config'e bağlıdır.
+- Aktif runtime-kabul edilen laptop buildi `0.5.61.0-alpha-discovery-metadata-events`. Discovery Database şema v3; kalıcı analiz seviyesi, ilk/son görülme ayrımı ve Research/Exploration XP için ortak event hattı oyun içinde doğrulanmıştır. Field Survey 48 blok/~4 saniye davranışını korur.
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 
 Kesin eklenti sürümleri [`manifest.json`](manifest.json) ve [`pack-lock.json`](pack-lock.json) içinde tutulur. Üçüncü taraf JAR dosyaları GitHub’a eklenmez; yalnızca projeye ait iki fork JAR’ı repoda saklanır.
@@ -72,9 +72,9 @@ Belge haritası ve durumları için [`docs/README.md`](docs/README.md) dosyasın
 
 Ana sıra [`docs/12_Gelistirme_Yol_Haritasi.md`](docs/12_Gelistirme_Yol_Haritasi.md) belgesidir.
 
-1. Radar v2 modlu structure family/adlandırma kabulünü kapatmak.
-2. Ortak Discovery Database'e analysis level, last-seen ve discovery event altyapısını eklemek.
-3. Geological Field Survey'i ve Player Ship Interface sekmelerini tamamlamak.
+1. Geological Field Survey'i etkinleştirip fiziksel depositi yerinde tanımak.
+2. Analysis level zincirini anomaly → metallic → resource-rich → gerçek family aşamalarına genişletmek.
+3. Player Ship Interface sekmelerini tamamlamak.
 4. Deposit extraction, remaining, depletion ve `DEPLETED` entegrasyonunu bitirmek.
 5. Bu 14 aşamadan sonra Research ve Production Chamber progression'ına geçmek.
 

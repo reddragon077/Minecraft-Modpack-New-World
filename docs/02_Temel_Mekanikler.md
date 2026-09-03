@@ -1,6 +1,6 @@
 # Temel mekanikler
 
-Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.60.4-alpha-config-first-gui-network` (Field Survey 48 blok/80 tick, canlı GUI bilgisi, `ARCHEOLOGIST CAMP` dinamik filtresi ve config-first ağ ayarları geçti)
+Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.61.0-alpha-discovery-metadata-events` (Discovery Database şema v3, kalıcı analysis/last-seen, ortak discovery event hattı ve önceki Radar/Field Survey davranışı geçti)
 
 | Mekanik | Durum | Uygulama |
 |---|---|---|
@@ -8,7 +8,7 @@ Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.60.4-alpha-config-fi
 | Gemi ağı | Alpha | FE/eşya/sıvı/gaz taşıma, oda bağlantıları, öncelik ve telemetri |
 | Mining M1 | Alpha | Scan → Extraction, FE tüketimi, yükseltmeler, derin depolama ve güvenlik koşulları |
 | Geological deposits | Alpha | Deterministik worldgen, radar sonuçları ve kalıcı deposit verisi |
-| Structure Radar | Alpha | Canlı structure registry üzerinden vanilla/modlu yapı taraması, family filtreleri ve keşif veritabanı |
+| Structure Radar | Alpha | Canlı structure registry üzerinden vanilla/modlu yapı taraması, family filtreleri ve şema-v3 keşif veritabanı |
 | Navigasyon | Alpha | Hedef seçimi, geçmiş/favoriler, rota hesabı ve çok duraklı ilerleme |
 | Replikasyon | Alpha | Doğal kaynak bilgisi, Matter değerleri ve tarama kısıtları |
 | Warp/engine | Deneysel | Oda bileşenleri, Engine Matrix ve DoctorWhoMod seyahat bağlantıları |
@@ -38,4 +38,5 @@ Daha uzak keşif
 - İstemci yalnızca görüntü ve kullanıcı girdisi sağlamalıdır.
 - Aynı custom modun birden fazla JAR sürümü birlikte yüklenmemelidir.
 - Radar, navigasyon, deposit ve replikasyon isimleri ortak kaynak kimlikleri kullanmalıdır.
+- Discovery kayıtlarında `discoveredAt` ilk keşfi, `lastSeenAt` son tekrar gözlemini temsil eder; analiz seviyesi 0-3 arasında kalıcıdır ve düşürülemez.
 - Alpha özellikler varmış gibi belgelenmeden önce mevcut JAR ve oyun testiyle doğrulanmalıdır.

@@ -1,6 +1,6 @@
 # Bilinen sorunlar ve doğrulama listesi
 
-Son güncelleme: 2 Eylül 2026
+Son güncelleme: 3 Eylül 2026
 
 ## Aktif riskler
 
@@ -15,6 +15,14 @@ Son güncelleme: 2 Eylül 2026
 - Reliable EMI (`emixx-neoforge-1.21.1-3.1.2.jar.disabled`) bilinçli olarak devre dışıdır.
 - Araştırma, Production Chamber, genetik ve tam hikâye progression’ı henüz tamamlanmış oynanış sistemi değildir.
 - NewWorldCore'un tam tarihsel kaynak ağacı henüz bulunamadı. `src-patches/newworldcore/` genişletilmiş jeoloji değişikliğini yeniden üretilebilir tutar; ileride tam kaynak projeye katlanmalıdır.
+
+## Doğrulanan Discovery Database v3
+
+- `0.5.61.0`, `analysisLevel` ve `lastSeenAt` alanlarını ekler; global kayıt şeması `NWDiscoverySchema=3`tür.
+- Eski kayıtta ilk keşif zamanı korunur, tekrar tarama yalnız son görülmeyi ilerletir. FIELD kaynağı, visited/favorite durumu ve daha yüksek analiz seviyesi sonraki RADAR kaydıyla düşürülemez.
+- Laptop save kabulünde 449 kaydın tamamında iki yeni alan vardı: 342 kayıt seviye 0, 107 kayıt seviye 1; eksik metadata yoktu.
+- `ARCHEOLOGIST CAMP` tekrar Field Survey kabulünde ilk keşif `307066`, son görülme `397848`, kaynak `FIELD`, analiz seviyesi `1` ve visited `1` olarak doğrulandı.
+- Structure Radar 102, Geology 48 sonuçla tamamlandı; `Navigation0610`, discovery, Field Survey veya NewWorldCore kaynaklı ilgili exception görülmedi.
 
 ## Doğrulanan radar düzeltmeleri
 

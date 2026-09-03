@@ -1,12 +1,21 @@
 # New World current handoff
 
-Updated: 2026-09-02
+Updated: 2026-09-03
 Machine: laptop
 Branch: `main`
 
 ## Current objective
 
-Begin Discovery Database analysis-level, last-seen, and common discovery-event work under the config-first rule. Radar v2 and the `.4` Player Field Survey closure are complete.
+Begin Geological Field Survey, then extend analysis progression from anomaly to exact deposit family. Radar v2 and Discovery Database Stage 2 are complete.
+
+## Current accepted continuation
+
+- Active laptop/repository build: `NewWorldCore-1.21.1-NeoForge-0.5.61.0-alpha-discovery-metadata-events.jar`.
+- SHA-256: `d8da6f2ae981183b5bcd2cdfcb5759dcb3eda5489c7ab2d08f117fbe3737e695`.
+- Schema v3 stores `analysisLevel` and `lastSeenAt`; first discovery, FIELD evidence, visited/favorite and higher analysis are preserved on repeats.
+- The common event bus emits `DISCOVERED`, `SEEN`, and `ANALYSIS_UPGRADED` for future Research/Exploration XP listeners.
+- Laptop runtime/NBT acceptance passed with 449/449 migrated records and no relevant error. Structure Radar returned 102, Geology 48, and Field Survey identified `TRIAL CHAMBERS` plus `ARCHEOLOGIST CAMP` in 4052 ms.
+- Prior `.60.4` is preserved under `backups/custom-mods/pre-apply-20260903-101641/` on the laptop.
 
 ## Exact state
 
@@ -91,9 +100,9 @@ Begin Discovery Database analysis-level, last-seen, and common discovery-event w
 
 ## Next executable test
 
-1. Inspect the current `NavigationDiscoverySavedData.Discovery` schema and every record/update path.
-2. Add config-backed analysis-level and last-seen behavior with save migration and smoke coverage.
-3. Add one common discovery event emitted by both Structure and Geology record paths for later Research/Exploration XP listeners.
+1. Implement Player GUI Geological Field Survey against nearby physical deposit evidence.
+2. Feed Geological Field results through the accepted shared discovery record/event path.
+3. Extend analysis levels into anomaly → metallic → resource-rich → exact deposit-family progression without exposing save-schema constants as config.
 
 ## Do not assume
 

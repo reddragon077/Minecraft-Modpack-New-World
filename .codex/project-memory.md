@@ -1,6 +1,6 @@
 # New World project memory
 
-Last synchronized: 2026-09-02
+Last synchronized: 2026-09-03
 
 ## Canonical workflow
 
@@ -20,7 +20,7 @@ Last synchronized: 2026-09-02
 
 ## NewWorldCore continuation point
 
-- Active runtime-accepted laptop build: `NewWorldCore-1.21.1-NeoForge-0.5.60.4-alpha-config-first-gui-network.jar` (SHA-256 `171b1cb6a0ca78c243ad81584f820d89fc32829e0269459048d549b462f390e9`). Build, config smoke, bytecode, repository/laptop single-JAR/hash, 10-property-file, backup, launch, Field Survey timing/range, family recognition, and dynamic-filter visual checks passed.
+- Active runtime-accepted laptop build: `NewWorldCore-1.21.1-NeoForge-0.5.61.0-alpha-discovery-metadata-events.jar` (SHA-256 `d8da6f2ae981183b5bcd2cdfcb5759dcb3eda5489c7ab2d08f117fbe3737e695`). Build, config/discovery smoke, bytecode, backup, repository/laptop single-JAR/hash, eleven-property-file, launch, Structure/Geology scans, Field Survey, schema-v3 migration, NBT persistence, repeat last-seen, first-time preservation, and clean-log checks passed.
 - Desktop acceptance evidence shows more than four reachable results and modded classes including Explorify, Better Dungeons, and Structory. The old four-record limit is fixed, shared placement sets now remain `UNKNOWN STRUCTURE`, and the false `MODDED STRUCTURE` selection was removed safely.
 - The verified `0.5.57.0` baseline is backed up under the laptop instance's `backups/custom-mods/known-good-0.5.57.0/` directory.
 - The complete historical source tree is still missing. The reproducible compatibility delta is stored under `src-patches/newworldcore/` and built with `tools/build-newworldcore-geology-patch.ps1`.
@@ -60,7 +60,8 @@ Last synchronized: 2026-09-02
 - `betterarcheology:archeologist_camp_grassy` resolved at `[-2448, ~, 192]`. `.4` Field Survey queued at 48 blocks/80 ticks, completed once in 4074 ms, identified `TRIAL CHAMBERS` and `ARCHEOLOGIST CAMP`, and the screenshot visibly confirmed `ARCHEOLOGIST CAMP` in Structure Filters. Radar v2 is closed.
 - The accepted player survey used a fixed 96-block radius, synchronously visited 13x13/169 chunk positions, and returned the eight structures in about 38 ms. `0.5.60.4` includes the `.3` survey tuning and ships documented `player.properties` controls with `48` blocks and `80` ticks: 7x7/49 chunk positions, roughly four-second visible delay, server-thread world access, and one pending scan per player.
 - Config-first is now a persistent project convention in `.cursor/rules/config-first-development.mdc`. `gui.properties` controls Player GUI backdrop, live Survey detail visibility and filter overlay depth. `network.properties` also controls FE/item/fluid/gas node transfer and capacity multipliers. Save schemas, registry IDs, protocol/slot codes, and data-integrity constants remain intentionally non-configurable.
-- Radar v2 acceptance is complete; next work is Discovery Database analysis level, last-seen timestamp, and common discovery event infrastructure.
+- Discovery Database Stage 2 is complete. `0.5.61.0` adds persistent `analysisLevel` and `lastSeenAt`, schema-v2 migration, non-downgrading FIELD/visited/analysis merge rules, and common `DISCOVERED`/`SEEN`/`ANALYSIS_UPGRADED` events. Laptop NBT acceptance found both fields in all 449 records (342 level 0, 107 level 1); Archeologist Camp preserved first `307066` and advanced last-seen to `397848`.
+- The next work is Geological Field Survey, followed by anomaly → metallic → resource-rich → exact deposit-family analysis progression.
 - FE Matrix registration now deterministically selects Architectury's `register(ResourceLocation, Supplier)` overload, removing the nondeterministic startup `argument type mismatch` path.
 - The Uraninite path passed an initial in-game acceptance test: Geological Radar -> Discovery -> Navigation target -> TARDIS route -> matching physical deposit. Full family, Mining and balance regression remains open.
 - `docs/12_Gelistirme_Yol_Haritasi.md` is the active implementation order. Finish its Radar/Discovery/Player Interface/Deposit stages before Research and Production Chamber progression.

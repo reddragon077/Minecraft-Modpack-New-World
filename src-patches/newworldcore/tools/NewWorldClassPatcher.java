@@ -14,6 +14,7 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.InsnList;
 import org.objectweb.asm.tree.InsnNode;
 import org.objectweb.asm.tree.LdcInsnNode;
@@ -35,6 +36,9 @@ public final class NewWorldClassPatcher {
     private static final String NAVIGATION_UPGRADE_OWNER = "net/newworld/navigation/NavigationUpgradeRuntime";
     private static final String GEOLOGY_UI_OWNER = "net/newworld/navigation/Navigation0559SingleOwnerRadarUi";
     private static final String PLAYER_GUI_OWNER = "net/newworld/player/PlayerShipScreen";
+    private static final String DISCOVERY_DATA_OWNER = "net/newworld/navigation/NavigationDiscoverySavedData";
+    private static final String DISCOVERY_VALUE_OWNER = "net/newworld/navigation/NavigationDiscoverySavedData$Discovery";
+    private static final String DISCOVERY_META_OWNER = "net/newworld/navigation/Navigation0510DiscoveryMeta";
 
     static {
         add("net/newworld/navigation/Navigation0475RadarFilteX", "scanOneTile(Ljava/lang/Object;)V",
@@ -112,6 +116,9 @@ public final class NewWorldClassPatcher {
         classNames.add(REPLICATION_OWNER);
         classNames.add(GEOLOGY_UI_OWNER);
         classNames.add(PLAYER_GUI_OWNER);
+        classNames.add(DISCOVERY_DATA_OWNER);
+        classNames.add(DISCOVERY_VALUE_OWNER);
+        classNames.add(DISCOVERY_META_OWNER);
         try (JarFile jar = new JarFile(baseline.toFile())) {
             for (String className : classNames) {
                 String entryName = className + ".class";
@@ -186,6 +193,23 @@ public final class NewWorldClassPatcher {
         if (PLAYER_GUI_OWNER.equals(className)) {
             replacements += patchPlayerGui(node);
             expected += 2;
+        }
+        if (DISCOVERY_DATA_OWNER.equals(className)) {
+            replacements += wrapDiscoveryRecord(node);
+            expected++;
+        }
+        if (DISCOVERY_VALUE_OWNER.equals(className)) {
+            replacements += addDiscoveryFields(node);
+            expected += 2;
+        }
+        if (DISCOVERY_META_OWNER.equals(className)) {
+            replacements += wrapDiscoveryMetaPost(node, "loadMeta",
+                    "(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/Object;)V", "loadMeta0610Base", "afterLoad");
+            replacements += wrapDiscoveryMetaPost(node, "saveMeta",
+                    "(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/Object;)V", "saveMeta0610Base", "afterSave");
+            replacements += wrapDiscoveryMetaPost(node, "saveSchema",
+                    "(Ljava/lang/Object;)V", "saveSchema0610Base", "afterSaveSchema");
+            expected += 3;
         }
         if (replacements != expected) {
             throw new IllegalStateException("Expected " + expected + " replacements in " + className
@@ -321,6 +345,75 @@ public final class NewWorldClassPatcher {
             }
         }
         return replacements;
+    }
+
+    private static int wrapDiscoveryRecord(ClassNode node) {
+        String descriptor = "(Ljava/lang/String;Lnet/newworld/navigation/NavigationDiscoverySavedData$Discovery;)V";
+        MethodNode original = null;
+        for (MethodNode method : node.methods) {
+            if ("record".equals(method.name) && descriptor.equals(method.desc)) { original = method; break; }
+        }
+        if (original == null) return 0;
+
+        original.name = "record0610Base";
+        String[] exceptions = original.exceptions == null ? null : original.exceptions.toArray(new String[0]);
+        MethodNode wrapper = new MethodNode(original.access, "record", descriptor, original.signature, exceptions);
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 2));
+        wrapper.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                "net/newworld/navigation/Navigation0610DiscoveryRuntime", "record",
+                "(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/Object;)V", false));
+        wrapper.instructions.add(new InsnNode(Opcodes.RETURN));
+        wrapper.maxStack = 3;
+        wrapper.maxLocals = 3;
+        node.methods.add(wrapper);
+        return 1;
+    }
+
+    private static int addDiscoveryFields(ClassNode node) {
+        int added = 0;
+        if (node.fields.stream().noneMatch(field -> "analysisLevel".equals(field.name))) {
+            node.fields.add(new FieldNode(Opcodes.ACC_PUBLIC, "analysisLevel", "I", null, null));
+            added++;
+        }
+        if (node.fields.stream().noneMatch(field -> "lastSeenAt".equals(field.name))) {
+            node.fields.add(new FieldNode(Opcodes.ACC_PUBLIC, "lastSeenAt", "J", null, null));
+            added++;
+        }
+        return added;
+    }
+
+    private static int wrapDiscoveryMetaPost(ClassNode node, String methodName, String descriptor,
+                                              String baseName, String helperName) {
+        MethodNode original = null;
+        for (MethodNode method : node.methods) {
+            if (methodName.equals(method.name) && descriptor.equals(method.desc)) { original = method; break; }
+        }
+        if (original == null) return 0;
+
+        original.name = baseName;
+        String[] exceptions = original.exceptions == null ? null : original.exceptions.toArray(new String[0]);
+        MethodNode wrapper = new MethodNode(original.access, methodName, descriptor, original.signature, exceptions);
+        int local = 0;
+        for (Type argument : Type.getArgumentTypes(descriptor)) {
+            wrapper.instructions.add(new VarInsnNode(argument.getOpcode(Opcodes.ILOAD), local));
+            local += argument.getSize();
+        }
+        wrapper.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, DISCOVERY_META_OWNER,
+                baseName, descriptor, false));
+        local = 0;
+        for (Type argument : Type.getArgumentTypes(descriptor)) {
+            wrapper.instructions.add(new VarInsnNode(argument.getOpcode(Opcodes.ILOAD), local));
+            local += argument.getSize();
+        }
+        wrapper.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                "net/newworld/navigation/Navigation0610DiscoveryRuntime", helperName, descriptor, false));
+        wrapper.instructions.add(new InsnNode(Opcodes.RETURN));
+        wrapper.maxStack = Math.max(3, local);
+        wrapper.maxLocals = local;
+        node.methods.add(wrapper);
+        return 1;
     }
 
     private static void add(String owner, String methodKey, String helperOwner, String helperName,

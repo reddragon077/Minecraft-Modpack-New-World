@@ -14,7 +14,10 @@ The current patch:
 - updates the existing Lead and Uranium physical palettes so those families are shared across installed mods;
 - uses a new persistent chunk marker while preserving the older vanilla and Mekanism markers;
 - records all template seeds and registry IDs in `patch-manifest.json`.
+- upgrades the shared Discovery Database to schema v3 with persistent analysis level and last-seen fields;
+- preserves first discovery time and stronger FIELD evidence on repeat observations;
+- exposes one synchronous discovery event bus for later Research and Exploration XP listeners.
 
-Build with `tools/build-newworldcore-geology-patch.ps1`. The script verifies the baseline SHA-256 before producing a new JAR. It also needs matching ASM core and ASM tree JAR paths from the local NeoForge runtime.
+Build with `tools/build-newworldcore-geology-patch.ps1`. The script verifies the baseline SHA-256 before producing a new JAR, then runs the config and Discovery schema/event smoke tests. It also needs matching ASM core and ASM tree JAR paths from the local NeoForge runtime.
 
 This patch must eventually be folded back into the full NewWorldCore source project when that source is recovered.

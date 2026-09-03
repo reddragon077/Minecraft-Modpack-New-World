@@ -22,7 +22,7 @@ Bu iki dosya CurseForge üzerinden indirilemez; New World için değiştirilmiş
 
 | Dosya | Boyut | SHA-256 | Belge |
 |---|---:|---|---|
-| `NewWorldCore-1.21.1-NeoForge-0.5.60.4-alpha-config-first-gui-network.jar` | 3,4 MiB | `171b1cb6a0ca78c243ad81584f820d89fc32829e0269459048d549b462f390e9` | [Alpha test rehberi](New_World_Room_Controller_Alpha_Test_Rehberi.md) |
+| `NewWorldCore-1.21.1-NeoForge-0.5.61.0-alpha-discovery-metadata-events.jar` | 3,41 MiB | `d8da6f2ae981183b5bcd2cdfcb5759dcb3eda5489c7ab2d08f117fbe3737e695` | [Alpha test rehberi](New_World_Room_Controller_Alpha_Test_Rehberi.md) |
 | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | 4,56 MiB | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` | [JAR analizi](New_World_DoctorWhoMod_JAR_Analizi.md) |
 
 ## Durum açıklaması

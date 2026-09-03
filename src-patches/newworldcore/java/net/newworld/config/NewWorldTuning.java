@@ -195,6 +195,27 @@ public final class NewWorldTuning {
         return NewWorldConfig.integer("player", "field_survey.delay_ticks", 80, 0, 1200);
     }
 
+    public static int discoveryAnalysisLevel(String kind, String source) {
+        boolean geology = "GEOLOGY".equalsIgnoreCase(kind);
+        boolean field = "FIELD".equalsIgnoreCase(source);
+        String key;
+        int fallback;
+        if (geology && field) {
+            key = "analysis.geology_field_level";
+            fallback = 2;
+        } else if (geology) {
+            key = "analysis.geology_radar_level";
+            fallback = 1;
+        } else if (field) {
+            key = "analysis.structure_field_level";
+            fallback = 1;
+        } else {
+            key = "analysis.structure_radar_level";
+            fallback = 0;
+        }
+        return NewWorldConfig.integer("discovery", key, fallback, 0, 3);
+    }
+
     public static double guiFilterOverlayZ() {
         return NewWorldConfig.decimal("gui", "filters.overlay_z", 1000.0D, 1.0D, 10_000.0D);
     }
