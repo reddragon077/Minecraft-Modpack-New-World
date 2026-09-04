@@ -34,6 +34,7 @@ public final class PlayerDiscoveries0650SmokeTest {
         expect("server total", PlayerDiscoveries0650.clientTotal(), 42);
         if (PlayerDiscoveries0650.clientReceiving()) throw new AssertionError("decoder remained in receiving state");
         DiscoveryView entry = entries.getFirst();
+        expect("snapshot index", entry.snapshotIndex(), 0);
         expectText("label", entry.label(), "TIN-RICH DEPOSIT");
         expectText("kind", entry.kind(), "GEOLOGY");
         expectText("dimension", entry.dimension(), "minecraft:overworld");
@@ -51,6 +52,16 @@ public final class PlayerDiscoveries0650SmokeTest {
         expectText("different dimension",
                 PlayerDiscoveries0650.proximityLabel(entry, "minecraft:the_nether", -2693, 36, -728),
                 "DIFFERENT DIMENSION");
+        expectText("last seen seconds", PlayerDiscoveries0650.lastSeenLabel(entry, 123856), "LAST SEEN 20s AGO");
+        expectText("last seen minutes", PlayerDiscoveries0650.lastSeenLabel(entry, 195456), "LAST SEEN 1h AGO");
+        if (!PlayerDiscoveries0650.isActionMode(PlayerDiscoveries0650.ACTION_TARGET_BASE)
+                || !PlayerDiscoveries0650.isActionMode(PlayerDiscoveries0650.ACTION_ROUTE_BASE - 127)
+                || !PlayerDiscoveries0650.isActionMode(PlayerDiscoveries0650.ACTION_FAVORITE_BASE - 511)
+                || PlayerDiscoveries0650.isActionMode(PlayerDiscoveries0650.ACTION_TARGET_BASE - 512)
+                || PlayerDiscoveries0650.isActionMode(100)) {
+            throw new AssertionError("discovery action protocol range regression");
+        }
+        accept(PlayerDiscoveries0650.STATUS_ROUTE_OK);
         System.out.println("Player Discoveries snapshot smoke test passed.");
     }
 

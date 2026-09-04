@@ -2,7 +2,7 @@
 
 Son doğrulama: 3 Eylül 2026
 
-Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.65.2-alpha-player-discoveries`
+Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.66.1-alpha-player-discovery-actions`
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -115,18 +115,20 @@ Kapanış testi: `0.5.64.0` ile Accuracy `0/1/2/3` taramaları sırasıyla `24/3
 
 ## Aşama 8 — Discoveries sekmesi
 
-Durum: Player GUI ortak Discovery Database'e bağlandı; liste/detay çekirdeği kabul edildi, kayıt eylemleri ve kalan detay alanları bekliyor.
+Durum: Tamamlandı. Player GUI ortak Discovery Database, Navigation hedefi, rota/hop motoru ve favori durumu ile aynı kalıcı kayıtları kullanıyor.
 
 - [x] Backend, gemi terminali ve Player GUI Structures/Geology ayrımını destekliyor.
 - [x] Player GUI Discoveries listesini doldur.
 - [x] Son görülmeye göre sıralanan keşifler ve seçili kayıt detay görünümü
 - [x] Kaynak, analiz seviyesi, koordinat, kanıt kaynağı ve canlı oyuncu mesafesi
-- [ ] Son görülme ve tahmini rezerv alanlarını detay paneline ekle
-- [ ] `SET NAVIGATION TARGET`
-- [ ] `ADD TO ROUTE`
-- [ ] Player GUI favorite desteği
+- [x] Son görülme ve tahmini rezerv alanlarını detay paneline ekle
+- [x] `SET NAVIGATION TARGET`
+- [x] `ADD TO ROUTE`
+- [x] Player GUI favorite desteği
 
 Ara kabul: `0.5.65.2`, ortak veritabanındaki 464 kayıttan kategori başına en yeni 64 girdiyi senkronladı (`128/464`). Ayrı Structure/Geology kotaları son jeoloji taramalarının yapı geçmişini gizlemesini engelledi. Kullanıcı sekme stili, üç filtre, sayfalama, ayrıntılar ve canlı oyuncu mesafesini doğruladı; dünya/runtime başladıktan sonra Discoveries render, snapshot veya paket hatası görülmedi. Farklı boyuttaki kayıtlar `DIFFERENT DIMENSION` olarak gösterilir.
+
+Kapanış testi: `0.5.66.1` ile `ARCHEOLOGIST CAMP` ve `TRIAL CHAMBERS` kayıtlarında TARGET/FAV/ROUTE eylemleri sunucu logunda doğrulandı. Favoriler ortak kayda yazıldı; hedef anahtarı Navigation veritabanına bağlandı; rota motoru hedef boyutu ve konumunu TARDIS state'ine dört yazımla uygulayıp tek hop hazırladı. Trial Chambers seyahati `Route complete at hop #1` ile tamamlandı. İlk `.66.0` denemesinde `>=100` eylem kodlarının eski istemci-durum köprüsünde yutulduğu bulundu; `.66.1` çakışmayan negatif C2S aralıklarıyla bu kusuru kapattı. Aşama 8 tamamlandı.
 
 ## Aşama 9 — Player Navigation paneli
 

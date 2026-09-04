@@ -1,6 +1,6 @@
 # Temel mekanikler
 
-Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.65.2-alpha-player-discoveries` (Discovery Database şema v3, kademeli Geological Analysis ve Player GUI'de ortak Structure/Geology keşif listesi, ayrıntı görünümü, kategori dengesi ve canlı oyuncu mesafesi geçti)
+Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.66.1-alpha-player-discovery-actions` (Discovery Database şema v3, kademeli Geological Analysis ve Player GUI'de ortak Structure/Geology listesi, rezerv/son-görülme ayrıntıları, favori, Navigation hedefi ve gerçek rota/hop bağlantısı geçti)
 
 | Mekanik | Durum | Uygulama |
 |---|---|---|

@@ -34,9 +34,21 @@ public final class PlayerDiscoveries0650 {
     public static final int FIELD_ANALYSIS = 1_440_001_025;
     public static final int FIELD_LAST_SEEN = 1_440_001_026;
     public static final int FIELD_FLAGS = 1_440_001_027;
+    // Negative ranges pass through the legacy bridge; positive values >=100 are client status codes.
+    public static final int ACTION_TARGET_BASE = -10_000;
+    public static final int ACTION_ROUTE_BASE = -11_000;
+    public static final int ACTION_FAVORITE_BASE = -12_000;
+    public static final int ACTION_LIMIT = 512;
+    public static final int STATUS_TARGET_OK = 1_440_002_010;
+    public static final int STATUS_ROUTE_OK = 1_440_002_011;
+    public static final int STATUS_FAVORITE_ON = 1_440_002_012;
+    public static final int STATUS_FAVORITE_OFF = 1_440_002_013;
+    public static final int STATUS_ACTION_FAILED = 1_440_002_014;
+    public static final int STATUS_ACTION_DISABLED = 1_440_002_015;
 
     private static final List<DiscoveryView> CLIENT = new ArrayList<>();
     private static final Map<Object, ViewState> VIEWS = java.util.Collections.synchronizedMap(new WeakHashMap<>());
+    private static final Map<Object, List<String>> SERVER_KEYS = java.util.Collections.synchronizedMap(new WeakHashMap<>());
     private static boolean receiving;
     private static int expected;
     private static int total;
@@ -46,6 +58,7 @@ public final class PlayerDiscoveries0650 {
     private static int stringRemaining = -1;
     private static ByteArrayOutputStream stringBytes;
     private static boolean renderFailureReported;
+    private static String actionStatus = "";
 
     private PlayerDiscoveries0650() {}
 
@@ -70,6 +83,7 @@ public final class PlayerDiscoveries0650 {
             Object ship = invokePrivateStatic("net.newworld.player.PlayerFieldSurveyRuntime", "findOwnedShip",
                     player, level, pos);
             if (ship == null) {
+                SERVER_KEYS.put(player, List.of());
                 send(player, SNAPSHOT_BEGIN_BASE);
                 send(player, FIELD_TOTAL); send(player, 0);
                 send(player, SNAPSHOT_END);
@@ -88,6 +102,9 @@ public final class PlayerDiscoveries0650 {
             int totalRecords = records.size();
             int perCategoryLimit = NewWorldTuning.playerDiscoveriesSyncLimit();
             ArrayList<Object> snapshot = balancedSnapshot(records, perCategoryLimit);
+            ArrayList<String> keys = new ArrayList<>(snapshot.size());
+            for (Object record : snapshot) keys.add(String.valueOf(call(record, "key")));
+            SERVER_KEYS.put(player, List.copyOf(keys));
             int synced = snapshot.size();
             send(player, SNAPSHOT_BEGIN_BASE + synced);
             send(player, FIELD_TOTAL); send(player, totalRecords);
@@ -97,6 +114,7 @@ public final class PlayerDiscoveries0650 {
                     + " perCategory=" + perCategoryLimit + " ship=" + shipId);
         } catch (Throwable failure) {
             System.err.println("[NewWorldCore] Player Discoveries snapshot failed: " + failure);
+            SERVER_KEYS.put(player, List.of());
             try {
                 send(player, SNAPSHOT_BEGIN_BASE);
                 send(player, FIELD_TOTAL); send(player, 0);
@@ -183,6 +201,7 @@ public final class PlayerDiscoveries0650 {
 
     /** Client side: consumes only the reserved snapshot stream. */
     public static synchronized boolean accept(int code) {
+        if (acceptActionStatus(code)) return true;
         if (code >= SNAPSHOT_BEGIN_BASE && code <= SNAPSHOT_BEGIN_MAX) {
             CLIENT.clear();
             expected = code - SNAPSHOT_BEGIN_BASE;
@@ -284,6 +303,122 @@ public final class PlayerDiscoveries0650 {
     public static synchronized int clientTotal() { return total; }
     public static synchronized boolean clientReceiving() { return receiving; }
 
+    private static boolean acceptActionStatus(int code) {
+        String status = switch (code) {
+            case STATUS_TARGET_OK -> "TARGET SET";
+            case STATUS_ROUTE_OK -> "ROUTE READY";
+            case STATUS_FAVORITE_ON -> "FAVORITE ADDED";
+            case STATUS_FAVORITE_OFF -> "FAVORITE REMOVED";
+            case STATUS_ACTION_FAILED -> "ACTION FAILED";
+            case STATUS_ACTION_DISABLED -> "ACTION DISABLED";
+            default -> null;
+        };
+        if (status == null) return false;
+        actionStatus = status;
+        return true;
+    }
+
+    /** Server side: applies a Discoveries action to the exact record sent in the last snapshot. */
+    public static void handleAction(Object player, int mode) {
+        int action;
+        int index;
+        if (inActionRange(mode, ACTION_TARGET_BASE)) {
+            action = 0; index = ACTION_TARGET_BASE - mode;
+        } else if (inActionRange(mode, ACTION_ROUTE_BASE)) {
+            action = 1; index = ACTION_ROUTE_BASE - mode;
+        } else if (inActionRange(mode, ACTION_FAVORITE_BASE)) {
+            action = 2; index = ACTION_FAVORITE_BASE - mode;
+        } else {
+            send(player, STATUS_ACTION_FAILED);
+            return;
+        }
+
+        try {
+            if (action == 0 && !NewWorldTuning.playerDiscoveriesTargetEnabled()
+                    || action == 1 && !NewWorldTuning.playerDiscoveriesRouteEnabled()
+                    || action == 2 && !NewWorldTuning.playerDiscoveriesFavoriteEnabled()) {
+                send(player, STATUS_ACTION_DISABLED);
+                return;
+            }
+            ServerSelection selection = resolveServerSelection(player, index);
+            if (selection == null) {
+                send(player, STATUS_ACTION_FAILED);
+                return;
+            }
+            if (action == 0) {
+                selectTarget(selection);
+                send(player, STATUS_TARGET_OK);
+                System.out.println("[NewWorld Player Discoveries] target=" + selection.key + " ship=" + selection.shipId);
+            } else if (action == 1) {
+                selectTarget(selection);
+                RouteContext context = new RouteContext(selection.level);
+                invokeStatic("net.newworld.navigation.Navigation0472ServerRoute", "calculate", context, player);
+                boolean ready = routeReady(selection.shipId);
+                send(player, ready ? STATUS_ROUTE_OK : STATUS_ACTION_FAILED);
+                System.out.println("[NewWorld Player Discoveries] route=" + selection.key + " ready=" + ready
+                        + " ship=" + selection.shipId);
+            } else {
+                boolean favorite = !booleanField(selection.record, "favorite");
+                setField(selection.record, "favorite", favorite);
+                call(selection.data, "setDirty");
+                invokeStatic("net.newworld.navigation.NavigationFavoriteOps", "invalidate",
+                        selection.data, selection.shipId);
+                send(player, favorite ? STATUS_FAVORITE_ON : STATUS_FAVORITE_OFF);
+                sendSnapshot(player);
+                System.out.println("[NewWorld Player Discoveries] favorite=" + favorite + " key=" + selection.key
+                        + " ship=" + selection.shipId);
+            }
+        } catch (Throwable failure) {
+            System.err.println("[NewWorldCore] Player Discoveries action failed: " + failure);
+            failure.printStackTrace(System.err);
+            send(player, STATUS_ACTION_FAILED);
+        }
+    }
+
+    public static boolean isActionMode(int mode) {
+        return inActionRange(mode, ACTION_TARGET_BASE)
+                || inActionRange(mode, ACTION_ROUTE_BASE)
+                || inActionRange(mode, ACTION_FAVORITE_BASE);
+    }
+
+    private static boolean inActionRange(int mode, int base) {
+        return mode <= base && mode > base - ACTION_LIMIT;
+    }
+
+    private static ServerSelection resolveServerSelection(Object player, int index) throws Exception {
+        List<String> keys = SERVER_KEYS.get(player);
+        if (keys == null || index < 0 || index >= keys.size()) return null;
+        String key = keys.get(index);
+        Object level = call(player, "serverLevel");
+        Object pos = call(player, "blockPosition");
+        Object ship = invokePrivateStatic("net.newworld.player.PlayerFieldSurveyRuntime", "findOwnedShip",
+                player, level, pos);
+        if (ship == null) return null;
+        String shipId = String.valueOf(call(ship, "id"));
+        Object data = invokeStatic("net.newworld.navigation.NavigationDiscoverySavedData", "get", level);
+        Object state = call(data, "state", shipId);
+        Object raw = field(state, "discoveries");
+        if (!(raw instanceof Map<?, ?> map)) return null;
+        Object record = map.get(key);
+        return record == null ? null : new ServerSelection(level, data, state, shipId, key, record);
+    }
+
+    private static void selectTarget(ServerSelection selection) throws Exception {
+        setField(selection.state, "selectedKey", selection.key);
+        call(selection.data, "setDirty");
+    }
+
+    private static boolean routeReady(String shipId) {
+        try {
+            Object raw = staticField("net.newworld.navigation.Navigation0472ServerRoute", "PLANS");
+            Object plan = raw instanceof Map<?, ?> plans ? plans.get(shipId) : null;
+            String status = plan == null ? "" : stringField(plan, "status");
+            return !status.isBlank() && !status.startsWith("ERROR") && !status.startsWith("NO_");
+        } catch (Throwable ignored) {
+            return false;
+        }
+    }
+
     /** Wrapper target for PlayerShipScreen.survey; non-Discoveries tabs retain the base method. */
     public static void renderContent(Object screen, Object graphics, int left, int top, int mouseX, int mouseY) {
         try {
@@ -338,19 +473,29 @@ public final class PlayerDiscoveries0650 {
         if (selected == null) {
             text(screen, graphics, clientReceiving() ? "SYNCING..." : "NO DISCOVERIES", detailX + 10, top + 138, 0xff8fa8b8);
         } else {
-            text(screen, graphics, fit(selected.label, 24), detailX + 10, top + 138, 0xff80ffc2);
-            text(screen, graphics, selected.kind + " // " + selected.source, detailX + 10, top + 158, 0xff8fa8b8);
-            text(screen, graphics, "ANALYSIS L" + selected.analysis + "/3", detailX + 10, top + 178, analysisColor(selected.analysis));
-            text(screen, graphics, fit(selected.primary, 24), detailX + 10, top + 198, 0xffdceaf3);
-            text(screen, graphics, "X=" + selected.x + " Y=" + selected.y, detailX + 10, top + 218, 0xffb5c8d8);
-            text(screen, graphics, "Z=" + selected.z + "  " + shortDim(selected.dimension), detailX + 10, top + 234, 0xffb5c8d8);
-            text(screen, graphics, playerProximity(selected), detailX + 10, top + 254, 0xffffcc3d);
+            text(screen, graphics, fit(selected.label, 24), detailX + 10, top + 134, 0xff80ffc2);
+            text(screen, graphics, fit(selected.kind + " // " + selected.source, 25), detailX + 10, top + 149, 0xff8fa8b8);
+            text(screen, graphics, "ANALYSIS L" + selected.analysis + "/3", detailX + 10, top + 164, analysisColor(selected.analysis));
+            text(screen, graphics, fit(selected.primary, 24), detailX + 10, top + 179, 0xffdceaf3);
+            text(screen, graphics, reserveLabel(selected), detailX + 10, top + 194, 0xffdceaf3);
+            text(screen, graphics, clientLastSeenLabel(selected), detailX + 10, top + 209, 0xff8fa8b8);
+            text(screen, graphics, "X=" + selected.x + " Y=" + selected.y, detailX + 10, top + 224, 0xffb5c8d8);
+            text(screen, graphics, "Z=" + selected.z + "  " + shortDim(selected.dimension), detailX + 10, top + 237, 0xffb5c8d8);
+            text(screen, graphics, playerProximity(selected), detailX + 10, top + 249, 0xffffcc3d);
+            actionButton(screen, graphics, detailX + 4, top + 258, 52, "TARGET",
+                    NewWorldTuning.playerDiscoveriesTargetEnabled(), false);
+            actionButton(screen, graphics, detailX + 60, top + 258, 54, "ROUTE",
+                    NewWorldTuning.playerDiscoveriesRouteEnabled(), false);
+            actionButton(screen, graphics, detailX + 118, top + 258, 58,
+                    selected.favorite() ? "* FAV" : "FAV",
+                    NewWorldTuning.playerDiscoveriesFavoriteEnabled(), selected.favorite());
         }
 
         button(screen, graphics, left + 26, top + 260, 64, "< PREV", false);
         button(screen, graphics, left + 94, top + 260, 64, "NEXT >", false);
         text(screen, graphics, (view.page + 1) + "/" + pages, left + 168, top + 266, 0xff8fa8b8);
-        String sync = clientReceiving() ? "SYNCING" : "SYNC " + clientEntries().size() + "/" + clientTotal();
+        String sync = clientReceiving() ? "SYNCING" : actionStatus.isBlank()
+                ? "SYNC " + clientEntries().size() + "/" + clientTotal() : actionStatus;
         text(screen, graphics, sync, left + 236, top + 266, 0xff80ffc2);
     }
 
@@ -389,6 +534,23 @@ public final class PlayerDiscoveries0650 {
             if (inside(mouseX, mouseY, left + 94, top + 260, 64, 18)) {
                 view.page = Math.min(pages - 1, view.page + 1); view.selected = view.page * rows; return true;
             }
+            DiscoveryView selected = filtered.isEmpty() ? null
+                    : filtered.get(Math.max(0, Math.min(view.selected, filtered.size() - 1)));
+            if (selected != null && inside(mouseX, mouseY, left + 338, top + 258, 52, 18)) {
+                actionStatus = "SETTING TARGET...";
+                PlayerGeologicalSurveyGui0620.sendSurveyMode(ACTION_TARGET_BASE - selected.snapshotIndex);
+                return true;
+            }
+            if (selected != null && inside(mouseX, mouseY, left + 394, top + 258, 54, 18)) {
+                actionStatus = "BUILDING ROUTE...";
+                PlayerGeologicalSurveyGui0620.sendSurveyMode(ACTION_ROUTE_BASE - selected.snapshotIndex);
+                return true;
+            }
+            if (selected != null && inside(mouseX, mouseY, left + 452, top + 258, 58, 18)) {
+                actionStatus = "UPDATING FAVORITE...";
+                PlayerGeologicalSurveyGui0620.sendSurveyMode(ACTION_FAVORITE_BASE - selected.snapshotIndex);
+                return true;
+            }
             return false;
         } catch (Throwable failure) {
             System.err.println("[NewWorldCore] Player Discoveries click failed: " + failure);
@@ -412,6 +574,15 @@ public final class PlayerDiscoveries0650 {
         fill(graphics, x, y, x + width, y + 18, active ? 0xff16485b : 0xff102f3d);
         if (active) fill(graphics, x, y + 16, x + width, y + 18, 0xff20d8ff);
         text(screen, graphics, label, x + 7, y + 5, active ? 0xff7ff7ff : 0xff9fb4c1);
+    }
+
+    private static void actionButton(Object screen, Object graphics, int x, int y, int width, String label,
+                                     boolean enabled, boolean selected) throws Exception {
+        int background = !enabled ? 0xff18242b : selected ? 0xff665410 : 0xff17465a;
+        int accent = selected ? 0xffffcc3d : 0xff20d8ff;
+        fill(graphics, x, y, x + width, y + 18, background);
+        if (enabled) fill(graphics, x, y + 16, x + width, y + 18, accent);
+        text(screen, graphics, label, x + 5, y + 5, enabled ? (selected ? 0xffffe58a : 0xff7ff7ff) : 0xff5f7079);
     }
 
     private static void text(Object screen, Object graphics, String value, int x, int y, int color) throws Exception {
@@ -459,6 +630,32 @@ public final class PlayerDiscoveries0650 {
         } catch (Throwable ignored) {
             return "PLAYER DIST UNKNOWN";
         }
+    }
+
+    private static String reserveLabel(DiscoveryView discovery) {
+        return "GEOLOGY".equalsIgnoreCase(discovery.kind)
+                ? "EST RESERVE " + Math.max(0, discovery.reserve) : "EST RESERVE N/A";
+    }
+
+    private static String clientLastSeenLabel(DiscoveryView discovery) {
+        try {
+            Object minecraft = Class.forName("net.minecraft.client.Minecraft").getMethod("getInstance").invoke(null);
+            Object player = field(minecraft, "player");
+            Object level = player == null ? null : call(player, "level");
+            Object now = level == null ? null : call(level, "getGameTime");
+            if (now instanceof Number number) return lastSeenLabel(discovery, number.longValue());
+        } catch (Throwable ignored) {}
+        return "LAST SEEN UNKNOWN";
+    }
+
+    public static String lastSeenLabel(DiscoveryView discovery, long now) {
+        if (discovery == null || discovery.lastSeen <= 0) return "LAST SEEN UNKNOWN";
+        long seconds = Math.max(0L, now - discovery.lastSeen) / 20L;
+        if (seconds < 60L) return "LAST SEEN " + seconds + "s AGO";
+        long minutes = seconds / 60L;
+        if (minutes < 60L) return "LAST SEEN " + minutes + "m AGO";
+        long hours = minutes / 60L;
+        return "LAST SEEN " + hours + "h AGO";
     }
 
     public static String proximityLabel(DiscoveryView discovery, String playerDimension,
@@ -561,6 +758,9 @@ public final class PlayerDiscoveries0650 {
     }
 
     private static Object field(Object target, String name) throws Exception { return findField(target.getClass(), name).get(target); }
+    private static Object staticField(String owner, String name) throws Exception {
+        return findField(Class.forName(owner), name).get(null);
+    }
     private static void setField(Object target, String name, Object value) throws Exception { findField(target.getClass(), name).set(target, value); }
     private static String stringField(Object target, String name) throws Exception {
         Object value = field(target, name);
@@ -571,7 +771,7 @@ public final class PlayerDiscoveries0650 {
     private static boolean booleanField(Object target, String name) throws Exception { return Boolean.TRUE.equals(field(target, name)); }
     private static int numberCall(Object target, String name) throws Exception { return ((Number) call(target, name)).intValue(); }
 
-    public record DiscoveryView(String label, String kind, String dimension, String source, String primary,
+    public record DiscoveryView(int snapshotIndex, String label, String kind, String dimension, String source, String primary,
                                 int x, int y, int z, int distance, int reserve, int analysis,
                                 int lastSeen, int flags) {
         public boolean favorite() { return (flags & 1) != 0; }
@@ -586,7 +786,7 @@ public final class PlayerDiscoveries0650 {
         String primary = "";
         int x, y, z, distance, reserve, analysis, lastSeen, flags;
         DiscoveryView build() {
-            return new DiscoveryView(label, kind, dimension, source, primary,
+            return new DiscoveryView(CLIENT.size(), label, kind, dimension, source, primary,
                     x, y, z, distance, reserve, analysis, lastSeen, flags);
         }
     }
@@ -595,5 +795,15 @@ public final class PlayerDiscoveries0650 {
         int filter;
         int page;
         int selected;
+    }
+
+    private record ServerSelection(Object level, Object data, Object state, String shipId, String key, Object record) {}
+
+    /** Minimal screen-compatible context consumed reflectively by the existing route engine. */
+    private static final class RouteContext {
+        final Object level;
+        final Object scanExterior = null;
+        final Object scanOrigin = null;
+        RouteContext(Object level) { this.level = level; }
     }
 }

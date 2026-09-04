@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Aktif runtime-kabul edilen laptop buildi `0.5.65.2-alpha-player-discoveries`. Kademeli Geological Analysis korunurken Player Ship Interface içindeki `DISCOVERIES` sekmesi ortak veritabanından son Structure/Geology kayıtlarını, analiz/kaynak ayrıntılarını ve canlı oyuncu mesafesini gösterir; farklı boyuttaki hedefler açıkça işaretlenir.
+- Aktif runtime-kabul edilen laptop buildi `0.5.66.1-alpha-player-discovery-actions`. Player Ship Interface içindeki `DISCOVERIES` sekmesi ortak Structure/Geology geçmişini, analiz/kaynak/rezerv/son-görülme ayrıntılarını ve canlı oyuncu mesafesini gösterir; kayıtlar favoriye alınabilir, aktif Navigation hedefi yapılabilir ve gerçek TARDIS rota/hop planına bağlanabilir.
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 
 Kesin eklenti sürümleri [`manifest.json`](manifest.json) ve [`pack-lock.json`](pack-lock.json) içinde tutulur. Üçüncü taraf JAR dosyaları GitHub’a eklenmez; yalnızca projeye ait iki fork JAR’ı repoda saklanır.

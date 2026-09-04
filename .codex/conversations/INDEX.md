@@ -4,6 +4,7 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-03 — laptop Player Discoveries actions acceptance](2026-09-03_laptop_player_discoveries_actions.md) — `.66.1` added last-seen/reserve details plus shared favorite, Navigation target and real TARDIS route/hop actions; two targets and a completed route passed runtime acceptance.
 - [2026-09-03 — laptop Player Discoveries core acceptance](2026-09-03_laptop_player_discoveries.md) — `.65.2` enabled the Player Discoveries list/filter/detail UI, balanced Structure/Geology sync, and added live player distance with clean runtime acceptance.
 - [2026-09-03 — laptop Geological Analysis tier reveal](2026-09-03_laptop_geology_analysis_tier_reveal.md) — `.64.0` completed config-driven Accuracy 0/I/II/III family reveals, preserved Field L3 evidence, repaired the active TrueSingle filter layer, and passed four-scan, save, visual and clean-log acceptance.
 - [2026-09-03 — laptop Geological Field Survey acceptance](2026-09-03_laptop_geological_field_survey.md) — `.62.0` enabled the Player Geological Scan, verified a physical TIN deposit, and persisted `GEOLOGY/FIELD`, visited, analysis-level-2 evidence without errors.

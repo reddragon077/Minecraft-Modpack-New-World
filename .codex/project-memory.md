@@ -1,6 +1,6 @@
 # New World project memory
 
-Last synchronized: 2026-09-03
+Last synchronized: 2026-09-04
 
 ## Canonical workflow
 
@@ -20,7 +20,7 @@ Last synchronized: 2026-09-03
 
 ## NewWorldCore continuation point
 
-- Active runtime-accepted laptop build: `NewWorldCore-1.21.1-NeoForge-0.5.65.2-alpha-player-discoveries.jar` (SHA-256 `95c9b44d5bbf54de7e8570a1e655de28e81572d057c8b7a55f9499630bce2b76`). Build/smoke/bytecode, repository-laptop single-JAR/hash, Player Discoveries filters/list/details/pagination, category-balanced sync, live player distance and clean runtime-log checks passed.
+- Active runtime-accepted laptop build: `NewWorldCore-1.21.1-NeoForge-0.5.66.1-alpha-player-discovery-actions.jar` (SHA-256 `889900f7e2519b8e07e604431260e28e0b6f8932d3d087bc5b17f8551fda059c`). Build/smoke/bytecode, repository-laptop single-JAR/hash, Player Discoveries filters/list/details/pagination, category-balanced sync, live player distance, last-seen/reserve fields, favorite, Navigation target and real route/hop integration passed.
 - Desktop acceptance evidence shows more than four reachable results and modded classes including Explorify, Better Dungeons, and Structory. The old four-record limit is fixed, shared placement sets now remain `UNKNOWN STRUCTURE`, and the false `MODDED STRUCTURE` selection was removed safely.
 - The verified `0.5.57.0` baseline is backed up under the laptop instance's `backups/custom-mods/known-good-0.5.57.0/` directory.
 - The complete historical source tree is still missing. The reproducible compatibility delta is stored under `src-patches/newworldcore/` and built with `tools/build-newworldcore-geology-patch.ps1`.
@@ -65,8 +65,8 @@ Last synchronized: 2026-09-03
 - Laptop acceptance first returned a clean zero away from evidence, then verified `TIN-RICH DEPOSIT` at `[-2696, 32, -728]` with 3/4 matching blocks in 4016 ms. Persisted NBT upgraded that exact record to `GEOLOGY/FIELD`, visited 1 and analysis level 2, advanced last-seen, and preserved first discovery. No relevant error occurred.
 - `0.5.64.0` completes anomaly → metallic → resource-rich → exact deposit-family progression. Every one of the 21 families has a configurable `reveal.required_accuracy.*` threshold; defaults expose 3/10/18/21 cumulative families at Accuracy 0/I/II/III, and unknown future families safely default to III.
 - Laptop runtime acceptance ran Accuracy 0/1/2/3 at 24/32/40/48 result caps in about nine seconds each. The user visually accepted staged labels and the repaired TrueSingle foreground filter; the saved world contains 47 Radar L3 records plus one preserved Field L3 TIN and 66 untouched Radar L0 records, with no relevant NewWorldCore error.
-- Discovery Analysis Stage 7 is complete. Stage 8 Player Discoveries core is accepted: the latest 64 Structure and 64 Geology records are synchronized independently from 464 total records, preventing one scan family from hiding the other. The GUI exposes ALL/STRUCTURES/GEOLOGY, pagination, source/analysis/resource/coordinates, and live player proximity or `DIFFERENT DIMENSION`.
-- Stage 8 remains open for last-seen/estimated-reserve presentation plus navigation-target, route and favorite actions.
+- Discovery Analysis Stage 7 and Player Discoveries Stage 8 are complete. The latest 64 Structure and 64 Geology records are synchronized independently from 464 total records. The GUI exposes ALL/STRUCTURES/GEOLOGY, pagination, source/analysis/resource/coordinates, last seen, estimated reserve, and live player proximity or `DIFFERENT DIMENSION`.
+- Stage 8 runtime acceptance used Archeologist Camp and Trial Chambers: both target and favorite writes reached the shared database; the existing Navigation engine applied dimension/position through four TARDIS state writes, produced one-hop plans, and completed the Trial Chambers route. `.66.0` was superseded because its positive C2S action codes were swallowed by the legacy `>=100` client-status path; `.66.1` uses tested negative action ranges.
 - FE Matrix registration now deterministically selects Architectury's `register(ResourceLocation, Supplier)` overload, removing the nondeterministic startup `argument type mismatch` path.
 - The Uraninite path passed an initial in-game acceptance test: Geological Radar -> Discovery -> Navigation target -> TARDIS route -> matching physical deposit. Full family, Mining and balance regression remains open.
 - `docs/12_Gelistirme_Yol_Haritasi.md` is the active implementation order. Finish its Radar/Discovery/Player Interface/Deposit stages before Research and Production Chamber progression.

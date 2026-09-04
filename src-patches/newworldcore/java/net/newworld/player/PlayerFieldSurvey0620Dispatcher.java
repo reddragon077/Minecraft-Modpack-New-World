@@ -17,6 +17,8 @@ public final class PlayerFieldSurvey0620Dispatcher {
                 Navigation0520GeologyScanRuntime.handle(player);
             } else if (mode == 3) {
                 PlayerDiscoveries0650.sendSnapshot(player);
+            } else if (PlayerDiscoveries0650.isActionMode(mode)) {
+                PlayerDiscoveries0650.handleAction(player, mode);
             } else {
                 System.err.println("[NewWorldCore/Survey] unsupported survey mode=" + mode);
             }

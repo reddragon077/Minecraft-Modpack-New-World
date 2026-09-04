@@ -1,20 +1,23 @@
 # New World current handoff
 
-Updated: 2026-09-03
+Updated: 2026-09-04
 Machine: laptop
 Branch: `main`
 
 ## Current objective
 
-Finish Player GUI Discoveries actions and remaining detail fields (roadmap Stage 8). The shared list/filter/detail core is runtime accepted.
+Start roadmap Stage 9, the lightweight Player Navigation panel. Stage 8 Player Discoveries is complete and runtime accepted.
 
 ## Current accepted continuation
 
-- Active laptop/repository build: `NewWorldCore-1.21.1-NeoForge-0.5.65.2-alpha-player-discoveries.jar`.
-- SHA-256: `95c9b44d5bbf54de7e8570a1e655de28e81572d057c8b7a55f9499630bce2b76`.
+- Active laptop/repository build: `NewWorldCore-1.21.1-NeoForge-0.5.66.1-alpha-player-discovery-actions.jar`.
+- SHA-256: `889900f7e2519b8e07e604431260e28e0b6f8932d3d087bc5b17f8551fda059c`.
 - Player `DISCOVERIES` now reads the shared database through reserved survey mode 3 and shows ALL/STRUCTURES/GEOLOGY filters, six-row pagination and selected-record source/analysis/resource/coordinates.
 - Snapshot selection keeps the newest 64 Structure and 64 Geology records independently. Laptop runtime repeatedly logged `synced=128 total=464 perCategory=64`; no Discoveries render, snapshot or packet-routing error occurred.
 - The detail panel calculates live 3D distance from the current player instead of displaying the stale ship-relative scan distance; another dimension shows `DIFFERENT DIMENSION`. User visual/functional acceptance passed.
+- Detail also shows relative `LAST SEEN` and geology `EST RESERVE`. `FAV` toggles the shared favorite bit, `TARGET` selects the shared Navigation target, and `ROUTE` invokes the existing Navigation route/hop engine.
+- Runtime acceptance passed twice: Archeologist Camp and Trial Chambers produced target/favorite writes and ready one-hop routes. Four TARDIS destination writes were applied and Trial Chambers logged `Route complete at hop #1`. No Player Discoveries action or route error occurred.
+- `.66.0` is superseded: positive action modes were swallowed by the legacy `>=100` client-status branch. `.66.1` uses negative C2S ranges guarded by smoke tests.
 - Accuracy 0/I/II/III now reveals deposit families cumulatively by config-defined thresholds. All 21 current families have individual `reveal.required_accuracy.*` entries; unknown future families default safely to III.
 - Laptop acceptance completed all four Accuracy scans at 24/32/40/48 result caps in about nine seconds each. The user visually confirmed staged text and a clean foreground filter popup. Save audit found 47 Radar L3 records, one preserved Field L3 TIN, and 66 untouched Radar L0 records; no relevant NewWorldCore error occurred.
 - Geological Field Survey is live through payload mode 1 and verifies actual loaded deposit-template blocks. Its range, delay, result cap, check budget, and match threshold are documented in `player.properties`.
@@ -105,12 +108,15 @@ Finish Player GUI Discoveries actions and remaining detail fields (roadmap Stage
 - `ARCHEOLOGIST CAMP` in-place Field Survey family recognition: **passed** (one survey identified it among eight loaded structures).
 - `0.5.60.4` build, config smoke, 48-block/3-chunk/80-tick formulas, live GUI label/dimming/layer hooks, network multiplier hooks, delayed executor, server-thread dispatch, pending lock, repository single-JAR/hash, and install checks: **passed**.
 - Laptop `0.5.60.4` launch, four-second/48-block survey behavior, family recognition, clean log, and `ARCHEOLOGIST CAMP` dynamic-filter visibility: **passed**.
+- `0.5.66.1` compile, action-range regression smoke, repository/live single-JAR and SHA-256 equality: **passed**.
+- Laptop Player Discoveries last-seen/reserve presentation and FAV/TARGET/ROUTE server actions: **passed**.
+- Archeologist Camp and Trial Chambers one-hop route preparation plus Trial Chambers route completion: **passed**.
 
 ## Next executable test
 
-1. Add last-seen and estimated-reserve presentation to the selected discovery details.
-2. Connect `SET NAVIGATION TARGET` without duplicating persistence state.
-3. Add route and favorite actions, then close roadmap Stage 8.
+1. Begin Stage 9 Player Navigation with current target, player-to-ship distance, route and next-hop readouts.
+2. Add estimated WE cost and favorite-based target selection without moving advanced route configuration out of the physical terminal.
+3. Add `SAVE CURRENT LOCATION` and `SEND TO SHIP`, each config-first where adjustable.
 
 ## Do not assume
 

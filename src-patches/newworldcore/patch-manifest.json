@@ -1,8 +1,8 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.65.2-alpha-player-discoveries",
-  "marker": "NewWorldPlayerDiscoveriesV3",
+  "version": "0.5.66.1-alpha-player-discovery-actions",
+  "marker": "NewWorldPlayerDiscoveryActionsV2",
   "fixes": [
     "Dynamic structure-registry classification for vanilla and modded structures",
     "Placement-only modded structure coordinates without chunk generation or locate calls",

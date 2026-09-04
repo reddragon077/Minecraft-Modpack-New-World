@@ -317,6 +317,18 @@ public final class NewWorldTuning {
         return NewWorldConfig.integer("gui", "player.discoveries.rows_per_page", 6, 5, 6);
     }
 
+    public static boolean playerDiscoveriesTargetEnabled() {
+        return NewWorldConfig.bool("gui", "player.discoveries.enable_target_action", true);
+    }
+
+    public static boolean playerDiscoveriesRouteEnabled() {
+        return NewWorldConfig.bool("gui", "player.discoveries.enable_route_action", true);
+    }
+
+    public static boolean playerDiscoveriesFavoriteEnabled() {
+        return NewWorldConfig.bool("gui", "player.discoveries.enable_favorite_action", true);
+    }
+
     public static String playerSurveyDetailLine() {
         boolean range = NewWorldConfig.bool("gui", "player.show_survey_range", true);
         boolean delay = NewWorldConfig.bool("gui", "player.show_survey_delay", true);
