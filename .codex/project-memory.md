@@ -1,11 +1,12 @@
 # New World project memory
 
-Last synchronized: 2026-09-05
+Last synchronized: 2026-09-07
 
 ## Canonical workflow
 
 - GitHub repository: `https://github.com/reddragon077/Minecraft-Modpack-New-World`
 - GitHub `main` is the canonical shared source for development across computers.
+- `.cursor/rules/canonical-roadmap-workflow.mdc` is an always-applied cross-computer project rule. It requires clean fast-forward synchronization, evidence-backed roadmap state, numeric stage order, record reconciliation before new work when conflicts exist, and clean `main == origin/main` handoff.
 - CurseForge instance directories are local runtime and test endpoints.
 - Registered machines: `laptop` and `desktop`; paths are stored under `machines/`.
 - Desktop repository root: `E:\projects\Minecraft-Modpack-New-World`.

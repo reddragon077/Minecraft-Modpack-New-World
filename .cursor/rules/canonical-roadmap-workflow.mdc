@@ -1,0 +1,19 @@
+---
+description: New World yol haritası sırasını ve iki bilgisayarlı GitHub çalışma düzenini zorunlu kılar
+alwaysApply: true
+---
+
+# Kanonik yol haritası ve iki bilgisayarlı çalışma
+
+- GitHub `main` ortak ve kanonik kaynaktır; laptop ve masaüstü CurseForge klasörleri yalnızca çalışma/test uçlarıdır.
+- Her çalışmanın başında branch ve çalışma ağacını kontrol et. Yerel değişiklik varsa ezme veya pull yapma; kapsamı kullanıcıya bildir. Temizse fetch yap ve yalnızca fast-forward pull kullan.
+- Değişiklikten önce `.codex/project-memory.md`, `.codex/HANDOFF.md`, `.codex/conversations/INDEX.md` ve en yeni ilgili conversation kaydını oku.
+- `docs/12_Gelistirme_Yol_Haritasi.md` içindeki 14 aşamalı sayısal liste kanonik geliştirme sırasıdır. Doğrulanmış bir karar ve yol haritası güncellemesi olmadan aşama atlama.
+- Mevcut zorunlu kapı, yol haritası doğrulanmış bir commit ile değişene kadar Aşama 4 Overview, sonra Aşama 5 Ship Link, ardından Aşama 9'un kalan Player Navigation işleridir.
+- Tamamlanmış işi eski prompt, sohbet özeti veya stale handoff nedeniyle yeniden başlatma. Aşama durumunu gerçek kaynak/JAR, `pack-lock.json`, test ve runtime kanıtıyla doğrula.
+- Kayıtlarla gerçek uygulama çelişirse yeni özellik geliştirmeyi durdur; önce yol haritası, handoff, bellek ve conversation kayıtlarını uzlaştır.
+- Bir aşamayı yalnız test edilen davranış için `[x]` yap. Kısmi altyapıyı `[~]` tut; planı veya derlemeyi runtime kabulü gibi yazma.
+- Dokümantasyon veya metadata düzeltmesi tek başına yeni JAR sürümü üretme sebebi değildir. Gömülü manifest ile kaynak manifesti bir sonraki gerçek buildde birlikte güncelle.
+- Runtime değişikliğinde bilinen iyi JAR'ı yedekle; aynı modun iki sürümünü yükleme. Save/world/log/backup/cache ve kişisel dosyaları Git'e ekleme.
+- Kabul edilen her geliştirmeden sonra ilgili lock/doküman/bellek/handoff/conversation kayıtlarını güncelle, diff'i incele, commit et ve `main` dalına pushla.
+- Bilgisayar değiştirirken ayrıldığın makinede clean `main == origin/main` doğrulaması yap; diğer makinede yine temiz fast-forward senkronizasyonla başla.

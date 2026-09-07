@@ -3,6 +3,7 @@
 This repository is the canonical source for the New World Minecraft modpack.
 
 - Before changing or diagnosing the project, read `.codex/project-memory.md`, `.codex/HANDOFF.md`, and the newest entry in `.codex/conversations/INDEX.md`.
+- The always-applied `.cursor/rules/canonical-roadmap-workflow.mdc` rule is mandatory on both computers; it defines roadmap order, evidence requirements, and the safe GitHub handoff workflow.
 - GitHub `main` is the shared source of truth; CurseForge instance directories are local runtime/test endpoints.
 - Verify runtime files before copying changes back into this repository.
 - Keep third-party mod JARs out of Git. They are pinned through `manifest.json` and `pack-lock.json`.

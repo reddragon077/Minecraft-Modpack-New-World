@@ -1,6 +1,6 @@
 # New World current handoff
 
-Updated: 2026-09-05
+Updated: 2026-09-07
 Machine: laptop
 Branch: `main`
 
@@ -10,6 +10,7 @@ Start roadmap Stage 4, Overview / Ship Status. Stage 8 Player Discoveries is com
 
 ## Current accepted continuation
 
+- `.cursor/rules/canonical-roadmap-workflow.mdc` is the mandatory always-applied rule on both computers. It locks the current order to Stage 4, then Stage 5, then remaining Stage 9 work until the roadmap is changed by a verified commit.
 - Active laptop/repository build: `NewWorldCore-1.21.1-NeoForge-0.5.66.1-alpha-player-discovery-actions.jar`.
 - SHA-256: `889900f7e2519b8e07e604431260e28e0b6f8932d3d087bc5b17f8551fda059c`.
 - Player `DISCOVERIES` now reads the shared database through reserved survey mode 3 and shows ALL/STRUCTURES/GEOLOGY filters, six-row pagination and selected-record source/analysis/resource/coordinates.
@@ -128,10 +129,11 @@ Start roadmap Stage 4, Overview / Ship Status. Stage 8 Player Discoveries is com
 1. `.codex/project-memory.md`
 2. This file
 3. `.codex/conversations/INDEX.md`
-4. `.codex/conversations/2026-09-05_laptop_roadmap_reconciliation.md`
-5. `.codex/conversations/2026-09-03_laptop_player_discoveries_actions.md`
-6. `.codex/conversations/2026-09-03_laptop_player_discoveries.md`
-7. `.codex/conversations/2026-09-02_laptop_geology_filter_layer_repair.md`
-8. `.codex/conversations/2026-09-02_laptop_config_suite_build.md`
-9. `.codex/LAPTOP_RESUME_PROMPT.md` when moving to the laptop
-10. `docs/Known Issues.md`
+4. `.codex/conversations/2026-09-07_canonical_roadmap_rule.md`
+5. `.codex/conversations/2026-09-05_laptop_roadmap_reconciliation.md`
+6. `.codex/conversations/2026-09-03_laptop_player_discoveries_actions.md`
+7. `.codex/conversations/2026-09-03_laptop_player_discoveries.md`
+8. `.codex/conversations/2026-09-02_laptop_geology_filter_layer_repair.md`
+9. `.codex/conversations/2026-09-02_laptop_config_suite_build.md`
+10. `.codex/LAPTOP_RESUME_PROMPT.md` when moving to the laptop
+11. `docs/Known Issues.md`
