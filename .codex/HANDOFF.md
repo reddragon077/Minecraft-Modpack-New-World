@@ -1,12 +1,12 @@
 # New World current handoff
 
-Updated: 2026-09-04
+Updated: 2026-09-05
 Machine: laptop
 Branch: `main`
 
 ## Current objective
 
-Start roadmap Stage 9, the lightweight Player Navigation panel. Stage 8 Player Discoveries is complete and runtime accepted.
+Start roadmap Stage 4, Overview / Ship Status. Stage 8 Player Discoveries is complete and runtime accepted; Stage 9's remaining Player Navigation work follows Stage 4 and Stage 5.
 
 ## Current accepted continuation
 
@@ -114,9 +114,9 @@ Start roadmap Stage 9, the lightweight Player Navigation panel. Stage 8 Player D
 
 ## Next executable test
 
-1. Begin Stage 9 Player Navigation with current target, player-to-ship distance, route and next-hop readouts.
-2. Add estimated WE cost and favorite-based target selection without moving advanced route configuration out of the physical terminal.
-3. Add `SAVE CURRENT LOCATION` and `SEND TO SHIP`, each config-first where adjustable.
+1. Complete Stage 4 Overview / Ship Status with read-only shared telemetry and the roadmap's status fields.
+2. Complete Stage 5 Ship Link with `CONNECTED`, `DIMENSIONAL`, and `LOST` state plus distance/dimension gates.
+3. Then return to Stage 9 for current target/route/hop/WE presentation, favorite selection, `SAVE CURRENT LOCATION`, and `SEND TO SHIP`. Discovery TARGET/ROUTE creation is already complete in `0.5.66.1` and must not be reimplemented.
 
 ## Do not assume
 
@@ -128,7 +128,10 @@ Start roadmap Stage 9, the lightweight Player Navigation panel. Stage 8 Player D
 1. `.codex/project-memory.md`
 2. This file
 3. `.codex/conversations/INDEX.md`
-4. `.codex/conversations/2026-09-02_laptop_geology_filter_layer_repair.md`
-5. `.codex/conversations/2026-09-02_laptop_config_suite_build.md`
-6. `.codex/LAPTOP_RESUME_PROMPT.md` when moving to the laptop
-7. `docs/Known Issues.md`
+4. `.codex/conversations/2026-09-05_laptop_roadmap_reconciliation.md`
+5. `.codex/conversations/2026-09-03_laptop_player_discoveries_actions.md`
+6. `.codex/conversations/2026-09-03_laptop_player_discoveries.md`
+7. `.codex/conversations/2026-09-02_laptop_geology_filter_layer_repair.md`
+8. `.codex/conversations/2026-09-02_laptop_config_suite_build.md`
+9. `.codex/LAPTOP_RESUME_PROMPT.md` when moving to the laptop
+10. `docs/Known Issues.md`

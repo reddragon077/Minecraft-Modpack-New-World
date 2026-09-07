@@ -1,6 +1,6 @@
 # New World project memory
 
-Last synchronized: 2026-09-04
+Last synchronized: 2026-09-05
 
 ## Canonical workflow
 
@@ -65,11 +65,12 @@ Last synchronized: 2026-09-04
 - Laptop acceptance first returned a clean zero away from evidence, then verified `TIN-RICH DEPOSIT` at `[-2696, 32, -728]` with 3/4 matching blocks in 4016 ms. Persisted NBT upgraded that exact record to `GEOLOGY/FIELD`, visited 1 and analysis level 2, advanced last-seen, and preserved first discovery. No relevant error occurred.
 - `0.5.64.0` completes anomaly → metallic → resource-rich → exact deposit-family progression. Every one of the 21 families has a configurable `reveal.required_accuracy.*` threshold; defaults expose 3/10/18/21 cumulative families at Accuracy 0/I/II/III, and unknown future families safely default to III.
 - Laptop runtime acceptance ran Accuracy 0/1/2/3 at 24/32/40/48 result caps in about nine seconds each. The user visually accepted staged labels and the repaired TrueSingle foreground filter; the saved world contains 47 Radar L3 records plus one preserved Field L3 TIN and 66 untouched Radar L0 records, with no relevant NewWorldCore error.
-- Discovery Analysis Stage 7 and Player Discoveries Stage 8 are complete. The latest 64 Structure and 64 Geology records are synchronized independently from 464 total records. The GUI exposes ALL/STRUCTURES/GEOLOGY, pagination, source/analysis/resource/coordinates, last seen, estimated reserve, and live player proximity or `DIFFERENT DIMENSION`.
+- Discovery Analysis Stage 7 is partial: the geology analysis chain is complete, while advanced Structure analysis levels still await Research progression. Player Discoveries Stage 8 is complete. The latest 64 Structure and 64 Geology records are synchronized independently from 464 total records. The GUI exposes ALL/STRUCTURES/GEOLOGY, pagination, source/analysis/resource/coordinates, last seen, estimated reserve, and live player proximity or `DIFFERENT DIMENSION`.
 - Stage 8 runtime acceptance used Archeologist Camp and Trial Chambers: both target and favorite writes reached the shared database; the existing Navigation engine applied dimension/position through four TARDIS state writes, produced one-hop plans, and completed the Trial Chambers route. `.66.0` was superseded because its positive C2S action codes were swallowed by the legacy `>=100` client-status path; `.66.1` uses tested negative action ranges.
+- Stage 9 is partial because Discovery `TARGET` and `ROUTE` creation was completed early during Stage 8 in `0.5.66.1`; the dedicated Player Navigation panel, telemetry and remaining actions are still pending and must not duplicate that accepted path.
 - FE Matrix registration now deterministically selects Architectury's `register(ResourceLocation, Supplier)` overload, removing the nondeterministic startup `argument type mismatch` path.
 - The Uraninite path passed an initial in-game acceptance test: Geological Radar -> Discovery -> Navigation target -> TARDIS route -> matching physical deposit. Full family, Mining and balance regression remains open.
-- `docs/12_Gelistirme_Yol_Haritasi.md` is the active implementation order. Finish its Radar/Discovery/Player Interface/Deposit stages before Research and Production Chamber progression.
+- The 14-stage `docs/12_Gelistirme_Yol_Haritasi.md` is the canonical numeric development order. The next gate is Stage 4 Overview / Ship Status, then Stage 5 Ship Link, then the remaining Stage 9 Player Navigation items. Do not skip directly to Stage 9 before Stages 4 and 5 are complete.
 
 ## Ship and progression decisions
 

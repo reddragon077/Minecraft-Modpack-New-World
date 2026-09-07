@@ -4,6 +4,7 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-05 — laptop roadmap reconciliation](2026-09-05_laptop_roadmap_reconciliation.md) — reconciled accepted `.66.1` behavior with the 14-stage roadmap, corrected stale Stage 9/14 checkboxes and set the next order to Stage 4, Stage 5, then remaining Stage 9 work without producing a new JAR.
 - [2026-09-03 — laptop Player Discoveries actions acceptance](2026-09-03_laptop_player_discoveries_actions.md) — `.66.1` added last-seen/reserve details plus shared favorite, Navigation target and real TARDIS route/hop actions; two targets and a completed route passed runtime acceptance.
 - [2026-09-03 — laptop Player Discoveries core acceptance](2026-09-03_laptop_player_discoveries.md) — `.65.2` enabled the Player Discoveries list/filter/detail UI, balanced Structure/Geology sync, and added live player distance with clean runtime acceptance.
 - [2026-09-03 — laptop Geological Analysis tier reveal](2026-09-03_laptop_geology_analysis_tier_reveal.md) — `.64.0` completed config-driven Accuracy 0/I/II/III family reveals, preserved Field L3 evidence, repaired the active TrueSingle filter layer, and passed four-scan, save, visual and clean-log acceptance.

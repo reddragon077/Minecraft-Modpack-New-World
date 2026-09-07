@@ -1,6 +1,6 @@
 # New World — Aktif geliştirme yol haritası
 
-Son doğrulama: 3 Eylül 2026
+Son doğrulama: 5 Eylül 2026
 
 Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.66.1-alpha-player-discovery-actions`
 
@@ -46,7 +46,7 @@ Kapanış testi: mevcut dünya şema `2`den `3`e taşındı. Save dosyasında 44
 
 ## Aşama 3 — Player Ship Interface
 
-Durum: arayüz kabuğu ve tuş bağlantısı mevcut.
+Durum: **kısmi.** Arayüz kabuğu ve tuş bağlantısı mevcut; Survey ve Discoveries çalışıyor, kalan sekme içerikleri bekliyor.
 
 - [x] Oyuncunun tuşla açabildiği `PlayerShipScreen` mevcut.
 - [x] `OVERVIEW`, `SURVEY`, `DISCOVERIES`, `NAVIGATION`, `MINING`, `EMERGENCY` sekmeleri oluşturuldu.
@@ -102,7 +102,7 @@ Kapanış testi: `0.5.62.0` laptop testinde ilk boş alan taraması temiz biçim
 
 ## Aşama 7 — Discovery Analysis seviyesi
 
-Durum: **tamamlandı.** Kalıcı 0-3 model, yükseltme/event yolu, Accuracy tabanlı jeolojik çözümleme, aile bazlı config eşikleri ve Field kanıtının düşürülememesi oyun içinde geçti.
+Durum: **kısmi.** Kalıcı 0-3 model, yükseltme/event yolu, Accuracy tabanlı jeolojik çözümleme, aile bazlı config eşikleri ve Field kanıtının düşürülememesi oyun içinde geçti; ileri Structure analiz seviyeleri Research aşamasını bekliyor.
 
 - [~] Ziyaret edilmemiş structure sonuçları `UNKNOWN STRUCTURE` olarak maskeleniyor.
 - [x] Kalıcı analysis level modeli
@@ -132,14 +132,14 @@ Kapanış testi: `0.5.66.1` ile `ARCHEOLOGIST CAMP` ve `TRIAL CHAMBERS` kayıtla
 
 ## Aşama 9 — Player Navigation paneli
 
-Durum: gemi Navigation Terminal’i çalışıyor; hafif uzaktan panel bekliyor.
+Durum: **kısmi.** Gemi Navigation Terminal’i çalışıyor ve Discovery kayıtlarından doğrudan hedef/rota oluşturma `0.5.66.1` TARGET/ROUTE runtime kabulüyle tamamlandı; hafif uzaktan Navigation panelinin kalan görünüm ve eylemleri bekliyor.
 
 - [ ] Mevcut hedef, gemiye uzaklık, rota ve sonraki hop
 - [ ] Tahmini WE maliyeti
 - [ ] Favoriden hedef seçme
 - [ ] `SAVE CURRENT LOCATION`
 - [ ] `SEND TO SHIP`
-- [ ] Discovery’den hedef oluşturma
+- [x] Discovery’den hedef oluşturma (`0.5.66.1` TARGET/ROUTE kabulü)
 
 Gelişmiş rota hesabı ve ayarlar fiziksel Navigation Terminal’de kalacaktır.
 
@@ -203,7 +203,7 @@ Aktif aileler vanilla yataklara ek olarak Osmium, Tin, Lead, Uranium, Fluorite, 
 Durum: keşif ve seyahat zinciri doğrulandı; extraction/depletion zinciri eksik.
 
 - [x] Radar → Geological Scan
-- [ ] Field Survey → Geological Scan
+- [x] Field Survey → Geological Scan
 - [x] Discovery Database → Deposit kaydı
 - [x] Navigation → Deposit hedefi
 - [x] TARDIS → Deposit bölgesine seyahat
@@ -220,6 +220,8 @@ Geological Radar → Discovery → Navigation Target → TARDIS Route → Physic
 
 Hedef koordinat ile fiziksel yatak eşleşmiştir ve NewWorldCore kaynaklı hata oluşmamıştır.
 
+`0.5.62.0` Geological Field Survey kabulünde fiziksel `TIN-RICH DEPOSIT`, `[-2696, 32, -728]` konumunda gerçek şablon bloklarıyla doğrulandı ve ortak veritabanına `GEOLOGY/FIELD` kanıtı olarak kaydedildi.
+
 ## Yol haritası sonrası
 
 Aşağıdaki işler Aşama 14 kapanmadan ana geliştirme odağı yapılmayacaktır:
@@ -235,6 +237,8 @@ Aşağıdaki işler Aşama 14 kapanmadan ana geliştirme odağı yapılmayacakt�
 
 ## Şu anki çalışma kapısı
 
-1. Geological Field Survey’i etkinleştir.
-2. Analysis level'ın jeolojik anomaly → family çözümleme zincirini tamamla.
-3. Sonra Player Ship Interface sekmelerini sırayla tamamla.
+Ana listedeki sayısal sıra geliştirme sırasıdır. Tamamlanmış Aşama 6 Field Survey, jeolojik Analysis zinciri ve Aşama 8 Discoveries işleri yeniden başlatılmayacaktır.
+
+1. Önce Aşama 4 — Overview / Ship Status.
+2. Sonra Aşama 5 — Ship Link.
+3. Ardından Aşama 9 — Player Navigation panelinin kalan maddeleri.
