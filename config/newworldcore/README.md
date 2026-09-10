@@ -35,7 +35,7 @@ Dosyalar:
 - `player.properties`: oyuncu Structure/Geological Field Survey menzilleri, gecikmeleri ve fiziksel depozit doğrulama sınırları.
 - `gui.properties`: oyuncu arayüzü karartması, canlı Survey bilgi satırı ve filtre katman derinliği.
 - `discovery.properties`: Structure/Geology Radar ve Field Survey kaynaklarının kalıcı başlangıç analiz seviyeleri.
-- `overview.properties`: salt-okunur Gemi Durumu ekranı; `refresh_ticks` (40), `stale_after_ticks` (120), `warning_percent` (20), `critical_percent` (5), `warning_rows` (2).
+- `overview.properties`: salt-okunur Gemi Durumu ekranı; `refresh_ticks` (20, kullanıcının seçimi), `stale_after_ticks` (120), `warning_percent` (20), `critical_percent` (5), `warning_rows` (2), `show_resolved_warnings` (true).
 
 Overview FE satırındaki `OUT`, ortak FE havuzundan gerçekten çekilen enerjinin tick başına ortalamasıdır;
 simülasyon çağrıları sayılmaz, dışarı enerji aktarımı da dahildir. `NET`, iki örnek arasındaki depolanan FE farkıdır;
@@ -43,6 +43,9 @@ simülasyon çağrıları sayılmaz, dışarı enerji aktarımı da dahildir. `N
 Doğrudan eski enerji aynasına yapılan yönetici atamaları OUT tüketimi sayılmaz; sayaç dünyaya kaydedilmez.
 Matrix kaydı yoksa `UNKNOWN`, ayrılmışsa `OFFLINE` görünür; bilinmeyen değerler sıfır enerji gibi yorumlanmaz.
 Son uyarılar yalnız mevcut oyuncu bağlantısı/gemi gözlem oturumu içindir, kalıcı olay günlüğü değildir.
+Aktif uyarılar sarı `[ACTIVE]`, aktif kritik durumlar kırmızı `[CRITICAL]`, çözülenler gri `[RESOLVED]` görünür.
+Sunucu her kaydın durumunu ayrı belirler; kritik/aktif kayıtlar geçmiş kayıtlarından önce gösterilir.
+`show_resolved_warnings=false` çözülenleri gizler; bu görünüm ayarı canlı yenilenir, aktif uyarıları gizlemez.
 Sunucu uyarı eşiklerini, istemci satır sayısını ve bayat veri süresini kendi configinden okur.
 
 Güvenli config sınırı: oynanış dengesi, süre, menzil, enerji, kapasite, performans ve görünüm ayarlanabilir;

@@ -4,6 +4,8 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-10 — Overview runtime checks and resolved warnings](2026-09-10_laptop_overview_warning_states.md) — `.67.0` telemetry/config/energy recovery checks verified; `.67.1` adds severity-colored active/resolved rows and live history visibility, installed with six smoke suites passing; visual acceptance pending.
+
 - [2026-09-10 — laptop sync recovery and Overview candidate](2026-09-10_laptop_overview_candidate.md) — hash-preserving sync-copy recovery, `.67.0` Overview/config/FE-outflow implementation, six smoke suites and verified installation; runtime acceptance pending.
 - [2026-09-07 — canonical roadmap and cross-computer rule](2026-09-07_canonical_roadmap_rule.md) — added an always-applied project rule enforcing GitHub-first synchronization, evidence-backed roadmap state and the Stage 4 → Stage 5 → remaining Stage 9 development gate on both computers.
 - [2026-09-05 — laptop roadmap reconciliation](2026-09-05_laptop_roadmap_reconciliation.md) — reconciled accepted `.66.1` behavior with the 14-stage roadmap, corrected stale Stage 9/14 checkboxes and set the next order to Stage 4, Stage 5, then remaining Stage 9 work without producing a new JAR.

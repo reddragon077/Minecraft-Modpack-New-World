@@ -1,5 +1,5 @@
 import java.nio.file.*;
-import java.util.List;
+import java.util.*;
 import net.newworld.config.NewWorldConfig;
 import net.newworld.player.PlayerOverview0670;
 import net.newworld.player.PlayerOverview0670.Snapshot;
@@ -26,6 +26,23 @@ public final class PlayerOverview0670SmokeTest {
             eq(PlayerOverview0670.criticalPercent(), 5);
             eq(PlayerOverview0670.staleTicks(), 120);
             eq(PlayerOverview0670.warningRows(), 2);
+            if (!PlayerOverview0670.showResolvedWarnings()) throw new AssertionError("History default");
+            PlayerOverview0670.WarningHistory history = new PlayerOverview0670.WarningHistory();
+            expect(history.update(Map.of("FE LEVEL LOW", 1)), "[ACTIVE] FE LEVEL LOW");
+            expect(history.update(Map.of("FE LEVEL LOW", 2)), "[CRITICAL] FE LEVEL LOW");
+            expect(history.update(Map.of()), "[RESOLVED] FE LEVEL LOW");
+            expect(history.update(Map.of()), "[RESOLVED] FE LEVEL LOW");
+            expect(history.update(Map.of("FE LEVEL LOW", 1)), "[ACTIVE] FE LEVEL LOW");
+            expect(history.update(Map.of("MINING NO_ENERGY", 2)), "[CRITICAL] MINING NO_ENERGY", "[RESOLVED] FE LEVEL LOW");
+            LinkedHashMap<String, Integer> many = new LinkedHashMap<>();
+            many.put("OLD WARNING", 1); many.put("NEW WARNING", 1); many.put("THIRD WARNING", 1); many.put("ENGINE BROKEN", 2);
+            List<String> prioritized = history.update(many);
+            eq(prioritized.size(), 3);
+            if (!prioritized.getFirst().equals("[CRITICAL] ENGINE BROKEN") || prioritized.stream().anyMatch(w -> w.startsWith("[RESOLVED]"))) throw new AssertionError("Critical priority / active starvation");
+            expect(new PlayerOverview0670.WarningHistory().update(Map.of()));
+            eq(PlayerOverview0670.warningColor("[ACTIVE] FE LEVEL LOW"), 0xFFFFCF45);
+            eq(PlayerOverview0670.warningColor("[CRITICAL] FE LEVEL LOW"), 0xFFFF7272);
+            eq(PlayerOverview0670.warningColor("[RESOLVED] FE LEVEL LOW"), 0xFF8DA7B4);
             eq(PlayerOverview0670.energySeverity(20, 100), 1);
             eq(PlayerOverview0670.energySeverity(5, 100), 2);
             eq(PlayerOverview0670.energySeverity(0, 0), 1);
@@ -45,9 +62,17 @@ public final class PlayerOverview0670SmokeTest {
             eq(PlayerOverview0670.criticalPercent(), 0);
             eq(PlayerOverview0670.warningRows(), 1);
 
+            Files.writeString(config, "show_resolved_warnings=false\nwarning_rows=3\n");
+            NewWorldConfig.reload();
+            List<String> mixed = List.of("[CRITICAL] MINING NO_ENERGY", "[ACTIVE] FE LEVEL LOW", "[RESOLVED] ENGINE UNKNOWN");
+            expect(PlayerOverview0670.visibleWarnings(mixed), mixed.get(0), mixed.get(1));
+            Files.writeString(config, "show_resolved_warnings=true\nwarning_rows=3\n");
+            NewWorldConfig.reload();
+            if (!PlayerOverview0670.visibleWarnings(mixed).equals(mixed)) throw new AssertionError("Live resolved visibility reload");
+
             Snapshot source = new Snapshot("ship-ç-test", Long.MAX_VALUE, Long.MAX_VALUE, 200, 1000,
                     "-100 FE/t NET", "READY", "LOCKED", "OFF", "WAITING_FOR_MODULE", "NO TARGET", "ONLINE", "ONLINE",
-                    "ONLINE", "minecraft:overworld", "X=-200 Y=64 Z=500", "WARNING", List.of("WARP LEVEL LOW"));
+                    "ONLINE", "minecraft:overworld", "X=-200 Y=64 Z=500", "WARNING", mixed);
             int[] codes = PlayerOverview0670.encode(source);
             PlayerOverview0670.resetClient();
             if (PlayerOverview0670.accept(4) || PlayerOverview0670.accept(-10000) || PlayerOverview0670.accept(1440001002)) throw new AssertionError("Protocol overlap");
@@ -58,6 +83,9 @@ public final class PlayerOverview0670SmokeTest {
             FakeScreen screen = new FakeScreen();
             PlayerOverview0670.draw(screen, new FakeGraphics(), 0, 0, source, true, "WARNING");
             if (screen.drawn < 16) throw new AssertionError("Missing Overview rows");
+            eq(screen.colors.get("[CRITICAL] MINING NO ENERGY"), 0xFFFF7272);
+            eq(screen.colors.get("[ACTIVE] FE LEVEL LOW"), 0xFFFFCF45);
+            eq(screen.colors.get("[RESOLVED] ENGINE UNKNOWN"), 0xFF8DA7B4);
             screen.drawn = 0;
             screen.columns = false;
             PlayerOverview0670.draw(screen, new FakeGraphics(), 0, 0, source, false, "STALE");
@@ -79,15 +107,18 @@ public final class PlayerOverview0670SmokeTest {
         } finally { Files.deleteIfExists(config); Files.deleteIfExists(root); }
     }
     private static void eq(long actual, long expected) { if (actual != expected) throw new AssertionError(actual + " != " + expected); }
+    private static void expect(List<String> actual, String... expected) { if (!actual.equals(List.of(expected))) throw new AssertionError("Warning lifecycle: " + actual); }
     public static final class FakeFont { public int width(String text) { return text.length() * 6; } }
     public static final class FakeScreen {
         public final FakeFont font = new FakeFont();
         int drawn;
         boolean columns = true;
+        final Map<String, Integer> colors = new HashMap<>();
         public void text(Object graphics, String text, int x, int y, int color) {
             if (x < 26 || x + font.width(text) > 514 || y < 91 || y + 9 > 288) throw new AssertionError("Text outside panel: " + text);
             if (columns && y >= 116 && y <= 200 && x < 275 && x + font.width(text) > 265) throw new AssertionError("Column overlap: " + text);
             drawn++;
+            colors.put(text, color);
         }
     }
     public static final class FakeGraphics {

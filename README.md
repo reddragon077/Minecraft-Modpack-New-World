@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Kurulu geliştirme adayı `0.5.67.0-alpha-player-overview`: Gemi Durumu ekranına FE/WE, tüketim, motor/fren, Mining, Navigation, Matrix ve dış konum telemetrisi eklendi. Derleme ve otomatik testler geçti; oyun içi kabul bekliyor. Son runtime-kabul edilen sürüm `.66.1`, yedekte korunuyor.
+- Kurulu geliştirme adayı `0.5.67.1-alpha-overview-warning-states`: Overview uyarıları aktif/kritik/çözülmüş olarak ayrılır; çözülmüş kayıtlar gri görünür ve config ile gizlenebilir. `.67.0` canlı telemetri, Mining, enerji durum geçişleri ve config yenilemesi oyun içinde doğrulandı; `.67.1` görsel kabulü bekliyor. Önceki `.67.0` ve `.66.1` sürümleri yedekte korunuyor.
 - Runtime-kabul edilen `DISCOVERIES` sekmesi ortak Structure/Geology geçmişini, analiz/kaynak/rezerv/son-görülme ayrıntılarını ve canlı oyuncu mesafesini gösterir; kayıtlar favoriye alınabilir, aktif Navigation hedefi yapılabilir ve gerçek TARDIS rota/hop planına bağlanabilir.
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 

@@ -1,8 +1,8 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.67.0-alpha-player-overview",
-  "marker": "NewWorldPlayerOverviewV1",
+  "version": "0.5.67.1-alpha-overview-warning-states",
+  "marker": "NewWorldPlayerOverviewWarningStatesV2",
   "fixes": [
     "Dynamic structure-registry classification for vanilla and modded structures",
     "Placement-only modded structure coordinates without chunk generation or locate calls",
@@ -57,7 +57,9 @@
     "Overview shows exterior position, health thresholds, session warning history and sampled net FE change",
     "A transient withdrawal meter observes actual non-simulated FE-pool outflow without changing consumption semantics",
     "Bounded server-thread Overview requests and isolated long-safe frames prevent control changes and stale display",
-    "Live Overview refresh, stale timeout, warning thresholds and warning rows have documented configuration"
+    "Live Overview refresh, stale timeout, warning thresholds and warning rows have documented configuration",
+    "Overview warnings distinguish active, critical and resolved states with server-authored labels and severity colors",
+    "Critical and active warnings take priority over resolved history, which can be hidden through live config"
   ],
   "newDeposits": [
     {

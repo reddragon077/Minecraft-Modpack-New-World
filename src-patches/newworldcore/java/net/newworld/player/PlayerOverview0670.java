@@ -27,6 +27,7 @@ public final class PlayerOverview0670 {
     public static int warningPercent() { return cfg("warning_percent", 20, 1, 99); }
     public static int criticalPercent() { return Math.min(warningPercent(), cfg("critical_percent", 5, 0, 98)); }
     public static int warningRows() { return cfg("warning_rows", 2, 1, 3); }
+    public static boolean showResolvedWarnings() { return NewWorldConfig.bool("overview", "show_resolved_warnings", true); }
     public static int staleTicks() { return Math.max(refreshTicks() * 2, cfg("stale_after_ticks", 120, 40, 3600)); }
     private static int cfg(String key, int value, int min, int max) {
         return NewWorldConfig.integer("overview", key, value, min, max);
@@ -64,6 +65,7 @@ public final class PlayerOverview0670 {
         Object world = call(manager, "getWorld");
         if (world == null) return Snapshot.unavailable("SHIP INTERIOR UNAVAILABLE");
         long tick = num(call(world, "getGameTime"));
+        LinkedHashMap<String, Integer> active = new LinkedHashMap<>();
         long fe = readNumber("net.newworld.core.LongFEEnergySystem", "getEnergy", world, id);
         long cap = readNumber("net.newworld.core.LongFEEnergySystem", "getCapacity", world, id);
         long we = readNumber("net.newworld.core.WarpEnergySystem", "getEnergy", world);
@@ -75,7 +77,7 @@ public final class PlayerOverview0670 {
             Object pool = stat("net.newworld.core.LongFEEnergySystem", "data", world);
             consumed = OverviewEnergyMeter0670.total(pool, id);
             meterKnown = true;
-        } catch (Exception failure) { view.problem("FE CONSUMPTION METER UNAVAILABLE"); }
+        } catch (Exception failure) { active.put("FE CONSUMPTION METER UNAVAILABLE", 1); }
         if (fe >= 0 && view.energy >= 0 && tick > view.tick && tick - view.tick <= staleTicks()) {
             double delta = ((double) fe - (double) view.energy) / (tick - view.tick);
             String used = meterKnown && view.meterKnown
@@ -96,13 +98,13 @@ public final class PlayerOverview0670 {
                 engine = cooldown > 0 ? "COOLDOWN " + ((cooldown + 19) / 20) + "s"
                         : "ONLINE".equals(engineMatrix) ? "READY" : "MATRIX " + engineMatrix;
             }
-        } catch (Exception failure) { view.problem("ENGINE TELEMETRY UNAVAILABLE"); }
+        } catch (Exception failure) { active.put("ENGINE TELEMETRY UNAVAILABLE", 1); }
         String mining = "UNKNOWN", navigation = "UNKNOWN";
         try {
             Object data = stat("net.newworld.mining.MiningRuntimeSavedData", "get", world);
             Object state = ((Map<?, ?>) field(data, "states")).get(id);
             mining = state == null ? "NO RECORD" : String.valueOf(field(state, "status"));
-        } catch (Exception failure) { view.problem("MINING TELEMETRY UNAVAILABLE"); }
+        } catch (Exception failure) { active.put("MINING TELEMETRY UNAVAILABLE", 1); }
         try {
             Object data = stat("net.newworld.navigation.NavigationDiscoverySavedData", "get", world);
             Object state = ((Map<?, ?>) field(data, "ships")).get(id);
@@ -110,30 +112,27 @@ public final class PlayerOverview0670 {
             navigation = selected.isBlank() || selected.equals("null") ? "NO TARGET" : "TARGET SELECTED";
             Object plan = ((Map<?, ?>) staticField("net.newworld.navigation.Navigation0472ServerRoute", "PLANS")).get(id);
             if (plan != null) navigation = "ROUTE " + field(plan, "status");
-        } catch (Exception failure) { view.problem("NAVIGATION TELEMETRY UNAVAILABLE"); }
+        } catch (Exception failure) { active.put("NAVIGATION TELEMETRY UNAVAILABLE", 1); }
         String dimension = "UNKNOWN", position = "POSITION UNKNOWN";
         try {
             dimension = String.valueOf(call(call(manager, "getCurrentExteriorDimension"), "location"));
             Object pos = call(manager, "getCurrentExteriorPosition");
             position = "X=" + call(pos, "getX") + " Y=" + call(pos, "getY") + " Z=" + call(pos, "getZ");
-        } catch (Exception failure) { view.problem("EXTERIOR POSITION UNAVAILABLE"); }
-        ArrayList<String> active = new ArrayList<>();
+        } catch (Exception failure) { active.put("EXTERIOR POSITION UNAVAILABLE", 1); }
         int severity = Math.max(energySeverity(fe, cap), energySeverity(we, weCap));
-        if (energySeverity(fe, cap) > 0) active.add(cap <= 0 || fe < 0 ? "FE TELEMETRY UNAVAILABLE" : "FE LEVEL LOW");
-        if (energySeverity(we, weCap) > 0) active.add(weCap <= 0 || we < 0 ? "WARP TELEMETRY UNAVAILABLE" : "WARP LEVEL LOW");
+        if (energySeverity(fe, cap) > 0) active.put(cap <= 0 || fe < 0 ? "FE TELEMETRY UNAVAILABLE" : "FE LEVEL LOW", energySeverity(fe, cap));
+        if (energySeverity(we, weCap) > 0) active.put(weCap <= 0 || we < 0 ? "WARP TELEMETRY UNAVAILABLE" : "WARP LEVEL LOW", energySeverity(we, weCap));
         if ("BROKEN".equals(engine) || "NO_ENERGY".equals(mining)) severity = 2;
         for (String entry : List.of("FE MATRIX " + feMatrix, "WARP MATRIX " + warpMatrix, "ENGINE MATRIX " + engineMatrix)) {
-            if (!entry.endsWith(" ONLINE")) active.add(entry);
+            if (!entry.endsWith(" ONLINE")) active.put(entry, 1);
         }
-        if ("BROKEN".equals(engine) || "UNKNOWN".equals(engine)) active.add("ENGINE " + engine);
-        if (mining.startsWith("WAITING_") && "ON".equals(shield) || mining.equals("NO_ENERGY") || mining.equals("BUFFER_FULL")) active.add("MINING " + mining);
-        if (mining.equals("UNKNOWN") || navigation.equals("UNKNOWN") || dimension.equals("UNKNOWN") || handbrake.equals("UNKNOWN") || shield.equals("UNKNOWN")) active.add("PARTIAL TELEMETRY / CHECK LOG");
+        if ("BROKEN".equals(engine) || "UNKNOWN".equals(engine)) active.put("ENGINE " + engine, "BROKEN".equals(engine) ? 2 : 1);
+        if (mining.startsWith("WAITING_") && "ON".equals(shield) || mining.equals("NO_ENERGY") || mining.equals("BUFFER_FULL")) active.put("MINING " + mining, mining.equals("NO_ENERGY") ? 2 : 1);
+        if (mining.equals("UNKNOWN") || navigation.equals("UNKNOWN") || dimension.equals("UNKNOWN") || handbrake.equals("UNKNOWN") || shield.equals("UNKNOWN")) active.put("PARTIAL TELEMETRY / CHECK LOG", 1);
         if (!active.isEmpty()) severity = Math.max(1, severity);
-        for (String warning : active) if (!view.active.contains(warning)) view.problem(warning);
-        view.active = Set.copyOf(active);
         Snapshot result = new Snapshot(id, fe, cap, we, weCap, rate, engine, handbrake, shield,
                 mining, navigation, feMatrix, warpMatrix, engineMatrix, dimension, position,
-                severity == 2 ? "CRITICAL" : severity == 1 ? "WARNING" : "NOMINAL", List.copyOf(view.warnings));
+                severity == 2 ? "CRITICAL" : severity == 1 ? "WARNING" : "NOMINAL", view.warnings.update(active));
         String statusKey = result.health + "/" + result.engine + "/" + result.mining + "/" + result.navigation;
         if (!statusKey.equals(view.logged)) {
             System.out.println("[NewWorld Overview] ship=" + id + " health=" + result.health + " FE=" + fe + "/" + cap
@@ -265,9 +264,36 @@ public final class PlayerOverview0670 {
             }
             label(screen, graphics, "EXT " + s.dimension, x, top + 216, 0xFF64EAB5, 239);
             label(screen, graphics, s.position, right, top + 216, 0xFF64EAB5, 239);
-            label(screen, graphics, "RECENT WARNINGS // THIS OBSERVATION SESSION", x, top + 233, 0xFF8DA7B4, 486);
-            if (s.warnings.isEmpty()) label(screen, graphics, "No warnings observed.", x, top + 247, 0xFF8DA7B4, 486);
-            else for (int i = 0; i < Math.min(warningRows(), s.warnings.size()); i++) label(screen, graphics, s.warnings.get(i), x, top + 247 + i * 12, 0xFFFFCF45, 486);
+            label(screen, graphics, showResolvedWarnings() ? "WARNINGS // ACTIVE + RESOLVED" : "WARNINGS // ACTIVE ONLY", x, top + 233, 0xFF8DA7B4, 486);
+            List<String> visible = visibleWarnings(s.warnings);
+            if (visible.isEmpty()) label(screen, graphics, "No active warnings.", x, top + 247, 0xFF8DA7B4, 486);
+            else for (int i = 0; i < Math.min(warningRows(), visible.size()); i++) label(screen, graphics, visible.get(i).replace('_', ' '), x, top + 247 + i * 12, warningColor(visible.get(i)), 486);
+    }
+
+    public static int warningColor(String warning) {
+        return warning.startsWith("[RESOLVED] ") ? 0xFF8DA7B4 : warning.startsWith("[CRITICAL] ") ? 0xFFFF7272 : 0xFFFFCF45;
+    }
+
+    public static List<String> visibleWarnings(List<String> warnings) {
+        return warnings.stream().filter(w -> showResolvedWarnings() || !w.startsWith("[RESOLVED] ")).toList();
+    }
+
+    /** Status belongs to the server snapshot, not client config or a guessed global health value.
+     * Keep the existing three-row wire bound. Critical/active entries always precede resolved history. */
+    public static final class WarningHistory {
+        private List<String> history = List.of();
+        private Set<String> previousActive = Set.of();
+        public List<String> update(Map<String, Integer> active) {
+            LinkedHashSet<String> ordered = new LinkedHashSet<>();
+            active.entrySet().stream().sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                    .forEach(entry -> ordered.add(entry.getKey()));
+            for (String key : history) if (previousActive.contains(key) && !active.containsKey(key)) ordered.add(key);
+            ordered.addAll(history);
+            history = ordered.stream().limit(3).toList();
+            previousActive = new LinkedHashSet<>(active.keySet());
+            return history.stream().map(key -> (active.containsKey(key)
+                    ? active.get(key) >= 2 ? "[CRITICAL] " : "[ACTIVE] " : "[RESOLVED] ") + key).toList();
+        }
     }
 
     public static String amount(long value) {
@@ -318,9 +344,8 @@ public final class PlayerOverview0670 {
     private static void report(String phase, Throwable failure) { System.err.println("[NewWorld Overview] " + phase + " failed: " + failure); }
     private static final class ClientView { long requested; final long opened = System.nanoTime(); }
     private static final class ServerView {
-        String ship = "", logged = ""; long energy = -1, tick, consumed; boolean meterKnown; Set<String> active = Set.of();
-        final ArrayList<String> warnings = new ArrayList<>();
-        void reset(String id) { ship = id; logged = ""; energy = -1; tick = 0; consumed = 0; meterKnown = false; active = Set.of(); warnings.clear(); }
-        void problem(String warning) { warnings.remove(warning); warnings.addFirst(warning); while (warnings.size() > 3) warnings.removeLast(); }
+        String ship = "", logged = ""; long energy = -1, tick, consumed; boolean meterKnown;
+        WarningHistory warnings = new WarningHistory();
+        void reset(String id) { ship = id; logged = ""; energy = -1; tick = 0; consumed = 0; meterKnown = false; warnings = new WarningHistory(); }
     }
 }

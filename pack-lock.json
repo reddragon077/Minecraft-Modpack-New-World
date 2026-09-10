@@ -2482,9 +2482,9 @@
   ],
   "customMods": [
     {
-      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.67.0-alpha-player-overview.jar",
-      "sha256": "4273134984af8eeb8eece991c70b6a139b230c94cdd8519dd2badb1ae58f5d9e",
-      "size": 3611837
+      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.67.1-alpha-overview-warning-states.jar",
+      "sha256": "0d08367a747efc6fa94d41270793b96de897ebb0059a2de5599c9c322badbac4",
+      "size": 3613963
     },
     {
       "fileName": "DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar",

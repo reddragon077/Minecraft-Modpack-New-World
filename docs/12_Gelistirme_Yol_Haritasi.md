@@ -2,7 +2,7 @@
 
 Son kayıt güncellemesi: 10 Eylül 2026
 
-Kurulu aday: NewWorldCore `0.5.67.0-alpha-player-overview` (otomatik testler geçti; oyun içi kabul bekliyor).
+Kurulu aday: NewWorldCore `0.5.67.1-alpha-overview-warning-states` (otomatik testler geçti; uyarı durumu görsel kabulü bekliyor).
 Son runtime-kabul edilen build: `0.5.66.1-alpha-player-discovery-actions` (yedekte).
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
@@ -56,20 +56,20 @@ Durum: **kısmi.** Arayüz kabuğu ve tuş bağlantısı mevcut; Survey ve Disco
 
 ## Aşama 4 — Overview / Ship Status
 
-Durum: **kısmi / oyun içi kabul bekliyor.** `.67.0` ortak sistemlere salt-okunur telemetri bağlantısını ekler.
-Derleme, paket/config/tüketim sayacı smoke testleri ve çizim sınırları geçti; aşağıdaki maddelerin runtime kabulü henüz yapılmadı.
+Durum: **kısmi.** `.67.0` ekranı, motor geri sayımı, fren/kalkan/Mining değişimleri, enerji tüketimi gösterimi, GUI yeniden açılışı ve canlı config yenilemesi oyun içinde doğrulandı.
+Loglar 8315/2250000 FE'de CRITICAL/NO_ENERGY, 348910 FE'de WARNING ve 1864528 FE'de NOMINAL gösterdi. `.67.1` aktif/çözülmüş uyarı ayrımını ekler; bu yeni görünüm henüz oyun içinde test edilmedi.
 
 - [~] Ship FE mevcut/kapasite ve tüketim (`OUT`: gerçek havuz çıkışı, `NET`: net değişim; yenileme aralığı ortalaması)
 - [~] Warp Energy mevcut/kapasite
-- [~] Engine ve Handbrake durumu
-- [~] Mining Shield ve Mining durumları
+- [x] Engine cooldown→READY ve Handbrake durumu (uçuşta ayrıca regresyon testi kalır)
+- [x] Mining Shield ve Mining durumları
 - [~] Navigation durumları
 - [~] FE, Warp ve Engine Matrix durumları
 - [~] TARDIS dış dimension ve koordinat
-- [~] `NOMINAL`, `WARNING`, `CRITICAL` genel durum hesabı
+- [x] `NOMINAL`, `WARNING`, `CRITICAL` genel durum hesabı (FE/Mining zinciri runtime doğrulandı)
 - [~] Son sistem uyarıları (oyuncunun bağlantı/gemi gözlem oturumu; kalıcı günlük değil)
 
-Kabul testi: [`Overview .67.0`](13_Overview_Runtime_Kabul.md). Yenileme ve uyarı eşikleri `config/newworldcore/overview.properties` içindedir.
+Kabul testi: [`Overview`](13_Overview_Runtime_Kabul.md). Kullanıcının seçtiği `refresh_ticks=20` ve normale dönen 20%/5% eşikleri korunur; `show_resolved_warnings` çözülen kayıtların görünürlüğünü yönetir.
 
 Not: Bu verilerin büyük bölümü fiziksel terminallerde ve ComputerCraft telemetrisinde zaten vardır; Player GUI salt-okunur ortak telemetri katmanına bağlanacaktır.
 

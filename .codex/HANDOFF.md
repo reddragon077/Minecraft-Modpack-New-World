@@ -8,7 +8,17 @@ Branch: `main`
 
 Runtime-test the installed Stage 4 Overview candidate. Do not mark Stage 4 complete yet. Stage 8 is accepted; Stage 5 and the remaining Stage 9 work still follow Stage 4 acceptance.
 
-## Installed candidate — runtime pending
+## Installed .67.1 — warning-state visual acceptance pending
+
+- Repo/laptop: `NewWorldCore-1.21.1-NeoForge-0.5.67.1-alpha-overview-warning-states.jar`, SHA-256 `0d08367a747efc6fa94d41270793b96de897ebb0059a2de5599c9c322badbac4`, 3613963 bytes. Six smoke suites passed; source/embedded manifest match; single-JAR/hash checks passed. Game was closed for install.
+- Warnings are server-classified per entry: yellow `[ACTIVE]`, red `[CRITICAL]`, grey `[RESOLVED]`. Active entries precede resolved history, critical entries first. `show_resolved_warnings=true` is a live client display option; false hides resolved entries only. Existing three-entry bounded wire format remains unchanged.
+- User-selected `refresh_ticks=20` is now canonical and installed. Temporary warning_percent=99 was restored to 20; critical_percent remains 5. No test-only energy setting remains.
+- `.67.0` runtime evidence: screenshots/logs verified engine cooldown→READY, brake/shield changes, SCANNING/MINING/COMPLETED/NO_ENERGY, FE OUT/NET load changes and NOMINAL→CRITICAL→WARNING→NOMINAL. User verified GUI reopen and live config timing. No relevant Overview failure was found. These are partial Stage 4 checks, not full multiplayer/unknown/stale-data acceptance.
+- At 10:50:58 FE=8315/2250000 with CRITICAL and NO_ENERGY; at 10:51:27 FE=348910 with WARNING; at 10:51:52 FE=1864528 with NOMINAL; by 10:52:21 FE was full and Mining waited for the disabled shield. Existing warnings staying yellow after recovery motivated this repair.
+- `.67.0` and prior config backed up under laptop `backups/custom-mods/pre-overview-warning-states-20260910-01/`; older `.66.1` backups untouched. Only the custom JAR and Overview config/README were deployed.
+- Next: use the no-energy-drain active→resolved and hide/show test at the top of `docs/13_Overview_Runtime_Kabul.md`. Do not empty the energy pool again just to test this UI.
+
+## Previous .67.0 installation record (superseded; runtime follow-up above)
 
 - Repo/laptop: `NewWorldCore-1.21.1-NeoForge-0.5.67.0-alpha-player-overview.jar`, SHA-256 `4273134984af8eeb8eece991c70b6a139b230c94cdd8519dd2badb1ae58f5d9e`, 3611837 bytes.
 - All six smoke suites passed, including Overview long/UTF frames, malformed payloads, config limits/reload, withdrawal simulation exclusion, counter isolation/wraparound, and headless layout bounds. Embedded/source patch manifests match; bytecode hooks verified. No game launch or runtime acceptance was performed.
