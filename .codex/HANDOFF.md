@@ -6,7 +6,7 @@ Branch: `main`
 
 ## Current objective
 
-Runtime-test the installed Stage 4 Overview candidate. Do not mark Stage 4 complete yet. Stage 8 is accepted; Stage 5 and the remaining Stage 9 work still follow Stage 4 acceptance.
+Stage 4 Overview `.67.1` is accepted for laptop single-player: user confirmed warning styling and all presented remaining checks. Proceed to Stage 5 Ship Link, then remaining Stage 9. Earlier pending statements below are superseded; no multiplayer or forced-disconnection runtime test is claimed.
 
 ## Installed .67.1 — warning-state visual acceptance pending
 

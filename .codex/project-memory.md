@@ -21,6 +21,8 @@ Last synchronized: 2026-09-10
 
 ## NewWorldCore continuation point
 
+- 2026-09-10 acceptance update: user verified `.67.1` warning states and all presented remaining Overview checks (terminal FE/WE, travel/route/cooldown, exterior coordinates, world re-entry). Stage 4 is accepted for laptop single-player. This is user-reported runtime evidence, not an independently exercised multiplayer/disconnection test. Current accepted build is `.67.1`, SHA-256 `0d08367a747efc6fa94d41270793b96de897ebb0059a2de5599c9c322badbac4`; next gate is Stage 5 Ship Link, then remaining Stage 9. Earlier pending statements below are historical and superseded by this acceptance.
+
 - 2026-09-10 runtime follow-up: `.67.0` screenshots/logs verified engine cooldown→READY, brake/shield/Mining changes, FE OUT/NET activity, GUI reopen, live config reload and CRITICAL→WARNING→NOMINAL recovery. User chose refresh_ticks=20. Full Stage 4 is not closed; resolved warning presentation is being repaired before its next visual acceptance.
 
 - Installed repo/laptop candidate: `NewWorldCore-1.21.1-NeoForge-0.5.67.1-alpha-overview-warning-states.jar`, SHA-256 `0d08367a747efc6fa94d41270793b96de897ebb0059a2de5599c9c322badbac4`. Six smoke suites, source/embedded manifest equality and single-JAR/hash checks passed; new warning UI awaits visual acceptance. `.67.0` is backed up under `backups/custom-mods/pre-overview-warning-states-20260910-01/`. Stage 4 remains partial.

@@ -2,8 +2,7 @@
 
 Son kayıt güncellemesi: 10 Eylül 2026
 
-Kurulu aday: NewWorldCore `0.5.67.1-alpha-overview-warning-states` (otomatik testler geçti; uyarı durumu görsel kabulü bekliyor).
-Son runtime-kabul edilen build: `0.5.66.1-alpha-player-discovery-actions` (yedekte).
+Son runtime-kabul edilen build: NewWorldCore `0.5.67.1-alpha-overview-warning-states` (10 Eylül kullanıcı oyun kabulü).
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -56,18 +55,17 @@ Durum: **kısmi.** Arayüz kabuğu ve tuş bağlantısı mevcut; Survey ve Disco
 
 ## Aşama 4 — Overview / Ship Status
 
-Durum: **kısmi.** `.67.0` ekranı, motor geri sayımı, fren/kalkan/Mining değişimleri, enerji tüketimi gösterimi, GUI yeniden açılışı ve canlı config yenilemesi oyun içinde doğrulandı.
-Loglar 8315/2250000 FE'de CRITICAL/NO_ENERGY, 348910 FE'de WARNING ve 1864528 FE'de NOMINAL gösterdi. `.67.1` aktif/çözülmüş uyarı ayrımını ekler; bu yeni görünüm henüz oyun içinde test edilmedi.
+Durum: **tamamlandı — laptop tek oyunculu kabulü.** Önceki ekran/log kanıtına ek olarak kullanıcı `.67.1` uyarı görünümünü, terminal FE/WE karşılaştırmasını, seyahat/rota/cooldown değişimini, dış konum ve dünya yeniden giriş kontrollerinin tamamını denediğini doğruladı. Bu beyan çok oyunculu veya yapay bağlantı kesintisi testi yapılmış anlamına gelmez.
 
-- [~] Ship FE mevcut/kapasite ve tüketim (`OUT`: gerçek havuz çıkışı, `NET`: net değişim; yenileme aralığı ortalaması)
-- [~] Warp Energy mevcut/kapasite
+- [x] Ship FE mevcut/kapasite ve tüketim (`OUT`: gerçek havuz çıkışı, `NET`: net değişim; yenileme aralığı ortalaması)
+- [x] Warp Energy mevcut/kapasite
 - [x] Engine cooldown→READY ve Handbrake durumu (uçuşta ayrıca regresyon testi kalır)
 - [x] Mining Shield ve Mining durumları
-- [~] Navigation durumları
-- [~] FE, Warp ve Engine Matrix durumları
-- [~] TARDIS dış dimension ve koordinat
+- [x] Navigation durumları
+- [x] FE, Warp ve Engine Matrix durumları
+- [x] TARDIS dış dimension ve koordinat
 - [x] `NOMINAL`, `WARNING`, `CRITICAL` genel durum hesabı (FE/Mining zinciri runtime doğrulandı)
-- [~] Son sistem uyarıları (oyuncunun bağlantı/gemi gözlem oturumu; kalıcı günlük değil)
+- [x] Son sistem uyarıları (oyuncunun bağlantı/gemi gözlem oturumu; kalıcı günlük değil)
 
 Kabul testi: [`Overview`](13_Overview_Runtime_Kabul.md). Kullanıcının seçtiği `refresh_ticks=20` ve normale dönen 20%/5% eşikleri korunur; `show_resolved_warnings` çözülen kayıtların görünürlüğünü yönetir.
 
@@ -243,6 +241,6 @@ Aşağıdaki işler Aşama 14 kapanmadan ana geliştirme odağı yapılmayacakt�
 
 Ana listedeki sayısal sıra geliştirme sırasıdır. Tamamlanmış Aşama 6 Field Survey, jeolojik Analysis zinciri ve Aşama 8 Discoveries işleri yeniden başlatılmayacaktır.
 
-1. Önce Aşama 4 — Overview / Ship Status.
-2. Sonra Aşama 5 — Ship Link.
+1. Aşama 4 — Overview / Ship Status tek oyunculu kabulü tamamlandı.
+2. Şimdi Aşama 5 — Ship Link.
 3. Ardından Aşama 9 — Player Navigation panelinin kalan maddeleri.
