@@ -8,7 +8,15 @@ Branch: `main`
 
 Stage 4 Overview `.67.1` is accepted for laptop single-player: user confirmed warning styling and all presented remaining checks. Proceed to Stage 5 Ship Link, then remaining Stage 9. Earlier pending statements below are superseded; no multiplayer or forced-disconnection runtime test is claimed.
 
-## Installed .67.1 — warning-state visual acceptance pending
+## Installed .68.0 — Ship Link runtime acceptance pending
+
+- Repo/laptop: `NewWorldCore-1.21.1-NeoForge-0.5.68.0-alpha-player-ship-link.jar`, SHA-256 `5637cae64a53e92140338b31d761f673f0a84c82f0fa2e8d37ceb457480c58b3`, 3625294 bytes. Seven smoke suites passed, embedded/source manifest matched, single-JAR/hash verified. No Java process was running during installation.
+- GUI header on every tab shows CONNECTED / DIMENSIONAL / LOST, player-to-exterior 3D distance and ship dimension. Own interior is ON BOARD. Live `ship-link.properties` defaults: 5000 blocks, dimensional true, refresh 20 ticks, stale 120 ticks; Turkish guidance included. Server timing is communicated to the client.
+- Server owner/range checks gate remote Survey/Discoveries reads and writes; delayed Survey rechecks at execution. Stale/reopened/changed-world client state is invalidated. Discovery selection keys are tied to the resolved ship; route engine receives that ship's interior context. No world schema change, chunk load, or cancellation of ongoing Mining/route work.
+- Accepted `.67.1`, original repo/live JARs and prior config README are preserved at laptop `backups/custom-mods/pre-ship-link-20260910-01/`. Old backups remain. Scoped deployment changed only custom core JAR, new ship-link config and config README; Overview user values and other configs were preserved.
+- Next: `docs/14_Ship_Link_Runtime_Kabul.md`. Start with own ship ON BOARD, walk outside for distance, then use temporary range=32 to test LOST/recovery. Restore 5000 afterward. Test dimensional toggle, delayed Survey and exterior Discovery FAV/TARGET/ROUTE. Do not mark Stage 5 accepted until runtime checks pass.
+
+## Previous .67.1 — now runtime accepted and backed up
 
 - Repo/laptop: `NewWorldCore-1.21.1-NeoForge-0.5.67.1-alpha-overview-warning-states.jar`, SHA-256 `0d08367a747efc6fa94d41270793b96de897ebb0059a2de5599c9c322badbac4`, 3613963 bytes. Six smoke suites passed; source/embedded manifest match; single-JAR/hash checks passed. Game was closed for install.
 - Warnings are server-classified per entry: yellow `[ACTIVE]`, red `[CRITICAL]`, grey `[RESOLVED]`. Active entries precede resolved history, critical entries first. `show_resolved_warnings=true` is a live client display option; false hides resolved entries only. Existing three-entry bounded wire format remains unchanged.
@@ -16,7 +24,7 @@ Stage 4 Overview `.67.1` is accepted for laptop single-player: user confirmed wa
 - `.67.0` runtime evidence: screenshots/logs verified engine cooldown→READY, brake/shield changes, SCANNING/MINING/COMPLETED/NO_ENERGY, FE OUT/NET load changes and NOMINAL→CRITICAL→WARNING→NOMINAL. User verified GUI reopen and live config timing. No relevant Overview failure was found. These are partial Stage 4 checks, not full multiplayer/unknown/stale-data acceptance.
 - At 10:50:58 FE=8315/2250000 with CRITICAL and NO_ENERGY; at 10:51:27 FE=348910 with WARNING; at 10:51:52 FE=1864528 with NOMINAL; by 10:52:21 FE was full and Mining waited for the disabled shield. Existing warnings staying yellow after recovery motivated this repair.
 - `.67.0` and prior config backed up under laptop `backups/custom-mods/pre-overview-warning-states-20260910-01/`; older `.66.1` backups untouched. Only the custom JAR and Overview config/README were deployed.
-- Next: use the no-energy-drain active→resolved and hide/show test at the top of `docs/13_Overview_Runtime_Kabul.md`. Do not empty the energy pool again just to test this UI.
+- Acceptance update: user confirmed the warning fix and all presented remaining Overview checks; Stage 4 single-player acceptance recorded before Ship Link implementation. No need to repeat energy-drain tests.
 
 ## Previous .67.0 installation record (superseded; runtime follow-up above)
 
@@ -29,7 +37,7 @@ Stage 4 Overview `.67.1` is accepted for laptop single-player: user confirmed wa
 - Next: open Player GUI → OVERVIEW, compare physical terminal values, toggle existing brake/shield controls safely and inspect logs. Detailed acceptance: `docs/13_Overview_Runtime_Kabul.md`.
 - Before development, 27 unexpected sync-copy/backup files and nine `(1)` Git metadata copies were moved with hash verification outside the repo to `D:\Projects\NewWorld-recovery-20260910-01/`. Nothing was deleted. Fetch and fast-forward pull then succeeded at `2caedef`; full details are in today's conversation record.
 
-## Current accepted continuation
+## Earlier accepted .66.1 continuation (historical)
 
 - `.cursor/rules/canonical-roadmap-workflow.mdc` is the mandatory always-applied rule on both computers. It locks the current order to Stage 4, then Stage 5, then remaining Stage 9 work until the roadmap is changed by a verified commit.
 - Last runtime-accepted build, now backed up: `NewWorldCore-1.21.1-NeoForge-0.5.66.1-alpha-player-discovery-actions.jar`.
@@ -136,8 +144,8 @@ Stage 4 Overview `.67.1` is accepted for laptop single-player: user confirmed wa
 
 ## Next executable test
 
-1. Complete Stage 4 Overview / Ship Status with read-only shared telemetry and the roadmap's status fields.
-2. Complete Stage 5 Ship Link with `CONNECTED`, `DIMENSIONAL`, and `LOST` state plus distance/dimension gates.
+1. Stage 4 Overview single-player acceptance is complete.
+2. Runtime-test installed Stage 5 Ship Link `.68.0`; do not rebuild before checking the current candidate.
 3. Then return to Stage 9 for current target/route/hop/WE presentation, favorite selection, `SAVE CURRENT LOCATION`, and `SEND TO SHIP`. Discovery TARGET/ROUTE creation is already complete in `0.5.66.1` and must not be reimplemented.
 
 ## Do not assume

@@ -49,6 +49,7 @@ public final class PlayerDiscoveries0650 {
     private static final List<DiscoveryView> CLIENT = new ArrayList<>();
     private static final Map<Object, ViewState> VIEWS = java.util.Collections.synchronizedMap(new WeakHashMap<>());
     private static final Map<Object, List<String>> SERVER_KEYS = java.util.Collections.synchronizedMap(new WeakHashMap<>());
+    private static final Map<Object, String> SERVER_SHIPS = java.util.Collections.synchronizedMap(new WeakHashMap<>());
     private static boolean receiving;
     private static int expected;
     private static int total;
@@ -67,6 +68,11 @@ public final class PlayerDiscoveries0650 {
         try {
             Object raw = call(payload, "mode");
             int code = raw instanceof Number number ? number.intValue() : 0;
+            if (!"CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) {
+                if (code >= 0 && code <= 5 || isActionMode(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
+                return;
+            }
+            if (!clientReceiving() && PlayerShipLink0680.isWireCode(code)) { PlayerShipLink0680.accept(code); return; }
             if (!clientReceiving() && PlayerOverview0670.isWireCode(code)) {
                 if ("CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) PlayerOverview0670.accept(code);
                 return;
@@ -82,10 +88,10 @@ public final class PlayerDiscoveries0650 {
     /** Server side: sends the newest configurable slice from the ship's shared database. */
     public static void sendSnapshot(Object player) {
         try {
+            if (!PlayerShipLink0680.requireLink(player)) return;
             Object level = call(player, "serverLevel");
             Object pos = call(player, "blockPosition");
-            Object ship = invokePrivateStatic("net.newworld.player.PlayerFieldSurveyRuntime", "findOwnedShip",
-                    player, level, pos);
+            Object ship = PlayerShipLink0680.linkedShip(player);
             if (ship == null) {
                 SERVER_KEYS.put(player, List.of());
                 send(player, SNAPSHOT_BEGIN_BASE);
@@ -95,6 +101,7 @@ public final class PlayerDiscoveries0650 {
             }
 
             String shipId = String.valueOf(call(ship, "id"));
+            SERVER_SHIPS.put(player, shipId);
             Object data = invokeStatic("net.newworld.navigation.NavigationDiscoverySavedData", "get", level);
             Object state = call(data, "state", shipId);
             Object raw = field(state, "discoveries");
@@ -324,6 +331,7 @@ public final class PlayerDiscoveries0650 {
 
     /** Server side: applies a Discoveries action to the exact record sent in the last snapshot. */
     public static void handleAction(Object player, int mode) {
+        if (!PlayerShipLink0680.requireLink(player)) return;
         int action;
         int index;
         if (inActionRange(mode, ACTION_TARGET_BASE)) {
@@ -395,21 +403,30 @@ public final class PlayerDiscoveries0650 {
         String key = keys.get(index);
         Object level = call(player, "serverLevel");
         Object pos = call(player, "blockPosition");
-        Object ship = invokePrivateStatic("net.newworld.player.PlayerFieldSurveyRuntime", "findOwnedShip",
-                player, level, pos);
+        Object ship = PlayerShipLink0680.linkedShip(player);
         if (ship == null) return null;
         String shipId = String.valueOf(call(ship, "id"));
+        if (!shipId.equals(SERVER_SHIPS.get(player))) { clearServerSelection(player); return null; }
         Object data = invokeStatic("net.newworld.navigation.NavigationDiscoverySavedData", "get", level);
         Object state = call(data, "state", shipId);
         Object raw = field(state, "discoveries");
         if (!(raw instanceof Map<?, ?> map)) return null;
         Object record = map.get(key);
-        return record == null ? null : new ServerSelection(level, data, state, shipId, key, record);
+        // Route engine resolves its ship from the context level; never pass an exterior/other ship world.
+        Object interior = call(call(ship, "manager"), "getWorld");
+        return record == null || interior == null ? null : new ServerSelection(interior, data, state, shipId, key, record);
     }
 
     private static void selectTarget(ServerSelection selection) throws Exception {
         setField(selection.state, "selectedKey", selection.key);
         call(selection.data, "setDirty");
+    }
+
+    public static void clearServerSelection(Object player) { SERVER_KEYS.remove(player); SERVER_SHIPS.remove(player); }
+
+    public static synchronized void resetClientLink() {
+        CLIENT.clear(); VIEWS.clear(); receiving = false; expected = 0; total = 0; builder = null;
+        clearPending(); actionStatus = "";
     }
 
     private static boolean routeReady(String shipId) {

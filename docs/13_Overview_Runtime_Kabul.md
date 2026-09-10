@@ -1,6 +1,6 @@
 # Overview .67.1 — Oyun içi kabul
 
-Durum: kısmi. `.67.0` canlı veriler, fren/kalkan/Mining, cooldown→READY, FE yük değişimi, CRITICAL→WARNING→NOMINAL, GUI yeniden açılışı ve config yenilemesi geçti. `.67.1` aşağıdaki yeni uyarı görünümü testini bekliyor; otomatik test görsel kabul değildir.
+Durum: laptop tek oyunculu kabulü tamamlandı. `.67.0` ekran/log kanıtına ek olarak kullanıcı `.67.1` uyarı görünümünü ve sunulan kalan bütün kontrolleri doğruladı. Aşağıdaki liste sonraki sürümlerde regresyon kontrolü içindir; çok oyunculu/yapay ağ kesintisi testi yapılmış sayılmaz.
 
 ## Öncelikli .67.1 testi — enerji tüketmeden
 

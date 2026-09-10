@@ -4,6 +4,8 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-10 — Ship Link candidate](2026-09-10_laptop_ship_link_candidate.md) — `.68.0` header, owner/range/dimension gates, config and seven smoke suites; backed-up install verified, runtime acceptance pending.
+
 - [2026-09-10 — Overview acceptance and Ship Link gate](2026-09-10_laptop_overview_acceptance.md) — user confirmed all presented Overview checks; Stage 4 single-player acceptance recorded before Stage 5 implementation.
 
 - [2026-09-10 — Overview runtime checks and resolved warnings](2026-09-10_laptop_overview_warning_states.md) — `.67.0` telemetry/config/energy recovery checks verified; `.67.1` adds severity-colored active/resolved rows and live history visibility, installed with six smoke suites passing; visual acceptance pending.

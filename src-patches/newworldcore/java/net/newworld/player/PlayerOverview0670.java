@@ -57,7 +57,7 @@ public final class PlayerOverview0670 {
     private static Snapshot sample(Object player) throws Exception {
         ServerView view = SERVER.computeIfAbsent(player, ignored -> new ServerView());
         Object level = call(player, "serverLevel");
-        Object ship = stat("net.newworld.player.PlayerFieldSurveyRuntime", "findOwnedShip", player, level, call(player, "blockPosition"));
+        Object ship = PlayerShipLink0680.linkedShip(player);
         if (ship == null) { view.reset(""); return Snapshot.unavailable("NO OWNED SHIP / LOADED INTERIOR REQUIRED"); }
         String id = String.valueOf(call(ship, "id"));
         if (!id.equals(view.ship)) view.reset(id);
@@ -304,7 +304,7 @@ public final class PlayerOverview0670 {
         return String.format(Locale.ROOT, "%.2f%s", shown, suffix[i]);
     }
 
-    private static void label(Object screen, Object graphics, String text, int x, int y, int color, int width) throws Exception {
+    static void label(Object screen, Object graphics, String text, int x, int y, int color, int width) throws Exception {
         Object font = field(screen, "font");
         String shown = clean(text);
         if (((Number) call(font, "width", shown)).intValue() > width) {
@@ -318,8 +318,8 @@ public final class PlayerOverview0670 {
     private static String flag(Object target, String method, String yes, String no) { try { Object value = call(target, method); return value instanceof Boolean b ? b ? yes : no : "UNKNOWN"; } catch (Exception failure) { return "UNKNOWN"; } }
     private static long num(Object o) { return o instanceof Number n ? n.longValue() : -1; }
     private static long readNumber(String type, String method, Object... args) { try { return num(stat(type, method, args)); } catch (Exception failure) { return -1; } }
-    private static Object call(Object target, String name, Object... args) throws Exception { return invoke(target.getClass(), target, name, args); }
-    private static Object stat(String type, String name, Object... args) throws Exception { return invoke(Class.forName(type), null, name, args); }
+    static Object call(Object target, String name, Object... args) throws Exception { return invoke(target.getClass(), target, name, args); }
+    static Object stat(String type, String name, Object... args) throws Exception { return invoke(Class.forName(type), null, name, args); }
     private static Object invoke(Class<?> type, Object target, String name, Object[] args) throws Exception {
         for (Class<?> current = type; current != null; current = current.getSuperclass()) for (Method m : current.getDeclaredMethods()) {
             if (!m.getName().equals(name) || m.getParameterCount() != args.length || Modifier.isStatic(m.getModifiers()) != (target == null)) continue;
@@ -335,7 +335,7 @@ public final class PlayerOverview0670 {
         }
         throw new NoSuchMethodException(type.getName() + '.' + name);
     }
-    private static Object field(Object target, String name) throws Exception { return getField(target.getClass(), name).get(target); }
+    static Object field(Object target, String name) throws Exception { return getField(target.getClass(), name).get(target); }
     private static Object staticField(String type, String name) throws Exception { return getField(Class.forName(type), name).get(null); }
     private static Field getField(Class<?> type, String name) throws Exception {
         for (Class<?> c = type; c != null; c = c.getSuperclass()) try { Field f = c.getDeclaredField(name); f.setAccessible(true); return f; } catch (NoSuchFieldException ignored) {}

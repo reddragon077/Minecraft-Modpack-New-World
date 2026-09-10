@@ -3,6 +3,7 @@
 Son kayıt güncellemesi: 10 Eylül 2026
 
 Son runtime-kabul edilen build: NewWorldCore `0.5.67.1-alpha-overview-warning-states` (10 Eylül kullanıcı oyun kabulü).
+Kurulu aday: `0.5.68.0-alpha-player-ship-link` (yedi otomatik test geçti; Ship Link oyun kabulü bekliyor).
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -59,7 +60,7 @@ Durum: **tamamlandı — laptop tek oyunculu kabulü.** Önceki ekran/log kanıt
 
 - [x] Ship FE mevcut/kapasite ve tüketim (`OUT`: gerçek havuz çıkışı, `NET`: net değişim; yenileme aralığı ortalaması)
 - [x] Warp Energy mevcut/kapasite
-- [x] Engine cooldown→READY ve Handbrake durumu (uçuşta ayrıca regresyon testi kalır)
+- [x] Engine cooldown→READY ve Handbrake durumu (seyahat değişimi kullanıcı tarafından doğrulandı)
 - [x] Mining Shield ve Mining durumları
 - [x] Navigation durumları
 - [x] FE, Warp ve Engine Matrix durumları
@@ -69,17 +70,17 @@ Durum: **tamamlandı — laptop tek oyunculu kabulü.** Önceki ekran/log kanıt
 
 Kabul testi: [`Overview`](13_Overview_Runtime_Kabul.md). Kullanıcının seçtiği `refresh_ticks=20` ve normale dönen 20%/5% eşikleri korunur; `show_resolved_warnings` çözülen kayıtların görünürlüğünü yönetir.
 
-Not: Bu verilerin büyük bölümü fiziksel terminallerde ve ComputerCraft telemetrisinde zaten vardır; Player GUI salt-okunur ortak telemetri katmanına bağlanacaktır.
+Not: Player GUI fiziksel terminallerin salt-okunur ortak telemetri katmanını kullanır.
 
 ## Aşama 5 — Ship Link
 
-Durum: Field Survey sırasında sunucu taraflı gemi çözümleme var; sürekli bağlantı modeli yok.
+Durum: **kısmi — `.68.0` uygulandı, otomatik testler geçti; oyun kabulü bekliyor.** Kendi geminin içi ON BOARD, aynı boyutta 3B menzil içi CONNECTED, izin verilen farklı boyut DIMENSIONAL; menzil/izin/veri/sahiplik başarısızlığı LOST. Sunucu kapıları, gecikmeli Survey yeniden kontrolü ve eski gemi seçimlerinin geçersizleştirilmesi eklendi. [Kabul testi](14_Ship_Link_Runtime_Kabul.md).
 
-- [ ] Sürekli bağlantı göstergesi
-- [ ] `CONNECTED`, `DIMENSIONAL`, `LOST` durumları
-- [ ] Gemi dimension bilgisi
-- [ ] Aynı dimensionda gemiye uzaklık
-- [ ] Link kaybında uzaktan özellik kapıları
+- [~] Sürekli bağlantı göstergesi
+- [~] `CONNECTED`, `DIMENSIONAL`, `LOST` durumları
+- [~] Gemi dimension bilgisi
+- [~] Aynı dimensionda gemiye uzaklık
+- [~] Link kaybında uzaktan özellik kapıları
 
 ## Aşama 6 — Field Survey
 

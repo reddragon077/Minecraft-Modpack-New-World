@@ -83,6 +83,7 @@ public final class PlayerGeologicalFieldSurvey0620 {
 
     private static int scanNow(Object player) {
         try {
+            if (!PlayerShipLink0680.requireLink(player)) return 0;
             Object level = call(player, "serverLevel");
             Object playerPos = call(player, "blockPosition");
             if (level == null || playerPos == null) {
@@ -91,8 +92,7 @@ public final class PlayerGeologicalFieldSurvey0620 {
                 return 0;
             }
 
-            Object ship = invokePrivateStatic("net.newworld.player.PlayerFieldSurveyRuntime", "findOwnedShip",
-                    player, level, playerPos);
+            Object ship = PlayerShipLink0680.linkedShip(player);
             if (ship == null) {
                 message(player, "SHIP LINK LOST // No owned TARDIS could be resolved.");
                 sendResult(player, 201);

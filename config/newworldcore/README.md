@@ -36,6 +36,14 @@ Dosyalar:
 - `gui.properties`: oyuncu arayüzü karartması, canlı Survey bilgi satırı ve filtre katman derinliği.
 - `discovery.properties`: Structure/Geology Radar ve Field Survey kaynaklarının kalıcı başlangıç analiz seviyeleri.
 - `overview.properties`: salt-okunur Gemi Durumu ekranı; `refresh_ticks` (20, kullanıcının seçimi), `stale_after_ticks` (120), `warning_percent` (20), `critical_percent` (5), `warning_rows` (2), `show_resolved_warnings` (true).
+- `ship-link.properties`: sürekli gemi bağlantısı; `range_blocks` (5000), `allow_dimensional_link` (true), `refresh_ticks` (20), `stale_after_ticks` (120). Sunucu ayarları yetkilidir; istemci yenileme/geçerlilik sürelerini sunucudan alır.
+
+Ship Link bütün Player GUI sekmelerinin başlığında görünür. Kendi geminin içinde `CONNECTED // ON BOARD`,
+aynı boyutta 3B menzil içinde `CONNECTED`, farklı boyutta izin varsa `DIMENSIONAL` gösterilir.
+Menzil dışı, kapalı boyut bağlantısı, sahip olunan yüklü gemi bulunamaması veya eskimiş veri `LOST` olur.
+Survey ve Discoveries işlemleri istemcide ve sunucuda kilitlenir; gecikmeli Survey tamamlanırken tekrar denetlenir.
+Devam eden gemi Mining/rota işi durdurulmaz; sadece Player GUI üzerinden yeni uzaktan işlemler engellenir.
+Yeniden bağlantıda Discovery listesi tazelenir; önceki gemiye ait seçimin başka gemiye uygulanmasına izin verilmez.
 
 Overview FE satırındaki `OUT`, ortak FE havuzundan gerçekten çekilen enerjinin tick başına ortalamasıdır;
 simülasyon çağrıları sayılmaz, dışarı enerji aktarımı da dahildir. `NET`, iki örnek arasındaki depolanan FE farkıdır;

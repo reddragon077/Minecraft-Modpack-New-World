@@ -1,9 +1,11 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.67.1-alpha-overview-warning-states",
-  "marker": "NewWorldPlayerOverviewWarningStatesV2",
+  "version": "0.5.68.0-alpha-player-ship-link",
+  "marker": "NewWorldPlayerShipLinkV1",
   "fixes": [
+    "Owner-scoped continuous CONNECTED/DIMENSIONAL/LOST Ship Link with live range and refresh config",
+    "Server-authoritative remote gates, delayed-survey rechecks, ship-bound action selection and stale client invalidation",
     "Dynamic structure-registry classification for vanilla and modded structures",
     "Placement-only modded structure coordinates without chunk generation or locate calls",
     "Bounded nearest-128 radar results without scan-progress starvation",

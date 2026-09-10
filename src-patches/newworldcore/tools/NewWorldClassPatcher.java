@@ -263,7 +263,8 @@ public final class NewWorldClassPatcher {
             replacements += wrapPlayerMouseClicked(node);
             replacements += wrapPlayerContent(node);
             replacements += wrapPlayerOverview(node);
-            expected += 12;
+            replacements += wrapPlayerShipLink(node);
+            expected += 13;
         }
         if (DISCOVERY_DATA_OWNER.equals(className)) {
             replacements += wrapDiscoveryRecord(node);
@@ -640,6 +641,26 @@ public final class NewWorldClassPatcher {
         wrapper.maxStack = 9; wrapper.maxLocals = 7;
         node.methods.add(wrapper);
         return 1;
+    }
+
+    private static int wrapPlayerShipLink(ClassNode node) {
+        for (MethodNode method : node.methods) {
+            if (!"render".equals(method.name) || !"(Lnet/minecraft/client/gui/GuiGraphics;IIF)V".equals(method.desc)) continue;
+            InsnList before = new InsnList();
+            before.add(new VarInsnNode(Opcodes.ALOAD, 0));
+            before.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "net/newworld/player/PlayerShipLink0680", "beforeRender", "(Ljava/lang/Object;)V", false));
+            method.instructions.insert(before);
+            for (AbstractInsnNode instruction : method.instructions.toArray()) {
+                if (instruction.getOpcode() != Opcodes.RETURN) continue;
+                InsnList after = new InsnList();
+                after.add(new VarInsnNode(Opcodes.ALOAD, 0));
+                after.add(new VarInsnNode(Opcodes.ALOAD, 1));
+                after.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "net/newworld/player/PlayerShipLink0680", "afterRender", "(Ljava/lang/Object;Ljava/lang/Object;)V", false));
+                method.instructions.insertBefore(instruction, after);
+            }
+            return 1;
+        }
+        return 0;
     }
 
     private static int wrapPlayerOverview(ClassNode node) {
