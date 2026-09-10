@@ -45,6 +45,7 @@ public final class NewWorldClassPatcher {
     private static final String DISCOVERY_DATA_OWNER = "net/newworld/navigation/NavigationDiscoverySavedData";
     private static final String DISCOVERY_VALUE_OWNER = "net/newworld/navigation/NavigationDiscoverySavedData$Discovery";
     private static final String DISCOVERY_META_OWNER = "net/newworld/navigation/Navigation0510DiscoveryMeta";
+    private static final String FE_DATA_OWNER = "net/newworld/core/LongFESavedData";
 
     static {
         add("net/newworld/navigation/Navigation0475RadarFilteX", "scanOneTile(Ljava/lang/Object;)V",
@@ -144,6 +145,7 @@ public final class NewWorldClassPatcher {
         Path baseline = Path.of(args[0]);
         Path payload = Path.of(args[1]);
         Set<String> classNames = new HashSet<>(TARGETS.keySet());
+        classNames.add(FE_DATA_OWNER);
         classNames.add(RADAR_UI_OWNER);
         classNames.add(ROOM_PROTECTION_OWNER);
         classNames.add(EMERGENCY_POLICY_OWNER);
@@ -251,12 +253,17 @@ public final class NewWorldClassPatcher {
             replacements += wrapPlayerSurveyBridgeHandle(node);
             expected++;
         }
+        if (FE_DATA_OWNER.equals(className)) {
+            replacements += wrapEnergyWithdrawals(node);
+            expected++;
+        }
         if (PLAYER_GUI_OWNER.equals(className)) {
             replacements += patchPlayerGui(node);
             replacements += enableDiscoveriesTab(node);
             replacements += wrapPlayerMouseClicked(node);
             replacements += wrapPlayerContent(node);
-            expected += 11;
+            replacements += wrapPlayerOverview(node);
+            expected += 12;
         }
         if (DISCOVERY_DATA_OWNER.equals(className)) {
             replacements += wrapDiscoveryRecord(node);
@@ -608,6 +615,53 @@ public final class NewWorldClassPatcher {
         wrapper.maxLocals = 6;
         node.methods.add(wrapper);
         return 1;
+    }
+
+    private static int wrapEnergyWithdrawals(ClassNode node) {
+        String descriptor = "(Ljava/lang/String;JJZ)J";
+        MethodNode original = null;
+        for (MethodNode method : node.methods) if (method.name.equals("remove") && method.desc.equals(descriptor)) original = method;
+        if (original == null) return 0;
+        original.name = "remove0670Base";
+        MethodNode wrapper = new MethodNode(original.access, "remove", descriptor, original.signature, null);
+        // Preserve original synchronized withdrawal and simulation semantics; observe its actual return only.
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.LLOAD, 2));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.LLOAD, 4));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ILOAD, 6));
+        wrapper.instructions.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, FE_DATA_OWNER, original.name, descriptor, false));
+        wrapper.instructions.add(new VarInsnNode(Opcodes.ILOAD, 6));
+        wrapper.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                "net/newworld/player/OverviewEnergyMeter0670", "record", "(Ljava/lang/Object;Ljava/lang/String;JZ)J", false));
+        wrapper.instructions.add(new InsnNode(Opcodes.LRETURN));
+        wrapper.maxStack = 9; wrapper.maxLocals = 7;
+        node.methods.add(wrapper);
+        return 1;
+    }
+
+    private static int wrapPlayerOverview(ClassNode node) {
+        String descriptor = "(Lnet/minecraft/client/gui/GuiGraphics;II)V";
+        for (MethodNode method : node.methods) {
+            if (!"overview".equals(method.name) || !descriptor.equals(method.desc)) continue;
+            method.instructions.clear();
+            method.tryCatchBlocks.clear();
+            if (method.localVariables != null) method.localVariables.clear();
+            method.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+            method.instructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
+            method.instructions.add(new VarInsnNode(Opcodes.ILOAD, 2));
+            method.instructions.add(new VarInsnNode(Opcodes.ILOAD, 3));
+            method.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                    "net/newworld/player/PlayerOverview0670", "render",
+                    "(Ljava/lang/Object;Ljava/lang/Object;II)V", false));
+            method.instructions.add(new InsnNode(Opcodes.RETURN));
+            method.maxStack = 4;
+            method.maxLocals = 4;
+            return 1;
+        }
+        return 0;
     }
 
     private static int wrapPlayerContent(ClassNode node) {

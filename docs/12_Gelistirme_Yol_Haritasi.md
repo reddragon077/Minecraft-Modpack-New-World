@@ -1,8 +1,9 @@
 # New World — Aktif geliştirme yol haritası
 
-Son doğrulama: 5 Eylül 2026
+Son kayıt güncellemesi: 10 Eylül 2026
 
-Aktif runtime-kabul edilen laptop buildi: NewWorldCore `0.5.66.1-alpha-player-discovery-actions`
+Kurulu aday: NewWorldCore `0.5.67.0-alpha-player-overview` (otomatik testler geçti; oyun içi kabul bekliyor).
+Son runtime-kabul edilen build: `0.5.66.1-alpha-player-discovery-actions` (yedekte).
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -55,17 +56,20 @@ Durum: **kısmi.** Arayüz kabuğu ve tuş bağlantısı mevcut; Survey ve Disco
 
 ## Aşama 4 — Overview / Ship Status
 
-Durum: placeholder ekran var; canlı telemetri henüz bağlanmadı.
+Durum: **kısmi / oyun içi kabul bekliyor.** `.67.0` ortak sistemlere salt-okunur telemetri bağlantısını ekler.
+Derleme, paket/config/tüketim sayacı smoke testleri ve çizim sınırları geçti; aşağıdaki maddelerin runtime kabulü henüz yapılmadı.
 
-- [ ] Ship FE mevcut/kapasite ve anlık tüketim
-- [ ] Warp Energy mevcut/kapasite
-- [ ] Engine ve Handbrake durumu
-- [ ] Mining Shield ve Mining durumları
-- [ ] Navigation durumları
-- [ ] FE, Warp ve Engine Matrix durumları
-- [ ] TARDIS dimension ve koordinat
-- [ ] `NOMINAL`, `WARNING`, `CRITICAL` genel durum hesabı
-- [ ] Son sistem uyarıları
+- [~] Ship FE mevcut/kapasite ve tüketim (`OUT`: gerçek havuz çıkışı, `NET`: net değişim; yenileme aralığı ortalaması)
+- [~] Warp Energy mevcut/kapasite
+- [~] Engine ve Handbrake durumu
+- [~] Mining Shield ve Mining durumları
+- [~] Navigation durumları
+- [~] FE, Warp ve Engine Matrix durumları
+- [~] TARDIS dış dimension ve koordinat
+- [~] `NOMINAL`, `WARNING`, `CRITICAL` genel durum hesabı
+- [~] Son sistem uyarıları (oyuncunun bağlantı/gemi gözlem oturumu; kalıcı günlük değil)
+
+Kabul testi: [`Overview .67.0`](13_Overview_Runtime_Kabul.md). Yenileme ve uyarı eşikleri `config/newworldcore/overview.properties` içindedir.
 
 Not: Bu verilerin büyük bölümü fiziksel terminallerde ve ComputerCraft telemetrisinde zaten vardır; Player GUI salt-okunur ortak telemetri katmanına bağlanacaktır.
 

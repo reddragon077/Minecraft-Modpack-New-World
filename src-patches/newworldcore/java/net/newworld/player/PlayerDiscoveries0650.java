@@ -67,6 +67,10 @@ public final class PlayerDiscoveries0650 {
         try {
             Object raw = call(payload, "mode");
             int code = raw instanceof Number number ? number.intValue() : 0;
+            if (!clientReceiving() && PlayerOverview0670.isWireCode(code)) {
+                if ("CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) PlayerOverview0670.accept(code);
+                return;
+            }
             if (accept(code)) return;
             invokeStatic("net.newworld.player.PlayerFieldSurvey0504Bridge", "handle0650Base", payload, context);
         } catch (Throwable failure) {

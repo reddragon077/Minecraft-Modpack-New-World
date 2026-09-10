@@ -1,17 +1,28 @@
 # New World current handoff
 
-Updated: 2026-09-07
+Updated: 2026-09-10
 Machine: laptop
 Branch: `main`
 
 ## Current objective
 
-Start roadmap Stage 4, Overview / Ship Status. Stage 8 Player Discoveries is complete and runtime accepted; Stage 9's remaining Player Navigation work follows Stage 4 and Stage 5.
+Runtime-test the installed Stage 4 Overview candidate. Do not mark Stage 4 complete yet. Stage 8 is accepted; Stage 5 and the remaining Stage 9 work still follow Stage 4 acceptance.
+
+## Installed candidate — runtime pending
+
+- Repo/laptop: `NewWorldCore-1.21.1-NeoForge-0.5.67.0-alpha-player-overview.jar`, SHA-256 `4273134984af8eeb8eece991c70b6a139b230c94cdd8519dd2badb1ae58f5d9e`, 3611837 bytes.
+- All six smoke suites passed, including Overview long/UTF frames, malformed payloads, config limits/reload, withdrawal simulation exclusion, counter isolation/wraparound, and headless layout bounds. Embedded/source patch manifests match; bytecode hooks verified. No game launch or runtime acceptance was performed.
+- Repo/laptop each contain exactly one matching NewWorldCore and unchanged DoctorWhoMod; no Java process was running at deployment.
+- Accepted `.66.1` is preserved in laptop `backups/custom-mods/pre-overview-20260910-01/` and `D:\Projects\NewWorld-recovery-20260910-01\known-good-0.5.66.1/`.
+- Added `overview.properties` (refresh 40 ticks, warning 20%, critical 5%, stale 120 ticks, two warning rows). Only that config and its README were copied; unrelated runtime configs were not overwritten by broad apply/refresh scripts.
+- Overview is read-only: FE/WE, actual FE pool OUT and sampled NET, engine/brake, Mining/shield, Navigation, Matrix states, exterior position, health and session warning history. Unknown/stale/no-ship data is not displayed as healthy telemetry. Existing owner resolver is reused; continuous Ship Link is still Stage 5.
+- Next: open Player GUI → OVERVIEW, compare physical terminal values, toggle existing brake/shield controls safely and inspect logs. Detailed acceptance: `docs/13_Overview_Runtime_Kabul.md`.
+- Before development, 27 unexpected sync-copy/backup files and nine `(1)` Git metadata copies were moved with hash verification outside the repo to `D:\Projects\NewWorld-recovery-20260910-01/`. Nothing was deleted. Fetch and fast-forward pull then succeeded at `2caedef`; full details are in today's conversation record.
 
 ## Current accepted continuation
 
 - `.cursor/rules/canonical-roadmap-workflow.mdc` is the mandatory always-applied rule on both computers. It locks the current order to Stage 4, then Stage 5, then remaining Stage 9 work until the roadmap is changed by a verified commit.
-- Active laptop/repository build: `NewWorldCore-1.21.1-NeoForge-0.5.66.1-alpha-player-discovery-actions.jar`.
+- Last runtime-accepted build, now backed up: `NewWorldCore-1.21.1-NeoForge-0.5.66.1-alpha-player-discovery-actions.jar`.
 - SHA-256: `889900f7e2519b8e07e604431260e28e0b6f8932d3d087bc5b17f8551fda059c`.
 - Player `DISCOVERIES` now reads the shared database through reserved survey mode 3 and shows ALL/STRUCTURES/GEOLOGY filters, six-row pagination and selected-record source/analysis/resource/coordinates.
 - Snapshot selection keeps the newest 64 Structure and 64 Geology records independently. Laptop runtime repeatedly logged `synced=128 total=464 perCategory=64`; no Discoveries render, snapshot or packet-routing error occurred.

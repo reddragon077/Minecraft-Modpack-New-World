@@ -20,6 +20,9 @@ The current patch:
 - enables the Player Survey geological card and routes its reserved mode through a short-range physical-evidence scan;
 - verifies loaded deposit-template blocks before recording visited GEOLOGY/FIELD discoveries at the configured analysis level;
 - exposes geological field-survey range, delay, result cap, verification budget, and match threshold in `player.properties`.
+- adds the read-only Player Overview using owner-resolved server snapshots, shared FE/Warp/engine/Mining/Navigation sources and bounded independent network frames;
+- observes actual non-simulated FE withdrawals without changing the original pool operation; counters are transient, isolated by pool/ship, and separate from sampled net FE change;
+- supplies `overview.properties` for refresh, stale handling, health thresholds and session-warning rows, with protocol/config/geometry/meter regression tests.
 
 Build with `tools/build-newworldcore-geology-patch.ps1`. The script verifies the baseline SHA-256 before producing a new JAR, then runs the config, field-survey, and Discovery schema/event smoke tests. It also needs matching ASM core and ASM tree JAR paths from the local NeoForge runtime.
 

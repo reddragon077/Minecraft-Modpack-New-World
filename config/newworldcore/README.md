@@ -35,6 +35,15 @@ Dosyalar:
 - `player.properties`: oyuncu Structure/Geological Field Survey menzilleri, gecikmeleri ve fiziksel depozit doğrulama sınırları.
 - `gui.properties`: oyuncu arayüzü karartması, canlı Survey bilgi satırı ve filtre katman derinliği.
 - `discovery.properties`: Structure/Geology Radar ve Field Survey kaynaklarının kalıcı başlangıç analiz seviyeleri.
+- `overview.properties`: salt-okunur Gemi Durumu ekranı; `refresh_ticks` (40), `stale_after_ticks` (120), `warning_percent` (20), `critical_percent` (5), `warning_rows` (2).
+
+Overview FE satırındaki `OUT`, ortak FE havuzundan gerçekten çekilen enerjinin tick başına ortalamasıdır;
+simülasyon çağrıları sayılmaz, dışarı enerji aktarımı da dahildir. `NET`, iki örnek arasındaki depolanan FE farkıdır;
+üretim ve tüketimin birlikte etkisidir. İkisi de yenileme aralığının ortalamasıdır; ilk örnek `SAMPLING` gösterir.
+Doğrudan eski enerji aynasına yapılan yönetici atamaları OUT tüketimi sayılmaz; sayaç dünyaya kaydedilmez.
+Matrix kaydı yoksa `UNKNOWN`, ayrılmışsa `OFFLINE` görünür; bilinmeyen değerler sıfır enerji gibi yorumlanmaz.
+Son uyarılar yalnız mevcut oyuncu bağlantısı/gemi gözlem oturumu içindir, kalıcı olay günlüğü değildir.
+Sunucu uyarı eşiklerini, istemci satır sayısını ve bayat veri süresini kendi configinden okur.
 
 Güvenli config sınırı: oynanış dengesi, süre, menzil, enerji, kapasite, performans ve görünüm ayarlanabilir;
 kayıt şeması, paket/protokol kimlikleri ve registry anahtarları config değildir. Bunların değişmesi dünyayı veya ağ iletişimini bozabilir.

@@ -1,0 +1,98 @@
+import java.nio.file.*;
+import java.util.List;
+import net.newworld.config.NewWorldConfig;
+import net.newworld.player.PlayerOverview0670;
+import net.newworld.player.PlayerOverview0670.Snapshot;
+import net.newworld.player.OverviewEnergyMeter0670;
+
+public final class PlayerOverview0670SmokeTest {
+    public static void main(String[] args) throws Exception {
+        Path root = Files.createTempDirectory("newworld-overview-smoke-");
+        System.setProperty("newworldcore.configDir", root.toString());
+        Path config = root.resolve("overview.properties");
+        try {
+            Object pool = new Object();
+            eq(OverviewEnergyMeter0670.record(pool, "a", 123, true), 123);
+            eq(OverviewEnergyMeter0670.total(pool, "a"), 0);
+            eq(OverviewEnergyMeter0670.record(pool, "a", 0, false), 0);
+            eq(OverviewEnergyMeter0670.record(pool, "a", 4_000_000_000L, false), 4_000_000_000L);
+            eq(OverviewEnergyMeter0670.total(pool, "a"), 4_000_000_000L);
+            eq(OverviewEnergyMeter0670.total(pool, "b"), 0);
+            eq(OverviewEnergyMeter0670.total(new Object(), "a"), 0);
+            eq((long) OverviewEnergyMeter0670.perTick(0, 4_000_000_000L, 40), 100_000_000L);
+            eq((long) OverviewEnergyMeter0670.perTick(Long.MAX_VALUE - 5, Long.MIN_VALUE + 4, 2), 5);
+            eq(PlayerOverview0670.refreshTicks(), 40);
+            eq(PlayerOverview0670.warningPercent(), 20);
+            eq(PlayerOverview0670.criticalPercent(), 5);
+            eq(PlayerOverview0670.staleTicks(), 120);
+            eq(PlayerOverview0670.warningRows(), 2);
+            eq(PlayerOverview0670.energySeverity(20, 100), 1);
+            eq(PlayerOverview0670.energySeverity(5, 100), 2);
+            eq(PlayerOverview0670.energySeverity(0, 0), 1);
+            eq(PlayerOverview0670.energySeverity(-1, 100), 1);
+            eq(PlayerOverview0670.energySeverity(Long.MAX_VALUE - 1, Long.MAX_VALUE), 0);
+            Files.writeString(config, "refresh_ticks=0\nwarning_percent=10\ncritical_percent=90\nstale_after_ticks=0\nwarning_rows=99\n");
+            NewWorldConfig.reload();
+            eq(PlayerOverview0670.refreshTicks(), 20);
+            eq(PlayerOverview0670.criticalPercent(), 10);
+            eq(PlayerOverview0670.staleTicks(), 40);
+            eq(PlayerOverview0670.warningRows(), 3);
+            Files.writeString(config, "refresh_ticks=9999\nwarning_percent=oops\ncritical_percent=-5\nwarning_rows=-1\n");
+            NewWorldConfig.reload();
+            eq(PlayerOverview0670.refreshTicks(), 1200);
+            eq(PlayerOverview0670.staleTicks(), 2400);
+            eq(PlayerOverview0670.warningPercent(), 20);
+            eq(PlayerOverview0670.criticalPercent(), 0);
+            eq(PlayerOverview0670.warningRows(), 1);
+
+            Snapshot source = new Snapshot("ship-ç-test", Long.MAX_VALUE, Long.MAX_VALUE, 200, 1000,
+                    "-100 FE/t NET", "READY", "LOCKED", "OFF", "WAITING_FOR_MODULE", "NO TARGET", "ONLINE", "ONLINE",
+                    "ONLINE", "minecraft:overworld", "X=-200 Y=64 Z=500", "WARNING", List.of("WARP LEVEL LOW"));
+            int[] codes = PlayerOverview0670.encode(source);
+            PlayerOverview0670.resetClient();
+            if (PlayerOverview0670.accept(4) || PlayerOverview0670.accept(-10000) || PlayerOverview0670.accept(1440001002)) throw new AssertionError("Protocol overlap");
+            for (int code : codes) {
+                if (!PlayerOverview0670.isWireCode(code) || !PlayerOverview0670.accept(code)) throw new AssertionError("Escaped frame range");
+            }
+            if (!source.equals(PlayerOverview0670.clientSnapshot())) throw new AssertionError("Lossy snapshot / long / UTF round trip");
+            FakeScreen screen = new FakeScreen();
+            PlayerOverview0670.draw(screen, new FakeGraphics(), 0, 0, source, true, "WARNING");
+            if (screen.drawn < 16) throw new AssertionError("Missing Overview rows");
+            screen.drawn = 0;
+            screen.columns = false;
+            PlayerOverview0670.draw(screen, new FakeGraphics(), 0, 0, source, false, "STALE");
+            eq(screen.drawn, 3);
+            PlayerOverview0670.draw(screen, new FakeGraphics(), 0, 0, Snapshot.unavailable("NO SHIP"), true, "UNAVAILABLE");
+            PlayerOverview0670.accept(PlayerOverview0670.BEGIN);
+            PlayerOverview0670.accept(PlayerOverview0670.END);
+            if (!source.equals(PlayerOverview0670.clientSnapshot())) throw new AssertionError("Partial frame replaced valid snapshot");
+            PlayerOverview0670.accept(PlayerOverview0670.BEGIN);
+            for (int i = 0; i < 1500; i++) PlayerOverview0670.accept(PlayerOverview0670.WIRE_BASE);
+            PlayerOverview0670.accept(PlayerOverview0670.END);
+            if (!source.equals(PlayerOverview0670.clientSnapshot())) throw new AssertionError("Oversized frame accepted");
+            for (int code : PlayerOverview0670.encode(Snapshot.unavailable("NO SHIP"))) PlayerOverview0670.accept(code);
+            if (!PlayerOverview0670.clientSnapshot().ship().isEmpty()) throw new AssertionError("Old ship leaked");
+            if (!PlayerOverview0670.amount(-1).equals("?") || !PlayerOverview0670.amount(5_000_000_000L).equals("5.00G")) throw new AssertionError("FE formatting");
+            PlayerOverview0670.resetClient();
+            if (PlayerOverview0670.clientSnapshot() != null) throw new AssertionError("Disconnect reset");
+            System.out.println("Player Overview consumption meter, config, long/UTF protocol, malformed frames and reset smoke test passed.");
+        } finally { Files.deleteIfExists(config); Files.deleteIfExists(root); }
+    }
+    private static void eq(long actual, long expected) { if (actual != expected) throw new AssertionError(actual + " != " + expected); }
+    public static final class FakeFont { public int width(String text) { return text.length() * 6; } }
+    public static final class FakeScreen {
+        public final FakeFont font = new FakeFont();
+        int drawn;
+        boolean columns = true;
+        public void text(Object graphics, String text, int x, int y, int color) {
+            if (x < 26 || x + font.width(text) > 514 || y < 91 || y + 9 > 288) throw new AssertionError("Text outside panel: " + text);
+            if (columns && y >= 116 && y <= 200 && x < 275 && x + font.width(text) > 265) throw new AssertionError("Column overlap: " + text);
+            drawn++;
+        }
+    }
+    public static final class FakeGraphics {
+        public void fill(int x, int y, int x2, int y2, int color) {
+            if (x < 26 || x2 > 514 || y < 109 || y2 > 209 || x2 <= x || y2 <= y) throw new AssertionError("Panel bounds");
+        }
+    }
+}

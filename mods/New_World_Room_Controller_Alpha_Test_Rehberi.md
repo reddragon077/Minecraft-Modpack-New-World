@@ -2,11 +2,14 @@
 
 Bu belge, eski `0.1.0-alpha` Room Controller denemesinin yerine güncel New World özel JAR ikilisinin test rehberidir.
 
-## Test edilen build'ler
+## Kurulu build'ler
+
+NewWorldCore `.67.0` derleme/otomatik testleri geçmiş adaydır; oyun içi kabul bekler. Son kabul edilen `.66.1` yedekte korunur.
+Öncelikli test: [Overview runtime kabulü](../docs/13_Overview_Runtime_Kabul.md).
 
 | Bileşen | Dosya | SHA-256 |
 |---|---|---|
-| NewWorldCore | `NewWorldCore-1.21.1-NeoForge-0.5.66.1-alpha-player-discovery-actions.jar` | `889900f7e2519b8e07e604431260e28e0b6f8932d3d087bc5b17f8551fda059c` |
+| NewWorldCore aday | `NewWorldCore-1.21.1-NeoForge-0.5.67.0-alpha-player-overview.jar` | `4273134984af8eeb8eece991c70b6a139b230c94cdd8519dd2badb1ae58f5d9e` |
 | DoctorWhoMod fork | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` |
 
 ## Testten önce

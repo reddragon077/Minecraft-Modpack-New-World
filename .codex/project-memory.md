@@ -1,6 +1,6 @@
 # New World project memory
 
-Last synchronized: 2026-09-07
+Last synchronized: 2026-09-10
 
 ## Canonical workflow
 
@@ -21,7 +21,9 @@ Last synchronized: 2026-09-07
 
 ## NewWorldCore continuation point
 
-- Active runtime-accepted laptop build: `NewWorldCore-1.21.1-NeoForge-0.5.66.1-alpha-player-discovery-actions.jar` (SHA-256 `889900f7e2519b8e07e604431260e28e0b6f8932d3d087bc5b17f8551fda059c`). Build/smoke/bytecode, repository-laptop single-JAR/hash, Player Discoveries filters/list/details/pagination, category-balanced sync, live player distance, last-seen/reserve fields, favorite, Navigation target and real route/hop integration passed.
+- Installed repo/laptop candidate: `NewWorldCore-1.21.1-NeoForge-0.5.67.0-alpha-player-overview.jar`, SHA-256 `4273134984af8eeb8eece991c70b6a139b230c94cdd8519dd2badb1ae58f5d9e`. Six smoke suites, bytecode hooks, source/embedded manifest equality and single-JAR/hash installation checks passed. Stage 4 remains partial: no runtime acceptance yet. Test `docs/13_Overview_Runtime_Kabul.md` next.
+- Overview reuses owner resolution and shared telemetry; `overview.properties` configures refresh/stale times, health thresholds and warning rows. OUT observes actual non-simulated FE-pool withdrawals; NET measures stored-energy change. No control actions or persistent warning schema were added.
+- Last runtime-accepted laptop build: `NewWorldCore-1.21.1-NeoForge-0.5.66.1-alpha-player-discovery-actions.jar` (SHA-256 `889900f7e2519b8e07e604431260e28e0b6f8932d3d087bc5b17f8551fda059c`). Preserved under `backups/custom-mods/pre-overview-20260910-01/` and external repo recovery. Player Discoveries filters/list/details/pagination, category-balanced sync, live player distance, last-seen/reserve, favorite, Navigation target and real route/hop integration passed.
 - Desktop acceptance evidence shows more than four reachable results and modded classes including Explorify, Better Dungeons, and Structory. The old four-record limit is fixed, shared placement sets now remain `UNKNOWN STRUCTURE`, and the false `MODDED STRUCTURE` selection was removed safely.
 - The verified `0.5.57.0` baseline is backed up under the laptop instance's `backups/custom-mods/known-good-0.5.57.0/` directory.
 - The complete historical source tree is still missing. The reproducible compatibility delta is stored under `src-patches/newworldcore/` and built with `tools/build-newworldcore-geology-patch.ps1`.
