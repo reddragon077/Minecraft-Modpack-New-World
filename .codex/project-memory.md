@@ -21,6 +21,8 @@ Last synchronized: 2026-09-10
 
 ## NewWorldCore continuation point
 
+- Current installed candidate: `.69.0-alpha-player-navigation-view`, SHA-256 `af77b62a691a18bf6340c7371647b0c90e07b7643773cf8576958aae29c8427f`, 3635246 bytes. Stage 9 first slice is a read-only Navigation tab: selected target, ship-relative distance, existing route status/loaded hop, actual engine next-hop WE estimate. Eight suites and actual DoctorWhoMod formula fixture passed, runtime pending. New `player-navigation.properties` refresh=20/stale=120, coordinates/estimate=true. `.68.2` backed up at `backups/custom-mods/pre-player-navigation-20260910-01/`; all older backups retained. Next: Navigation view runtime test, then remaining favorite/current-location/send actions. Never recreate accepted TARGET/ROUTE.
+
 - Latest acceptance supersedes pending gates below: `.68.2` fresh-session Overview and Discoveries (128/471), 5998-block OUT OF RANGE and automatic return to CONNECTED/NOMINAL passed. Server recovery at 16:36:53 matches the 12-block screenshot; user clarified the late screenshot was not a stuck GUI. Proceed to remaining Stage 9 Player Navigation without duplicating TARGET/ROUTE. Multiplayer/forced timeout and other untested cases stay open. Game stopped at 16:48:08; no JAR change needed for this acceptance.
 
 - User chose shared Structure Survey `field_survey.delay_ticks=20` (1 second), superseding older 80-tick records. Repository now matches the existing laptop value; Geological Survey delay unchanged. Ship Link and Overview config values also match. This live-config update requires no additional JAR.

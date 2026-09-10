@@ -69,10 +69,11 @@ public final class PlayerDiscoveries0650 {
             Object raw = call(payload, "mode");
             int code = raw instanceof Number number ? number.intValue() : 0;
             if (!"CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) {
-                if (code >= 0 && code <= 5 || isActionMode(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
+                if (code >= 0 && code <= 6 || isActionMode(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
                 return;
             }
             if (!clientReceiving() && PlayerShipLink0680.isWireCode(code)) { PlayerShipLink0680.accept(code); return; }
+            if (!clientReceiving() && PlayerNavigation0690.isWireCode(code)) { PlayerNavigation0690.accept(code); return; }
             if (!clientReceiving() && PlayerOverview0670.isWireCode(code)) {
                 if ("CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) PlayerOverview0670.accept(code);
                 return;
@@ -443,6 +444,10 @@ public final class PlayerDiscoveries0650 {
     /** Wrapper target for PlayerShipScreen.survey; non-Discoveries tabs retain the base method. */
     public static void renderContent(Object screen, Object graphics, int left, int top, int mouseX, int mouseY) {
         try {
+            if (intField(screen, "tab") == 3) {
+                PlayerNavigation0690.render(screen, graphics, left, top);
+                return;
+            }
             if (intField(screen, "tab") != 2) {
                 call(screen, "survey0650Base", graphics, left, top, mouseX, mouseY);
                 return;
@@ -526,6 +531,11 @@ public final class PlayerDiscoveries0650 {
             int left = (intField(screen, "width") - 540) / 2;
             int top = (intField(screen, "height") - 300) / 2;
             int discoveriesX = left + 182;
+            if (button == 0 && inside(mouseX, mouseY, left + 274, top + 46, 88, 22)) {
+                setField(screen, "tab", 3);
+                PlayerNavigation0690.resetClient();
+                return true;
+            }
             if (inside(mouseX, mouseY, discoveriesX, top + 46, 88, 22)) {
                 setField(screen, "tab", 2);
                 setField(screen, "status", "SYNCING // Discoveries...");

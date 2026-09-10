@@ -1,9 +1,11 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.68.2-alpha-typed-client-link",
-  "marker": "NewWorldTypedClientLinkV3",
+  "version": "0.5.69.0-alpha-player-navigation-view",
+  "marker": "NewWorldPlayerNavigationViewV1",
   "fixes": [
+    "Read-only Player Navigation tab shows selected target, ship-relative distance, existing route, loaded hop and actual engine next-hop WE estimate",
+    "Navigation telemetry uses owner/range gates, separate bounded wire frames, live refresh/display config and ship/session invalidation without route or flight writes",
     "Overview and Ship Link select the exact ClientPacketListener getter descriptor despite same-name mixed-environment methods",
     "Overview preserves the server-authoritative Ship Link loss reason instead of reporting every denied link as no owned ship",
     "Owner-scoped continuous CONNECTED/DIMENSIONAL/LOST Ship Link with live range and refresh config",

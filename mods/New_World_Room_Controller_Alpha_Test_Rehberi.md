@@ -4,12 +4,12 @@ Bu belge, eski `0.1.0-alpha` Room Controller denemesinin yerine güncel New Worl
 
 ## Kurulu build'ler
 
-Kurulu NewWorldCore `.68.2`, aynı isimli bağlantı getter çakışmasını giderir; yedi otomatik test geçti, oyun kabulü bekler. `.68.1` kalıcı SYNCING nedeniyle başarısız oldu ve yedeklendi. Önceki `.68.0` temel oyun kanıtları korunur.
+Kurulu NewWorldCore `.69.0`, salt-okunur Player Navigation paneli adayıdır; sekiz test paketi ve gerçek DoctorWhoMod WE tahmin entegrasyonu geçti, oyun kabulü bekler. `.68.2` bağlantı/otomatik geri dönüş testi geçti ve yedeklendi. [Navigation kabul adımları](../docs/15_Player_Navigation_Runtime_Kabul.md).
 Öncelikli test: [Ship Link runtime kabulü](../docs/14_Ship_Link_Runtime_Kabul.md).
 
 | Bileşen | Dosya | SHA-256 |
 |---|---|---|
-| NewWorldCore aday | `NewWorldCore-1.21.1-NeoForge-0.5.68.2-alpha-typed-client-link.jar` | `2ffb61b41cc4b3f99f820c103006d9015da7695184ac62e49f62b4224cbd88c8` |
+| NewWorldCore aday | `NewWorldCore-1.21.1-NeoForge-0.5.69.0-alpha-player-navigation-view.jar` | `af77b62a691a18bf6340c7371647b0c90e07b7643773cf8576958aae29c8427f` |
 | DoctorWhoMod fork | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` |
 
 ## Testten önce

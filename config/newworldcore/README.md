@@ -24,6 +24,8 @@ Genel okuma kuralları:
 
 Dosyalar:
 
+- `player-navigation.properties`: salt-okunur Navigation paneli; `refresh_ticks=20`, `stale_after_ticks=120`, `show_coordinates=true`, `show_we_estimate=true`. WE, yalnız motora yüklü sonraki hop için mevcut DoctorWhoMod formülünden gelir; toplam rota bedeli veya uçuş yetkisi değildir.
+
 - `radar.properties`: yapı Radar'ı, navigasyon yükseltmeleri, CPU ve tarama FE maliyeti.
 - `mining.properties`: Mining Matrix tarama miktarı, kazım aralığı ve FE maliyeti.
 - `matrix.properties`: FE/Warp Matrix kapasitesi, aktarım, tier ağırlıkları ve üretim.

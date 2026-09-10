@@ -153,6 +153,7 @@ public final class PlayerShipLink0680 {
                 Snapshot next = new Snapshot(state, ship, dim, dist, reason, refresh, stale);
                 if (client == null || !client.ship.equals(next.ship) || client.allowed() != next.allowed()) {
                     PlayerDiscoveries0650.resetClientLink(); PlayerOverview0670.resetClient(); discoveriesRequested = false;
+                    PlayerNavigation0690.resetClient();
                 }
                 client = next; receivedAt = System.nanoTime();
             } catch (IOException failure) { System.err.println("[NewWorld Ship Link] decode rejected: " + failure); }
@@ -172,6 +173,7 @@ public final class PlayerShipLink0680 {
     public static synchronized void resetClient() {
         client = null; receivedAt = 0; requestedAt = 0; incoming = null; discoveriesRequested = false;
         PlayerDiscoveries0650.resetClientLink(); PlayerOverview0670.resetClient();
+        PlayerNavigation0690.resetClient();
     }
 
     /** Runs before the legacy screen render: requests link on every tab and invalidates stale sessions. */
@@ -207,7 +209,7 @@ public final class PlayerShipLink0680 {
                 call(graphics, "flush");
                 label(screen, graphics, "SHIP LINK LOST // REMOTE FEATURES LOCKED", left + 26, top + 100, 0xFFFFCF45, 488);
                 label(screen, graphics, fresh ? client.reason : "Waiting for fresh server link...", left + 26, top + 125, 0xFF8DA7B4, 488);
-                label(screen, graphics, "Reconnect to your ship to use Survey and Discoveries.", left + 26, top + 149, 0xFFD5E7EF, 488);
+                label(screen, graphics, "Reconnect to your ship to use remote features.", left + 26, top + 149, 0xFFD5E7EF, 488);
             }
         } catch (Throwable failure) {
             if (!renderError) { renderError = true; System.err.println("[NewWorld Ship Link] render failed: " + failure); }

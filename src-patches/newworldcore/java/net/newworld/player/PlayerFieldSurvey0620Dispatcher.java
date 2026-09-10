@@ -17,6 +17,7 @@ public final class PlayerFieldSurvey0620Dispatcher {
     private static void handleOnServer(Object player, int mode) {
         try {
             if (mode == 5) { PlayerShipLink0680.request(player); return; }
+            if (mode == 6) { PlayerNavigation0690.request(player); return; }
             if (mode != 4 && !PlayerShipLink0680.requireLink(player)) return;
             if (mode == 0) {
                 PlayerFieldSurvey0503Fix.scanStructures(player);

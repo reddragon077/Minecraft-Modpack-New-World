@@ -6,9 +6,11 @@ Branch: `main`
 
 ## Current objective
 
+Installed Stage 9 view candidate `.69.0`: `NewWorldCore-1.21.1-NeoForge-0.5.69.0-alpha-player-navigation-view.jar`, SHA-256 `af77b62a691a18bf6340c7371647b0c90e07b7643773cf8576958aae29c8427f`, 3635246 bytes. Eight smoke suites plus real DoctorWhoMod next-hop WE test passed; source/embedded manifest and single-JAR hashes match. No runtime acceptance yet. Next: `docs/15_Player_Navigation_Runtime_Kabul.md`; do not implement further actions before checking this view. `.68.2` and repo/live originals preserved at laptop `backups/custom-mods/pre-player-navigation-20260910-01/`. New live `player-navigation.properties` only; existing gameplay configs untouched. No changes to DoctorWhoMod, worlds or existing TARGET/ROUTE behavior.
+
 Stage 5 fresh-session regression gate passed on `.68.2`: Overview and Discoveries loaded; OUT OF RANGE at 5998 blocks recovered automatically to CONNECTED/NOMINAL (12-block screenshot). User clarified the apparent stuck screenshot was delayed, not a recovery failure. Next: remaining Stage 9 Player Navigation; reuse accepted Discovery TARGET/ROUTE. Broader multiplayer/forced-timeout tests remain open. Historical pending wording below is superseded by this acceptance.
 
-## Installed .68.2 — typed client connection, runtime pending
+## Previous .68.2 — accepted, backed up; historical installation details
 
 - User resolved the config divergence: shared Structure Survey `field_survey.delay_ticks=20` (1 second), matching the existing laptop value. Repository updated from 80 to 20; Ship Link and Overview configs match too. No JAR rebuild needed for this live property. Geological Survey delay remains unchanged.
 
@@ -164,7 +166,7 @@ Stage 5 fresh-session regression gate passed on `.68.2`: Overview and Discoverie
 ## Next executable test
 
 1. Stage 4 Overview single-player acceptance is complete.
-2. Runtime-test installed `.68.2` after the confirmed client-getter collision; Stage 5 gate remains open until SYNCING/recovery checks pass.
+2. Stage 5 `.68.2` fresh-session and automatic range recovery passed. Runtime-test installed `.69.0` Navigation target/route/hop/WE view with `docs/15_Player_Navigation_Runtime_Kabul.md` before further Stage 9 actions.
 3. Then return to Stage 9 for current target/route/hop/WE presentation, favorite selection, `SAVE CURRENT LOCATION`, and `SEND TO SHIP`. Discovery TARGET/ROUTE creation is already complete in `0.5.66.1` and must not be reimplemented.
 
 ## Do not assume
