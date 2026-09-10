@@ -1,5 +1,9 @@
 # Ship Link — Oyun kabulü ve .68.2 SYNCING regresyonu
 
+## Güncel kabul — 10 Eylül, 16:48 sonrası
+
+`.68.2` yeni oturumda 16:19:17 CONNECTED/NOMINAL, 16:19:36 Discoveries 128/471; 16:31:47 OUT OF RANGE (5998 blok), 16:36:53 otomatik CONNECTED/NOMINAL olarak doğrulandı. Kullanıcı 12 blok geri bağlantı ekranını paylaştı ve dönüşte zaten düzeldiğini, önceki ekran görüntüsünü geç gönderdiğini açıkladı. Kalıcı SYNCING/geri dönüş regresyon kapısı kapandı; Aşama 9'a geçilebilir. Ayrı zorlanmış GUI yaşam döngüsü, çok oyunculu ve yapay timeout kabulü iddia edilmiyor. Aşağıdaki bekleyen aday metinleri tarihsel kurulum planıdır.
+
 Durum (10 Eylül 2026): `.68.0` önceki oturumdaki temel kontrolleri geçti; `.68.1` yeni oturumda sürekli SYNCING ile başarısız oldu. Aşama 5 kabul kapısı yeniden açık. Kurulu `.68.2` otomatik testleri geçti; oyun kabulü bekliyor.
 
 ## Önce yapılacak .68.2 kontrolü

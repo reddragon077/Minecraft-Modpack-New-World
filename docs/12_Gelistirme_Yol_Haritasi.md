@@ -2,8 +2,7 @@
 
 Son kayıt güncellemesi: 10 Eylül 2026
 
-Son temel tek oyunculu runtime-kabul edilen build: NewWorldCore `0.5.68.0-alpha-player-ship-link` (10 Eylül; ayrıntılı kapsam Ship Link kabul belgesinde).
-Kurulu aday: `0.5.68.2-alpha-typed-client-link` (yedi otomatik test geçti; `.68.1` yeni oturumdaki SYNCING hatası nedeniyle Aşama 5 kabul kapısı yeniden açık).
+Son temel tek oyunculu runtime-kabul edilen build: NewWorldCore `0.5.68.2-alpha-typed-client-link` (10 Eylül; yeni oturum, Overview/Discoveries ve menzil kaybı/otomatik dönüş doğrulandı).
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -74,7 +73,7 @@ Not: Player GUI fiziksel terminallerin salt-okunur ortak telemetri katmanını k
 
 ## Aşama 5 — Ship Link
 
-Güncel öncelik: `.68.1` yeni oturumda kalıcı SYNCING ile başarısız oldu. `.68.2` aynı isimli getter'ları dönüş türüyle ayırıyor; önce yeni oturum bağlantı/Overview/Discoveries ve kayıp/geri dönüş testi geçmeli. Aşağıdaki işlev kanıtları önceki `.68.0` oturumuna aittir; güncel adayın kabulü değildir.
+Güncel kabul: `.68.2` yeni oturumda CONNECTED, Overview NOMINAL ve Discoveries 128/471 gösterdi. 16:31:47'de OUT OF RANGE, 16:36:53'te yeniden CONNECTED/NOMINAL loglandı. Kullanıcı dönüşte zaten düzeldiğini, geciken şeyin ekran görüntüsü olduğunu açıkladı; 12 blok ekranı geri bağlantıyı doğruladı. SYNCING regresyon kapısı kapandı; sıradaki iş Aşama 9'dur. Aşağıdaki paragraf önceki `.68.0`/`.68.1` kabul geçmişidir; açıklama düzeltmesinin görsel kontrolü de artık geçmiştir.
 
 Durum: **temel tek oyunculu işlev kabulü tamamlandı; `.68.1` açıklama düzeltmesinin görsel kontrolü açık.** Ekran görüntüleri ve sunucu logları ON BOARD, 11770 blokta LOST, 9 blokta yeniden CONNECTED, canlı boyut izni ve gemi dışından FAV/TARGET/ROUTE zincirini doğruladı. Gecikmeli Structure Survey için bağlantı kaybında erken dönüş, zaman çizelgesi ve kaynak koduyla doğrulandı; ayrı NBT karşılaştırması yapılmadı. Geological gecikmeli iptal, çok oyunculu izolasyon ve yapay timeout oyun testleri kapsam dışı/açık; otomatik testler bunların yerine sayılmaz. [Kabul kapsamı ve son görsel kontrol](14_Ship_Link_Runtime_Kabul.md).
 
@@ -245,5 +244,5 @@ Aşağıdaki işler Aşama 14 kapanmadan ana geliştirme odağı yapılmayacakt�
 Ana listedeki sayısal sıra geliştirme sırasıdır. Tamamlanmış Aşama 6 Field Survey, jeolojik Analysis zinciri ve Aşama 8 Discoveries işleri yeniden başlatılmayacaktır.
 
 1. Aşama 4 — Overview / Ship Status tek oyunculu kabulü tamamlandı.
-2. Aşama 5 kabul kapısı yeniden açık: `.68.2` yeni oturum SYNCING regresyonunu ve bağlantı kaybı/geri dönüşü oyun içinde doğrula.
+2. Aşama 5 `.68.2` yeni oturum SYNCING regresyonu ve bağlantı kaybı/otomatik geri dönüş kabulü tamamlandı. Çok oyunculu/yapay timeout gibi genişletilmiş kontroller hâlâ açık.
 3. Ardından Aşama 9 — Player Navigation panelinin kalan maddeleri.

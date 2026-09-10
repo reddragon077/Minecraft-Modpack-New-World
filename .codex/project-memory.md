@@ -21,6 +21,8 @@ Last synchronized: 2026-09-10
 
 ## NewWorldCore continuation point
 
+- Latest acceptance supersedes pending gates below: `.68.2` fresh-session Overview and Discoveries (128/471), 5998-block OUT OF RANGE and automatic return to CONNECTED/NOMINAL passed. Server recovery at 16:36:53 matches the 12-block screenshot; user clarified the late screenshot was not a stuck GUI. Proceed to remaining Stage 9 Player Navigation without duplicating TARGET/ROUTE. Multiplayer/forced timeout and other untested cases stay open. Game stopped at 16:48:08; no JAR change needed for this acceptance.
+
 - User chose shared Structure Survey `field_survey.delay_ticks=20` (1 second), superseding older 80-tick records. Repository now matches the existing laptop value; Geological Survey delay unchanged. Ship Link and Overview config values also match. This live-config update requires no additional JAR.
 
 - Current gate (supersedes the historical continuation below): `.68.1` failed fresh-session runtime testing, permanently SYNCING even beside the TARDIS and after reopening the GUI. Stage 5 acceptance is reopened; Stage 9 is deferred.

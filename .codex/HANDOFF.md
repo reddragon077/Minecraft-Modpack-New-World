@@ -6,7 +6,7 @@ Branch: `main`
 
 ## Current objective
 
-Stage 5 acceptance gate is reopened: `.68.1` failed fresh-session testing with permanent SYNCING, despite the earlier `.68.0` core checks. Installed `.68.2` fixes the proven getter-descriptor collision; runtime acceptance is pending. Do not start remaining Stage 9 or reimplement accepted Discovery TARGET/ROUTE until this regression is verified fixed.
+Stage 5 fresh-session regression gate passed on `.68.2`: Overview and Discoveries loaded; OUT OF RANGE at 5998 blocks recovered automatically to CONNECTED/NOMINAL (12-block screenshot). User clarified the apparent stuck screenshot was delayed, not a recovery failure. Next: remaining Stage 9 Player Navigation; reuse accepted Discovery TARGET/ROUTE. Broader multiplayer/forced-timeout tests remain open. Historical pending wording below is superseded by this acceptance.
 
 ## Installed .68.2 — typed client connection, runtime pending
 

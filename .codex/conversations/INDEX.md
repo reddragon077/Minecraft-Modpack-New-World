@@ -4,6 +4,8 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-10 — Typed link runtime acceptance](2026-09-10_laptop_link_acceptance.md) — fresh session, Overview/Discoveries, 5998-block loss and automatic 12-block recovery passed; apparent stale screenshot was delayed delivery; Stage 9 can proceed.
+
 - [2026-09-10 — SYNCING getter collision repair](2026-09-10_laptop_typed_client_link.md) — live diagnosis proved two different-return getConnection methods; `.68.2` typed selection and real JVM collision regression tests passed; backed-up install, runtime acceptance pending, Stage 5 gate reopened.
 
 - [2026-09-10 — Ship Link runtime evidence and Overview reason repair](2026-09-10_laptop_ship_link_reasons.md) — core single-player link tests recorded; `.68.1` preserves denied-access reasons, seven smoke suites passed, backed-up install verified; new message visual check pending before remaining Stage 9.
