@@ -2,8 +2,8 @@
 
 Son kayıt güncellemesi: 10 Eylül 2026
 
-Son runtime-kabul edilen build: NewWorldCore `0.5.67.1-alpha-overview-warning-states` (10 Eylül kullanıcı oyun kabulü).
-Kurulu aday: `0.5.68.0-alpha-player-ship-link` (yedi otomatik test geçti; Ship Link oyun kabulü bekliyor).
+Son temel tek oyunculu runtime-kabul edilen build: NewWorldCore `0.5.68.0-alpha-player-ship-link` (10 Eylül; ayrıntılı kapsam Ship Link kabul belgesinde).
+Kurulu aday: `0.5.68.1-alpha-ship-link-reasons` (yedi otomatik test geçti; Overview bağlantı-kaybı mesajının görsel kontrolü bekliyor).
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -74,13 +74,13 @@ Not: Player GUI fiziksel terminallerin salt-okunur ortak telemetri katmanını k
 
 ## Aşama 5 — Ship Link
 
-Durum: **kısmi — `.68.0` uygulandı, otomatik testler geçti; oyun kabulü bekliyor.** Kendi geminin içi ON BOARD, aynı boyutta 3B menzil içi CONNECTED, izin verilen farklı boyut DIMENSIONAL; menzil/izin/veri/sahiplik başarısızlığı LOST. Sunucu kapıları, gecikmeli Survey yeniden kontrolü ve eski gemi seçimlerinin geçersizleştirilmesi eklendi. [Kabul testi](14_Ship_Link_Runtime_Kabul.md).
+Durum: **temel tek oyunculu işlev kabulü tamamlandı; `.68.1` açıklama düzeltmesinin görsel kontrolü açık.** Ekran görüntüleri ve sunucu logları ON BOARD, 11770 blokta LOST, 9 blokta yeniden CONNECTED, canlı boyut izni ve gemi dışından FAV/TARGET/ROUTE zincirini doğruladı. Gecikmeli Structure Survey için bağlantı kaybında erken dönüş, zaman çizelgesi ve kaynak koduyla doğrulandı; ayrı NBT karşılaştırması yapılmadı. Geological gecikmeli iptal, çok oyunculu izolasyon ve yapay timeout oyun testleri kapsam dışı/açık; otomatik testler bunların yerine sayılmaz. [Kabul kapsamı ve son görsel kontrol](14_Ship_Link_Runtime_Kabul.md).
 
-- [~] Sürekli bağlantı göstergesi
-- [~] `CONNECTED`, `DIMENSIONAL`, `LOST` durumları
-- [~] Gemi dimension bilgisi
-- [~] Aynı dimensionda gemiye uzaklık
-- [~] Link kaybında uzaktan özellik kapıları
+- [x] Sürekli bağlantı göstergesi
+- [x] `CONNECTED`, `DIMENSIONAL`, `LOST` durumları
+- [x] Gemi dimension bilgisi
+- [x] Aynı dimensionda gemiye uzaklık
+- [x] Link kaybında uzaktan özellik kapıları (temel tek oyunculu kapsam)
 
 ## Aşama 6 — Field Survey
 
@@ -243,5 +243,5 @@ Aşağıdaki işler Aşama 14 kapanmadan ana geliştirme odağı yapılmayacakt�
 Ana listedeki sayısal sıra geliştirme sırasıdır. Tamamlanmış Aşama 6 Field Survey, jeolojik Analysis zinciri ve Aşama 8 Discoveries işleri yeniden başlatılmayacaktır.
 
 1. Aşama 4 — Overview / Ship Status tek oyunculu kabulü tamamlandı.
-2. Şimdi Aşama 5 — Ship Link.
+2. Aşama 5 temel Ship Link kabulü kaydedildi; şimdi `.68.1` Overview neden mesajının kısa görsel kontrolü.
 3. Ardından Aşama 9 — Player Navigation panelinin kalan maddeleri.

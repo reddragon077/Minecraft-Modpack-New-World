@@ -2482,9 +2482,9 @@
   ],
   "customMods": [
     {
-      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.68.0-alpha-player-ship-link.jar",
-      "sha256": "5637cae64a53e92140338b31d761f673f0a84c82f0fa2e8d37ceb457480c58b3",
-      "size": 3625294
+      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.68.1-alpha-ship-link-reasons.jar",
+      "sha256": "f4626881b44447184bf6003f81fb8586624c129929ecec0058cde9ae38a2db8c",
+      "size": 3625579
     },
     {
       "fileName": "DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar",

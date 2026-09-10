@@ -4,12 +4,12 @@ Bu belge, eski `0.1.0-alpha` Room Controller denemesinin yerine güncel New Worl
 
 ## Kurulu build'ler
 
-NewWorldCore `.68.0` yedi otomatik testi geçmiş Ship Link adayıdır; oyun içi kabul bekler. Overview `.67.1` kullanıcı oyun kabulünü geçti ve yedekte korunur.
+NewWorldCore `.68.0` temel tek oyunculu Ship Link kabulünü geçti ve yedekte korunur. Kurulu `.68.1` Overview bağlantı-kaybı nedenini düzeltir; yedi otomatik test geçti, yeni mesajın görsel kabulü bekler.
 Öncelikli test: [Ship Link runtime kabulü](../docs/14_Ship_Link_Runtime_Kabul.md).
 
 | Bileşen | Dosya | SHA-256 |
 |---|---|---|
-| NewWorldCore aday | `NewWorldCore-1.21.1-NeoForge-0.5.68.0-alpha-player-ship-link.jar` | `5637cae64a53e92140338b31d761f673f0a84c82f0fa2e8d37ceb457480c58b3` |
+| NewWorldCore aday | `NewWorldCore-1.21.1-NeoForge-0.5.68.1-alpha-ship-link-reasons.jar` | `f4626881b44447184bf6003f81fb8586624c129929ecec0058cde9ae38a2db8c` |
 | DoctorWhoMod fork | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` |
 
 ## Testten önce

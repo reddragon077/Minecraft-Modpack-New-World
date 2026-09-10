@@ -103,6 +103,22 @@ public final class PlayerOverview0670SmokeTest {
             if (!PlayerOverview0670.amount(-1).equals("?") || !PlayerOverview0670.amount(5_000_000_000L).equals("5.00G")) throw new AssertionError("FE formatting");
             PlayerOverview0670.resetClient();
             if (PlayerOverview0670.clientSnapshot() != null) throw new AssertionError("Disconnect reset");
+            for (String reason : List.of("OUT OF RANGE", "DIMENSION LINK DISABLED", "NO OWNED SHIP",
+                    "INTERIOR NOT LOADED", "POSITION UNAVAILABLE", "LINK DATA UNAVAILABLE")) {
+                var link = new net.newworld.player.PlayerShipLink0680.Snapshot("LOST", "known-ship",
+                        "minecraft:overworld", 11770, reason, 20, 120);
+                Snapshot unavailable = PlayerOverview0670.unavailableForLink(link);
+                expect(unavailable.warnings(), "SHIP LINK LOST // " + reason);
+                if (!unavailable.ship().isEmpty() || unavailable.fe() != -1 || unavailable.warp() != -1
+                        || !unavailable.health().equals("UNAVAILABLE")) throw new AssertionError("Denied telemetry leaked");
+                for (int code : PlayerOverview0670.encode(unavailable)) PlayerOverview0670.accept(code);
+                if (!unavailable.equals(PlayerOverview0670.clientSnapshot())) throw new AssertionError("Lost reason wire mismatch");
+                FakeScreen deniedScreen = new FakeScreen(); deniedScreen.columns = false;
+                PlayerOverview0670.draw(deniedScreen, new FakeGraphics(), 0, 0, unavailable, true, "UNAVAILABLE");
+                if (!deniedScreen.colors.containsKey("SHIP LINK LOST // " + reason)) throw new AssertionError("Lost reason missing from GUI");
+            }
+            expect(PlayerOverview0670.unavailableForLink(null).warnings(), "SHIP LINK LOST // LINK DATA UNAVAILABLE");
+            PlayerOverview0670.resetClient();
             System.out.println("Player Overview consumption meter, config, long/UTF protocol, malformed frames and reset smoke test passed.");
         } finally { Files.deleteIfExists(config); Files.deleteIfExists(root); }
     }

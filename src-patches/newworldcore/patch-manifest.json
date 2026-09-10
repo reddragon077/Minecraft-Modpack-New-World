@@ -1,9 +1,10 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.68.0-alpha-player-ship-link",
-  "marker": "NewWorldPlayerShipLinkV1",
+  "version": "0.5.68.1-alpha-ship-link-reasons",
+  "marker": "NewWorldPlayerShipLinkReasonsV2",
   "fixes": [
+    "Overview preserves the server-authoritative Ship Link loss reason instead of reporting every denied link as no owned ship",
     "Owner-scoped continuous CONNECTED/DIMENSIONAL/LOST Ship Link with live range and refresh config",
     "Server-authoritative remote gates, delayed-survey rechecks, ship-bound action selection and stale client invalidation",
     "Dynamic structure-registry classification for vanilla and modded structures",

@@ -1,6 +1,28 @@
-# Ship Link .68.0 — Oyun kabulü
+# Ship Link — Oyun kabulü ve .68.1 mesaj regresyonu
 
-Durum: aday kuruldu, yedi otomatik test geçti; aşağıdaki oyun testleri henüz yapılmadı.
+Durum (10 Eylül 2026): `.68.0` temel tek oyunculu bağlantı kabulü geçti. `.68.1` kuruldu ve yedi otomatik test geçti; yeni Overview neden mesajının görsel kontrolü henüz yapılmadı.
+
+## Doğrulanan sonuçlar
+
+- 13:37:02 ON BOARD; 14:24:02 menzil dışı LOST (ekranda 11770 blok); 14:24:40 gemiye dönüşte CONNECTED (ekranda 9 blok) ve Overview verileri geri geldi.
+- 14:26:28 Nether'da DIMENSIONAL; gemi Overworld'de, boyutlar arasında sahte mesafe yok. 14:28:10 canlı `allow_dimensional_link=false` ile LOST / DIMENSION LINK DISABLED ve Discoveries kilidi; 14:28:37 true ile liste geri geldi (`synced=128 total=471`).
+- 14:32:14 favori, 14:32:16 hedef, 14:32:17 hazır rota aynı gemiye ve `minecraft:overworld|-2456|40|328` kaydına uygulandı. Fiziksel Navigation Terminal ekranı aynı ALUMINUM hedefini ve READY_HOP1_LOADED / 1 hop gösterdi. Bu test rota hazırlama aktarımıdır; uçuş tamamlandı iddiası değildir.
+- İlk 80-tick Survey 14:35:17'de tamamlandı, bağlantı 14:35:20'de koptu; bu bir iptal kanıtı değildir. İkinci Structure Survey 14:37:34.652'de 400 tick ile sıraya alındı; 14:37:46.037'de boyut izni kapandı; 14:37:54.660'taki yürütmede bağlantı kontrolü erken döndü. Kaynakta `requireLink` keşif arama/yazmadan öncedir. Sarmalayıcının `completed` logu kayıt yazıldı anlamına gelmez. Kanıt log sırası + kaynak kontrolüdür; öncesi/sonrası NBT denetimi yapılmadı.
+- Test ayarları yedeklenip geri alındı: range=5000, dimensional=true, refresh=20, stale=120; Structure Survey delay=80 tick. Test-config yedeği: laptop `backups/config-tests/ship-link-restore-20260910-144210/`.
+
+## Şimdi yapılacak kısa .68.1 kontrolü
+
+Overview daha önce bütün başarısızlıkları `NO OWNED SHIP / LOADED INTERIOR REQUIRED` diye gösteriyordu. Artık aynı sunucu çözümlemesindeki gerçek neden korunur; erişim yokken eski telemetri yine gizlenir.
+
+1. Güvenli şekilde menzil dışına çıkıp OVERVIEW aç: `SHIP LINK LOST // OUT OF RANGE` görünmeli.
+2. İsteğe bağlı boyut kontrolü: Nether'dayken canlı dimensional iznini false yap; OVERVIEW `SHIP LINK LOST // DIMENSION LINK DISABLED` göstermeli. Sonunda true'ya geri al.
+3. Bağlantıyı geri kur: Overview verileri ve NOMINAL/gerçek sağlık durumu dönmeli. Yeni görsel sonuç kullanıcı tarafından doğrulanana kadar bu kontrol açık kalır.
+
+Sahipsiz/yüklenmeyen gemi, bilinmeyen konum/veri dahil altı nedenin üretimi, telemetri gizliliği, wire round-trip ve headless GUI metin çizimi otomatik testte geçti. Bu, oyun ekranının görsel kabulü değildir.
+
+## Kapsam sınırı ve yeniden kullanılabilir kontrol listesi
+
+Aşağıdaki liste tüm kontrollerin bu oturumda yapıldığı iddiası değildir. Ayrı Geological gecikmeli iptal, yeni kapılarla pozitif yerinde Survey regresyonu, yeniden giriş/sekme yaşam döngüsünün zorlanmış durumları, başka oyuncu izolasyonu ve yapay ağ timeout'u oyun içinde ayrıca doğrulanmalıdır.
 
 1. Kendi geminin içinde Player GUI aç: sağ üstte `LINK CONNECTED // ON BOARD`, altında geminin dış boyutu görünmeli. Sekme değiştirirken bağlantı göstergesi kalmalı; Overview ve Discoveries çalışmalı.
 2. Gemiden çık, aynı boyutta yürüyerek uzaklaş: `CONNECTED // ... BLK` oyuncu ile geminin dış konumu arasındaki 3B mesafeyi göstermeli; yüksekliği de hesaba katar.

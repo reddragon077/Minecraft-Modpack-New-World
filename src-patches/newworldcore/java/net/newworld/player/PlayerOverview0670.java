@@ -56,9 +56,12 @@ public final class PlayerOverview0670 {
 
     private static Snapshot sample(Object player) throws Exception {
         ServerView view = SERVER.computeIfAbsent(player, ignored -> new ServerView());
-        Object level = call(player, "serverLevel");
-        Object ship = PlayerShipLink0680.linkedShip(player);
-        if (ship == null) { view.reset(""); return Snapshot.unavailable("NO OWNED SHIP / LOADED INTERIOR REQUIRED"); }
+        PlayerShipLink0680.Resolution link = PlayerShipLink0680.resolve(player);
+        if (!link.snapshot().allowed() || link.ship() == null) {
+            view.reset("");
+            return unavailableForLink(link.snapshot());
+        }
+        Object ship = link.ship();
         String id = String.valueOf(call(ship, "id"));
         if (!id.equals(view.ship)) view.reset(id);
         Object manager = call(ship, "manager");
@@ -140,6 +143,13 @@ public final class PlayerOverview0670 {
             view.logged = statusKey;
         }
         return result;
+    }
+
+    /** Preserve the authoritative cause without exposing stale ship telemetry on denied access. */
+    public static Snapshot unavailableForLink(PlayerShipLink0680.Snapshot link) {
+        String reason = link == null || link.reason() == null || link.reason().isBlank()
+                ? "LINK DATA UNAVAILABLE" : link.reason();
+        return Snapshot.unavailable("SHIP LINK LOST // " + reason);
     }
 
     /** Unknown capacity is WARNING, never a false empty/critical battery. Uses double to avoid long overflow. */

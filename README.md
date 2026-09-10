@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Kurulu geliştirme adayı `0.5.68.0-alpha-player-ship-link`: bütün Player GUI sekmelerinde `CONNECTED / DIMENSIONAL / LOST`, oyuncudan gemiye 3B mesafe ve sunucu taraflı uzaktan erişim denetimi. Açıklamalı canlı ayarlar `ship-link.properties` içindedir. Yedi otomatik test geçti; Ship Link oyun kabulü bekliyor. Overview `.67.1` kullanıcı oyun kabulünü geçti ve yedekte korunuyor.
+- Ship Link `.68.0` tek oyunculu temel bağlantı testlerini geçti: `CONNECTED / DIMENSIONAL / LOST`, mesafe, canlı boyut izni, erişim kilidi ve gemi dışından Discovery işlemleri doğrulandı. Kurulu `0.5.68.1-alpha-ship-link-reasons`, Overview bağlantı kaybında gerçek nedeni gösterir; yedi otomatik test geçti, bu mesaj düzeltmesinin oyun içi görsel kontrolü bekliyor. Açıklamalı canlı ayarlar `ship-link.properties` içindedir. [Kabul kapsamı](docs/14_Ship_Link_Runtime_Kabul.md).
 - Runtime-kabul edilen `DISCOVERIES` sekmesi ortak Structure/Geology geçmişini, analiz/kaynak/rezerv/son-görülme ayrıntılarını ve canlı oyuncu mesafesini gösterir; kayıtlar favoriye alınabilir, aktif Navigation hedefi yapılabilir ve gerçek TARDIS rota/hop planına bağlanabilir.
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 

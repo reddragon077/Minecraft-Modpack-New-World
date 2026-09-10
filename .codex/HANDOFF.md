@@ -6,15 +6,23 @@ Branch: `main`
 
 ## Current objective
 
-Stage 4 Overview `.67.1` is accepted for laptop single-player: user confirmed warning styling and all presented remaining checks. Proceed to Stage 5 Ship Link, then remaining Stage 9. Earlier pending statements below are superseded; no multiplayer or forced-disconnection runtime test is claimed.
+Stage 4 and the core single-player Stage 5 Ship Link checks are accepted. Installed `.68.1` corrects the misleading Overview link-loss reason; its brief visual acceptance is next, then remaining Stage 9 Player Navigation. Do not reimplement accepted Discovery TARGET/ROUTE actions. No multiplayer or forced-timeout runtime acceptance is claimed.
 
-## Installed .68.0 — Ship Link runtime acceptance pending
+## Installed .68.1 — Overview reason repair, visual check pending
+
+- Repo/laptop: `NewWorldCore-1.21.1-NeoForge-0.5.68.1-alpha-ship-link-reasons.jar`, SHA-256 `f4626881b44447184bf6003f81fb8586624c129929ecec0058cde9ae38a2db8c`, 3625579 bytes. Seven smoke suites passed, including six link-loss causes, denied telemetry, wire round-trip and headless GUI text. Embedded/source manifest matches; each endpoint has one hash-matched core JAR. Java was stopped for installation.
+- Overview now preserves the authoritative resolver reason: `SHIP LINK LOST // OUT OF RANGE` or `DIMENSION LINK DISABLED`, etc. No config values, access policy, packets or save schemas changed.
+- `.68.0` core runtime evidence: ON BOARD, 11770-block loss, 9-block recovery, dimensional true/false/true live toggle, Discovery list recovery, same-ship remote FAV/TARGET/ROUTE and physical Navigation Terminal ready-hop confirmation. Delayed Structure Survey denial is supported by log timing + source early return, not an NBT before/after audit. See `docs/14_Ship_Link_Runtime_Kabul.md` and newest conversation record for exact scope.
+- `.68.0` and repo/live originals preserved with hash checks at laptop `backups/custom-mods/pre-ship-link-reasons-20260910-01/`; older backups untouched. No configs or world data overwritten. Restored canonical settings remain range=5000, dimensional=true, refresh=20, stale=120, Structure Survey delay=80.
+- Next: user visually checks the `.68.1` Overview loss reason and recovery. Separate Geological delayed cancellation, forced stale/network tests, multiplayer and exhaustive reopen/world lifecycle tests remain unverified; do not count automatic tests as runtime evidence.
+
+## Previous .68.0 installation — core runtime results supersede pending wording below
 
 - Repo/laptop: `NewWorldCore-1.21.1-NeoForge-0.5.68.0-alpha-player-ship-link.jar`, SHA-256 `5637cae64a53e92140338b31d761f673f0a84c82f0fa2e8d37ceb457480c58b3`, 3625294 bytes. Seven smoke suites passed, embedded/source manifest matched, single-JAR/hash verified. No Java process was running during installation.
 - GUI header on every tab shows CONNECTED / DIMENSIONAL / LOST, player-to-exterior 3D distance and ship dimension. Own interior is ON BOARD. Live `ship-link.properties` defaults: 5000 blocks, dimensional true, refresh 20 ticks, stale 120 ticks; Turkish guidance included. Server timing is communicated to the client.
 - Server owner/range checks gate remote Survey/Discoveries reads and writes; delayed Survey rechecks at execution. Stale/reopened/changed-world client state is invalidated. Discovery selection keys are tied to the resolved ship; route engine receives that ship's interior context. No world schema change, chunk load, or cancellation of ongoing Mining/route work.
 - Accepted `.67.1`, original repo/live JARs and prior config README are preserved at laptop `backups/custom-mods/pre-ship-link-20260910-01/`. Old backups remain. Scoped deployment changed only custom core JAR, new ship-link config and config README; Overview user values and other configs were preserved.
-- Next: `docs/14_Ship_Link_Runtime_Kabul.md`. Start with own ship ON BOARD, walk outside for distance, then use temporary range=32 to test LOST/recovery. Restore 5000 afterward. Test dimensional toggle, delayed Survey and exterior Discovery FAV/TARGET/ROUTE. Do not mark Stage 5 accepted until runtime checks pass.
+- Its core runtime checks subsequently passed within the scope above. Historical installation details are retained; use the current `.68.1` acceptance gate, not the original pending plan.
 
 ## Previous .67.1 — now runtime accepted and backed up
 
