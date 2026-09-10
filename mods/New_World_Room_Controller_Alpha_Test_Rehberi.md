@@ -4,8 +4,8 @@ Bu belge, eski `0.1.0-alpha` Room Controller denemesinin yerine güncel New Worl
 
 ## Kurulu build'ler
 
-Kurulu NewWorldCore `.69.0`, salt-okunur Player Navigation paneli adayıdır; sekiz test paketi ve gerçek DoctorWhoMod WE tahmin entegrasyonu geçti, oyun kabulü bekler. `.68.2` bağlantı/otomatik geri dönüş testi geçti ve yedeklendi. [Navigation kabul adımları](../docs/15_Player_Navigation_Runtime_Kabul.md).
-Öncelikli test: [Ship Link runtime kabulü](../docs/14_Ship_Link_Runtime_Kabul.md).
+Kurulu NewWorldCore `.69.0`, salt-okunur Player Navigation paneli adayıdır; sekiz test paketi ve gerçek DoctorWhoMod WE tahmin entegrasyonu geçti. İlk görünüm ve Aluminum -> Carbon hedef/rota/maliyet güncellemesi oyun içinde doğrulandı; yeniden açılış ve genişletilmiş kontroller açıktır. `.68.2` bağlantı/otomatik geri dönüş testi geçti ve yedeklendi. [Navigation kabul adımları](../docs/15_Player_Navigation_Runtime_Kabul.md).
+Öncelikli test: [Player Navigation kalan runtime kontrolleri](../docs/15_Player_Navigation_Runtime_Kabul.md).
 
 | Bileşen | Dosya | SHA-256 |
 |---|---|---|

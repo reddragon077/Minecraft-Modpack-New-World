@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Kurulu geliştirme adayı `0.5.69.0-alpha-player-navigation-view`: salt-okunur Navigation sekmesinde mevcut hedef, gemiye göre mesafe, rota/sonraki hop ve gerçek motor formülünden sonraki hop WE tahmini bulunur. Sekiz test paketi ve DoctorWhoMod tahmin entegrasyon testi geçti; oyun kabulü bekliyor. [Navigation testi](docs/15_Player_Navigation_Runtime_Kabul.md). Önceki `.68.2` yeni oturum ve otomatik Ship Link geri dönüş kabulü geçti; [kapsam](docs/14_Ship_Link_Runtime_Kabul.md).
+- Kurulu geliştirme adayı `0.5.69.0-alpha-player-navigation-view`: salt-okunur Navigation sekmesinde mevcut hedef, gemiye göre mesafe, rota/sonraki hop ve gerçek motor formülünden sonraki hop WE tahmini bulunur. Sekiz test paketi ve DoctorWhoMod tahmin entegrasyon testi geçti. Oyun içinde ilk görünüm ve Aluminum -> Carbon hedef/rota/maliyet güncellemesi doğrulandı; yeniden açılış ve genişletilmiş kontroller açık. [Navigation testi](docs/15_Player_Navigation_Runtime_Kabul.md). Önceki `.68.2` yeni oturum ve otomatik Ship Link geri dönüş kabulü geçti; [kapsam](docs/14_Ship_Link_Runtime_Kabul.md).
 - Runtime-kabul edilen `DISCOVERIES` sekmesi ortak Structure/Geology geçmişini, analiz/kaynak/rezerv/son-görülme ayrıntılarını ve canlı oyuncu mesafesini gösterir; kayıtlar favoriye alınabilir, aktif Navigation hedefi yapılabilir ve gerçek TARDIS rota/hop planına bağlanabilir.
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 

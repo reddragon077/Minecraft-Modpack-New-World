@@ -4,6 +4,8 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-10 — Navigation runtime evidence and GitHub handoff](2026-09-10_laptop_navigation_runtime_sync.md) — `.69.0` initial view and Aluminum-to-Carbon target/route/WE refresh passed; JAR/lock/config/addon audit, partial acceptance only; GUI reopen and remaining edge checks stay open.
+
 - [2026-09-10 — Player Navigation view candidate](2026-09-10_laptop_navigation_view.md) — `.69.0` read-only selected-target/route/loaded-hop/WE panel, live config, eight suites and actual engine formula fixture passed; backed-up installation, runtime pending.
 
 - [2026-09-10 — Typed link runtime acceptance](2026-09-10_laptop_link_acceptance.md) — fresh session, Overview/Discoveries, 5998-block loss and automatic 12-block recovery passed; apparent stale screenshot was delayed delivery; Stage 9 can proceed.

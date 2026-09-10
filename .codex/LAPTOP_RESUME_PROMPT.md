@@ -7,7 +7,7 @@ Kanka bu New World projesine kanonik kayıtlardaki son noktadan devam edeceğiz.
 
 Önce hiçbir dosyayı değiştirmeden mevcut branch ve çalışma ağacını kontrol et. Yerel değişiklik yoksa origin/main'i fetch edip yalnızca fast-forward pull yap. Yerel değişiklik varsa ezme; bana durumu bildir. Ardından sırasıyla `.codex/project-memory.md`, `.codex/HANDOFF.md`, `.codex/conversations/INDEX.md` ve INDEX'teki en yeni ilgili conversation kaydını tamamen oku. Bu prompttan daha yeni doğrulanmış kayıt varsa onu esas al.
 
-10 Eylül itibarıyla repo/laptopta kurulu aday (Player Navigation görünümü oyun kabulünü bekler):
+10 Eylül itibarıyla repo/laptopta kurulu aday (Player Navigation ilk görünüm ve hedef/rota değişimi oyun testini geçti; kalan kontroller açık):
 `NewWorldCore-1.21.1-NeoForge-0.5.69.0-alpha-player-navigation-view.jar`
 SHA-256:
 `af77b62a691a18bf6340c7371647b0c90e07b7643773cf8576958aae29c8427f`
@@ -20,7 +20,7 @@ Laptopun CurseForge instance yolunu `machines/laptop.json` kaydından çöz. Rep
 
 Kurulumdan sonra sıradaki çalışma:
 1. Aşama 4 ve Aşama 5 temel tek oyunculu kabulü korunur; `.68.2` yeni oturum ve otomatik geri bağlantı regresyonu geçti. Genişletilmiş multiplayer/timeout testlerini geçmiş sayma.
-2. Önce `.69.0` Player Navigation salt-okunur görünümünü `docs/15_Player_Navigation_Runtime_Kabul.md` ile doğrula. Mevcut hedef, gemi mesafesi, rota/loaded hop ve sonraki hop WE tahmini fiziksel terminalle eşleşmeli. Uçuş/rota yazımı eklenmedi.
+2. `.69.0` Player Navigation ilk görünüm ve Aluminum -> Carbon TARGET/ROUTE güncellemesi ekran/log ile geçti (48 -> 52 WE). Önce GUI kapat/aç kontrolünü doğrula; henüz kullanıcı onayı yok. Sonra `docs/15_Player_Navigation_Runtime_Kabul.md` içindeki kalan Navigation kontrolleri. Uçuş/rota yazımı eklenmedi; Aşama 9 tamamen kapanmadı.
 3. Sonra Aşama 9 favori seçimi, SAVE CURRENT LOCATION ve SEND TO SHIP kalan maddeleri. TARGET/ROUTE motorunu yeniden oluşturma.
 
 Ayarlanabilir yeni davranışlarda `.cursor/rules/config-first-development.mdc` standardını uygula. Her doğrulanmış adımda pack-lock, ilgili dokümanlar, `.codex/HANDOFF.md`, `.codex/project-memory.md` ve tarihli conversation kaydını güncelle; test et; commit edip GitHub main'e pushla. Dünya/save/log/cache dosyalarını Git'e ekleme. Bilinen iyi JAR yedeklerini silme ve aynı anda iki NewWorldCore sürümü yükleme.
