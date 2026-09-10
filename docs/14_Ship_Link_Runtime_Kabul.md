@@ -1,6 +1,16 @@
-# Ship Link — Oyun kabulü ve .68.1 mesaj regresyonu
+# Ship Link — Oyun kabulü ve .68.2 SYNCING regresyonu
 
-Durum (10 Eylül 2026): `.68.0` temel tek oyunculu bağlantı kabulü geçti. `.68.1` kuruldu ve yedi otomatik test geçti; yeni Overview neden mesajının görsel kontrolü henüz yapılmadı.
+Durum (10 Eylül 2026): `.68.0` önceki oturumdaki temel kontrolleri geçti; `.68.1` yeni oturumda sürekli SYNCING ile başarısız oldu. Aşama 5 kabul kapısı yeniden açık. Kurulu `.68.2` otomatik testleri geçti; oyun kabulü bekliyor.
+
+## Önce yapılacak .68.2 kontrolü
+
+Canlı tanıda aynı isim/parametreli iki `Minecraft.getConnection()` bulundu: `Connection` döndüren null, `ClientPacketListener` döndüren doluydu. Önceki kod yanlış metodu seçtiği için hiç veri isteği göndermiyordu. `.68.2` dönüş türünü de eşleştirir; ayar, sahiplik veya erişim sınırı değiştirmez.
+
+1. Oyunu tamamen yeni oturumla aç, TARDIS yakınında Player GUI → OVERVIEW: birkaç saniyede SYNCING yerine CONNECTED ve güncel telemetri gelmeli.
+2. DISCOVERIES listesi yüklenmeli; GUI kapat/aç sonrası yeniden veri gelmeli.
+3. Ardından aşağıdaki OUT OF RANGE / geri yaklaşma ve isteğe bağlı boyut izni kontrollerini yap. `.68.1` neden düzeltmesi korunmuştur.
+
+Yedi otomatik test paketi geçti. Yeni JVM düzeyindeki çakışma testi iki metot sırasını, doğru bağlantının dolu/boş durumunu ve yanlış dönüş türüne geri düşmeme davranışını sınar. Gerçek oyun sonucu henüz doğrulanmadı.
 
 ## Doğrulanan sonuçlar
 

@@ -128,9 +128,10 @@ try {
     if ($smokeSources.Count -eq 0) { throw 'No NewWorldCore smoke tests were found.' }
     $smokeRoot = Join-Path $workRoot 'smoke-classes'
     New-Item -ItemType Directory -Path $smokeRoot -Force | Out-Null
-    & $javac --release 21 -encoding UTF-8 -classpath $output -d $smokeRoot $smokeSources
+    $smokeCompileClasspath = $output + [IO.Path]::PathSeparator + $asm
+    & $javac --release 21 -encoding UTF-8 -classpath $smokeCompileClasspath -d $smokeRoot $smokeSources
     if ($LASTEXITCODE -ne 0) { throw "smoke-test javac failed with exit code $LASTEXITCODE" }
-    $smokeClasspath = $smokeRoot + [IO.Path]::PathSeparator + $output
+    $smokeClasspath = $smokeRoot + [IO.Path]::PathSeparator + $smokeCompileClasspath
     $configRoot = Join-Path $repoRoot 'config\newworldcore'
     & $java ("-Dnewworldcore.configDir={0}" -f $configRoot) -classpath $smokeClasspath NewWorldConfigSmokeTest
     if ($LASTEXITCODE -ne 0) { throw "config smoke test failed with exit code $LASTEXITCODE" }

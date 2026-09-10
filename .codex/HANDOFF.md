@@ -6,9 +6,20 @@ Branch: `main`
 
 ## Current objective
 
-Stage 4 and the core single-player Stage 5 Ship Link checks are accepted. Installed `.68.1` corrects the misleading Overview link-loss reason; its brief visual acceptance is next, then remaining Stage 9 Player Navigation. Do not reimplement accepted Discovery TARGET/ROUTE actions. No multiplayer or forced-timeout runtime acceptance is claimed.
+Stage 5 acceptance gate is reopened: `.68.1` failed fresh-session testing with permanent SYNCING, despite the earlier `.68.0` core checks. Installed `.68.2` fixes the proven getter-descriptor collision; runtime acceptance is pending. Do not start remaining Stage 9 or reimplement accepted Discovery TARGET/ROUTE until this regression is verified fixed.
 
-## Installed .68.1 — Overview reason repair, visual check pending
+## Installed .68.2 — typed client connection, runtime pending
+
+- User resolved the config divergence: shared Structure Survey `field_survey.delay_ticks=20` (1 second), matching the existing laptop value. Repository updated from 80 to 20; Ship Link and Overview configs match too. No JAR rebuild needed for this live property. Geological Survey delay remains unchanged.
+
+- Repo/laptop: `NewWorldCore-1.21.1-NeoForge-0.5.68.2-alpha-typed-client-link.jar`, SHA-256 `2ffb61b41cc4b3f99f820c103006d9015da7695184ac62e49f62b4224cbd88c8`, 3625901 bytes. Seven smoke suites passed; source/embedded manifest and installed hashes matched. No Java process during replacement.
+- Live read-only diagnosis at 15:25:01 on Render thread found two `Minecraft.getConnection()` methods: return `net.minecraft.network.Connection` was null; return `ClientPacketListener` was non-null and identical to player/level connection. Reflection by name/arguments selected the former, preventing mode-4/5 requests entirely. No particular mod is blamed without attribution evidence.
+- Overview and Ship Link now share exact zero-argument, nonstatic return-descriptor selection. Null listener stays null; missing descriptor fails instead of selecting another getter. No config, packet, save or access policy changes. The `.68.1` reason fix is retained.
+- ASM regression creates real same-name/no-arg/different-return methods, tests both declaration orders, null wrong getter/live listener, live wrong getter/null listener and missing-descriptor rejection. Existing seven suites passed; this is not runtime acceptance.
+- Previous `.68.1` and original repo/live copies preserved at laptop `backups/custom-mods/pre-typed-client-link-20260910-01/`, along with prior local continuity records. Known-good `.68.0` and older backups untouched. Temporary read-only diagnostic agents/tools remain under ignored laptop backups, not in the shipped JAR or Git.
+- Next: launch a fresh game session; near TARDIS, Overview must leave SYNCING and show CONNECTED with telemetry; Discoveries must load. Reopen GUI, then verify real OUT OF RANGE/recovery and retained reason text. See `docs/14_Ship_Link_Runtime_Kabul.md`.
+
+## Previous .68.1 — runtime failed (permanent SYNCING), now backed up
 
 - Repo/laptop: `NewWorldCore-1.21.1-NeoForge-0.5.68.1-alpha-ship-link-reasons.jar`, SHA-256 `f4626881b44447184bf6003f81fb8586624c129929ecec0058cde9ae38a2db8c`, 3625579 bytes. Seven smoke suites passed, including six link-loss causes, denied telemetry, wire round-trip and headless GUI text. Embedded/source manifest matches; each endpoint has one hash-matched core JAR. Java was stopped for installation.
 - Overview now preserves the authoritative resolver reason: `SHIP LINK LOST // OUT OF RANGE` or `DIMENSION LINK DISABLED`, etc. No config values, access policy, packets or save schemas changed.
@@ -153,7 +164,7 @@ Stage 4 and the core single-player Stage 5 Ship Link checks are accepted. Instal
 ## Next executable test
 
 1. Stage 4 Overview single-player acceptance is complete.
-2. Runtime-test installed Stage 5 Ship Link `.68.0`; do not rebuild before checking the current candidate.
+2. Runtime-test installed `.68.2` after the confirmed client-getter collision; Stage 5 gate remains open until SYNCING/recovery checks pass.
 3. Then return to Stage 9 for current target/route/hop/WE presentation, favorite selection, `SAVE CURRENT LOCATION`, and `SEND TO SHIP`. Discovery TARGET/ROUTE creation is already complete in `0.5.66.1` and must not be reimplemented.
 
 ## Do not assume

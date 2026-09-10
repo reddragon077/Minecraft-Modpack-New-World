@@ -5,6 +5,7 @@ import net.newworld.player.PlayerShipLink0680;
 import net.newworld.player.PlayerShipLink0680.Snapshot;
 import net.newworld.player.PlayerDiscoveries0650;
 import net.newworld.player.PlayerOverview0670;
+import org.objectweb.asm.*;
 
 public final class PlayerShipLink0680SmokeTest {
     public static void main(String[] args) throws Exception {
@@ -12,6 +13,7 @@ public final class PlayerShipLink0680SmokeTest {
         System.setProperty("newworldcore.configDir", root.toString());
         Path config = root.resolve("ship-link.properties");
         try {
+            connectionDescriptorRegression();
             eq(PlayerShipLink0680.range(), 5000); eq(PlayerShipLink0680.refreshTicks(), 20); eq(PlayerShipLink0680.staleTicks(), 120);
             check(PlayerShipLink0680.dimensional(), "Default dimensional");
             state(true, false, "overworld", "overworld", 4999.9, "CONNECTED");
@@ -81,6 +83,41 @@ public final class PlayerShipLink0680SmokeTest {
         Snapshot actual = PlayerShipLink0680.classify("a", owner, inside, p, e, distance, 5000, true);
         check(actual.state().equals(expected), expected + " != " + actual);
         check(actual.allowed() == !expected.equals("LOST"), "Policy bypass");
+    }
+    /** Actual JVM-only collision: identical name/arguments, unrelated return types, unlike Java overloads. */
+    private static void connectionDescriptorRegression() throws Exception {
+        for (boolean reverse : List.of(false, true)) for (boolean connected : List.of(false, true)) {
+            String name = "ConnectionCollision" + reverse + connected;
+            ClassWriter cw = new ClassWriter(0);
+            cw.visit(Opcodes.V21, Opcodes.ACC_PUBLIC, name, null, "java/lang/Object", null);
+            MethodVisitor init = cw.visitMethod(Opcodes.ACC_PUBLIC, "<init>", "()V", null, null);
+            init.visitCode(); init.visitVarInsn(Opcodes.ALOAD, 0);
+            init.visitMethodInsn(Opcodes.INVOKESPECIAL, "java/lang/Object", "<init>", "()V", false);
+            init.visitInsn(Opcodes.RETURN); init.visitMaxs(1, 1); init.visitEnd();
+            for (boolean expected : reverse ? List.of(true, false) : List.of(false, true)) {
+                String type = expected ? "PlayerShipLink0680SmokeTest$FakeConnection" : "java/lang/String";
+                MethodVisitor mv = cw.visitMethod(Opcodes.ACC_PUBLIC, "getConnection", "()L" + type + ";", null, null);
+                mv.visitCode();
+                if (expected && connected) mv.visitFieldInsn(Opcodes.GETSTATIC, type, "INSTANCE", "L" + type + ";");
+                else if (!expected && !connected) mv.visitLdcInsn("unrelated transport must not grant a link");
+                else mv.visitInsn(Opcodes.ACONST_NULL);
+                mv.visitInsn(Opcodes.ARETURN); mv.visitMaxs(1, 1); mv.visitEnd();
+            }
+            cw.visitEnd();
+            Object fixture = new FixtureLoader().define(name, cw.toByteArray()).getConstructor().newInstance();
+            check(fixture.getClass().getDeclaredMethods().length == 2, "Collision fixture missing getter");
+            Object value = PlayerOverview0670.callReturning(fixture, "getConnection", FakeConnection.class.getName());
+            check(value == (connected ? FakeConnection.INSTANCE : null), "Return descriptor selection / disconnect failed");
+            try {
+                PlayerOverview0670.callReturning(fixture, "getConnection", "missing.Listener");
+                throw new AssertionError("Missing listener descriptor fell back to another getter");
+            } catch (NoSuchMethodException expected) { }
+        }
+        System.out.println("Client connection JVM descriptor collision: both method orders, live/null listener and missing-type rejection passed.");
+    }
+    public static final class FakeConnection { public static final FakeConnection INSTANCE = new FakeConnection(); }
+    private static final class FixtureLoader extends ClassLoader {
+        Class<?> define(String name, byte[] bytes) { return defineClass(name, bytes, 0, bytes.length); }
     }
     private static void check(boolean value, String message) { if (!value) throw new AssertionError(message); }
     private static void eq(int actual, int expected) { check(actual == expected, actual + " != " + expected); }

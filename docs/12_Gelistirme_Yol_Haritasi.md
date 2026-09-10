@@ -3,7 +3,7 @@
 Son kayıt güncellemesi: 10 Eylül 2026
 
 Son temel tek oyunculu runtime-kabul edilen build: NewWorldCore `0.5.68.0-alpha-player-ship-link` (10 Eylül; ayrıntılı kapsam Ship Link kabul belgesinde).
-Kurulu aday: `0.5.68.1-alpha-ship-link-reasons` (yedi otomatik test geçti; Overview bağlantı-kaybı mesajının görsel kontrolü bekliyor).
+Kurulu aday: `0.5.68.2-alpha-typed-client-link` (yedi otomatik test geçti; `.68.1` yeni oturumdaki SYNCING hatası nedeniyle Aşama 5 kabul kapısı yeniden açık).
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -73,6 +73,8 @@ Kabul testi: [`Overview`](13_Overview_Runtime_Kabul.md). Kullanıcının seçti�
 Not: Player GUI fiziksel terminallerin salt-okunur ortak telemetri katmanını kullanır.
 
 ## Aşama 5 — Ship Link
+
+Güncel öncelik: `.68.1` yeni oturumda kalıcı SYNCING ile başarısız oldu. `.68.2` aynı isimli getter'ları dönüş türüyle ayırıyor; önce yeni oturum bağlantı/Overview/Discoveries ve kayıp/geri dönüş testi geçmeli. Aşağıdaki işlev kanıtları önceki `.68.0` oturumuna aittir; güncel adayın kabulü değildir.
 
 Durum: **temel tek oyunculu işlev kabulü tamamlandı; `.68.1` açıklama düzeltmesinin görsel kontrolü açık.** Ekran görüntüleri ve sunucu logları ON BOARD, 11770 blokta LOST, 9 blokta yeniden CONNECTED, canlı boyut izni ve gemi dışından FAV/TARGET/ROUTE zincirini doğruladı. Gecikmeli Structure Survey için bağlantı kaybında erken dönüş, zaman çizelgesi ve kaynak koduyla doğrulandı; ayrı NBT karşılaştırması yapılmadı. Geological gecikmeli iptal, çok oyunculu izolasyon ve yapay timeout oyun testleri kapsam dışı/açık; otomatik testler bunların yerine sayılmaz. [Kabul kapsamı ve son görsel kontrol](14_Ship_Link_Runtime_Kabul.md).
 
@@ -243,5 +245,5 @@ Aşağıdaki işler Aşama 14 kapanmadan ana geliştirme odağı yapılmayacakt�
 Ana listedeki sayısal sıra geliştirme sırasıdır. Tamamlanmış Aşama 6 Field Survey, jeolojik Analysis zinciri ve Aşama 8 Discoveries işleri yeniden başlatılmayacaktır.
 
 1. Aşama 4 — Overview / Ship Status tek oyunculu kabulü tamamlandı.
-2. Aşama 5 temel Ship Link kabulü kaydedildi; şimdi `.68.1` Overview neden mesajının kısa görsel kontrolü.
+2. Aşama 5 kabul kapısı yeniden açık: `.68.2` yeni oturum SYNCING regresyonunu ve bağlantı kaybı/geri dönüşü oyun içinde doğrula.
 3. Ardından Aşama 9 — Player Navigation panelinin kalan maddeleri.

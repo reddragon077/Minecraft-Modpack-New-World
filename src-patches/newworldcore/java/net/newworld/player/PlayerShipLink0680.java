@@ -178,7 +178,7 @@ public final class PlayerShipLink0680 {
     public static void beforeRender(Object screen) {
         try {
             Object mc = stat("net.minecraft.client.Minecraft", "getInstance");
-            Object nextConnection = call(mc, "getConnection"), nextLevel = field(mc, "level"), nextPlayer = field(mc, "player");
+            Object nextConnection = PlayerOverview0670.clientConnection(mc), nextLevel = field(mc, "level"), nextPlayer = field(mc, "player");
             if (nextConnection != connection || nextLevel != levelIdentity || nextPlayer != playerIdentity || screen != screenIdentity) {
                 resetClient(); openedAt = System.nanoTime();
                 connection = nextConnection; levelIdentity = nextLevel; playerIdentity = nextPlayer; screenIdentity = screen;

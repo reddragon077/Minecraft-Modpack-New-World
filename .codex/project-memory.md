@@ -21,6 +21,15 @@ Last synchronized: 2026-09-10
 
 ## NewWorldCore continuation point
 
+- User chose shared Structure Survey `field_survey.delay_ticks=20` (1 second), superseding older 80-tick records. Repository now matches the existing laptop value; Geological Survey delay unchanged. Ship Link and Overview config values also match. This live-config update requires no additional JAR.
+
+- Current gate (supersedes the historical continuation below): `.68.1` failed fresh-session runtime testing, permanently SYNCING even beside the TARDIS and after reopening the GUI. Stage 5 acceptance is reopened; Stage 9 is deferred.
+- Installed repo/laptop candidate `.68.2`: `NewWorldCore-1.21.1-NeoForge-0.5.68.2-alpha-typed-client-link.jar`, SHA-256 `2ffb61b41cc4b3f99f820c103006d9015da7695184ac62e49f62b4224cbd88c8`, 3625901 bytes. Seven suites passed including generated JVM getter collisions in both orders; source/embedded manifest and installed hashes match. Runtime acceptance is pending.
+- Cause proven by live Render-thread diagnosis: mixed environment has both `Minecraft.getConnection():Connection` (null) and `getConnection():ClientPacketListener` (live). Name-only reflection chose the wrong descriptor, so Overview/Ship Link sent no request. Both now select the exact listener return type, retaining null/missing fail-closed behavior and `.68.1` reason messages. No config or world changes.
+- `.68.1` and original repo/live copies backed up before replacement at `backups/custom-mods/pre-typed-client-link-20260910-01/`; `.68.0` and older known-good backups preserved. Game was closed for installation. Next: fresh-session CONNECTED/Overview/Discoveries, GUI reopen, OUT OF RANGE/recovery; do not mark runtime success from smoke tests.
+
+### Earlier continuation records (superseded where they name the installed build or next gate)
+
 - Earlier 2026-09-10 acceptance: user verified `.67.1` warning states and all presented remaining Overview checks (terminal FE/WE, travel/route/cooldown, exterior coordinates, world re-entry). Stage 4 is accepted for laptop single-player. This is user-reported runtime evidence, not an independently exercised multiplayer/disconnection test. Accepted `.67.1` SHA-256: `0d08367a747efc6fa94d41270793b96de897ebb0059a2de5599c9c322badbac4`; it is now backed up, not the installed build.
 
 - Current continuation: core Stage 5 single-player runtime acceptance passed on `.68.0` (ON BOARD, far LOST, nearby recovery, dimensional policy toggle, Discovery recovery and same-ship remote FAV/TARGET/ROUTE). Delayed Structure Survey denial was checked by log timeline + source early return, not NBT comparison. Multiplayer, artificial timeout and separate Geological delayed cancellation remain unverified.

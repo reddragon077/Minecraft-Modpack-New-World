@@ -16,7 +16,7 @@ public final class NewWorldConfigSmokeTest {
         expect("replication batch", NewWorldTuning.replicationBatchSize(), 64L);
         expect("player survey range", NewWorldTuning.playerFieldSurveyRangeBlocks(), 48L);
         expect("player survey chunks", NewWorldTuning.playerFieldSurveyChunkRadius(), 3L);
-        expect("player survey delay", NewWorldTuning.playerFieldSurveyDelayTicks(), 80L);
+        expect("player survey delay", NewWorldTuning.playerFieldSurveyDelayTicks(), 20L);
         expect("geological survey range", NewWorldTuning.playerGeologicalSurveyRangeBlocks(), 48L);
         expect("geological survey vertical range", NewWorldTuning.playerGeologicalSurveyVerticalRangeBlocks(), 128L);
         expect("geological survey delay", NewWorldTuning.playerGeologicalSurveyDelayTicks(), 80L);
@@ -53,7 +53,7 @@ public final class NewWorldConfigSmokeTest {
         expect("discoveries rows", NewWorldTuning.playerDiscoveriesRows(), 6L);
         expect("network FE transfer", NewWorldTuning.networkNodeTransferLimit(0, 3), 100_000L);
         expect("network item capacity", NewWorldTuning.networkNodeCapacityLimit(1, 4), 1024L);
-        if (!"SURVEY RANGE S:48 G:48x128 blocks // RESPONSE S:~4.0s G:~4.0s".equals(NewWorldTuning.playerSurveyDetailLine())) {
+        if (!"SURVEY RANGE S:48 G:48x128 blocks // RESPONSE S:~1.0s G:~4.0s".equals(NewWorldTuning.playerSurveyDetailLine())) {
             throw new AssertionError("player survey GUI detail line: " + NewWorldTuning.playerSurveyDetailLine());
         }
         System.out.println("NewWorldCore config smoke test passed: " + NewWorldConfig.root());

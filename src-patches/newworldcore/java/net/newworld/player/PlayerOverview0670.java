@@ -234,7 +234,7 @@ public final class PlayerOverview0670 {
     public static void render(Object screen, Object graphics, int left, int top) {
         try {
             Object minecraft = stat("net.minecraft.client.Minecraft", "getInstance");
-            Object connection = call(minecraft, "getConnection");
+            Object connection = clientConnection(minecraft);
             if (connection != clientConnection) { resetClient(); clientConnection = connection; }
             ClientView view = VIEWS.computeIfAbsent(screen, ignored -> new ClientView());
             long now = System.nanoTime();
@@ -328,6 +328,24 @@ public final class PlayerOverview0670 {
     private static String flag(Object target, String method, String yes, String no) { try { Object value = call(target, method); return value instanceof Boolean b ? b ? yes : no : "UNKNOWN"; } catch (Exception failure) { return "UNKNOWN"; } }
     private static long num(Object o) { return o instanceof Number n ? n.longValue() : -1; }
     private static long readNumber(String type, String method, Object... args) { try { return num(stat(type, method, args)); } catch (Exception failure) { return -1; } }
+    /** Mixed environments can add getConnection():Connection beside the vanilla listener getter. */
+    static Object clientConnection(Object minecraft) throws Exception {
+        return callReturning(minecraft, "getConnection", "net.minecraft.client.multiplayer.ClientPacketListener");
+    }
+
+    /** Exact zero-argument JVM descriptor selection; never fall back to an unrelated return type. */
+    public static Object callReturning(Object target, String name, String returnType) throws Exception {
+        for (Class<?> type = target.getClass(); type != null; type = type.getSuperclass()) {
+            for (Method method : type.getDeclaredMethods()) {
+                if (!method.getName().equals(name) || method.getParameterCount() != 0
+                        || Modifier.isStatic(method.getModifiers()) || !method.getReturnType().getName().equals(returnType)) continue;
+                method.setAccessible(true);
+                return method.invoke(target);
+            }
+        }
+        throw new NoSuchMethodException(target.getClass().getName() + '.' + name + "():" + returnType);
+    }
+
     static Object call(Object target, String name, Object... args) throws Exception { return invoke(target.getClass(), target, name, args); }
     static Object stat(String type, String name, Object... args) throws Exception { return invoke(Class.forName(type), null, name, args); }
     private static Object invoke(Class<?> type, Object target, String name, Object[] args) throws Exception {
