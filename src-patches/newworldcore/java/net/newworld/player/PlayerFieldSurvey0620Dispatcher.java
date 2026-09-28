@@ -29,6 +29,8 @@ public final class PlayerFieldSurvey0620Dispatcher {
                 PlayerDiscoveries0650.sendSnapshot(player);
             } else if (mode == 4) {
                 PlayerOverview0670.request(player);
+            } else if (mode == 7) {
+                PlayerDiscoveries0650.sendSnapshot(player, true);
             } else if (PlayerDiscoveries0650.isActionMode(mode)) {
                 PlayerDiscoveries0650.handleAction(player, mode);
             } else {

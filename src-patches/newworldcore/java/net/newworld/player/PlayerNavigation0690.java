@@ -22,6 +22,8 @@ public final class PlayerNavigation0690 {
     public static int staleTicks() { return Math.max(refreshTicks() * 2, NewWorldConfig.integer("player-navigation", "stale_after_ticks", 120, 40, 3600)); }
     public static boolean showCoordinates() { return NewWorldConfig.bool("player-navigation", "show_coordinates", true); }
     public static boolean showEstimate() { return NewWorldConfig.bool("player-navigation", "show_we_estimate", true); }
+    public static boolean favoritesEnabled() { return NewWorldConfig.bool("player-navigation", "favorites.enabled", true); }
+    public static int favoritesSyncLimit() { return NewWorldConfig.integer("player-navigation", "favorites.sync_limit", 128, 16, 512); }
 
     public record Snapshot(String ship, String status, String target, String dimension, String position,
             String distance, String route, String progress, String nextHop, String nextDistance,
@@ -190,7 +192,9 @@ public final class PlayerNavigation0690 {
             label(screen, graphics, target[i], left + 33, top + 118 + i * 20, i == 1 ? 0xFF64EAB5 : 0xFFD5E7EF, 225);
             label(screen, graphics, route[i], left + 282, top + 118 + i * 20, i == 1 ? 0xFFFFCF45 : 0xFFD5E7EF, 225);
         }
-        label(screen, graphics, "Next-hop estimate only; flight gates still apply.", left + 26, top + 258, 0xFF8DA7B4, 488);
-        label(screen, graphics, "Use Discoveries TARGET/ROUTE or the ship terminal.", left + 26, top + 273, 0xFF8DA7B4, 488);
+        call(graphics, "fill", left + 26, top + 258, left + 166, top + 276, favoritesEnabled() ? 0xFF17465A : 0xFF18242B);
+        label(screen, graphics, "FAVORITES", left + 33, top + 263, favoritesEnabled() ? 0xFF7FF7FF : 0xFF5F7079, 126);
+        label(screen, graphics, "Estimate: next hop only; flight gates apply.", left + 174, top + 258, 0xFF8DA7B4, 340);
+        label(screen, graphics, "Use Discoveries ROUTE or the ship terminal.", left + 174, top + 273, 0xFF8DA7B4, 340);
     }
 }

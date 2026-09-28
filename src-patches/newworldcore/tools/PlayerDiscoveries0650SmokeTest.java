@@ -8,7 +8,7 @@ import net.newworld.player.PlayerDiscoveries0650.DiscoveryView;
 public final class PlayerDiscoveries0650SmokeTest {
     private PlayerDiscoveries0650SmokeTest() {}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         accept(PlayerDiscoveries0650.SNAPSHOT_BEGIN_BASE + 1);
         number(PlayerDiscoveries0650.FIELD_TOTAL, 42);
         accept(PlayerDiscoveries0650.RECORD_BEGIN);
@@ -62,7 +62,65 @@ public final class PlayerDiscoveries0650SmokeTest {
             throw new AssertionError("discovery action protocol range regression");
         }
         accept(PlayerDiscoveries0650.STATUS_ROUTE_OK);
+        favoritesChecks();
         System.out.println("Player Discoveries snapshot smoke test passed.");
+    }
+
+    private static void favoritesChecks() throws Exception {
+        java.util.ArrayList<Object> records = new java.util.ArrayList<>();
+        for (int i = 0; i < 200; i++) records.add(new FavoriteRecord(false, 1000 + i));
+        FavoriteRecord oldest = new FavoriteRecord(true, 1), newest = new FavoriteRecord(true, 2);
+        records.add(oldest); records.add(newest);
+        var favorites = PlayerDiscoveries0650.favoriteSnapshot(records, 128);
+        if (!favorites.equals(List.of(newest, oldest))) throw new AssertionError("Old favorites lost behind recent nonfavorites");
+        expect("favorite limit", PlayerDiscoveries0650.favoriteSnapshot(records, 1).size(), 1);
+        expect("empty favorites", PlayerDiscoveries0650.favoriteSnapshot(List.of(), 128).size(), 0);
+        for (int i = 0; i < 600; i++) records.add(new FavoriteRecord(true, i + 5));
+        expect("wire hard bound", PlayerDiscoveries0650.favoriteSnapshot(records, 9999).size(), 512);
+        if (!PlayerDiscoveries0650.favoriteSelectionAllowed(true, true, 0, newest)
+                || PlayerDiscoveries0650.favoriteSelectionAllowed(true, false, 0, newest)
+                || PlayerDiscoveries0650.favoriteSelectionAllowed(true, true, 1, newest)
+                || PlayerDiscoveries0650.favoriteSelectionAllowed(true, true, 2, newest)
+                || PlayerDiscoveries0650.favoriteSelectionAllowed(true, true, 0, new FavoriteRecord(false, 2))
+                || PlayerDiscoveries0650.favoriteSelectionAllowed(true, true, 0, null)
+                || !PlayerDiscoveries0650.favoriteSelectionAllowed(false, false, 1, newest)) {
+            throw new AssertionError("Favorite server action gate regression");
+        }
+        // Reuse the actual renderer: picker has TARGET only, no route/favorite mutation controls.
+        FakeScreen screen = new FakeScreen();
+        var viewsField = PlayerDiscoveries0650.class.getDeclaredField("VIEWS"); viewsField.setAccessible(true);
+        @SuppressWarnings("unchecked") var views = (java.util.Map<Object,Object>) viewsField.get(null);
+        Class<?> stateType = Class.forName("net.newworld.player.PlayerDiscoveries0650$ViewState");
+        var constructor = stateType.getDeclaredConstructor(); constructor.setAccessible(true); Object state = constructor.newInstance();
+        var picker = stateType.getDeclaredField("favoritesPicker"); picker.setAccessible(true); picker.set(state, true);
+        var filter = stateType.getDeclaredField("filter"); filter.setAccessible(true); filter.set(state, 3);
+        views.put(screen, state);
+        var render = PlayerDiscoveries0650.class.getDeclaredMethod("renderDiscoveries", Object.class, Object.class, int.class, int.class);
+        render.setAccessible(true); render.invoke(null, screen, new Graphics(), 0, 0);
+        if (!screen.lines.contains("NAVIGATION // FAVORITES") || !screen.lines.contains("TARGET")
+                || screen.lines.contains("ROUTE") || screen.lines.contains("* FAV")) throw new AssertionError("Picker actions/layout");
+        accept(PlayerDiscoveries0650.SNAPSHOT_BEGIN_BASE); number(PlayerDiscoveries0650.FIELD_TOTAL, 0); accept(PlayerDiscoveries0650.SNAPSHOT_END);
+        screen.lines.clear(); render.invoke(null, screen, new Graphics(), 0, 0);
+        if (!screen.lines.contains("NO FAVORITES")) throw new AssertionError("Empty picker guidance");
+        PlayerDiscoveries0650.resetClientLink();
+        if (!views.isEmpty() || !PlayerDiscoveries0650.clientEntries().isEmpty()) throw new AssertionError("Link reset retained picker");
+    }
+
+    public static final class FavoriteRecord {
+        public boolean favorite; public long lastSeenAt, discoveredAt;
+        public FavoriteRecord(boolean f, long seen) { favorite = f; lastSeenAt = seen; }
+    }
+    public static final class FakeScreen {
+        public java.util.ArrayList<String> lines = new java.util.ArrayList<>();
+        public void text(Object graphics, String text, int x, int y, int color) {
+            if (x < 26 || x + text.length() * 6 > 514 || y < 91 || y + 9 > 288) throw new AssertionError("Text bounds: " + text);
+            lines.add(text);
+        }
+    }
+    public static final class Graphics {
+        public void fill(int x, int y, int x2, int y2, int color) {
+            if (x < 26 || x2 > 514 || y < 110 || y2 > 278) throw new AssertionError("Fill bounds");
+        }
     }
 
     private static void number(int field, int value) {

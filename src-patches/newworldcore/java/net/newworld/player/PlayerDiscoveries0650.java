@@ -50,6 +50,7 @@ public final class PlayerDiscoveries0650 {
     private static final Map<Object, ViewState> VIEWS = java.util.Collections.synchronizedMap(new WeakHashMap<>());
     private static final Map<Object, List<String>> SERVER_KEYS = java.util.Collections.synchronizedMap(new WeakHashMap<>());
     private static final Map<Object, String> SERVER_SHIPS = java.util.Collections.synchronizedMap(new WeakHashMap<>());
+    private static final Map<Object, Boolean> SERVER_FAVORITES = java.util.Collections.synchronizedMap(new WeakHashMap<>());
     private static boolean receiving;
     private static int expected;
     private static int total;
@@ -69,7 +70,7 @@ public final class PlayerDiscoveries0650 {
             Object raw = call(payload, "mode");
             int code = raw instanceof Number number ? number.intValue() : 0;
             if (!"CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) {
-                if (code >= 0 && code <= 6 || isActionMode(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
+                if (code >= 0 && code <= 7 || isActionMode(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
                 return;
             }
             if (!clientReceiving() && PlayerShipLink0680.isWireCode(code)) { PlayerShipLink0680.accept(code); return; }
@@ -88,8 +89,22 @@ public final class PlayerDiscoveries0650 {
 
     /** Server side: sends the newest configurable slice from the ship's shared database. */
     public static void sendSnapshot(Object player) {
+        sendSnapshot(player, false);
+    }
+
+    /** Favorites use the same codec, key mapping and target writer; never only the recent history slice. */
+    public static void sendSnapshot(Object player, boolean favoritesOnly) {
         try {
+            clearServerSelection(player);
             if (!PlayerShipLink0680.requireLink(player)) return;
+            SERVER_FAVORITES.put(player, favoritesOnly);
+            if (favoritesOnly && !PlayerNavigation0690.favoritesEnabled()) {
+                send(player, SNAPSHOT_BEGIN_BASE);
+                send(player, FIELD_TOTAL); send(player, 0);
+                send(player, SNAPSHOT_END);
+                send(player, STATUS_ACTION_DISABLED);
+                return;
+            }
             Object level = call(player, "serverLevel");
             Object pos = call(player, "blockPosition");
             Object ship = PlayerShipLink0680.linkedShip(player);
@@ -111,9 +126,11 @@ public final class PlayerDiscoveries0650 {
                 for (Object record : map.values()) if (record != null) records.add(record);
             }
             records.sort(Comparator.comparingLong(PlayerDiscoveries0650::lastSeen).reversed());
+            if (favoritesOnly) records.removeIf(record -> !isFavorite(record));
             int totalRecords = records.size();
             int perCategoryLimit = NewWorldTuning.playerDiscoveriesSyncLimit();
-            ArrayList<Object> snapshot = balancedSnapshot(records, perCategoryLimit);
+            ArrayList<Object> snapshot = favoritesOnly ? favoriteSnapshot(records, PlayerNavigation0690.favoritesSyncLimit())
+                    : balancedSnapshot(records, perCategoryLimit);
             ArrayList<String> keys = new ArrayList<>(snapshot.size());
             for (Object record : snapshot) keys.add(String.valueOf(call(record, "key")));
             SERVER_KEYS.put(player, List.copyOf(keys));
@@ -123,7 +140,7 @@ public final class PlayerDiscoveries0650 {
             for (Object record : snapshot) sendRecord(player, record);
             send(player, SNAPSHOT_END);
             System.out.println("[NewWorld Player Discoveries] synced=" + synced + " total=" + totalRecords
-                    + " perCategory=" + perCategoryLimit + " ship=" + shipId);
+                    + " perCategory=" + perCategoryLimit + " favoritesOnly=" + favoritesOnly + " ship=" + shipId);
         } catch (Throwable failure) {
             System.err.println("[NewWorldCore] Player Discoveries snapshot failed: " + failure);
             SERVER_KEYS.put(player, List.of());
@@ -142,6 +159,7 @@ public final class PlayerDiscoveries0650 {
         int geology = 0;
         int other = 0;
         for (Object record : records) {
+            if (snapshot.size() >= ACTION_LIMIT) break;
             String kind;
             try { kind = stringField(record, "kind"); }
             catch (Throwable ignored) { kind = ""; }
@@ -159,6 +177,24 @@ public final class PlayerDiscoveries0650 {
         }
         snapshot.sort(Comparator.comparingLong(PlayerDiscoveries0650::lastSeen).reversed());
         return snapshot;
+    }
+
+    public static ArrayList<Object> favoriteSnapshot(List<Object> records, int limit) {
+        ArrayList<Object> result = new ArrayList<>();
+        for (Object record : records) if (isFavorite(record)) result.add(record);
+        result.sort(Comparator.comparingLong(PlayerDiscoveries0650::lastSeen).reversed());
+        int bound = Math.max(0, Math.min(ACTION_LIMIT, limit));
+        if (result.size() > bound) result.subList(bound, result.size()).clear();
+        return result;
+    }
+
+    private static boolean isFavorite(Object record) {
+        try { return record != null && booleanField(record, "favorite"); }
+        catch (Exception ignored) { return false; }
+    }
+
+    public static boolean favoriteSelectionAllowed(boolean picker, boolean enabled, int action, Object record) {
+        return !picker || enabled && action == 0 && isFavorite(record);
     }
 
     private static void sendRecord(Object player, Object record) throws Exception {
@@ -358,6 +394,11 @@ public final class PlayerDiscoveries0650 {
                 send(player, STATUS_ACTION_FAILED);
                 return;
             }
+            if (!favoriteSelectionAllowed(Boolean.TRUE.equals(SERVER_FAVORITES.get(player)),
+                    PlayerNavigation0690.favoritesEnabled(), action, selection.record)) {
+                send(player, STATUS_ACTION_DISABLED);
+                return;
+            }
             if (action == 0) {
                 selectTarget(selection);
                 send(player, STATUS_TARGET_OK);
@@ -423,7 +464,7 @@ public final class PlayerDiscoveries0650 {
         call(selection.data, "setDirty");
     }
 
-    public static void clearServerSelection(Object player) { SERVER_KEYS.remove(player); SERVER_SHIPS.remove(player); }
+    public static void clearServerSelection(Object player) { SERVER_KEYS.remove(player); SERVER_SHIPS.remove(player); SERVER_FAVORITES.remove(player); }
 
     public static synchronized void resetClientLink() {
         CLIENT.clear(); VIEWS.clear(); receiving = false; expected = 0; total = 0; builder = null;
@@ -445,7 +486,10 @@ public final class PlayerDiscoveries0650 {
     public static void renderContent(Object screen, Object graphics, int left, int top, int mouseX, int mouseY) {
         try {
             if (intField(screen, "tab") == 3) {
-                PlayerNavigation0690.render(screen, graphics, left, top);
+                if (!PlayerShipLink0680.clientAllowed()) return;
+                ViewState view = VIEWS.get(screen);
+                if (view != null && view.favoritesPicker && PlayerNavigation0690.favoritesEnabled()) renderDiscoveries(screen, graphics, left, top);
+                else PlayerNavigation0690.render(screen, graphics, left, top);
                 return;
             }
             if (intField(screen, "tab") != 2) {
@@ -469,11 +513,16 @@ public final class PlayerDiscoveries0650 {
         view.page = Math.max(0, Math.min(view.page, pages - 1));
         int start = view.page * rows;
 
-        text(screen, graphics, "DISCOVERIES", left + 26, top + 92, 0xff7ff7ff);
-        text(screen, graphics, "SHARED SHIP DATABASE // NEWEST RECORDS", left + 26, top + 107, 0xffb5c8d8);
+        text(screen, graphics, view.favoritesPicker ? "NAVIGATION // FAVORITES" : "DISCOVERIES", left + 26, top + 92, 0xff7ff7ff);
+        text(screen, graphics, view.favoritesPicker ? "SET TARGET ONLY // EXISTING ROUTE UNCHANGED" : "SHARED SHIP DATABASE // NEWEST RECORDS", left + 26, top + 107, 0xffb5c8d8);
+        if (view.favoritesPicker) {
+            button(screen, graphics, left + 26, top + 124, 140, "< NAVIGATION", false);
+            button(screen, graphics, left + 174, top + 124, 104, "REFRESH", false);
+        } else {
         button(screen, graphics, left + 26, top + 124, 64, "ALL", view.filter == 0);
         button(screen, graphics, left + 94, top + 124, 100, "STRUCTURES", view.filter == 1);
         button(screen, graphics, left + 198, top + 124, 80, "GEOLOGY", view.filter == 2);
+        }
 
         int listX = left + 26;
         int listY = top + 150;
@@ -497,7 +546,10 @@ public final class PlayerDiscoveries0650 {
         DiscoveryView selected = filtered.isEmpty() ? null
                 : filtered.get(Math.max(0, Math.min(view.selected, filtered.size() - 1)));
         if (selected == null) {
-            text(screen, graphics, clientReceiving() ? "SYNCING..." : "NO DISCOVERIES", detailX + 10, top + 138, 0xff8fa8b8);
+            text(screen, graphics, clientReceiving() ? "SYNCING..." : view.favoritesPicker ? "NO FAVORITES" : "NO DISCOVERIES", detailX + 10, top + 138, 0xff8fa8b8);
+            if (view.favoritesPicker && !clientReceiving()) {
+                text(screen, graphics, "Use FAV in Discoveries", detailX + 10, top + 160, 0xff8fa8b8);
+            }
         } else {
             text(screen, graphics, fit(selected.label, 24), detailX + 10, top + 134, 0xff80ffc2);
             text(screen, graphics, fit(selected.kind + " // " + selected.source, 25), detailX + 10, top + 149, 0xff8fa8b8);
@@ -509,12 +561,14 @@ public final class PlayerDiscoveries0650 {
             text(screen, graphics, "Z=" + selected.z + "  " + shortDim(selected.dimension), detailX + 10, top + 237, 0xffb5c8d8);
             text(screen, graphics, playerProximity(selected), detailX + 10, top + 249, 0xffffcc3d);
             actionButton(screen, graphics, detailX + 4, top + 258, 52, "TARGET",
-                    NewWorldTuning.playerDiscoveriesTargetEnabled(), false);
+                    NewWorldTuning.playerDiscoveriesTargetEnabled() && !clientReceiving(), false);
+            if (!view.favoritesPicker) {
             actionButton(screen, graphics, detailX + 60, top + 258, 54, "ROUTE",
                     NewWorldTuning.playerDiscoveriesRouteEnabled(), false);
             actionButton(screen, graphics, detailX + 118, top + 258, 58,
                     selected.favorite() ? "* FAV" : "FAV",
                     NewWorldTuning.playerDiscoveriesFavoriteEnabled(), selected.favorite());
+            }
         }
 
         button(screen, graphics, left + 26, top + 260, 64, "< PREV", false);
@@ -533,6 +587,7 @@ public final class PlayerDiscoveries0650 {
             int discoveriesX = left + 182;
             if (button == 0 && inside(mouseX, mouseY, left + 274, top + 46, 88, 22)) {
                 setField(screen, "tab", 3);
+                VIEWS.remove(screen);
                 PlayerNavigation0690.resetClient();
                 return true;
             }
@@ -540,14 +595,36 @@ public final class PlayerDiscoveries0650 {
                 setField(screen, "tab", 2);
                 setField(screen, "status", "SYNCING // Discoveries...");
                 VIEWS.put(screen, new ViewState());
+                clearClientSnapshot();
                 PlayerGeologicalSurveyGui0620.sendSurveyMode(3);
                 return true;
             }
-            if (intField(screen, "tab") != 2) return false;
+            int tab = intField(screen, "tab");
+            if (tab != 2 && tab != 3) return false;
             ViewState view = VIEWS.computeIfAbsent(screen, ignored -> new ViewState());
+            if (tab == 3) {
+                if (button != 0 || !PlayerShipLink0680.clientAllowed()) return true;
+                if (!PlayerNavigation0690.favoritesEnabled()) { view.favoritesPicker = false; return true; }
+                if (!view.favoritesPicker) {
+                    if (inside(mouseX, mouseY, left + 26, top + 258, 140, 18)) {
+                        view.favoritesPicker = true; view.filter = 3; resetView(view);
+                        clearClientSnapshot(); PlayerGeologicalSurveyGui0620.sendSurveyMode(7);
+                    }
+                    return true;
+                }
+                if (inside(mouseX, mouseY, left + 26, top + 124, 140, 18)) {
+                    view.favoritesPicker = false; PlayerNavigation0690.resetClient(); return true;
+                }
+                if (inside(mouseX, mouseY, left + 174, top + 124, 104, 18)) {
+                    resetView(view); clearClientSnapshot(); PlayerGeologicalSurveyGui0620.sendSurveyMode(7); return true;
+                }
+            }
+            if (clientReceiving()) return true;
+            if (!view.favoritesPicker) {
             if (inside(mouseX, mouseY, left + 26, top + 124, 64, 18)) { view.filter = 0; resetView(view); return true; }
             if (inside(mouseX, mouseY, left + 94, top + 124, 100, 18)) { view.filter = 1; resetView(view); return true; }
             if (inside(mouseX, mouseY, left + 198, top + 124, 80, 18)) { view.filter = 2; resetView(view); return true; }
+            }
 
             List<DiscoveryView> filtered = filtered(view.filter);
             int rows = NewWorldTuning.playerDiscoveriesRows();
@@ -568,10 +645,12 @@ public final class PlayerDiscoveries0650 {
             DiscoveryView selected = filtered.isEmpty() ? null
                     : filtered.get(Math.max(0, Math.min(view.selected, filtered.size() - 1)));
             if (selected != null && inside(mouseX, mouseY, left + 338, top + 258, 52, 18)) {
+                if (!NewWorldTuning.playerDiscoveriesTargetEnabled()) return true;
                 actionStatus = "SETTING TARGET...";
                 PlayerGeologicalSurveyGui0620.sendSurveyMode(ACTION_TARGET_BASE - selected.snapshotIndex);
                 return true;
             }
+            if (view.favoritesPicker) return true;
             if (selected != null && inside(mouseX, mouseY, left + 394, top + 258, 54, 18)) {
                 actionStatus = "BUILDING ROUTE...";
                 PlayerGeologicalSurveyGui0620.sendSurveyMode(ACTION_ROUTE_BASE - selected.snapshotIndex);
@@ -591,11 +670,17 @@ public final class PlayerDiscoveries0650 {
 
     private static void resetView(ViewState view) { view.page = 0; view.selected = 0; }
 
+    private static synchronized void clearClientSnapshot() {
+        CLIENT.clear(); receiving = false; expected = 0; total = 0; builder = null;
+        clearPending(); actionStatus = "";
+    }
+
     private static synchronized List<DiscoveryView> filtered(int filter) {
         ArrayList<DiscoveryView> filtered = new ArrayList<>();
         for (DiscoveryView entry : CLIENT) {
             if (filter == 1 && !"STRUCTURE".equalsIgnoreCase(entry.kind)) continue;
             if (filter == 2 && !"GEOLOGY".equalsIgnoreCase(entry.kind)) continue;
+            if (filter == 3 && !entry.favorite()) continue;
             filtered.add(entry);
         }
         return filtered;
@@ -823,6 +908,7 @@ public final class PlayerDiscoveries0650 {
     }
 
     private static final class ViewState {
+        boolean favoritesPicker;
         int filter;
         int page;
         int selected;

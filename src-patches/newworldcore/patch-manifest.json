@@ -1,9 +1,11 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.69.0-alpha-player-navigation-view",
-  "marker": "NewWorldPlayerNavigationViewV1",
+  "version": "0.5.69.1-alpha-navigation-favorites",
+  "marker": "NewWorldNavigationFavoritesV1",
   "fixes": [
+    "Navigation favorites picker reuses shared Discovery favorite records, masked labels and guarded TARGET action without route or flight writes",
+    "Configurable bounded favorites snapshot is independent of recent discovery quotas; server rechecks link, ship, favorite flag and feature/action permissions",
     "Read-only Player Navigation tab shows selected target, ship-relative distance, existing route, loaded hop and actual engine next-hop WE estimate",
     "Navigation telemetry uses owner/range gates, separate bounded wire frames, live refresh/display config and ship/session invalidation without route or flight writes",
     "Overview and Ship Link select the exact ClientPacketListener getter descriptor despite same-name mixed-environment methods",

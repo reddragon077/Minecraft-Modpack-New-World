@@ -1,10 +1,20 @@
 # New World current handoff
 
-Updated: 2026-09-10
+Updated: 2026-09-28
 Machine: laptop
 Branch: `main`
 
 ## Current objective
+
+Installed Stage 9 favorite-picker candidate `.69.1`: `NewWorldCore-1.21.1-NeoForge-0.5.69.1-alpha-navigation-favorites.jar`, SHA-256 `d6ff78e9fce2e9d5e3b6480711dfb656c8a64f4dc1e096799b73c1d31229a91d`, 3636825 bytes. Navigation → FAVORITES uses shared favorite records and the existing guarded TARGET writer; selecting a target leaves the existing route unchanged. No flight, WE consumption, world migration or DoctorWhoMod change. Live `player-navigation.properties` adds `favorites.enabled=true` and `favorites.sync_limit=128` (16–512). Old favorites are queried independently of the recent Discovery quota.
+
+Eight smoke suites and actual DoctorWhoMod WE fixture passed. Verified source/embedded manifest, lock/hash and one custom JAR per mod at repo/runtime. Game was closed for scoped deployment; `.69.0` repo/live originals and replaced configs preserved at laptop `backups/custom-mods/pre-navigation-favorites-20260928-01/`. Other configs/worlds/backups untouched. Missing temporary JDK was recovered from the official checksum-verified Adoptium package to `D:\Projects\NewWorld-Toolchains\jdk-21.0.12.1+1` (local tooling, not Git).
+
+Acceptance reconciliation: user confirmed the requested `.69.0` GUI close/reopen check (“çalışıyor kanka baktım”). This closes that specific item by user report, not by a new log audit. Earlier range/Nether screenshots belong to Ship Link/Discoveries; they are not newly claimed Navigation tests. Stage 9 remains partial. Next executable step: test `.69.1` Navigation → FAVORITES → select → TARGET → < NAVIGATION; confirm new target and unchanged old route, then REFRESH/empty/link-loss checks in `docs/15_Player_Navigation_Runtime_Kabul.md`. Favorite runtime acceptance is pending; SAVE CURRENT LOCATION and SEND TO SHIP are still unimplemented. Do not repeat accepted TARGET/ROUTE development.
+
+## Previous .69.0 — backed up; historical installation and partial acceptance
+
+The following 10 September entries are historical. Their pending GUI-reopen wording is superseded by the user acceptance above, and `.69.1` is now installed.
 
 Latest runtime update: `.69.0` Navigation initial view and Aluminum -> Carbon TARGET/ROUTE refresh passed by screenshots and server log (17:19:37 / 17:24:04). Loaded hop stays 1/1; coordinates/distances update and estimate changes 48 -> 52 WE. No Navigation runtime failure found. The candidate paragraph below describes installation-time status; it is superseded by this partial acceptance. Explicit GUI close/reopen was requested but not yet confirmed; do not count the user's GitHub-save request as test confirmation. Navigation-specific range/dimension/config and route edge-case checks also remain open. Next: resume the remaining checks in `docs/15_Player_Navigation_Runtime_Kabul.md`, then favorite/current-location/send actions. No new JAR required for this handoff.
 

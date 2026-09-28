@@ -1,13 +1,13 @@
 # Player Navigation — ilk görünüm kabulü
 
-Kurulu aday `.69.0-alpha-player-navigation-view`. 10 Eylül oyun testi kısmen geçti; tüm kontrol listesi tamamlanmadı.
+Kurulu aday `.69.1-alpha-navigation-favorites`. `.69.0` ilk görünüm, hedef/rota güncellemesi ve GUI kapat/aç kabulü var; tüm kontrol listesi tamamlanmadı. Yeni favori seçicinin oyun testi bekliyor.
 
 ## Doğrulanan kapsam
 
 - İlk ekran: LIVE / READ ONLY, Aluminum hedefi `[-2456,40,328]`, gemi mesafesi 154 blok; yüklü durak `[-2456,61,328]`, 152 blok, 1/1 ve 48 WE tahmini. Mevcut enerji 1000 WE.
 - Discoveries TARGET/ROUTE sonrasında Carbon hedefi `[-2376,32,376]`, 220 blok; yüklü durak `[-2376,68,376]`, 219 blok, 1/1 ve 52 WE tahmini. Başlıkta oyuncu-gemi mesafesi ayrı olarak 12 blok kaldı. Metinler iki sütunda okunaklı.
 - Sunucu logu 17:19:37.088 Aluminum, 17:24:03.242 Carbon TARGET, 17:24:04.011 ROUTE ready=true ve 17:24:04.968 Carbon Navigation snapshot gösterdi. Navigation sampling/render/decode hatası bulunmadı. Genel logda üçüncü taraf EMI/JEI hataları var; tüm log hatasız denmiyor.
-- GUI kapat/aç önerildi ancak henüz açık kullanıcı doğrulaması yok. Sonraki mesaj GitHub'a kaydetme isteğidir; yeniden açılış kanıtı sayılmaz.
+- 28 Eylül devamında kullanıcı, istenen GUI kapat/aç kontrolü için “çalışıyor kanka baktım” onayını verdi. Bu kullanıcı bildirimidir; bağımsız yeni log kontrolü değildir. Önceki 10 Eylül kaydındaki bekleyen yeniden açılış maddesini kapatır.
 - Navigation'a özel menzil kaybı/geri dönüş, boyut farkı, boş/tamamlanmış/çok-hop rota, gerçek uçuş tüketimiyle maliyet karşılaştırması ve canlı görünüm config denemesi henüz doğrulanmadı. `.68.2` Ship Link testleri bunların yerine sayılmaz.
 
 ## Kontrol listesi
@@ -22,4 +22,12 @@ Kurulu aday `.69.0-alpha-player-navigation-view`. 10 Eylül oyun testi kısmen g
 
 Log: `[NewWorld Player Navigation]`. `snapshot failed`, `sampling failed`, `render failed`, `decode rejected` gerçek runtime'da incelenmelidir; smoke testindeki kasıtlı bozuk çerçevelerle karıştırılmaz.
 
-Bu sürüm salt-okunurdur: rota hesaplamaz, hedef seçmez, uçuş başlatmaz, enerji harcamaz veya chunk yüklemez. Favori seçme / SAVE CURRENT LOCATION / SEND TO SHIP henüz bu sekmeye eklenmedi. Otomatik testlerin geçmesi oyun kabulü yerine sayılmaz.
+## .69.1 favori seçici — yeni kabul bekliyor
+
+1. Discoveries'te iki farklı kaydı FAV ile favoriye al. Navigation → FAVORITES aç; yalnız ortak favoriler görünmeli. Liste boşsa NO FAVORITES açıklaması gelmeli.
+2. Bir favoriyi seçip TARGET bas; TARGET SET sonrasında < NAVIGATION ile dön. Sol hedef değişmeli, sağdaki mevcut rota/durak aynı kalmalı. Bu işlem rota hesaplamaz, uçuş başlatmaz veya WE harcamaz. Yeni rota için mevcut Discoveries ROUTE ya da fiziksel terminal kullanılır.
+3. Discoveries'te favoriyi kaldır; Navigation favori listesinde REFRESH yapınca kaybolmalı. GUI kapat/aç ve sekme geçişinde normal Discoveries listesi favorilerle sınırlı kalmamalı.
+4. Favori seçici açıkken bağlantı kesilirse ortak Link kilidi görünmeli; eski kayıttan TARGET yazımı engellenmeli. Dönüşte Navigation ve yeniden açılan FAVORITES güncel veriyi göstermeli.
+5. İsteğe bağlı canlı config testi: `player-navigation.properties` içinde `favorites.enabled=false` seçiciyi kapatmalı; true geri açmalı. `favorites.sync_limit` 16–512 arasında toplam favori aktarım sınırıdır (varsayılan 128). Eski favoriler yakın tarihli keşif kotasının dışında da listelenir; SYNC aktarılan/toplam favoriyi gösterir. Ayar sonrası REFRESH kullan; ortak varsayılanları geri getir.
+
+Sekiz otomatik test grubu geçti: eski favoriler/sıralama/sınırlar, sunucuda yalnız TARGET izni, favorisi kaldırılmış kayıt reddi, boş liste, GUI metin sınırları ve Link reset dahil. Bu oyun kabulü yerine sayılmaz. SAVE CURRENT LOCATION ve SEND TO SHIP henüz eklenmedi; Aşama 9 kısmi kalır.

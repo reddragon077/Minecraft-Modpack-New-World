@@ -24,7 +24,7 @@ Genel okuma kuralları:
 
 Dosyalar:
 
-- `player-navigation.properties`: salt-okunur Navigation paneli; `refresh_ticks=20`, `stale_after_ticks=120`, `show_coordinates=true`, `show_we_estimate=true`. WE, yalnız motora yüklü sonraki hop için mevcut DoctorWhoMod formülünden gelir; toplam rota bedeli veya uçuş yetkisi değildir.
+- `player-navigation.properties`: Navigation telemetrisi; `refresh_ticks=20`, `stale_after_ticks=120`, `show_coordinates=true`, `show_we_estimate=true`. WE yalnız yüklü sonraki hop içindir. `favorites.enabled=true` ve `favorites.sync_limit=128` (16-512), Navigation içindeki ortak favori seçiciyi yönetir; TARGET yalnız hedefi seçer, rota/uçuş başlatmaz. Discoveries hedef izni ayrıca uygulanır. Liste son keşif kotasından bağımsızdır; REFRESH ile yenilenir ve SYNC gelen/toplam sayısını gösterir.
 
 - `radar.properties`: yapı Radar'ı, navigasyon yükseltmeleri, CPU ve tarama FE maliyeti.
 - `mining.properties`: Mining Matrix tarama miktarı, kazım aralığı ve FE maliyeti.

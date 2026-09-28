@@ -12,6 +12,12 @@ public final class PlayerNavigation0690SmokeTest {
         try {
             eq(PlayerNavigation0690.refreshTicks(), 20); eq(PlayerNavigation0690.staleTicks(), 120);
             check(PlayerNavigation0690.showCoordinates() && PlayerNavigation0690.showEstimate(), "Display defaults");
+            check(PlayerNavigation0690.favoritesEnabled(), "Favorites default"); eq(PlayerNavigation0690.favoritesSyncLimit(), 128);
+            Files.writeString(config, "favorites.enabled=false\nfavorites.sync_limit=1\n"); NewWorldConfig.reload();
+            check(!PlayerNavigation0690.favoritesEnabled(), "Favorites live disable"); eq(PlayerNavigation0690.favoritesSyncLimit(), 16);
+            Files.writeString(config, "favorites.sync_limit=99999\n"); NewWorldConfig.reload(); eq(PlayerNavigation0690.favoritesSyncLimit(), 512);
+            Files.writeString(config, "favorites.enabled=bad\nfavorites.sync_limit=bad\n"); NewWorldConfig.reload();
+            check(PlayerNavigation0690.favoritesEnabled(), "Favorites invalid fallback"); eq(PlayerNavigation0690.favoritesSyncLimit(), 128);
             Files.writeString(config, "refresh_ticks=0\nstale_after_ticks=1\nshow_coordinates=false\nshow_we_estimate=false\n"); NewWorldConfig.reload();
             eq(PlayerNavigation0690.refreshTicks(), 20); eq(PlayerNavigation0690.staleTicks(), 40);
             check(!PlayerNavigation0690.showCoordinates() && !PlayerNavigation0690.showEstimate(), "Live display toggles");
@@ -71,6 +77,7 @@ public final class PlayerNavigation0690SmokeTest {
             FakeScreen screen = new FakeScreen();
             PlayerNavigation0690.draw(screen, new Graphics(), 0, 0, source, true);
             check(screen.lines.contains("EST 101 WE / NEXT HOP"), "WE label absent");
+            check(screen.lines.contains("FAVORITES"), "Favorites entry absent");
             Files.writeString(config, "show_coordinates=false\nshow_we_estimate=false\n"); NewWorldConfig.reload();
             screen.lines.clear(); PlayerNavigation0690.draw(screen, new Graphics(), 0, 0, source, true);
             check(screen.lines.contains("COORDINATES HIDDEN") && screen.lines.contains("WE ESTIMATE HIDDEN"), "Display toggle draw failed");
@@ -108,6 +115,6 @@ public final class PlayerNavigation0690SmokeTest {
         }
     }
     public static final class Graphics {
-        public void fill(int x, int y, int x2, int y2, int color) { check(x >= 26 && x2 <= 514 && y >= 110 && y2 <= 248, "Fill bounds"); }
+        public void fill(int x, int y, int x2, int y2, int color) { check(x >= 26 && x2 <= 514 && y >= 110 && y2 <= 276, "Fill bounds"); }
     }
 }

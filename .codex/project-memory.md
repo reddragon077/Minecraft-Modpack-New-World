@@ -1,6 +1,6 @@
 # New World project memory
 
-Last synchronized: 2026-09-10
+Last synchronized: 2026-09-28
 
 ## Canonical workflow
 
@@ -20,6 +20,12 @@ Last synchronized: 2026-09-10
 - Only the two project-owned fork JARs are stored directly in Git: NewWorldCore and DoctorWhoMod.
 
 ## NewWorldCore continuation point
+
+- Current installed Stage 9 candidate `.69.1-alpha-navigation-favorites`, SHA-256 `d6ff78e9fce2e9d5e3b6480711dfb656c8a64f4dc1e096799b73c1d31229a91d`, 3636825 bytes. Navigation FAVORITES reads shared favorites independently of recent-history quota, with REFRESH and TARGET only. Existing target writer, owner/link and action config checks are reused; target selection preserves the route and does not fly/spend WE. Live `player-navigation.properties`: favorites.enabled=true, favorites.sync_limit=128 (16–512). Eight suites plus actual engine fixture passed; runtime acceptance pending. Repo/runtime originals and configs backed up at `backups/custom-mods/pre-navigation-favorites-20260928-01/`; one hash-matched core at each endpoint, DoctorWhoMod unchanged. Next: favorite picker runtime steps in `docs/15_Player_Navigation_Runtime_Kabul.md`; then remaining Stage 9 current-location/send actions.
+
+- User confirmed `.69.0` GUI close/reopen works (“çalışıyor kanka baktım”), so do not ask for that old gate again. This is user-reported acceptance, not independent new log evidence. Navigation-specific extended range/dimension/route/config checks remain unverified; older Ship Link/Discoveries tests are not relabeled as Navigation tests. All installed-build and GUI-reopen-pending wording below is historical and superseded by this entry. Full Stage 9 is not closed.
+
+### Previous .69.0 and earlier history
 
 - Latest `.69.0` runtime evidence (supersedes the pending wording below): Navigation opened LIVE / READ ONLY with Aluminum, loaded hop 1/1 and 48 WE; after existing Discovery TARGET/ROUTE, it showed Carbon, updated coordinates, ship distances 220/219 and 52 WE. Server log confirms Aluminum at 17:19:37 and Carbon at 17:24:04 with route ready=true. No Navigation sampling/render/decode failure found. This is partial view acceptance, not full Stage 9 closure: explicit GUI reopen, Navigation-specific range recovery, no/completed/multi-hop route, dimension and live-config checks remain unverified. Next: confirm GUI reopen before further actions. See `2026-09-10_laptop_navigation_runtime_sync.md`. No new JAR/config changes for this record.
 

@@ -1,10 +1,10 @@
 # New World — Aktif geliştirme yol haritası
 
-Son kayıt güncellemesi: 10 Eylül 2026
+Son kayıt güncellemesi: 28 Eylül 2026
 
 Son temel tek oyunculu runtime-kabul edilen build: NewWorldCore `0.5.68.2-alpha-typed-client-link` (10 Eylül; yeni oturum, Overview/Discoveries ve menzil kaybı/otomatik dönüş doğrulandı).
 
-Kurulu aday: `.69.0-alpha-player-navigation-view`, Navigation salt-okunur ilk görünüm ve Aluminum -> Carbon hedef/rota/WE güncellemesi ekran/log ile geçti; yeniden açılış ve genişletilmiş Navigation kontrolleri açık.
+Kurulu aday: `.69.1-alpha-navigation-favorites`; Navigation ilk görünüm ve Aluminum -> Carbon hedef/rota/WE güncellemesi ekran/log ile, yeniden açılış kullanıcı bildirimiyle geçti. Yeni favori seçici otomatik testleri geçti; oyun kabulü ve genişletilmiş Navigation kontrolleri açık.
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -140,16 +140,16 @@ Kapanış testi: `0.5.66.1` ile `ARCHEOLOGIST CAMP` ve `TRIAL CHAMBERS` kayıtla
 
 Durum: **kısmi.** Gemi Navigation Terminal’i çalışıyor ve Discovery kayıtlarından doğrudan hedef/rota oluşturma `0.5.66.1` TARGET/ROUTE runtime kabulüyle tamamlandı; hafif uzaktan Navigation panelinin kalan görünüm ve eylemleri bekliyor.
 
-- [~] Mevcut hedef, gemiye uzaklık, rota ve sonraki hop (`.69.0` ilk görünüm ve hedef/rota değişimi geçti; yeniden açılış/kenar durumları açık)
+- [~] Mevcut hedef, gemiye uzaklık, rota ve sonraki hop (`.69.0` ilk görünüm, hedef/rota değişimi ve kullanıcı bildirimli yeniden açılış geçti; kenar durumları açık)
 - [~] Tahmini WE maliyeti (`.69.0` yüklü sonraki hop: Aluminum 48 -> Carbon 52 WE görünümü geçti; genişletilmiş kabul açık)
-- [ ] Favoriden hedef seçme
+- [~] Favoriden hedef seçme (`.69.1` Navigation FAVORITES → TARGET, ortak kayıt/yazıcı ve canlı config; otomatik testler geçti, oyun kabulü bekliyor)
 - [ ] `SAVE CURRENT LOCATION`
 - [ ] `SEND TO SHIP`
 - [x] Discovery’den hedef oluşturma (`0.5.66.1` TARGET/ROUTE kabulü)
 
 Gelişmiş rota hesabı ve ayarlar fiziksel Navigation Terminal’de kalacaktır.
 
-İlk adayda hedef/rota yazımı veya uçuş başlatma yoktur. Favoriden seçim, SAVE CURRENT LOCATION ve SEND TO SHIP sonraki adımda kalır. [Oyun testi](15_Player_Navigation_Runtime_Kabul.md).
+Navigation telemetri görünümü salt-okunur kalır; ayrı FAVORITES seçicisi mevcut TARGET yazıcısını kullanır, rotayı değiştirmez ve uçuş başlatmaz. Önce favori seçicinin oyun kabulü, sonra SAVE CURRENT LOCATION ve SEND TO SHIP. [Oyun testi](15_Player_Navigation_Runtime_Kabul.md).
 
 ## Aşama 10 — Player Mining paneli
 
