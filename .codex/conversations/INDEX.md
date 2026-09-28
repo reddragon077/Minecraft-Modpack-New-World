@@ -4,6 +4,8 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-28 — Save current location candidate](2026-09-28_laptop_save_current_location.md) — `.69.1` basic favorite selection/route preservation accepted by screenshots/log; `.69.2` bounded server-owned WAYPOINT/MANUAL save, config and nine suites verified, backed-up installation; new save/reload runtime pending.
+
 - [2026-09-28 — Navigation favorites candidate](2026-09-28_laptop_navigation_favorites.md) — `.69.0` GUI reopen accepted by user; `.69.1` shared favorite picker/guarded TARGET/config, eight suites and backed-up installation verified; new runtime acceptance pending.
 
 - [2026-09-10 — Navigation runtime evidence and GitHub handoff](2026-09-10_laptop_navigation_runtime_sync.md) — `.69.0` initial view and Aluminum-to-Carbon target/route/WE refresh passed; JAR/lock/config/addon audit, partial acceptance only; GUI reopen and remaining edge checks stay open.

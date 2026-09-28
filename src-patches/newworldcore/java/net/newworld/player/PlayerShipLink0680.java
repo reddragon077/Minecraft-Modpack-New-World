@@ -153,7 +153,7 @@ public final class PlayerShipLink0680 {
                 Snapshot next = new Snapshot(state, ship, dim, dist, reason, refresh, stale);
                 if (client == null || !client.ship.equals(next.ship) || client.allowed() != next.allowed()) {
                     PlayerDiscoveries0650.resetClientLink(); PlayerOverview0670.resetClient(); discoveriesRequested = false;
-                    PlayerNavigation0690.resetClient();
+                    PlayerNavigation0690.resetClient(); PlayerLocation0692.resetClient();
                 }
                 client = next; receivedAt = System.nanoTime();
             } catch (IOException failure) { System.err.println("[NewWorld Ship Link] decode rejected: " + failure); }
@@ -173,7 +173,7 @@ public final class PlayerShipLink0680 {
     public static synchronized void resetClient() {
         client = null; receivedAt = 0; requestedAt = 0; incoming = null; discoveriesRequested = false;
         PlayerDiscoveries0650.resetClientLink(); PlayerOverview0670.resetClient();
-        PlayerNavigation0690.resetClient();
+        PlayerNavigation0690.resetClient(); PlayerLocation0692.resetClient();
     }
 
     /** Runs before the legacy screen render: requests link on every tab and invalidates stale sessions. */

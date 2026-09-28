@@ -279,6 +279,7 @@ public final class NewWorldTuning {
     }
 
     public static int discoveryAnalysisLevel(String kind, String source) {
+        if ("WAYPOINT".equalsIgnoreCase(kind)) return 0;
         boolean geology = "GEOLOGY".equalsIgnoreCase(kind);
         boolean field = "FIELD".equalsIgnoreCase(source);
         String key;

@@ -24,7 +24,7 @@ Genel okuma kuralları:
 
 Dosyalar:
 
-- `player-navigation.properties`: Navigation telemetrisi; `refresh_ticks=20`, `stale_after_ticks=120`, `show_coordinates=true`, `show_we_estimate=true`. WE yalnız yüklü sonraki hop içindir. `favorites.enabled=true` ve `favorites.sync_limit=128` (16-512), Navigation içindeki ortak favori seçiciyi yönetir; TARGET yalnız hedefi seçer, rota/uçuş başlatmaz. Discoveries hedef izni ayrıca uygulanır. Liste son keşif kotasından bağımsızdır; REFRESH ile yenilenir ve SYNC gelen/toplam sayısını gösterir.
+- `player-navigation.properties`: Navigation telemetrisi; `refresh_ticks=20`, `stale_after_ticks=120`, `show_coordinates=true`, `show_we_estimate=true`. WE yalnız yüklü sonraki hop içindir. `favorites.enabled=true` ve `favorites.sync_limit=128` (16-512), Navigation içindeki ortak favori seçiciyi yönetir; TARGET yalnız hedefi seçer, rota/uçuş başlatmaz. Discoveries hedef izni ayrıca uygulanır. Liste son keşif kotasından bağımsızdır; REFRESH ile yenilenir ve SYNC gelen/toplam sayısını gösterir. `location.enabled=true`, `location.max_per_ship=128` (1-1024), `location.cooldown_ticks=40` (20-1200), SAVE CURRENT LOCATION işlemini yönetir. Sunucu oyuncu konumunu WAYPOINT/MANUAL favorisi olarak kaydeder; TARDIS iç mekânı reddedilir, aynı koordinat çoğaltılmaz, var olan keşif ezilmez, limit dolunca eski kayıt silinmez. Hedef/rota/WE değişmez; seçenekler canlıdır.
 
 - `radar.properties`: yapı Radar'ı, navigasyon yükseltmeleri, CPU ve tarama FE maliyeti.
 - `mining.properties`: Mining Matrix tarama miktarı, kazım aralığı ve FE maliyeti.

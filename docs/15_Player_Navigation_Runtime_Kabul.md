@@ -1,6 +1,6 @@
 # Player Navigation — ilk görünüm kabulü
 
-Kurulu aday `.69.1-alpha-navigation-favorites`. `.69.0` ilk görünüm, hedef/rota güncellemesi ve GUI kapat/aç kabulü var; tüm kontrol listesi tamamlanmadı. Yeni favori seçicinin oyun testi bekliyor.
+Kurulu aday `.69.2-alpha-save-current-location`. Önceki görünüm/GUI kapat-aç ve `.69.1` temel favori seçimi kabul edildi. Yeni SAVE CURRENT LOCATION oyun testi bekliyor; genişletilmiş kontrol listesi tamamlanmadı.
 
 ## Doğrulanan kapsam
 
@@ -22,7 +22,9 @@ Kurulu aday `.69.1-alpha-navigation-favorites`. `.69.0` ilk görünüm, hedef/ro
 
 Log: `[NewWorld Player Navigation]`. `snapshot failed`, `sampling failed`, `render failed`, `decode rejected` gerçek runtime'da incelenmelidir; smoke testindeki kasıtlı bozuk çerçevelerle karıştırılmaz.
 
-## .69.1 favori seçici — yeni kabul bekliyor
+## .69.1 favori seçici — temel kabul geçti
+
+28 Eylül ekranları: Trial Chambers ve Archeologist Camp, SYNC 2/2; TARGET sonrası sol hedef Trial Chambers `[-2434,-9,150]`, 80 blok. Sağ rota önceki Carbon durağında `[-2376,68,376]`, 1/1 hop, 219 blok, 52 WE kaldı. Kullanıcı “çalıştı” dedi. Log 15:36:28.600 favoritesOnly=true synced=2; 15:36:31.779 Trial Chambers TARGET; 15:36:32.999 yeni hedef/eski READY_HOP1_LOADED görünümü doğruladı. Bu temel seçme/rotayı koruma kabulüdür; aşağıdaki boş liste/silme/config/link kenar testleri ayrıca açık kalır.
 
 1. Discoveries'te iki farklı kaydı FAV ile favoriye al. Navigation → FAVORITES aç; yalnız ortak favoriler görünmeli. Liste boşsa NO FAVORITES açıklaması gelmeli.
 2. Bir favoriyi seçip TARGET bas; TARGET SET sonrasında < NAVIGATION ile dön. Sol hedef değişmeli, sağdaki mevcut rota/durak aynı kalmalı. Bu işlem rota hesaplamaz, uçuş başlatmaz veya WE harcamaz. Yeni rota için mevcut Discoveries ROUTE ya da fiziksel terminal kullanılır.
@@ -30,4 +32,14 @@ Log: `[NewWorld Player Navigation]`. `snapshot failed`, `sampling failed`, `rend
 4. Favori seçici açıkken bağlantı kesilirse ortak Link kilidi görünmeli; eski kayıttan TARGET yazımı engellenmeli. Dönüşte Navigation ve yeniden açılan FAVORITES güncel veriyi göstermeli.
 5. İsteğe bağlı canlı config testi: `player-navigation.properties` içinde `favorites.enabled=false` seçiciyi kapatmalı; true geri açmalı. `favorites.sync_limit` 16–512 arasında toplam favori aktarım sınırıdır (varsayılan 128). Eski favoriler yakın tarihli keşif kotasının dışında da listelenir; SYNC aktarılan/toplam favoriyi gösterir. Ayar sonrası REFRESH kullan; ortak varsayılanları geri getir.
 
-Sekiz otomatik test grubu geçti: eski favoriler/sıralama/sınırlar, sunucuda yalnız TARGET izni, favorisi kaldırılmış kayıt reddi, boş liste, GUI metin sınırları ve Link reset dahil. Bu oyun kabulü yerine sayılmaz. SAVE CURRENT LOCATION ve SEND TO SHIP henüz eklenmedi; Aşama 9 kısmi kalır.
+Sekiz otomatik test grubu favori adayında geçti; bu testler yukarıdaki oyun kanıtından ayrıdır.
+
+## .69.2 SAVE CURRENT LOCATION — oyun kabulü bekliyor
+
+1. Geminin dışında, LINK CONNECTED iken NAVIGATION → SAVE CURRENT LOCATION bas. Altta LOCATION SAVED // OPEN FAVORITES beklenir. Hedef ve mevcut rota değişmemeli.
+2. FAVORITES aç; `LOCATION x y z` kaydı oyuncunun bastığı andaki blok koordinatında ve boyutunda olmalı. Ayrıntıda WAYPOINT // MANUAL, SAVED COORDINATES gösterilir; bu bir yapı/maden keşfi değildir. ALL listesinde de görünür, STRUCTURES/GEOLOGY filtrelerinde görünmez.
+3. Aynı blokta 2 saniye bekleyip yeniden kaydet; kopya oluşmamalı. O koordinatta gerçek bir keşif zaten varsa onun bilgileri korunup yalnız favoriye eklenir.
+4. GUI kapat/aç; ardından dünyadan çıkıp geri girerek favorinin, koordinatın ve WAYPOINT/MANUAL türünün kalıcı olduğunu kontrol et. TARGET ile bu konumu seçebilirsin; kayıt işlemi kendi başına hedef seçmez/rota hazırlamaz/uçuş başlatmaz.
+5. TARDIS içindeyken basınca EXIT THE SHIP... beklenir. Bağlantı kaybında ortak erişim kilidi geçerlidir. İsteğe bağlı config: `location.enabled=false` yazımı kapatır; `location.max_per_ship` limit dolunca yeni konumu reddeder, mevcutları silmez; `location.cooldown_ticks` kayıt beklemesidir. Varsayılanlar true/128/40; test sonrası geri getir.
+
+Dokuz otomatik test grubu ve gerçek motor WE testi geçti. Konum testi: tekrar/aynı-koordinat delil koruma, boyut anahtarı, kota, izin/iç-mekân/bekleme politikası, canlı config sınırları, gerçek yamalı metadata save/load ve GUI mesaj sınırları. Henüz `.69.2` oyun testi yapılmadı. SEND TO SHIP sonraki iştir; Aşama 9 kısmi kalır.

@@ -150,6 +150,8 @@ try {
     & $java ("-Dnewworldcore.configDir={0}" -f $configRoot) -classpath $smokeClasspath PlayerNavigation0690SmokeTest
     if ($LASTEXITCODE -ne 0) { throw "player navigation smoke test failed with exit code $LASTEXITCODE" }
     $navigationDoctorJars = @(Get-ChildItem -LiteralPath (Join-Path $repoRoot 'mods') -Filter 'DoctorWhoMod-*.jar' -File)
+    & $java ("-Dnewworldcore.configDir={0}" -f $configRoot) -classpath $smokeClasspath PlayerLocation0692SmokeTest
+    if ($LASTEXITCODE -ne 0) { throw "player location smoke test failed with exit code $LASTEXITCODE" }
     if ($navigationDoctorJars.Count -ne 1) { throw 'Exactly one DoctorWhoMod JAR required for the Navigation engine estimate integration test.' }
     $navigationEngineClasspath = $smokeClasspath + [IO.Path]::PathSeparator + $navigationDoctorJars[0].FullName
     & $java '-Dnewworldcore.navigationEngineTest=true' -classpath $navigationEngineClasspath PlayerNavigation0690SmokeTest

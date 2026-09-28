@@ -1,9 +1,11 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.69.1-alpha-navigation-favorites",
-  "marker": "NewWorldNavigationFavoritesV1",
+  "version": "0.5.69.2-alpha-save-current-location",
+  "marker": "NewWorldSavedLocationV1",
   "fixes": [
+    "Server-authoritative SAVE CURRENT LOCATION adds bounded deduplicated WAYPOINT/MANUAL favorites using existing Discovery persistence without target, route or flight changes",
+    "Live location enable/limit/cooldown settings, interior rejection and waypoint metadata round-trip preserve existing discovery evidence",
     "Navigation favorites picker reuses shared Discovery favorite records, masked labels and guarded TARGET action without route or flight writes",
     "Configurable bounded favorites snapshot is independent of recent discovery quotas; server rechecks link, ship, favorite flag and feature/action permissions",
     "Read-only Player Navigation tab shows selected target, ship-relative distance, existing route, loaded hop and actual engine next-hop WE estimate",

@@ -4,12 +4,12 @@ Bu belge, eski `0.1.0-alpha` Room Controller denemesinin yerine güncel New Worl
 
 ## Kurulu build'ler
 
-Kurulu NewWorldCore `.69.1`, Navigation favori seçici adayıdır; sekiz test paketi ve gerçek DoctorWhoMod WE tahmin entegrasyonu geçti. FAVORITES → TARGET ortak favoriden hedef seçer, mevcut rotayı değiştirmez. Yeni seçicinin oyun kabulü bekliyor. `.69.0` ilk görünüm/hedef güncellemesi ve kullanıcı bildirimli GUI kapat/aç kabulü korunur; genişletilmiş kontroller açıktır. [Navigation kabul adımları](../docs/15_Player_Navigation_Runtime_Kabul.md).
+Kurulu NewWorldCore `.69.2`, SAVE CURRENT LOCATION adayıdır; dokuz test grubu ve gerçek DoctorWhoMod WE tahmin entegrasyonu geçti. Oyuncu konumu WAYPOINT/MANUAL favorisi olur; hedef/rota değişmez, iç mekân kaydı reddedilir. Yeni kaydetme/yeniden yükleme oyun kabulü bekliyor. `.69.1` temel favori seçimi ve rotayı koruma ekran/log ile geçti. [Navigation kabul adımları](../docs/15_Player_Navigation_Runtime_Kabul.md).
 Öncelikli test: [Player Navigation kalan runtime kontrolleri](../docs/15_Player_Navigation_Runtime_Kabul.md).
 
 | Bileşen | Dosya | SHA-256 |
 |---|---|---|
-| NewWorldCore aday | `NewWorldCore-1.21.1-NeoForge-0.5.69.1-alpha-navigation-favorites.jar` | `d6ff78e9fce2e9d5e3b6480711dfb656c8a64f4dc1e096799b73c1d31229a91d` |
+| NewWorldCore aday | `NewWorldCore-1.21.1-NeoForge-0.5.69.2-alpha-save-current-location.jar` | `3253d965abe06cf134de86759c94bade33f53038a60a7a9990ef28a35db358c9` |
 | DoctorWhoMod fork | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` |
 
 ## Testten önce

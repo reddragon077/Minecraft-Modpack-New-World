@@ -70,7 +70,7 @@ public final class PlayerDiscoveries0650 {
             Object raw = call(payload, "mode");
             int code = raw instanceof Number number ? number.intValue() : 0;
             if (!"CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) {
-                if (code >= 0 && code <= 7 || isActionMode(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
+                if (code >= 0 && code <= 8 || isActionMode(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
                 return;
             }
             if (!clientReceiving() && PlayerShipLink0680.isWireCode(code)) { PlayerShipLink0680.accept(code); return; }
@@ -79,6 +79,7 @@ public final class PlayerDiscoveries0650 {
                 if ("CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) PlayerOverview0670.accept(code);
                 return;
             }
+            if (!clientReceiving() && PlayerLocation0692.accept(code)) return;
             if (accept(code)) return;
             invokeStatic("net.newworld.player.PlayerFieldSurvey0504Bridge", "handle0650Base", payload, context);
         } catch (Throwable failure) {
@@ -536,7 +537,7 @@ public final class PlayerDiscoveries0650 {
             DiscoveryView item = filtered.get(index);
             text(screen, graphics, fit(item.label, 26), listX + 6, y + 4,
                     item.visited() ? 0xff80ffc2 : 0xffdceaf3);
-            text(screen, graphics, "L" + item.analysis, listX + 236, y + 4, analysisColor(item.analysis));
+            text(screen, graphics, "WAYPOINT".equals(item.kind) ? "--" : "L" + item.analysis, listX + 236, y + 4, analysisColor(item.analysis));
             text(screen, graphics, item.favorite() ? "*" : shortKind(item.kind), listX + 268, y + 4,
                     item.favorite() ? 0xffffcc3d : 0xff7f9aaa);
         }
@@ -553,7 +554,7 @@ public final class PlayerDiscoveries0650 {
         } else {
             text(screen, graphics, fit(selected.label, 24), detailX + 10, top + 134, 0xff80ffc2);
             text(screen, graphics, fit(selected.kind + " // " + selected.source, 25), detailX + 10, top + 149, 0xff8fa8b8);
-            text(screen, graphics, "ANALYSIS L" + selected.analysis + "/3", detailX + 10, top + 164, analysisColor(selected.analysis));
+            text(screen, graphics, "WAYPOINT".equals(selected.kind) ? "SAVED COORDINATES" : "ANALYSIS L" + selected.analysis + "/3", detailX + 10, top + 164, analysisColor(selected.analysis));
             text(screen, graphics, fit(selected.primary, 24), detailX + 10, top + 179, 0xffdceaf3);
             text(screen, graphics, reserveLabel(selected), detailX + 10, top + 194, 0xffdceaf3);
             text(screen, graphics, clientLastSeenLabel(selected), detailX + 10, top + 209, 0xff8fa8b8);
@@ -604,6 +605,10 @@ public final class PlayerDiscoveries0650 {
             ViewState view = VIEWS.computeIfAbsent(screen, ignored -> new ViewState());
             if (tab == 3) {
                 if (button != 0 || !PlayerShipLink0680.clientAllowed()) return true;
+                if (!view.favoritesPicker && inside(mouseX, mouseY, left + 174, top + 258, 220, 18)) {
+                    if (PlayerLocation0692.enabled()) { PlayerLocation0692.beginClient(); PlayerGeologicalSurveyGui0620.sendSurveyMode(8); }
+                    return true;
+                }
                 if (!PlayerNavigation0690.favoritesEnabled()) { view.favoritesPicker = false; return true; }
                 if (!view.favoritesPicker) {
                     if (inside(mouseX, mouseY, left + 26, top + 258, 140, 18)) {
@@ -723,7 +728,7 @@ public final class PlayerDiscoveries0650 {
     }
 
     private static String shortKind(String kind) {
-        return "GEOLOGY".equalsIgnoreCase(kind) ? "GEO" : "STR";
+        return "WAYPOINT".equalsIgnoreCase(kind) ? "LOC" : "GEOLOGY".equalsIgnoreCase(kind) ? "GEO" : "STR";
     }
 
     private static String shortDim(String dimension) {

@@ -6,6 +6,16 @@ Branch: `main`
 
 ## Current objective
 
+Installed Stage 9 SAVE CURRENT LOCATION candidate `.69.2`: `NewWorldCore-1.21.1-NeoForge-0.5.69.2-alpha-save-current-location.jar`, SHA-256 `3253d965abe06cf134de86759c94bade33f53038a60a7a9990ef28a35db358c9`, 3641310 bytes. Nine smoke suites plus actual engine WE fixture passed; new runtime acceptance is pending. Next: outside the TARDIS with a connected link, Navigation → SAVE CURRENT LOCATION → FAVORITES; verify player block coordinates/dimension, no duplicate on repeat and persistence after world reload. No target/route/flight/energy changes. SEND TO SHIP is still unimplemented; Stage 9 remains partial.
+
+The new record is a shared WAYPOINT/MANUAL favorite, not structure/geology evidence. Server reads player position (not supplied coordinates), rechecks owner/link and rejects TARDIS interiors. Existing coordinate collisions only favorite the original record without replacing metadata. Live settings in `player-navigation.properties`: location.enabled=true, location.max_per_ship=128 (1–1024), location.cooldown_ticks=40 (20–1200). Limits reject new saves without deleting old data. Metadata normalizers now preserve WAYPOINT/MANUAL through existing schema-v3 persistence; no migration or new save-file format.
+
+`.69.1` basic favorite acceptance is now passed: user screenshots show Trial Chambers/Archeologist Camp, SYNC 2/2, then Trial Chambers selected at [-2434,-9,150] with the old Carbon route unchanged (next [-2376,68,376], 1/1, 219 blocks, 52 WE). Log 15:36:28 favorite snapshot, 15:36:31 TARGET and 15:36:32 updated Navigation corroborate this. Empty/removal/config/multiplayer/link edge cases are not newly claimed. User closed the game; server stopped at 15:37:06 and no Java process was present during install.
+
+Accepted `.69.1` originals and replaced config/README are preserved at laptop `backups/custom-mods/pre-save-location-20260928-01/`. Scoped install only; DoctorWhoMod and worlds/unrelated configs unchanged. Repo/runtime single JAR hashes/lock/embedded manifest verified. Latest details: `2026-09-28_laptop_save_current_location.md`.
+
+## Previous .69.1 — backed up; basic favorite acceptance supersedes pending wording below
+
 Installed Stage 9 favorite-picker candidate `.69.1`: `NewWorldCore-1.21.1-NeoForge-0.5.69.1-alpha-navigation-favorites.jar`, SHA-256 `d6ff78e9fce2e9d5e3b6480711dfb656c8a64f4dc1e096799b73c1d31229a91d`, 3636825 bytes. Navigation → FAVORITES uses shared favorite records and the existing guarded TARGET writer; selecting a target leaves the existing route unchanged. No flight, WE consumption, world migration or DoctorWhoMod change. Live `player-navigation.properties` adds `favorites.enabled=true` and `favorites.sync_limit=128` (16–512). Old favorites are queried independently of the recent Discovery quota.
 
 Eight smoke suites and actual DoctorWhoMod WE fixture passed. Verified source/embedded manifest, lock/hash and one custom JAR per mod at repo/runtime. Game was closed for scoped deployment; `.69.0` repo/live originals and replaced configs preserved at laptop `backups/custom-mods/pre-navigation-favorites-20260928-01/`. Other configs/worlds/backups untouched. Missing temporary JDK was recovered from the official checksum-verified Adoptium package to `D:\Projects\NewWorld-Toolchains\jdk-21.0.12.1+1` (local tooling, not Git).

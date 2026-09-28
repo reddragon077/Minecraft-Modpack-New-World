@@ -275,6 +275,9 @@ public final class NewWorldClassPatcher {
             expected += 2;
         }
         if (DISCOVERY_META_OWNER.equals(className)) {
+            replacements += replaceLocationNormalizer(node, "normalizeKind");
+            replacements += replaceLocationNormalizer(node, "normalizeSource");
+            expected += 2;
             replacements += wrapDiscoveryMetaPost(node, "loadMeta",
                     "(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/Object;)V", "loadMeta0610Base", "afterLoad");
             replacements += wrapDiscoveryMetaPost(node, "saveMeta",
@@ -778,6 +781,19 @@ public final class NewWorldClassPatcher {
             added++;
         }
         return added;
+    }
+
+    private static int replaceLocationNormalizer(ClassNode node, String name) {
+        for (MethodNode method : node.methods) {
+            if (!method.name.equals(name) || !method.desc.equals("(Ljava/lang/String;)Ljava/lang/String;")) continue;
+            method.instructions.clear(); method.tryCatchBlocks.clear();
+            if (method.localVariables != null) method.localVariables.clear();
+            method.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0));
+            method.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "net/newworld/player/PlayerLocation0692", name, method.desc, false));
+            method.instructions.add(new InsnNode(Opcodes.ARETURN)); method.maxStack = 1; method.maxLocals = 1;
+            return 1;
+        }
+        return 0;
     }
 
     private static int wrapDiscoveryMetaPost(ClassNode node, String methodName, String descriptor,

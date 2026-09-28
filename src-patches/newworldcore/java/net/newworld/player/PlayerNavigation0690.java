@@ -194,7 +194,8 @@ public final class PlayerNavigation0690 {
         }
         call(graphics, "fill", left + 26, top + 258, left + 166, top + 276, favoritesEnabled() ? 0xFF17465A : 0xFF18242B);
         label(screen, graphics, "FAVORITES", left + 33, top + 263, favoritesEnabled() ? 0xFF7FF7FF : 0xFF5F7079, 126);
-        label(screen, graphics, "Estimate: next hop only; flight gates apply.", left + 174, top + 258, 0xFF8DA7B4, 340);
-        label(screen, graphics, "Use Discoveries ROUTE or the ship terminal.", left + 174, top + 273, 0xFF8DA7B4, 340);
+        call(graphics, "fill", left + 174, top + 258, left + 394, top + 276, PlayerLocation0692.enabled() ? 0xFF17465A : 0xFF18242B);
+        label(screen, graphics, "SAVE CURRENT LOCATION", left + 181, top + 263, PlayerLocation0692.enabled() ? 0xFF7FF7FF : 0xFF5F7079, 206);
+        label(screen, graphics, PlayerLocation0692.status().isBlank() ? "Save position only; target/route unchanged." : PlayerLocation0692.status(), left + 26, top + 279, 0xFF8DA7B4, 488);
     }
 }

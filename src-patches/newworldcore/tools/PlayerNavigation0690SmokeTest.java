@@ -78,6 +78,13 @@ public final class PlayerNavigation0690SmokeTest {
             PlayerNavigation0690.draw(screen, new Graphics(), 0, 0, source, true);
             check(screen.lines.contains("EST 101 WE / NEXT HOP"), "WE label absent");
             check(screen.lines.contains("FAVORITES"), "Favorites entry absent");
+            check(screen.lines.contains("SAVE CURRENT LOCATION"), "Save location entry absent");
+            for (int code = PlayerLocation0692.SAVED; code <= PlayerLocation0692.FAILED; code++) {
+                PlayerLocation0692.accept(code); screen.lines.clear();
+                PlayerNavigation0690.draw(screen, new Graphics(), 0, 0, source, true);
+                check(screen.lines.contains(PlayerLocation0692.status()), "Location status absent");
+            }
+            PlayerLocation0692.resetClient();
             Files.writeString(config, "show_coordinates=false\nshow_we_estimate=false\n"); NewWorldConfig.reload();
             screen.lines.clear(); PlayerNavigation0690.draw(screen, new Graphics(), 0, 0, source, true);
             check(screen.lines.contains("COORDINATES HIDDEN") && screen.lines.contains("WE ESTIMATE HIDDEN"), "Display toggle draw failed");
