@@ -1,6 +1,6 @@
 # Player Navigation — ilk görünüm kabulü
 
-Kurulu aday `.69.2-alpha-save-current-location`. Önceki görünüm/GUI kapat-aç ve `.69.1` temel favori seçimi kabul edildi. Yeni SAVE CURRENT LOCATION oyun testi bekliyor; genişletilmiş kontrol listesi tamamlanmadı.
+Kurulu aday `.69.3-alpha-send-to-ship`. Önceki görünüm/GUI kapat-aç, `.69.1` temel favori seçimi ve `.69.2` konum kaydı/tekrar/kalıcılık kabul edildi. Yeni SEND TO SHIP düğmesi oyun testi bekliyor; genişletilmiş kontrol listesi tamamlanmadı.
 
 ## Doğrulanan kapsam
 
@@ -34,7 +34,9 @@ Log: `[NewWorld Player Navigation]`. `snapshot failed`, `sampling failed`, `rend
 
 Sekiz otomatik test grubu favori adayında geçti; bu testler yukarıdaki oyun kanıtından ayrıdır.
 
-## .69.2 SAVE CURRENT LOCATION — oyun kabulü bekliyor
+## .69.2 SAVE CURRENT LOCATION — temel oyun kabulü geçti
+
+28 Eylül: ilk [-2454,63,181] konumu 16:38:14.955 kaydedildi (3/3); 16:38:19.368 aynı kayıt yeniden seçildi ve sayı 3/3 kaldı. İkinci [-2454,63,189] konumu 16:38:54.240 kaydedildi, 16:38:55.776 liste 4/4 oldu. İki ekran WAYPOINT/MANUAL koordinatlarını doğruladı. Kullanıcı dünyadan çıkıp geri girdiğinde kayıtların durduğunu açıkça doğruladı; bu son adım kullanıcı bildirimidir. Kayıt aralığında ilgili hata bulunmadı. Aşağıdaki iç-mekân/config/çok oyunculu kenar testleri ayrıca açık kalır.
 
 1. Geminin dışında, LINK CONNECTED iken NAVIGATION → SAVE CURRENT LOCATION bas. Altta LOCATION SAVED // OPEN FAVORITES beklenir. Hedef ve mevcut rota değişmemeli.
 2. FAVORITES aç; `LOCATION x y z` kaydı oyuncunun bastığı andaki blok koordinatında ve boyutunda olmalı. Ayrıntıda WAYPOINT // MANUAL, SAVED COORDINATES gösterilir; bu bir yapı/maden keşfi değildir. ALL listesinde de görünür, STRUCTURES/GEOLOGY filtrelerinde görünmez.
@@ -42,4 +44,16 @@ Sekiz otomatik test grubu favori adayında geçti; bu testler yukarıdaki oyun k
 4. GUI kapat/aç; ardından dünyadan çıkıp geri girerek favorinin, koordinatın ve WAYPOINT/MANUAL türünün kalıcı olduğunu kontrol et. TARGET ile bu konumu seçebilirsin; kayıt işlemi kendi başına hedef seçmez/rota hazırlamaz/uçuş başlatmaz.
 5. TARDIS içindeyken basınca EXIT THE SHIP... beklenir. Bağlantı kaybında ortak erişim kilidi geçerlidir. İsteğe bağlı config: `location.enabled=false` yazımı kapatır; `location.max_per_ship` limit dolunca yeni konumu reddeder, mevcutları silmez; `location.cooldown_ticks` kayıt beklemesidir. Varsayılanlar true/128/40; test sonrası geri getir.
 
-Dokuz otomatik test grubu ve gerçek motor WE testi geçti. Konum testi: tekrar/aynı-koordinat delil koruma, boyut anahtarı, kota, izin/iç-mekân/bekleme politikası, canlı config sınırları, gerçek yamalı metadata save/load ve GUI mesaj sınırları. Henüz `.69.2` oyun testi yapılmadı. SEND TO SHIP sonraki iştir; Aşama 9 kısmi kalır.
+Dokuz otomatik test grubu ve gerçek motor WE testi geçti. Konum testi: tekrar/aynı-koordinat delil koruma, boyut anahtarı, kota, izin/iç-mekân/bekleme politikası, canlı config sınırları, gerçek yamalı metadata save/load ve GUI mesaj sınırları. Yukarıda açıklanan temel oyun kabulü de geçti; Aşama 9 genişletilmiş kapsamı kısmi kalır.
+
+## .69.3 SEND TO SHIP — oyun kabulü bekliyor
+
+Favorilerdeki eski TARGET düğmesi geniş SEND TO SHIP düğmesi oldu. Aynı sunucu hedef yazıcısını ve paket isteğini kullanır; yeni rota veya uçuş sistemi değildir. Kayıt zaten ortak veritabanındadır, ikinci kopya üretilmez. Seçili kayıt geminin ortak Navigation hedefi olur; fiziksel terminalden de okunur. Discoveries içindeki TARGET/ROUTE değişmedi. Eski `.69.1` hedef testi bu yeni düğme/mesaj/config kabulünün yerine sayılmaz.
+
+1. Bağlantı açıkken NAVIGATION → FAVORITES aç. Kaydettiğin LOCATION satırlarından birini seç; SEND TO SHIP bas. Altta SENT TO SHIP beklenir.
+2. < NAVIGATION ile dön: sol hedef LOCATION ve doğru koordinat/boyut olmalı. Sağdaki mevcut rota/sonraki durak eskisi gibi kalmalı. Fiziksel Navigation Terminal seçili hedefi de aynı kaydı göstermeli. Gemi hareket etmemeli; işlem WE tüketmemeli.
+3. Başka konumu seçip gönder. İki saniye içinde ikinci istek olursa SEND WAIT gelir; bekledikten sonra tekrar gönderilebilir. REFRESH beklemeyi sıfırlamaz. Başarılı seçim sonrası GUI kapat/aç güncel hedefi göstermeli.
+4. İsteğe bağlı: `player-navigation.properties` içinde `send_to_ship.enabled=false` bu düğmeyi/sunucu yazımını kapatır. `gui.properties` içindeki `player.discoveries.enable_target_action=false` ortak hedef iznini de kapatır. Ortak varsayılanları geri getir. `send_to_ship.cooldown_ticks=40` (20–1200) canlı bekleme ayarıdır.
+5. Bağlantı yokken eski favori yazımı engellenmeli; başka gemiye ait eski snapshot kullanılamaz. Genişletilmiş çok oyunculu/boyut/menzil kontrolleri oyun içinde ayrıca açık kalır.
+
+On otomatik test grubu + gerçek DoctorWhoMod WE fixture geçti. Yeni test canlı config/default/sınırlar, ortak hedef izni, cooldown sınırı/oyuncu izolasyonu/refresh, gerçek ortak seçici metodunun hedef yazımı ve rota/enerjiye dokunmaması, düğme/mesaj çizim sınırları ve Discoveries düğmelerinin korunmasını kontrol eder. Tam Minecraft ortamındaki uçtan uca gönderme bu otomatik testlerin kapsamında değildir.

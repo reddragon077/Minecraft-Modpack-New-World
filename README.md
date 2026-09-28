@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Kurulu geliştirme adayı `0.5.69.2-alpha-save-current-location`: Navigation SAVE CURRENT LOCATION oyuncunun konumunu ortak favorilere kaydeder; hedef ve rota değişmez. Canlı izin/kota/bekleme ayarları, dokuz test grubu ve DoctorWhoMod tahmin entegrasyonu geçti; yeni kaydın oyun kabulü bekliyor. `.69.1` favoriden Trial Chambers seçimi ve eski rotanın korunması ekran/log ile kabul edildi. [Navigation testi](docs/15_Player_Navigation_Runtime_Kabul.md). `.68.2` temel Ship Link kabulü korunur; [kapsam](docs/14_Ship_Link_Runtime_Kabul.md).
+- Kurulu geliştirme adayı `0.5.69.3-alpha-send-to-ship`: Navigation FAVORITES içindeki SEND TO SHIP seçili kaydı mevcut ortak hedef yazıcısına gönderir; rota/uçuş/WE değişmez. Canlı izin ve bekleme ayarları, on test grubu ve DoctorWhoMod tahmin entegrasyonu geçti; yeni düğmenin oyun kabulü bekliyor. `.69.2` iki konum kaydı, kopya önleme ve yeniden girişte kalıcılık temel kabulü geçti. [Navigation testi](docs/15_Player_Navigation_Runtime_Kabul.md). `.68.2` temel Ship Link kabulü korunur; [kapsam](docs/14_Ship_Link_Runtime_Kabul.md).
 - Runtime-kabul edilen `DISCOVERIES` sekmesi ortak Structure/Geology geçmişini, analiz/kaynak/rezerv/son-görülme ayrıntılarını ve canlı oyuncu mesafesini gösterir; kayıtlar favoriye alınabilir, aktif Navigation hedefi yapılabilir ve gerçek TARDIS rota/hop planına bağlanabilir.
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 

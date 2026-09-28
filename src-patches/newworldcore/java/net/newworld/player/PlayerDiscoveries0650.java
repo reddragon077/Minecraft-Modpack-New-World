@@ -360,6 +360,8 @@ public final class PlayerDiscoveries0650 {
             case STATUS_FAVORITE_OFF -> "FAVORITE REMOVED";
             case STATUS_ACTION_FAILED -> "ACTION FAILED";
             case STATUS_ACTION_DISABLED -> "ACTION DISABLED";
+            case PlayerNavigationSend0693.SENT -> "SENT TO SHIP";
+            case PlayerNavigationSend0693.WAIT -> "SEND WAIT";
             default -> null;
         };
         if (status == null) return false;
@@ -401,9 +403,15 @@ public final class PlayerDiscoveries0650 {
                 return;
             }
             if (action == 0) {
+                boolean sendToShip = Boolean.TRUE.equals(SERVER_FAVORITES.get(player));
+                if (sendToShip) {
+                    int result = PlayerNavigationSend0693.claim(player, true, isFavorite(selection.record));
+                    if (result != PlayerNavigationSend0693.SENT) { send(player, result); return; }
+                }
                 selectTarget(selection);
-                send(player, STATUS_TARGET_OK);
-                System.out.println("[NewWorld Player Discoveries] target=" + selection.key + " ship=" + selection.shipId);
+                send(player, sendToShip ? PlayerNavigationSend0693.SENT : STATUS_TARGET_OK);
+                System.out.println("[NewWorld Player Discoveries] target=" + selection.key + " ship=" + selection.shipId
+                        + " sendToShip=" + sendToShip);
             } else if (action == 1) {
                 selectTarget(selection);
                 RouteContext context = new RouteContext(selection.level);
@@ -561,8 +569,10 @@ public final class PlayerDiscoveries0650 {
             text(screen, graphics, "X=" + selected.x + " Y=" + selected.y, detailX + 10, top + 224, 0xffb5c8d8);
             text(screen, graphics, "Z=" + selected.z + "  " + shortDim(selected.dimension), detailX + 10, top + 237, 0xffb5c8d8);
             text(screen, graphics, playerProximity(selected), detailX + 10, top + 249, 0xffffcc3d);
-            actionButton(screen, graphics, detailX + 4, top + 258, 52, "TARGET",
-                    NewWorldTuning.playerDiscoveriesTargetEnabled() && !clientReceiving(), false);
+            actionButton(screen, graphics, detailX + 4, top + 258, view.favoritesPicker ? 172 : 52,
+                    view.favoritesPicker ? "SEND TO SHIP" : "TARGET",
+                    (view.favoritesPicker ? PlayerNavigationSend0693.clientEnabled() : NewWorldTuning.playerDiscoveriesTargetEnabled())
+                            && !clientReceiving(), false);
             if (!view.favoritesPicker) {
             actionButton(screen, graphics, detailX + 60, top + 258, 54, "ROUTE",
                     NewWorldTuning.playerDiscoveriesRouteEnabled(), false);
@@ -649,9 +659,10 @@ public final class PlayerDiscoveries0650 {
             }
             DiscoveryView selected = filtered.isEmpty() ? null
                     : filtered.get(Math.max(0, Math.min(view.selected, filtered.size() - 1)));
-            if (selected != null && inside(mouseX, mouseY, left + 338, top + 258, 52, 18)) {
+            if (selected != null && inside(mouseX, mouseY, left + 338, top + 258, view.favoritesPicker ? 172 : 52, 18)) {
                 if (!NewWorldTuning.playerDiscoveriesTargetEnabled()) return true;
-                actionStatus = "SETTING TARGET...";
+                if (view.favoritesPicker && !PlayerNavigationSend0693.clientEnabled()) return true;
+                actionStatus = view.favoritesPicker ? "SENDING..." : "SETTING TARGET...";
                 PlayerGeologicalSurveyGui0620.sendSurveyMode(ACTION_TARGET_BASE - selected.snapshotIndex);
                 return true;
             }

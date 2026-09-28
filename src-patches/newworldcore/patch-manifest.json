@@ -1,9 +1,11 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.69.2-alpha-save-current-location",
-  "marker": "NewWorldSavedLocationV1",
+  "version": "0.5.69.3-alpha-send-to-ship",
+  "marker": "NewWorldNavigationSendV1",
   "fixes": [
+    "Navigation favorite SEND TO SHIP reuses the existing guarded shared target writer, preserves loaded routes and never starts flight or spends WE",
+    "Live send enable/cooldown policy and explicit server acknowledgement apply to favorite targets without changing Discoveries TARGET/ROUTE or the request protocol",
     "Server-authoritative SAVE CURRENT LOCATION adds bounded deduplicated WAYPOINT/MANUAL favorites using existing Discovery persistence without target, route or flight changes",
     "Live location enable/limit/cooldown settings, interior rejection and waypoint metadata round-trip preserve existing discovery evidence",
     "Navigation favorites picker reuses shared Discovery favorite records, masked labels and guarded TARGET action without route or flight writes",

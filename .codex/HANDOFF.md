@@ -6,6 +6,14 @@ Branch: `main`
 
 ## Current objective
 
+Installed `.69.3-alpha-send-to-ship`: `NewWorldCore-1.21.1-NeoForge-0.5.69.3-alpha-send-to-ship.jar`, SHA-256 `ecfcdc4f17055734c9f73e43c97f5eb1f5f9177f3e7dc5206854a3967fde36ce`, 3643035 bytes. Ten smoke suites plus actual DoctorWhoMod WE fixture passed. New runtime acceptance pending: NAVIGATION → FAVORITES → select a saved LOCATION → SEND TO SHIP; expect SENT TO SHIP, then updated left target with unchanged right loaded route. Compare physical terminal. No flight/energy consumption.
+
+This is the existing shared TARGET writer exposed with a clear label/acknowledgement and new live favorite-send permission/cooldown, not a new flight or route implementation. `player-navigation.properties`: send_to_ship.enabled=true, send_to_ship.cooldown_ticks=40 (20–1200). Shared `gui.properties` player.discoveries.enable_target_action remains required. Same owner/link/ship/favorite safeguards; repeat sends within cooldown return SEND WAIT, REFRESH does not bypass it. Normal Discoveries TARGET/ROUTE are unchanged. Accepted `.69.2` repository/runtime originals and config/README backed up under `backups/custom-mods/pre-send-to-ship-20260928-01/`; game/Java absent at install, worlds and DoctorWhoMod untouched. See `2026-09-28_laptop_send_to_ship.md` and `docs/15_Player_Navigation_Runtime_Kabul.md`. Stage 9 remains partial; do not skip to Mining before current acceptance.
+
+## Previous .69.2 — accepted basic save/reload; backed up
+
+Acceptance update: `.69.2` first location, exact-coordinate dedup and second location passed by screenshots and server log (16:38:14 / 16:38:19 / 16:38:54; favorites 3/3 -> 3/3 -> 4/4). User confirmed persistence after world exit/re-entry. SEND TO SHIP is now the next implementation: explicitly send a selected favorite to the existing shared target writer, leaving the route, flight and energy unchanged. Runtime-pending statements below are installation history; extended cases remain open.
+
 Installed Stage 9 SAVE CURRENT LOCATION candidate `.69.2`: `NewWorldCore-1.21.1-NeoForge-0.5.69.2-alpha-save-current-location.jar`, SHA-256 `3253d965abe06cf134de86759c94bade33f53038a60a7a9990ef28a35db358c9`, 3641310 bytes. Nine smoke suites plus actual engine WE fixture passed; new runtime acceptance is pending. Next: outside the TARDIS with a connected link, Navigation → SAVE CURRENT LOCATION → FAVORITES; verify player block coordinates/dimension, no duplicate on repeat and persistence after world reload. No target/route/flight/energy changes. SEND TO SHIP is still unimplemented; Stage 9 remains partial.
 
 The new record is a shared WAYPOINT/MANUAL favorite, not structure/geology evidence. Server reads player position (not supplied coordinates), rechecks owner/link and rejects TARDIS interiors. Existing coordinate collisions only favorite the original record without replacing metadata. Live settings in `player-navigation.properties`: location.enabled=true, location.max_per_ship=128 (1–1024), location.cooldown_ticks=40 (20–1200). Limits reject new saves without deleting old data. Metadata normalizers now preserve WAYPOINT/MANUAL through existing schema-v3 persistence; no migration or new save-file format.
@@ -188,8 +196,8 @@ Stage 5 fresh-session regression gate passed on `.68.2`: Overview and Discoverie
 ## Next executable test
 
 1. Stage 4 Overview single-player acceptance is complete.
-2. Stage 5 `.68.2` fresh-session and automatic range recovery passed. `.69.0` Navigation initial view and changed target/route passed; first confirm GUI close/reopen, then remaining checks in `docs/15_Player_Navigation_Runtime_Kabul.md` before further Stage 9 actions.
-3. Then return to Stage 9 for current target/route/hop/WE presentation, favorite selection, `SAVE CURRENT LOCATION`, and `SEND TO SHIP`. Discovery TARGET/ROUTE creation is already complete in `0.5.66.1` and must not be reimplemented.
+2. Stage 5 `.68.2` fresh-session and automatic recovery, `.69.0` Navigation view/GUI reopen, `.69.1` basic favorites and `.69.2` save/dedup/reload acceptance are recorded; do not repeat these old gates.
+3. Test installed `.69.3` FAVORITES → saved LOCATION → SEND TO SHIP acknowledgement, shared target and preserved route using `docs/15_Player_Navigation_Runtime_Kabul.md`. Extended Navigation checks remain open. Discovery TARGET/ROUTE already works and must not be reimplemented.
 
 ## Do not assume
 

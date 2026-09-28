@@ -4,12 +4,12 @@ Bu belge, eski `0.1.0-alpha` Room Controller denemesinin yerine güncel New Worl
 
 ## Kurulu build'ler
 
-Kurulu NewWorldCore `.69.2`, SAVE CURRENT LOCATION adayıdır; dokuz test grubu ve gerçek DoctorWhoMod WE tahmin entegrasyonu geçti. Oyuncu konumu WAYPOINT/MANUAL favorisi olur; hedef/rota değişmez, iç mekân kaydı reddedilir. Yeni kaydetme/yeniden yükleme oyun kabulü bekliyor. `.69.1` temel favori seçimi ve rotayı koruma ekran/log ile geçti. [Navigation kabul adımları](../docs/15_Player_Navigation_Runtime_Kabul.md).
+Kurulu NewWorldCore `.69.3`, SEND TO SHIP adayıdır; on test grubu ve gerçek DoctorWhoMod WE tahmin entegrasyonu geçti. FAVORITES seçimi mevcut ortak hedefe yazılır; rota/uçuş/WE değişmez. Yeni düğme/mesaj oyun kabulü bekliyor. `.69.2` konum kaydı/tekrar/yeniden giriş temel kabulü geçti. [Navigation kabul adımları](../docs/15_Player_Navigation_Runtime_Kabul.md).
 Öncelikli test: [Player Navigation kalan runtime kontrolleri](../docs/15_Player_Navigation_Runtime_Kabul.md).
 
 | Bileşen | Dosya | SHA-256 |
 |---|---|---|
-| NewWorldCore aday | `NewWorldCore-1.21.1-NeoForge-0.5.69.2-alpha-save-current-location.jar` | `3253d965abe06cf134de86759c94bade33f53038a60a7a9990ef28a35db358c9` |
+| NewWorldCore aday | `NewWorldCore-1.21.1-NeoForge-0.5.69.3-alpha-send-to-ship.jar` | `ecfcdc4f17055734c9f73e43c97f5eb1f5f9177f3e7dc5206854a3967fde36ce` |
 | DoctorWhoMod fork | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` |
 
 ## Testten önce

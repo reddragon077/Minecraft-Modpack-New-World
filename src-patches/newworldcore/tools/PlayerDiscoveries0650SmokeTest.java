@@ -86,7 +86,7 @@ public final class PlayerDiscoveries0650SmokeTest {
                 || !PlayerDiscoveries0650.favoriteSelectionAllowed(false, false, 1, newest)) {
             throw new AssertionError("Favorite server action gate regression");
         }
-        // Reuse the actual renderer: picker has TARGET only, no route/favorite mutation controls.
+        // Reuse the actual renderer: picker has SEND TO SHIP only, no route/favorite mutation controls.
         FakeScreen screen = new FakeScreen();
         var viewsField = PlayerDiscoveries0650.class.getDeclaredField("VIEWS"); viewsField.setAccessible(true);
         @SuppressWarnings("unchecked") var views = (java.util.Map<Object,Object>) viewsField.get(null);
@@ -97,7 +97,7 @@ public final class PlayerDiscoveries0650SmokeTest {
         views.put(screen, state);
         var render = PlayerDiscoveries0650.class.getDeclaredMethod("renderDiscoveries", Object.class, Object.class, int.class, int.class);
         render.setAccessible(true); render.invoke(null, screen, new Graphics(), 0, 0);
-        if (!screen.lines.contains("NAVIGATION // FAVORITES") || !screen.lines.contains("TARGET")
+        if (!screen.lines.contains("NAVIGATION // FAVORITES") || !screen.lines.contains("SEND TO SHIP")
                 || screen.lines.contains("ROUTE") || screen.lines.contains("* FAV")) throw new AssertionError("Picker actions/layout");
         accept(PlayerDiscoveries0650.SNAPSHOT_BEGIN_BASE); number(PlayerDiscoveries0650.FIELD_TOTAL, 0); accept(PlayerDiscoveries0650.SNAPSHOT_END);
         screen.lines.clear(); render.invoke(null, screen, new Graphics(), 0, 0);

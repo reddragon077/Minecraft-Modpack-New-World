@@ -2482,9 +2482,9 @@
   ],
   "customMods": [
     {
-      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.69.2-alpha-save-current-location.jar",
-      "sha256": "3253d965abe06cf134de86759c94bade33f53038a60a7a9990ef28a35db358c9",
-      "size": 3641310
+      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.69.3-alpha-send-to-ship.jar",
+      "sha256": "ecfcdc4f17055734c9f73e43c97f5eb1f5f9177f3e7dc5206854a3967fde36ce",
+      "size": 3643035
     },
     {
       "fileName": "DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar",
