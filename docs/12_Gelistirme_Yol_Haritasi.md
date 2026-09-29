@@ -167,16 +167,17 @@ Routing, priority, Keep ve upgrade yönetimi fiziksel Mining Terminal’de kalac
 
 ## Aşama 11 — Emergency panel
 
-29 Eylül düzeltmesi: .71.0 sunucu SENT/WAIT sonuçlarına rağmen GUI NO RESPONSE gösterdi. .71.1, gecikmiş sonuç kaybını testte giderir; işlemle eşleşen yanıt normal telemetry ile yeniden alınır ve cooldown geri sayılır. İşlemi/rota yazımını tekrar etmez. 14 paket + Doctor fixture geçti, yeni oyun yanıt kabulü bekleniyor; aşağıdaki kısmi işaretler korunur. RETURN hâlâ kapalıdır.
+Güncel kullanıcı kararı: Beacon iptal; doğrudan kendi gemisinin güvenli Teleporter Room noktasına dönüş ve başarı sonrası 30 dakika kalıcı bekleme. .71.2 kuruldu, 15 otomatik paket + gerçek Doctor oda/yerleşim sözleşmesi + WE formülü testi geçti; oyun kabulü bekleniyor (docs/17). Önceki .71.1 Beacon geri bildirim onarımı ekran/log ile doğrulandı ama aktif ürün gereksinimi değil.
 
-Durum: 29 Eylül 2026 kullanıcı devam onayıyla ilk paket .71.0 olarak kuruldu: Emergency görünümü, sunucu konumundan DISTRESS BEACON hedefi, iki aşamalı onay ve sahiplik/bağlantı/cooldown kontrolleri. 14 otomatik test paketi ve gerçek Doctor WE formülü testi geçti; oyun kabulü bekleniyor. Mevcut rota/uçuş/WE korunur. Teleporter Room'a dışarıdan güvenli dönüş için doğrulanmış hedef/işlem sözleşmesi bulunmadığından RETURN bu pakette kapalı kalır; ışınlama ve maliyet kapıları sonraki Aşama 11 paketidir, Aşama 12'ye geçiş değildir.
+- [~] `EMERGENCY RETURN TO SHIP` — iki aşamalı tek kullanımlık onay; eski Beacon paketleri reddedilir.
+- [~] Gerçek konsol tarafı Teleporter Room yerleşimi; yüklü oda, gerçek teleporter, hava/zemin/çarpışma/tehlike/sınır kontrolleri. Güvensizse girişe/rastgele noktaya yedek ışınlanma yok.
+- [~] Sahiplik, canlı/yaya oyuncu, başka TARDIS içini reddetme, uçuş/oda yenileme ve NeoForge seyahat iptal kapıları. Acil dönüş normal uzaktan bağlantı mesafe/dimension sınırından bağımsız.
+- [~] Başarılı varıştan sonra 30 gerçek dakika, oyuncu kaydında kalıcı süre; çıkış/giriş/ölüm sıfırlamaz, çevrimdışı süre sayılır. Başarısız dönüş süre tüketmez.
+- [~] Navigation hedefi/rotası, gemi uçuşu ve WE korunur. Bu kullanıcı-onaylı paket ayrı WE ücreti eklemez; dengeleme 30 dakika cooldown'dur.
+- [ ] Gerçek oyun dönüş/geri sayım/yeniden giriş kabulü; uzaktan/dimension/çok oyunculu/koruma kenar kabulü.
+- İptal: DISTRESS BEACON ve konumu acil Navigation hedefi yapma. Eski kayıtlar silinmez.
 
-- [ ] `EMERGENCY RETURN TO SHIP`
-- [ ] Uygunsa Teleporter Room’a dönüş
-- [ ] TARDIS, teleporter, WE, cooldown, uçuş ve protected-area kapıları
-- [ ] WE maliyeti
-- [~] `DISTRESS BEACON` — .71.0 iki aşamalı onay, güncel sahiplik/bağlantı/konum ve cooldown kapıları; otomatik test geçti, oyun kabulü bekleniyor.
-- [~] Oyuncu konumunu acil Navigation hedefi olarak gönderme — .71.0 mevcut WAYPOINT kayıt/hedef yazıcısı; rota/uçuş/WE korunur. Aynı koordinat kaydı yeniden kullanılır. Oyun kabulü docs/17.
+Aşama 12'ye geçilmedi.
 
 ## Aşama 12 — Ship Alerts
 

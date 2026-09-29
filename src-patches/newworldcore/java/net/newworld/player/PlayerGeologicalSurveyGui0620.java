@@ -44,7 +44,7 @@ public final class PlayerGeologicalSurveyGui0620 {
     }
 
     public static void sendSurveyMode(int mode) throws Exception {
-        if (mode != 4 && mode != 5 && !PlayerShipLink0680.clientAllowed()) return;
+        if (mode != 4 && mode != 5 && !(PlayerEmergency0710.isRequest(mode) && PlayerShipLink0680.emergencyAvailable()) && !PlayerShipLink0680.clientAllowed()) return;
         Class<?> payloadType = Class.forName("net.newworld.player.PlayerFieldSurveyPayload");
         Constructor<?> constructor = payloadType.getConstructor(int.class);
         Object payload = constructor.newInstance(mode);

@@ -171,6 +171,10 @@ public final class PlayerShipLink0680 {
     public static boolean clientAllowed() {
         return client != null && client.allowed() && fresh(System.nanoTime(), receivedAt, openedAt, client.stale);
     }
+    /** Emergency owner rescue is independent of normal remote-control range/dimension policy. */
+    public static boolean emergencyAvailable() {
+        return client != null && !client.ship.isBlank() && fresh(System.nanoTime(), receivedAt, openedAt, client.stale);
+    }
     public static synchronized void resetClient() {
         client = null; receivedAt = 0; requestedAt = 0; incoming = null; discoveriesRequested = false;
         PlayerDiscoveries0650.resetClientLink(); PlayerOverview0670.resetClient();
@@ -205,7 +209,8 @@ public final class PlayerShipLink0680 {
             boolean active = clientAllowed();
             boolean fresh = client != null && fresh(System.nanoTime(), receivedAt, openedAt, client.stale);
             drawHeader(screen, graphics, left, top, fresh ? client : lost(client == null ? "SYNCING" : "STALE"));
-            if (!active && ((Number) field(screen, "tab")).intValue() != 0) {
+            int tab=((Number)field(screen,"tab")).intValue();
+            if (!active && tab != 0 && !(tab==5 && emergencyAvailable())) {
                 call(graphics, "flush");
                 call(graphics, "fill", left + 10, top + 76, left + 530, top + 288, 0xFF09151B);
                 call(graphics, "flush");
@@ -230,7 +235,7 @@ public final class PlayerShipLink0680 {
         int tab = ((Number) field(screen, "tab")).intValue();
         int left = (((Number) field(screen, "width")).intValue() - 540) / 2;
         int top = (((Number) field(screen, "height")).intValue() - 300) / 2;
-        return tab != 0 && !clientAllowed() && x >= left + 10 && x < left + 530 && y >= top + 76 && y < top + 288;
+        return tab != 0 && !clientAllowed() && !(tab==5 && emergencyAvailable()) && x >= left + 10 && x < left + 530 && y >= top + 76 && y < top + 288;
     }
     private static String clean(String text) { String s = text.replaceAll("[\\p{Cntrl}§]", " "); return s.substring(0, Math.min(96, s.length())); }
 }

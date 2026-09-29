@@ -162,6 +162,8 @@ try {
     if ($LASTEXITCODE -ne 0) { throw "mining yield/stop smoke test failed with exit code $LASTEXITCODE" }
     & $java ("-Dnewworldcore.configDir={0}" -f $configRoot) -classpath $smokeClasspath PlayerEmergency0710SmokeTest
     if ($LASTEXITCODE -ne 0) { throw "player emergency smoke test failed with exit code $LASTEXITCODE" }
+    & $java ("-Dnewworldcore.configDir={0}" -f $configRoot) -classpath $smokeClasspath PlayerEmergencyReturn0712SmokeTest $navigationDoctorJars[0].FullName
+    if ($LASTEXITCODE -ne 0) { throw "emergency return adapter smoke test failed with exit code $LASTEXITCODE" }
     if ($navigationDoctorJars.Count -ne 1) { throw 'Exactly one DoctorWhoMod JAR required for the Navigation engine estimate integration test.' }
     $navigationEngineClasspath = $smokeClasspath + [IO.Path]::PathSeparator + $navigationDoctorJars[0].FullName
     & $java '-Dnewworldcore.navigationEngineTest=true' -classpath $navigationEngineClasspath PlayerNavigation0690SmokeTest
