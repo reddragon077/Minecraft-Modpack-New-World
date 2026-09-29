@@ -189,15 +189,15 @@ Güncel kullanıcı kararı: Beacon iptal; doğrudan kendi gemisinin iç kapı �
 
 ## Aşama 12 — Ship Alerts
 
-Durum: kullanıcı onayıyla düşük WE, Collection doluluğu, Engine/Matrix/eksik drive ve GUI geçmişi + küçük bildirim paketi geliştiriliyor. Yeni keşif bildirimleri sonraki dilimdir; oyun kabulü henüz yok.
+Durum: `.72.0-alpha-ship-alerts` adayı; 16 otomatik paket + Doctor entegrasyon kontrolleri geçti. Küçük bildirim vanilla HUD/action-bar, geçmiş oturum başınadır. Yeni keşif bildirimleri sonraki dilimdir; oyun kabulü henüz yok. [Toplu kabul](18_Ship_Alerts_Runtime_Kabul.md).
 
-- [ ] Düşük Warp Energy
-- [ ] Collection Buffer yüksek/full
-- [ ] Engine/Matrix
-- [ ] Eksik drive
+- [~] Düşük Warp Energy
+- [~] Collection Buffer yüksek/full (tür slotu doluluğu ve gerçek BUFFER_FULL ayrı)
+- [~] Engine/Matrix
+- [~] Eksik drive (mevcut gemi uçuş hedefi gereksinimi)
 - [ ] Yeni Structure/Geological Discovery
-- [ ] Player GUI uyarı geçmişi
-- [ ] Küçük toast/notification katmanı
+- [~] Player GUI uyarı geçmişi (Overview, sınırlı oturum geçmişi)
+- [~] Küçük toast/notification katmanı (vanilla action-bar)
 
 ## Aşama 13 — Deposit Generator
 

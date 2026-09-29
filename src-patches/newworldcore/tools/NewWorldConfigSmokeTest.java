@@ -6,6 +6,14 @@ public final class NewWorldConfigSmokeTest {
     private NewWorldConfigSmokeTest() {}
 
     public static void main(String[] args) {
+        expect("alerts refresh", net.newworld.player.PlayerAlerts0720.refreshTicks(), 40L);
+        expect("alerts history", net.newworld.player.PlayerAlerts0720.historyLimit(), 16L);
+        expect("alerts warp warning", net.newworld.player.PlayerAlerts0720.warningPercent(), 20L);
+        expect("alerts warp critical", net.newworld.player.PlayerAlerts0720.criticalPercent(), 5L);
+        expect("alerts collection warning", net.newworld.player.PlayerAlerts0720.bufferPercent(), 80L);
+        expect("alerts repeat", net.newworld.player.PlayerAlerts0720.noticeCooldown(), 60L);
+        expect("alerts spacing", net.newworld.player.PlayerAlerts0720.noticeSpacing(), 4L);
+        if (!net.newworld.player.PlayerAlerts0720.enabled() || !net.newworld.player.PlayerAlerts0720.notifications()) throw new AssertionError("Alert defaults");
         expect("player mining refresh", net.newworld.player.PlayerMining0700.refreshTicks(), 20L);
         expect("player mining stale", net.newworld.player.PlayerMining0700.staleTicks(), 120L);
         if (!net.newworld.player.PlayerMining0700.showArea() || !net.newworld.player.PlayerMining0700.showBuffers()) throw new AssertionError("Mining display defaults");

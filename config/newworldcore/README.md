@@ -1,5 +1,7 @@
 # NewWorldCore sistem ayarları
 
+`ship-alerts.properties`: salt-okunur Aşama 12 uyarıları. `enabled`, `refresh_ticks` (20–1200), `history_limit` (4–32), `warp.warning_percent` / `warp.critical_percent`, `collection.warning_percent`, `notifications.enabled`, `notifications.repeat_seconds` (5–3600), `notifications.spacing_seconds` (3–30) canlı okunur. Collection yüzdesi eşya değil tür slotu doluluğudur. Eksik drive yalnız geminin mevcut uçuş hedefi farklı dimension gerektirdiğinde değerlendirilir. Geçmiş sunucu oturumu boyunca tutulur; çıkışta sıfırlanır. Küçük bildirim vanilla action-bar alanını paylaşır.
+
 Bu dizindeki `.properties` dosyaları NewWorldCore'un çalışan denge ve performans ayarlarıdır.
 Değerler en geç bir saniye içinde yeniden okunur; Radar yeni tarama başlarken tüm önbelleği yeniler.
 Hatalı veya güvenli sınırın dışındaki değerler kod içindeki güvenli sınıra çekilir.

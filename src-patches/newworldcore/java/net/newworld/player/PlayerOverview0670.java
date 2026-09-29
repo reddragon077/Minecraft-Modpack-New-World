@@ -233,6 +233,7 @@ public final class PlayerOverview0670 {
 
     public static void render(Object screen, Object graphics, int left, int top) {
         try {
+            if (PlayerAlerts0720.draw(screen, graphics, left, top)) return;
             Object minecraft = stat("net.minecraft.client.Minecraft", "getInstance");
             Object connection = clientConnection(minecraft);
             if (connection != clientConnection) { resetClient(); clientConnection = connection; }

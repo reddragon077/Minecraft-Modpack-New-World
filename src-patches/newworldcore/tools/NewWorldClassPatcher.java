@@ -169,6 +169,7 @@ public final class NewWorldClassPatcher {
         classNames.add(GEOLOGY_UI_OWNER);
         classNames.add(TRUE_SINGLE_GEOLOGY_UI_OWNER);
         classNames.add(PLAYER_GUI_OWNER);
+        classNames.add("net/newworld/player/PlayerShipClientEvents");
         classNames.add(DISCOVERY_DATA_OWNER);
         classNames.add(DISCOVERY_VALUE_OWNER);
         classNames.add(DISCOVERY_META_OWNER);
@@ -216,6 +217,15 @@ public final class NewWorldClassPatcher {
             replacements++;
         }
         int expected = classTargets.size();
+        if (className.equals("net/newworld/player/PlayerShipClientEvents")) {
+            for (MethodNode method : node.methods) if (method.name.equals("onClientTick")
+                    && method.desc.equals("(Lnet/neoforged/neoforge/client/event/ClientTickEvent$Post;)V")) {
+                method.instructions.insert(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                    "net/newworld/player/PlayerAlerts0720", "tick", "()V", false));
+                replacements++;
+            }
+            expected++;
+        }
         if (MINING_PHASE.equals(className)) { replacements += patchMiningYield(node); expected++; }
         if (MINING_DATA.equals(className)) { replacements += patchMiningPersistence(node); expected += 2; }
         if (MINING_STATE.equals(className)) {

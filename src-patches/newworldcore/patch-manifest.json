@@ -1,9 +1,11 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.71.4-alpha-emergency-entrance",
-  "marker": "NewWorldEmergencyEntranceV4",
+  "version": "0.5.72.0-alpha-ship-alerts",
+  "marker": "NewWorldShipAlertsV1",
   "fixes": [
+    "Read-only owner/link-scoped Ship Alerts poll outside the GUI: low WE, Collection type-slot pressure/BUFFER_FULL, offline matrices, broken engine and required destination drive; unknown data never fabricates recovery",
+    "Bounded session alert history under Overview and deduplicated vanilla action-bar notifications with live config, session resets, bounded wire and no Navigation/WE/world writes; new discovery notifications deferred",
     "User-requested Emergency destination is now the exact interior entrance portal arrival cell and facing, using Doctor entrance getters; requires a live loaded door and safe cell, with no other-room fallback. Regression covers four facings, translated doors and actual Doctor portal bytecode contract",
     "Emergency loaded checks reuse the inherited-interface-aware Mining helper; production adapter models LevelReader default hasChunkAt and inherited noCollision",
     "Emergency results use ship/request/sequence-bound receipts replayed in read-only telemetry; delayed acknowledgements remain recoverable without repeating world writes, with server cooldown countdown and client result diagnostics",

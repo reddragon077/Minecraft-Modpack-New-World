@@ -4,6 +4,8 @@ The complete historical NewWorldCore source tree is not currently available in t
 
 The current patch:
 
+- `.72.0-alpha-ship-alerts`: read-only owner/link-scoped background polling via the existing client post-tick subscriber; WE, Collection virtual-type capacity/actual BUFFER_FULL, matrices, broken engine and drive requirement for the current flight destination. Bounded session transition history under Overview and deduplicated vanilla action-bar notifications. Live `ship-alerts.properties`. Unknown data does not imply recovery; no persistent save schema or gameplay writes. Runtime acceptance pending; discovery notifications deferred. See `docs/18_Ship_Alerts_Runtime_Kabul.md`.
+
 - changes Emergency destination in `.71.4` at the user's explicit request: inside the main entrance door, exactly where the normal portal arrives (`getEntrancePosition().relative(getEntranceFacing())`, bottom center and entrance yaw). Requires a live loaded registered door and safe arrival cell; no Teleporter Room or neighboring-cell fallback. The `.71.3` return succeeded in-game at 14:42:25, but its separate room was not the user's intended destination. New entrance runtime acceptance is pending.
 
 - replaces Beacon with confirmed owner-only emergency return. No Navigation target/route, ship flight, WE or existing discovery writes. Old Beacon request codes are rejected. Normal remote-link range/dimension limits do not disable rescue; ownership and fresh server telemetry still apply.

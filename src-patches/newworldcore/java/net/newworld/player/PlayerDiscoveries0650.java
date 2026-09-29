@@ -70,10 +70,11 @@ public final class PlayerDiscoveries0650 {
             Object raw = call(payload, "mode");
             int code = raw instanceof Number number ? number.intValue() : 0;
             if (!"CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) {
-                if (code >= 0 && code <= 9 || isActionMode(code) || PlayerMiningStop0701.isRequest(code) || PlayerEmergency0710.isRequest(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
+                if (code >= 0 && code <= 10 || isActionMode(code) || PlayerMiningStop0701.isRequest(code) || PlayerEmergency0710.isRequest(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
                 return;
             }
             if (!clientReceiving() && PlayerShipLink0680.isWireCode(code)) { PlayerShipLink0680.accept(code); return; }
+            if (!clientReceiving() && PlayerAlerts0720.isWireCode(code)) { PlayerAlerts0720.accept(code); return; }
             if (!clientReceiving() && PlayerNavigation0690.isWireCode(code)) { PlayerNavigation0690.accept(code); return; }
             if (!clientReceiving() && PlayerMining0700.isWireCode(code)) { PlayerMining0700.accept(code); return; }
             if (!clientReceiving() && PlayerEmergency0710.isWireCode(code)) { PlayerEmergency0710.accept(code); return; }

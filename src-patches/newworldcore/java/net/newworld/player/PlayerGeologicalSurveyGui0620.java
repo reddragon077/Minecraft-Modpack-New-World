@@ -12,6 +12,7 @@ public final class PlayerGeologicalSurveyGui0620 {
 
     public static boolean mouseClicked(Object screen, double mouseX, double mouseY, int button) {
         try {
+            if (PlayerAlerts0720.mouseClicked(screen, mouseX, mouseY, button)) return true;
             if (PlayerShipLink0680.blockContentClick(screen, mouseX, mouseY)) return true;
             if (PlayerDiscoveries0650.mouseClicked(screen, mouseX, mouseY, button)) return true;
             if (isGeologyButton(screen, mouseX, mouseY)) {
@@ -44,7 +45,7 @@ public final class PlayerGeologicalSurveyGui0620 {
     }
 
     public static void sendSurveyMode(int mode) throws Exception {
-        if (mode != 4 && mode != 5 && !(PlayerEmergency0710.isRequest(mode) && PlayerShipLink0680.emergencyAvailable()) && !PlayerShipLink0680.clientAllowed()) return;
+        if (!isReadOnlyPoll(mode) && !(PlayerEmergency0710.isRequest(mode) && PlayerShipLink0680.emergencyAvailable()) && !PlayerShipLink0680.clientAllowed()) return;
         Class<?> payloadType = Class.forName("net.newworld.player.PlayerFieldSurveyPayload");
         Constructor<?> constructor = payloadType.getConstructor(int.class);
         Object payload = constructor.newInstance(mode);
@@ -64,6 +65,8 @@ public final class PlayerGeologicalSurveyGui0620 {
         }
         throw new NoSuchMethodException("PacketDistributor.sendToServer");
     }
+
+    public static boolean isReadOnlyPoll(int mode) { return mode == 4 || mode == 5 || mode == PlayerAlerts0720.MODE; }
 
     private static Object call(Object target, String name, Object... args) throws Exception {
         Method method = findMethod(target.getClass(), name, args);

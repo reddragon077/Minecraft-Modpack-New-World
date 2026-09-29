@@ -133,6 +133,8 @@ try {
     if ($LASTEXITCODE -ne 0) { throw "smoke-test javac failed with exit code $LASTEXITCODE" }
     $smokeClasspath = $smokeRoot + [IO.Path]::PathSeparator + $smokeCompileClasspath
     $configRoot = Join-Path $repoRoot 'config\newworldcore'
+    & $java ("-Dnewworldcore.configDir={0}" -f $configRoot) -classpath $smokeClasspath PlayerAlerts0720SmokeTest
+    if ($LASTEXITCODE -ne 0) { throw "ship alerts smoke test failed with exit code $LASTEXITCODE" }
     & $java ("-Dnewworldcore.configDir={0}" -f $configRoot) -classpath $smokeClasspath NewWorldConfigSmokeTest
     if ($LASTEXITCODE -ne 0) { throw "config smoke test failed with exit code $LASTEXITCODE" }
     & $java ("-Dnewworldcore.configDir={0}" -f $configRoot) -classpath $smokeClasspath Navigation0610DiscoveryRuntimeSmokeTest
