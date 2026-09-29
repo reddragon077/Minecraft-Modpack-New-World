@@ -167,12 +167,12 @@ Routing, priority, Keep ve upgrade yönetimi fiziksel Mining Terminal’de kalac
 
 ## Aşama 11 — Emergency panel
 
-29 Eylül .71.3 onarımı: .71.2 uzak mesafe denemesi `ServerLevel.hasChunkAt` hatasıyla, ışınlanma başlamadan başarısız oldu. Aynı hata arayüzden gelen yöntemleri kullanan regresyon testinde üretildi; iki oda yükleme kontrolü mevcut Mining yardımcısına geçirildi. 15 paket + gerçek Doctor sözleşmeleri geçti. Güncel aday .71.3; gerçek dönüş kabulü hâlâ bekleniyor. Aşağıdaki .71.2 kapsamı korunur.
+29 Eylül kullanıcı düzeltmesi: .71.3 dönüşü 14:42:25 loguyla gerçekleşti, ancak ayrı Teleporter Room istenen yer değildi. Yeni hedef geminin içinde ana kapının önü, normal portalın getirdiği aynı hücre ve bakış yönüdür. .71.4 adayında gerçek Doctor portal sözleşmesi ve 15 paket geçti; yeni varışın oyun kabulü bekleniyor. Eski Teleporter Room/no-entrance kararları bu açık kullanıcı isteğiyle geçersizdir.
 
-Güncel kullanıcı kararı: Beacon iptal; doğrudan kendi gemisinin güvenli Teleporter Room noktasına dönüş ve başarı sonrası 30 dakika kalıcı bekleme. .71.2 kuruldu, 15 otomatik paket + gerçek Doctor oda/yerleşim sözleşmesi + WE formülü testi geçti; oyun kabulü bekleniyor (docs/17). Önceki .71.1 Beacon geri bildirim onarımı ekran/log ile doğrulandı ama aktif ürün gereksinimi değil.
+Güncel kullanıcı kararı: Beacon iptal; doğrudan kendi gemisinin iç kapı önü portal varışına dönüş ve başarı sonrası 30 dakika kalıcı bekleme. Önceden başlayan bekleme sıfırlanmaz. .71.2 hasChunkAt hatası .71.3 ile onarıldı; .71.4 yalnız varış noktası/yönü ve ilgili açıklamaları değiştirir (docs/17).
 
 - [~] `EMERGENCY RETURN TO SHIP` — iki aşamalı tek kullanımlık onay; eski Beacon paketleri reddedilir.
-- [~] Gerçek konsol tarafı Teleporter Room yerleşimi; yüklü oda, gerçek teleporter, hava/zemin/çarpışma/tehlike/sınır kontrolleri. Güvensizse girişe/rastgele noktaya yedek ışınlanma yok.
+- [~] Normal portalın ana iç kapı önü konumu/yönü; gerçek yüklü kapı, hava/zemin/çarpışma/tehlike/sınır kontrolleri. Güvensizse başka oda veya komşu noktaya yedek ışınlanma yok.
 - [~] Sahiplik, canlı/yaya oyuncu, başka TARDIS içini reddetme, uçuş/oda yenileme ve NeoForge seyahat iptal kapıları. Acil dönüş normal uzaktan bağlantı mesafe/dimension sınırından bağımsız.
 - [~] Başarılı varıştan sonra 30 gerçek dakika, oyuncu kaydında kalıcı süre; çıkış/giriş/ölüm sıfırlamaz, çevrimdışı süre sayılır. Başarısız dönüş süre tüketmez.
 - [~] Navigation hedefi/rotası, gemi uçuşu ve WE korunur. Bu kullanıcı-onaylı paket ayrı WE ücreti eklemez; dengeleme 30 dakika cooldown'dur.
@@ -256,4 +256,4 @@ Ana listedeki sayısal sıra geliştirme sırasıdır. Tamamlanmış Aşama 6 Fi
 2. Aşama 5 `.68.2` yeni oturum SYNCING regresyonu ve bağlantı kaybı/otomatik geri dönüş kabulü tamamlandı. Çok oyunculu/yapay timeout gibi genişletilmiş kontroller hâlâ açık.
 3. Aşama 9 temel görünüm, favori/konum/gönderme ve terminal rota kabulü tamamlandı; genişletilmiş kontroller açık tutulur.
 4. Aşama 10 — .70.0 temel görünüm kabulü sonrası .70.1 kaynak sıralaması, alan bazlı kalıcı sayaç, detay/aktarımı gösteren sayfa ve onaylı STOP MINING toplu kabulü. Deposit rezerv bağlantısı ayrı açık bağımlılık; yeniden başlatma/routing fiziksel terminalde.
-5. Aşama 11 — Emergency/DISTRESS ilk paketi. .70.1 dört temel test kullanıcı tarafından kabul edildi; tekrar istenmez. Aşama 10 tam buffer eşleşmesi, bağlantı/config/çok oyunculu kenar testleri ve Aşama 14 rezerv bağımlılığı açık kalır. Acil hedef gönderme mevcut hedefi değiştirir, hesaplanmış rotayı değiştirmez ve uçuş/ışınlama başlatmaz.
+5. Aşama 11 — Emergency doğrudan iç kapı önüne dönüş. Beacon/DISTRESS iptal edildi; hedef/rota/WE değişmez, başarı sonrası 30 dakika kalıcı bekleme. .71.4 portal varış kabulü sıradadır. .70.1 dört temel test tekrar istenmez; Aşama 10 genişletilmiş kontrolleri ve Aşama 14 rezerv bağımlılığı açık kalır.

@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.*;
-import java.util.function.BiConsumer;
 import org.objectweb.asm.*;
 import net.newworld.player.*;
 
@@ -14,32 +13,24 @@ public final class PlayerEmergencyReturn0712SmokeTest {
         public Pos above(){return new Pos(getX,getY+1,getZ);}public Pos below(){return new Pos(getX,getY-1,getZ);}
         public Pos offset(Pos p){return new Pos(getX+p.getX,getY+p.getY,getZ+p.getZ);}
         public Pos rotate(String rotation){return rotation.equals("near")?this:new Pos(-getX,getY,-getZ);}
+        public Pos relative(Direction d){return new Pos(getX+d.x,getY,getZ+d.z);}
     }
     public record Vector(double x,double y,double z){}
     public record Box(double x,double y,double z,double x2,double y2,double z2){}
-    public static class Settings{public String rot="near";public String getRotation(){return rot;}}
-    public static class Direction{public static final Direction UP=new Direction();}
-    public static class Builder{public Object getBlock(){return this;}}
-    public static class Blocks{public static final Builder TARDIS_ARS_CREATOR=new Builder(),TARDIS_TELEPORTER=new Builder();}
+    public enum Direction{
+        UP(0,0,0),SOUTH(0,1,0),WEST(-1,0,90),NORTH(0,-1,180),EAST(1,0,270);
+        final int x,z;final float yaw;Direction(int x,int z,float yaw){this.x=x;this.z=z;this.yaw=yaw;}
+        public float toYRot(){return yaw;}
+    }
     public static class Tile{}
-    public record Info(Pos pos){}
-    public static class Template{
-        public Pos getSize(){return new Pos(7,6,7);}
-        public List<Info> filterBlocks(Pos zero,Settings settings,Object block){return List.of(new Info(new Pos(3,1,3)));}
-    }
-    public static class Room{
-        public Template getTemplate(World w){return new Template();}public Template getTeleporterRoomTemplate(World w){return new Template();}
-        public Pos getCenterPosition(){return Pos.ZERO;}
-        private void processTeleporterRooms(Pos center,Template t,List<?> creators,BiConsumer<Object,Object> callback){
-            Settings shared=new Settings();callback.accept(shared,new Pos(100,50,100));
-            shared.rot="far";callback.accept(shared,new Pos(10000,50,10000));
-        }
-    }
     public static class SystemState{public boolean busy;public boolean inProgress(){return busy;}}
     public static class Manager{
         public UUID owner=UUID.randomUUID();public boolean broken;public SystemState system=new SystemState();
+        public Pos entrance=new Pos(100,52,100);public Direction facing=Direction.SOUTH;public Tile door=new Tile();
+        public Pos getEntrancePosition(){return entrance;}public Direction getEntranceFacing(){return facing;}
+        public Tile getMainInteriorDoorsTile(){return door;}
         public UUID getOwner(){return owner;}public String getId(){return "ship";}public World getWorld(){return world;}
-        public boolean isBroken(){return broken;}public SystemState getSystem(Class<?> c){return system;}public Room getConsoleRoom(){return new Room();}
+        public boolean isBroken(){return broken;}public SystemState getSystem(Class<?> c){return system;}
     }
     public static class State{
         final String id;State(String id){this.id=id;}public boolean isAir(){return id.equals("air");}
@@ -49,17 +40,17 @@ public final class PlayerEmergencyReturn0712SmokeTest {
     public static class Fluid{public boolean isEmpty(){return true;}}
     public static class Border{public boolean isWithinBounds(Pos p){return true;}}
     public interface WorldReader {
-        default boolean hasChunkAt(Pos p){return ((World)this).loaded;}
+        default boolean hasChunkAt(Pos p){return ((World)this).loaded&&!p.equals(((World)this).unloaded);}
         default boolean noCollision(Player p,Box b){return !((World)this).collision;}
     }
     public static class World implements WorldReader{
-        public boolean loaded=true,blocked,collision,missingPad,hazard;
-        public Tile getBlockEntity(Pos p){return !missingPad&&p.equals(new Pos(103,51,103))?new Tile():null;}
+        public boolean loaded=true,blocked,collision,missingDoor,hazard;public Pos unloaded;
+        public Tile getBlockEntity(Pos p){return !missingDoor&&p.equals(manager.entrance)?manager.door:null;}
         public Border getWorldBorder(){return new Border();}
-        public State getBlockState(Pos p){return new State(blocked?"solid":p.getY==51?(hazard?"magma_block":"stone"):"air");}
+        public State getBlockState(Pos p){return new State(blocked&&p.equals(manager.entrance.relative(manager.facing))?"solid":p.getY==manager.entrance.getY-1?(hazard?"magma_block":"stone"):"air");}
     }
     public static class Player extends PlayerEmergency0710SmokeTest.Player{
-        public Object level=new Object();public boolean alive=true,mounted;public double x,y,z;public float fallDistance=20;
+        public Object level=new Object();public boolean alive=true,mounted;public double x,y,z;public float fallDistance=20,yaw=-37;
         public UUID getUUID(){return manager.owner;}public Object serverLevel(){return level;}
         public boolean isAlive(){return alive;}public boolean isRemoved(){return false;}public boolean isPassenger(){return mounted;}
         public boolean isVehicle(){return false;}public boolean isSleeping(){return false;}
@@ -70,7 +61,7 @@ public final class PlayerEmergencyReturn0712SmokeTest {
     public static class Server{public Server getPlayerList(){return this;}public void save(Player p){}}
     public static class Teleports{
         public static Player teleport(Player p,World w,Vector v,float yaw,float pitch){
-            if(veto)return null;p.level=w;p.x=v.x;p.y=v.y;p.z=v.z;return p;
+            if(veto)return null;p.level=w;p.x=v.x;p.y=v.y;p.z=v.z;p.yaw=yaw;return p;
         }
     }
     public static PlayerShipLink0680.Resolution resolve(Object p){return new PlayerShipLink0680.Resolution(new PlayerShipLink0680.Ship("ship",manager),
@@ -79,9 +70,7 @@ public final class PlayerEmergencyReturn0712SmokeTest {
         Map.entry("net.minecraft.core.BlockPos",Pos.class.getName()),Map.entry("net.minecraft.core.Direction",Direction.class.getName()),
         Map.entry("net.minecraft.world.phys.Vec3",Vector.class.getName()),Map.entry("net.minecraft.world.phys.AABB",Box.class.getName()),
         Map.entry("net.minecraft.world.entity.Entity",Player.class.getName()),Map.entry("net.minecraft.server.level.ServerLevel",World.class.getName()),
-        Map.entry("net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings",Settings.class.getName()),
-        Map.entry("net.drgmes.dwm.setup.ModBlocks",Blocks.class.getName()),Map.entry("net.drgmes.dwm.utils.helpers.EntityHelper",Teleports.class.getName()),
-        Map.entry("net.drgmes.dwm.blocks.tardis.misc.tardisteleporter.TardisTeleporterBlockEntity",Tile.class.getName()));
+        Map.entry("net.drgmes.dwm.utils.helpers.EntityHelper",Teleports.class.getName()));
     static class Loader extends ClassLoader{
         Loader(){super(PlayerEmergencyReturn0712SmokeTest.class.getClassLoader());}
         protected Class<?> loadClass(String name,boolean resolve)throws ClassNotFoundException{
@@ -108,58 +97,49 @@ public final class PlayerEmergencyReturn0712SmokeTest {
         if(args.length>0)inspectDoctor(args[0]);
         Class<?> adapter=new Loader().loadClass(ADAPTER);world=new World();manager=new Manager();player=new Player();
         var destination=adapter.getMethod("destination",Object.class,Object.class,Object.class);
-        Object pos=destination.invoke(null,player,manager,world);check(pos instanceof Pos p&&p.getX<110&&p.getY==52,"actual near placement must snapshot mutable settings rotation");
+        for(Pos entrance:List.of(new Pos(100,52,100),new Pos(-19,128,-27)))for(Direction facing:List.of(Direction.SOUTH,Direction.WEST,Direction.NORTH,Direction.EAST)){
+            manager.entrance=entrance;manager.facing=facing;
+            check(destination.invoke(null,player,manager,world).equals(entrance.relative(facing)),"exact portal arrival for moved/rotated entrance");
+        }
+        Pos pos=(Pos)destination.invoke(null,player,manager,world);
+        for(Pos unavailable:List.of(manager.entrance,pos.below(),pos,pos.above())){
+            world.unloaded=unavailable;check(destination.invoke(null,player,manager,world)==null,"each required cell must be loaded");
+        }world.unloaded=null;
         world.loaded=false;check(destination.invoke(null,player,manager,world)==null,"unloaded room");world.loaded=true;
-        world.blocked=true;check(destination.invoke(null,player,manager,world)==null,"blocked room");world.blocked=false;
+        world.blocked=true;check(destination.invoke(null,player,manager,world)==null,"blocked entrance must not fall back to safe neighboring cells");world.blocked=false;
         world.hazard=true;check(destination.invoke(null,player,manager,world)==null,"hazard floor");world.hazard=false;
         world.collision=true;check(destination.invoke(null,player,manager,world)==null,"entity collision");world.collision=false;
-        world.missingPad=true;check(destination.invoke(null,player,manager,world)==null,"missing actual teleporter");world.missingPad=false;
+        world.missingDoor=true;check(destination.invoke(null,player,manager,world)==null,"missing live entrance door");world.missingDoor=false;
+        Tile door=manager.door;manager.door=null;check(destination.invoke(null,player,manager,world)==null,"missing registered entrance door");manager.door=door;
         var execute=adapter.getMethod("execute",Object.class,PlayerEmergency0710.Context.class);
         var context=new PlayerEmergency0710.Context("ship",world,"minecraft:overworld",1,2,3,"READY");
+        world.blocked=true;check(execute.invoke(null,player,context).equals(PlayerEmergency0710.FULL),"unsafe entrance result");world.blocked=false;
+        check(PlayerEmergencyReturn0712.remaining(player,System.currentTimeMillis())==0,"unsafe entrance charged cooldown");
         veto=true;check(execute.invoke(null,player,context).equals(PlayerEmergency0710.FAILED),"travel veto");
         check(PlayerEmergencyReturn0712.remaining(player,System.currentTimeMillis())==0,"veto charged cooldown");veto=false;
         manager.system.busy=true;check(execute.invoke(null,player,context).equals(PlayerEmergency0710.DENIED),"busy ship");manager.system.busy=false;
         check(execute.invoke(null,player,context).equals(PlayerEmergency0710.SENT),"return success");
         check(player.level==world&&player.fallDistance==0,"safe arrival cleanup");
+        check(player.x==pos.getX+.5&&player.y==pos.getY&&player.z==pos.getZ+.5&&player.yaw==manager.facing.toYRot(),"portal bottom-center coordinates and facing");
         check(PlayerEmergencyReturn0712.remaining(player,System.currentTimeMillis())>1799000,"persisted success cooldown");
         player.level=new Object();check(execute.invoke(null,player,context).equals(PlayerEmergency0710.WAIT),"repeat return");
-        System.out.println("Emergency production adapter: placement/rotation, blocked/unloaded/hazard/collision rooms, travel veto, busy ship, successful arrival and persisted cooldown passed.");
+        System.out.println("Emergency production adapter: exact portal position/facing in four directions, missing/blocked/unloaded/hazard/collision entrance, no fallback, travel veto, busy ship and persisted success cooldown passed.");
     }
-    @SuppressWarnings("unchecked")
     static void inspectDoctor(String jar)throws Exception{
         try(var zip=new java.util.zip.ZipFile(jar)){
-            for(String path:List.of("data/dwm/structure/tardis/teleporter_rooms/new_world_bridge.nbt","data/dwm/structure/tardis/console_rooms/new_world_bridge_v2.nbt")){
-                try(var in=new DataInputStream(new java.util.zip.GZIPInputStream(zip.getInputStream(zip.getEntry(path))))){
-                    check(in.readUnsignedByte()==10,"NBT root");in.readUTF();Map<String,Object> root=(Map<String,Object>)nbt(in,10);
-                    List<?> size=(List<?>)root.get("size"),palette=(List<?>)root.get("palette"),blocks=(List<?>)root.get("blocks");
-                    List<Object> anchors=new ArrayList<>();
-                    for(Object value:blocks){Map<String,Object>b=(Map<String,Object>)value;Map<?,?>state=(Map<?,?>)palette.get(((Number)b.get("state")).intValue());
-                        if(String.valueOf(state.get("Name")).matches(".*tardis_(teleporter|ars_creator)$"))anchors.add(List.of(state.get("Name"),b.get("pos")));
-                    }
-                    check(!anchors.isEmpty(),"real room has no anchor "+path);
-                    if(path.contains("teleporter_rooms"))for(Object n:size)check(((Number)n).intValue()<=32,"room exceeds safety bound");
-                    System.out.println("Doctor room contract: "+path+" size="+size+" anchors="+anchors);
-                }
-            }
-            byte[] room=zip.getInputStream(zip.getEntry("net/drgmes/dwm/common/tardis/consolerooms/TardisConsoleRoomEntry.class")).readAllBytes();
-            Set<String> calls=new HashSet<>();new ClassReader(room).accept(new ClassVisitor(Opcodes.ASM9){
-                public MethodVisitor visitMethod(int a,String n,String d,String s,String[] ex){if(!n.equals("processTeleporterRooms"))return null;
+            byte[] exterior=zip.getInputStream(zip.getEntry("net/drgmes/dwm/blocks/tardis/exteriors/BaseTardisExteriorBlock.class")).readAllBytes();
+            List<String> calls=new ArrayList<>();new ClassReader(exterior).accept(new ClassVisitor(Opcodes.ASM9){
+                public MethodVisitor visitMethod(int a,String n,String d,String s,String[] ex){if(!n.equals("getPortalDestination"))return null;
                     return new MethodVisitor(Opcodes.ASM9){public void visitMethodInsn(int op,String owner,String method,String desc,boolean itf){
-                        check(!method.matches("setBlock|placeInWorld|clearArea|teleport.*"),"placement callback must be read-only");calls.add(method);
+                        if(owner.equals("net/drgmes/dwm/common/tardis/TardisStateManager")||owner.equals("net/minecraft/core/BlockPos")||owner.equals("net/minecraft/core/Direction")||owner.equals("net/minecraft/world/phys/Vec3"))calls.add(method+desc);
                     }};
                 }
-            },0);check(calls.containsAll(List.of("setRotation","accept","rotate","offset")),"Doctor placement contract changed");
+            },0);
+            List<String> expected=List.of("getEntranceFacing()Lnet/minecraft/core/Direction;","getWorld()Lnet/minecraft/server/level/ServerLevel;",
+                "getEntrancePosition()Lnet/minecraft/core/BlockPos;","relative(Lnet/minecraft/core/Direction;)Lnet/minecraft/core/BlockPos;",
+                "atBottomCenterOf(Lnet/minecraft/core/Vec3i;)Lnet/minecraft/world/phys/Vec3;","toYRot()F");
+            check(Collections.indexOfSubList(calls,expected)>=0,"Doctor entrance portal position/facing contract changed: "+calls);
+            System.out.println("Actual Doctor portal contract: entrance.relative(facing), bottom-center arrival, facing.toYRot passed.");
         }
-    }
-    static Object nbt(DataInputStream in,int type)throws IOException{
-        return switch(type){
-            case 1->in.readByte();case 2->in.readShort();case 3->in.readInt();case 4->in.readLong();case 5->in.readFloat();case 6->in.readDouble();
-            case 7->in.readNBytes(in.readInt());case 8->in.readUTF();
-            case 9->{int kind=in.readUnsignedByte(),count=in.readInt();List<Object>list=new ArrayList<>();for(int i=0;i<count;i++)list.add(nbt(in,kind));yield list;}
-            case 10->{Map<String,Object>map=new LinkedHashMap<>();int kind;while((kind=in.readUnsignedByte())!=0)map.put(in.readUTF(),nbt(in,kind));yield map;}
-            case 11->{int count=in.readInt();int[] data=new int[count];for(int i=0;i<count;i++)data[i]=in.readInt();yield data;}
-            case 12->{int count=in.readInt();long[] data=new long[count];for(int i=0;i<count;i++)data[i]=in.readLong();yield data;}
-            default->throw new IOException("NBT type "+type);
-        };
     }
 }

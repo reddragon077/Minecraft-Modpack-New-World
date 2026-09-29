@@ -2,10 +2,9 @@ package net.newworld.player;
 
 import java.lang.reflect.*;
 import java.util.*;
-import java.util.function.BiConsumer;
 import static net.newworld.player.PlayerOverview0670.*;
 
-/** Owner-only rescue. Uses Doctor's actual teleporter-room placement, never the entrance. */
+/** Owner-only rescue to the same interior arrival cell and facing as Doctor's entrance portal. */
 public final class PlayerEmergencyReturn0712 {
     private PlayerEmergencyReturn0712() {}
     public static final String COOLDOWN_KEY="NewWorldEmergencyReturnUntilV1";
@@ -42,13 +41,14 @@ public final class PlayerEmergencyReturn0712 {
         // Validate the persistent container before moving, and recheck cooldown on the server.
         if(remaining(player,System.currentTimeMillis())>0)return PlayerEmergency0710.WAIT;
         Object pos=destination(player,manager,world);
-        if(pos==null)return PlayerEmergency0710.FULL; // Explicit safe-room-unavailable result.
+        if(pos==null)return PlayerEmergency0710.FULL; // Never fall back to a different room.
         double x=num(call(pos,"getX"))+.5,y=num(call(pos,"getY")),z=num(call(pos,"getZ"))+.5;
         Object vector=type("net.minecraft.world.phys.Vec3").getConstructor(double.class,double.class,double.class).newInstance(x,y,z);
         // Doctor's helper calls ServerPlayer.changeDimension, retaining NeoForge travel veto hooks.
         Method teleport=type("net.drgmes.dwm.utils.helpers.EntityHelper").getMethod("teleport",
                 type("net.minecraft.world.entity.Entity"),type("net.minecraft.server.level.ServerLevel"),type("net.minecraft.world.phys.Vec3"),float.class,float.class);
-        Object arrived=teleport.invoke(null,player,world,vector,((Number)call(player,"getYRot")).floatValue(),0f);
+        float yaw=((Number)call(call(manager,"getEntranceFacing"),"toYRot")).floatValue();
+        Object arrived=teleport.invoke(null,player,world,vector,yaw,0f);
         if(arrived==null || call(arrived,"serverLevel")!=world || Math.abs(num(call(arrived,"getX"))-x)>.1
                 || Math.abs(num(call(arrived,"getY"))-y)>.1 || Math.abs(num(call(arrived,"getZ"))-z)>.1)return PlayerEmergency0710.FAILED;
         charge(arrived,System.currentTimeMillis(),PlayerEmergency0710.cooldownMillis());
@@ -59,52 +59,19 @@ public final class PlayerEmergencyReturn0712 {
             call(arrived,"clearFire");
             call(call(call(arrived,"getServer"),"getPlayerList"),"save",arrived);
         }catch(Exception e){System.err.println("[NewWorld Emergency] returned; player cleanup/checkpoint warning: "+e);}
-        System.out.println("[NewWorld Emergency] returned ship="+expected.ship()+" room="+pos+" cooldown_ms="+PlayerEmergency0710.cooldownMillis());
+        System.out.println("[NewWorld Emergency] returned ship="+expected.ship()+" entrance="+pos+" cooldown_ms="+PlayerEmergency0710.cooldownMillis());
         return PlayerEmergency0710.SENT;
     }
     private static double num(Object v){return ((Number)v).doubleValue();}
-    private record Placement(Object rotation,Object base){}
-    /** Read-only Doctor placement callback: near and far room origins in alternating order. */
+    /** Same getEntrancePosition().relative(getEntranceFacing()) used by getPortalDestination. */
     public static Object destination(Object player,Object manager,Object world)throws Exception{
-        Object room=call(manager,"getConsoleRoom");if(room==null)return null;
-        Object template=call(room,"getTeleporterRoomTemplate",world), console=call(room,"getTemplate",world);
-        Object zero=constant("net.minecraft.core.BlockPos","ZERO");
-        Object settings=type("net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings").getConstructor().newInstance();
-        Object creator=call(constant("net.drgmes.dwm.setup.ModBlocks","TARDIS_ARS_CREATOR"),"getBlock");
-        Object teleporter=call(constant("net.drgmes.dwm.setup.ModBlocks","TARDIS_TELEPORTER"),"getBlock");
-        List<?> creators=(List<?>)call(console,"filterBlocks",zero,settings,creator);
-        List<?> pads=(List<?>)call(template,"filterBlocks",zero,settings,teleporter);
-        if(creators.isEmpty() || creators.size()>16 || pads.isEmpty())return null;
-        List<Placement> placements=new ArrayList<>();
-        Method process=Arrays.stream(room.getClass().getDeclaredMethods()).filter(m->m.getName().equals("processTeleporterRooms")&&m.getParameterCount()==4).findFirst().orElseThrow();
-        process.setAccessible(true);
-        process.invoke(room,call(room,"getCenterPosition"),template,creators,(BiConsumer<Object,Object>)(placed,base)->{
-            try{placements.add(new Placement(call(placed,"getRotation"),base));}
-            catch(Exception e){throw new IllegalStateException("Teleporter placement rotation",e);}
-        });
-        Object size=call(template,"getSize");int sx=(int)num(call(size,"getX")),sy=(int)num(call(size,"getY")),sz=(int)num(call(size,"getZ"));
-        if(sx<3 || sy<3 || sz<3 || sx>32 || sy>32 || sz>32)return null;
-        // Only console-side Teleporter Rooms; never unrelated far ARS rooms or the ship entrance.
-        for(int i=0;i<placements.size();i+=2){
-            Placement p=placements.get(i);Object padLocal=call(pads.get(0),"pos"),pad=transform(p,padLocal);
-            // LevelReader supplies hasChunkAt as an interface default in the real game.
-            if(!PlayerMining0700.loaded(world,pad))continue;
-            Object tile=call(world,"getBlockEntity",pad);
-            if(tile==null || !tile.getClass().getName().equals("net.drgmes.dwm.blocks.tardis.misc.tardisteleporter.TardisTeleporterBlockEntity"))continue;
-            // Search only nearby template cells. A destroyed/blocked room fails, not a guessed fallback.
-            int px=(int)num(call(padLocal,"getX")),py=(int)num(call(padLocal,"getY")),pz=(int)num(call(padLocal,"getZ"));
-            for(int radius=1;radius<=3;radius++)for(int dy=0;dy<=2;dy++)for(int dx=-radius;dx<=radius;dx++)for(int dz=-radius;dz<=radius;dz++){
-                if(Math.max(Math.abs(dx),Math.abs(dz))!=radius)continue;
-                int x=px+dx,y=py+dy,z=pz+dz;
-                if(x<1||x>=sx-1||y<1||y>=sy-1||z<1||z>=sz-1)continue;
-                Object candidate=transform(p,blockPos(x,y,z));
-                if(safe(world,player,candidate))return candidate;
-            }
-        }
-        return null;
+        Object door=call(manager,"getMainInteriorDoorsTile");if(door==null)return null;
+        Object entrance=call(manager,"getEntrancePosition"),facing=call(manager,"getEntranceFacing");
+        // Require the registered door to exist in the loaded world, not a stale template fallback.
+        if(!PlayerMining0700.loaded(world,entrance) || call(world,"getBlockEntity",entrance)!=door)return null;
+        Object pos=call(entrance,"relative",facing);
+        return safe(world,player,pos)?pos:null;
     }
-    private static Object blockPos(int x,int y,int z)throws Exception{return type("net.minecraft.core.BlockPos").getConstructor(int.class,int.class,int.class).newInstance(x,y,z);}
-    private static Object transform(Placement p,Object local)throws Exception{return call(p.base,"offset",call(local,"rotate",p.rotation));}
     private static boolean safe(Object world,Object player,Object pos)throws Exception{
         Object below=call(pos,"below"),above=call(pos,"above");
         for(Object q:List.of(below,pos,above))if(!PlayerMining0700.loaded(world,q) || !Boolean.TRUE.equals(call(call(world,"getWorldBorder"),"isWithinBounds",q)))return false;

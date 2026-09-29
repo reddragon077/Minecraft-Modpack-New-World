@@ -80,7 +80,7 @@ public final class PlayerEmergency0710SmokeTest {
         accept(BEGIN);for(int i=0;i<800;i++)accept(BASE);accept(END);eq(clientSnapshot(),s);
         acceptReply(-5_000_001);eq(button(),"EMERGENCY RETURN TO SHIP"); // Unsolicited ack cannot arm.
         Screen screen=new Screen();var graphics=new PlayerNavigation0690SmokeTest.Graphics();draw(screen,graphics,0,0,s,true);
-        check(screen.lines.stream().anyMatch(x->x.contains("Teleporter Room")),"return destination description");
+        check(screen.lines.stream().anyMatch(x->x.contains("entrance door")),"return destination description");
         screen.lines.clear();draw(screen,graphics,0,0,s,false);check(!screen.lines.contains(s.position()),"stale coords");
         var click=new PlayerMining0700SmokeTest.ClickScreen();check(PlayerDiscoveries0650.mouseClicked(click,470,50,0)&&click.tab==5,"header");
         check(PlayerDiscoveries0650.mouseClicked(click,40,265,0),"content leaked to legacy");check(!PlayerDiscoveries0650.mouseClicked(click,30,50,0),"Overview swallowed");

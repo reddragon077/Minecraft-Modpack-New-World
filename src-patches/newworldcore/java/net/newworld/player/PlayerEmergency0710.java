@@ -208,12 +208,12 @@ public final class PlayerEmergency0710 {
         if(!isReply(code) || client==null || link==null || !PlayerShipLink0680.emergencyAvailable()
                 || !client.ship.equals(actionShip) || !client.ship.equals(link.ship()) || actionStarted==0)return;
         if(tokenCode(code)){
-            if(waiting && fresh() && client.allowed){token=code;armed=System.nanoTime();confirmUntil=armed+2_000_000_000L;waiting=false;pendingMode=0;message="Confirm return to your Teleporter Room. Stay still.";}
+            if(waiting && fresh() && client.allowed){token=code;armed=System.nanoTime();confirmUntil=armed+2_000_000_000L;waiting=false;pendingMode=0;message="Confirm return to your ship's entrance. Stay still.";}
             return;
         }
         waiting=false;token=pendingMode=0;actionShip="";actionStarted=0;
         message=switch(code){case SENT->"RETURNED TO SHIP / COOLDOWN STARTED";case DENIED->"RETURN DENIED / CHECK SHIP AND SETTINGS";
-            case EXPIRED->"MOVED OR CONFIRM EXPIRED / TRY AGAIN";case WAIT->"RETURN COOLDOWN / PLEASE WAIT";case FULL->"NO SAFE LOADED TELEPORTER ROOM / NO COOLDOWN";default->"RETURN FAILED OR BLOCKED / CHECK LOG";};
+            case EXPIRED->"MOVED OR CONFIRM EXPIRED / TRY AGAIN";case WAIT->"RETURN COOLDOWN / PLEASE WAIT";case FULL->"NO SAFE LOADED ENTRANCE / NO COOLDOWN";default->"RETURN FAILED OR BLOCKED / CHECK LOG";};
         System.out.println("[NewWorld Emergency] client receipt result="+code);
     }
     public static synchronized String button(){
@@ -236,7 +236,7 @@ public final class PlayerEmergency0710 {
         label(screen,graphics,"EMERGENCY // "+(fresh?"RETURN TO SHIP":"SYNCING"),left+26,top+91,0xFFFFCF45,488);
         if(!fresh){token=0;label(screen,graphics,"Waiting for fresh emergency data...",left+26,top+120,0xFF8DA7B4,488);return;}
         call(graphics,"fill",left+26,top+110,left+514,top+246,0xFF112A35);
-        String[] lines={s.status,s.dimension,s.position,"Destination: your ship's safe Teleporter Room.","Navigation target / route / ship flight unchanged.","Success starts cooldown. Offline time counts."};
+        String[] lines={s.status,s.dimension,s.position,"Destination: inside your ship, at the entrance door.","Navigation target / route / ship flight unchanged.","Success starts cooldown. Offline time counts."};
         for(int i=0;i<lines.length;i++)label(screen,graphics,lines[i],left+33,top+119+i*20,i==0?0xFF64EAB5:i==5?0xFFFFCF45:0xFFD5E7EF,474);
         call(graphics,"fill",left+26,top+258,left+514,top+276,s.allowed?0xFF643B25:0xFF182329);
         label(screen,graphics,s.allowed || cooldownUntil>System.nanoTime()?button():"RETURN UNAVAILABLE",left+33,top+263,0xFFFFCF45,474);
