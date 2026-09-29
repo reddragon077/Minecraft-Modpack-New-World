@@ -70,12 +70,14 @@ public final class PlayerDiscoveries0650 {
             Object raw = call(payload, "mode");
             int code = raw instanceof Number number ? number.intValue() : 0;
             if (!"CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) {
-                if (code >= 0 && code <= 9 || isActionMode(code) || PlayerMiningStop0701.isRequest(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
+                if (code >= 0 && code <= 9 || isActionMode(code) || PlayerMiningStop0701.isRequest(code) || PlayerEmergency0710.isRequest(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
                 return;
             }
             if (!clientReceiving() && PlayerShipLink0680.isWireCode(code)) { PlayerShipLink0680.accept(code); return; }
             if (!clientReceiving() && PlayerNavigation0690.isWireCode(code)) { PlayerNavigation0690.accept(code); return; }
             if (!clientReceiving() && PlayerMining0700.isWireCode(code)) { PlayerMining0700.accept(code); return; }
+            if (!clientReceiving() && PlayerEmergency0710.isWireCode(code)) { PlayerEmergency0710.accept(code); return; }
+            if (!clientReceiving() && PlayerEmergency0710.isReply(code)) { PlayerEmergency0710.acceptReply(code); return; }
             if (!clientReceiving() && PlayerMiningStop0701.isReply(code)) { PlayerMiningStop0701.accept(code); return; }
             if (!clientReceiving() && PlayerOverview0670.isWireCode(code)) {
                 if ("CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) PlayerOverview0670.accept(code);
@@ -475,6 +477,14 @@ public final class PlayerDiscoveries0650 {
         call(selection.data, "setDirty");
     }
 
+    /** Internal server writer after the caller's ownership/link/confirmation checks; no route mutation. */
+    public static void selectSavedTarget(Object data, String ship, String key) throws Exception {
+        Object state = call(data, "state", ship);
+        Object record = ((Map<?, ?>) field(state, "discoveries")).get(key);
+        if (record == null) throw new IllegalArgumentException("Missing saved target");
+        selectTarget(new ServerSelection(null, data, state, ship, key, record));
+    }
+
     public static void clearServerSelection(Object player) { SERVER_KEYS.remove(player); SERVER_SHIPS.remove(player); SERVER_FAVORITES.remove(player); }
 
     public static synchronized void resetClientLink() {
@@ -497,6 +507,7 @@ public final class PlayerDiscoveries0650 {
     public static void renderContent(Object screen, Object graphics, int left, int top, int mouseX, int mouseY) {
         try {
             if (intField(screen, "tab") == 4) { PlayerMining0700.render(screen, graphics, left, top); return; }
+            if (intField(screen, "tab") == 5) { PlayerEmergency0710.render(screen, graphics, left, top); return; }
             if (intField(screen, "tab") == 3) {
                 if (!PlayerShipLink0680.clientAllowed()) return;
                 ViewState view = VIEWS.get(screen);
@@ -599,6 +610,10 @@ public final class PlayerDiscoveries0650 {
             int left = (intField(screen, "width") - 540) / 2;
             int top = (intField(screen, "height") - 300) / 2;
             int discoveriesX = left + 182;
+            if (button == 0 && inside(mouseX, mouseY, left + 458, top + 46, 88, 22)) {
+                setField(screen, "tab", 5); VIEWS.remove(screen); PlayerEmergency0710.resetClient(); return true;
+            }
+            if (intField(screen, "tab") == 5 && inside(mouseX, mouseY, left + 10, top + 46, 444, 22)) PlayerEmergency0710.resetClient();
             if (button == 0 && inside(mouseX, mouseY, left + 366, top + 46, 88, 22)) {
                 setField(screen, "tab", 4); VIEWS.remove(screen); PlayerMining0700.resetClient(); return true;
             }
@@ -618,6 +633,7 @@ public final class PlayerDiscoveries0650 {
             }
             int tab = intField(screen, "tab");
             if (tab == 4) return PlayerMining0700.mouseClicked(mouseX, mouseY, button, left, top);
+            if (tab == 5) return PlayerEmergency0710.mouseClicked(mouseX, mouseY, button, left, top);
             if (tab != 2 && tab != 3) return false;
             ViewState view = VIEWS.computeIfAbsent(screen, ignored -> new ViewState());
             if (tab == 3) {

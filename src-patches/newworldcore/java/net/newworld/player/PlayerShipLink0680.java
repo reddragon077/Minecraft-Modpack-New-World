@@ -154,6 +154,7 @@ public final class PlayerShipLink0680 {
                 if (client == null || !client.ship.equals(next.ship) || client.allowed() != next.allowed()) {
                     PlayerDiscoveries0650.resetClientLink(); PlayerOverview0670.resetClient(); discoveriesRequested = false;
                     PlayerNavigation0690.resetClient(); PlayerLocation0692.resetClient(); PlayerMining0700.resetClient();
+                    PlayerEmergency0710.resetClient();
                 }
                 client = next; receivedAt = System.nanoTime();
             } catch (IOException failure) { System.err.println("[NewWorld Ship Link] decode rejected: " + failure); }
@@ -174,6 +175,7 @@ public final class PlayerShipLink0680 {
         client = null; receivedAt = 0; requestedAt = 0; incoming = null; discoveriesRequested = false;
         PlayerDiscoveries0650.resetClientLink(); PlayerOverview0670.resetClient();
         PlayerNavigation0690.resetClient(); PlayerLocation0692.resetClient(); PlayerMining0700.resetClient();
+        PlayerEmergency0710.resetClient();
     }
 
     /** Runs before the legacy screen render: requests link on every tab and invalidates stale sessions. */

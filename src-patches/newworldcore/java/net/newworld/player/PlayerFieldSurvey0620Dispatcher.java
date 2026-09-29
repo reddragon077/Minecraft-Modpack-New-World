@@ -17,6 +17,7 @@ public final class PlayerFieldSurvey0620Dispatcher {
     private static void handleOnServer(Object player, int mode) {
         try {
             if (mode == 5) { PlayerShipLink0680.request(player); return; }
+            if (PlayerEmergency0710.isRequest(mode)) { PlayerEmergency0710.handle(player, mode); return; }
             if (mode == 6) { PlayerNavigation0690.request(player); return; }
             if (mode == PlayerMining0700.MODE) { PlayerMining0700.request(player); return; }
             if (PlayerMiningStop0701.isRequest(mode)) { PlayerMiningStop0701.handle(player, mode); return; }

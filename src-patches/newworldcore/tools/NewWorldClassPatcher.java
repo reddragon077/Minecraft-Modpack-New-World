@@ -18,6 +18,7 @@ import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.FieldInsnNode;
 import org.objectweb.asm.tree.InsnList;
 import org.objectweb.asm.tree.InsnNode;
+import org.objectweb.asm.tree.IntInsnNode;
 import org.objectweb.asm.tree.InvokeDynamicInsnNode;
 import org.objectweb.asm.tree.LdcInsnNode;
 import org.objectweb.asm.tree.MethodInsnNode;
@@ -700,7 +701,7 @@ public final class NewWorldClassPatcher {
                         comparisons++;
                         // The first comparison selects tab width. The next two select enabled colors.
                         if (comparisons >= 2) {
-                            method.instructions.set(instruction, new InsnNode(Opcodes.ICONST_5));
+                            method.instructions.set(instruction, new IntInsnNode(Opcodes.BIPUSH, 6));
                             replacements++;
                         }
                     }

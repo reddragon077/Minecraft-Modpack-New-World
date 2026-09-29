@@ -2482,9 +2482,9 @@
   ],
   "customMods": [
     {
-      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.70.1-alpha-mining-yield-stop.jar",
-      "sha256": "01bba56cc52ba9e7864ef2e1814ba38fa0d00cf966718d6fde1dc1f78653032d",
-      "size": 3660734
+      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.71.0-alpha-emergency-beacon.jar",
+      "sha256": "17ddc1b310b9926ee72ff65cc0d7000d1a5687747307d03b3fc24170881c7ea3",
+      "size": 3675910
     },
     {
       "fileName": "DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar",

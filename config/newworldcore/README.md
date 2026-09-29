@@ -64,3 +64,7 @@ Güvenli config sınırı: oynanış dengesi, süre, menzil, enerji, kapasite, p
 kayıt şeması, paket/protokol kimlikleri ve registry anahtarları config değildir. Bunların değişmesi dünyayı veya ağ iletişimini bozabilir.
 
 Değişiklikleri iki bilgisayara taşımak için GitHub `main` ve proje senkronizasyon araçları kullanılmalıdır.
+
+### Player Emergency (.71.0)
+
+`player-emergency.properties`: `beacon.enabled=true`, `refresh_ticks=20` (20–1200), `stale_after_ticks=120` (40–3600, en az 2x refresh), `beacon.confirm_ticks=100` (40–200), `beacon.cooldown_ticks=200` (20–1200). Tümü canlı yenilenir. DISTRESS yalnız sunucunun gördüğü dış dünya konumunu ortak Navigation hedefi yapar; mevcut rota/uçuş/WE değişmez. İlk tıklama salt onay; ikinci tıklama aynı oyuncu/gemi/dimension/blok ve güncel bağlantıyla doğrulanır. GUI en fazla iki saniye onay gösterir. Dünya/oturum/link değişimi istemci onayını temizler. Ortak Discoveries hedef izni ve `player-navigation.properties` içindeki `location.max_per_ship` kotası geçerlidir; normal `location.enabled` ise yalnız normal SAVE düğmesine aittir. Aynı koordinattaki kanıt/favori kaydı korunup yeniden kullanılır; bu yüzden mevcut kaydın adı DISTRESS olarak değiştirilmez. RETURN henüz kapalıdır; bu paket oyuncu veya gemi ışınlamaz.

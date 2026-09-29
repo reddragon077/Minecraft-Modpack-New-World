@@ -4,6 +4,9 @@ The complete historical NewWorldCore source tree is not currently available in t
 
 The current patch:
 
+- adds `.71.0` Emergency / two-step DISTRESS target selection. Current server coordinates only, owner/link/alive/outside-interior guards, single-use same-position challenge, cooldown, existing waypoint quota and shared target permission. Preserves discovery evidence and loaded routes; no flight, teleport or WE consumption. RETURN remains explicitly unavailable until safe Teleporter Room integration. Fourteen smoke suites + actual Doctor engine fixture pass; runtime acceptance separate (docs/17).
+- includes accepted `.70.1` per-area persistent successful resource-block counts and confirmed Mining Shield OFF-only STOP; legacy counts remain explicitly untracked. Basic runtime user acceptance passed, broader edge tests remain open.
+
 - adds the `.70.0` read-only Player Mining four-area view: runtime/scan center, resource-only progress, three item/type-slot buffers and routing mode/counters. Separate bounded frames, owner/link/stale guards and live `player-mining.properties`; no controls, buffer binding or chunk loading;
 - verifies the mining adapter against actual shipped mining State classes, progress/hazard semantics, inherited chunk-check API, tab navigation, malformed protocol, config and layout fixtures. Build now runs twelve smoke suites plus the actual DoctorWhoMod WE formula fixture; full Minecraft runtime acceptance remains separate;
 

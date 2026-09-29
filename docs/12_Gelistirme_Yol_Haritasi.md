@@ -167,14 +167,14 @@ Routing, priority, Keep ve upgrade yönetimi fiziksel Mining Terminal’de kalac
 
 ## Aşama 11 — Emergency panel
 
-Durum: 29 Eylül 2026 kullanıcı devam onayıyla ilk paket açıldı: Emergency görünümü, sunucu konumundan DISTRESS BEACON hedefi, iki aşamalı onay ve sahiplik/bağlantı/cooldown kontrolleri. Uygulama ve oyun kabulü henüz tamamlanmadı. Mevcut rota/uçuş/WE korunur. Teleporter Room'a dışarıdan güvenli dönüş için doğrulanmış hedef/işlem sözleşmesi bulunmadığından RETURN bu pakette kapalı kalır; ışınlama ve maliyet kapıları sonraki Aşama 11 paketidir, Aşama 12'ye geçiş değildir.
+Durum: 29 Eylül 2026 kullanıcı devam onayıyla ilk paket .71.0 olarak kuruldu: Emergency görünümü, sunucu konumundan DISTRESS BEACON hedefi, iki aşamalı onay ve sahiplik/bağlantı/cooldown kontrolleri. 14 otomatik test paketi ve gerçek Doctor WE formülü testi geçti; oyun kabulü bekleniyor. Mevcut rota/uçuş/WE korunur. Teleporter Room'a dışarıdan güvenli dönüş için doğrulanmış hedef/işlem sözleşmesi bulunmadığından RETURN bu pakette kapalı kalır; ışınlama ve maliyet kapıları sonraki Aşama 11 paketidir, Aşama 12'ye geçiş değildir.
 
 - [ ] `EMERGENCY RETURN TO SHIP`
 - [ ] Uygunsa Teleporter Room’a dönüş
 - [ ] TARDIS, teleporter, WE, cooldown, uçuş ve protected-area kapıları
 - [ ] WE maliyeti
-- [ ] `DISTRESS BEACON`
-- [ ] Oyuncu konumunu acil Navigation hedefi olarak gönderme
+- [~] `DISTRESS BEACON` — .71.0 iki aşamalı onay, güncel sahiplik/bağlantı/konum ve cooldown kapıları; otomatik test geçti, oyun kabulü bekleniyor.
+- [~] Oyuncu konumunu acil Navigation hedefi olarak gönderme — .71.0 mevcut WAYPOINT kayıt/hedef yazıcısı; rota/uçuş/WE korunur. Aynı koordinat kaydı yeniden kullanılır. Oyun kabulü docs/17.
 
 ## Aşama 12 — Ship Alerts
 
