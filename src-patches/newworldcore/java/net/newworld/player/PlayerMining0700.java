@@ -5,10 +5,10 @@ import java.util.*;
 import net.newworld.config.NewWorldConfig;
 import static net.newworld.player.PlayerOverview0670.*;
 
-/** Owner-scoped telemetry only. Never starts/stops mining, binds buffers or loads chunks. */
+/** Owner-scoped telemetry; stop clicks delegate to the separately guarded shield-OFF action. */
 public final class PlayerMining0700 {
     public static final int MODE = 9, WIRE_BASE = 1_540_000_000, BEGIN = WIRE_BASE + 0x1000000, END = BEGIN + 1;
-    private static final int MAX_BYTES = 4096, TEXTS = 13;
+    private static final int MAX_BYTES = 4096, TEXTS = 19;
     private static final String MINING = "net.newworld.mining.";
     private static final Map<Object, Long> REQUESTS = Collections.synchronizedMap(new WeakHashMap<>());
     private static final Map<Object, String> LOGGED = Collections.synchronizedMap(new WeakHashMap<>());
@@ -16,17 +16,28 @@ public final class PlayerMining0700 {
     private static long receivedAt, requestedAt, begunAt;
     private static ByteArrayOutputStream incoming;
     private static boolean renderError;
+    private static boolean details;
     private PlayerMining0700() {}
 
     public static int refreshTicks() { return NewWorldConfig.integer("player-mining", "refresh_ticks", 20, 20, 1200); }
     public static int staleTicks() { return Math.max(refreshTicks() * 2, NewWorldConfig.integer("player-mining", "stale_after_ticks", 120, 40, 3600)); }
     public static boolean showArea() { return NewWorldConfig.bool("player-mining", "show_scan_area", true); }
     public static boolean showBuffers() { return NewWorldConfig.bool("player-mining", "show_buffers", true); }
+    public static int resourceRows() { return NewWorldConfig.integer("player-mining", "top_resources.rows", 5, 1, 5); }
 
     public record Snapshot(String ship, String status, String phase, String dimension, String area,
             String scan, String extraction, String remaining, String collection, String ae,
-            String replication, String routing, String flow, int refresh, int stale) {
-        List<String> texts() { return List.of(ship, status, phase, dimension, area, scan, extraction, remaining, collection, ae, replication, routing, flow); }
+            String replication, String routing, String flow, int refresh, int stale,
+            String yieldScope, List<String> yields, boolean stopAllowed) {
+        public Snapshot { yields = List.copyOf(yields); if (yields.size() > 5) throw new IllegalArgumentException("Yield rows"); }
+        public Snapshot(String ship, String status, String phase, String dimension, String area, String scan, String extraction,
+                String remaining, String collection, String ae, String replication, String routing, String flow, int refresh, int stale) {
+            this(ship, status, phase, dimension, area, scan, extraction, remaining, collection, ae, replication, routing, flow, refresh, stale, "NO TRACKED MINING YET", List.of(), false);
+        }
+        List<String> texts() {
+            List<String> t = new ArrayList<>(List.of(ship, status, phase, dimension, area, scan, extraction, remaining, collection, ae, replication, routing, flow, yieldScope));
+            for (int i = 0; i < 5; i++) t.add(i < yields.size() ? yields.get(i) : ""); return t;
+        }
         public static Snapshot unavailable(String ship, String reason) {
             return new Snapshot(ship, reason, "UNKNOWN", "", "NO SCAN AREA", "N/A", "N/A", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN", "", refreshTicks(), staleTicks());
         }
@@ -38,6 +49,7 @@ public final class PlayerMining0700 {
         REQUESTS.put(player, now);
         try {
             Snapshot s = sample(player);
+            if (s.stopAllowed) PlayerMiningStop0701.observe(player, s.ship);
             for (int code : encode(s)) stat("net.newworld.player.PlayerFieldSurvey0504Bridge", "sendResult", player, code);
             String summary = s.ship + "/" + s.status + "/" + s.phase + "/" + s.routing;
             if (!summary.equals(LOGGED.put(player, summary))) System.out.println("[NewWorld Player Mining] " + summary);
@@ -91,7 +103,8 @@ public final class PlayerMining0700 {
         int mode = routing == null ? -1 : (int) num(routing, "mode");
         String routingText = switch (mode) { case 0 -> "ROUTING PAUSED"; case 1 -> "SMART AUTO"; case 2 -> "FORCE REPLICATION"; default -> "ROUTING UNKNOWN"; };
         String flow = routing == null ? "NO ROUTING DATA" : "MOVED AE " + amount(num(routing, "routedToAe")) + " / REP " + amount(num(routing, "routedToReplication"));
-        return new Snapshot(id, status, phaseText, dim, area, scan, extraction, remaining, collection, ae, replication, routingText, flow, refreshTicks(), staleTicks());
+        List<String> yields = MiningYield0701.top(phase, resourceRows()).stream().map(e -> amount(e.getValue()) + " BLOCKS / " + e.getKey()).toList();
+        return new Snapshot(id, status, phaseText, dim, area, scan, extraction, remaining, collection, ae, replication, routingText, flow, refreshTicks(), staleTicks(), MiningYield0701.scope(phase), yields, PlayerMiningStop0701.enabled());
     }
 
     public static String buffer(Object world, Object owner, String positionField, String expectedId) {
@@ -137,7 +150,7 @@ public final class PlayerMining0700 {
     public static boolean isWireCode(int code) { return code >= WIRE_BASE && code <= END; }
     public static int[] encode(Snapshot s) throws IOException {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream(); DataOutputStream out = new DataOutputStream(bytes);
-        out.writeInt(1); for (String t : s.texts()) out.writeUTF(clean(t)); out.writeInt(s.refresh); out.writeInt(s.stale);
+        out.writeInt(2); for (String t : s.texts()) out.writeUTF(clean(t)); out.writeInt(s.refresh); out.writeInt(s.stale); out.writeBoolean(s.stopAllowed);
         byte[] raw = bytes.toByteArray(); if (raw.length > MAX_BYTES) throw new IOException("Mining size");
         int[] codes = new int[(raw.length + 2) / 3 + 2]; codes[0] = BEGIN; codes[codes.length - 1] = END;
         for (int i = 0; i < raw.length; i += 3) {
@@ -154,12 +167,13 @@ public final class PlayerMining0700 {
         if (code == END) {
             try {
                 DataInputStream in = new DataInputStream(new ByteArrayInputStream(incoming.toByteArray()));
-                if (in.readInt() != 1) throw new IOException("Mining schema");
+                if (in.readInt() != 2) throw new IOException("Mining schema");
                 String[] t = new String[TEXTS]; for (int i = 0; i < t.length; i++) { t[i] = in.readUTF(); if (t[i].length() > 96) throw new IOException("Text bound"); }
-                int refresh = in.readInt(), stale = in.readInt();
+                int refresh = in.readInt(), stale = in.readInt(); boolean stopAllowed = in.readBoolean();
                 if (refresh < 20 || refresh > 1200 || stale < refresh * 2 || stale > 3600 || in.available() > 2) throw new IOException("Mining timing/trailing bytes");
                 while (in.available() > 0) if (in.readByte() != 0) throw new IOException("Padding");
-                client = new Snapshot(t[0], t[1], t[2], t[3], t[4], t[5], t[6], t[7], t[8], t[9], t[10], t[11], t[12], refresh, stale);
+                if (client != null && !client.ship.equals(t[0])) PlayerMiningStop0701.resetClient();
+                client = new Snapshot(t[0], t[1], t[2], t[3], t[4], t[5], t[6], t[7], t[8], t[9], t[10], t[11], t[12], refresh, stale, t[13], Arrays.stream(t, 14, 19).filter(v -> !v.isEmpty()).toList(), stopAllowed);
                 receivedAt = System.nanoTime();
             } catch (IOException e) { System.err.println("[NewWorld Player Mining] decode rejected: " + e); }
             incoming = null;
@@ -169,7 +183,8 @@ public final class PlayerMining0700 {
         return true;
     }
     public static Snapshot clientSnapshot() { return client; }
-    public static synchronized void resetClient() { client = null; receivedAt = 0; requestedAt = 0; incoming = null; }
+    public static synchronized void resetClient() { client = null; receivedAt = 0; requestedAt = 0; incoming = null; details = false; PlayerMiningStop0701.resetClient(); }
+    public static boolean freshClient() { return visible(client, PlayerShipLink0680.clientSnapshot(), PlayerShipLink0680.clientAllowed(), System.nanoTime(), receivedAt); }
     public static boolean visible(Snapshot s, PlayerShipLink0680.Snapshot link, boolean allowed, long now, long received) {
         return allowed && s != null && link != null && !s.ship.isBlank() && s.ship.equals(link.ship()) && PlayerShipLink0680.fresh(now, received, 0, s.stale);
     }
@@ -183,8 +198,12 @@ public final class PlayerMining0700 {
         } catch (Exception e) { if (!renderError) { renderError = true; System.err.println("[NewWorld Player Mining] render failed: " + e); } }
     }
     public static void draw(Object screen, Object graphics, int left, int top, Snapshot s, boolean fresh) throws Exception {
-        label(screen, graphics, "MINING // " + (fresh ? "LIVE / READ ONLY" : "SYNCING"), left + 26, top + 91, 0xFF62D5F1, 488);
-        if (!fresh) { label(screen, graphics, "Waiting for fresh mining data...", left + 26, top + 120, 0xFFFFCF45, 488); return; }
+        label(screen, graphics, "MINING // " + (fresh ? (details ? "MINED RESOURCES" : "LIVE") : "SYNCING"), left + 26, top + 91, 0xFF62D5F1, 488);
+        if (!fresh) { PlayerMiningStop0701.resetClient(); label(screen, graphics, "Waiting for fresh mining data...", left + 26, top + 120, 0xFFFFCF45, 488); return; }
+        if (details) {
+            drawDetails(screen, graphics, left, top, s);
+            drawActions(screen, graphics, left, top, s); return;
+        }
         call(graphics, "fill", left + 26, top + 110, left + 265, top + 250, 0xFF112A35);
         call(graphics, "fill", left + 275, top + 110, left + 514, top + 250, 0xFF112A35);
         String[] a = {s.status, "PHASE " + s.phase, showArea() ? s.dimension : "SCAN AREA HIDDEN", showArea() ? s.area : "",
@@ -195,7 +214,32 @@ public final class PlayerMining0700 {
             label(screen, graphics, a[i], left + 33, top + 118 + i * 18, i == 0 ? 0xFF64EAB5 : 0xFFD5E7EF, 225);
             label(screen, graphics, b[i], left + 282, top + 118 + i * 18, i == 6 ? 0xFF64EAB5 : 0xFFD5E7EF, 225);
         }
-        label(screen, graphics, s.flow, left + 26, top + 258, 0xFF8DA7B4, 488);
-        label(screen, graphics, "Scan-area targets, not deposit reserves. Controls: ship terminal.", left + 26, top + 274, 0xFF8DA7B4, 488);
+        drawActions(screen, graphics, left, top, s);
+    }
+    public static void drawDetails(Object screen, Object graphics, int left, int top, Snapshot s) throws Exception {
+        label(screen, graphics, s.yieldScope, left + 26, top + 112, 0xFF8DA7B4, 488);
+        label(screen, graphics, "Mined blocks, not stack items. New scan area resets counts.", left + 26, top + 128, 0xFF8DA7B4, 488);
+        for (int i = 0; i < 5; i++) {
+            String text = i < s.yields.size() ? s.yields.get(i) : i == 0 ? "No successful resource extraction recorded yet." : "";
+            label(screen, graphics, text, left + 26, top + 148 + i * 18, 0xFF64EAB5, 488);
+        }
+        label(screen, graphics, s.flow, left + 26, top + 244, 0xFF8DA7B4, 488);
+    }
+    private static void drawActions(Object screen, Object graphics, int left, int top, Snapshot s) throws Exception {
+        call(graphics, "fill", left + 26, top + 258, left + 265, top + 276, 0xFF194456);
+        label(screen, graphics, details ? "< MINING OVERVIEW" : "MINED RESOURCES / FLOW", left + 33, top + 263, 0xFF62D5F1, 225);
+        call(graphics, "fill", left + 275, top + 258, left + 514, top + 276, s.stopAllowed ? 0xFF643B25 : 0xFF182329);
+        label(screen, graphics, s.stopAllowed ? PlayerMiningStop0701.button() : "STOP DISABLED BY SERVER", left + 282, top + 263, 0xFFFFCF45, 225);
+        String msg = PlayerMiningStop0701.message();
+        label(screen, graphics, msg.isBlank() ? "Scan-area counts, not deposit reserves. Stop: shield OFF only." : msg, left + 26, top + 279, 0xFF8DA7B4, 488);
+    }
+    public static boolean mouseClicked(double x, double y, int button, int left, int top) {
+        if (x < left + 10 || x >= left + 530 || y < top + 76 || y >= top + 288) return false;
+        if (button != 0 || !freshClient()) { PlayerMiningStop0701.resetClient(); return true; }
+        if (y >= top + 258 && y < top + 276) {
+            if (x >= left + 26 && x < left + 265) { details = !details; PlayerMiningStop0701.resetClient(); }
+            else if (x >= left + 275 && x < left + 514) PlayerMiningStop0701.click();
+        }
+        return true;
     }
 }

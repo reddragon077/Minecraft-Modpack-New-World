@@ -19,6 +19,7 @@ public final class PlayerFieldSurvey0620Dispatcher {
             if (mode == 5) { PlayerShipLink0680.request(player); return; }
             if (mode == 6) { PlayerNavigation0690.request(player); return; }
             if (mode == PlayerMining0700.MODE) { PlayerMining0700.request(player); return; }
+            if (PlayerMiningStop0701.isRequest(mode)) { PlayerMiningStop0701.handle(player, mode); return; }
             if (mode != 4 && !PlayerShipLink0680.requireLink(player)) return;
             if (mode == 0) {
                 PlayerFieldSurvey0503Fix.scanStructures(player);

@@ -6,6 +6,14 @@ Branch: `main`
 
 ## Current objective
 
+Installed `.70.1-alpha-mining-yield-stop` (SHA-256 `01bba56cc52ba9e7864ef2e1814ba38fa0d00cf966718d6fde1dc1f78653032d`, 3660734 bytes). MINED RESOURCES / FLOW: successful resource-block ranking, persisted per scan area; two-step STOP MINING only sets the existing mining shield OFF. No restart/handbrake/main-shield/routing/flight mutations. Same-area reload preserves counters; actual new-area reset clears them. Historical mined totals remain untracked by resource, explicitly labeled SINCE UPDATE. Optional `NewWorldMiningYieldV1` mining-phase NBT key; do not downgrade and save without preserving new statistics. Live config rows=5, stop enabled, confirmation100/cooldown40 ticks. All thirteen suites and actual DoctorWhoMod WE fixture passed; save/load bodies exercised with NBT/storage fixtures. In-game acceptance pending, not Stage 10 completion.
+
+Next grouped test: Mining → MINED RESOURCES / FLOW while extracting; STOP MINING → wait for CONFIRM STOP MINING → confirm within 2 seconds; verify physical mining shield OFF and extraction paused (routing may continue). World exit/re-entry in same scan area should retain counts; restart only via physical terminal. See docs/16. Range recovery/full buffer parity and multiplayer/config edge tests still open; deposit remaining waits for Stage 14 true reserve integration. No repeated Navigation acceptance needed.
+
+Both .70.0 originals/config/runtime records and 16 Mining save files hash-verified under laptop `backups/custom-mods/pre-mining-yield-stop-20260929-01/`; old active JARs moved to recoverable `repository/retired` and `instance/retired`. One .70.1 core per endpoint, saves unchanged, game absent during installation. Session record: `2026-09-29_laptop_mining_yield_stop.md`.
+
+## Previous .70.0 — acceptance and superseded installation record
+
 Acceptance update: .70.0 status/scan/extraction/live counters passed by screenshots and 11:29:51/11:44:30/11:47:01 log; user closed game, server stopped 11:48:34. New Stage 10 batch authorized: actual per-resource mining yield/ranking with persistent counters, and guarded confirmed Mining Shield OFF emergency stop. No restart/flight/handbrake/routing mutation. Remaining-reserve percentage stays blocked on Stage 14 ledger; never infer it from scan counts. Reopen/range and full buffer parity are still open, not assumed passed.
 
 Installed candidate `NewWorldCore-1.21.1-NeoForge-0.5.70.0-alpha-player-mining-view.jar`, SHA-256 `826b667f2316e7cf47242ad9046f29097392b061a6ddfff6567ddaeecb2be2b7`, 3645288 bytes. Four read-only Mining areas implemented together: status/scan area, scan/resource extraction, three buffers, routing/SMART AUTO. Live refresh=20/stale=120, area/buffers visible. Twelve suites plus engine fixture passed; not yet tested in Minecraft. No mining controls/route writes/deposit reserve linkage.

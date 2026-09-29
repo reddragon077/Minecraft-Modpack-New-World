@@ -1,4 +1,21 @@
-# Player Mining — dört alanlık toplu kabul
+# Player Mining — toplu kabul
+
+## Güncel .70.1 — kaynaklar / kayıt / durdurma
+
+Aday: `0.5.70.1-alpha-mining-yield-stop`. 13 otomatik test grubu + gerçek DoctorWhoMod WE fixture geçti. Yeni oyun içi kabul **bekliyor**.
+
+1. Mevcut madencilik çalışırken Player GUI → MINING → **MINED RESOURCES / FLOW**. Gerçekten çıkarılan kaynakların ID ve kazılmış blok sayıları görünmeli; aktarım toplamları alt satırda. Eski kazım için `SINCE UPDATE / ... EARLIER UNTRACKED` normal: geçmiş kaynak dağılımı uydurulmaz. Bu sayı drop-stack miktarı veya deposit rezervi değildir.
+2. **STOP MINING** bir kez → sunucudan **CONFIRM STOP MINING** gelsin → iki saniye içinde yeniden tıkla. İlk tıklama tek başına durdurmamalı. Onay sonrası `STOPPED / MINING SHIELD OFF`; fiziksel terminalde Mining Shield OFF, kazım beklemeye geçmeli. El freni/ana kalkan/rota aynı kalmalı. Buffer routing çalışmaya devam edebilir; bu kazımın sürmesi değildir. Kalkan zaten OFF ise ALREADY STOPPED doğrudur.
+3. Kazım durmuşken aynı tarama alanında dünyadan çıkıp gir. Kaynak listesi/sayıları kalmalı. Yeni tarama alanı doğal olarak sayaçları sıfırlar; bunu reload kaybıyla karıştırma. Eski kaynak dağılımı olmayınca ilk başarılı kazıma kadar boş liste normaldir.
+4. Yeniden çalıştırmayı yalnız fiziksel Mining Terminal’den yap. Mining ekranında güncel durum/sayılar geri gelmeli. GUI kapat/aç ve sekme geçişini bu oturumda beraber kontrol edebiliriz; eski kabul edilmiş Navigation testlerini tekrarlama.
+
+Genişletilmiş menzil/çok oyunculu/config/full-buffer kontrolleri ayrıca açık. Bağlantı kaybı otomatik STOP değildir; eski görüntüyü ve onayı geçersiz kılar. Sunucu her STOP isteğinde sahipliği/bağlantıyı, aynı gemiyi, güncel telemetriyi, yüklü iç mekânı, tek kullanımlık onayı, süreyi ve canlı ayarı tekrar kontrol eder. STOP başlatma, el freni veya uçuş eylemi içermez.
+
+Kayıt: mevcut `newworld_mining_phase_v2.dat` içine opsiyonel `NewWorldMiningYieldV1` bileşiği. Eski alanlar korunur; dünya dosyaları kurulumda elle değiştirilmedi. Eski JAR yeni kaynak dökümünü tanımaz ve sonraki kayıtta atabilir; downgrade öncesi güncel save yedeği alın. Kurulum öncesi .70.0 JAR/config ve 16 Mining dosyası yedeği: `backups/custom-mods/pre-mining-yield-stop-20260929-01/`. Geri dönüşte kayıtları otomatik eski yedeğe döndürmeyin; oyun ilerlemesini kaybettirir.
+
+Yeni canlı ayarlar: top_resources.rows=5 (1–5), stop.enabled=true, stop.confirm_ticks=100 (40–200), stop.cooldown_ticks=40 (20–1200). Loglar: `[NewWorld Mining Yield]`, `[NewWorld Mining Stop]`, `[NewWorld Player Mining]`.
+
+## Önceki .70.0 — kabul kanıtı ve tarihsel test listesi
 
 29 Eylül temel kabul: fiziksel terminalle ilk 977 mined/alan/%100 scan/boş Collection eşleşti. Sonraki ekranlarda [-154,11] yeni tarama %7,8 ve EXTRACT N/A; ardından MINING/EXTRACTION, scan %100, 347/%1 çıktı. Replication miktarı 1380→1178→1667, REP toplam aktarımı 4071→4835. Log 11:29:51, 11:44:30, 11:47:01 geçişleri doğruladı; Player Mining hatası yok. Tam buffer parity, GUI yeniden açma, Mining menzil dönüşü ve genişletilmiş durumlar ayrıca açık. Aşağıdaki ilk aday-pending metni tarihsel kurulum kaydıdır.
 

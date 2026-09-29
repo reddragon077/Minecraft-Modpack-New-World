@@ -1,9 +1,11 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.70.0-alpha-player-mining-view",
-  "marker": "NewWorldPlayerMiningViewV1",
+  "version": "0.5.70.1-alpha-mining-yield-stop",
+  "marker": "NewWorldMiningYieldStopV1",
   "fixes": [
+    "Successful resource-block counters persist per scan area in optional namespaced Mining phase NBT; top five resources distinguish legacy untracked history and reset with the existing scan area",
+    "Two-step owner/link/ship-bound single-use emergency stop only sets Mining Shield OFF, with server cooldown and live config; never starts mining, changes handbrake or routes",
     "Read-only Player Mining tab displays existing status and recorded scan area, resource scan/extraction progress, three buffer counts and routing/SMART AUTO mode",
     "Owner/link/freshness guarded mining telemetry with live refresh/display config, no state creation, chunk loading, buffer binding or mining/route controls",
     "Manual waypoint terminal coordinates and final route hops preserve the recorded Y; intermediate hops and structure/geology surface landing remain unchanged",

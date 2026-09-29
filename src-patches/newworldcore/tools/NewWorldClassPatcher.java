@@ -15,6 +15,7 @@ import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
+import org.objectweb.asm.tree.FieldInsnNode;
 import org.objectweb.asm.tree.InsnList;
 import org.objectweb.asm.tree.InsnNode;
 import org.objectweb.asm.tree.InvokeDynamicInsnNode;
@@ -51,6 +52,10 @@ public final class NewWorldClassPatcher {
     private static final String TARGET_FIX_OWNER = "net/newworld/navigation/Navigation0471gFix";
     private static final String ROUTE_OWNER = "net/newworld/navigation/Navigation0472ServerRoute";
     private static final String TERMINAL_OWNER = "net/newworld/navigation/Navigation0550TerminalV2";
+    private static final String MINING_PHASE = "net/newworld/mining/MiningPhaseRuntime";
+    private static final String MINING_DATA = "net/newworld/mining/MiningPhaseSavedData";
+    private static final String MINING_STATE = MINING_DATA + "$State";
+    private static final String MINING_YIELD = "net/newworld/player/MiningYield0701";
 
     static {
         add("net/newworld/navigation/Navigation0475RadarFilteX", "scanOneTile(Ljava/lang/Object;)V",
@@ -150,6 +155,7 @@ public final class NewWorldClassPatcher {
         Path baseline = Path.of(args[0]);
         Path payload = Path.of(args[1]);
         Set<String> classNames = new HashSet<>(TARGETS.keySet());
+        classNames.add(MINING_PHASE); classNames.add(MINING_DATA); classNames.add(MINING_STATE);
         classNames.add(FE_DATA_OWNER);
         classNames.add(TARGET_FIX_OWNER);
         classNames.add(ROUTE_OWNER);
@@ -209,6 +215,16 @@ public final class NewWorldClassPatcher {
             replacements++;
         }
         int expected = classTargets.size();
+        if (MINING_PHASE.equals(className)) { replacements += patchMiningYield(node); expected++; }
+        if (MINING_DATA.equals(className)) { replacements += patchMiningPersistence(node); expected += 2; }
+        if (MINING_STATE.equals(className)) {
+            for (MethodNode m : node.methods) if (m.name.equals("resetArea") && m.desc.equals("(Ljava/lang/String;IIJ)V")) {
+                InsnList hook = new InsnList(); hook.add(new VarInsnNode(Opcodes.ALOAD, 0));
+                hook.add(new MethodInsnNode(Opcodes.INVOKESTATIC, MINING_YIELD, "reset", "(Ljava/lang/Object;)V", false));
+                m.instructions.insert(hook); m.maxStack = Math.max(m.maxStack, 1); replacements++;
+            }
+            expected++;
+        }
         if (TARGET_FIX_OWNER.equals(className)) { replacements += patchWaypointTarget(node); expected += 2; }
         if (ROUTE_OWNER.equals(className)) { replacements += patchWaypointRoute(node); expected += 4; }
         if ("net/newworld/navigation/Navigation0473HopAutopilot".equals(className)) {
@@ -315,6 +331,31 @@ public final class NewWorldClassPatcher {
         return writer.toByteArray();
     }
 
+    private static int patchMiningYield(ClassNode node) {
+        int n = 0;
+        for (MethodNode m : node.methods) if (m.name.equals("extract")) {
+            for (AbstractInsnNode insn : m.instructions.toArray()) if (insn instanceof FieldInsnNode f
+                    && f.getOpcode() == Opcodes.PUTFIELD && f.owner.equals(MINING_STATE) && f.name.equals("minedTargets") && f.desc.equals("J")) {
+                InsnList hook = new InsnList(); hook.add(new VarInsnNode(Opcodes.ALOAD, 8)); hook.add(new VarInsnNode(Opcodes.ALOAD, 11));
+                hook.add(new MethodInsnNode(Opcodes.INVOKESTATIC, MINING_YIELD, "record", "(Ljava/lang/Object;Ljava/lang/Object;)V", false));
+                m.instructions.insert(insn, hook); m.maxStack = Math.max(m.maxStack, 2); n++;
+            }
+        }
+        return n;
+    }
+    private static int patchMiningPersistence(ClassNode node) {
+        int n = 0;
+        for (MethodNode m : node.methods) if (m.name.equals("save") || m.name.equals("load")) {
+            boolean save = m.name.equals("save");
+            for (AbstractInsnNode insn : m.instructions.toArray()) if (insn.getOpcode() == Opcodes.ARETURN) {
+                InsnList hook = new InsnList(); hook.add(new InsnNode(Opcodes.DUP)); hook.add(new VarInsnNode(Opcodes.ALOAD, 0));
+                if (save) hook.add(new InsnNode(Opcodes.SWAP));
+                hook.add(new MethodInsnNode(Opcodes.INVOKESTATIC, MINING_YIELD, save ? "write" : "read", "(Ljava/lang/Object;Ljava/lang/Object;)V", false));
+                m.instructions.insertBefore(insn, hook); m.maxStack += 2; n++;
+            }
+        }
+        return n;
+    }
     private static int patchWaypointTarget(ClassNode node) {
         int changed = 0;
         for (MethodNode m : node.methods) if (m.name.equals("preciseTargetItem")) {

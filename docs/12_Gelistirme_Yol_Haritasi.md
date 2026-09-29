@@ -153,15 +153,15 @@ Navigation telemetri görünümü salt-okunur kalır. FAVORITES → SEND TO SHIP
 
 ## Aşama 10 — Player Mining paneli
 
-Durum: `.70.0` temel durum/alan/tarama→kazım ve canlı sayaç kabulü ekran/log ile geçti. Tam buffer eşleştirmesi, yeniden açılış ve Mining bağlantı kenar testleri açık. Sıradaki paket gerçek çıkarılan kaynak sıralaması, kalıcı sayaç ve onaylı acil durdurmadır; yeniden başlatma/routing fiziksel terminalde kalır.
+Durum: `.70.0` temel durum/alan/tarama→kazım ve canlı sayaç kabulü ekran/log ile geçti. `.70.1` kaynak sıralaması/alan bazlı kalıcı sayaç ve iki onaylı STOP MINING kuruldu; 13 otomatik grup + engine fixture geçti, yeni oyun içi kabul bekliyor. Tam buffer eşleştirmesi, yeniden açılış ve Mining bağlantı kenar testleri açık. Yeniden başlatma/routing fiziksel terminalde kalır.
 
 - [x] Mining durumu ve kayıtlı scan alanı (.70.0 LAST SCAN -> SCAN CENTER [-154,11], bekleme/tarama/kazım ekran/log kabulü; deposit kimliği bağlantısı yok)
 - [x] Scan ve Extraction yüzdeleri (.70.0 tarama %7,8 -> %100, çıkarım 347/%1 ekran kabulü; genişletilmiş testler açık)
 - [~] Collection, AE Transfer ve Replication Feed buffer durumları (.70.0; eşya toplamı + tür yuvası; eksik/yüklü olmayan ayrı)
 - [~] SMART AUTO (.70.0 mevcut routing modu ve aktarım sayaçları, kontrol düğmesi değil)
-- [ ] En çok çıkarılan kaynaklar
+- [~] En çok çıkarılan kaynaklar (.70.1 başarılı kazılan blok sayacı, ilk 5, mevcut scan alanında kalıcılık; eski geçmiş tahmin edilmez. Runtime bekliyor.)
 - [ ] Deposit remaining yüzdesi (Aşama 14 gerçek rezerv defteri bağımlılığı; tarama kalanı bu yüzde yerine kullanılmaz)
-- [ ] `EMERGENCY STOP MINING`
+- [~] `EMERGENCY STOP MINING` (.70.1 iki onaylı, sahiplik/bağlantı/gemi/timeout/config kontrollü Mining Shield OFF; başlatma/el freni/rota yazımı yok. Runtime bekliyor.)
 
 Routing, priority, Keep ve upgrade yönetimi fiziksel Mining Terminal’de kalacaktır.
 
@@ -250,4 +250,4 @@ Ana listedeki sayısal sıra geliştirme sırasıdır. Tamamlanmış Aşama 6 Fi
 1. Aşama 4 — Overview / Ship Status tek oyunculu kabulü tamamlandı.
 2. Aşama 5 `.68.2` yeni oturum SYNCING regresyonu ve bağlantı kaybı/otomatik geri dönüş kabulü tamamlandı. Çok oyunculu/yapay timeout gibi genişletilmiş kontroller hâlâ açık.
 3. Aşama 9 temel görünüm, favori/konum/gönderme ve terminal rota kabulü tamamlandı; genişletilmiş kontroller açık tutulur.
-4. Aşama 10 — dört alanlık salt-okunur Mining paketi: durum/tarama alanı, tarama/çıkarma ilerlemesi, üç buffer ve routing/SMART AUTO. Deposit rezerv bağlantısı ve kontrol düğmeleri bu pakette yoktur.
+4. Aşama 10 — .70.0 temel görünüm kabulü sonrası .70.1 kaynak sıralaması, alan bazlı kalıcı sayaç, detay/aktarımı gösteren sayfa ve onaylı STOP MINING toplu kabulü. Deposit rezerv bağlantısı ayrı açık bağımlılık; yeniden başlatma/routing fiziksel terminalde.

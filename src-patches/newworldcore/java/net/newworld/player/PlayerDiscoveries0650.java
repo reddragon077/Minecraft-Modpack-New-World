@@ -70,12 +70,13 @@ public final class PlayerDiscoveries0650 {
             Object raw = call(payload, "mode");
             int code = raw instanceof Number number ? number.intValue() : 0;
             if (!"CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) {
-                if (code >= 0 && code <= 9 || isActionMode(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
+                if (code >= 0 && code <= 9 || isActionMode(code) || PlayerMiningStop0701.isRequest(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
                 return;
             }
             if (!clientReceiving() && PlayerShipLink0680.isWireCode(code)) { PlayerShipLink0680.accept(code); return; }
             if (!clientReceiving() && PlayerNavigation0690.isWireCode(code)) { PlayerNavigation0690.accept(code); return; }
             if (!clientReceiving() && PlayerMining0700.isWireCode(code)) { PlayerMining0700.accept(code); return; }
+            if (!clientReceiving() && PlayerMiningStop0701.isReply(code)) { PlayerMiningStop0701.accept(code); return; }
             if (!clientReceiving() && PlayerOverview0670.isWireCode(code)) {
                 if ("CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) PlayerOverview0670.accept(code);
                 return;
@@ -616,7 +617,7 @@ public final class PlayerDiscoveries0650 {
                 return true;
             }
             int tab = intField(screen, "tab");
-            if (tab == 4) return inside(mouseX, mouseY, left + 10, top + 76, 520, 212); // Content is read-only; legacy Overview/Survey headers remain clickable.
+            if (tab == 4) return PlayerMining0700.mouseClicked(mouseX, mouseY, button, left, top);
             if (tab != 2 && tab != 3) return false;
             ViewState view = VIEWS.computeIfAbsent(screen, ignored -> new ViewState());
             if (tab == 3) {

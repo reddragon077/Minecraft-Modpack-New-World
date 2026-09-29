@@ -4,7 +4,7 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
-- [2026-09-29 — Mining yield and stop](2026-09-29_laptop_mining_yield_stop.md) — .70.0 basic runtime accepted; next batch is actual yield persistence/ranking and guarded mining-shield OFF, reserve ledger remains separate.
+- [2026-09-29 — Mining yield and stop](2026-09-29_laptop_mining_yield_stop.md) — .70.0 basic runtime accepted; .70.1 actual yield persistence/ranking and confirmed mining-shield OFF installed with backups; thirteen suites + engine fixture passed, grouped runtime acceptance pending. Reserve ledger remains separate.
 
 - [2026-09-29 — Mining view batch](2026-09-29_laptop_mining_view_batch.md) — .69.4 basic runtime accepted; .70.0 four read-only Mining areas, live config and twelve suites verified, backed-up installation. One grouped Mining runtime acceptance pending; extended Navigation tests remain open.
 
