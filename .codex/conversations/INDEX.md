@@ -4,6 +4,8 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-29 — Emergency beacon](2026-09-29_laptop_emergency_beacon.md) — Stage 11 first batch gate; implementation/runtime pending, actual Return remains open.
+
 - [2026-09-29 — Mining yield and stop](2026-09-29_laptop_mining_yield_stop.md) — .70.1 four-item basic runtime acceptance passed by screenshot/user report: resources, STOP, reload persistence and physical restart. Thirteen suites + engine fixture passed; broader edge checks and reserve ledger remain open.
 
 - [2026-09-29 — Mining view batch](2026-09-29_laptop_mining_view_batch.md) — .69.4 basic runtime accepted; .70.0 four read-only Mining areas, live config and twelve suites verified, backed-up installation. One grouped Mining runtime acceptance pending; extended Navigation tests remain open.

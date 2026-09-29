@@ -167,7 +167,7 @@ Routing, priority, Keep ve upgrade yönetimi fiziksel Mining Terminal’de kalac
 
 ## Aşama 11 — Emergency panel
 
-Durum: başlamadı.
+Durum: 29 Eylül 2026 kullanıcı devam onayıyla ilk paket açıldı: Emergency görünümü, sunucu konumundan DISTRESS BEACON hedefi, iki aşamalı onay ve sahiplik/bağlantı/cooldown kontrolleri. Uygulama ve oyun kabulü henüz tamamlanmadı. Mevcut rota/uçuş/WE korunur. Teleporter Room'a dışarıdan güvenli dönüş için doğrulanmış hedef/işlem sözleşmesi bulunmadığından RETURN bu pakette kapalı kalır; ışınlama ve maliyet kapıları sonraki Aşama 11 paketidir, Aşama 12'ye geçiş değildir.
 
 - [ ] `EMERGENCY RETURN TO SHIP`
 - [ ] Uygunsa Teleporter Room’a dönüş
@@ -251,3 +251,4 @@ Ana listedeki sayısal sıra geliştirme sırasıdır. Tamamlanmış Aşama 6 Fi
 2. Aşama 5 `.68.2` yeni oturum SYNCING regresyonu ve bağlantı kaybı/otomatik geri dönüş kabulü tamamlandı. Çok oyunculu/yapay timeout gibi genişletilmiş kontroller hâlâ açık.
 3. Aşama 9 temel görünüm, favori/konum/gönderme ve terminal rota kabulü tamamlandı; genişletilmiş kontroller açık tutulur.
 4. Aşama 10 — .70.0 temel görünüm kabulü sonrası .70.1 kaynak sıralaması, alan bazlı kalıcı sayaç, detay/aktarımı gösteren sayfa ve onaylı STOP MINING toplu kabulü. Deposit rezerv bağlantısı ayrı açık bağımlılık; yeniden başlatma/routing fiziksel terminalde.
+5. Aşama 11 — Emergency/DISTRESS ilk paketi. .70.1 dört temel test kullanıcı tarafından kabul edildi; tekrar istenmez. Aşama 10 tam buffer eşleşmesi, bağlantı/config/çok oyunculu kenar testleri ve Aşama 14 rezerv bağımlılığı açık kalır. Acil hedef gönderme mevcut hedefi değiştirir, hesaplanmış rotayı değiştirmez ve uçuş/ışınlama başlatmaz.
