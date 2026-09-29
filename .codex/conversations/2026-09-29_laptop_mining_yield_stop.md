@@ -1,6 +1,6 @@
 # 2026-09-29 — laptop — Mining yield and stop
 
-Status: implementation and backed-up installation complete; new in-game acceptance pending. Branch: main; starting commit 6216a54. Acceptance reconciliation committed first as 4bda89e.
+Status: implementation, backed-up installation and four-item basic runtime acceptance complete. Branch: main; starting commit 6216a54. Acceptance reconciliation committed first as 4bda89e; implementation a8840b0.
 
 ## User goal
 Continue Stage 10 after closing the game; retain coherent batches.
@@ -29,4 +29,8 @@ No java/javaw process before or during install. Verified .70.0 repo/runtime SHA 
 
 ## Next
 
-One grouped runtime session per docs/16: actual resource rows while mining, confirmed STOP → physical mining shield OFF and paused extraction, same-area world reload keeps counts, physical terminal restart. No flight needed. Full buffer parity, Mining link recovery and extended multiplayer/config cases remain open. Stage 10 partial; do not claim reserve percentage or begin Stage 11 before reconciling runtime evidence/roadmap.
+The four-item basic runtime session is accepted; do not request it again. Full buffer parity, Mining link recovery and extended multiplayer/config cases remain open. Stage 10 remains partial because true reserve percentage is a separate Stage 14 dependency. Next implementation batch requires roadmap review; Stage 11 has not been started in this acceptance-only turn.
+
+## Runtime acceptance follow-up
+
+User supplied screenshot `codex-clipboard-505d8b01-4e60-4559-a49a-4f9edb96cbc2.png`: MINED RESOURCES, ON BOARD, 120 BLOCKS / minecraft:raw_iron, SINCE UPDATE / 761 EARLIER UNTRACKED, MOVED AE934/REP6011. Then, explicitly asked whether confirmed STOP, world exit/re-entry persistence and physical restart also passed, answered "hepsi tamam kanka". Record all four basic checks passed by user report, with the resource view additionally screenshot-backed. No new log or saved-NBT audit performed; do not infer multiplayer, timeout, full buffers or reserve acceptance. Documentation only: no build, JAR/config/world mutation or test rerun needed.

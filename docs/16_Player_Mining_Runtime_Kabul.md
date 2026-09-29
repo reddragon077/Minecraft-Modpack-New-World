@@ -2,7 +2,7 @@
 
 ## Güncel .70.1 — kaynaklar / kayıt / durdurma
 
-Aday: `0.5.70.1-alpha-mining-yield-stop`. 13 otomatik test grubu + gerçek DoctorWhoMod WE fixture geçti. Yeni oyun içi kabul **bekliyor**.
+Sürüm: `0.5.70.1-alpha-mining-yield-stop`. 13 otomatik test grubu + gerçek DoctorWhoMod WE fixture geçti. Aşağıdaki dört temel kontrol **kullanıcı onayıyla geçti**: kaynak görünümü, onaylı STOP, aynı tarama alanında dünyaya tekrar girişte kalıcılık ve fiziksel terminalden yeniden başlatma. Kaynak ekranı ayrıca 120 BLOCKS / minecraft:raw_iron, 761 EARLIER UNTRACKED, AE934/REP6011 gösterdi. Son üç kontrol için açık "hepsi tamam kanka" bildirimi var; bu tur bağımsız log/NBT doğrulaması yapılmadı. Bu temel listeyi yeniden isteme; genişletilmiş testler açık kalır.
 
 1. Mevcut madencilik çalışırken Player GUI → MINING → **MINED RESOURCES / FLOW**. Gerçekten çıkarılan kaynakların ID ve kazılmış blok sayıları görünmeli; aktarım toplamları alt satırda. Eski kazım için `SINCE UPDATE / ... EARLIER UNTRACKED` normal: geçmiş kaynak dağılımı uydurulmaz. Bu sayı drop-stack miktarı veya deposit rezervi değildir.
 2. **STOP MINING** bir kez → sunucudan **CONFIRM STOP MINING** gelsin → iki saniye içinde yeniden tıkla. İlk tıklama tek başına durdurmamalı. Onay sonrası `STOPPED / MINING SHIELD OFF`; fiziksel terminalde Mining Shield OFF, kazım beklemeye geçmeli. El freni/ana kalkan/rota aynı kalmalı. Buffer routing çalışmaya devam edebilir; bu kazımın sürmesi değildir. Kalkan zaten OFF ise ALREADY STOPPED doğrudur.

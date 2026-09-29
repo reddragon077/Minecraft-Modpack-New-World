@@ -153,15 +153,15 @@ Navigation telemetri görünümü salt-okunur kalır. FAVORITES → SEND TO SHIP
 
 ## Aşama 10 — Player Mining paneli
 
-Durum: `.70.0` temel durum/alan/tarama→kazım ve canlı sayaç kabulü ekran/log ile geçti. `.70.1` kaynak sıralaması/alan bazlı kalıcı sayaç ve iki onaylı STOP MINING kuruldu; 13 otomatik grup + engine fixture geçti, yeni oyun içi kabul bekliyor. Tam buffer eşleştirmesi, yeniden açılış ve Mining bağlantı kenar testleri açık. Yeniden başlatma/routing fiziksel terminalde kalır.
+Durum: `.70.0` temel durum/alan/tarama→kazım ve canlı sayaç kabulü ekran/log ile geçti. `.70.1` kaynak görünümü, onaylı STOP, aynı alanda dünyaya tekrar girişte kalıcılık ve fiziksel yeniden başlatma dört maddelik kullanıcı onayıyla geçti; kaynak ekranında raw_iron 120 / eski 761 ayrıca görüldü. 13 otomatik grup + engine fixture geçti. Tam buffer eşleştirmesi ve Mining bağlantı/çok oyunculu/config kenar testleri açık; tüm aşama tamamlandı sayılmaz. Yeniden başlatma/routing fiziksel terminalde kalır.
 
 - [x] Mining durumu ve kayıtlı scan alanı (.70.0 LAST SCAN -> SCAN CENTER [-154,11], bekleme/tarama/kazım ekran/log kabulü; deposit kimliği bağlantısı yok)
 - [x] Scan ve Extraction yüzdeleri (.70.0 tarama %7,8 -> %100, çıkarım 347/%1 ekran kabulü; genişletilmiş testler açık)
 - [~] Collection, AE Transfer ve Replication Feed buffer durumları (.70.0; eşya toplamı + tür yuvası; eksik/yüklü olmayan ayrı)
 - [~] SMART AUTO (.70.0 mevcut routing modu ve aktarım sayaçları, kontrol düğmesi değil)
-- [~] En çok çıkarılan kaynaklar (.70.1 başarılı kazılan blok sayacı, ilk 5, mevcut scan alanında kalıcılık; eski geçmiş tahmin edilmez. Runtime bekliyor.)
+- [x] En çok çıkarılan kaynaklar — temel akış (.70.1 raw_iron 120 / eski 761 ekran kanıtı; aynı alanda dünya yeniden giriş kalıcılığı ve kazıma devam kullanıcı onayı. Çok kaynaklı sıralama kenarları otomatik testli, ayrıca oyun içi doğrulanmadı.)
 - [ ] Deposit remaining yüzdesi (Aşama 14 gerçek rezerv defteri bağımlılığı; tarama kalanı bu yüzde yerine kullanılmaz)
-- [~] `EMERGENCY STOP MINING` (.70.1 iki onaylı, sahiplik/bağlantı/gemi/timeout/config kontrollü Mining Shield OFF; başlatma/el freni/rota yazımı yok. Runtime bekliyor.)
+- [x] `EMERGENCY STOP MINING` — temel akış (.70.1 iki onaylı Mining Shield OFF/durma ve fiziksel yeniden başlatma kullanıcı onayıyla geçti; sahiplik/timeout/config/çok oyunculu genişletilmiş oyun testleri ayrıca açık.)
 
 Routing, priority, Keep ve upgrade yönetimi fiziksel Mining Terminal’de kalacaktır.
 
