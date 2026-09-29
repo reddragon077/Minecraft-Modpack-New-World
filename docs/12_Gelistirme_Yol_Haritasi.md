@@ -185,11 +185,11 @@ Güncel kullanıcı kararı: Beacon iptal; doğrudan kendi gemisinin iç kapı �
 - [ ] Değişmeyen hedef/rota/WE karşılaştırması; uzaktan/dimension/çok oyunculu/koruma/ölüm kenar kabulü.
 - İptal: DISTRESS BEACON ve konumu acil Navigation hedefi yapma. Eski kayıtlar silinmez.
 
-Aşama 12'ye geçilmedi.
+29 Eylül devam kararı: kullanıcı dört parçalı Aşama 12 paketini onayladı. Mevcut 15 regresyon paketi yeniden geçti; Emergency adapter incelemesinde Navigation/rota/WE yazımı yok, başarısız/veto edilen dönüş testinde cooldown sıfır kalıyor. Bu kaynak/fixture kanıtıdır; yukarıdaki gerçek oyun karşılaştırması ve genişletilmiş kabul açık kalır. Kabul edilmiş kapı dönüşü ve yeniden giriş testleri tekrarlanmaz.
 
 ## Aşama 12 — Ship Alerts
 
-Durum: terminallerde durum verileri var; ortak alert/toast sistemi yok.
+Durum: kullanıcı onayıyla düşük WE, Collection doluluğu, Engine/Matrix/eksik drive ve GUI geçmişi + küçük bildirim paketi geliştiriliyor. Yeni keşif bildirimleri sonraki dilimdir; oyun kabulü henüz yok.
 
 - [ ] Düşük Warp Energy
 - [ ] Collection Buffer yüksek/full

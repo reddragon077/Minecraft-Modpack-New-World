@@ -6,6 +6,8 @@ Branch: `main`
 
 ## Current objective
 
+2026-09-29 authorized continuation: Stage 12 low WE, Collection pressure, Engine/Matrix/required drive, bounded GUI history and small HUD notifications as one batch. Baseline 15 suites + Doctor contract/WE fixture rerun passed; Emergency source has no Navigation/route/WE writer and production adapter fixture confirms failed/veto return does not charge. Actual-game invariance/extended Stage 11 cases remain open; accepted door/relogin tests are not repeated. Stage 12 runtime acceptance pending. Supersedes historical "no Stage 12" scope below.
+
 Runtime acceptance update: `.71.4` inside-door return, 30-minute cooldown start, countdown display and persistence after world exit/re-entry PASSED. User confirmed both return and relogin; screenshot shows RETURN COOLDOWN 25:51 at CONNECTED 12 BLK. Log: return [0,128,-22] at 15:21:30.375 with cooldown_ms=1800000 and client success at 15:21:30.386; server stop/save 15:24:48–49, login 15:25:21.062 confirms real world re-entry. Supersedes all destination/countdown/relogin-pending wording below. Unchanged target/route/WE and extended dimension/protection/multiplayer/death cases are not newly accepted from this Emergency screenshot. Stage 11 remains partial. No build/config/save edits or cooldown reset; installed .71.4/hash unchanged. Do not repeat accepted return/relogin or Mining tests.
 
 ### Installation history — destination acceptance below is superseded
