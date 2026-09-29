@@ -24,6 +24,8 @@ Genel okuma kuralları:
 
 Dosyalar:
 
+- `player-mining.properties`: salt-okunur Mining; `refresh_ticks=20` (20-1200), `stale_after_ticks=120` (40-3600, en az iki yenileme), `show_scan_area=true`, `show_buffers=true`. Canlı uygulanır. İlerleme kayıtlı tarama alanınındır, deposit rezervi değildir. Bufferlar eşya toplamı ve kaynak türü/256 yuva olarak gösterilir; SMART AUTO mevcut yönlendirme durumudur, kontrol değildir. Eksik/yüklü olmayan buffer sahte sıfır yerine açık durum gösterir.
+
 - `player-navigation.properties`: Navigation telemetrisi; `refresh_ticks=20`, `stale_after_ticks=120`, `show_coordinates=true`, `show_we_estimate=true`. WE yalnız yüklü sonraki hop içindir. `favorites.enabled=true` ve `favorites.sync_limit=128` (16-512), ortak favori seçiciyi yönetir. `send_to_ship.enabled=true`, `send_to_ship.cooldown_ticks=40` (20-1200) seçili favorinin mevcut TARGET yazıcısıyla gemiye gönderilmesini yönetir; rota/uçuş başlatmaz veya WE harcamaz. Discoveries hedef izni ayrıca uygulanır; normal Discoveries TARGET/ROUTE değişmez. Liste son keşif kotasından bağımsızdır; REFRESH ile yenilenir ve SYNC gelen/toplam sayısını gösterir. `location.enabled=true`, `location.max_per_ship=128` (1-1024), `location.cooldown_ticks=40` (20-1200), SAVE CURRENT LOCATION işlemini yönetir. Sunucu oyuncu konumunu WAYPOINT/MANUAL favorisi olarak kaydeder; TARDIS iç mekânı reddedilir, aynı koordinat çoğaltılmaz, var olan keşif ezilmez, limit dolunca eski kayıt silinmez. Konum kaydı hedef/rota/WE değiştirmez; bütün seçenekler canlıdır.
 
 - `radar.properties`: yapı Radar'ı, navigasyon yükseltmeleri, CPU ve tarama FE maliyeti.

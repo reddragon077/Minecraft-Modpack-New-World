@@ -6,6 +6,12 @@ Branch: `main`
 
 ## Current objective
 
+Installed candidate `NewWorldCore-1.21.1-NeoForge-0.5.70.0-alpha-player-mining-view.jar`, SHA-256 `826b667f2316e7cf47242ad9046f29097392b061a6ddfff6567ddaeecb2be2b7`, 3645288 bytes. Four read-only Mining areas implemented together: status/scan area, scan/resource extraction, three buffers, routing/SMART AUTO. Live refresh=20/stale=120, area/buffers visible. Twelve suites plus engine fixture passed; not yet tested in Minecraft. No mining controls/route writes/deposit reserve linkage.
+
+Next: one grouped Mining session per `docs/16_Player_Mining_Runtime_Kabul.md`, compare status/progress/buffers/routing with physical terminal, then reopen/link recovery. Keep user feedback grouped; do not repeat accepted Navigation tests. Both .69.4 originals hash-backed-up at runtime `backups/custom-mods/pre-player-mining-20260929-01/{repository,instance}`; one matching new core per endpoint. DoctorWhoMod and navigation save unchanged. See `2026-09-29_laptop_mining_view_batch.md`.
+
+## Previous .69.4 — basic acceptance passed
+
 2026-09-29 update: .69.4 combined runtime test passed by screenshots and 10:52:13 server route log (exact [-2454,63,181], 11 blocks). Proximity completion is not a flight test. Stage 9 basic workflow accepted; extended tests remain open. User requests 3–4 related operations per batch. Proceed to Stage 10 read-only mining status/scan area, scan/extraction progress, Collection/AE/Replication buffers and routing/SMART AUTO status. The pending gate below is historical and superseded.
 
 Installed `.69.4-alpha-waypoint-terminal-route`: `NewWorldCore-1.21.1-NeoForge-0.5.69.4-alpha-waypoint-terminal-route.jar`, SHA-256 `4a68d8e660cd7e85a40109a16c5e1ec1068a92aefe45efbfccd19127339fc4e8`, 3635047 bytes. Eleven suites + real DoctorWhoMod WE fixture passed. Physical terminal now preserves manual saved Y, samples live ship-relative distance and displays explicit dimension/unavailable states. Real calculator/range clamp/altitude-normalizer fixtures cover exact final Y including -64 and vertical-only/multi-hop targets; intermediate cruise and nonmanual surface policy remain unchanged. No flight bypass, save migration or config change.

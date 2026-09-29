@@ -4,6 +4,9 @@ The complete historical NewWorldCore source tree is not currently available in t
 
 The current patch:
 
+- adds the `.70.0` read-only Player Mining four-area view: runtime/scan center, resource-only progress, three item/type-slot buffers and routing mode/counters. Separate bounded frames, owner/link/stale guards and live `player-mining.properties`; no controls, buffer binding or chunk loading;
+- verifies the mining adapter against actual shipped mining State classes, progress/hazard semantics, inherited chunk-check API, tab navigation, malformed protocol, config and layout fixtures. Build now runs twelve smoke suites plus the actual DoctorWhoMod WE formula fixture; full Minecraft runtime acceptance remains separate;
+
 - recompiles the compatibility helpers under `java/`;
 - patches the existing radar scan entry points so installed modded structures are read from Minecraft's live registry and searched through placement math without chunk generation;
 - normalizes structure variants into shared discovery families;

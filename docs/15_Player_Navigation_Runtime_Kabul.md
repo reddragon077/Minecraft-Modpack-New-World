@@ -2,13 +2,13 @@
 
 29 Eylül güncellemesi: aşağıdaki `.69.4` bekleyen birleşik kontrol tamamlandı. Ekranlarda Y=63, mesafe 11 blok ve son hedef [-2454,63,181]; sunucu 10:52:13.787 aynı rotayı doğruladı. 10:52:13.980 yakınlık eşiğinde tamamlandı; uçuş yapıldığı iddia edilmez. Temel Aşama 9 kabul edildi; genişletilmiş testler açık kalır. Kullanıcı onayıyla Mining görünüm paketine geçilir.
 
-Kurulu aday `.69.4-alpha-waypoint-terminal-route`. Önceki görünüm/GUI kapat-aç, `.69.1` temel favori seçimi ve `.69.2` konum kaydı/tekrar/kalıcılık kabul edildi. `.69.3` ortak hedef yazımı/eski rotayı koruma doğrulandı; fiziksel terminal Y/mesafe hatası için `.69.4` birleşik oyun kontrolü bekliyor. Genişletilmiş liste tamamlanmadı.
+Bu kabul kaydı `.69.4-alpha-waypoint-terminal-route` içindir. Önceki görünüm/GUI kapat-aç, temel favori seçimi, konum kaydı/tekrar/kalıcılık ve ortak hedef yazımı/eski rotayı koruma kabul edildi. Fiziksel terminal Y/mesafe/son rota düzeltmesi de geçti. Genişletilmiş liste tamamlanmadı. Güncel kurulu aday için HANDOFF/pack-lock kullanılır.
 
-## .69.4 — sıradaki tek birleşik kontrol
+## .69.4 — tamamlanan birleşik kontrolün adımları
 
 1. FAVORITES içindeki `LOCATION -2454 63 181` → SEND TO SHIP. Fiziksel Navigation Terminal seçili hedef koordinatı Y=63 olmalı; gemi dış konumu hâlâ [-2464,61,176] ise mesafe yaklaşık 11 blok. Farklı boyut/veri yokluğu sahte 0 olarak gösterilmez.
 2. CALCULATE ROUTE öncesi sağdaki eski Carbon rotası korunmalı. Hesapla düğmesinden sonra son nokta [-2454,63,181] olmalı; artık rota değişmesi doğrudur. Route CPU ve Player Navigation ile karşılaştır. Uçuş yapmaya gerek yok.
-3. Bu kısa paketin gerçek sonucunu kaydet. On bir otomatik test grubu + gerçek motor WE fixture geçti; bunlar oyun kabulünün yerine geçmez. Çok-hop/alt sınır/sadece dikey hedef otomatik testleri geçti, oyun karşılıkları ayrıca açık.
+3. Sonuç yukarıda ekran/log ile kaydedildi. On bir otomatik test grubu + gerçek motor WE fixture geçti; bunlar oyun kabulünün yerine geçmez. Çok-hop/alt sınır/sadece dikey hedef otomatik testleri geçti, oyun karşılıkları ayrıca açık.
 
 Yedek: `backups/custom-mods/pre-waypoint-terminal-20260929-01/`. Yapı/maden yüzeye iniş politikası, ara durak seyir yüksekliği, mevcut uçuş/enerji kapıları ve kayıt şeması değişmedi.
 

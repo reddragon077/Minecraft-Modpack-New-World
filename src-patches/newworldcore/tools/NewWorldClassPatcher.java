@@ -659,7 +659,7 @@ public final class NewWorldClassPatcher {
                         comparisons++;
                         // The first comparison selects tab width. The next two select enabled colors.
                         if (comparisons >= 2) {
-                            method.instructions.set(instruction, new InsnNode(Opcodes.ICONST_4));
+                            method.instructions.set(instruction, new InsnNode(Opcodes.ICONST_5));
                             replacements++;
                         }
                     }

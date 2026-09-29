@@ -70,11 +70,12 @@ public final class PlayerDiscoveries0650 {
             Object raw = call(payload, "mode");
             int code = raw instanceof Number number ? number.intValue() : 0;
             if (!"CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) {
-                if (code >= 0 && code <= 8 || isActionMode(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
+                if (code >= 0 && code <= 9 || isActionMode(code)) PlayerFieldSurvey0620Dispatcher.handle(call(context, "player"), code);
                 return;
             }
             if (!clientReceiving() && PlayerShipLink0680.isWireCode(code)) { PlayerShipLink0680.accept(code); return; }
             if (!clientReceiving() && PlayerNavigation0690.isWireCode(code)) { PlayerNavigation0690.accept(code); return; }
+            if (!clientReceiving() && PlayerMining0700.isWireCode(code)) { PlayerMining0700.accept(code); return; }
             if (!clientReceiving() && PlayerOverview0670.isWireCode(code)) {
                 if ("CLIENTBOUND".equals(String.valueOf(call(context, "flow")))) PlayerOverview0670.accept(code);
                 return;
@@ -494,6 +495,7 @@ public final class PlayerDiscoveries0650 {
     /** Wrapper target for PlayerShipScreen.survey; non-Discoveries tabs retain the base method. */
     public static void renderContent(Object screen, Object graphics, int left, int top, int mouseX, int mouseY) {
         try {
+            if (intField(screen, "tab") == 4) { PlayerMining0700.render(screen, graphics, left, top); return; }
             if (intField(screen, "tab") == 3) {
                 if (!PlayerShipLink0680.clientAllowed()) return;
                 ViewState view = VIEWS.get(screen);
@@ -596,6 +598,9 @@ public final class PlayerDiscoveries0650 {
             int left = (intField(screen, "width") - 540) / 2;
             int top = (intField(screen, "height") - 300) / 2;
             int discoveriesX = left + 182;
+            if (button == 0 && inside(mouseX, mouseY, left + 366, top + 46, 88, 22)) {
+                setField(screen, "tab", 4); VIEWS.remove(screen); PlayerMining0700.resetClient(); return true;
+            }
             if (button == 0 && inside(mouseX, mouseY, left + 274, top + 46, 88, 22)) {
                 setField(screen, "tab", 3);
                 VIEWS.remove(screen);
@@ -611,6 +616,7 @@ public final class PlayerDiscoveries0650 {
                 return true;
             }
             int tab = intField(screen, "tab");
+            if (tab == 4) return inside(mouseX, mouseY, left + 10, top + 76, 520, 212); // Content is read-only; legacy Overview/Survey headers remain clickable.
             if (tab != 2 && tab != 3) return false;
             ViewState view = VIEWS.computeIfAbsent(screen, ignored -> new ViewState());
             if (tab == 3) {

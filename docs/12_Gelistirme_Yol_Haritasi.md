@@ -2,9 +2,9 @@
 
 Son kayıt güncellemesi: 29 Eylül 2026
 
-Son temel tek oyunculu runtime-kabul edilen build: NewWorldCore `0.5.68.2-alpha-typed-client-link` (10 Eylül; yeni oturum, Overview/Discoveries ve menzil kaybı/otomatik dönüş doğrulandı).
+Son temel tek oyunculu runtime-kabul edilen build: NewWorldCore `0.5.69.4-alpha-waypoint-terminal-route` (29 Eylül; Navigation görünüm/favori/konum/gönderme zinciri ve fiziksel terminal koordinat/mesafe/rota doğrulandı). Genişletilmiş kontroller açık.
 
-Kurulu aday: `.69.4-alpha-waypoint-terminal-route`; on bir test grubu ve gerçek motor tahmini geçti. `.69.3` hedef yazımı/eski rotayı koruma doğrulandı; fiziksel terminal koordinat/mesafe ve manuel son durak düzeltmesinin birleşik oyun kontrolü açık. `.69.1` temel favori seçimi ve `.69.2` iki konum/tekrar/kalıcılık kabulü korunur. Genişletilmiş Navigation kontrolleri açık.
+Kurulu aday: `.70.0-alpha-player-mining-view`; dört salt-okunur Mining alanı, on iki test grubu ve gerçek motor tahmini geçti. Mining için birleşik oyun kabulü bekliyor; Navigation temel kabulü korunur. [Mining oyun testi](16_Player_Mining_Runtime_Kabul.md).
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -149,16 +149,16 @@ Durum: **temel iş akışı kabul edildi; genişletilmiş kontroller açık.** `
 
 Gelişmiş rota hesabı ve ayarlar fiziksel Navigation Terminal’de kalacaktır.
 
-Navigation telemetri görünümü salt-okunur kalır. FAVORITES → SEND TO SHIP mevcut TARGET yazıcısını kullanır; seçili konum/keşif geminin ortak hedefi olur. SAVE CURRENT LOCATION yalnız oyuncunun dış dünya konumunu favoriye kaydeder. İkisi de rota/uçuş başlatmaz. Konum kaydı/yeniden yükleme ve temel gönderme/rotayı koruma kabulü geçti; sırada `.69.4` fiziksel terminal → mevcut CALCULATE ROUTE birleşik kontrolü vardır. [Oyun testi](15_Player_Navigation_Runtime_Kabul.md).
+Navigation telemetri görünümü salt-okunur kalır. FAVORITES → SEND TO SHIP mevcut TARGET yazıcısını kullanır; seçili konum/keşif geminin ortak hedefi olur. SAVE CURRENT LOCATION yalnız oyuncunun dış dünya konumunu favoriye kaydeder. İkisi de rota/uçuş başlatmaz. Temel zincir ve `.69.4` fiziksel terminal → mevcut CALCULATE ROUTE kontrolü geçti. [Kabul kaydı ve açık genişletilmiş kontroller](15_Player_Navigation_Runtime_Kabul.md).
 
 ## Aşama 10 — Player Mining paneli
 
-Durum: Mining M1 ve fiziksel terminal alpha çalışıyor; Player GUI paneli bekliyor.
+Durum: `.70.0` dört alanlık salt-okunur Player Mining adayı kurulu; on iki otomatik test grubu geçti, oyun kabulü bekliyor. Kontroller fiziksel terminalde kalır.
 
-- [ ] Mining durumu ve aktif deposit/scan alanı
-- [ ] Scan ve Extraction yüzdeleri
-- [ ] Collection, AE Transfer ve Replication Feed buffer durumları
-- [ ] SMART AUTO
+- [~] Mining durumu ve kayıtlı scan alanı (.70.0; gemi taşınmışsa LAST SCAN; deposit kimliği bağlantısı yok)
+- [~] Scan ve Extraction yüzdeleri (.70.0; kaynak hedefleri, hazard hariç; tarama sırasında/bilinmeyen paydada N/A)
+- [~] Collection, AE Transfer ve Replication Feed buffer durumları (.70.0; eşya toplamı + tür yuvası; eksik/yüklü olmayan ayrı)
+- [~] SMART AUTO (.70.0 mevcut routing modu ve aktarım sayaçları, kontrol düğmesi değil)
 - [ ] En çok çıkarılan kaynaklar
 - [ ] Deposit remaining yüzdesi
 - [ ] `EMERGENCY STOP MINING`

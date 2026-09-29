@@ -4,7 +4,7 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
-- [2026-09-29 — Mining view batch](2026-09-29_laptop_mining_view_batch.md) — .69.4 basic runtime acceptance verified; Stage 10 read-only four-item batch authorized, extended Navigation tests remain open.
+- [2026-09-29 — Mining view batch](2026-09-29_laptop_mining_view_batch.md) — .69.4 basic runtime accepted; .70.0 four read-only Mining areas, live config and twelve suites verified, backed-up installation. One grouped Mining runtime acceptance pending; extended Navigation tests remain open.
 
 - [2026-09-29 — Waypoint terminal/route repair](2026-09-29_laptop_waypoint_terminal_repair.md) — `.69.3` target write/old-route preservation confirmed; saved Y correct, physical projection wrong. `.69.4` live distance/exact Y/final-hop repair, eleven suites, verified backed-up install; grouped runtime test pending. User requests coherent batches.
 

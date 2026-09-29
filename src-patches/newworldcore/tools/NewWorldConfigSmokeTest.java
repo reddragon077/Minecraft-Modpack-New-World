@@ -6,6 +6,9 @@ public final class NewWorldConfigSmokeTest {
     private NewWorldConfigSmokeTest() {}
 
     public static void main(String[] args) {
+        expect("player mining refresh", net.newworld.player.PlayerMining0700.refreshTicks(), 20L);
+        expect("player mining stale", net.newworld.player.PlayerMining0700.staleTicks(), 120L);
+        if (!net.newworld.player.PlayerMining0700.showArea() || !net.newworld.player.PlayerMining0700.showBuffers()) throw new AssertionError("Mining display defaults");
         expect("radar batch interval", NewWorldTuning.radarBatchIntervalTicks(), 8L);
         expect("radar results", NewWorldTuning.radarMaxResults(), 128L);
         expect("FE capacity", NewWorldTuning.feEnergyCapacity(2, 1), 3_250_000L);
