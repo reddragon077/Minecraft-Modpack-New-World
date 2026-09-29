@@ -1,6 +1,6 @@
 # Proje altyapısı ve senkronizasyon durumu
 
-Son güncelleme: 1 Eylül 2026
+Son güncelleme: 29 Eylül 2026
 
 İlk depo kurulumu tamamlanmış ve proje artık iki bilgisayarlı geliştirmeye uygun hale getirilmiştir.
 
@@ -19,15 +19,19 @@ Son güncelleme: 1 Eylül 2026
 
 | Makine | Durum | Rol |
 |---|---|---|
-| laptop | Aktif | Geliştirme ve oyun testi |
-| desktop | Bekliyor | Klasör yolları ve CurseForge örneği daha sonra kaydedilecek |
+| laptop | Doğrulanan test noktası | Güncel .72.1 ve temel kullanıcı kabulü; geliştirme duraklatıldı |
+| desktop | Kayıtlı | machines/desktop.json; bu kapanışta çalışma ortamı yeniden doğrulanmadı |
 
 ## Günlük çalışma
 
-Çalışmaya başlamadan önce GitHub’dan `main` alın. Repo içeriğini yerel CurseForge örneğine uygulayın. Oyun içinde doğrulanan değişiklikleri tekrar repoya aktarın; ardından diff, commit ve push sırasını izleyin.
+Çalışmaya başlamadan önce yerel değişiklikleri koruyarak temiz `main` üzerinde yalnız fast-forward senkronizasyon yapın. Kurulum farklarını doğrulayın; JAR/config uygulaması gerekiyorsa oyun kapalıyken yedekli ilerleyin. Yalnız belge değişikliği için yeniden kurulum gerekmez. Oyun içinde doğrulanan değişiklikleri tekrar repoya aktarın; ardından diff, commit ve push sırasını izleyin.
 
 Teknik komutlar ve güvenlik sınırları [`docs/WORKSPACE_SYNC.md`](docs/WORKSPACE_SYNC.md) içinde açıklanır.
 
 ## Mevcut geliştirme kapısı
 
-Altyapı hazırdır. `0.5.58.0-alpha-expanded-geology-deposits` laptopta açılmış; Uraninite radar → rota → fiziksel yatak zinciri doğrulanmıştır. Aktif geliştirme ve kalan kabul sırası [`docs/12_Gelistirme_Yol_Haritasi.md`](docs/12_Gelistirme_Yol_Haritasi.md) belgesindedir.
+Kurulu laptop/repo NewWorldCore `0.5.72.1-alpha-unified-ship-alerts`. Navigation, Mining, ana kapıya Emergency dönüş ve son temel FE/History/HUD kabulü kaydedildi; genişletilmiş kontroller açık. Aşama 12 kısmi, geliştirme kullanıcı isteğiyle duraklatıldı.
+
+275 CurseForge öğesi (267 mod, 4 resourcepack, 4 shaderpack; 274 etkin, 1 devre dışı) sabitlenmiştir; iki özel fork ayrıca repoda tutulur. Bu belge güncellemesi sürüm envanterini veya oyun dosyalarını değiştirmez.
+
+[Oyuncu rehberi](docs/19_Oyuncu_Rehberi.md) · [Değişiklikler](CHANGELOG.md) · [Yol haritası](docs/12_Gelistirme_Yol_Haritasi.md).

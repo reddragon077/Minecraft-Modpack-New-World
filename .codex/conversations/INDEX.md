@@ -4,7 +4,9 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
-- [2026-09-29 — laptop — All Overview warnings in Ship Alerts](2026-09-29_laptop_unified_ship_alerts.md) — .72.1, shared FE/WE thresholds and complete raw warning coverage; automatic tests passed, runtime acceptance pending.
+- [2026-09-29 — laptop — Public documentation closeout](2026-09-29_laptop_documentation_closeout.md) — basic .72.1 FE/history/recovery/HUD/reopen accepted; public guide and status reconciled; development paused, extended Stage 12 scope open.
+
+- [2026-09-29 — laptop — All Overview warnings in Ship Alerts](2026-09-29_laptop_unified_ship_alerts.md) — .72.1, shared FE/WE thresholds and complete raw warning coverage; automatic tests and subsequent basic FE/history/recovery/HUD/reopen acceptance passed; extended cases open.
 
 - [2026-09-29 — laptop — Ship Alerts batch](2026-09-29_laptop_ship_alerts.md)
 

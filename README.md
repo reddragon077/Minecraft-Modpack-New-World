@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Güncel geliştirme adayı `0.5.72.1-alpha-unified-ship-alerts`: tüm Overview uyarıları (FE/WE, Matrix/Engine, Mining enerji/bekleme ve telemetri) ortak kaynaktan geçmişe ve HUD'a bağlandı; Collection/drive kontrolleri korundu. FE/WE eşikleri Overview ile ortaktır. Düzeltmenin oyun kabulü bekliyor. [Toplu Ship Alerts testi](docs/18_Ship_Alerts_Runtime_Kabul.md). Önceki Navigation/Mining temel kabulü ve `.71.4` iç kapıya acil dönüş/30 dakika bekleme/yeniden giriş kabulü korunur; genişletilmiş vakalar ayrıca açıktır.
+- Güncel alpha: `0.5.72.1-alpha-unified-ship-alerts` (29 Eylül 2026). Düşük FE uyarısı/geçmiş/çözülme ekranla, HUD bildirimi ve arayüzü kapatıp açınca geçmişin korunması kullanıcı testiyle doğrulandı. Bu temel kabul, tüm uyarı türleri ve çok oyunculu durumların tamamının test edildiği anlamına gelmez. [Kabul kapsamı](docs/18_Ship_Alerts_Runtime_Kabul.md).
 - Runtime-kabul edilen `DISCOVERIES` sekmesi ortak Structure/Geology geçmişini, analiz/kaynak/rezerv/son-görülme ayrıntılarını ve canlı oyuncu mesafesini gösterir; kayıtlar favoriye alınabilir, aktif Navigation hedefi yapılabilir ve gerçek TARDIS rota/hop planına bağlanabilir.
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 
@@ -26,6 +26,8 @@ NewWorldCore çalışma ayarları [`config/newworldcore/`](config/newworldcore/)
 
 ## Bugün çalışan ana sistemler
 
+İlk kez bakıyorsanız [oyuncu rehberinden](docs/19_Oyuncu_Rehberi.md) başlayın. Son gelişmeler [değişiklik özetinde](CHANGELOG.md); henüz tamamlanmayan işler [bilinen sınırlarda](docs/Known%20Issues.md) açıklanır.
+
 | Sistem | Durum | Kısa açıklama |
 |---|---|---|
 | Gemi oda/matrix altyapısı | Alpha | Oda kabukları, kontrolcüler, koruma, gemi panel aileleri ve dekor blokları |
@@ -33,6 +35,12 @@ NewWorldCore çalışma ayarları [`config/newworldcore/`](config/newworldcore/)
 | Mining M1 | Alpha | İki aşamalı tarama/çıkarma, kalkan ve el freni koşulları, yükseltmeler ve derin depolama |
 | Jeoloji | Alpha | Fiziksel deposit worldgen, radar eşleşmesi, kalıcılık ve modlu maden genişletmesi |
 | Navigasyon | Alpha | Dinamik vanilla/modlu yapı radarı, keşif veritabanı, geçmiş/favoriler, rota hesaplama ve çok duraklı seyahat |
+| Player Ship Interface | Alpha; temel akışlar doğrulandı | Altı sekme: Overview, Survey, Discoveries, Navigation, Mining ve Emergency |
+| Overview / Ship Link | Temel tek oyunculu kabulü geçti | FE/WE, motor, kalkan, rota ve Matrix durumu; canlı bağlantı, mesafe ve kayıp/geri dönüş |
+| Konumlar ve favoriler | Temel kabulü geçti | Konum kaydetme, kopya önleme, yeniden girişte kalıcılık, SEND TO SHIP; hedef ve mevcut rota ayrı tutulur |
+| Player Mining | Temel kabulü geçti; genişletilmiş testler açık | Tarama/çıkarma bilgisi, çıkarılan kaynak sayıları, onaylı STOP MINING; yeniden başlatma fiziksel terminalde |
+| Emergency Return | Temel kabulü geçti; genişletilmiş testler açık | Kendi gemisinin iç giriş kapısına dönüş; başarı sonrası 30 gerçek dakika kalıcı bekleme. Beacon yok |
+| Ship Alerts | Temel FE/geçmiş/HUD kabulü geçti | Overview uyarıları, Collection/drive kontrolleri, sınırlı oturum geçmişi; çözülenler RESOLVED |
 | Replikasyon | Alpha | Doğal kaynak tarama bilgisi, ham madde Matter değerleri ve üretim kısıtları |
 | TARDIS/gemi seyahati | Deneysel | DoctorWhoMod fork’u ile fiziksel seyahat ve NewWorldCore rota/engine bağlantıları |
 | Araştırma ve görev ilerlemesi | Tasarım/prototip | AStages, Pufferfish Skills ve FTB Quests tabanı mevcut; bütün içerik zinciri tamamlanmadı |
@@ -73,10 +81,11 @@ Belge haritası ve durumları için [`docs/README.md`](docs/README.md) dosyasın
 
 Ana sıra [`docs/12_Gelistirme_Yol_Haritasi.md`](docs/12_Gelistirme_Yol_Haritasi.md) belgesidir.
 
-1. Player `DISCOVERIES` detaylarında son görülme/tahmini rezerv alanlarını tamamlamak.
-2. Discovery kaydından navigasyon hedefi, rota ve favori işlemlerini bağlamak.
-3. Player Ship Interface'in Navigation ve Mining panellerini tamamlamak.
-4. Deposit extraction, remaining, depletion ve `DEPLETED` entegrasyonunu bitirmek.
+1. Aşama 12 Ship Alerts'in kalan kapsamı: henüz oyun içinde doğrulanmayan uyarı türleri ve yeni Structure/Geological Discovery bildirimleri.
+2. Navigation, Mining ve Emergency'nin açık izin/bağlantı/çok oyunculu uç durumlarını takip etmek; kabul edilmiş temel akışları tekrar yapılacak iş gibi listelememek.
+3. Yol haritası sırasıyla Aşama 13 deposit üretiminin gelişmiş varyasyonları ve Aşama 14 gerçek rezerv/çıkarma/tükenme entegrasyonu.
+
+`EST RESERVE` tahmini başlangıç bilgisidir; Mining çıkarma yüzdesi kalan deposit rezervi değildir. Gerçek remaining/depletion ve `DEPLETED` bağlantısı henüz tamamlanmadı.
 
 ## Proje durumu
 

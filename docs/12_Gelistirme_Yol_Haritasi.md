@@ -2,9 +2,9 @@
 
 Son kayıt güncellemesi: 29 Eylül 2026
 
-Son temel tek oyunculu runtime-kabul edilen build: NewWorldCore `0.5.69.4-alpha-waypoint-terminal-route` (29 Eylül; Navigation görünüm/favori/konum/gönderme zinciri ve fiziksel terminal koordinat/mesafe/rota doğrulandı). Genişletilmiş kontroller açık.
+Kurulu build: NewWorldCore `0.5.72.1-alpha-unified-ship-alerts`. Navigation, Mining ve Emergency temel akışları kabul edildi. Son Ship Alerts düşük FE/geçmiş/çözülme ekran kontrolü; HUD bildirimi ve GUI kapat-aç kullanıcı kontrolü geçti. Genişletilmiş vakalar ve yeni keşif bildirimleri açık; Aşama 12 kısmi.
 
-Kurulu aday: `.70.0-alpha-player-mining-view`; dört salt-okunur Mining alanı, on iki test grubu ve gerçek motor tahmini geçti. Mining için birleşik oyun kabulü bekliyor; Navigation temel kabulü korunur. [Mining oyun testi](16_Player_Mining_Runtime_Kabul.md).
+Kullanıcı isteğiyle geliştirme burada duraklatıldı; bu kapanış yalnız dokümantasyon güncellemesidir. [Oyuncu rehberi](19_Oyuncu_Rehberi.md) · [Güncel kabul](18_Ship_Alerts_Runtime_Kabul.md).
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -28,7 +28,7 @@ Durum: **tamamlandı.** Dinamik registry taraması, ortak-placement/geology ayr�
 - [x] Structure ve Geology sonuçları birbirinden ayrıldı.
 - [x] Range, Speed ve Accuracy yükseltmeleri iki tarama yoluna bağlandı.
 
-Kapanış testi: `ABANDONED CAMP`, `CAMPSITE` ve `ARCHEOLOGIST CAMP` yerinde tanıma geçti; `CAMPSITE` ve `ARCHEOLOGIST CAMP` dinamik filtreleri, GUI katmanları, seçilmeyen ailelerin elenmesi, gerçek 5000 blokta pozitif sonuç, Geology filtre paneli ve `.4` Field Survey denge testi geçti. Radar v2 kapandı; sıradaki geliştirme Aşama 2 metadata/event alanlarıdır.
+Kapanış testi: `ABANDONED CAMP`, `CAMPSITE` ve `ARCHEOLOGIST CAMP` yerinde tanıma geçti; `CAMPSITE` ve `ARCHEOLOGIST CAMP` dinamik filtreleri, GUI katmanları, seçilmeyen ailelerin elenmesi, gerçek 5000 blokta pozitif sonuç, Geology filtre paneli ve `.4` Field Survey denge testi geçti. Radar v2 kapandı; ardından Aşama 2 metadata/event alanları tamamlandı. Tarihsel 80 tick Structure ayarı daha sonra kullanıcının seçimiyle 20 tick / 1 saniyeye güncellendi; Geological ayarı 80 tick kalır.
 
 ## Aşama 2 — Ortak Discovery Database
 
@@ -48,12 +48,13 @@ Kapanış testi: mevcut dünya şema `2`den `3`e taşındı. Save dosyasında 44
 
 ## Aşama 3 — Player Ship Interface
 
-Durum: **kısmi.** Arayüz kabuğu ve tuş bağlantısı mevcut; Survey ve Discoveries çalışıyor, kalan sekme içerikleri bekliyor.
+Durum: **kısmi.** Altı sekme işlevsel; temel tek oyunculu akışlar kabul edildi. İleri işler ve genişletilmiş kabul ilgili aşamalarda açık.
 
 - [x] Oyuncunun tuşla açabildiği `PlayerShipScreen` mevcut.
 - [x] `OVERVIEW`, `SURVEY`, `DISCOVERIES`, `NAVIGATION`, `MINING`, `EMERGENCY` sekmeleri oluşturuldu.
 - [x] Tasarım, gemideki ayrıntılı terminallerin yerine geçmeyecek şekilde sınırlandı.
-- [~] `SURVEY/STRUCTURE` ve `SURVEY/GEOLOGICAL` işlevseldir; diğer sekmelerin içeriği sonraki aşamalarda tamamlanacak.
+- [x] Survey, Discoveries, Overview, Navigation, Mining ve Emergency temel içerikleri mevcut.
+- [~] İleri özellikler ve genişletilmiş uç durum kabulü Aşama 7, 9–14 kapsamında izlenir.
 
 ## Aşama 4 — Overview / Ship Status
 
@@ -75,9 +76,9 @@ Not: Player GUI fiziksel terminallerin salt-okunur ortak telemetri katmanını k
 
 ## Aşama 5 — Ship Link
 
-Güncel kabul: `.68.2` yeni oturumda CONNECTED, Overview NOMINAL ve Discoveries 128/471 gösterdi. 16:31:47'de OUT OF RANGE, 16:36:53'te yeniden CONNECTED/NOMINAL loglandı. Kullanıcı dönüşte zaten düzeldiğini, geciken şeyin ekran görüntüsü olduğunu açıkladı; 12 blok ekranı geri bağlantıyı doğruladı. SYNCING regresyon kapısı kapandı; sıradaki iş Aşama 9'dur. Aşağıdaki paragraf önceki `.68.0`/`.68.1` kabul geçmişidir; açıklama düzeltmesinin görsel kontrolü de artık geçmiştir.
+Güncel kabul: `.68.2` yeni oturumda CONNECTED, Overview NOMINAL ve Discoveries 128/471 gösterdi. 16:31:47'de OUT OF RANGE, 16:36:53'te yeniden CONNECTED/NOMINAL loglandı. Kullanıcı dönüşte zaten düzeldiğini, geciken şeyin ekran görüntüsü olduğunu açıkladı; 12 blok ekranı geri bağlantıyı doğruladı. SYNCING regresyon kapısı kapandı; Aşama 9 temel akışı da daha sonra kabul edildi. Aşağıdaki paragraf önceki `.68.0`/`.68.1` kabul geçmişidir; açıklama düzeltmesinin görsel kontrolü de artık geçmiştir.
 
-Durum: **temel tek oyunculu işlev kabulü tamamlandı; `.68.1` açıklama düzeltmesinin görsel kontrolü açık.** Ekran görüntüleri ve sunucu logları ON BOARD, 11770 blokta LOST, 9 blokta yeniden CONNECTED, canlı boyut izni ve gemi dışından FAV/TARGET/ROUTE zincirini doğruladı. Gecikmeli Structure Survey için bağlantı kaybında erken dönüş, zaman çizelgesi ve kaynak koduyla doğrulandı; ayrı NBT karşılaştırması yapılmadı. Geological gecikmeli iptal, çok oyunculu izolasyon ve yapay timeout oyun testleri kapsam dışı/açık; otomatik testler bunların yerine sayılmaz. [Kabul kapsamı ve son görsel kontrol](14_Ship_Link_Runtime_Kabul.md).
+Durum: **temel tek oyunculu işlev ve açıklama düzeltmesinin görsel kabulü tamamlandı.** Ekran görüntüleri ve sunucu logları ON BOARD, 11770 blokta LOST, 9 blokta yeniden CONNECTED, canlı boyut izni ve gemi dışından FAV/TARGET/ROUTE zincirini doğruladı. Gecikmeli Structure Survey için bağlantı kaybında erken dönüş, zaman çizelgesi ve kaynak koduyla doğrulandı; ayrı NBT karşılaştırması yapılmadı. Geological gecikmeli iptal, çok oyunculu izolasyon ve yapay timeout oyun testleri kapsam dışı/açık; otomatik testler bunların yerine sayılmaz. [Kabul kapsamı ve son görsel kontrol](14_Ship_Link_Runtime_Kabul.md).
 
 - [x] Sürekli bağlantı göstergesi
 - [x] `CONNECTED`, `DIMENSIONAL`, `LOST` durumları
@@ -138,7 +139,7 @@ Kapanış testi: `0.5.66.1` ile `ARCHEOLOGIST CAMP` ve `TRIAL CHAMBERS` kayıtla
 
 ## Aşama 9 — Player Navigation paneli
 
-Durum: **temel iş akışı kabul edildi; genişletilmiş kontroller açık.** `.69.4` ekranları ve 29 Eylül 10:52:13 sunucu kaydı manuel hedef [-2454,63,181], doğru Y=63 ve 11 blok rota sonucunu doğruladı. Yakınlık eşiğinde ROUTE_COMPLETE yeni uçuş kanıtı değildir. Kullanıcı onayıyla sıradaki geliştirme kapısı Aşama 10'un dört salt-okunur görünümüdür; aşağıdaki kenar testleri açık kalır.
+Durum: **temel iş akışı kabul edildi; genişletilmiş kontroller açık.** `.69.4` ekranları ve 29 Eylül 10:52:13 sunucu kaydı manuel hedef [-2454,63,181], doğru Y=63 ve 11 blok rota sonucunu doğruladı. Yakınlık eşiğinde ROUTE_COMPLETE yeni uçuş kanıtı değildir. Aşama 10 temel paketi de daha sonra kabul edildi; aşağıdaki kenar testleri açık kalır.
 
 - [~] Mevcut hedef, gemiye uzaklık, rota ve sonraki hop (`.69.0` ilk görünüm, hedef/rota değişimi ve kullanıcı bildirimli yeniden açılış geçti; kenar durumları açık)
 - [~] Tahmini WE maliyeti (`.69.0` yüklü sonraki hop: Aluminum 48 -> Carbon 52 WE görünümü geçti; genişletilmiş kabul açık)
@@ -167,13 +168,9 @@ Routing, priority, Keep ve upgrade yönetimi fiziksel Mining Terminal’de kalac
 
 ## Aşama 11 — Emergency panel
 
-29 Eylül 15:25 kabulü: kullanıcı çıkış/girişte de çalıştığını bildirdi; ekranda `RETURN COOLDOWN / 25:51`. Log 15:24:48–49 duruş/kayıt ve 15:25:21 yeniden girişi doğruluyor. Geri sayım ve dünya yeniden girişinde sürenin korunması geçti; aşağıdaki bunları bekleyen eski notlar geçersizdir. Hedef/rota/WE karşılaştırması ve genişletilmiş kontroller ayrıca açık kalır.
+Durum: **temel kapı önü dönüş, 30 dakika bekleme başlangıcı, geri sayım ve dünya çıkış/giriş kalıcılığı kabul edildi; genişletilmiş vakalar açık.** Kullanıcı, 25:51 ekranı ve 15:21 varış / 15:24–15:25 kayıt-yeniden giriş logları bunu doğruladı. Hedef/rota/WE gerçek oyun karşılaştırması ayrıca açık.
 
-29 Eylül 15:21 kabulü: .71.4 kapı önü dönüşü kullanıcı tarafından onaylandı; sunucu `[0,128,-22]` varışını ve 1800000ms bekleme başlangıcını, istemci başarı yanıtını kaydetti. Aşağıdaki yeni-varış-bekleniyor ifadesi geçersizdir. Çıkış/giriş kalıcılığı, geri sayım ve Navigation/WE karşılaştırması ile genişletilmiş kabul ayrı açık kalır; Aşama 11 kısmi.
-
-29 Eylül kullanıcı düzeltmesi: .71.3 dönüşü 14:42:25 loguyla gerçekleşti, ancak ayrı Teleporter Room istenen yer değildi. Yeni hedef geminin içinde ana kapının önü, normal portalın getirdiği aynı hücre ve bakış yönüdür. .71.4 adayında gerçek Doctor portal sözleşmesi ve 15 paket geçti; yeni varışın oyun kabulü bekleniyor. Eski Teleporter Room/no-entrance kararları bu açık kullanıcı isteğiyle geçersizdir.
-
-Güncel kullanıcı kararı: Beacon iptal; doğrudan kendi gemisinin iç kapı önü portal varışına dönüş ve başarı sonrası 30 dakika kalıcı bekleme. Önceden başlayan bekleme sıfırlanmaz. .71.2 hasChunkAt hatası .71.3 ile onarıldı; .71.4 yalnız varış noktası/yönü ve ilgili açıklamaları değiştirir (docs/17).
+Beacon iptal edildi. .71.2 chunk kontrol hatası .71.3 ile onarıldı; ayrı Teleporter Room hedefi kullanıcı isteğiyle .71.4'te normal portalın ana iç kapı önü konumu/yönüne değişti. Eski hedef ve bekleyen temel kabul notları artık geçerli değildir. [Güncel Emergency kabulü](17_Player_Emergency_Runtime_Kabul.md).
 
 - [~] `EMERGENCY RETURN TO SHIP` — iki aşamalı tek kullanımlık onay; eski Beacon paketleri reddedilir.
 - [~] Normal portalın ana iç kapı önü konumu/yönü; gerçek yüklü kapı, hava/zemin/çarpışma/tehlike/sınır kontrolleri. Güvensizse başka oda veya komşu noktaya yedek ışınlanma yok.
@@ -189,7 +186,7 @@ Güncel kullanıcı kararı: Beacon iptal; doğrudan kendi gemisinin iç kapı �
 
 ## Aşama 12 — Ship Alerts
 
-Durum: `.72.1-alpha-unified-ship-alerts` düzeltmesi. `.72.0` ekranında düşük FE'nin geçmişte eksik olduğu doğrulandı; kullanıcı tüm Overview uyarılarını istedi. Kırpılmamış ortak örnekleme, aynı FE/WE eşikleri ve seviyeler; düşük FE, Mining enerji/bekleme ve telemetri uyarıları eklendi. Küçük bildirim vanilla HUD/action-bar, geçmiş oturum başınadır. Yeni keşif bildirimleri sonraki dilimdir; düzeltmenin oyun kabulü bekleniyor. [Toplu kabul](18_Ship_Alerts_Runtime_Kabul.md).
+Durum: `.72.1-alpha-unified-ship-alerts` düzeltmesi. `.72.0` ekranında düşük FE'nin geçmişte eksik olduğu doğrulandı; kullanıcı tüm Overview uyarılarını istedi. Kırpılmamış ortak örnekleme, aynı FE/WE eşikleri ve seviyeler; düşük FE, Mining enerji/bekleme ve telemetri uyarıları eklendi. Küçük bildirim vanilla HUD/action-bar, geçmiş oturum başınadır. Düşük FE/geçmiş/çözülme ekran kabulü ve kullanıcı bildirimli HUD/GUI yeniden açılış kabulü geçti. Yeni keşif bildirimleri ve genişletilmiş vakalar açık; aşama kısmi. [Toplu kabul](18_Ship_Alerts_Runtime_Kabul.md).
 
 - [~] Düşük Warp Energy
 - [~] Düşük FE ve diğer tüm Overview uyarılarının ortak geçmiş/HUD kapsamı
@@ -197,8 +194,9 @@ Durum: `.72.1-alpha-unified-ship-alerts` düzeltmesi. `.72.0` ekranında düşü
 - [~] Engine/Matrix
 - [~] Eksik drive (mevcut gemi uçuş hedefi gereksinimi)
 - [ ] Yeni Structure/Geological Discovery
-- [~] Player GUI uyarı geçmişi (Overview, sınırlı oturum geçmişi)
-- [~] Küçük toast/notification katmanı (vanilla action-bar)
+- [x] Player GUI temel FE/geçmiş/çözülme ve GUI yeniden açılışı kabulü (diğer türler, bağlantı/çıkış kenarları açık)
+- [x] Küçük HUD bildiriminin temel görünümü (vanilla action-bar; kullanıcı onayı)
+- [~] Tüm uyarı türleri, tekrar sınırları, bağlantı/çıkış, çok oyunculu/koruma/yük oyun kabulü
 
 ## Aşama 13 — Deposit Generator
 
@@ -257,10 +255,10 @@ Aşağıdaki işler Aşama 14 kapanmadan ana geliştirme odağı yapılmayacakt�
 
 ## Şu anki çalışma kapısı
 
-Ana listedeki sayısal sıra geliştirme sırasıdır. Tamamlanmış Aşama 6 Field Survey, jeolojik Analysis zinciri ve Aşama 8 Discoveries işleri yeniden başlatılmayacaktır.
+Geliştirme kullanıcı isteğiyle duraklatıldı. Devam talebi geldiğinde temiz GitHub senkronizasyonu ve kurulu build doğrulaması yapılır; otomatik yeni kurulum veya cooldown sıfırlaması yapılmaz.
 
-1. Aşama 4 — Overview / Ship Status tek oyunculu kabulü tamamlandı.
-2. Aşama 5 `.68.2` yeni oturum SYNCING regresyonu ve bağlantı kaybı/otomatik geri dönüş kabulü tamamlandı. Çok oyunculu/yapay timeout gibi genişletilmiş kontroller hâlâ açık.
-3. Aşama 9 temel görünüm, favori/konum/gönderme ve terminal rota kabulü tamamlandı; genişletilmiş kontroller açık tutulur.
-4. Aşama 10 — .70.0 temel görünüm kabulü sonrası .70.1 kaynak sıralaması, alan bazlı kalıcı sayaç, detay/aktarımı gösteren sayfa ve onaylı STOP MINING toplu kabulü. Deposit rezerv bağlantısı ayrı açık bağımlılık; yeniden başlatma/routing fiziksel terminalde.
-5. Aşama 11 — Emergency doğrudan iç kapı önüne dönüş. Beacon/DISTRESS iptal edildi; hedef/rota/WE değişmez, başarı sonrası 30 dakika kalıcı bekleme. .71.4 portal varış kabulü sıradadır. .70.1 dört temel test tekrar istenmez; Aşama 10 genişletilmiş kontrolleri ve Aşama 14 rezerv bağımlılığı açık kalır.
+1. Aşama 4/5 ve 9/10/11 temel tek oyunculu kabulleri korunur. Tamamlanmış Field Survey/Discoveries veya kabul edilmiş Navigation/Mining/Emergency testleri tekrar başlatılmaz.
+2. Aşama 12 temel FE/History/HUD/recovery/reopen kabulü geçti. Kalan uyarı türleri ve bağlantı/oturum/çok oyunculu/koruma/yük kontrolleri ayrı açık; yeni Structure/Geological Discovery bildirimleri sonraki geliştirme dilimidir.
+3. Önceki aşamalardaki açık genişletilmiş kabul maddeleri kapanmış sayılmaz. Acil dönüşün hedef/rota/WE gerçek oyun karşılaştırması buna dahildir.
+4. Aşama 13 ileri deposit varyasyonları ve Aşama 14 gerçek rezerv/tükenme defteri daha sonra gelir. Mining tarama yüzdesi bu eksikliği kapatmaz.
+5. İlişkili işler 3–4 maddelik tutarlı paketlerle geliştirilir/doğrulanır; gerekli oyun kanıtı tek toplu kontrolle istenir. Bu kapanış yeni çalışma başlatmaz.

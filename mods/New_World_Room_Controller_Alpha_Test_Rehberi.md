@@ -4,12 +4,11 @@ Bu belge, eski `0.1.0-alpha` Room Controller denemesinin yerine güncel New Worl
 
 ## Kurulu build'ler
 
-Kurulu NewWorldCore `.69.4`, kayıtlı konumun fiziksel terminal Y/canlı mesafe ve son rota yüksekliği düzeltmesidir; on bir test grubu ve gerçek DoctorWhoMod WE tahmin entegrasyonu geçti. `.69.3` ortak hedef yazımı/rotayı koruma doğrulandı. Sırada tek birleşik SEND TO SHIP → terminal → CALCULATE ROUTE kontrolü var; uçuş gerekmez. [Navigation kabul adımları](../docs/15_Player_Navigation_Runtime_Kabul.md).
-Öncelikli test: [Player Navigation kalan runtime kontrolleri](../docs/15_Player_Navigation_Runtime_Kabul.md).
+29 Eylül 2026: kurulu `.72.1` ortak Ship Alerts buildidir. Son derlemede 16 otomatik grup ve gerçek Doctor portal/WE kontrolleri geçti. Navigation, Mining ve Emergency temel kabulü; düşük FE/geçmiş/çözülme ile kullanıcı bildirimli HUD/GUI yeniden açılışı kabul edildi. Aşağıdaki genel liste bir regresyon referansıdır; her maddesi yeniden test edildi anlamına gelmez ve geçmiş temel kabuller tekrar istenmez. [Güncel açık kontroller](../docs/18_Ship_Alerts_Runtime_Kabul.md).
 
 | Bileşen | Dosya | SHA-256 |
 |---|---|---|
-| NewWorldCore aday | `NewWorldCore-1.21.1-NeoForge-0.5.69.4-alpha-waypoint-terminal-route.jar` | `4a68d8e660cd7e85a40109a16c5e1ec1068a92aefe45efbfccd19127339fc4e8` |
+| NewWorldCore alpha | `NewWorldCore-1.21.1-NeoForge-0.5.72.1-alpha-unified-ship-alerts.jar` | `2cba0f04b92420d34cc1e66837c7a5256efd9fb96ebba5e897d05729439bf6c2` |
 | DoctorWhoMod fork | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` |
 
 ## Testten önce

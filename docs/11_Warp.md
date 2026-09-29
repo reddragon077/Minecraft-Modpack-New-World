@@ -28,6 +28,16 @@ Warp üretimi saniyelik döngüyle ele alınır; temel Converter 1 WE/sn üretir
 
 Radar hedefi doğrudan uçuş başlatmaz. Hedef seçilir, Route CPU rota hesaplar, Engine Matrix menzili değerlendirilir ve gerekirse ara duraklar oluşturulur. Gerçek dış gövde varışı bir sonraki hop’a geçişi tetikler.
 
+## Oyuncu panelinde hedef ve rota
+
+`NAVIGATION` sol tarafta seçili hedefi, sağ tarafta mevcut gemi rotasını gösterir. `FAVORITES → SEND TO SHIP` yalnız hedefi değiştirir; eski rota korunur. Yeni rota, Discoveries `ROUTE` veya fiziksel Navigation Terminal `CALCULATE ROUTE` ile hazırlanır. Uçuşun mevcut güvenlik/enerji koşulları ayrıca geçerlidir.
+
+`EST ... WE / NEXT HOP` yalnız yüklenmiş sonraki durağın tahminidir; toplam rota maliyeti veya uçuş izni değildir. Kaydedilmiş manuel konumun Y değeri son rota noktasında korunur. Structure/Geology iniş politikası bu manuel konum kuralından ayrıdır.
+
+## Acil dönüş, gemi seyahati değildir
+
+`EMERGENCY RETURN TO SHIP` oyuncuyu kendi gemisinin içinde, normal portalın getirdiği ana kapı önüne döndürür; gemiyi uçurmaz. Beacon/Navigation hedefi yazımı kaldırılmıştır. Başarılı dönüşten sonra varsayılan 30 gerçek dakika beklenir; çevrimdışı süre sayılır ve çıkış/giriş beklemeyi silmez. Başarısız dönüş yeni süre başlatmaz. Güvenli, yüklü giriş ve sahiplik kontrolleri vardır; normal uzaktan bağlantı menzili acil dönüşe uygulanmaz. [Kapsam ve kabul](17_Player_Emergency_Runtime_Kabul.md).
+
 ## DoctorWhoMod fork rolü
 
 Fork; fiziksel starter davranışı, merkezi engine travel kuralları, başlangıç motor bileşenleri, New World ana köprüsü, koridor/oda yapıları ve TARDIS flight/materialization altyapısını sağlar.

@@ -1,8 +1,23 @@
 # Bilinen sorunlar ve doğrulama listesi
 
-Son güncelleme: 3 Eylül 2026
+Son güncelleme: 29 Eylül 2026 • NewWorldCore .72.1
 
-## Aktif riskler
+## Güncel açık sınırlar
+
+- Alpha sürüm; genişletilmiş çok oyunculu, koruma modu, yük/gecikme, config ve bağlantı uç durum kabulü tamamlanmış değil.
+- Ship Alerts düşük FE/geçmiş/çözülme ve HUD/GUI yeniden açılışı temel kabulü geçti. Bütün uyarı türleri, Collection full, drive, bağlantı kaybı ve logout geçmiş sıfırlaması oyun içinde topluca doğrulandı sayılmaz. Yeni keşif bildirimleri henüz yok.
+- Navigation/Mining/Emergency temel akışları kabul edildi. Emergency hedef/rota/WE değişmezliğinin gerçek oyun karşılaştırması ve genişletilmiş koşulları açık; kaynak/otomatik test kanıtı ayrı tutulur.
+- EST RESERVE tahmindir; gerçek deposit kalan rezervi, tükenme defteri ve DEPLETED işaretleme henüz yok. Mining yüzdeleri yalnız tarama alanını anlatır.
+- Radar placement sonucu adaydır; yanlış pozitif olabilir. UNKNOWN STRUCTURE tek başına hata değildir; yerinde Survey kanıtı gerekir.
+- Yeni keşif HUD uyarıları, ileri deposit çeşitliliği, Research/Production/genetik ve tam progression tamamlanmadı.
+- Reliable EMI bilinçli devre dışıdır. Daha önce gözlenen SCGuns tarif ve EMI/JEI ingredient uyumluluk kayıtlarının bu sürümle çözüldüğü iddia edilmez.
+- NewWorldCore'un tam tarihsel kaynak ağacı eksiktir; yeniden üretilebilir geliştirmeler src-patches altında tutulur.
+
+[Oyuncu rehberi](19_Oyuncu_Rehberi.md) · [Aşama/kabul ayrıntıları](12_Gelistirme_Yol_Haritasi.md)
+
+## Tarihsel sorunlar ve düzeltmeler
+
+Aşağıdaki sürüm notları geçmiş kanıttır, güncel iş listesi değildir. Structure Survey'nin eski 80 tick değeri güncel ortak ayarda 20 tick'tir; Geological Survey 80 tick kalır.
 
 - Oyuncu Structure Field Survey `0.5.60.2` altında sabit 96 blokta 13x13/169 yüklü chunk konumunu aynı tickte kontrol ederek sekiz yapıyı yaklaşık 38 ms içinde döndürdü. `0.5.60.4` bunu 48 blok (7x7/49 konum) ve 80 tick gecikmeye indirdi. Runtime logunda tek tarama 4074 ms'de tamamlandı, `ARCHEOLOGIST CAMP` tanındı ve dinamik filtrede görsel olarak doğrulandı; sorun kapandı.
 - Laptop `0.5.60.0-alpha-config-suite` tarama kabulünde Radar `ALL` 102 görevi yaklaşık 9,98 saniyede tamamlayıp 101 karışık sonuç, Geology ise yaklaşık 9,00 saniyede 48 deposit verdi. Geology filtre paneli açıldığında sonuç satırları, koordinatlar, scrollbar ve sarı vurgu panelin üstüne çizildi. `0.5.60.1` paneli `Z=1000` katmanına taşıdı fakat ertelenmiş GUI buffer'ları sonradan çizildiği için ekran görüntüsü kabulü başarısız oldu. `0.5.60.2-alpha-config-geology-flush` önce sonuç buffer'larını, sonra son katman popup'ını açıkça flush eder; ekran görüntüsü kabulünde panel tamamen temiz kaldı ve sorun kapandı.
@@ -66,7 +81,7 @@ Son güncelleme: 3 Eylül 2026
 - Yalnız `CAMPSITE` seçiliyken ilk tarama 96 karışık sonuç döndürdü. `0.5.59.8` kesin aile eşleşmesiyle bunu 96 ham adaydan sıfır sonuca indirdi ve seçilmeyen ailelerin elendiğini doğruladı.
 - Sıfır sonuç, GUI'nin 5000 blok göstermesine rağmen placement hesabının 100 chunk (~1600 blok) ile sınırlı olduğunu açığa çıkardı; bilinen kamp yaklaşık 3037 blok uzaktaydı. `0.5.59.9` gerçek menzili bağladı ancak random-spread bölge koordinatını Minecraft metoduna zaten bölünmüş halde vererek spacing'i iki kez böldü. `0.5.59.10` her bölgeyi `regionIndex * spacing` chunk koordinatıyla örnekler; oyun kabulünde bir Campsite görevi 5000 blokta bir sonuç döndürdü.
 - Laptop `0.5.60.0` `ALL` taraması 102 placement görevini yaklaşık 9,98 saniyede bitirip 101 karışık aile sonucu döndürdü; gönderilen `scan.batch_interval_ticks=8` profilinin yaklaşık yarı-hız hedefi doğrulandı. Geology aynı oturumda 48 depositi yaklaşık 9,00 saniyede tamamladı. `0.5.60.2` yalnız Geology GUI çizim sırasını düzeltir ve scan/config davranışını korur.
-- `ARCHEOLOGIST CAMP` zinciri Radar v2'nin kalan aile kabul maddesidir.
+- `ARCHEOLOGIST CAMP` yerinde tanıma ve dinamik filtre kabulü daha sonra tamamlandı; kalan test değildir.
 
 ## Senkronizasyon sınırları
 
@@ -75,9 +90,9 @@ Son güncelleme: 3 Eylül 2026
 - Her CurseForge örneğinde yalnızca bir NewWorldCore ve bir DoctorWhoMod fork JAR’ı bulunmalıdır.
 - Masaüstü bilgisayar `machines/desktop.json` ile kaydedildi; `0.5.59.10` repo/instance tek-JAR ve hash eşleşmesi geçti.
 
-## Bir sonraki test kapısı
+## Tarihsel geniş regresyon referansı
 
-`uraninite_pocket` için Radar → Navigation → TARDIS rota → fiziksel yatak zinciri 1 Eylül 2026'da doğrulandı. Aşağıdaki maddeler tam regresyon kapısı olarak devam eder:
+`uraninite_pocket` için Radar → Navigation → TARDIS rota → fiziksel yatak zinciri 1 Eylül 2026'da doğrulandı. Aşağıdaki liste o dönemin geniş regresyon kapsamıdır; kabul edilmiş maddelerin tekrar istenmesi veya tamamının son sürümde yeniden geçtiği anlamına gelmez. Güncel açık kontroller için yukarıdaki sınırlar ve yol haritası esas alınır:
 
 1. FE Matrix kayıt kararlılığı ve mod çakışması için tekrar açılış kontrolü.
 2. Gemi verisinin yeniden başlatma sonrası kalıcılığı.

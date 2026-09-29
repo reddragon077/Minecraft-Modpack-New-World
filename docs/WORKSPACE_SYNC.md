@@ -19,15 +19,15 @@ Third-party mod, resource-pack, and shader-pack binaries are not committed. Curs
 
 Before work:
 
-1. Pull `main` in the repository.
+1. Check the branch and working tree. Preserve local changes; reconcile them before pulling. With clean `main`, fetch and pull fast-forward only.
 2. Read `.codex/HANDOFF.md`, `.codex/project-memory.md`, and the newest record listed in `.codex/conversations/INDEX.md`.
-3. Apply repository files to the local CurseForge instance with `tools/apply-to-instance.ps1`.
+3. Compare the registered instance with the repository first. If runtime installation is needed, close the game, preserve known-good files/backups, review the scope and use `tools/apply-to-instance.ps1`. Documentation-only updates do not require a new build or broad runtime/config apply.
 4. Launch and test through CurseForge.
 
 After a successful change:
 
-1. Refresh the repository from the tested instance with `tools/refresh-from-instance.ps1`, passing the registered machine name (`laptop` or `desktop`).
-2. Regenerate the readable inventory with `tools/update-mod-list.ps1` so it stays aligned with `pack-lock.json`.
+1. For tested runtime changes, inspect the scope of `tools/refresh-from-instance.ps1` and pass the registered machine name (`laptop` or `desktop`). Reconcile source/config differences; do not overwrite newer canonical work blindly. Documentation-only changes can be made directly in the repository.
+2. If inventory changed, regenerate the readable inventory with `tools/update-mod-list.ps1` so it stays aligned with `pack-lock.json`. Do not churn locks/manifests or produce a new JAR for documentation-only edits.
 3. Review `git status` and the diff.
 4. Commit and push to `main`.
 

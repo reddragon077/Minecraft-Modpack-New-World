@@ -67,8 +67,8 @@ kayıt şeması, paket/protokol kimlikleri ve registry anahtarları config deği
 
 Değişiklikleri iki bilgisayara taşımak için GitHub `main` ve proje senkronizasyon araçları kullanılmalıdır.
 
-### Player Emergency (.71.2)
+### Player Emergency (.71.4+, güncel .72.1)
 
 `player-emergency.properties`: `return.enabled=true`, `return.cooldown_minutes=30` (1–1440), `return.confirm_ticks=100` (40–200), `refresh_ticks=20` (20–1200), `stale_after_ticks=120` (40–3600, en az 2x refresh). Canlı ayarlar. Bekleme gerçek zamanlıdır; çevrimdışı süre sayılır, yeni değer yalnız sonraki başarılı dönüşe uygulanır. `PlayerPersisted/NewWorldEmergencyReturnUntilV1` oyuncu kaydı çıkış/giriş ve ölümde korunur.
 
-Beacon kaldırıldı; eski beacon.* anahtarları kullanılmaz ve eski DISTRESS kayıtları silinmez. İki aşamalı tek kullanımlık onay kendi geminin yüklü ve güvenli konsol tarafı Teleporter Room noktasına oyuncuyu döndürür. Normal bağlantı mesafe/dimension politikası kurtarmayı engellemez; sahiplik, yüklü iç dünya, canlı/yaya oyuncu, uçuş/oda yenileme ve gerçek blok/çarpışma güvenliği yeniden kontrol edilir. Başka TARDIS içinden ve zaten kendi gemisindeyken dönüş reddedilir. Başarısız/engellenmiş dönüş bekleme tüketmez. Navigation hedefi/rotası, WE ve gemi uçuşu değişmez. Oyun kabulü docs/17 içindedir.
+Beacon kaldırıldı; eski beacon.* anahtarları kullanılmaz ve eski DISTRESS kayıtları silinmez. İki aşamalı tek kullanımlık onay kendi geminin yüklü ve güvenli ana iç giriş kapısındaki normal portal varış noktasına oyuncuyu döndürür. Normal bağlantı mesafe/dimension politikası kurtarmayı engellemez; sahiplik, yüklü iç dünya, canlı/yaya oyuncu, uçuş/oda yenileme ve gerçek blok/çarpışma güvenliği yeniden kontrol edilir. Başka TARDIS içinden ve zaten kendi gemisindeyken dönüş reddedilir. Başarısız/engellenmiş dönüş bekleme tüketmez. Navigation hedefi/rotası, WE ve gemi uçuşu değişmez. Ayrı Teleporter Room veya komşu hücreye yedek varış yoktur. Kapı önü dönüş, geri sayım ve yeniden giriş kalıcılığı kabul edildi; genişletilmiş kontroller [kabul rehberinde](../../docs/17_Player_Emergency_Runtime_Kabul.md) açıktır.

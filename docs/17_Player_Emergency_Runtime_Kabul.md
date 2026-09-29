@@ -1,20 +1,29 @@
-# Player Emergency .71.4 — gemi içi kapı önü dönüş
+# Player Emergency — güncel kabul ve sınırlar
 
-Güncel kabul: kapı önü dönüşüne ek olarak geri sayım ve dünya çıkış/girişinde kalıcılık da geçti. Kullanıcının yeniden giriş sonrası ekranında `RETURN COOLDOWN / 25:51`; log 15:24:48–49 sunucu duruş/kayıt ve 15:25:21 yeniden girişi doğruluyor. Önceki geri sayım/yeniden giriş-bekleniyor notları geçersizdir. Bu kontroller tekrar istenmez. Navigation/WE karşılaştırması ve genişletilmiş kenar testleri bu ekranla doğrulanmış sayılmaz.
+29 Eylül 2026 • .71.4 ile gelen ana giriş varışı, kurulu .72.1 içinde korunur.
 
-29 Eylül kabul güncellemesi: kullanıcı kapı önü dönüşünün çalıştığını doğruladı. 15:21:30.375 sunucu kaydı varış `[0,128,-22]`, `cooldown_ms=1800000`; 15:21:30.386 istemci başarı yanıtı. Temel varış geçti, tekrar istenmez. Geri sayım görünümü/çıkış-giriş kalıcılığı ve hedef/rota/WE karşılaştırması bu denemede ayrıca doğrulanmadı; genişletilmiş kontroller açık. Aşağıdaki kurulum zamanı "bekleniyor" ifadesi bu temel varış için geçersizdir.
+## Davranış
 
-Kullanıcı ayrı Teleporter Room yerine geminin içindeki ana kapının önünü, normal portalın getirdiği yeri istedi. .71.3 gerçek dönüşü 29 Eylül 14:42:25 loguyla doğrulandı; yeni hedefin oyun kabulü henüz bekleniyor. Beacon iptal; eski DISTRESS kayıtları korunur.
+DISTRESS BEACON kaldırıldı; eski kayıtlar silinmez. İki tıklamalı onay oyuncuyu kendi gemisinin içinde, normal portalın getirdiği ana kapı önüne döndürür. Ayrı Teleporter Room kullanılmaz. Doctor portalıyla aynı `getEntrancePosition().relative(getEntranceFacing())`, taban merkezi ve kapı yönü kullanılır.
 
-Güncel aday `0.5.71.4-alpha-emergency-entrance`. Doctor portalıyla aynı `getEntrancePosition().relative(getEntranceFacing())` hücresi, taban merkezi ve kapı yönü kullanılır. Ana kapı gerçekten yüklü olmalı; varışta hava, sağlam zemin, sıvı/tehlike/sınır/çarpışma denetlenir. Güvensizse başka oda/komşu noktaya göndermez; `NO SAFE LOADED ENTRANCE / NO COOLDOWN` verir. Kapıları açmaz, dünya bloklarını değiştirmez.
+Gerçek kapı yüklü ve kayıtlı olmalı; hava, sağlam zemin, sıvı/tehlike, sınır ve çarpışma kontrol edilir. Güvensizse başka oda/komşu hücreye yedek varış yoktur. Dünya blokları ve kapılar değiştirilmez. Sahiplik, canlı/yaya oyuncu, başka TARDIS içini reddetme, zaten kendi gemisinde olmama, uçuş/oda yenileme ve seyahat iptal kapıları korunur. Normal Ship Link mesafe/dimension politikası kurtarmayı engellemez.
 
-15 otomatik paket, gerçek Doctor portal konum/yön sözleşmesi ve WE testi geçti. Dört yön/taşınmış kapı, tam koordinat/yön, eksik-yüklü olmayan-engelli-tehlikeli-çarpışmalı giriş, yedek nokta kullanmama, seyahat iptali ve kalıcı süre test edildi. Bunlar gerçek oyun kabulünün yerine geçmez.
+Başarı sonrası varsayılan 30 gerçek dakika bekleme oyuncu kaydında saklanır; çevrimdışı zaman sayılır. Başarısız/engellenmiş dönüş yeni bekleme tüketmez. Hedef, rota, uçuş ve WE yazımı yoktur.
 
-Kabul listesi (kapı önü varışı, geri sayım ve yeniden giriş kalıcılığı tamamlandı; Navigation/WE karşılaştırması ve genişletilmiş kontroller açık):
+## Geçen temel oyun kabulü
 
-1. Kullanıcının isteğiyle önceki bekleme yalnız bu test için yedek alınarak sıfırlandı. Dışarıda, gemi sabitken Navigation hedefini/rotasını not et. Emergency → RETURN → iki saniye içinde CONFIRM. Normal portal girişinde geldiğin gemi içi kapı önüne, içeri bakarak gelmelisin; gemi uçmamalı.
-2. Yaklaşık 30:00 bekleme başlamalı. Navigation hedef/rota, WE ve eski kayıtlar korunmalı. GUI'yi yeniden açınca geri sayım sürmeli.
-3. Çıkış/giriş beklemeyi sıfırlamamalı. Çevrimdışı gerçek süre sayılır; bu güncelleme de mevcut beklemeyi silmez. Süre dolmadan yeniden dönüş olmamalı.
-4. Genişletilmiş kabul: uzak mesafe/başka dış dimension, seyahat korumasının reddi, uçuş/oda yenileme, engelli veya yüklü olmayan giriş. Başarısız dönüş yeni süre başlatmamalı. Çalışan dünyayı tahrip etme; engel/tehlike testlerini kopya dünyada yap.
+- Kapı önü varış kullanıcı tarafından doğrulandı. 29 Eylül 15:21:30.375 sunucu logu varış `[0,128,-22]`, `cooldown_ms=1800000`; 15:21:30.386 istemci başarı yanıtı.
+- Geri sayım ve dünya çıkış/girişinde kalıcılık kullanıcı, ekran ve logla doğrulandı. Ekran `RETURN COOLDOWN / 25:51`; 15:24:48–49 kayıt/duruş, 15:25:21 yeniden giriş.
+- Bu temel kontroller yeniden istenmez.
 
-Sahiplik, canlı/yaya oyuncu, başka TARDIS içini reddetme, zaten kendi gemisindeyken dönüşü kapatma korunur. Önceden kabul edilen Mining/Navigation testleri tekrarlanmaz. Aşama 12'ye geçilmedi.
+## Otomatik kanıt ve açık oyun testleri
+
+15 Emergency dönemi test grubu, gerçek Doctor portal konum/yön sözleşmesi ve WE fixture geçti. Dört yön/taşınmış kapı, engelli/yüklü olmayan/tehlikeli giriş, yedek varış kullanmama, seyahat iptali ve süre kalıcılığı otomatik test kapsamındadır. Son .72.1 derlemesinde toplam 16 grup geçti.
+
+Gerçek oyun içinde hedef/rota/WE değişmezliğinin karşılaştırması; uzak mesafe/başka dış dimension, çok oyunculu, koruma reddi, ölüm, uçuş/oda yenileme ve engelli giriş kenar kabulü ayrıca açıktır. Otomatik kontroller bu testlerin yerine geçmez. Tahrip edici engel/tehlike senaryoları çalışan dünyada değil kopyasında denenmelidir.
+
+## Tarihsel düzeltmeler
+
+.71.2 yüklü chunk kontrolündeki hata .71.3 ile onarıldı. .71.3 ayrı oda varışı çalıştı ancak kullanıcı istediği yerin normal giriş kapısı olduğunu açıkladı; .71.4 bunu değiştirdi. Test için açık kullanıcı isteğiyle bir kez yedekli cooldown sıfırlaması yapıldı; normal özellik veya tekrar yapılacak işlem değildir.
+
+Aşama 11 genişletilmiş kabul nedeniyle kısmi kalır. Kullanıcı onayıyla Aşama 12'ye geçildi; [Ship Alerts temel kabulü](18_Ship_Alerts_Runtime_Kabul.md) de kaydedildi. Geliştirme şu an duraklatılmıştır.

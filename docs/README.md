@@ -2,6 +2,8 @@
 
 Bu klasör ürün vizyonu ile uygulama durumunu birbirinden ayırır. Eski konuşma kararları bağlam sağlar; çalışan özellikler yalnızca mevcut dosya ve testlerle doğrulanır.
 
+29 Eylül 2026 güncellemesi — güncel alpha `.72.1`. Oyuncular için başlangıç: [Player Ship Interface rehberi](19_Oyuncu_Rehberi.md). Yenilikler: [değişiklik özeti](../CHANGELOG.md). Aşağıdaki kabul belgeleri, oyun içinde doğrulanan kapsamı otomatik testlerden ve açık kontrollerden ayırır.
+
 | Belge | Konu | Güncel durum |
 |---|---|---|
 | [00_Vizyon.md](00_Vizyon.md) | Projenin amacı ve tasarım ilkeleri | Aktif |
@@ -17,10 +19,17 @@ Bu klasör ürün vizyonu ile uygulama durumunu birbirinden ayırır. Eski konu�
 | [10_Genetik.md](10_Genetik.md) | Biyolojik gelişim | Gelecek tasarımı |
 | [11_Warp.md](11_Warp.md) | Seyahat, motor ve rota sistemi | Deneysel alpha |
 | [12_Gelistirme_Yol_Haritasi.md](12_Gelistirme_Yol_Haritasi.md) | Radar, discovery, Player Ship Interface ve deposit geliştirme sırası | Aktif roadmap |
+| [13_Overview_Runtime_Kabul.md](13_Overview_Runtime_Kabul.md) | Overview kanıtı ve test kapsamı | Temel tek oyunculu kabul geçti |
+| [14_Ship_Link_Runtime_Kabul.md](14_Ship_Link_Runtime_Kabul.md) | Bağlantı kaybı, geri dönüş ve eski SYNCING sorunu | Temel kabul geçti; genişletilmiş testler açık |
+| [15_Player_Navigation_Runtime_Kabul.md](15_Player_Navigation_Runtime_Kabul.md) | Hedef/rota, favoriler, konum kaydı ve terminal | Temel kabul geçti; genişletilmiş testler açık |
+| [16_Player_Mining_Runtime_Kabul.md](16_Player_Mining_Runtime_Kabul.md) | Tarama, kaynak sayacı ve onaylı durdurma | Temel kabul geçti; rezerv entegrasyonu ayrı |
+| [17_Player_Emergency_Runtime_Kabul.md](17_Player_Emergency_Runtime_Kabul.md) | İç kapıya dönüş ve 30 dakika bekleme | Temel dönüş/yeniden giriş kabulü geçti |
+| [18_Ship_Alerts_Runtime_Kabul.md](18_Ship_Alerts_Runtime_Kabul.md) | Uyarı geçmişi ve HUD | FE/çözülme/HUD/kapat-aç temel kabulü geçti |
+| [19_Oyuncu_Rehberi.md](19_Oyuncu_Rehberi.md) | Sekmeler, düğmeler ve günlük kullanım | Güncel `.72.1` oyuncu rehberi |
 | [Known Issues.md](Known%20Issues.md) | Bilinen riskler ve doğrulama ihtiyaçları | Aktif |
 | [WORKSPACE_SYNC.md](WORKSPACE_SYNC.md) | GitHub ve iki bilgisayar iş akışı | Aktif |
 
-Teknik fork incelemeleri ve test notları `mods/` klasöründe tutulur:
+Teknik fork incelemeleri ve geniş regresyon listeleri `mods/` klasöründe tutulur; tarihsel test listesi, aynı testleri her gün yeniden yapma talimatı değildir:
 
 - [Güncel mod listesi](../mods/00_kullan%C4%B1lan%20modlar%20.md)
 - [DoctorWhoMod fork JAR analizi](../mods/New_World_DoctorWhoMod_JAR_Analizi.md)

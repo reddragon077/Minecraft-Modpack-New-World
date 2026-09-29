@@ -47,4 +47,6 @@ Başarısız tarama, yetersiz enerji veya güvenli olmayan rota; veri kaybı ya 
 
 ## Güncel geliştirme odağı
 
-Jeoloji, radar, navigasyon ve replikasyon aynı mineral/deposit kimliği üzerinde birleştirilmektedir. Bu bağlantı doğrulandıktan sonra araştırma ve görev katmanı ana döngünün üzerine genişletilecektir.
+29 Eylül 2026 itibarıyla Player Ship Interface üzerinden keşif/favori/konum, temel Navigation ve Mining takibi, onaylı kazım durdurma, geminin iç kapısına acil dönüş ve uyarı geçmişi kullanılabilir. [Günlük kullanım rehberi](19_Oyuncu_Rehberi.md).
+
+Ship Alerts'in kalan uyarı/keşif bildirimi kapsamı ve genişletilmiş kabul kontrolleri açıktır. Deposit kimliğine bağlı gerçek çıkarma/rezerv/tükenme zinciri tamamlanmadan araştırma ve görev katmanı bitmiş gibi sunulmaz. Sıra [14 aşamalı yol haritasında](12_Gelistirme_Yol_Haritasi.md) tutulur.

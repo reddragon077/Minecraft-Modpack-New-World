@@ -1,9 +1,15 @@
 # 2026-09-29 — laptop — Unified Ship Alerts
 
-Status: verified automatically; runtime acceptance pending
+Status: automatic verification and subsequent basic runtime acceptance passed; extended cases open
 Branch: `main`
 Build: `NewWorldCore-1.21.1-NeoForge-0.5.72.1-alpha-unified-ship-alerts.jar`
 SHA-256: `2cba0f04b92420d34cc1e66837c7a5256efd9fb96ebba5e897d05729439bf6c2`; 3701750 bytes.
+
+## Subsequent acceptance / pause addendum
+
+After deployment, the screenshot shows RESOLVED FE LEVEL LOW and telemetry/matrix warnings, 0 ACTIVE / 0 UNKNOWN and history pagination. User then confirmed HUD notification and GUI close/reopen were also fixed. Basic acceptance passed; do not repeat it. All warning types, alerts link/logout, multiplayer/protection/load remain open. Development paused at user's request; public documentation closeout is recorded in `2026-09-29_laptop_documentation_closeout.md`.
+
+The original implementation-time verification below is historical; pending basic tests were subsequently accepted as above.
 
 ## User goal
 
@@ -46,7 +52,7 @@ Clean `main` at `0f50310be52f39bb340778c4f1352761f530ddb1`, fast-forward pull al
 
 - Actual .72.1 gameplay FE/HUD/RESOLVED/reopen acceptance, extended multiplayer/protection/load cases. Earlier healthy History rendering does not prove these. Prior accepted Navigation/Mining/Emergency tests remain accepted; no duplicate runtime test is requested.
 
-## Next executable step
+## Original deployment-time next step (subsequently completed for basic acceptance)
 
 Open the game: if FE remains below 20%, compare Overview with ALERT HISTORY and watch the small HUD notice. Let energy refill normally to verify RESOLVED; close/reopen GUI to retain the same session history. No save/energy mutation needed for testing. Stage 12 stays partial pending this evidence.
 

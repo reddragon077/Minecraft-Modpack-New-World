@@ -1,30 +1,17 @@
 # Laptop continuation prompt
 
-Copy the block below into Codex on the laptop after opening the New World repository project.
+Copy this prompt only when ready to resume development:
 
 ```text
-Kanka bu New World projesine kanonik kayıtlardaki son noktadan devam edeceğiz. GitHub main ortak ve kanonik kaynaktır.
+Kanka New World projesine kanonik kayıttan devam edeceğiz. Önce branch/çalışma ağacını kontrol et; yerel değişikliği ezme. Temiz main üzerinde fetch ve yalnız fast-forward pull yap. .codex/project-memory.md, .codex/HANDOFF.md, .codex/conversations/INDEX.md ve en yeni ilgili kaydı tamamen oku. Daha yeni doğrulanmış kayıt varsa bu promptun önüne geçer.
 
-Önce hiçbir dosyayı değiştirmeden mevcut branch ve çalışma ağacını kontrol et. Yerel değişiklik yoksa origin/main'i fetch edip yalnızca fast-forward pull yap. Yerel değişiklik varsa ezme; bana durumu bildir. Ardından sırasıyla `.codex/project-memory.md`, `.codex/HANDOFF.md`, `.codex/conversations/INDEX.md` ve INDEX'teki en yeni ilgili conversation kaydını tamamen oku. Bu prompttan daha yeni doğrulanmış kayıt varsa onu esas al.
+29 Eylül kapanışı: geliştirme kullanıcı isteğiyle duraklatıldı; son işlem oyuncular için belge güncellemesiydi. Güncel NewWorldCore 0.5.72.1-alpha-unified-ship-alerts, SHA-256 2cba0f04b92420d34cc1e66837c7a5256efd9fb96ebba5e897d05729439bf6c2. Repo ve machines/laptop.json ile çözülen instance dosyalarını kontrol et. Bu bilgi tek başına otomatik kurulum izni veya gerekliliği değildir.
 
-29 Eylül itibarıyla repo/laptopta kurulu aday (kayıtlı konum terminal/rota düzeltmesi; on bir test grubu geçti, birleşik oyun kabulü bekliyor):
-`NewWorldCore-1.21.1-NeoForge-0.5.69.4-alpha-waypoint-terminal-route.jar`
-SHA-256:
-`4a68d8e660cd7e85a40109a16c5e1ec1068a92aefe45efbfccd19127339fc4e8`
+Navigation, Mining, Emergency ana kapı dönüşü/30 dakika cooldown/yeniden giriş temel kabulleri korunur. Ship Alerts FE/geçmiş/çözülme ekranla, HUD ve GUI yeniden açılışı kullanıcı bildirimiyle kabul edildi. Bu testleri yeniden isteme. Emergency Beacon iptal; ayrı Teleporter Room hedefi yerine normal portalın ana iç kapı önü kullanılır. Structure Survey ortak ayarı 20 tick, Geological 80 tick.
 
-Stage 8 Player Discoveries tamamlandı. ALL/STRUCTURES/GEOLOGY listesi, ayrıntılar, canlı oyuncu mesafesi, LAST SEEN, EST RESERVE, FAV, TARGET ve ROUTE runtime kabulünden geçti. Archeologist Camp ve Trial Chambers hedef/favori/rota yazımları doğrulandı; Trial Chambers seyahati tek hopta tamamlandı. Discovery TARGET/ROUTE yolunu yeniden geliştirme.
+Kanonik 14 aşamalı yol haritasına göre Aşama 12 kısmi: diğer uyarı türleri/bağlantı/oturum/çok oyunculu/koruma/yük kabulü ve yeni keşif bildirimleri açık. Önceki aşamaların genişletilmiş kabulünü geçmiş sayma. Aşama 13/14 ve gerçek rezerv/tükenme sonraki işler; scan yüzdesini kalan rezerv sayma.
 
-Laptopun CurseForge instance yolunu `machines/laptop.json` kaydından çöz. Repo/instance'ta tek NewWorldCore JAR bulunduğunu ve yukarıdaki SHA-256 ile eşleştiğini doğrula. Beklenen kurulum yoksa yalnız oyun kapalıyken `tools/apply-to-instance.ps1` çalıştır; çalışan Java varken JAR değiştirme. Bilinen iyi JAR yedeklerini koru.
+İlişkili 3–4 işi tek tutarlı geliştirme/test/yedek/kurulum/kayıt paketi olarak ele al. Gerekli oyun kanıtında tek toplu test iste. Config-first ve kanonik workflow kurallarını uygula. Kod/config/JAR değişikliği gerekiyorsa oyun kapalı olsun; önce doğrulanmış yedek al. Dünya, kayıt, log, yedek ve kişisel dosyaları Git'e ekleme; cooldown sıfırlama.
 
-`docs/12_Gelistirme_Yol_Haritasi.md` içindeki 14 aşamalı sayısal liste kanonik geliştirme sırasıdır. Stage 6 Field Survey, jeolojik Analysis zinciri ve Stage 8 Discoveries tamamlandı; eski promptlardaki bu görevleri yeniden başlatma. Stage 3 ve Stage 7 ileri işleri nedeniyle kısmi kalır.
-
-Kurulumdan sonra sıradaki çalışma:
-1. Aşama 4 ve Aşama 5 temel tek oyunculu kabulü korunur; `.68.2` yeni oturum ve otomatik geri bağlantı regresyonu geçti. Genişletilmiş multiplayer/timeout testlerini geçmiş sayma.
-2. `.69.0` görünüm/hedef güncellemesi ve GUI kapat/aç, `.69.1` temel favori seçimi ve rotayı koruma, `.69.2` iki konum kaydı/tekrar kopya önleme/yeniden girişte kalıcılık kabulü korunur. Eski testleri yeniden isteme.
-3. `.69.3` ortak hedef yazımı ve eski rotanın korunması ekran/log/kayıtla doğrulandı; fiziksel terminal Y/mesafe hatası `.69.4` ile düzeltildi. Tek birleşik test: kayıtlı [-2454,63,181] → SEND TO SHIP → fiziksel terminal Y=63 ve gemiye göre güncel mesafe (~11) → CALCULATE ROUTE → son koordinatlar [-2454,63,181]. Hesap öncesi eski rota korunur; hesap sonrası değişmesi beklenir. Uçuş yapmaya gerek yok. Config/izin ve genişletilmiş Stage 9 kontrolleri açık; otomatik testleri oyun kabulü sayma.
-4. Kullanıcı daha hızlı, ilişkili işleri toplu ilerletmek istiyor: geliştirme/test/yedek/kurulum/kayıt paketini birlikte yap; gerekli karar veya oyun kanıtında tek birleşik kontrol iste. Kabul edilmiş testleri yeniden isteme.
-
-Ayarlanabilir yeni davranışlarda `.cursor/rules/config-first-development.mdc` standardını uygula. Her doğrulanmış adımda pack-lock, ilgili dokümanlar, `.codex/HANDOFF.md`, `.codex/project-memory.md` ve tarihli conversation kaydını güncelle; test et; commit edip GitHub main'e pushla. Dünya/save/log/cache dosyalarını Git'e ekleme. Bilinen iyi JAR yedeklerini silme ve aynı anda iki NewWorldCore sürümü yükleme.
-
-Önce senkronizasyon ve hash kontrollerini yap, sonucu bana özetle; sonra test ve geliştirmeye devam edelim.
+Önce mevcut durumu ve sıradaki kapsamı özetle. Sonraki doğrulanmış değişiklikleri belgeler/bellek/handoff ile birlikte commit/pushla; clean main == origin/main handoff hedefle.
 ```
