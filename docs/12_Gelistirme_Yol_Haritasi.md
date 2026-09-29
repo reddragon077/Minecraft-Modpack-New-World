@@ -167,6 +167,8 @@ Routing, priority, Keep ve upgrade yönetimi fiziksel Mining Terminal’de kalac
 
 ## Aşama 11 — Emergency panel
 
+29 Eylül .71.3 onarımı: .71.2 uzak mesafe denemesi `ServerLevel.hasChunkAt` hatasıyla, ışınlanma başlamadan başarısız oldu. Aynı hata arayüzden gelen yöntemleri kullanan regresyon testinde üretildi; iki oda yükleme kontrolü mevcut Mining yardımcısına geçirildi. 15 paket + gerçek Doctor sözleşmeleri geçti. Güncel aday .71.3; gerçek dönüş kabulü hâlâ bekleniyor. Aşağıdaki .71.2 kapsamı korunur.
+
 Güncel kullanıcı kararı: Beacon iptal; doğrudan kendi gemisinin güvenli Teleporter Room noktasına dönüş ve başarı sonrası 30 dakika kalıcı bekleme. .71.2 kuruldu, 15 otomatik paket + gerçek Doctor oda/yerleşim sözleşmesi + WE formülü testi geçti; oyun kabulü bekleniyor (docs/17). Önceki .71.1 Beacon geri bildirim onarımı ekran/log ile doğrulandı ama aktif ürün gereksinimi değil.
 
 - [~] `EMERGENCY RETURN TO SHIP` — iki aşamalı tek kullanımlık onay; eski Beacon paketleri reddedilir.

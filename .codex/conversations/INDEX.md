@@ -4,6 +4,8 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-29 — Emergency inherited room-check repair](2026-09-29_laptop_emergency_room_check.md) — .71.2 hasChunkAt failure reproduced; .71.3 uses tested inherited lookup, 15 suites passed, backed-up installation; runtime return still pending.
+
 - [2026-09-29 — Direct emergency return](2026-09-29_laptop_emergency_return.md) — .71.2 installed: Beacon removed, safe Teleporter Room return, persistent 30-minute success cooldown; 15 suites + actual room contract/WE fixture pass. Backed up; in-game return/relogin acceptance pending.
 
 - [2026-09-29 — Emergency feedback repair](2026-09-29_laptop_emergency_feedback_repair.md) — .71.0 server SENT/WAIT but UI NO RESPONSE; late-result regression reproduced, .71.1 correlated telemetry receipts/cooldown repair installed. Fourteen suites + engine fixture passed; short in-game feedback acceptance pending, Return still open.

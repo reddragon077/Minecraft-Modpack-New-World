@@ -1,4 +1,6 @@
-# Player Emergency .71.2 — doğrudan acil dönüş
+# Player Emergency .71.3 — oda yükleme kontrolü onarımı
+
+Güncel aday `0.5.71.3-alpha-emergency-room-check`. .71.2 denemesi hasChunkAt yöntemini bulamayıp dönüş öncesi durdu; yeni sürüm arayüzden gelen yöntemi de bulur. Hata eski JAR'da testle tekrar üretildi, onarımdan sonra 15 paket geçti. Aynı uzak konumdan aşağıdaki dönüş/geri sayım/çıkış-giriş kontrolünü tekrarla. .71.2 özellik kapsamı aşağıdadır; gerçek oyun başarısı henüz doğrulanmadı.
 
 Kullanıcı Beacon'ı iptal etti. Kurulu aday `0.5.71.2-alpha-emergency-return`: iki tıkla kendi gemisinin güvenli Teleporter Room noktasına dönüş; başarıdan sonra 30 gerçek dakika bekleme. Eski DISTRESS kayıtları korunur, yeni kayıt/hedef/rota yazılmaz. .71.1 Beacon yanıt testi başarılıydı ama ürün gereksinimi değildi.
 

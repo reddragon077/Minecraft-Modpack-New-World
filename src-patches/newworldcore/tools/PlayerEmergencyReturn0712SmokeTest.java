@@ -48,13 +48,15 @@ public final class PlayerEmergencyReturn0712SmokeTest {
     }
     public static class Fluid{public boolean isEmpty(){return true;}}
     public static class Border{public boolean isWithinBounds(Pos p){return true;}}
-    public static class World{
+    public interface WorldReader {
+        default boolean hasChunkAt(Pos p){return ((World)this).loaded;}
+        default boolean noCollision(Player p,Box b){return !((World)this).collision;}
+    }
+    public static class World implements WorldReader{
         public boolean loaded=true,blocked,collision,missingPad,hazard;
-        public boolean hasChunkAt(Pos p){return loaded;}
         public Tile getBlockEntity(Pos p){return !missingPad&&p.equals(new Pos(103,51,103))?new Tile():null;}
         public Border getWorldBorder(){return new Border();}
         public State getBlockState(Pos p){return new State(blocked?"solid":p.getY==51?(hazard?"magma_block":"stone"):"air");}
-        public boolean noCollision(Player p,Box b){return !collision;}
     }
     public static class Player extends PlayerEmergency0710SmokeTest.Player{
         public Object level=new Object();public boolean alive=true,mounted;public double x,y,z;public float fallDistance=20;

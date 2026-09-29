@@ -1,9 +1,10 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.71.2-alpha-emergency-return",
-  "marker": "NewWorldEmergencyReturnV3",
+  "version": "0.5.71.3-alpha-emergency-room-check",
+  "marker": "NewWorldEmergencyRoomCheckV3",
   "fixes": [
+    "Emergency loaded-room checks reuse the inherited-interface-aware Mining helper; production adapter regression now models LevelReader default hasChunkAt and inherited noCollision, reproducing the .71.2 runtime failure before repair",
     "Emergency results use ship/request/sequence-bound receipts replayed in read-only telemetry; delayed acknowledgements remain recoverable without repeating world writes, with server cooldown countdown and client result diagnostics",
     "Beacon removed: confirmed owner rescue into the actual safe loaded console-side Teleporter Room, preserving Navigation targets/routes and ship flight/WE; distinct request codes reject old Beacon requests",
     "Persistent player cooldown defaults to 30 real minutes after verified return only, survives logout/death, offline time counts; emergency rescue independent of ordinary remote-link distance policy, fail-closed room/flight/ownership/travel-veto guards",

@@ -4,6 +4,8 @@ The complete historical NewWorldCore source tree is not currently available in t
 
 The current patch:
 
+- repairs the live .71.2 `ServerLevel.hasChunkAt` failure in .71.3 by reusing the interface-aware Mining loaded-chunk helper at both Emergency checks. Updated adapter fixture inherits default chunk/collision methods; it fails against the old JAR and passes after repair. Safety, 30-minute cooldown, destination and config remain unchanged. In-game return acceptance is still pending.
+
 - replaces Beacon with `.71.2` confirmed emergency return to the owner's actual safe loaded console-side Teleporter Room. No Navigation target/route, ship flight, WE or existing discovery writes. Old Beacon request codes are rejected. Normal remote-link range/dimension limits do not disable rescue; ownership and fresh server telemetry still apply.
 - persists a 30-real-minute successful-return cooldown in the vanilla/NeoForge PlayerPersisted player compound, including logout/death; offline time counts. Failed/vetoed returns do not charge. Room geometry comes from Doctor's read-only placement callback; its mutable settings rotation is captured immediately. Real pad, loaded chunks, air/solid floor, hazards, world border and collision are checked; no entrance fallback or terrain changes.
 - passes 15 suites, the actual Doctor room template/callback contract, and the existing Doctor WE fixture. Adapter tests execute production logic with external game boundaries mocked. Actual in-game rescue/relogin acceptance remains pending (docs/17).

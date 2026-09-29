@@ -87,7 +87,8 @@ public final class PlayerEmergencyReturn0712 {
         // Only console-side Teleporter Rooms; never unrelated far ARS rooms or the ship entrance.
         for(int i=0;i<placements.size();i+=2){
             Placement p=placements.get(i);Object padLocal=call(pads.get(0),"pos"),pad=transform(p,padLocal);
-            if(!Boolean.TRUE.equals(call(world,"hasChunkAt",pad)))continue;
+            // LevelReader supplies hasChunkAt as an interface default in the real game.
+            if(!PlayerMining0700.loaded(world,pad))continue;
             Object tile=call(world,"getBlockEntity",pad);
             if(tile==null || !tile.getClass().getName().equals("net.drgmes.dwm.blocks.tardis.misc.tardisteleporter.TardisTeleporterBlockEntity"))continue;
             // Search only nearby template cells. A destroyed/blocked room fails, not a guessed fallback.
@@ -106,7 +107,7 @@ public final class PlayerEmergencyReturn0712 {
     private static Object transform(Placement p,Object local)throws Exception{return call(p.base,"offset",call(local,"rotate",p.rotation));}
     private static boolean safe(Object world,Object player,Object pos)throws Exception{
         Object below=call(pos,"below"),above=call(pos,"above");
-        for(Object q:List.of(below,pos,above))if(!Boolean.TRUE.equals(call(world,"hasChunkAt",q)) || !Boolean.TRUE.equals(call(call(world,"getWorldBorder"),"isWithinBounds",q)))return false;
+        for(Object q:List.of(below,pos,above))if(!PlayerMining0700.loaded(world,q) || !Boolean.TRUE.equals(call(call(world,"getWorldBorder"),"isWithinBounds",q)))return false;
         Object feet=call(world,"getBlockState",pos),head=call(world,"getBlockState",above),floor=call(world,"getBlockState",below);
         if(!Boolean.TRUE.equals(call(feet,"isAir")) || !Boolean.TRUE.equals(call(head,"isAir")))return false;
         for(Object state:List.of(feet,head,floor))if(!Boolean.TRUE.equals(call(call(state,"getFluidState"),"isEmpty")))return false;
