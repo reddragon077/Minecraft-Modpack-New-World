@@ -6,6 +6,8 @@ Branch: `main`
 
 ## Current objective
 
+Acceptance update: .70.0 status/scan/extraction/live counters passed by screenshots and 11:29:51/11:44:30/11:47:01 log; user closed game, server stopped 11:48:34. New Stage 10 batch authorized: actual per-resource mining yield/ranking with persistent counters, and guarded confirmed Mining Shield OFF emergency stop. No restart/flight/handbrake/routing mutation. Remaining-reserve percentage stays blocked on Stage 14 ledger; never infer it from scan counts. Reopen/range and full buffer parity are still open, not assumed passed.
+
 Installed candidate `NewWorldCore-1.21.1-NeoForge-0.5.70.0-alpha-player-mining-view.jar`, SHA-256 `826b667f2316e7cf47242ad9046f29097392b061a6ddfff6567ddaeecb2be2b7`, 3645288 bytes. Four read-only Mining areas implemented together: status/scan area, scan/resource extraction, three buffers, routing/SMART AUTO. Live refresh=20/stale=120, area/buffers visible. Twelve suites plus engine fixture passed; not yet tested in Minecraft. No mining controls/route writes/deposit reserve linkage.
 
 Next: one grouped Mining session per `docs/16_Player_Mining_Runtime_Kabul.md`, compare status/progress/buffers/routing with physical terminal, then reopen/link recovery. Keep user feedback grouped; do not repeat accepted Navigation tests. Both .69.4 originals hash-backed-up at runtime `backups/custom-mods/pre-player-mining-20260929-01/{repository,instance}`; one matching new core per endpoint. DoctorWhoMod and navigation save unchanged. See `2026-09-29_laptop_mining_view_batch.md`.

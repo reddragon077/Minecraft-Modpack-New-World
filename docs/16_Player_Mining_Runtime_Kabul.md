@@ -1,5 +1,7 @@
 # Player Mining — dört alanlık toplu kabul
 
+29 Eylül temel kabul: fiziksel terminalle ilk 977 mined/alan/%100 scan/boş Collection eşleşti. Sonraki ekranlarda [-154,11] yeni tarama %7,8 ve EXTRACT N/A; ardından MINING/EXTRACTION, scan %100, 347/%1 çıktı. Replication miktarı 1380→1178→1667, REP toplam aktarımı 4071→4835. Log 11:29:51, 11:44:30, 11:47:01 geçişleri doğruladı; Player Mining hatası yok. Tam buffer parity, GUI yeniden açma, Mining menzil dönüşü ve genişletilmiş durumlar ayrıca açık. Aşağıdaki ilk aday-pending metni tarihsel kurulum kaydıdır.
+
 Aday: `0.5.70.0-alpha-player-mining-view`. On iki otomatik test grubu + gerçek DoctorWhoMod WE fixture geçti. Minecraft runtime kabulü henüz yapılmadı.
 
 ## Tek oturumda kontrol

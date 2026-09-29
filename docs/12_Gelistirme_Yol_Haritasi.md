@@ -153,14 +153,14 @@ Navigation telemetri görünümü salt-okunur kalır. FAVORITES → SEND TO SHIP
 
 ## Aşama 10 — Player Mining paneli
 
-Durum: `.70.0` dört alanlık salt-okunur Player Mining adayı kurulu; on iki otomatik test grubu geçti, oyun kabulü bekliyor. Kontroller fiziksel terminalde kalır.
+Durum: `.70.0` temel durum/alan/tarama→kazım ve canlı sayaç kabulü ekran/log ile geçti. Tam buffer eşleştirmesi, yeniden açılış ve Mining bağlantı kenar testleri açık. Sıradaki paket gerçek çıkarılan kaynak sıralaması, kalıcı sayaç ve onaylı acil durdurmadır; yeniden başlatma/routing fiziksel terminalde kalır.
 
-- [~] Mining durumu ve kayıtlı scan alanı (.70.0; gemi taşınmışsa LAST SCAN; deposit kimliği bağlantısı yok)
-- [~] Scan ve Extraction yüzdeleri (.70.0; kaynak hedefleri, hazard hariç; tarama sırasında/bilinmeyen paydada N/A)
+- [x] Mining durumu ve kayıtlı scan alanı (.70.0 LAST SCAN -> SCAN CENTER [-154,11], bekleme/tarama/kazım ekran/log kabulü; deposit kimliği bağlantısı yok)
+- [x] Scan ve Extraction yüzdeleri (.70.0 tarama %7,8 -> %100, çıkarım 347/%1 ekran kabulü; genişletilmiş testler açık)
 - [~] Collection, AE Transfer ve Replication Feed buffer durumları (.70.0; eşya toplamı + tür yuvası; eksik/yüklü olmayan ayrı)
 - [~] SMART AUTO (.70.0 mevcut routing modu ve aktarım sayaçları, kontrol düğmesi değil)
 - [ ] En çok çıkarılan kaynaklar
-- [ ] Deposit remaining yüzdesi
+- [ ] Deposit remaining yüzdesi (Aşama 14 gerçek rezerv defteri bağımlılığı; tarama kalanı bu yüzde yerine kullanılmaz)
 - [ ] `EMERGENCY STOP MINING`
 
 Routing, priority, Keep ve upgrade yönetimi fiziksel Mining Terminal’de kalacaktır.
