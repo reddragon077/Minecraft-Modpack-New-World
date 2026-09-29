@@ -4,6 +4,8 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-29 — Waypoint terminal/route repair](2026-09-29_laptop_waypoint_terminal_repair.md) — `.69.3` target write/old-route preservation confirmed; saved Y correct, physical projection wrong. `.69.4` live distance/exact Y/final-hop repair, eleven suites, verified backed-up install; grouped runtime test pending. User requests coherent batches.
+
 - [2026-09-28 — Send to ship candidate](2026-09-28_laptop_send_to_ship.md) — `.69.2` two coordinates/dedup/log and user-reported reload accepted; `.69.3` favorite SEND TO SHIP reuses TARGET, live permission/cooldown, ten suites and backed-up install verified; new-button runtime pending.
 
 - [2026-09-28 — Save current location candidate](2026-09-28_laptop_save_current_location.md) — `.69.1` basic favorite selection/route preservation accepted by screenshots/log; `.69.2` bounded server-owned WAYPOINT/MANUAL save, config and nine suites verified, backed-up installation; new save/reload runtime pending.

@@ -1,10 +1,18 @@
 # New World current handoff
 
-Updated: 2026-09-28
+Updated: 2026-09-29
 Machine: laptop
 Branch: `main`
 
 ## Current objective
+
+Installed `.69.4-alpha-waypoint-terminal-route`: `NewWorldCore-1.21.1-NeoForge-0.5.69.4-alpha-waypoint-terminal-route.jar`, SHA-256 `4a68d8e660cd7e85a40109a16c5e1ec1068a92aefe45efbfccd19127339fc4e8`, 3635047 bytes. Eleven suites + real DoctorWhoMod WE fixture passed. Physical terminal now preserves manual saved Y, samples live ship-relative distance and displays explicit dimension/unavailable states. Real calculator/range clamp/altitude-normalizer fixtures cover exact final Y including -64 and vertical-only/multi-hop targets; intermediate cruise and nonmanual surface policy remain unchanged. No flight bypass, save migration or config change.
+
+Next: one combined game check, saved LOCATION [-2454,63,181] → SEND TO SHIP → physical terminal Y=63 and ~11 blocks if ship remains [-2464,61,176] → CALCULATE ROUTE → final [-2454,63,181]. Before calculation the old Carbon route must remain; after calculation replacement is intentional. Do not fly just for this check. New `.69.4` runtime acceptance and extended Stage 9 tests remain open; do not advance to Mining yet.
+
+`.69.3` target write/old-route preservation passed (09:55:02.951 server log + screenshots + read-only NBT audit). Stored manual Ys are correct; terminal projection was wrong. Originals backed up/hash-verified at laptop `backups/custom-mods/pre-waypoint-terminal-20260929-01/{repository,instance}/`; single matching installed core per endpoint; embedded/source manifest matches; saved discoveries hash and DoctorWhoMod unchanged. Game closed at install. User wants related work batched with one grouped runtime handoff, not many small interruptions. Full details: `2026-09-29_laptop_waypoint_terminal_repair.md`.
+
+## Previous .69.3 — historical installation; partial acceptance supersedes pending text
 
 Installed `.69.3-alpha-send-to-ship`: `NewWorldCore-1.21.1-NeoForge-0.5.69.3-alpha-send-to-ship.jar`, SHA-256 `ecfcdc4f17055734c9f73e43c97f5eb1f5f9177f3e7dc5206854a3967fde36ce`, 3643035 bytes. Ten smoke suites plus actual DoctorWhoMod WE fixture passed. New runtime acceptance pending: NAVIGATION → FAVORITES → select a saved LOCATION → SEND TO SHIP; expect SENT TO SHIP, then updated left target with unchanged right loaded route. Compare physical terminal. No flight/energy consumption.
 

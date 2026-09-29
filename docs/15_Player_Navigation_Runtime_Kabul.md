@@ -1,6 +1,14 @@
 # Player Navigation — ilk görünüm kabulü
 
-Kurulu aday `.69.3-alpha-send-to-ship`. Önceki görünüm/GUI kapat-aç, `.69.1` temel favori seçimi ve `.69.2` konum kaydı/tekrar/kalıcılık kabul edildi. Yeni SEND TO SHIP düğmesi oyun testi bekliyor; genişletilmiş kontrol listesi tamamlanmadı.
+Kurulu aday `.69.4-alpha-waypoint-terminal-route`. Önceki görünüm/GUI kapat-aç, `.69.1` temel favori seçimi ve `.69.2` konum kaydı/tekrar/kalıcılık kabul edildi. `.69.3` ortak hedef yazımı/eski rotayı koruma doğrulandı; fiziksel terminal Y/mesafe hatası için `.69.4` birleşik oyun kontrolü bekliyor. Genişletilmiş liste tamamlanmadı.
+
+## .69.4 — sıradaki tek birleşik kontrol
+
+1. FAVORITES içindeki `LOCATION -2454 63 181` → SEND TO SHIP. Fiziksel Navigation Terminal seçili hedef koordinatı Y=63 olmalı; gemi dış konumu hâlâ [-2464,61,176] ise mesafe yaklaşık 11 blok. Farklı boyut/veri yokluğu sahte 0 olarak gösterilmez.
+2. CALCULATE ROUTE öncesi sağdaki eski Carbon rotası korunmalı. Hesapla düğmesinden sonra son nokta [-2454,63,181] olmalı; artık rota değişmesi doğrudur. Route CPU ve Player Navigation ile karşılaştır. Uçuş yapmaya gerek yok.
+3. Bu kısa paketin gerçek sonucunu kaydet. On bir otomatik test grubu + gerçek motor WE fixture geçti; bunlar oyun kabulünün yerine geçmez. Çok-hop/alt sınır/sadece dikey hedef otomatik testleri geçti, oyun karşılıkları ayrıca açık.
+
+Yedek: `backups/custom-mods/pre-waypoint-terminal-20260929-01/`. Yapı/maden yüzeye iniş politikası, ara durak seyir yüksekliği, mevcut uçuş/enerji kapıları ve kayıt şeması değişmedi.
 
 ## Doğrulanan kapsam
 
@@ -46,7 +54,9 @@ Sekiz otomatik test grubu favori adayında geçti; bu testler yukarıdaki oyun k
 
 Dokuz otomatik test grubu ve gerçek motor WE testi geçti. Konum testi: tekrar/aynı-koordinat delil koruma, boyut anahtarı, kota, izin/iç-mekân/bekleme politikası, canlı config sınırları, gerçek yamalı metadata save/load ve GUI mesaj sınırları. Yukarıda açıklanan temel oyun kabulü de geçti; Aşama 9 genişletilmiş kapsamı kısmi kalır.
 
-## .69.3 SEND TO SHIP — oyun kabulü bekliyor
+## .69.3 SEND TO SHIP — hedef yazımı/rotayı koruma geçti; genişletilmiş kabul açık
+
+29 Eylül ekranları ve 09:55:02.951 sunucu logu seçili ortak hedefin [-2454,63,181] olduğunu, eski Carbon rotasının değişmediğini doğruladı. Oyun kapandıktan sonra salt-okunur kayıt incelemesinde iki konum da Y=63 olarak duruyor. Fiziksel terminalde Y=-64/mesafe=0 görünmesi kayıt kaybı değil, terminal projeksiyonu ve eski Distance alanının kullanılmasıydı. `.69.4` bu alanları ve kayıtlı konumun son rota yüksekliğini düzeltir. Mesaj/cooldown/config/çok oyunculu kenar durumlarını ayrıca geçmiş sayma.
 
 Favorilerdeki eski TARGET düğmesi geniş SEND TO SHIP düğmesi oldu. Aynı sunucu hedef yazıcısını ve paket isteğini kullanır; yeni rota veya uçuş sistemi değildir. Kayıt zaten ortak veritabanındadır, ikinci kopya üretilmez. Seçili kayıt geminin ortak Navigation hedefi olur; fiziksel terminalden de okunur. Discoveries içindeki TARGET/ROUTE değişmedi. Eski `.69.1` hedef testi bu yeni düğme/mesaj/config kabulünün yerine sayılmaz.
 

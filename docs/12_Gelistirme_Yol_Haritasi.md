@@ -1,10 +1,10 @@
 # New World — Aktif geliştirme yol haritası
 
-Son kayıt güncellemesi: 28 Eylül 2026
+Son kayıt güncellemesi: 29 Eylül 2026
 
 Son temel tek oyunculu runtime-kabul edilen build: NewWorldCore `0.5.68.2-alpha-typed-client-link` (10 Eylül; yeni oturum, Overview/Discoveries ve menzil kaybı/otomatik dönüş doğrulandı).
 
-Kurulu aday: `.69.3-alpha-send-to-ship`; on test grubu ve gerçek motor tahmini geçti, SEND TO SHIP oyun kabulü açık. `.69.1` temel favori seçimi/rotayı koruma ve `.69.2` iki konum/tekrar kayıtta kopya önleme/yeniden girişte kalıcılık kabul edildi. Genişletilmiş Navigation kontrolleri açık.
+Kurulu aday: `.69.4-alpha-waypoint-terminal-route`; on bir test grubu ve gerçek motor tahmini geçti. `.69.3` hedef yazımı/eski rotayı koruma doğrulandı; fiziksel terminal koordinat/mesafe ve manuel son durak düzeltmesinin birleşik oyun kontrolü açık. `.69.1` temel favori seçimi ve `.69.2` iki konum/tekrar/kalıcılık kabulü korunur. Genişletilmiş Navigation kontrolleri açık.
 
 Bu belge, eski **Yeni Geliştirme Yol Haritası** listesinin çalışan JAR, güncel proje dosyaları ve oyun testiyle doğrulanmış hâlidir. Araştırma, Production Chamber ve sonraki progression çalışmaları bu yol haritasının 14 aşaması kapandıktan sonra ele alınacaktır.
 
@@ -144,12 +144,12 @@ Durum: **kısmi.** Gemi Navigation Terminal’i çalışıyor ve Discovery kayı
 - [~] Tahmini WE maliyeti (`.69.0` yüklü sonraki hop: Aluminum 48 -> Carbon 52 WE görünümü geçti; genişletilmiş kabul açık)
 - [x] Favoriden hedef seçme (`.69.1` SYNC 2/2, Trial Chambers TARGET ve eski Carbon rotasının korunması ekran/log ile geçti; genişletilmiş kenar testleri açık)
 - [x] `SAVE CURRENT LOCATION` (`.69.2` iki farklı konum, aynı blokta kopya oluşmaması ekran/log ile; dünyadan çıkıp girişte kalıcılık kullanıcı bildirimiyle geçti. İç-mekân/config/çok oyunculu kenar testleri açık.)
-- [~] `SEND TO SHIP` (`.69.3` FAVORITES düğmesi mevcut hedef yazıcısını kullanır; canlı izin/bekleme ve on test grubu geçti. Yeni düğme/mesaj oyun kabulü bekliyor.)
+- [~] `SEND TO SHIP` (`.69.3` ortak hedef yazımı/eski rotayı koruma doğrulandı. `.69.4` fiziksel terminal Y/mesafe ve manuel son durak düzeltmesi; on bir test grubu geçti, birleşik oyun kontrolü ve genişletilmiş izin/bekleme kabulü açık.)
 - [x] Discovery’den hedef oluşturma (`0.5.66.1` TARGET/ROUTE kabulü)
 
 Gelişmiş rota hesabı ve ayarlar fiziksel Navigation Terminal’de kalacaktır.
 
-Navigation telemetri görünümü salt-okunur kalır. FAVORITES → SEND TO SHIP mevcut TARGET yazıcısını kullanır; seçili konum/keşif geminin ortak hedefi olur. SAVE CURRENT LOCATION yalnız oyuncunun dış dünya konumunu favoriye kaydeder. İkisi de rota/uçuş başlatmaz. Konum kaydı/yeniden yükleme temel kabulü geçti; sırada yeni SEND TO SHIP düğmesinin oyun kabulü vardır. [Oyun testi](15_Player_Navigation_Runtime_Kabul.md).
+Navigation telemetri görünümü salt-okunur kalır. FAVORITES → SEND TO SHIP mevcut TARGET yazıcısını kullanır; seçili konum/keşif geminin ortak hedefi olur. SAVE CURRENT LOCATION yalnız oyuncunun dış dünya konumunu favoriye kaydeder. İkisi de rota/uçuş başlatmaz. Konum kaydı/yeniden yükleme ve temel gönderme/rotayı koruma kabulü geçti; sırada `.69.4` fiziksel terminal → mevcut CALCULATE ROUTE birleşik kontrolü vardır. [Oyun testi](15_Player_Navigation_Runtime_Kabul.md).
 
 ## Aşama 10 — Player Mining paneli
 

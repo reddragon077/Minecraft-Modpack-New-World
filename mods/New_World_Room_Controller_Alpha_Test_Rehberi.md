@@ -4,12 +4,12 @@ Bu belge, eski `0.1.0-alpha` Room Controller denemesinin yerine güncel New Worl
 
 ## Kurulu build'ler
 
-Kurulu NewWorldCore `.69.3`, SEND TO SHIP adayıdır; on test grubu ve gerçek DoctorWhoMod WE tahmin entegrasyonu geçti. FAVORITES seçimi mevcut ortak hedefe yazılır; rota/uçuş/WE değişmez. Yeni düğme/mesaj oyun kabulü bekliyor. `.69.2` konum kaydı/tekrar/yeniden giriş temel kabulü geçti. [Navigation kabul adımları](../docs/15_Player_Navigation_Runtime_Kabul.md).
+Kurulu NewWorldCore `.69.4`, kayıtlı konumun fiziksel terminal Y/canlı mesafe ve son rota yüksekliği düzeltmesidir; on bir test grubu ve gerçek DoctorWhoMod WE tahmin entegrasyonu geçti. `.69.3` ortak hedef yazımı/rotayı koruma doğrulandı. Sırada tek birleşik SEND TO SHIP → terminal → CALCULATE ROUTE kontrolü var; uçuş gerekmez. [Navigation kabul adımları](../docs/15_Player_Navigation_Runtime_Kabul.md).
 Öncelikli test: [Player Navigation kalan runtime kontrolleri](../docs/15_Player_Navigation_Runtime_Kabul.md).
 
 | Bileşen | Dosya | SHA-256 |
 |---|---|---|
-| NewWorldCore aday | `NewWorldCore-1.21.1-NeoForge-0.5.69.3-alpha-send-to-ship.jar` | `ecfcdc4f17055734c9f73e43c97f5eb1f5f9177f3e7dc5206854a3967fde36ce` |
+| NewWorldCore aday | `NewWorldCore-1.21.1-NeoForge-0.5.69.4-alpha-waypoint-terminal-route.jar` | `4a68d8e660cd7e85a40109a16c5e1ec1068a92aefe45efbfccd19127339fc4e8` |
 | DoctorWhoMod fork | `DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar` | `66c1c5e272ccb8e9c54fd879d16da75045a4c9ea07cebbf65fab455a99e38356` |
 
 ## Testten önce

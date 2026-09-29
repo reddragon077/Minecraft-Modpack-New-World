@@ -1,6 +1,6 @@
 # New World project memory
 
-Last synchronized: 2026-09-28
+Last synchronized: 2026-09-29
 
 ## Canonical workflow
 
@@ -20,6 +20,12 @@ Last synchronized: 2026-09-28
 - Only the two project-owned fork JARs are stored directly in Git: NewWorldCore and DoctorWhoMod.
 
 ## NewWorldCore continuation point
+
+- Installed `.69.4-alpha-waypoint-terminal-route`, SHA-256 `4a68d8e660cd7e85a40109a16c5e1ec1068a92aefe45efbfccd19127339fc4e8`, 3635047 bytes. Physical terminal preserves WAYPOINT/MANUAL Y and computes current ship-relative 3D distance; different dimension/unavailable are explicit. Actual route calculator preserves exact manual final Y (including -64), while the existing range clamp and intermediate cruise altitude remain intact. No new save schema/config or flight bypass. Eleven suites plus actual DoctorWhoMod WE fixture passed; runtime acceptance pending. Original `.69.3` copies hash-verified at `backups/custom-mods/pre-waypoint-terminal-20260929-01/{repository,instance}/`; one matching core per endpoint, embedded manifest matches, game closed, saved discoveries hash and DoctorWhoMod unchanged.
+- `.69.3` SEND TO SHIP target write and old Carbon route preservation confirmed by screenshot, 09:55:02.951 server log and read-only saved-data audit. Physical terminal Y=-64/distance=0 was a projection/calculation defect, not lost saved coordinates (both locations retain Y=63). New-button acknowledgement/cooldown/config extended cases are not claimed accepted. Next single combined runtime test: send saved [-2454,63,181], verify physical terminal Y=63 and ship distance ~11 at unchanged exterior [-2464,61,176], CALCULATE ROUTE and confirm final [-2454,63,181]. No flight needed. Stage 9 remains partial. See `2026-09-29_laptop_waypoint_terminal_repair.md`.
+- User requested faster, coherent batches: combine related implementation/regression/backup/deployment/documentation in one pass, then request one grouped runtime check. Pause only for required choices, authority or actual runtime evidence; do not re-request accepted tests.
+
+### Previous .69.3 — target write accepted; terminal defect repaired by .69.4
 
 - Installed candidate `.69.3-alpha-send-to-ship`, SHA-256 `ecfcdc4f17055734c9f73e43c97f5eb1f5f9177f3e7dc5206854a3967fde36ce`, 3643035 bytes. FAVORITES now presents SEND TO SHIP instead of TARGET, reusing exactly the existing shared target writer/request and owner/link/ship/favorite checks. Route/flight/WE unchanged. Live send_to_ship.enabled=true and cooldown_ticks=40 (20–1200), also requiring the gui.properties shared target permission. Server acknowledges SENT TO SHIP / SEND WAIT. Ten smoke suites plus actual engine fixture passed; new-button runtime acceptance pending. `.69.2` originals/configs backed up under `backups/custom-mods/pre-send-to-ship-20260928-01/`. Game closed during verified installation. Next: select a saved LOCATION, SEND TO SHIP, confirm updated shared target and preserved loaded route. Full Stage 9/extended tests remain open. See `2026-09-28_laptop_send_to_ship.md`.
 

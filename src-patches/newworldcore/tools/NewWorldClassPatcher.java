@@ -17,6 +17,7 @@ import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.InsnList;
 import org.objectweb.asm.tree.InsnNode;
+import org.objectweb.asm.tree.InvokeDynamicInsnNode;
 import org.objectweb.asm.tree.LdcInsnNode;
 import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
@@ -46,6 +47,10 @@ public final class NewWorldClassPatcher {
     private static final String DISCOVERY_VALUE_OWNER = "net/newworld/navigation/NavigationDiscoverySavedData$Discovery";
     private static final String DISCOVERY_META_OWNER = "net/newworld/navigation/Navigation0510DiscoveryMeta";
     private static final String FE_DATA_OWNER = "net/newworld/core/LongFESavedData";
+    private static final String WAYPOINT_FIX = "net/newworld/navigation/Navigation0694WaypointFix";
+    private static final String TARGET_FIX_OWNER = "net/newworld/navigation/Navigation0471gFix";
+    private static final String ROUTE_OWNER = "net/newworld/navigation/Navigation0472ServerRoute";
+    private static final String TERMINAL_OWNER = "net/newworld/navigation/Navigation0550TerminalV2";
 
     static {
         add("net/newworld/navigation/Navigation0475RadarFilteX", "scanOneTile(Ljava/lang/Object;)V",
@@ -146,6 +151,10 @@ public final class NewWorldClassPatcher {
         Path payload = Path.of(args[1]);
         Set<String> classNames = new HashSet<>(TARGETS.keySet());
         classNames.add(FE_DATA_OWNER);
+        classNames.add(TARGET_FIX_OWNER);
+        classNames.add(ROUTE_OWNER);
+        classNames.add("net/newworld/navigation/Navigation0473HopAutopilot");
+        classNames.add(TERMINAL_OWNER);
         classNames.add(RADAR_UI_OWNER);
         classNames.add(ROOM_PROTECTION_OWNER);
         classNames.add(EMERGENCY_POLICY_OWNER);
@@ -200,6 +209,17 @@ public final class NewWorldClassPatcher {
             replacements++;
         }
         int expected = classTargets.size();
+        if (TARGET_FIX_OWNER.equals(className)) { replacements += patchWaypointTarget(node); expected += 2; }
+        if (ROUTE_OWNER.equals(className)) { replacements += patchWaypointRoute(node); expected += 4; }
+        if ("net/newworld/navigation/Navigation0473HopAutopilot".equals(className)) {
+            for (MethodNode m : node.methods) if (m.name.equals("loadFirstHop"))
+                for (AbstractInsnNode insn : m.instructions.toArray()) if (insn instanceof MethodInsnNode call
+                        && call.owner.equals(className) && call.name.equals("normalizeHopAltitudes")) {
+                    call.owner = WAYPOINT_FIX; replacements++;
+                }
+            expected++;
+        }
+        if (TERMINAL_OWNER.equals(className)) { replacements += patchTerminalDistanceText(node); expected += 3; }
         if (RADAR_UI_OWNER.equals(className)) {
             replacements += wrapRadarFilterOverlay(node);
             expected++;
@@ -293,6 +313,64 @@ public final class NewWorldClassPatcher {
         ClassWriter writer = new ClassWriter(0);
         node.accept(writer);
         return writer.toByteArray();
+    }
+
+    private static int patchWaypointTarget(ClassNode node) {
+        int changed = 0;
+        for (MethodNode m : node.methods) if (m.name.equals("preciseTargetItem")) {
+            for (AbstractInsnNode insn : m.instructions.toArray()) if (insn instanceof MethodInsnNode call) {
+                if (call.owner.equals(TARGET_FIX_OWNER) && call.name.equals("resolveLandingY")) {
+                    m.instructions.insertBefore(call, new VarInsnNode(Opcodes.ALOAD, 4));
+                    call.owner = WAYPOINT_FIX; call.name = "displayY";
+                    call.desc = "(Ljava/lang/Object;Ljava/lang/String;IIILjava/lang/Object;)I"; changed++;
+                } else if (call.name.equals("intField") && call.getPrevious().getPrevious() instanceof LdcInsnNode key
+                        && "distance".equals(key.cst)) {
+                    m.instructions.insertBefore(call, new VarInsnNode(Opcodes.ALOAD, 1));
+                    call.owner = WAYPOINT_FIX; call.name = "terminalDistance";
+                    call.desc = "(Ljava/lang/Object;Ljava/lang/String;ILjava/lang/Object;)I"; changed++;
+                }
+            }
+            m.maxStack += 1;
+        }
+        return changed;
+    }
+
+    private static int patchWaypointRoute(ClassNode node) {
+        int changed = 0;
+        for (MethodNode m : node.methods) if (m.name.equals("calculate") && m.desc.equals("(Ljava/lang/Object;Ljava/lang/Object;)Z")) {
+            for (AbstractInsnNode insn : m.instructions.toArray()) {
+                if (insn instanceof MethodInsnNode call && call.owner.equals(ROUTE_OWNER) && call.name.equals("surfaceY")) {
+                    m.instructions.insertBefore(call, new VarInsnNode(Opcodes.ALOAD, 6));
+                    call.owner = WAYPOINT_FIX; call.name = "routeY";
+                    call.desc = "(Ljava/lang/Object;IIILjava/lang/Object;)I"; changed++;
+                } else if (insn instanceof MethodInsnNode call && call.owner.equals("net/newworld/navigation/Navigation0473HopAutopilot") && call.name.equals("loadFirstHop")) {
+                    m.instructions.insertBefore(call, new VarInsnNode(Opcodes.ALOAD, 6));
+                    call.owner = WAYPOINT_FIX;
+                    call.desc = "(Ljava/lang/Object;L" + ROUTE_OWNER + "$Plan;Ljava/lang/Object;)V"; changed++;
+                } else if (insn instanceof org.objectweb.asm.tree.TypeInsnNode type && type.getOpcode() == Opcodes.NEW
+                        && type.desc.equals(ROUTE_OWNER + "$Plan")) {
+                    InsnList code = new InsnList();
+                    code.add(new VarInsnNode(Opcodes.ILOAD, 26)); code.add(new VarInsnNode(Opcodes.ALOAD, 6));
+                    code.add(new MethodInsnNode(Opcodes.INVOKESTATIC, WAYPOINT_FIX, "hopCount", "(ILjava/lang/Object;)I", false));
+                    code.add(new VarInsnNode(Opcodes.ISTORE, 26)); m.instructions.insertBefore(insn, code); changed++;
+                }
+            }
+            m.maxStack += 1;
+        }
+        return changed;
+    }
+
+    private static int patchTerminalDistanceText(ClassNode node) {
+        int changed = 0;
+        for (MethodNode m : node.methods) if (m.name.equals("renderTargetPanel") || m.name.equals("renderRoute")) {
+            for (AbstractInsnNode insn : m.instructions.toArray()) if (insn instanceof InvokeDynamicInsnNode indy
+                    && indy.desc.equals("(Ljava/lang/String;)Ljava/lang/String;") && indy.bsmArgs.length > 0
+                    && "\u0001 BLOCKS".equals(indy.bsmArgs[0])) {
+                m.instructions.set(indy, new MethodInsnNode(Opcodes.INVOKESTATIC, WAYPOINT_FIX,
+                        "distanceText", "(Ljava/lang/String;)Ljava/lang/String;", false)); changed++;
+            }
+        }
+        return changed;
     }
 
     private static int wrapRadarFilterOverlay(ClassNode node) {
