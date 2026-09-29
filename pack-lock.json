@@ -2482,9 +2482,9 @@
   ],
   "customMods": [
     {
-      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.72.0-alpha-ship-alerts.jar",
-      "sha256": "09395920e5a52f87f106399caca248df3bb662ca92c738937c75adb671a20ec2",
-      "size": 3698089
+      "fileName": "NewWorldCore-1.21.1-NeoForge-0.5.72.1-alpha-unified-ship-alerts.jar",
+      "sha256": "2cba0f04b92420d34cc1e66837c7a5256efd9fb96ebba5e897d05729439bf6c2",
+      "size": 3701750
     },
     {
       "fileName": "DoctorWhoMod-1.21.1-NeoForge-1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap.jar",

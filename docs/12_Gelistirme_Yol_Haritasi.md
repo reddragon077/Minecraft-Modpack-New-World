@@ -189,9 +189,10 @@ Güncel kullanıcı kararı: Beacon iptal; doğrudan kendi gemisinin iç kapı �
 
 ## Aşama 12 — Ship Alerts
 
-Durum: `.72.0-alpha-ship-alerts` adayı; 16 otomatik paket + Doctor entegrasyon kontrolleri geçti. Küçük bildirim vanilla HUD/action-bar, geçmiş oturum başınadır. Yeni keşif bildirimleri sonraki dilimdir; oyun kabulü henüz yok. [Toplu kabul](18_Ship_Alerts_Runtime_Kabul.md).
+Durum: `.72.1-alpha-unified-ship-alerts` düzeltmesi. `.72.0` ekranında düşük FE'nin geçmişte eksik olduğu doğrulandı; kullanıcı tüm Overview uyarılarını istedi. Kırpılmamış ortak örnekleme, aynı FE/WE eşikleri ve seviyeler; düşük FE, Mining enerji/bekleme ve telemetri uyarıları eklendi. Küçük bildirim vanilla HUD/action-bar, geçmiş oturum başınadır. Yeni keşif bildirimleri sonraki dilimdir; düzeltmenin oyun kabulü bekleniyor. [Toplu kabul](18_Ship_Alerts_Runtime_Kabul.md).
 
 - [~] Düşük Warp Energy
+- [~] Düşük FE ve diğer tüm Overview uyarılarının ortak geçmiş/HUD kapsamı
 - [~] Collection Buffer yüksek/full (tür slotu doluluğu ve gerçek BUFFER_FULL ayrı)
 - [~] Engine/Matrix
 - [~] Eksik drive (mevcut gemi uçuş hedefi gereksinimi)

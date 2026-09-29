@@ -6,6 +6,10 @@ Branch: `main`
 
 ## Current objective
 
+Installed `.72.1-alpha-unified-ship-alerts`, SHA-256 `2cba0f04b92420d34cc1e66837c7a5256efd9fb96ebba5e897d05729439bf6c2`, 3701750 bytes. User requested all Overview warnings after screenshot-proven missing FE in .72.0 history. FE/WE, matrices/engine, Mining energy/wait/buffer and telemetry warnings share the untruncated Overview sampling rules; Collection/drive remain. FE/WE thresholds only in overview.properties; old ship-alerts warp thresholds no longer apply. Unknown operational faults never falsely resolve. Background and visible FE/t clocks isolated. Sixteen suites + actual Doctor portal/WE fixtures passed; repair runtime acceptance PENDING. Backup pre-unified-alerts-20260929-01, protected saves/Doctor unchanged, no cooldown reset. Next grouped check: existing low FE -> History/HUD -> natural recovery -> RESOLVED and GUI reopen. Do not repeat accepted earlier-stage tests or start unrelated discovery work. Details: 2026-09-29_laptop_unified_ship_alerts.md.
+
+### Superseded .72.0 installation
+
 Installed candidate `.72.0-alpha-ship-alerts`, SHA-256 `09395920e5a52f87f106399caca248df3bb662ca92c738937c75adb671a20ec2`, 3698089 bytes. Stage 12 four-part batch: low WE; Collection type-slot pressure/actual BUFFER_FULL; offline matrices/broken engine/required destination drive; bounded session history under Overview and deduplicated vanilla action-bar notifications outside GUI. Live `ship-alerts.properties`; owner/link rechecked server-side, unknown never implies recovery, no save/Navigation/WE/action writes. Sixteen suites plus actual Doctor portal/WE contracts passed; new runtime acceptance PENDING per docs/18. Discovery alerts deferred; no Stage 13. Prior .71.4 originals/runtime files backed up at `backups/custom-mods/pre-ship-alerts-20260929-01/`; saves/Doctor unchanged, no cooldown reset. Next: one grouped alerts runtime session; no repeated accepted Navigation/Mining/Emergency return/relogin tests.
 
 ### Earlier authorization and acceptance records (superseded for installed build)

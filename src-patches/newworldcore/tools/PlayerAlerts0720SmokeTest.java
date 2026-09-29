@@ -10,7 +10,7 @@ public final class PlayerAlerts0720SmokeTest {
     static void check(boolean b,String s){if(!b)throw new AssertionError(s);}
     static void eq(Object a,Object b){check(Objects.equals(a,b),a+" != "+b);}
     public static void main(String[] args)throws Exception{
-        Path root=Files.createTempDirectory("ship-alerts-"),config=root.resolve("ship-alerts.properties");
+        Path root=Files.createTempDirectory("ship-alerts-"),config=root.resolve("ship-alerts.properties"),overview=root.resolve("overview.properties");
         System.setProperty("newworldcore.configDir",root.toString());NewWorldConfig.reload();
         try{
             check(enabled()&&notifications(),"enabled defaults");eq(refreshTicks(),40);eq(staleTicks(),120);eq(historyLimit(),16);
@@ -18,9 +18,14 @@ public final class PlayerAlerts0720SmokeTest {
             for(int mode:List.of(0,1,2,3,6,7,8,9))check(!PlayerGeologicalSurveyGui0620.isReadOnlyPoll(mode),"Action link bypass");
             eq(warningPercent(),20);eq(criticalPercent(),5);eq(bufferPercent(),80);eq(noticeCooldown(),60);eq(noticeSpacing(),4);
             Files.writeString(config,"enabled=false\nnotifications.enabled=false\nrefresh_ticks=0\nhistory_limit=0\nwarp.warning_percent=10\nwarp.critical_percent=99\ncollection.warning_percent=999\nnotifications.repeat_seconds=0\nnotifications.spacing_seconds=0\n");NewWorldConfig.reload();
+            Files.writeString(overview,"warning_percent=10\ncritical_percent=99\n");NewWorldConfig.reload();
             check(!enabled()&&!notifications(),"live toggles");eq(refreshTicks(),20);eq(historyLimit(),4);eq(criticalPercent(),10);eq(bufferPercent(),99);eq(noticeCooldown(),5);eq(noticeSpacing(),3);
+            Files.writeString(overview,"");NewWorldConfig.reload();
             Files.writeString(config,"enabled=bad\nrefresh_ticks=99999\nhistory_limit=999\nwarp.warning_percent=oops\nnotifications.repeat_seconds=99999\nnotifications.spacing_seconds=999\n");NewWorldConfig.reload();
             check(enabled(),"fallback");eq(refreshTicks(),1200);eq(staleTicks(),3600);eq(historyLimit(),32);eq(warningPercent(),20);eq(noticeCooldown(),3600);eq(noticeSpacing(),30);
+            Files.writeString(config,"");NewWorldConfig.reload();
+            Files.writeString(config,"warp.warning_percent=99\nwarp.critical_percent=99\n");NewWorldConfig.reload();
+            eq(lowEnergy(21,100),0);eq(warningPercent(),PlayerOverview0670.warningPercent());
             Files.writeString(config,"");NewWorldConfig.reload();
             eq(lowEnergy(20,100),1);eq(lowEnergy(5,100),2);eq(lowEnergy(21,100),0);eq(lowEnergy(-1,100),-1);eq(lowEnergy(0,0),-1);eq(lowEnergy(Long.MAX_VALUE,Long.MAX_VALUE),0);
             eq(collection("100M ITEMS / 205/256 TYPES"),1);eq(collection("256 ITEMS / 256/256 TYPES"),2);
@@ -33,9 +38,35 @@ public final class PlayerAlerts0720SmokeTest {
             h.update(Map.of(Kind.WARP,-1),4);h.update(Map.of(),5);eq(h.events.size(),1);
             h.update(Map.of(Kind.WARP,2),6);h.update(Map.of(Kind.WARP,0),7);eq(h.events.size(),3);eq(h.events.getFirst().severity(),0);
             for(int i=0;i<99;i++)h.update(Map.of(Kind.WARP,i%3),8+i);eq(h.events.size(),16);
-            wire(h);notices();layout();adapter();audit();
+            unified();wire(h);notices();layout();adapter();audit();
             System.out.println("Ship Alerts thresholds/type-capacity/drives, unknown-preserving transitions, bounded history, live config, codec, notification dedup/escalation/link recovery, UI and tick/payload hooks passed.");
-        }finally{Files.deleteIfExists(config);Files.deleteIfExists(root);}
+        }finally{Files.deleteIfExists(config);Files.deleteIfExists(overview);Files.deleteIfExists(root);}
+    }
+    static PlayerOverview0670.Inspection inspection(Map<String,Integer> active,boolean unknown){
+        return new PlayerOverview0670.Inspection(new PlayerOverview0670.Snapshot("ship",unknown?-1:11,100,unknown?-1:100,100,
+            "SAMPLING",unknown?"UNKNOWN":"READY","LOCKED",unknown?"UNKNOWN":"ON",unknown?"UNKNOWN":"MINING","NO TARGET",
+            unknown?"UNKNOWN":"ONLINE",unknown?"UNKNOWN":"ONLINE",unknown?"UNKNOWN":"ONLINE","earth","0,0,0","WARNING",List.of("clipped display row")),active);
+    }
+    static void unified(){
+        var values=new EnumMap<Kind,Integer>(Kind.class);
+        var all=new LinkedHashMap<String,Integer>();
+        for(String s:List.of("FE LEVEL LOW","WARP LEVEL LOW","FE MATRIX OFFLINE","WARP MATRIX OFFLINE","ENGINE MATRIX OFFLINE",
+            "ENGINE BROKEN","ENGINE UNKNOWN","ENGINE TELEMETRY UNAVAILABLE","MINING BUFFER_FULL","MINING NO_ENERGY",
+            "MINING WAITING_FOR_HANDBRAKE","MINING WAITING_FOR_MODULE","FE CONSUMPTION METER UNAVAILABLE","FE TELEMETRY UNAVAILABLE",
+            "WARP TELEMETRY UNAVAILABLE","FE MATRIX UNKNOWN","WARP MATRIX UNKNOWN","ENGINE MATRIX UNKNOWN","MINING TELEMETRY UNAVAILABLE",
+            "NAVIGATION TELEMETRY UNAVAILABLE","EXTERIOR POSITION UNAVAILABLE","PARTIAL TELEMETRY / CHECK LOG")){
+            check(overviewKind(s)!=Kind.OTHER_OVERVIEW,"unmapped Overview warning "+s);all.put(s,1);
+        }
+        values.put(Kind.COLLECTION,2);values.put(Kind.DRIVE,2);mergeOverview(values,inspection(all,false));
+        for(Kind k:Kind.values())if(k!=Kind.OTHER_OVERVIEW)check(values.get(k)>0,"warning lost beyond display rows: "+k);
+        eq(values.get(Kind.COLLECTION),2);eq(values.get(Kind.DRIVE),2);
+        mergeOverview(values,inspection(Map.of("FUTURE WARNING",1),false));eq(values.get(Kind.OTHER_OVERVIEW),1);
+        History h=new History();mergeOverview(values,inspection(Map.of("FE LEVEL LOW",1,"MINING NO_ENERGY",2),false));h.update(values,1);
+        eq(h.values.get(Kind.FE),1);eq(h.values.get(Kind.MINING_ENERGY),2);
+        mergeOverview(values,inspection(Map.of("FE TELEMETRY UNAVAILABLE",1,"MINING TELEMETRY UNAVAILABLE",1),true));h.update(values,2);
+        eq(h.values.get(Kind.FE),1);eq(h.values.get(Kind.MINING_ENERGY),2);eq(h.values.get(Kind.FE_DATA),1);
+        check(h.events.stream().noneMatch(e->e.kind()==Kind.FE&&e.severity()==0),"unknown resolved low FE");
+        mergeOverview(values,inspection(Map.of(),false));h.update(values,3);eq(h.values.get(Kind.FE),0);eq(h.values.get(Kind.FE_DATA),0);
     }
     static Snapshot snap(List<Event> events){return new Snapshot("ship","1 ACTIVE / 0 UNKNOWN",40,120,0,events);}
     static void wire(History h)throws Exception{
@@ -51,6 +82,9 @@ public final class PlayerAlerts0720SmokeTest {
         check(!fresh(Long.MAX_VALUE),"stale visible");resetClient();eq(clientSnapshot(),null);
         // Production payload adapter, not just direct codec calls.
         for(int code:encode(s))PlayerDiscoveries0650.handlePayload(new Payload(code),new Context());eq(clientSnapshot(),s);
+        Snapshot high=new Snapshot("ship","extended mask",40,120,15,1<<Kind.MINING_WAIT.ordinal(),List.of(new Event(100,1,Kind.MINING_WAIT,1)));
+        for(int code:encode(high))accept(code);eq(clientSnapshot(),high);
+        for(int code:encode(new Snapshot("bad","bad",40,120,0,-1,List.of())))accept(code);eq(clientSnapshot(),high);
     }
     public record Payload(int mode){}
     public static class Context{public String flow(){return "CLIENTBOUND";}}
@@ -66,6 +100,7 @@ public final class PlayerAlerts0720SmokeTest {
         resetClient();receive(snap(List.of(recovery,critical,warning)),t);eq(nextNotice(t),null);
         resetClient();receive(snap(List.of(critical)),t);receive(snap(List.of(recovery,critical)),t+1);eq(nextNotice(t+5_000_000_000L),null);
         resetClient();receive(new Snapshot("ship","UNKNOWN",40,120,1,254,List.of(critical)),t);eq(nextNotice(t),null);
+        resetClient();Event fe=new Event(5,1,Kind.FE,1);receive(snap(List.of(fe)),t);eq(nextNotice(t),fe);
     }
     public static class Font{public int width(String s){return s.length()*6;}}
     public static class Screen{
@@ -102,12 +137,24 @@ public final class PlayerAlerts0720SmokeTest {
         }
     }
     public static class Manager {
-        boolean broken;Object from="earth",to="earth";
+        boolean broken;Object from=new Dimension("earth"),to=from;
         public Object getWorld(){return this;}
+        public long getGameTime(){return 100;}
+        public Object getSystem(Class<?> type){return new Flight();}
+        public boolean isHandbrakeLocked(){return true;}
+        public boolean isShieldsMiningEnabled(){return true;}
+        public Object getCurrentExteriorPosition(){return new Position();}
         public boolean isBroken(){return broken;}
         public Object getCurrentExteriorDimension(){return from;}
         public Object getDestinationExteriorDimension(){return to;}
     }
+    public record Dimension(String location){}
+    public static class Position{public int getX(){return 0;}public int getY(){return 64;}public int getZ(){return 0;}}
+    public static class Flight{public boolean inProgress(){return false;}public long newWorld$getCooldownUntil(){return 0;}}
+    public static class FEnergy{static long energy=11;public static long getEnergy(Object w,String id){return energy;}public static long getCapacity(Object w,String id){return 100;}public static Object data(Object w){return w;}}
+    public static class Registry{public static Map<String,Object> STATS=new HashMap<>();}
+    public static class NavData{public Map<String,Object> ships=new HashMap<>();public static NavData get(Object w){return new NavData();}}
+    public static class Plans{public static Map<String,Object> PLANS=new HashMap<>();}
     public record Room(boolean active,int[] modules){}
     public static class Energy {public static long getEnergy(Object w){return 5;}public static long capacityForShip(String id){return 100;}}
     public static class Travel {public static int travelClass(Object a,Object b){return 2;}}
@@ -132,6 +179,11 @@ public final class PlayerAlerts0720SmokeTest {
                             public void visitLdcInsn(Object v){
                                 if(v instanceof String t)v=switch(t){
                                     case "net.newworld.core.WarpEnergySystem"->Energy.class.getName();
+                                    case "net.newworld.core.LongFEEnergySystem"->FEnergy.class.getName();
+                                    case "net.newworld.core.ShipRoomRegistry"->Registry.class.getName();
+                                    case "net.drgmes.dwm.common.tardis.systems.TardisSystemFlight"->Flight.class.getName();
+                                    case "net.newworld.navigation.NavigationDiscoverySavedData"->NavData.class.getName();
+                                    case "net.newworld.navigation.Navigation0472ServerRoute"->Plans.class.getName();
                                     case "net.drgmes.dwm.newworld.EngineTravelBalance"->Travel.class.getName();
                                     case "net.newworld.mining.MiningRuntimeSavedData"->MiningData.class.getName();
                                     case "net.newworld.player.PlayerFieldSurvey0504Bridge"->PlayerAlerts0720SmokeTest.class.getName();
@@ -155,13 +207,31 @@ public final class PlayerAlerts0720SmokeTest {
         var sample=c.getMethod("sample",Object.class,Object.class,String.class);
         var values=(Map<?,?>)sample.invoke(null,manager,manager,"ship");
         Map<String,Integer> mapped=new HashMap<>();values.forEach((k,v)->mapped.put(k.toString(),(Integer)v));
-        eq(mapped.get("WARP"),2);eq(mapped.get("COLLECTION"),2);eq(mapped.get("BLOCKED"),2);eq(mapped.get("ENGINE_MATRIX"),0);eq(mapped.get("DRIVE"),0);
+        eq(mapped.get("COLLECTION"),2);eq(mapped.get("DRIVE"),0);
         manager.to="other";manager.broken=true;values=(Map<?,?>)sample.invoke(null,manager,manager,"ship");
-        mapped.clear();values.forEach((k,v)->mapped.put(k.toString(),(Integer)v));eq(mapped.get("DRIVE"),2);eq(mapped.get("ENGINE"),2);
+        mapped.clear();values.forEach((k,v)->mapped.put(k.toString(),(Integer)v));eq(mapped.get("DRIVE"),2);
         room=null;values=(Map<?,?>)sample.invoke(null,manager,manager,"ship");mapped.clear();values.forEach((k,v)->mapped.put(k.toString(),(Integer)v));eq(mapped.get("DRIVE"),-1);eq(mapped.get("ENGINE_MATRIX"),-1);
         room=new Room(true,new int[]{0,0,0,0,1});
+        for(String type:List.of("FE","WARP","ENGINE"))Registry.STATS.put("ship:"+type,room);
         var request=c.getMethod("request",Object.class);allowed=false;sent.clear();request.invoke(null,new Object());resetClient();for(int code:sent)accept(code);check(clientSnapshot()!=null&&clientSnapshot().ship().isEmpty(),"denied link leaked");
         allowed=true;sent.clear();Object p=new Object();request.invoke(null,p);for(int code:sent)accept(code);eq(clientSnapshot().ship(),"ship");
+        Class<?> overviewClass=loader.loadClass("net.newworld.player.PlayerOverview0670");
+        var displayViews=overviewClass.getDeclaredField("SERVER");displayViews.setAccessible(true);
+        check(!((Map<?,?>)displayViews.get(null)).containsKey(p),"background poll reset visible FE/t sampling clock");
+        var events=clientSnapshot().events();
+        for(Kind k:List.of(Kind.FE,Kind.WARP,Kind.ENGINE,Kind.BLOCKED,Kind.COLLECTION))check(events.stream().anyMatch(e->e.kind()==k&&e.severity()>0),"production request lost "+k);
+        eq(events.stream().filter(e->e.kind()==Kind.FE).findFirst().orElseThrow().severity(),1);
+        eq(events.stream().filter(e->e.kind()==Kind.BLOCKED).findFirst().orElseThrow().severity(),1);
         sent.clear();request.invoke(null,p);eq(sent.size(),0);
+        FEnergy.energy=-1;poll(c,request,p);
+        check(clientSnapshot().events().stream().anyMatch(e->e.kind()==Kind.FE_DATA&&e.severity()==1),"missing FE telemetry warning");
+        check(clientSnapshot().events().stream().noneMatch(e->e.kind()==Kind.FE&&e.severity()==0),"production unknown falsely resolved FE");
+        FEnergy.energy=100;poll(c,request,p);
+        for(Kind k:List.of(Kind.FE,Kind.FE_DATA))check(clientSnapshot().events().stream().anyMatch(e->e.kind()==k&&e.severity()==0),"production recovery lost "+k);
+    }
+    static void poll(Class<?> c,java.lang.reflect.Method request,Object p)throws Exception{
+        var sf=c.getDeclaredField("SERVER");sf.setAccessible(true);Object state=((Map<?,?>)sf.get(null)).get(p);
+        var throttle=state.getClass().getDeclaredField("requested");throttle.setAccessible(true);throttle.setLong(state,0);
+        sent.clear();request.invoke(null,p);for(int code:sent)accept(code);
     }
 }

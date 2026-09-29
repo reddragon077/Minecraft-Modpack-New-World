@@ -8,8 +8,8 @@ public final class NewWorldConfigSmokeTest {
     public static void main(String[] args) {
         expect("alerts refresh", net.newworld.player.PlayerAlerts0720.refreshTicks(), 40L);
         expect("alerts history", net.newworld.player.PlayerAlerts0720.historyLimit(), 16L);
-        expect("alerts warp warning", net.newworld.player.PlayerAlerts0720.warningPercent(), 20L);
-        expect("alerts warp critical", net.newworld.player.PlayerAlerts0720.criticalPercent(), 5L);
+        expect("alerts shared FE/WE warning", net.newworld.player.PlayerAlerts0720.warningPercent(), net.newworld.player.PlayerOverview0670.warningPercent());
+        expect("alerts shared FE/WE critical", net.newworld.player.PlayerAlerts0720.criticalPercent(), net.newworld.player.PlayerOverview0670.criticalPercent());
         expect("alerts collection warning", net.newworld.player.PlayerAlerts0720.bufferPercent(), 80L);
         expect("alerts repeat", net.newworld.player.PlayerAlerts0720.noticeCooldown(), 60L);
         expect("alerts spacing", net.newworld.player.PlayerAlerts0720.noticeSpacing(), 4L);

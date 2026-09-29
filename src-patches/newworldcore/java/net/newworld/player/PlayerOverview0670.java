@@ -13,6 +13,7 @@ public final class PlayerOverview0670 {
     public static final int END = BEGIN + 1;
     private static final int MAX_BYTES = 4096;
     private static final Map<Object, ServerView> SERVER = Collections.synchronizedMap(new WeakHashMap<>());
+    private static final Map<Object, ServerView> BACKGROUND = Collections.synchronizedMap(new WeakHashMap<>());
     private static final Map<Object, Long> REQUESTS = Collections.synchronizedMap(new WeakHashMap<>());
     private static final Map<Object, ClientView> VIEWS = Collections.synchronizedMap(new WeakHashMap<>());
     private static volatile Snapshot client;
@@ -54,19 +55,27 @@ public final class PlayerOverview0670 {
         } catch (Throwable failure) { report("snapshot", failure); }
     }
 
-    private static Snapshot sample(Object player) throws Exception {
-        ServerView view = SERVER.computeIfAbsent(player, ignored -> new ServerView());
+    private static Snapshot sample(Object player) throws Exception { return inspect(player, SERVER).snapshot(); }
+
+    /** Complete, untruncated warning input shared by Overview and background Ship Alerts. */
+    public record Inspection(Snapshot snapshot, Map<String, Integer> active) {
+        public Inspection { active = Collections.unmodifiableMap(new LinkedHashMap<>(active)); }
+    }
+    public static Inspection inspect(Object player) throws Exception { return inspect(player, BACKGROUND); }
+    private static Inspection inspect(Object player, Map<Object, ServerView> views) throws Exception {
+        // Independent sampling clocks prevent background polls from resetting the visible FE/t interval.
+        ServerView view = views.computeIfAbsent(player, ignored -> new ServerView());
         PlayerShipLink0680.Resolution link = PlayerShipLink0680.resolve(player);
         if (!link.snapshot().allowed() || link.ship() == null) {
             view.reset("");
-            return unavailableForLink(link.snapshot());
+            return new Inspection(unavailableForLink(link.snapshot()), Map.of());
         }
         Object ship = link.ship();
         String id = String.valueOf(call(ship, "id"));
         if (!id.equals(view.ship)) view.reset(id);
         Object manager = call(ship, "manager");
         Object world = call(manager, "getWorld");
-        if (world == null) return Snapshot.unavailable("SHIP INTERIOR UNAVAILABLE");
+        if (world == null) return new Inspection(Snapshot.unavailable("SHIP INTERIOR UNAVAILABLE"), Map.of());
         long tick = num(call(world, "getGameTime"));
         LinkedHashMap<String, Integer> active = new LinkedHashMap<>();
         long fe = readNumber("net.newworld.core.LongFEEnergySystem", "getEnergy", world, id);
@@ -142,7 +151,7 @@ public final class PlayerOverview0670 {
                     + " WE=" + we + "/" + weCap + " engine=" + engine + " brake=" + handbrake + " mining=" + mining + " navigation=" + navigation);
             view.logged = statusKey;
         }
-        return result;
+        return new Inspection(result, active);
     }
 
     /** Preserve the authoritative cause without exposing stale ship telemetry on denied access. */

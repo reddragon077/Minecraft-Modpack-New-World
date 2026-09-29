@@ -13,13 +13,21 @@ public final class PlayerAlerts0720 {
         WARP("WARP ENERGY LOW"), COLLECTION("COLLECTION TYPE SLOTS HIGH/FULL"),
         FE_MATRIX("FE MATRIX OFFLINE"), WARP_MATRIX("WARP MATRIX OFFLINE"),
         ENGINE_MATRIX("ENGINE MATRIX OFFLINE"), ENGINE("ENGINE BROKEN"),
-        DRIVE("REQUIRED FLIGHT DRIVE MISSING"), BLOCKED("MINING BUFFER FULL");
+        DRIVE("REQUIRED FLIGHT DRIVE MISSING"), BLOCKED("MINING BUFFER FULL"),
+        FE("FE LEVEL LOW"), FE_METER("FE CONSUMPTION METER UNAVAILABLE"),
+        FE_DATA("FE TELEMETRY UNAVAILABLE"), WARP_DATA("WARP TELEMETRY UNAVAILABLE"),
+        FE_MATRIX_DATA("FE MATRIX UNKNOWN"), WARP_MATRIX_DATA("WARP MATRIX UNKNOWN"),
+        ENGINE_MATRIX_DATA("ENGINE MATRIX UNKNOWN"), ENGINE_DATA("ENGINE TELEMETRY UNAVAILABLE"),
+        MINING_DATA("MINING TELEMETRY UNAVAILABLE"), NAVIGATION_DATA("NAVIGATION TELEMETRY UNAVAILABLE"),
+        EXTERIOR_DATA("EXTERIOR POSITION UNAVAILABLE"), PARTIAL_DATA("PARTIAL TELEMETRY / CHECK LOG"),
+        MINING_ENERGY("MINING NO_ENERGY"), MINING_WAIT("MINING WAITING / CHECK OVERVIEW"),
+        OTHER_OVERVIEW("OTHER OVERVIEW WARNING / CHECK OVERVIEW");
         public final String text; Kind(String text){this.text=text;}
     }
     public record Event(long sequence,long time,Kind kind,int severity) {}
     public record Snapshot(String ship,String state,int refresh,int stale,int unknown,int knownMask,List<Event> events) {
         public Snapshot {events=List.copyOf(events);}
-        public Snapshot(String ship,String state,int refresh,int stale,int unknown,List<Event> events){this(ship,state,refresh,stale,unknown,255,events);}
+        public Snapshot(String ship,String state,int refresh,int stale,int unknown,List<Event> events){this(ship,state,refresh,stale,unknown,(1<<Kind.values().length)-1,events);}
     }
     public static final class History {
         public final EnumMap<Kind,Integer> values=new EnumMap<>(Kind.class);
@@ -52,10 +60,10 @@ public final class PlayerAlerts0720 {
     public static int historyLimit(){return NewWorldConfig.integer("ship-alerts","history_limit",16,4,32);}
     public static int noticeCooldown(){return NewWorldConfig.integer("ship-alerts","notifications.repeat_seconds",60,5,3600);}
     public static int noticeSpacing(){return NewWorldConfig.integer("ship-alerts","notifications.spacing_seconds",4,3,30);}
-    public static int warningPercent(){return NewWorldConfig.integer("ship-alerts","warp.warning_percent",20,1,99);}
-    public static int criticalPercent(){return Math.min(warningPercent(),NewWorldConfig.integer("ship-alerts","warp.critical_percent",5,0,98));}
+    public static int warningPercent(){return PlayerOverview0670.warningPercent();}
+    public static int criticalPercent(){return PlayerOverview0670.criticalPercent();}
     public static int bufferPercent(){return NewWorldConfig.integer("ship-alerts","collection.warning_percent",80,1,99);}
-    public static int lowEnergy(long n,long cap){return n<0||cap<=0?-1:100d*n/cap<=criticalPercent()?2:100d*n/cap<=warningPercent()?1:0;}
+    public static int lowEnergy(long n,long cap){return n<0||cap<=0?-1:PlayerOverview0670.energySeverity(n,cap);}
     public static int slots(int used,int capacity){return used<0||capacity<=0?-1:used>=capacity?2:100d*used/capacity>=bufferPercent()?1:0;}
     public static int drive(int travel,int[] modules){
         if(travel==0)return 0;
@@ -70,13 +78,6 @@ public final class PlayerAlerts0720 {
         EnumMap<Kind,Integer> result=new EnumMap<>(Kind.class);
         for(Kind k:Kind.values())result.put(k,-1);
         if(world==null)return result;
-        try {result.put(Kind.WARP,lowEnergy(((Number)stat("net.newworld.core.WarpEnergySystem","getEnergy",world)).longValue(),
-                ((Number)stat("net.newworld.core.WarpEnergySystem","capacityForShip",id)).longValue()));}catch(Exception ignored){}
-        String[] types={"FE","WARP","ENGINE"};Kind[] kinds={Kind.FE_MATRIX,Kind.WARP_MATRIX,Kind.ENGINE_MATRIX};
-        for(int i=0;i<types.length;i++)try {
-            Object r=room(id,types[i]);if(r!=null)result.put(kinds[i],Boolean.TRUE.equals(call(r,"active"))?0:2);
-        }catch(Exception ignored){}
-        try {result.put(Kind.ENGINE,Boolean.TRUE.equals(call(manager,"isBroken"))?2:0);}catch(Exception ignored){}
         try {
             Object from=call(manager,"getCurrentExteriorDimension"),to=call(manager,"getDestinationExteriorDimension");
             if(from!=null && to!=null){
@@ -90,12 +91,53 @@ public final class PlayerAlerts0720 {
         try {
             Object runtime=PlayerMining0700.state(stat("net.newworld.mining.MiningRuntimeSavedData","get",world),id);
             if(runtime!=null){
-                result.put(Kind.BLOCKED,"BUFFER_FULL".equals(String.valueOf(field(runtime,"status")))?2:0);
                 String text=PlayerMining0700.buffer(world,runtime,"bufferPos","COLLECTION_ID");
                 result.put(Kind.COLLECTION,collection(text));
             }
         }catch(Exception ignored){}
         return result;
+    }
+    /** Never project the three display rows: every raw Overview warning participates, including telemetry failures. */
+    public static void mergeOverview(EnumMap<Kind,Integer> values,PlayerOverview0670.Inspection inspection){
+        var s=inspection.snapshot();
+        if(s.ship().isEmpty())return;
+        for(Kind k:Kind.values())if(k!=Kind.COLLECTION&&k!=Kind.DRIVE)values.put(k,0);
+        for(var entry:inspection.active().entrySet()){
+            Kind k=overviewKind(entry.getKey());values.merge(k,entry.getValue(),Math::max);
+        }
+        // Missing measurements produce their own warning, never a fabricated recovery of an operational fault.
+        if(s.fe()<0||s.feCapacity()<=0)values.put(Kind.FE,-1);
+        if(s.warp()<0||s.warpCapacity()<=0)values.put(Kind.WARP,-1);
+        if("UNKNOWN".equals(s.feMatrix()))values.put(Kind.FE_MATRIX,-1);
+        if("UNKNOWN".equals(s.warpMatrix()))values.put(Kind.WARP_MATRIX,-1);
+        if("UNKNOWN".equals(s.engineMatrix()))values.put(Kind.ENGINE_MATRIX,-1);
+        if("UNKNOWN".equals(s.engine()))values.put(Kind.ENGINE,-1);
+        if("UNKNOWN".equals(s.mining()))for(Kind k:List.of(Kind.BLOCKED,Kind.MINING_ENERGY,Kind.MINING_WAIT))values.put(k,-1);
+        if("UNKNOWN".equals(s.shield()))values.put(Kind.MINING_WAIT,-1);
+    }
+    public static Kind overviewKind(String text){
+        return switch(text){
+            case "FE LEVEL LOW"->Kind.FE;
+            case "WARP LEVEL LOW"->Kind.WARP;
+            case "FE MATRIX OFFLINE"->Kind.FE_MATRIX;
+            case "WARP MATRIX OFFLINE"->Kind.WARP_MATRIX;
+            case "ENGINE MATRIX OFFLINE"->Kind.ENGINE_MATRIX;
+            case "ENGINE BROKEN"->Kind.ENGINE;
+            case "MINING BUFFER_FULL"->Kind.BLOCKED;
+            case "MINING NO_ENERGY"->Kind.MINING_ENERGY;
+            case "FE CONSUMPTION METER UNAVAILABLE"->Kind.FE_METER;
+            case "FE TELEMETRY UNAVAILABLE"->Kind.FE_DATA;
+            case "WARP TELEMETRY UNAVAILABLE"->Kind.WARP_DATA;
+            case "FE MATRIX UNKNOWN"->Kind.FE_MATRIX_DATA;
+            case "WARP MATRIX UNKNOWN"->Kind.WARP_MATRIX_DATA;
+            case "ENGINE MATRIX UNKNOWN"->Kind.ENGINE_MATRIX_DATA;
+            case "ENGINE UNKNOWN", "ENGINE TELEMETRY UNAVAILABLE"->Kind.ENGINE_DATA;
+            case "MINING TELEMETRY UNAVAILABLE"->Kind.MINING_DATA;
+            case "NAVIGATION TELEMETRY UNAVAILABLE"->Kind.NAVIGATION_DATA;
+            case "EXTERIOR POSITION UNAVAILABLE"->Kind.EXTERIOR_DATA;
+            case "PARTIAL TELEMETRY / CHECK LOG"->Kind.PARTIAL_DATA;
+            default->text.startsWith("MINING WAITING_")?Kind.MINING_WAIT:Kind.OTHER_OVERVIEW;
+        };
     }
     /** The exact existing buffer telemetry reports virtual TYPE capacity, not an invented item limit. */
     public static int collection(String text){
@@ -114,7 +156,10 @@ public final class PlayerAlerts0720 {
                 s=new Snapshot("",enabled()?"LINK UNAVAILABLE":"ALERTS DISABLED",refreshTicks(),staleTicks(),0,List.of());
             else {
                 Object manager=link.ship().manager(),world=call(manager,"getWorld");
-                var values=sample(manager,world,id);state.history.update(values,System.currentTimeMillis());
+                var values=sample(manager,world,id);
+                var inspection=PlayerOverview0670.inspect(p);
+                if(id.equals(inspection.snapshot().ship()))mergeOverview(values,inspection);
+                state.history.update(values,System.currentTimeMillis());
                 int unknown=(int)values.values().stream().filter(v->v<0).count();
                 int active=(int)values.values().stream().filter(v->v>0).count();
                 int mask=0;for(Kind k:Kind.values())if(values.get(k)>=0)mask|=1<<k.ordinal();
@@ -125,7 +170,7 @@ public final class PlayerAlerts0720 {
     }
     public static int[] encode(Snapshot s)throws IOException {
         var bytes=new ByteArrayOutputStream();var out=new DataOutputStream(bytes);
-        out.writeByte(1);out.writeUTF(s.ship);out.writeUTF(s.state);out.writeInt(s.refresh);out.writeInt(s.stale);out.writeByte(s.unknown);out.writeByte(s.knownMask);out.writeByte(s.events.size());
+        out.writeByte(2);out.writeUTF(s.ship);out.writeUTF(s.state);out.writeInt(s.refresh);out.writeInt(s.stale);out.writeByte(s.unknown);out.writeInt(s.knownMask);out.writeByte(s.events.size());
         for(Event e:s.events){out.writeLong(e.sequence);out.writeLong(e.time);out.writeByte(e.kind.ordinal());out.writeByte(e.severity);}
         byte[] b=bytes.toByteArray();if(b.length>MAX_BYTES)throw new IOException("Alert size");
         int[] codes=new int[(b.length+2)/3+2];codes[0]=BEGIN;codes[codes.length-1]=END;
@@ -142,9 +187,9 @@ public final class PlayerAlerts0720 {
         if(code!=END){int n=code-WIRE_BASE;incoming.write(n>>16);incoming.write(n>>8);incoming.write(n);if(incoming.size()>MAX_BYTES)incoming=null;return true;}
         byte[] b=incoming.toByteArray();incoming=null;
         try {
-            var in=new DataInputStream(new ByteArrayInputStream(b));if(in.readUnsignedByte()!=1)throw new IOException("schema");
-            String ship=in.readUTF(),state=in.readUTF();int refresh=in.readInt(),stale=in.readInt(),unknown=in.readUnsignedByte(),mask=in.readUnsignedByte(),count=in.readUnsignedByte();
-            if(ship.length()>96||state.length()>96||refresh<20||refresh>1200||stale<refresh*2||stale>3600||unknown>8||count>32)throw new IOException("bounds");
+            var in=new DataInputStream(new ByteArrayInputStream(b));if(in.readUnsignedByte()!=2)throw new IOException("schema");
+            String ship=in.readUTF(),state=in.readUTF();int refresh=in.readInt(),stale=in.readInt(),unknown=in.readUnsignedByte(),mask=in.readInt(),count=in.readUnsignedByte();
+            if(ship.length()>96||state.length()>96||refresh<20||refresh>1200||stale<refresh*2||stale>3600||unknown>Kind.values().length||mask<0||(mask>>>Kind.values().length)!=0||count>32)throw new IOException("bounds");
             List<Event> events=new ArrayList<>();long last=Long.MAX_VALUE;
             for(int i=0;i<count;i++){
                 long seq=in.readLong(),time=in.readLong();int kind=in.readUnsignedByte(),severity=in.readUnsignedByte();

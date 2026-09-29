@@ -4,6 +4,8 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-29 — laptop — All Overview warnings in Ship Alerts](2026-09-29_laptop_unified_ship_alerts.md) — .72.1, shared FE/WE thresholds and complete raw warning coverage; automatic tests passed, runtime acceptance pending.
+
 - [2026-09-29 — laptop — Ship Alerts batch](2026-09-29_laptop_ship_alerts.md)
 
 - [2026-09-29 — Emergency entrance destination](2026-09-29_laptop_emergency_entrance.md) — .71.4 door return, cooldown start and relogin/countdown accepted: screenshot 25:51 and log stop/save/login confirm persistence. Unchanged-state comparison and extended cases remain open. No repeat test/reset.

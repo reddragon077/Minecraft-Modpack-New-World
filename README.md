@@ -16,7 +16,7 @@ New World; keşif, araştırma, jeoloji, otomasyon ve yaşayan bir uzay gemisi e
 - 267 CurseForge modu, 4 kaynak paketi ve 4 shader paketi
 - 274 etkin, 1 bilinçli olarak devre dışı bırakılmış CurseForge öğesi
 - Projeye ait iki özel fork: NewWorldCore ve DoctorWhoMod
-- Güncel geliştirme adayı `0.5.72.0-alpha-ship-alerts`: düşük WE, Collection tür-slot doluluğu, Engine/Matrix/drive uyarıları, Overview uyarı geçmişi ve küçük HUD bildirimleri. On altı otomatik test grubu ve gerçek Doctor entegrasyon kontrolleri geçti; yeni uyarıların oyun kabulü bekliyor. [Toplu Ship Alerts testi](docs/18_Ship_Alerts_Runtime_Kabul.md). Önceki Navigation/Mining temel kabulü ve `.71.4` iç kapıya acil dönüş/30 dakika bekleme/yeniden giriş kabulü korunur; genişletilmiş vakalar ayrıca açıktır.
+- Güncel geliştirme adayı `0.5.72.1-alpha-unified-ship-alerts`: tüm Overview uyarıları (FE/WE, Matrix/Engine, Mining enerji/bekleme ve telemetri) ortak kaynaktan geçmişe ve HUD'a bağlandı; Collection/drive kontrolleri korundu. FE/WE eşikleri Overview ile ortaktır. Düzeltmenin oyun kabulü bekliyor. [Toplu Ship Alerts testi](docs/18_Ship_Alerts_Runtime_Kabul.md). Önceki Navigation/Mining temel kabulü ve `.71.4` iç kapıya acil dönüş/30 dakika bekleme/yeniden giriş kabulü korunur; genişletilmiş vakalar ayrıca açıktır.
 - Runtime-kabul edilen `DISCOVERIES` sekmesi ortak Structure/Geology geçmişini, analiz/kaynak/rezerv/son-görülme ayrıntılarını ve canlı oyuncu mesafesini gösterir; kayıtlar favoriye alınabilir, aktif Navigation hedefi yapılabilir ve gerçek TARDIS rota/hop planına bağlanabilir.
 - Aktif DoctorWhoMod fork buildi: `1.0.16-NewWorld-EngineTravel-v5.8.19-Tall-Large-XLarge-Swap`
 
