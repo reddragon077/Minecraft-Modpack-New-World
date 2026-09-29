@@ -1,6 +1,10 @@
 # 2026-09-29 — laptop — Emergency entrance destination
 
-Starting commit: main / 1d77528. Status: automated checks passed; new in-game destination acceptance pending.
+Starting commit: main / 1d77528. Status: automated checks and basic in-game entrance return passed; extended acceptance remains open.
+
+## Runtime acceptance after installation
+
+Runtime acceptance update: `.71.4` normal portal/inside-door return PASSED by user's explicit "tamam çalıştı kanka" and server log 2026-09-29 15:21:30.375: entrance=[0,128,-22], cooldown_ms=1800000; client success receipt 15:21:30.386. This supersedes entrance-runtime-pending wording below. Cooldown starts on successful return; GUI countdown/relogin persistence and unchanged target/route/WE have not been independently verified in this run. Extended dimensional/protection/multiplayer cases remain open; Stage 11 remains partial. No new build, config, saved-data edits or repeated cooldown reset. Installed .71.4/hash unchanged. Next grouped acceptance: countdown/relogin persistence and unchanged Navigation/WE, not another destination or Mining retest.
 
 ## User decision and evidence
 
@@ -16,4 +20,4 @@ Installed `.71.4-alpha-emergency-entrance`, SHA-256 `fe85ac588ab5f2f7449590eb1d9
 
 ## Next grouped check
 
-Existing cooldown was reset once at the user's request; test now from outside and compare to the normal portal's inside door arrival. Verify new 30-minute countdown, unchanged Navigation target/route, then logout/re-entry persistence. Do not repeat the one-time reset or accepted Mining tests. See docs/17.
+Destination acceptance is passed; do not repeat it or reset the cooldown again. Verify the countdown and unchanged Navigation target/route/WE, then logout/re-entry persistence. See docs/17. The earlier installation-time pending wording is historical.
