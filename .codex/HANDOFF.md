@@ -6,6 +6,8 @@ Branch: `main`
 
 ## Current objective
 
+2026-09-29 update: .69.4 combined runtime test passed by screenshots and 10:52:13 server route log (exact [-2454,63,181], 11 blocks). Proximity completion is not a flight test. Stage 9 basic workflow accepted; extended tests remain open. User requests 3–4 related operations per batch. Proceed to Stage 10 read-only mining status/scan area, scan/extraction progress, Collection/AE/Replication buffers and routing/SMART AUTO status. The pending gate below is historical and superseded.
+
 Installed `.69.4-alpha-waypoint-terminal-route`: `NewWorldCore-1.21.1-NeoForge-0.5.69.4-alpha-waypoint-terminal-route.jar`, SHA-256 `4a68d8e660cd7e85a40109a16c5e1ec1068a92aefe45efbfccd19127339fc4e8`, 3635047 bytes. Eleven suites + real DoctorWhoMod WE fixture passed. Physical terminal now preserves manual saved Y, samples live ship-relative distance and displays explicit dimension/unavailable states. Real calculator/range clamp/altitude-normalizer fixtures cover exact final Y including -64 and vertical-only/multi-hop targets; intermediate cruise and nonmanual surface policy remain unchanged. No flight bypass, save migration or config change.
 
 Next: one combined game check, saved LOCATION [-2454,63,181] → SEND TO SHIP → physical terminal Y=63 and ~11 blocks if ship remains [-2464,61,176] → CALCULATE ROUTE → final [-2454,63,181]. Before calculation the old Carbon route must remain; after calculation replacement is intentional. Do not fly just for this check. New `.69.4` runtime acceptance and extended Stage 9 tests remain open; do not advance to Mining yet.

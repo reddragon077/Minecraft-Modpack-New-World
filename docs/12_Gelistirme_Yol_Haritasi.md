@@ -138,13 +138,13 @@ Kapanış testi: `0.5.66.1` ile `ARCHEOLOGIST CAMP` ve `TRIAL CHAMBERS` kayıtla
 
 ## Aşama 9 — Player Navigation paneli
 
-Durum: **kısmi.** Gemi Navigation Terminal’i çalışıyor ve Discovery kayıtlarından doğrudan hedef/rota oluşturma `0.5.66.1` TARGET/ROUTE runtime kabulüyle tamamlandı; hafif uzaktan Navigation panelinin kalan görünüm ve eylemleri bekliyor.
+Durum: **temel iş akışı kabul edildi; genişletilmiş kontroller açık.** `.69.4` ekranları ve 29 Eylül 10:52:13 sunucu kaydı manuel hedef [-2454,63,181], doğru Y=63 ve 11 blok rota sonucunu doğruladı. Yakınlık eşiğinde ROUTE_COMPLETE yeni uçuş kanıtı değildir. Kullanıcı onayıyla sıradaki geliştirme kapısı Aşama 10'un dört salt-okunur görünümüdür; aşağıdaki kenar testleri açık kalır.
 
 - [~] Mevcut hedef, gemiye uzaklık, rota ve sonraki hop (`.69.0` ilk görünüm, hedef/rota değişimi ve kullanıcı bildirimli yeniden açılış geçti; kenar durumları açık)
 - [~] Tahmini WE maliyeti (`.69.0` yüklü sonraki hop: Aluminum 48 -> Carbon 52 WE görünümü geçti; genişletilmiş kabul açık)
 - [x] Favoriden hedef seçme (`.69.1` SYNC 2/2, Trial Chambers TARGET ve eski Carbon rotasının korunması ekran/log ile geçti; genişletilmiş kenar testleri açık)
 - [x] `SAVE CURRENT LOCATION` (`.69.2` iki farklı konum, aynı blokta kopya oluşmaması ekran/log ile; dünyadan çıkıp girişte kalıcılık kullanıcı bildirimiyle geçti. İç-mekân/config/çok oyunculu kenar testleri açık.)
-- [~] `SEND TO SHIP` (`.69.3` ortak hedef yazımı/eski rotayı koruma doğrulandı. `.69.4` fiziksel terminal Y/mesafe ve manuel son durak düzeltmesi; on bir test grubu geçti, birleşik oyun kontrolü ve genişletilmiş izin/bekleme kabulü açık.)
+- [x] `SEND TO SHIP` temel akışı (`.69.3` ortak hedef/eski rota koruma; `.69.4` doğru terminal Y/mesafe ve hesaplanan son durak ekran/log ile kabul edildi. Genişletilmiş izin/bekleme kontrolleri açık.)
 - [x] Discovery’den hedef oluşturma (`0.5.66.1` TARGET/ROUTE kabulü)
 
 Gelişmiş rota hesabı ve ayarlar fiziksel Navigation Terminal’de kalacaktır.
@@ -249,4 +249,5 @@ Ana listedeki sayısal sıra geliştirme sırasıdır. Tamamlanmış Aşama 6 Fi
 
 1. Aşama 4 — Overview / Ship Status tek oyunculu kabulü tamamlandı.
 2. Aşama 5 `.68.2` yeni oturum SYNCING regresyonu ve bağlantı kaybı/otomatik geri dönüş kabulü tamamlandı. Çok oyunculu/yapay timeout gibi genişletilmiş kontroller hâlâ açık.
-3. Ardından Aşama 9 — Player Navigation panelinin kalan maddeleri.
+3. Aşama 9 temel görünüm, favori/konum/gönderme ve terminal rota kabulü tamamlandı; genişletilmiş kontroller açık tutulur.
+4. Aşama 10 — dört alanlık salt-okunur Mining paketi: durum/tarama alanı, tarama/çıkarma ilerlemesi, üç buffer ve routing/SMART AUTO. Deposit rezerv bağlantısı ve kontrol düğmeleri bu pakette yoktur.

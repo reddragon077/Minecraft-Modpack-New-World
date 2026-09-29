@@ -1,5 +1,7 @@
 # Player Navigation — ilk görünüm kabulü
 
+29 Eylül güncellemesi: aşağıdaki `.69.4` bekleyen birleşik kontrol tamamlandı. Ekranlarda Y=63, mesafe 11 blok ve son hedef [-2454,63,181]; sunucu 10:52:13.787 aynı rotayı doğruladı. 10:52:13.980 yakınlık eşiğinde tamamlandı; uçuş yapıldığı iddia edilmez. Temel Aşama 9 kabul edildi; genişletilmiş testler açık kalır. Kullanıcı onayıyla Mining görünüm paketine geçilir.
+
 Kurulu aday `.69.4-alpha-waypoint-terminal-route`. Önceki görünüm/GUI kapat-aç, `.69.1` temel favori seçimi ve `.69.2` konum kaydı/tekrar/kalıcılık kabul edildi. `.69.3` ortak hedef yazımı/eski rotayı koruma doğrulandı; fiziksel terminal Y/mesafe hatası için `.69.4` birleşik oyun kontrolü bekliyor. Genişletilmiş liste tamamlanmadı.
 
 ## .69.4 — sıradaki tek birleşik kontrol
