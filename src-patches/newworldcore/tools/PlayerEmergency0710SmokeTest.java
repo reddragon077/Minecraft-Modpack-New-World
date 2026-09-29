@@ -18,8 +18,8 @@ public final class PlayerEmergency0710SmokeTest {
             Files.writeString(config,"beacon.enabled=bad\nrefresh_ticks=99999\nstale_after_ticks=99999\nbeacon.confirm_ticks=99999\nbeacon.cooldown_ticks=99999\n");NewWorldConfig.reload();
             check(enabled(),"bool fallback");eq(refreshTicks(),1200);eq(staleTicks(),3600);eq(confirmTicks(),200);eq(cooldownTicks(),1200);
             Files.writeString(config,"");NewWorldConfig.reload();
-            guards(config);persistence();wire();audit();
-            System.out.println("Emergency config, single-use position/ship/link guards, dedup/quota/target-only persistence, bounded wire/lifecycle, panel layout and production hook audit passed.");
+            guards(config);persistence();wire();lateReply();receipts();rapidRetry();audit();
+            System.out.println("Emergency config, single-use guards, persistence, delayed/framed/replayed receipts through production dispatcher, cooldown/reopen/stale/cross-ship, bounded wire and layout passed.");
         }finally{Files.deleteIfExists(config);Files.deleteIfExists(root);}
     }
     static void guards(Path config)throws Exception{
@@ -27,6 +27,8 @@ public final class PlayerEmergency0710SmokeTest {
         int[] writes={0};Writer writer=x->{writes[0]++;return SENT;};long t=20_000_000_000L;
         eq(g.apply(p,ARM,c,t,writer),DENIED);g.observe(p,c,t);int token=g.apply(p,ARM,c,t,writer);check(tokenCode(token),"challenge");eq(writes[0],0);
         eq(g.apply(p,ARM,c,t+1,writer),token);eq(g.apply(p,token,c,t+300_000_000L,writer),SENT);eq(writes[0],1);
+        eq(g.confirmRemaining(p,token,t+300_000_000L),0);eq(g.cooldownRemaining(p,t+300_000_000L),10000);
+        eq(g.cooldownRemaining(p,t+11_000_000_000L),0);
         eq(g.apply(p,token,c,t+400_000_000L,writer),WAIT);t+=11_000_000_000L;g.observe(p,c,t);eq(g.apply(p,token,c,t,writer),EXPIRED);
         token=g.apply(p,ARM,c,t,writer);
         eq(g.apply(p,token,new Context("ship",world,c.dimension(),c.x()+1,c.y(),c.z(),"READY"),t+300_000_000L,writer),EXPIRED);
@@ -77,6 +79,73 @@ public final class PlayerEmergency0710SmokeTest {
     public static class Screen{
         public PlayerNavigation0690SmokeTest.Font font=new PlayerNavigation0690SmokeTest.Font();public List<String> lines=new ArrayList<>();
         public void text(Object g,String s,int x,int y,int color){check(x>=26&&x+font.width(s)<=514&&y>=91&&y+9<=288,"layout "+s);lines.add(s);}
+    }
+    static void set(String name,Object value)throws Exception{
+        var f=PlayerEmergency0710.class.getDeclaredField(name);f.setAccessible(true);f.set(null,value);
+    }
+    static Object get(String name)throws Exception{
+        var f=PlayerEmergency0710.class.getDeclaredField(name);f.setAccessible(true);return f.get(null);
+    }
+    static void lateReply()throws Exception{
+        PlayerShipLink0680.resetClient();
+        for(int code:PlayerShipLink0680.encode(new PlayerShipLink0680.Snapshot("CONNECTED","ship","minecraft:overworld",16,"",20,120)))PlayerShipLink0680.accept(code);
+        for(int code:encode(new Snapshot("ship","READY","minecraft:overworld","X=1 Y=63 Z=2",true,20,120)))accept(code);
+        set("waiting",true);set("actionShip","ship");set("actionStarted",System.nanoTime()-6_000_000_000L);
+        button();acceptReply(SENT);
+        check(String.valueOf(get("message")).startsWith("BEACON SENT"),"Late successful reply permanently discarded after UI timeout");
+        resetClient();
+    }
+    public record Payload(int mode){}
+    public static class ClientContext{public String flow(){return "CLIENTBOUND";}}
+    static void feed(Snapshot s)throws Exception{
+        for(int code:encode(s))PlayerDiscoveries0650.handlePayload(new Payload(code),new ClientContext());
+        eq(clientSnapshot(),s);
+    }
+    static Snapshot receipt(String ship,long seq,int request,int result,int confirm,int cooldown){
+        return new Snapshot(ship,"READY","minecraft:overworld","X=1 Y=63 Z=2",true,20,120,seq,request,result,confirm,cooldown);
+    }
+    static void pending(int mode,long floor)throws Exception{
+        set("waiting",true);set("pendingMode",mode);set("receiptFloor",floor);set("actionShip","ship");set("actionStarted",System.nanoTime());
+    }
+    static void receipts()throws Exception{
+        int challenge=-3_000_123;
+        feed(new Snapshot("ship","READY","minecraft:overworld","X=1 Y=63 Z=2",true,20,120));
+        pending(ARM,0);feed(receipt("ship",1,ARM,challenge,4900,0));eq(button(),"CONFIRM DISTRESS BEACON");
+        pending(challenge,1);set("token",0);set("actionStarted",System.nanoTime()-6_000_000_000L);
+        eq(button(),"WAITING...");
+        // Neither an older challenge nor an unrelated command may settle the new confirmation.
+        feed(receipt("ship",1,ARM,challenge,1000,0));eq(button(),"WAITING...");
+        feed(receipt("ship",2,ARM,WAIT,0,0));eq(button(),"WAITING...");
+        // Drop the immediate action response; the next normal telemetry contains the same receipt.
+        set("received",System.nanoTime()-7_000_000_000L);
+        draw(new Screen(),new PlayerNavigation0690SmokeTest.Graphics(),0,0,clientSnapshot(),false);
+        eq(get("waiting"),true);
+        feed(receipt("ship",3,challenge,SENT,0,9000));
+        check(String.valueOf(get("message")).startsWith("BEACON SENT"),"polled success missing");check(button().startsWith("BEACON COOLDOWN"),"server cooldown missing");
+        eq(get("pendingMode"),0);feed(receipt("ship",3,challenge,SENT,0,8000));eq(get("token"),0);
+        // Reopen shows current cooldown, but must never replay an old challenge or show a new success.
+        resetClient();feed(receipt("ship",3,challenge,SENT,0,7000));eq(get("message"),"");check(button().startsWith("BEACON COOLDOWN"),"reopen cooldown");
+        pending(ARM,3);feed(receipt("ship",4,ARM,challenge,0,0));eq(button(),"DISTRESS BEACON");
+        check(String.valueOf(get("message")).contains("EXPIRED"),"expired server challenge armed");
+        pending(ARM,4);feed(receipt("ship",5,ARM,WAIT,0,5000));check(String.valueOf(get("message")).contains("COOLDOWN"),"cooldown reply lost");
+        pending(ARM,5);feed(receipt("other",6,ARM,challenge,5000,0));eq(get("token"),0);eq(get("pendingMode"),0);
+        resetClient();feed(receipt("ship",7,ARM,challenge,5000,0));eq(get("token"),0);
+        pending(ARM,7);
+        feed(new Snapshot("ship","BEACON DISABLED BY SERVER","","",false,20,120,8,ARM,DENIED,0,0));
+        check(String.valueOf(get("message")).startsWith("DENIED"),"policy denial hidden");eq(get("waiting"),false);
+        Snapshot valid=clientSnapshot();for(int code:encode(receipt("ship",9,ARM,SENT,10001,0)))accept(code);eq(clientSnapshot(),valid);
+        resetClient();
+    }
+    @SuppressWarnings("unchecked")
+    static void rapidRetry()throws Exception{
+        Object p=new Object();Context c=new Context("ship",new Object(),"minecraft:overworld",1,63,2,"READY");
+        var remember=PlayerEmergency0710.class.getDeclaredMethod("remember",Object.class,Context.class,int.class,int.class);remember.setAccessible(true);
+        remember.invoke(null,p,c,-3_000_123,EXPIRED);
+        ((Map<Object,Long>)get("ACTIONS")).put(p,System.nanoTime());handle(p,ARM);
+        Object receipt=((Map<?,?>)get("RECEIPTS")).get(p);
+        for(var entry:Map.of("request",(Object)ARM,"result",WAIT,"sequence",2L).entrySet()){
+            var accessor=receipt.getClass().getDeclaredMethod(entry.getKey());accessor.setAccessible(true);eq(accessor.invoke(receipt),entry.getValue());
+        }
     }
     static void audit()throws Exception{
         Set<String> forbidden=Set.of("teleport","teleportTo","consume","calculate","takeoff","setShieldsMiningState","getChunk","setDestinationPosition");

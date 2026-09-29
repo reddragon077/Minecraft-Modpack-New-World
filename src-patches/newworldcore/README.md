@@ -4,6 +4,7 @@ The complete historical NewWorldCore source tree is not currently available in t
 
 The current patch:
 
+- repairs Emergency feedback in `.71.1` with schema-v2 ship/request/sequence-bound receipts replayed by normal telemetry, delayed acknowledgement recovery, server cooldown countdown and rapid-retry WAIT feedback. No repeat world writes, config/save changes, route/flight/WE mutation or Return feature. Fourteen suites plus actual Doctor fixture pass; new in-game feedback acceptance is pending. See docs/17 and the 2026-09-29 feedback-repair record.
 - adds `.71.0` Emergency / two-step DISTRESS target selection. Current server coordinates only, owner/link/alive/outside-interior guards, single-use same-position challenge, cooldown, existing waypoint quota and shared target permission. Preserves discovery evidence and loaded routes; no flight, teleport or WE consumption. RETURN remains explicitly unavailable until safe Teleporter Room integration. Fourteen smoke suites + actual Doctor engine fixture pass; runtime acceptance separate (docs/17).
 - includes accepted `.70.1` per-area persistent successful resource-block counts and confirmed Mining Shield OFF-only STOP; legacy counts remain explicitly untracked. Basic runtime user acceptance passed, broader edge tests remain open.
 

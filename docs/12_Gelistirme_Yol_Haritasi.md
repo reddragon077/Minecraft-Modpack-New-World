@@ -167,6 +167,8 @@ Routing, priority, Keep ve upgrade yönetimi fiziksel Mining Terminal’de kalac
 
 ## Aşama 11 — Emergency panel
 
+29 Eylül düzeltmesi: .71.0 sunucu SENT/WAIT sonuçlarına rağmen GUI NO RESPONSE gösterdi. .71.1, gecikmiş sonuç kaybını testte giderir; işlemle eşleşen yanıt normal telemetry ile yeniden alınır ve cooldown geri sayılır. İşlemi/rota yazımını tekrar etmez. 14 paket + Doctor fixture geçti, yeni oyun yanıt kabulü bekleniyor; aşağıdaki kısmi işaretler korunur. RETURN hâlâ kapalıdır.
+
 Durum: 29 Eylül 2026 kullanıcı devam onayıyla ilk paket .71.0 olarak kuruldu: Emergency görünümü, sunucu konumundan DISTRESS BEACON hedefi, iki aşamalı onay ve sahiplik/bağlantı/cooldown kontrolleri. 14 otomatik test paketi ve gerçek Doctor WE formülü testi geçti; oyun kabulü bekleniyor. Mevcut rota/uçuş/WE korunur. Teleporter Room'a dışarıdan güvenli dönüş için doğrulanmış hedef/işlem sözleşmesi bulunmadığından RETURN bu pakette kapalı kalır; ışınlama ve maliyet kapıları sonraki Aşama 11 paketidir, Aşama 12'ye geçiş değildir.
 
 - [ ] `EMERGENCY RETURN TO SHIP`

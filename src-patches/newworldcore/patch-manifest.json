@@ -1,9 +1,10 @@
 {
   "baselineVersion": "0.5.57.0-alpha-mekanism-geology-deposits",
   "baselineSha256": "09a140f93824ca37abe85b31a384b9398f4b064c3f7c37534569bfca956351fc",
-  "version": "0.5.71.0-alpha-emergency-beacon",
-  "marker": "NewWorldEmergencyBeaconV1",
+  "version": "0.5.71.1-alpha-emergency-feedback",
+  "marker": "NewWorldEmergencyFeedbackV2",
   "fixes": [
+    "Emergency results use ship/request/sequence-bound receipts replayed in read-only telemetry; delayed acknowledgements remain recoverable without repeating world writes, with server cooldown countdown and client result diagnostics",
     "Emergency DISTRESS BEACON saves server-observed position and selects the shared target after single-use owner/link/position-bound confirmation; preserves existing routes, flight and WE",
     "Live beacon policy/cooldown, bounded telemetry and lifecycle invalidation; actual emergency return stays explicitly unavailable pending safe Teleporter Room integration",
     "Successful resource-block counters persist per scan area in optional namespaced Mining phase NBT; top five resources distinguish legacy untracked history and reset with the existing scan area",

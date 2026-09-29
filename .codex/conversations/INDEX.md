@@ -4,6 +4,8 @@ Newest records are listed first. `HANDOFF.md` remains the canonical current bato
 
 ## Git-tracked session records
 
+- [2026-09-29 — Emergency feedback repair](2026-09-29_laptop_emergency_feedback_repair.md) — .71.0 server SENT/WAIT but UI NO RESPONSE; late-result regression reproduced, .71.1 correlated telemetry receipts/cooldown repair installed. Fourteen suites + engine fixture passed; short in-game feedback acceptance pending, Return still open.
+
 - [2026-09-29 — Emergency beacon](2026-09-29_laptop_emergency_beacon.md) — .71.0 installed; 14 suites + engine fixture passed. Emergency / two-step DISTRESS target; runtime pending, actual Return remains open.
 
 - [2026-09-29 — Mining yield and stop](2026-09-29_laptop_mining_yield_stop.md) — .70.1 four-item basic runtime acceptance passed by screenshot/user report: resources, STOP, reload persistence and physical restart. Thirteen suites + engine fixture passed; broader edge checks and reserve ledger remain open.
