@@ -6,7 +6,7 @@ Branch: `main`
 
 ## Current objective
 
-Runtime acceptance update: `.71.4` normal portal/inside-door return PASSED by user's explicit "tamam çalıştı kanka" and server log 2026-09-29 15:21:30.375: entrance=[0,128,-22], cooldown_ms=1800000; client success receipt 15:21:30.386. This supersedes entrance-runtime-pending wording below. Cooldown starts on successful return; GUI countdown/relogin persistence and unchanged target/route/WE have not been independently verified in this run. Extended dimensional/protection/multiplayer cases remain open; Stage 11 remains partial. No new build, config, saved-data edits or repeated cooldown reset. Installed .71.4/hash unchanged. Next grouped acceptance: countdown/relogin persistence and unchanged Navigation/WE, not another destination or Mining retest.
+Runtime acceptance update: `.71.4` inside-door return, 30-minute cooldown start, countdown display and persistence after world exit/re-entry PASSED. User confirmed both return and relogin; screenshot shows RETURN COOLDOWN 25:51 at CONNECTED 12 BLK. Log: return [0,128,-22] at 15:21:30.375 with cooldown_ms=1800000 and client success at 15:21:30.386; server stop/save 15:24:48–49, login 15:25:21.062 confirms real world re-entry. Supersedes all destination/countdown/relogin-pending wording below. Unchanged target/route/WE and extended dimension/protection/multiplayer/death cases are not newly accepted from this Emergency screenshot. Stage 11 remains partial. No build/config/save edits or cooldown reset; installed .71.4/hash unchanged. Do not repeat accepted return/relogin or Mining tests.
 
 ### Installation history — destination acceptance below is superseded
 

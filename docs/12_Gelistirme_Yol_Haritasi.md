@@ -167,6 +167,8 @@ Routing, priority, Keep ve upgrade yönetimi fiziksel Mining Terminal’de kalac
 
 ## Aşama 11 — Emergency panel
 
+29 Eylül 15:25 kabulü: kullanıcı çıkış/girişte de çalıştığını bildirdi; ekranda `RETURN COOLDOWN / 25:51`. Log 15:24:48–49 duruş/kayıt ve 15:25:21 yeniden girişi doğruluyor. Geri sayım ve dünya yeniden girişinde sürenin korunması geçti; aşağıdaki bunları bekleyen eski notlar geçersizdir. Hedef/rota/WE karşılaştırması ve genişletilmiş kontroller ayrıca açık kalır.
+
 29 Eylül 15:21 kabulü: .71.4 kapı önü dönüşü kullanıcı tarafından onaylandı; sunucu `[0,128,-22]` varışını ve 1800000ms bekleme başlangıcını, istemci başarı yanıtını kaydetti. Aşağıdaki yeni-varış-bekleniyor ifadesi geçersizdir. Çıkış/giriş kalıcılığı, geri sayım ve Navigation/WE karşılaştırması ile genişletilmiş kabul ayrı açık kalır; Aşama 11 kısmi.
 
 29 Eylül kullanıcı düzeltmesi: .71.3 dönüşü 14:42:25 loguyla gerçekleşti, ancak ayrı Teleporter Room istenen yer değildi. Yeni hedef geminin içinde ana kapının önü, normal portalın getirdiği aynı hücre ve bakış yönüdür. .71.4 adayında gerçek Doctor portal sözleşmesi ve 15 paket geçti; yeni varışın oyun kabulü bekleniyor. Eski Teleporter Room/no-entrance kararları bu açık kullanıcı isteğiyle geçersizdir.
@@ -179,7 +181,8 @@ Güncel kullanıcı kararı: Beacon iptal; doğrudan kendi gemisinin iç kapı �
 - [~] Başarılı varıştan sonra 30 gerçek dakika, oyuncu kaydında kalıcı süre; çıkış/giriş/ölüm sıfırlamaz, çevrimdışı süre sayılır. Başarısız dönüş süre tüketmez.
 - [~] Navigation hedefi/rotası, gemi uçuşu ve WE korunur. Bu kullanıcı-onaylı paket ayrı WE ücreti eklemez; dengeleme 30 dakika cooldown'dur.
 - [x] .71.4 temel tek oyunculu kapı önü dönüşü ve sunucuda 30 dakika bekleme başlangıcı (kullanıcı + log).
-- [ ] Geri sayım/yeniden giriş, değişmeyen hedef/rota/WE karşılaştırması; uzaktan/dimension/çok oyunculu/koruma kenar kabulü.
+- [x] Geri sayım görünümü ve dünya çıkış/girişinde kalıcılık (25:51 ekranı, kullanıcı ve log).
+- [ ] Değişmeyen hedef/rota/WE karşılaştırması; uzaktan/dimension/çok oyunculu/koruma/ölüm kenar kabulü.
 - İptal: DISTRESS BEACON ve konumu acil Navigation hedefi yapma. Eski kayıtlar silinmez.
 
 Aşama 12'ye geçilmedi.

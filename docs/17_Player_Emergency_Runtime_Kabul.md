@@ -1,5 +1,7 @@
 # Player Emergency .71.4 — gemi içi kapı önü dönüş
 
+Güncel kabul: kapı önü dönüşüne ek olarak geri sayım ve dünya çıkış/girişinde kalıcılık da geçti. Kullanıcının yeniden giriş sonrası ekranında `RETURN COOLDOWN / 25:51`; log 15:24:48–49 sunucu duruş/kayıt ve 15:25:21 yeniden girişi doğruluyor. Önceki geri sayım/yeniden giriş-bekleniyor notları geçersizdir. Bu kontroller tekrar istenmez. Navigation/WE karşılaştırması ve genişletilmiş kenar testleri bu ekranla doğrulanmış sayılmaz.
+
 29 Eylül kabul güncellemesi: kullanıcı kapı önü dönüşünün çalıştığını doğruladı. 15:21:30.375 sunucu kaydı varış `[0,128,-22]`, `cooldown_ms=1800000`; 15:21:30.386 istemci başarı yanıtı. Temel varış geçti, tekrar istenmez. Geri sayım görünümü/çıkış-giriş kalıcılığı ve hedef/rota/WE karşılaştırması bu denemede ayrıca doğrulanmadı; genişletilmiş kontroller açık. Aşağıdaki kurulum zamanı "bekleniyor" ifadesi bu temel varış için geçersizdir.
 
 Kullanıcı ayrı Teleporter Room yerine geminin içindeki ana kapının önünü, normal portalın getirdiği yeri istedi. .71.3 gerçek dönüşü 29 Eylül 14:42:25 loguyla doğrulandı; yeni hedefin oyun kabulü henüz bekleniyor. Beacon iptal; eski DISTRESS kayıtları korunur.
@@ -8,7 +10,7 @@ Güncel aday `0.5.71.4-alpha-emergency-entrance`. Doctor portalıyla aynı `getE
 
 15 otomatik paket, gerçek Doctor portal konum/yön sözleşmesi ve WE testi geçti. Dört yön/taşınmış kapı, tam koordinat/yön, eksik-yüklü olmayan-engelli-tehlikeli-çarpışmalı giriş, yedek nokta kullanmama, seyahat iptali ve kalıcı süre test edildi. Bunlar gerçek oyun kabulünün yerine geçmez.
 
-Kabul listesi (1. maddenin kapı önü varışı tamamlandı; kalanlar toplu doğrulanabilir):
+Kabul listesi (kapı önü varışı, geri sayım ve yeniden giriş kalıcılığı tamamlandı; Navigation/WE karşılaştırması ve genişletilmiş kontroller açık):
 
 1. Kullanıcının isteğiyle önceki bekleme yalnız bu test için yedek alınarak sıfırlandı. Dışarıda, gemi sabitken Navigation hedefini/rotasını not et. Emergency → RETURN → iki saniye içinde CONFIRM. Normal portal girişinde geldiğin gemi içi kapı önüne, içeri bakarak gelmelisin; gemi uçmamalı.
 2. Yaklaşık 30:00 bekleme başlamalı. Navigation hedef/rota, WE ve eski kayıtlar korunmalı. GUI'yi yeniden açınca geri sayım sürmeli.
